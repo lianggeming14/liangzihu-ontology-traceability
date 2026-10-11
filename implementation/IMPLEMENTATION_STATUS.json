@@ -1,0 +1,105 @@
+{
+  "schema_version": "2.0",
+  "updated_at": "2026-10-11T04:58:45.855Z",
+  "application_version": "0.1.0",
+  "task": "农业本体数据库、多模态接入契约与对应产品溯源系统",
+  "implementation_status": "local_engineering_delivered",
+  "implementation_model": "current_session_model",
+  "kimi": {
+    "status": "retired_by_user_request",
+    "required_for_runtime": false,
+    "model_request_confirmed": false,
+    "historical_attempt_record": "runtime/kimi-attempt-status.json"
+  },
+  "runtime": {
+    "backend": "sqlite-development",
+    "persistent_database": "data/agri.db",
+    "postgresql_adapter": "agri/db.py",
+    "postgresql_migration": "migrations/001_core.sql",
+    "postgresql_verified": false,
+    "listening_server_running": false,
+    "socket_listening_verified": false,
+    "socket_limitation": "受控环境 WinError 10013；在普通终端运行启动系统.cmd完成本机监听验证",
+    "startup": "启动系统.cmd"
+  },
+  "implemented": [
+    "stable_entity_identity_and_versioned_domain_packages",
+    "qualified_relations_and_bounded_eight_dimension_network",
+    "observations_assertions_and_evidence_separation",
+    "file_evidence_hash_and_authorized_download",
+    "multimodal_standard_record_ingestion_with_partial_retry",
+    "events_exact_decimal_material_balance_and_lineage",
+    "object_sets_dynamic_and_frozen",
+    "role_tenant_idempotency_audit_transaction_outbox",
+    "inference_and_traceability_bundles",
+    "reviewed_publication_public_dto_qr",
+    "evidence_withdrawal_recall_and_late_conflict_invalidation",
+    "scoped_jsonld_turtle_exchange",
+    "desktop_and_mobile_workbench_and_public_page"
+  ],
+  "tests": {
+    "passed": 92,
+    "failed": 0,
+    "skipped": 38,
+    "skip_reason": "PostgreSQL test cases: TEST_DATABASE_URL not configured",
+    "junit": "tests/latest-results.xml",
+    "browser": {
+      "passed": true,
+      "transport": "Playwright -> real Flask test_client via stdio; persistent isolated SQLite; no mocked business result",
+      "report": "tests/browser/result.json",
+      "page_errors": 0,
+      "failed_requests": 0,
+      "tcp_or_tls_validated": false
+    },
+    "contract": {
+      "operations": 46,
+      "json_schemas": 16,
+      "report": "runtime/api-contract-check.json"
+    },
+    "sqlite_backup": {
+      "passed": true,
+      "integrity_check": "ok",
+      "foreign_key_violations": 0,
+      "original_and_restored_hash_equal": true,
+      "scope": "database only; assets/configuration need separate backup"
+    },
+    "postgresql_integration": "not_run"
+  },
+  "demo": {
+    "synthetic": true,
+    "packages": [
+      "agri.core",
+      "agri.rice-crayfish",
+      "agri.vegetable",
+      "agri.poultry"
+    ],
+    "entities": 16,
+    "material_lots": 8,
+    "events": 9,
+    "existing_platform_connected": false
+  },
+  "limitations": [
+    "No verified PostgreSQL deployment or production performance/recovery evidence",
+    "No live Liangzihu connector; missing integration binding and source authoritative event projection channels",
+    "No live camera/sensor/vendor/model pipelines; accepts raw assets and structured records only",
+    "No full bitemporal reconstruction, property dictionary, arbitrary OWL/SHACL reasoning or causal inference",
+    "No event reversal/returns or independent quality release",
+    "No production identity provider, object-level grants or public deployment",
+    "No delivery worker/webhooks/consumer ACK management",
+    "Offset browsing is not a frozen snapshot; graph results can be explicitly truncated"
+  ],
+  "next_steps": [
+    "Verify local TCP startup in an ordinary terminal",
+    "Run dedicated PostgreSQL tests and recovery/concurrency gates",
+    "Implement source identity/authorization and inventory projection seams in PLATFORM_INTEGRATION.txt",
+    "Integrate approved farm samples and external consumers, then complete field acceptance"
+  ],
+  "artifacts": {
+    "readme": "README.txt",
+    "platform_integration": "PLATFORM_INTEGRATION.txt",
+    "openapi": "contracts/openapi.json",
+    "schemas": "contracts/input-schemas.json",
+    "design_doc": "../交付文档/梁子湖智慧农业本体库与溯源系统总体方案_v1.1.docx",
+    "source_archive": "../交付文档/梁子湖农业本体与溯源系统_本地工程版_v0.1.zip"
+  }
+}

@@ -1,0 +1,157 @@
+梁子湖平台与本体数据库的集成实施边界
+
+本文件状态：只读源码核对与实施建议；不是已部署连接器、已开放平台API或生产验收证明。
+核对日期：2026-10-11。
+本地本体工程：implementation/。
+来源平台：8jdkds7nzz-hub/liangzihu-farm-platform。
+核对快照：C:/Users/robot/Desktop/feishu_xinyuan/AgriTwin-Liangzihu/research/liangzihu-farm-platform。
+快照来源说明记录的Git tree：9995fc20cd84093adcaa3fab954ffe9d08b9f45a（2026-10-04选取快照）。
+本次没有修改该平台、连接其数据库、读取凭据、调用其业务接口、启动其worker或向农场发送消息。
+
+一、先明确两个系统的现状
+
+1. 原平台README列有库存、质量放行、批次追查、客户摘要发布及撤回；路径包括 /inventory、/traceability、/trace/<code>，对应库存和溯源API。README同时明确这些是本地工程验证能力，不等于真实物料、检测资质和现场业务已验收。
+2. 当前选取快照只有部分迁移和模块源文件；并未包含完整 inventory/traceability 模块实现。因此本文件不杜撰库存批次、放行、发布的正式表名，也不认定其实际部署版本与快照一致。
+3. 当前implementation是独立本地工程原型。真实PostgreSQL适配及迁移已提供；已运行的本地行为验证使用明确标识的持久化SQLite开发后端。PostgreSQL运行与集成测试仍需独立环境通过，不得用SQLite结果代替。
+4. 当前原型的lots余额、事件与发运逻辑仅用于隔离工程演示。接入现有平台时，正式库存账继续由原库存服务维护；不得让两个服务分别计算、修改同一批实物的正式余额。
+5. 当前原型只有租户加角色授权，未实现原平台完整对象级grants、专家resource_grants、MFA及动态账号状态。因此不能直接把原平台真实多用户数据全部导入同一租户后开放原型查询。
+
+二、上线前必须冻结的输入
+
+取得真实部署commit、数据库迁移清单、实际字段及约束、已授权接口、调用者及来源责任人，形成版本化清单。特别核对：
+- objects、production_batches、devices、points、point_bindings当前版本；
+- 原始接收、观测冲突、天气和知识资料的最新迁移；
+- 库存、采收加工、包装、发运、签收、检测、独立放行、公开摘要及撤回的真实业务结构；
+- domain_events的覆盖范围、事件写入事务、消费回执、队列保留期；
+- 原平台是否已有用于本体服务的服务身份/只读导出入口。不能因为存在assertIntegrationAccess函数，就假定所有现有会话API接受集成token。
+
+快照中的src/modules/telemetry/ingest.ts已引用contract_version、contract_snapshot等原始接收字段，而所选003_telemetry.sql不包含全部后续扩展。该差异证明不能仅执行所选早期迁移来重建所谓“完整原平台数据库”。
+
+三、身份和源记录映射
+
+映射必须至少保留：source_system、source_instance、source_kind、source_record_id、source_revision或content_hash、target_entity_key、target_record_id、mapping_version、first_seen_at、last_seen_at、status。
+
+正式适配器需要持久化上述映射及唯一约束。建议新增integration_bindings和integration_receipts，作为适配器专用结构；这些表目前尚未实现在本原型中。不要把attrs中的自由字段当作已经具备唯一性、历史修订和可靠恢复能力的身份登记表。
+
+A. 空间对象
+来源：objects.id/parent_id/code/name/kind/boundary_status/boundary/source/version；object_versions保存同一object_id的版本快照。
+目标：entities.entity_key为本体服务稳定引用；entity_type采用源kind（farm、pond、field、channel、facility），语义分类另走type_assignments。
+规则：源UUID及版本永久保留；code和name用于显示，不用于跨源自动合并。parent_id转为有版本和证据的空间关系，不据地理相邻推出水流关系。
+当前HTTP create_entity不接受外部指定entity_id/entity_key，只接受实体类型、名称、属性和分类；内部Service支持指定UUID不等于已开放集成契约。第一版导入应由映射表保存“源UUID→目标UUID”，或先正式扩展并测试受控身份导入接口；不能悄悄重用未发布字段。
+建议attrs只作辅助说明，例如platform_record_id、platform_version、boundary_status和geometry_ref；具体几何与历史版本仍需正式空间适配，不在普通字符串属性中冒充PostGIS能力。
+
+B. 生产批次
+来源：production_batches.id/object_id/code/species/variety/stage/source/verified/started_at/ended_at/supersedes_id。
+目标：entity_type=production_batch；批次参与空间或生产系统的关系单独登记。species/variety/stage保留原字符串并通过已审核映射连接领域概念。
+规则：原平台saveBatch更正通过新增UUID和supersedes_id表达。保留两条源记录及更正链，不能将更正后的批次覆盖为旧记录，也不能凭名称归并。ProductionBatch不是库存批次，更不能用生产批次UUID代替商品批号。
+当前原型没有通用实体内容版本更新或源supersedes导入API；增量更新此类对象需先实现明确的修订适配，不能通过每次重新create_entity生成孤立重复实体。
+
+C. 设备、测点、历史绑定
+来源：devices.id、source_id、external_id、kind、parent_device_id；points.id/device_id/code/metric/unit；point_bindings.id/point_id/object_id/valid_from/valid_to/verified/evidence。
+源设备外部身份唯一范围为(source_id,external_id)，不能把external_id当全库唯一键。
+目标：device、measurement_point实体；测点与空间的绑定按源binding_id登记为有时态的限定关系。
+规则：原平台resolvePointBinding按照sampledAt求有效绑定，区间左闭右开。导入观测必须保留观测当时的binding_id和object_id，不能按当前设备归属重新分配历史测值。未核验、重叠、缺失绑定的材料只进入证据或待处理队列。
+
+D. 观测与原始接收
+来源原件：raw_receipts.id/source_id/received_at/body/sha256/synthetic，原件有不可修改触发器。
+来源观测：observations.id/head_id/content_hash/source_record_id/point_id/object_id/binding_id/metric/sampled_at/reported_at/received_at/raw_value/value/unit/quality/reasons/origin/raw_ref。
+来源身份：readingIdentity使用sourceId、externalDeviceId、pointId、metric，再优先sourceRecordId，否则sampledAt和sequence。readingContent另计算内容身份；同head不同content不能被静默覆盖。
+目标：先登记原始evidence（实际取得字节时由本地上传入口计算SHA-256），再登记结构化观测或候选断言；适配器回执保留source observation UUID、head ID和content hash。
+时间映射：sampled_at→observed_at；reported_at/received_at、binding_id等进入原始证据metadata及正式扩展契约。sampled_at未知时不可把received_at填作采样时间；当前create_observation要求有效observed_at，应隔离并返回缺口。
+来源origin=live/history/manual描述采集或补录方式，不等同本体origin=measured/reported/estimated。人工补录也可能转录真实仪器测值；必须由来源合同决定认识性质，并保留源origin。
+当前原型观测表尚未实现源平台完整quality/reasons/conflicted/canonical选择机制。正式桥接前，源suspect/invalid、head.conflicted或非采用分支不能作为普通可推理观测直接导入；先保存原件与candidate断言或隔离清单。待质量/冲突契约扩展后再开放对应观测通道。
+
+E. 天气、指标和文档
+天气：源kind区分actual/forecast/warning/baseline，保留source_version、station_ref、published_at、valid_from/to、comparison_basis。forecast进入origin=forecast的候选断言，不转本地实测；不同发布时间的同目标时刻预报不是重复记录。当前原型不完整实现源天气有效期评估。
+指标：优先消费原平台已有审核定义产生的metric_results及其definition_id、definition_version、window、coverage、status、input evidence。不得把模型重新估算结果冒充原平台计算结果。
+文档：knowledge_documents具有source_ref+version唯一约束、source_checksum、object_ids、evidence_nature，以及draft/approved/withdrawn状态。保留原文和版本，chunk定位必须能回到文档；draft仅候选，withdrawn触发证据失效。原平台知识审核不等于任何产品自动取得质量放行。
+
+四、可执行的增量及幂等流程
+
+建议先做有授权的冻结文件导出与离线契约验证，再实现持续消费，不以公网API作为前置依赖。
+
+1. 原平台在业务事实及domain_events同一事务提交后，连接器从已提交事件领取工作。已核对004_jobs.sql含domain_events及consumer_offsets(consumer,event_id)，事件ID为UUID，不是安全递增水位。
+2. 连接器生成不可变标准信封：source_instance、event_id、event_type、source_record_id、source_revision/content_hash、object_scope、occurred_at、recorded_at、mapping_version、payload_hash、payload。
+3. 在原平台执行当前对象/资源授权检查，加载必要源记录；缺少源记录、来源版本或证据时不拼造数据。先写原始证据，再写具有明确语义的记录。
+4. 幂等键推荐以固定前缀加信封关键字段SHA-256构造，长度满足API限制，例如lzh:<source-event-uuid>:<adapter-version>:<operation>。同键同payload返回既有结果；同键不同payload必须报冲突，不能为“重试成功”临时换新随机键。
+5. 当前Service幂等哈希包含actor.id，因此同一连接器重试必须使用稳定受控服务主体。账号变更应有迁移/回执策略，不应通过管理员轮换主体产生重复业务记录。
+6. 当前 /api/v1/ingestion/records 为逐记录事务，幂等子键是base_key:index；可部分成功。连接器必须冻结本批排序和payload，按每条回执推进，不能重试时重新排序，也不能看到HTTP成功就把整批标记完成。
+7. 目标记录事务提交成功后再登记source event与target IDs的持久回执；最后确认源consumer_offsets。若目标已提交而源确认失败，重试原幂等键获得同一结果并补回执。不要在目标未成功前推进源消费位置。
+8. 初始全量快照与增量必须有可核查接缝：冻结一致性源快照，保留同步期间事件，应用重叠事件去重，核对源记录数、版本和内容摘要后切换。当前普通offset列表不是跨请求一致性快照，不能用它代替正式全量导出协议。
+9. 原型向外提供的changes使用本租户事务内锁定的计数器生成已提交顺序，返回opaque next_cursor。普通列表offset只服务人工资源浏览；changes拒绝任何offset，不能使用MAX业务ID或最大UUID跳过较晚提交的事件。
+10. 原平台事件覆盖目前只对所读模块得到代码证据。库存、质量、文档撤回及授权撤销是否均产生适配所需事件，须逐模块核对并补齐，不能假设完整CDC已经存在。
+
+五、库存、质量和公开发布主责
+
+正式环境职责：
+- 原库存服务：批次登记、不可变库存分录、数量锁与余额、加工投入产出、装拆箱、发运签收和冲销。
+- 原质量服务：样品和检测适用范围、资质及报告状态、独立质量放行和处置授权。
+- 本体服务：概念与身份映射、跨业务关系、证据与冲突、受限查询、版本化数据包；库存数量为读取投影。
+- 溯源发布服务：按审核与受众白名单产生公开DTO、管理当前状态和公开码；不把推理包或私有原件直接公开。
+
+现有原型create_event会修改本地lots余额，并非源平台只读事件投影接口。不得将真实平台库存事件直接双写该端点并宣称已经实现正式联动。正式适配应新增只读源事件引用/投影通道，区分source_authoritative事件与prototype ledger事件，并禁止在生产连接模式下使用原型库存写入动作。
+
+原型的ship/receive仅实现本租户出库至外部签收：ship扣可用量，receive核对未签收量并记录交付，不自动加回出库方库存。跨仓调拨、跨租户买卖、退货、重加工、冲销、盘点、冷链状态尚需专门业务映射；不得把它们都改名为receive或transform。
+
+公开发布必须连接原平台真实ReleaseDecision及发布策略。当前原型public数据明确quality_release_status=not_evaluated；人工采纳断言、登记文件、哈希匹配和审核页面摘要均不等于食品检测合格或质量放行。
+
+报告撤回：源质量或文档事件→定位本体evidence→withdraw_evidence→相关断言/关系待复核→相关发布当前状态失效；历史事件及冻结发布内容保留。召回范围沿物料投入产出传播，空间共作、共同运输或同名产品不直接构成确定物料祖先。可能贡献与明确来源分别保留。
+
+六、权限和证据引用不能简化为角色字符串
+
+原平台Actor含id、role、enabled、mfaVerified。access.ts检查当前账号状态及角色，随后检查服务器当前时刻的对象grants；历史业务时间不恢复已撤销授权。expert另由field/common.ts检查resource_grants的资源类型、UUID、有效期和业务窗口。
+
+必须执行：
+- 连接器导出、后台执行、目标写入、证据下载、结果读取和对外发布分别复查应有的权限；不能只在队列创建时检查一次。
+- 原平台admin并不自动具有所有业务对象/动作权限；不能映射成原型admin后绕过原grants。
+- 对象树、关系邻域、计数、导出、历史包和原件下载同样受授权约束，不能只在页面隐藏按钮。
+- 租户由认证上下文确定，不信任导入payload的tenant_id；对象与资源范围由平台服务端输出并验证。
+- 若复制原件到本体资产层，需继承用途与撤销策略。仅复制文件后移除原平台授权检查会造成新的越权通道。
+
+原平台EvidenceRef仅列reading/raw/record/file；analysis/evidence.ts中的FactRef.kind是另一套白名单。sourcesActive检查存在及部分来源状态，没有Actor参数，不是鉴权函数；未知kind被拒绝，空refs返回true，briefing_item递归也需外部循环/深度保护。
+新增本体证据引用必须显式实现kind解析器，同时检查：UUID、来源版本、对象适用范围、当前权限、原始哈希、撤回/替代状态和时效。不能只追加一个ontology字符串后调用sourcesActive，也不能把reading伪装成metric。
+
+七、建议按以下顺序提交实际集成变更
+
+P0 来源冻结：核对完整部署、迁移、对象授权、库存及质量接口；产出差异表和私有数据许可清单。
+P1 授权只读快照：由平台后台生成对象、生产批次、设备/绑定、采用观测、已审核资料的固定快照。只用合成或授权脱敏样例完成契约测试。
+P2 身份与回执：实现持久integration_bindings/receipts、源事件消费器、部分失败重试及源游标接缝。先验收同名异物、同源重试、同版本内容冲突和源批次修订。
+P3 质量与权限：实现质量/冲突/时间/资源授权的不可丢失映射；使用受限服务主体，并测试即时撤销。
+P4 库存投影：读取实际库存和质量主责模块的事件；新增源权威事件投影入口，停用生产连接模式下的独立库存写入。核对一条真实合法可用的采收、加工、包装、发货和签收链。
+P5 发布联调：由现有质量和发布流程确认允许披露内容，再接入消费者页面；演练撤回、召回、断连、重复回放和授权变更。
+P6 运维接管：在真实PostgreSQL独立测试schema通过迁移、约束、事务、并发、备份恢复和对账后发布；本地SQLite测试只作为早期行为证据。
+
+八、集成验收必须包含的反例
+
+1. 同一源事件重放三次，目标对象/观测/业务效果和outbox不重复；变更payload但沿用键返回409。
+2. UUID来自另一对象或另一租户，即使记录存在也被拒绝；撤销grants后旧快照和已复制原件不能继续越权读取。
+3. 同一读数head的两个content都保留；不得因最后到达而把源平台conflicted改成可信测值。
+4. 测点换塘后重放旧采样，仍引用旧binding_id；采样时间缺失不使用接收时间伪造。
+5. forecast、baseline、模型候选不进入measured观测；未知发布时间、未知来源与未检测保持未知。
+6. 生产批次更正后旧UUID和新UUID均可追查；新增生产批次不产生库存数量。
+7. 分批、合批及加工对账与原库存分录一致；原平台余额只有一个写入权威源。
+8. 检测报告撤回后，当前公开页不继续展示依赖它的有效质量结论；历史材料保留但不恢复公开有效性。
+9. 初始快照过程中发生并发业务提交，增量接缝既不遗漏也不重复；普通offset仅验证稳定集合分页，不用于证明增量一致性。
+10. 平台不存在某接口或源事件时返回unsupported/待补齐清单，不生成假回执或合成业务冒充实际接入。
+
+九、本次直接核对的证据文件
+
+原平台（均为上述只读快照内相对路径）：
+- README.md：第2.1库存与批次、第2.2质量与溯源、当前工程/现场边界。
+- docs/README.md：部署与现场验收状态、后续接口文档入口。
+- db/migrations/002_registry.sql：对象、批次、设备、测点、绑定及唯一约束。
+- db/migrations/003_telemetry.sql：原件、观测头、冲突、采用当前值、原件和观测不可变触发器。
+- db/migrations/004_jobs.sql：domain_events、jobs和consumer_offsets。
+- db/migrations/016_knowledge.sql：文档版本、源哈希、审核/撤回和chunk。
+- src/modules/registry/batches.ts：生产批次更正采用新UUID和supersedes。
+- src/modules/registry/points.ts：采样时绑定、区间冲突及历史保护。
+- src/modules/telemetry/identity.ts、ingest.ts：源身份、内容去重、原件、冲突及事务事件。
+- src/modules/weather/service.ts：天气性质、时间、幂等及可比条件。
+- src/modules/identity/access.ts、references.ts、src/modules/field/common.ts：当前账号、对象动作及专家资源范围。
+- src/platform/types.ts、api.ts：Actor/EvidenceRef定义及会话/Origin接口边界。
+- src/modules/analysis/evidence.ts：sourcesActive白名单及其非鉴权性质。
+
+当前原型：agri/db.py、agri/service.py、agri/ingestion.py、migrations/001_core.sql、contracts/input-schemas.json。
+源快照整体说明另见其父目录platform-integration-review-2026-10-04.md。
+
+结论：本文件已给出可执行的接口分工和前置验收，尚未实现或验证真实平台连接器。应在上述差异补齐后联调，不能把当前独立演示库视为原平台数据库的替代品。

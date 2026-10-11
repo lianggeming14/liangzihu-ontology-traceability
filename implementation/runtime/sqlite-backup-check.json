@@ -1,0 +1,10 @@
+{
+  "backend": "sqlite-development",
+  "active_wal_backup": "passed",
+  "uncommitted_rows_excluded": true,
+  "restored_integrity": "ok",
+  "exact_decimal_restored": true,
+  "backup": "data\\backups\\verification-f2b70e88a5.db",
+  "restore": "data\\backups\\restored-f2b70e88a5.db",
+  "postgresql_validation": false
+}

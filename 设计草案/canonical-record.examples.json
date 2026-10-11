@@ -1,0 +1,742 @@
+{
+  "fixtureOnly": true,
+  "notice": "所有对象、测值、模型分数、资产哈希和字节数都是合成格式样例；无实际原件，不得导入生产或据此作农业判断。状态仅为示例，服务器必须复查。",
+  "externalObjectRegistry": [
+    {
+      "type": "Farm",
+      "id": "00000000-0000-4000-8000-000000000001"
+    },
+    {
+      "type": "Field",
+      "id": "00000000-0000-4000-8000-000000000002"
+    },
+    {
+      "type": "Pond",
+      "id": "00000000-0000-4000-8000-000000000003"
+    },
+    {
+      "type": "Device",
+      "id": "00000000-0000-4000-8000-000000000004"
+    },
+    {
+      "type": "MeasurementPoint",
+      "id": "00000000-0000-4000-8000-000000000005"
+    },
+    {
+      "type": "PointBinding",
+      "id": "00000000-0000-4000-8000-000000000006"
+    },
+    {
+      "type": "ProductionBatch",
+      "id": "00000000-0000-4000-8000-000000000007"
+    },
+    {
+      "type": "ModelVersion",
+      "id": "00000000-0000-4000-8000-000000000008"
+    },
+    {
+      "type": "ProcessingRun",
+      "id": "00000000-0000-4000-8000-000000000009"
+    },
+    {
+      "type": "Asset",
+      "id": "00000000-0000-4000-8000-000000000020"
+    },
+    {
+      "type": "Feature",
+      "id": "00000000-0000-4000-8000-000000000021"
+    },
+    {
+      "type": "Document",
+      "id": "00000000-0000-4000-8000-000000000022"
+    },
+    {
+      "type": "Asset",
+      "id": "00000000-0000-4000-8000-000000000023"
+    },
+    {
+      "type": "Asset",
+      "id": "00000000-0000-4000-8000-000000000024"
+    }
+  ],
+  "records": [
+    {
+      "schemaVersion": "lzh.canonical-record/0.1",
+      "recordId": "00000000-0000-4000-8000-000000000101",
+      "recordType": "entity",
+      "ontologyVersion": "lzh/0.1-draft",
+      "source": {
+        "systemId": "fixture:liangzihu",
+        "sourceRecordId": "101",
+        "sourceVersion": "fixture-1",
+        "adapterVersion": "fixture-adapter/0.1",
+        "receivedAt": "2026-10-10T02:05:00Z",
+        "publishedAt": null
+      },
+      "context": {
+        "scopeObjectRefs": [
+          {
+            "type": "Pond",
+            "id": "00000000-0000-4000-8000-000000000003"
+          }
+        ],
+        "validTime": null,
+        "spatialSupport": null
+      },
+      "quality": {
+        "state": "unassessed",
+        "flags": [
+          "synthetic_fixture"
+        ],
+        "coverage": null,
+        "reviewState": "pending",
+        "modelScore": null
+      },
+      "provenance": {
+        "runRef": null,
+        "inputRecords": [],
+        "evidenceRefs": [],
+        "transformVersion": null
+      },
+      "data": {
+        "objectRef": {
+          "type": "Pond",
+          "id": "00000000-0000-4000-8000-000000000003"
+        },
+        "revision": "fixture-1",
+        "attributes": {
+          "displayName": "示例塘口 A",
+          "businessCode": "FIXTURE-POND-A",
+          "status": "unverified"
+        }
+      }
+    },
+    {
+      "schemaVersion": "lzh.canonical-record/0.1",
+      "recordId": "00000000-0000-4000-8000-000000000102",
+      "recordType": "observation",
+      "ontologyVersion": "lzh/0.1-draft",
+      "source": {
+        "systemId": "fixture:liangzihu",
+        "sourceRecordId": "102",
+        "sourceVersion": "fixture-1",
+        "adapterVersion": "fixture-adapter/0.1",
+        "receivedAt": "2026-10-10T02:05:00Z",
+        "publishedAt": null
+      },
+      "context": {
+        "scopeObjectRefs": [
+          {
+            "type": "Pond",
+            "id": "00000000-0000-4000-8000-000000000003"
+          }
+        ],
+        "validTime": {
+          "kind": "instant",
+          "at": "2026-10-10T02:00:00Z"
+        },
+        "spatialSupport": {
+          "objectRef": {
+            "type": "Pond",
+            "id": "00000000-0000-4000-8000-000000000003"
+          },
+          "association": "measured_at",
+          "geometryRevision": null,
+          "crs": null
+        }
+      },
+      "quality": {
+        "state": "unassessed",
+        "flags": [
+          "synthetic_fixture"
+        ],
+        "coverage": null,
+        "reviewState": "pending",
+        "modelScore": null
+      },
+      "provenance": {
+        "runRef": null,
+        "inputRecords": [],
+        "evidenceRefs": [
+          {
+            "recordId": "00000000-0000-4000-8000-000000000109",
+            "locator": {
+              "kind": "record"
+            }
+          }
+        ],
+        "transformVersion": "probe-adapter-fixture/0.1"
+      },
+      "data": {
+        "subjectRef": {
+          "type": "Pond",
+          "id": "00000000-0000-4000-8000-000000000003"
+        },
+        "propertyId": "lzh:dissolved_oxygen",
+        "methodId": "lzh:probe_method_fixture",
+        "scaleId": "lzh:numeric_scale",
+        "mode": "measured",
+        "phenomenonTime": {
+          "kind": "instant",
+          "at": "2026-10-10T02:00:00Z"
+        },
+        "resultTime": "2026-10-10T02:00:02Z",
+        "result": {
+          "kind": "number",
+          "value": 4.2,
+          "unit": "mg/L",
+          "uncertainty": null
+        },
+        "pointBindingRef": {
+          "type": "PointBinding",
+          "id": "00000000-0000-4000-8000-000000000006"
+        }
+      }
+    },
+    {
+      "schemaVersion": "lzh.canonical-record/0.1",
+      "recordId": "00000000-0000-4000-8000-000000000103",
+      "recordType": "forecast",
+      "ontologyVersion": "lzh/0.1-draft",
+      "source": {
+        "systemId": "fixture:liangzihu",
+        "sourceRecordId": "103",
+        "sourceVersion": "fixture-1",
+        "adapterVersion": "fixture-adapter/0.1",
+        "receivedAt": "2026-10-10T02:05:00Z",
+        "publishedAt": null
+      },
+      "context": {
+        "scopeObjectRefs": [
+          {
+            "type": "Pond",
+            "id": "00000000-0000-4000-8000-000000000003"
+          }
+        ],
+        "validTime": null,
+        "spatialSupport": null
+      },
+      "quality": {
+        "state": "unassessed",
+        "flags": [
+          "synthetic_fixture"
+        ],
+        "coverage": null,
+        "reviewState": "pending",
+        "modelScore": null
+      },
+      "provenance": {
+        "runRef": null,
+        "inputRecords": [],
+        "evidenceRefs": [],
+        "transformVersion": null
+      },
+      "data": {
+        "subjectRef": {
+          "type": "Pond",
+          "id": "00000000-0000-4000-8000-000000000003"
+        },
+        "propertyId": "lzh:air_temperature_max",
+        "issuedAt": null,
+        "validTime": {
+          "kind": "interval",
+          "start": "2026-10-11T00:00:00+08:00",
+          "end": "2026-10-12T00:00:00+08:00"
+        },
+        "result": {
+          "kind": "number",
+          "value": 26,
+          "unit": "degC",
+          "uncertainty": null
+        },
+        "spatialBasis": "示例区域网格覆盖，不代表塘口现场或水温；来源未提供发布时间。"
+      }
+    },
+    {
+      "schemaVersion": "lzh.canonical-record/0.1",
+      "recordId": "00000000-0000-4000-8000-000000000104",
+      "recordType": "asset",
+      "ontologyVersion": "lzh/0.1-draft",
+      "source": {
+        "systemId": "fixture:liangzihu",
+        "sourceRecordId": "104",
+        "sourceVersion": "fixture-1",
+        "adapterVersion": "fixture-adapter/0.1",
+        "receivedAt": "2026-10-10T02:05:00Z",
+        "publishedAt": null
+      },
+      "context": {
+        "scopeObjectRefs": [
+          {
+            "type": "Pond",
+            "id": "00000000-0000-4000-8000-000000000003"
+          }
+        ],
+        "validTime": null,
+        "spatialSupport": null
+      },
+      "quality": {
+        "state": "unassessed",
+        "flags": [
+          "synthetic_fixture"
+        ],
+        "coverage": null,
+        "reviewState": "pending",
+        "modelScore": null
+      },
+      "provenance": {
+        "runRef": null,
+        "inputRecords": [],
+        "evidenceRefs": [],
+        "transformVersion": null
+      },
+      "data": {
+        "assetRef": {
+          "type": "Asset",
+          "id": "00000000-0000-4000-8000-000000000020"
+        },
+        "mediaType": "image/jpeg",
+        "storageRef": "asset:00000000-0000-4000-8000-000000000020",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sizeBytes": 12345
+      }
+    },
+    {
+      "schemaVersion": "lzh.canonical-record/0.1",
+      "recordId": "00000000-0000-4000-8000-000000000105",
+      "recordType": "event",
+      "ontologyVersion": "lzh/0.1-draft",
+      "source": {
+        "systemId": "fixture:liangzihu",
+        "sourceRecordId": "105",
+        "sourceVersion": "fixture-1",
+        "adapterVersion": "fixture-adapter/0.1",
+        "receivedAt": "2026-10-10T02:05:00Z",
+        "publishedAt": null
+      },
+      "context": {
+        "scopeObjectRefs": [
+          {
+            "type": "Pond",
+            "id": "00000000-0000-4000-8000-000000000003"
+          }
+        ],
+        "validTime": null,
+        "spatialSupport": null
+      },
+      "quality": {
+        "state": "unassessed",
+        "flags": [
+          "synthetic_fixture"
+        ],
+        "coverage": null,
+        "reviewState": "pending",
+        "modelScore": null
+      },
+      "provenance": {
+        "runRef": {
+          "type": "ProcessingRun",
+          "id": "00000000-0000-4000-8000-000000000009"
+        },
+        "inputRecords": [
+          {
+            "recordId": "00000000-0000-4000-8000-000000000104"
+          }
+        ],
+        "evidenceRefs": [
+          {
+            "recordId": "00000000-0000-4000-8000-000000000104",
+            "locator": {
+              "kind": "record"
+            }
+          }
+        ],
+        "transformVersion": "image-pipeline-fixture/0.1"
+      },
+      "data": {
+        "eventTypeId": "lzh:ImageInferenceCompleted",
+        "actionTypeId": null,
+        "status": "completed",
+        "occurredTime": {
+          "kind": "instant",
+          "at": "2026-10-10T02:03:00Z"
+        },
+        "participants": [
+          {
+            "objectRef": {
+              "type": "ProcessingRun",
+              "id": "00000000-0000-4000-8000-000000000009"
+            },
+            "role": "processing_run"
+          },
+          {
+            "objectRef": {
+              "type": "ModelVersion",
+              "id": "00000000-0000-4000-8000-000000000008"
+            },
+            "role": "model_used"
+          }
+        ],
+        "inputs": [
+          {
+            "type": "Asset",
+            "id": "00000000-0000-4000-8000-000000000020"
+          },
+          {
+            "type": "ModelVersion",
+            "id": "00000000-0000-4000-8000-000000000008"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "Feature",
+            "id": "00000000-0000-4000-8000-000000000021"
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "lzh.canonical-record/0.1",
+      "recordId": "00000000-0000-4000-8000-000000000106",
+      "recordType": "feature",
+      "ontologyVersion": "lzh/0.1-draft",
+      "source": {
+        "systemId": "fixture:liangzihu",
+        "sourceRecordId": "106",
+        "sourceVersion": "fixture-1",
+        "adapterVersion": "fixture-adapter/0.1",
+        "receivedAt": "2026-10-10T02:05:00Z",
+        "publishedAt": null
+      },
+      "context": {
+        "scopeObjectRefs": [
+          {
+            "type": "Pond",
+            "id": "00000000-0000-4000-8000-000000000003"
+          }
+        ],
+        "validTime": null,
+        "spatialSupport": null
+      },
+      "quality": {
+        "state": "unassessed",
+        "flags": [
+          "synthetic_fixture"
+        ],
+        "coverage": null,
+        "reviewState": "pending",
+        "modelScore": {
+          "value": 0.81,
+          "meaning": "probability",
+          "calibrated": false
+        }
+      },
+      "provenance": {
+        "runRef": {
+          "type": "ProcessingRun",
+          "id": "00000000-0000-4000-8000-000000000009"
+        },
+        "inputRecords": [
+          {
+            "recordId": "00000000-0000-4000-8000-000000000104"
+          },
+          {
+            "recordId": "00000000-0000-4000-8000-000000000105"
+          }
+        ],
+        "evidenceRefs": [
+          {
+            "recordId": "00000000-0000-4000-8000-000000000104",
+            "locator": {
+              "kind": "image_region",
+              "coordinateSystem": "pixel",
+              "bbox": [
+                100,
+                80,
+                200,
+                160
+              ],
+              "imageWidth": 1920,
+              "imageHeight": 1080
+            }
+          }
+        ],
+        "transformVersion": "image-pipeline-fixture/0.1"
+      },
+      "data": {
+        "featureRef": {
+          "type": "Feature",
+          "id": "00000000-0000-4000-8000-000000000021"
+        },
+        "inputAssetRef": {
+          "type": "Asset",
+          "id": "00000000-0000-4000-8000-000000000020"
+        },
+        "featureType": "lzh:surface_foam_candidate",
+        "processingRunRef": {
+          "type": "ProcessingRun",
+          "id": "00000000-0000-4000-8000-000000000009"
+        },
+        "representation": {
+          "kind": "category",
+          "value": "surface_foam_candidate",
+          "scheme": "lzh:fixture_image_labels"
+        },
+        "coordinateSystem": "pixel"
+      }
+    },
+    {
+      "schemaVersion": "lzh.canonical-record/0.1",
+      "recordId": "00000000-0000-4000-8000-000000000107",
+      "recordType": "assertion",
+      "ontologyVersion": "lzh/0.1-draft",
+      "source": {
+        "systemId": "fixture:liangzihu",
+        "sourceRecordId": "107",
+        "sourceVersion": "fixture-1",
+        "adapterVersion": "fixture-adapter/0.1",
+        "receivedAt": "2026-10-10T02:05:00Z",
+        "publishedAt": null
+      },
+      "context": {
+        "scopeObjectRefs": [
+          {
+            "type": "Pond",
+            "id": "00000000-0000-4000-8000-000000000003"
+          }
+        ],
+        "validTime": null,
+        "spatialSupport": null
+      },
+      "quality": {
+        "state": "unassessed",
+        "flags": [
+          "synthetic_fixture"
+        ],
+        "coverage": null,
+        "reviewState": "pending",
+        "modelScore": null
+      },
+      "provenance": {
+        "runRef": {
+          "type": "ProcessingRun",
+          "id": "00000000-0000-4000-8000-000000000009"
+        },
+        "inputRecords": [
+          {
+            "recordId": "00000000-0000-4000-8000-000000000106"
+          }
+        ],
+        "evidenceRefs": [
+          {
+            "recordId": "00000000-0000-4000-8000-000000000106",
+            "locator": {
+              "kind": "record"
+            }
+          }
+        ],
+        "transformVersion": "assertion-mapper-fixture/0.1"
+      },
+      "data": {
+        "subjectRef": {
+          "type": "Pond",
+          "id": "00000000-0000-4000-8000-000000000003"
+        },
+        "predicateId": "lzh:hasVisibleSurfaceFoamCandidate",
+        "object": {
+          "kind": "literal",
+          "result": {
+            "kind": "boolean",
+            "value": true
+          }
+        },
+        "state": "proposed",
+        "evidenceRefs": [
+          {
+            "recordId": "00000000-0000-4000-8000-000000000106",
+            "locator": {
+              "kind": "record"
+            }
+          }
+        ],
+        "applicability": "仅限示例图片的可见区域，未证明水质异常或发生原因；需人工复核。"
+      }
+    },
+    {
+      "schemaVersion": "lzh.canonical-record/0.1",
+      "recordId": "00000000-0000-4000-8000-000000000108",
+      "recordType": "document",
+      "ontologyVersion": "lzh/0.1-draft",
+      "source": {
+        "systemId": "fixture:liangzihu",
+        "sourceRecordId": "108",
+        "sourceVersion": "fixture-1",
+        "adapterVersion": "fixture-adapter/0.1",
+        "receivedAt": "2026-10-10T02:05:00Z",
+        "publishedAt": null
+      },
+      "context": {
+        "scopeObjectRefs": [
+          {
+            "type": "Pond",
+            "id": "00000000-0000-4000-8000-000000000003"
+          }
+        ],
+        "validTime": null,
+        "spatialSupport": null
+      },
+      "quality": {
+        "state": "unassessed",
+        "flags": [
+          "synthetic_fixture"
+        ],
+        "coverage": null,
+        "reviewState": "pending",
+        "modelScore": null
+      },
+      "provenance": {
+        "runRef": null,
+        "inputRecords": [
+          {
+            "recordId": "00000000-0000-4000-8000-000000000110"
+          }
+        ],
+        "evidenceRefs": [
+          {
+            "recordId": "00000000-0000-4000-8000-000000000110",
+            "locator": {
+              "kind": "record"
+            }
+          }
+        ],
+        "transformVersion": "document-adapter-fixture/0.1"
+      },
+      "data": {
+        "documentRef": {
+          "type": "Document",
+          "id": "00000000-0000-4000-8000-000000000022"
+        },
+        "title": "示例水环境巡检说明",
+        "language": "zh-CN",
+        "evidenceNature": "manual",
+        "contentAssetRef": {
+          "type": "Asset",
+          "id": "00000000-0000-4000-8000-000000000023"
+        },
+        "applicability": {
+          "speciesTerms": [],
+          "stageTerms": [],
+          "regionTerms": [],
+          "limitations": [
+            "合成内容用于格式示例，没有实际农业指导效力"
+          ]
+        }
+      }
+    },
+    {
+      "schemaVersion": "lzh.canonical-record/0.1",
+      "recordId": "00000000-0000-4000-8000-000000000109",
+      "recordType": "asset",
+      "ontologyVersion": "lzh/0.1-draft",
+      "source": {
+        "systemId": "fixture:liangzihu",
+        "sourceRecordId": "109",
+        "sourceVersion": "fixture-1",
+        "adapterVersion": "fixture-adapter/0.1",
+        "receivedAt": "2026-10-10T02:05:00Z",
+        "publishedAt": null
+      },
+      "context": {
+        "scopeObjectRefs": [
+          {
+            "type": "Pond",
+            "id": "00000000-0000-4000-8000-000000000003"
+          }
+        ],
+        "validTime": null,
+        "spatialSupport": null
+      },
+      "quality": {
+        "state": "unassessed",
+        "flags": [
+          "synthetic_fixture"
+        ],
+        "coverage": null,
+        "reviewState": "pending",
+        "modelScore": null
+      },
+      "provenance": {
+        "runRef": null,
+        "inputRecords": [],
+        "evidenceRefs": [],
+        "transformVersion": null
+      },
+      "data": {
+        "assetRef": {
+          "type": "Asset",
+          "id": "00000000-0000-4000-8000-000000000024"
+        },
+        "mediaType": "application/json",
+        "storageRef": "asset:00000000-0000-4000-8000-000000000024",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "sizeBytes": 321
+      }
+    },
+    {
+      "schemaVersion": "lzh.canonical-record/0.1",
+      "recordId": "00000000-0000-4000-8000-000000000110",
+      "recordType": "asset",
+      "ontologyVersion": "lzh/0.1-draft",
+      "source": {
+        "systemId": "fixture:liangzihu",
+        "sourceRecordId": "110",
+        "sourceVersion": "fixture-1",
+        "adapterVersion": "fixture-adapter/0.1",
+        "receivedAt": "2026-10-10T02:05:00Z",
+        "publishedAt": null
+      },
+      "context": {
+        "scopeObjectRefs": [
+          {
+            "type": "Pond",
+            "id": "00000000-0000-4000-8000-000000000003"
+          }
+        ],
+        "validTime": null,
+        "spatialSupport": null
+      },
+      "quality": {
+        "state": "unassessed",
+        "flags": [
+          "synthetic_fixture"
+        ],
+        "coverage": null,
+        "reviewState": "pending",
+        "modelScore": null
+      },
+      "provenance": {
+        "runRef": null,
+        "inputRecords": [],
+        "evidenceRefs": [],
+        "transformVersion": null
+      },
+      "data": {
+        "assetRef": {
+          "type": "Asset",
+          "id": "00000000-0000-4000-8000-000000000023"
+        },
+        "mediaType": "text/plain",
+        "storageRef": "asset:00000000-0000-4000-8000-000000000023",
+        "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "sizeBytes": 789
+      }
+    }
+  ],
+  "expectedInterpretation": [
+    "102 是合成实测格式；不能由图片推导这个数值",
+    "103 的未来有效时段不代表采集时间，不能映射为 actual",
+    "104→105→106→107 是原图、处理运行、特征、待核断言链",
+    "108 是资料证据，不是农场观测或已审核规则",
+    "109 与110 的原件元数据只作格式占位，资产读取应返回不存在，而非伪造原件"
+  ]
+}

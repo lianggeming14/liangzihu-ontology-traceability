@@ -1,0 +1,1237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lzh:canonical-record:0.1",
+  "title": "梁子湖标准记录交换格式草案",
+  "description": "供可信适配器产生的规范记录使用。格式校验不授予权限或审核状态，也不证明业务含义正确。外部载荷中的身份、质量和状态必须由服务器核验或重算。",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "lzh.canonical-record/0.1"
+    },
+    "recordId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "recordType": {
+      "enum": [
+        "entity",
+        "observation",
+        "forecast",
+        "event",
+        "assertion",
+        "document",
+        "asset",
+        "feature"
+      ]
+    },
+    "ontologyVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "$ref": "#/$defs/Source"
+    },
+    "context": {
+      "$ref": "#/$defs/Context"
+    },
+    "quality": {
+      "$ref": "#/$defs/Quality"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "data": {}
+  },
+  "required": [
+    "schemaVersion",
+    "recordId",
+    "recordType",
+    "ontologyVersion",
+    "source",
+    "context",
+    "quality",
+    "provenance",
+    "data"
+  ],
+  "additionalProperties": false,
+  "oneOf": [
+    {
+      "properties": {
+        "recordType": {
+          "const": "entity"
+        },
+        "data": {
+          "$ref": "#/$defs/Entity"
+        }
+      }
+    },
+    {
+      "properties": {
+        "recordType": {
+          "const": "observation"
+        },
+        "data": {
+          "$ref": "#/$defs/Observation"
+        }
+      }
+    },
+    {
+      "properties": {
+        "recordType": {
+          "const": "forecast"
+        },
+        "data": {
+          "$ref": "#/$defs/Forecast"
+        }
+      }
+    },
+    {
+      "properties": {
+        "recordType": {
+          "const": "event"
+        },
+        "data": {
+          "$ref": "#/$defs/Event"
+        }
+      }
+    },
+    {
+      "properties": {
+        "recordType": {
+          "const": "assertion"
+        },
+        "data": {
+          "$ref": "#/$defs/Assertion"
+        }
+      }
+    },
+    {
+      "properties": {
+        "recordType": {
+          "const": "document"
+        },
+        "data": {
+          "$ref": "#/$defs/Document"
+        }
+      }
+    },
+    {
+      "properties": {
+        "recordType": {
+          "const": "asset"
+        },
+        "data": {
+          "$ref": "#/$defs/Asset"
+        }
+      }
+    },
+    {
+      "properties": {
+        "recordType": {
+          "const": "feature"
+        },
+        "data": {
+          "$ref": "#/$defs/Feature"
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "ObjectRef": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "type",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "RecordRef": {
+      "type": "object",
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "recordId"
+      ],
+      "additionalProperties": false
+    },
+    "Time": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "instant"
+            },
+            "at": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "kind",
+            "at"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "interval"
+            },
+            "start": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "end": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "start",
+            "end"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "EvidenceRef": {
+      "type": "object",
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "locator": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "record"
+                }
+              },
+              "required": [
+                "kind"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "image_region"
+                },
+                "coordinateSystem": {
+                  "enum": [
+                    "pixel",
+                    "normalized"
+                  ]
+                },
+                "bbox": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 4,
+                  "maxItems": 4
+                },
+                "imageWidth": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "imageHeight": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "kind",
+                "coordinateSystem",
+                "bbox",
+                "imageWidth",
+                "imageHeight"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "video_frame"
+                },
+                "offsetMs": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "frameIndex": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "kind",
+                "offsetMs",
+                "frameIndex"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "document_span"
+                },
+                "page": {
+                  "anyOf": [
+                    {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "startOffset": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "endOffset": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "kind",
+                "page",
+                "startOffset",
+                "endOffset"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "raster_window"
+                },
+                "crs": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "bandIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "minItems": 1
+                },
+                "window": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "minItems": 4,
+                  "maxItems": 4
+                }
+              },
+              "required": [
+                "kind",
+                "crs",
+                "bandIds",
+                "window"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "required": [
+        "recordId",
+        "locator"
+      ],
+      "additionalProperties": false
+    },
+    "Result": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "number"
+            },
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uncertainty": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "value",
+            "unit",
+            "uncertainty"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "category"
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1
+            },
+            "scheme": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "value",
+            "scheme"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "boolean"
+            },
+            "value": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "reference"
+            },
+            "assetRef": {
+              "$ref": "#/$defs/ObjectRef"
+            },
+            "format": {
+              "enum": [
+                "timeseries",
+                "geometry",
+                "mask",
+                "tensor",
+                "vector",
+                "raster"
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "assetRef",
+            "format"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "missing"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "reason"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Quality": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "enum": [
+            "unassessed",
+            "valid",
+            "suspect",
+            "invalid"
+          ]
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "coverage": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reviewState": {
+          "enum": [
+            "not_required",
+            "pending",
+            "reviewed",
+            "rejected"
+          ]
+        },
+        "modelScore": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number"
+                },
+                "meaning": {
+                  "enum": [
+                    "probability",
+                    "similarity",
+                    "model_score"
+                  ]
+                },
+                "calibrated": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value",
+                "meaning",
+                "calibrated"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "state",
+        "flags",
+        "coverage",
+        "reviewState",
+        "modelScore"
+      ],
+      "additionalProperties": false
+    },
+    "Source": {
+      "type": "object",
+      "properties": {
+        "systemId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceRecordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceVersion": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "adapterVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "receivedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "publishedAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "systemId",
+        "sourceRecordId",
+        "sourceVersion",
+        "adapterVersion",
+        "receivedAt",
+        "publishedAt"
+      ],
+      "additionalProperties": false
+    },
+    "Provenance": {
+      "type": "object",
+      "properties": {
+        "runRef": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ObjectRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "inputRecords": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RecordRef"
+          },
+          "minItems": 0
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EvidenceRef"
+          },
+          "minItems": 0
+        },
+        "transformVersion": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "runRef",
+        "inputRecords",
+        "evidenceRefs",
+        "transformVersion"
+      ],
+      "additionalProperties": false
+    },
+    "Context": {
+      "type": "object",
+      "properties": {
+        "scopeObjectRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ObjectRef"
+          },
+          "minItems": 0
+        },
+        "validTime": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "spatialSupport": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "objectRef": {
+                  "$ref": "#/$defs/ObjectRef"
+                },
+                "association": {
+                  "enum": [
+                    "measured_at",
+                    "sampled_from",
+                    "covers",
+                    "intersects",
+                    "assigned_to",
+                    "unknown"
+                  ]
+                },
+                "geometryRevision": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "crs": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "objectRef",
+                "association",
+                "geometryRevision",
+                "crs"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "scopeObjectRefs",
+        "validTime",
+        "spatialSupport"
+      ],
+      "additionalProperties": false
+    },
+    "Entity": {
+      "type": "object",
+      "properties": {
+        "objectRef": {
+          "$ref": "#/$defs/ObjectRef"
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          }
+        }
+      },
+      "required": [
+        "objectRef",
+        "revision",
+        "attributes"
+      ],
+      "additionalProperties": false
+    },
+    "Observation": {
+      "type": "object",
+      "properties": {
+        "subjectRef": {
+          "$ref": "#/$defs/ObjectRef"
+        },
+        "propertyId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "methodId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "scaleId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mode": {
+          "enum": [
+            "measured",
+            "reported",
+            "estimated",
+            "derived"
+          ]
+        },
+        "phenomenonTime": {
+          "$ref": "#/$defs/Time"
+        },
+        "resultTime": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "result": {
+          "$ref": "#/$defs/Result"
+        },
+        "pointBindingRef": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ObjectRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "subjectRef",
+        "propertyId",
+        "methodId",
+        "scaleId",
+        "mode",
+        "phenomenonTime",
+        "resultTime",
+        "result",
+        "pointBindingRef"
+      ],
+      "additionalProperties": false
+    },
+    "Forecast": {
+      "type": "object",
+      "properties": {
+        "subjectRef": {
+          "$ref": "#/$defs/ObjectRef"
+        },
+        "propertyId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "issuedAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "validTime": {
+          "$ref": "#/$defs/Time"
+        },
+        "result": {
+          "$ref": "#/$defs/Result"
+        },
+        "spatialBasis": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "subjectRef",
+        "propertyId",
+        "issuedAt",
+        "validTime",
+        "result",
+        "spatialBasis"
+      ],
+      "additionalProperties": false
+    },
+    "Event": {
+      "type": "object",
+      "properties": {
+        "eventTypeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actionTypeId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "enum": [
+            "reported",
+            "completed",
+            "failed",
+            "unknown",
+            "cancelled"
+          ]
+        },
+        "occurredTime": {
+          "$ref": "#/$defs/Time"
+        },
+        "participants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "objectRef": {
+                "$ref": "#/$defs/ObjectRef"
+              },
+              "role": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "objectRef",
+              "role"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ObjectRef"
+          },
+          "minItems": 0
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ObjectRef"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "eventTypeId",
+        "actionTypeId",
+        "status",
+        "occurredTime",
+        "participants",
+        "inputs",
+        "outputs"
+      ],
+      "additionalProperties": false
+    },
+    "Assertion": {
+      "type": "object",
+      "properties": {
+        "subjectRef": {
+          "$ref": "#/$defs/ObjectRef"
+        },
+        "predicateId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "object": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "object"
+                },
+                "ref": {
+                  "$ref": "#/$defs/ObjectRef"
+                }
+              },
+              "required": [
+                "kind",
+                "ref"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "literal"
+                },
+                "result": {
+                  "$ref": "#/$defs/Result"
+                }
+              },
+              "required": [
+                "kind",
+                "result"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "state": {
+          "enum": [
+            "proposed",
+            "supported",
+            "refuted",
+            "uncertain"
+          ]
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EvidenceRef"
+          },
+          "minItems": 1
+        },
+        "applicability": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "subjectRef",
+        "predicateId",
+        "object",
+        "state",
+        "evidenceRefs",
+        "applicability"
+      ],
+      "additionalProperties": false
+    },
+    "Document": {
+      "type": "object",
+      "properties": {
+        "documentRef": {
+          "$ref": "#/$defs/ObjectRef"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "language": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceNature": {
+          "enum": [
+            "guideline",
+            "research",
+            "report",
+            "manual",
+            "protocol",
+            "other"
+          ]
+        },
+        "contentAssetRef": {
+          "$ref": "#/$defs/ObjectRef"
+        },
+        "applicability": {
+          "type": "object",
+          "properties": {
+            "speciesTerms": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0
+            },
+            "stageTerms": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0
+            },
+            "regionTerms": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0
+            },
+            "limitations": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0
+            }
+          },
+          "required": [
+            "speciesTerms",
+            "stageTerms",
+            "regionTerms",
+            "limitations"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "documentRef",
+        "title",
+        "language",
+        "evidenceNature",
+        "contentAssetRef",
+        "applicability"
+      ],
+      "additionalProperties": false
+    },
+    "Asset": {
+      "type": "object",
+      "properties": {
+        "assetRef": {
+          "$ref": "#/$defs/ObjectRef"
+        },
+        "mediaType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "storageRef": {
+          "type": "string",
+          "pattern": "^asset:[0-9a-fA-F-]{36}$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "sizeBytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "assetRef",
+        "mediaType",
+        "storageRef",
+        "sha256",
+        "sizeBytes"
+      ],
+      "additionalProperties": false
+    },
+    "Feature": {
+      "type": "object",
+      "properties": {
+        "featureRef": {
+          "$ref": "#/$defs/ObjectRef"
+        },
+        "inputAssetRef": {
+          "$ref": "#/$defs/ObjectRef"
+        },
+        "featureType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "processingRunRef": {
+          "$ref": "#/$defs/ObjectRef"
+        },
+        "representation": {
+          "$ref": "#/$defs/Result"
+        },
+        "coordinateSystem": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "featureRef",
+        "inputAssetRef",
+        "featureType",
+        "processingRunRef",
+        "representation",
+        "coordinateSystem"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "x-semanticChecks": [
+    "检查 Ref.type 对应类型目录及源记录存在性，跨对象权限逐条复查",
+    "所有 interval 的 end 若非空必须晚于 start",
+    "recordId 仅为规范记录标识，不能替换业务主键",
+    "entity.attributes 只接受所属类型已登记属性；本格式不允许任意写入业务表",
+    "observation.measured 必须有采集证据及适用测量方法；telemetry 历史归属按采样时刻与 binding 核对",
+    "resultTime、receivedAt、issuedAt、publishedAt 和现象有效时间分别保留；未知源发布时间为 null",
+    "物种、阶段、单位量纲、统计方法、空间尺度兼容性由语义校验器处理",
+    "modelScore.meaning=probability 时数值范围 0 到 1；confidence 不代替质量或人工复核",
+    "文档偏移与影像 bbox 必须在原资产边界内并声明坐标系",
+    "相同来源身份且不同内容不得静默覆盖，进入冲突/修订流程",
+    "provenance 和 assertion evidenceRefs 必须可解析且不能自引或成环",
+    "Forecast 不能映射成现场 actual；文档中的数值不能直接成为现场 measured",
+    "消费方对服务器给出的 accepted/approved 状态和当前权限另行核验"
+  ]
+}

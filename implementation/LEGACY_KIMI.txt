@@ -1,0 +1,3 @@
+Kimi 已根据用户指示停用。当前入口：启动系统.cmd / run_server.py。
+KIMI_TASK_DATABASE.txt、KIMI_TASK_TRACEABILITY.txt、run_kimi_isolated.py、kimi-*.log/jsonl 和 .kimi-* 为早期尝试历史，未用于当前代码生成，也不需再次登录。
+当前状态以 IMPLEMENTATION_STATUS.json、README.txt、database-gate.json 为准。早期运行状态归档于 runtime/kimi-attempt-status.json。

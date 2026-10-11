@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "acceptance-matrix/1.0",
+  "scope": "local_engineering_database_and_http",
+  "notEquivalentTo": [
+    "production_deployment",
+    "existing_platform_integration",
+    "field_evidence_acceptance"
+  ],
+  "databaseIsolation": {
+    "dsnEnv": "TEST_DATABASE_URL",
+    "schemaPrefix": "test_ontology_",
+    "randomSchema": true,
+    "productionSchemasForbidden": [
+      "public",
+      "ontology"
+    ],
+    "missingDsn": "pytest.skip; database gate stays unverified"
+  },
+  "requirements": [
+    {
+      "id": "identity",
+      "acceptance": "同名对象保留不同身份，未知类型拒绝，跨租户引用拒绝",
+      "status": "pending"
+    },
+    {
+      "id": "extensions",
+      "acceptance": "至少三个产品类型通过领域包登记，核心API无水稻特判",
+      "status": "pending"
+    },
+    {
+      "id": "relations",
+      "acceptance": "非法端点或时间区间拒绝，候选关系与采用关系分离",
+      "status": "pending"
+    },
+    {
+      "id": "evidence",
+      "acceptance": "观察引用同租户证据，保留来源方式，不把模型值伪装成实测",
+      "status": "pending"
+    },
+    {
+      "id": "inventory",
+      "acceptance": "分批/混批守恒，超量/负量/异量纲拒绝，并发超额只有一个成功",
+      "status": "pending"
+    },
+    {
+      "id": "idempotency",
+      "acceptance": "同键同请求返回同结果，同键异请求冲突，不重复分录",
+      "status": "pending"
+    },
+    {
+      "id": "publication",
+      "acceptance": "内部字段不可公开，撤回后公开查询失败，召回状态实时更新",
+      "status": "pending"
+    },
+    {
+      "id": "authorization",
+      "acceptance": "Bearer身份确定tenant和roles，请求header/body不能冒充tenant",
+      "status": "pending"
+    },
+    {
+      "id": "outbox",
+      "acceptance": "变更事件可分页恢复，重试不重复业务效果",
+      "status": "pending"
+    }
+  ],
+  "references": [
+    {
+      "title": "Flask Testing Applications",
+      "url": "https://flask.palletsprojects.com/en/stable/testing/",
+      "checkedAt": "2026-10-11"
+    }
+  ]
+}

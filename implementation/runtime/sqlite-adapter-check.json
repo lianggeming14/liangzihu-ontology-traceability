@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-10-11T04:07:29.520Z",
+  "backend": "sqlite-development",
+  "status": "passed",
+  "tests": [
+    "migration_first_apply_and_idempotent_replay",
+    "exact_decimal_30_digit_persistence",
+    "transaction_rollback",
+    "for_update_and_advisory_lock_compatibility",
+    "decimal_comparison_not_lexicographic",
+    "negative_quantity_constraint"
+  ],
+  "postgresql_validation": false,
+  "limitations": [
+    "SQLite writer serialization differs from PostgreSQL row locks and isolation",
+    "No PostgreSQL server or driver currently available"
+  ]
+}

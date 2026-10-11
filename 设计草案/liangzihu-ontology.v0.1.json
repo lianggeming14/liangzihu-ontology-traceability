@@ -1,0 +1,1684 @@
+{
+  "schemaVersion": "lzh.ontology-design/0.1",
+  "status": "design_draft_not_deployed",
+  "title": "梁子湖农业业务本体与多源数据接入设计",
+  "basis": {
+    "originalDocument": "智慧农业本体论数据库架构与多模态数据处理.docx",
+    "repository": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform",
+    "snapshotDate": "2026-10-04",
+    "snapshotGitTree": "9995fc20cd84093adcaa3fab954ffe9d08b9f45a",
+    "latestRemoteVerified": false,
+    "note": "依据本地选取源码快照和 README；未运行数据库、未验证现场数据；拟新增项不是现有接口。"
+  },
+  "layers": [
+    {
+      "id": "semantic",
+      "name": "语义与行为定义层",
+      "owns": [
+        "对象类型和属性契约",
+        "链接类型与时态约束",
+        "动作输入与服务绑定",
+        "对象集查询定义",
+        "标准映射和版本"
+      ]
+    },
+    {
+      "id": "facts",
+      "name": "业务事实与证据层",
+      "owns": [
+        "现有业务表和服务",
+        "私有原始资产",
+        "运行和证据版本",
+        "新增跨域关系断言"
+      ]
+    },
+    {
+      "id": "graph",
+      "name": "可重建知识图与查询层",
+      "owns": [
+        "节点与关系投影",
+        "对象导航和时间线",
+        "数据血缘和物料溯源",
+        "授权内语义查询"
+      ]
+    }
+  ],
+  "coreConcepts": {
+    "Object": "对象类型是定义，具体对象是实例；业务表名 objects 只包含空间管理对象",
+    "Property": "属性是类型约束；高频变化数值作为独立观测记录",
+    "PrimaryKey": "复用原业务 UUID；跨类型引用为 {type,id}，外部身份另映射",
+    "LinkType": "定义起终点类型、方向、基数、有效期、证据要求、反向关系",
+    "ActionType": "参数契约加既有业务服务，不直接修改图或下发设备控制",
+    "ObjectSet": "动态查询定义或固定成员快照，不能创建一套重复对象",
+    "Lineage": "分开表达信息派生、实物转化和责任；记录输入、运行、输出和版本"
+  },
+  "extensions": [
+    "Event/Activity 与 ActionType 分离",
+    "Observation/Assertion 与属性分离",
+    "Evidence/Asset 与结论分离",
+    "Constraint/Policy 包含时空、版本、质量、授权和审批要求"
+  ],
+  "objectTypes": [
+    {
+      "id": "Farm",
+      "domain": "空间",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": "objects kind=farm",
+      "implementationStatus": "observed_in_selected_source"
+    },
+    {
+      "id": "Field",
+      "domain": "空间",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": "objects kind=field",
+      "implementationStatus": "observed_in_selected_source"
+    },
+    {
+      "id": "Pond",
+      "domain": "空间",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": "objects kind=pond",
+      "implementationStatus": "observed_in_selected_source"
+    },
+    {
+      "id": "Channel",
+      "domain": "空间",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": "objects kind=channel",
+      "implementationStatus": "observed_in_selected_source"
+    },
+    {
+      "id": "Facility",
+      "domain": "空间",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": "objects kind=facility",
+      "implementationStatus": "observed_in_selected_source"
+    },
+    {
+      "id": "ProductionSystem",
+      "domain": "生产",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": null,
+      "implementationStatus": "proposed_extension"
+    },
+    {
+      "id": "ProductionBatch",
+      "domain": "生产",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": "production_batches",
+      "implementationStatus": "observed_in_selected_source"
+    },
+    {
+      "id": "Species",
+      "domain": "生产",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": null,
+      "implementationStatus": "proposed_extension"
+    },
+    {
+      "id": "Variety",
+      "domain": "生产",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": null,
+      "implementationStatus": "proposed_extension"
+    },
+    {
+      "id": "GrowthStage",
+      "domain": "生产",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": null,
+      "implementationStatus": "proposed_extension"
+    },
+    {
+      "id": "StockLot",
+      "domain": "生产",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": null,
+      "implementationStatus": "existing_capability_or_candidate_verify_concrete_mapping"
+    },
+    {
+      "id": "Device",
+      "domain": "采集",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": "devices",
+      "implementationStatus": "observed_in_selected_source"
+    },
+    {
+      "id": "MeasurementPoint",
+      "domain": "采集",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": "points",
+      "implementationStatus": "observed_in_selected_source"
+    },
+    {
+      "id": "PointBinding",
+      "domain": "采集",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": "point_bindings",
+      "implementationStatus": "observed_in_selected_source"
+    },
+    {
+      "id": "Sample",
+      "domain": "采集",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": null,
+      "implementationStatus": "existing_capability_or_candidate_verify_concrete_mapping"
+    },
+    {
+      "id": "ObservationRecord",
+      "domain": "证据",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": "observations + observation_heads",
+      "implementationStatus": "observed_in_selected_source"
+    },
+    {
+      "id": "ForecastRecord",
+      "domain": "证据",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": "weather_records kind=forecast",
+      "implementationStatus": "observed_in_selected_source"
+    },
+    {
+      "id": "MetricResult",
+      "domain": "证据",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": "metric_results",
+      "implementationStatus": "observed_in_selected_source"
+    },
+    {
+      "id": "Asset",
+      "domain": "证据",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": null,
+      "implementationStatus": "existing_capability_or_candidate_verify_concrete_mapping"
+    },
+    {
+      "id": "Document",
+      "domain": "证据",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": "knowledge_documents + knowledge_chunks",
+      "implementationStatus": "observed_in_selected_source"
+    },
+    {
+      "id": "Feature",
+      "domain": "证据",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": null,
+      "implementationStatus": "existing_capability_or_candidate_verify_concrete_mapping"
+    },
+    {
+      "id": "Assertion",
+      "domain": "证据",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": null,
+      "implementationStatus": "proposed_extension"
+    },
+    {
+      "id": "Task",
+      "domain": "过程",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": "field_tasks",
+      "implementationStatus": "observed_in_selected_source"
+    },
+    {
+      "id": "BusinessEvent",
+      "domain": "过程",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": "field_task_events / farm_records / irrigation_entries（按事件种类适配）",
+      "implementationStatus": "observed_in_selected_source"
+    },
+    {
+      "id": "ProcessingRun",
+      "domain": "过程",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": null,
+      "implementationStatus": "proposed_extension"
+    },
+    {
+      "id": "ModelVersion",
+      "domain": "过程",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": null,
+      "implementationStatus": "existing_capability_or_candidate_verify_concrete_mapping"
+    },
+    {
+      "id": "RuleDefinition",
+      "domain": "过程",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": null,
+      "implementationStatus": "existing_capability_or_candidate_verify_concrete_mapping"
+    },
+    {
+      "id": "Person",
+      "domain": "主体",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": null,
+      "implementationStatus": "existing_capability_or_candidate_verify_concrete_mapping"
+    },
+    {
+      "id": "Organization",
+      "domain": "主体",
+      "identity": {
+        "refFields": [
+          "type",
+          "id"
+        ],
+        "preserveExistingPrimaryKey": true,
+        "externalKey": [
+          "sourceSystem",
+          "sourceEntityType",
+          "sourceId"
+        ],
+        "displayNameIsIdentity": false
+      },
+      "backing": null,
+      "implementationStatus": "existing_capability_or_candidate_verify_concrete_mapping"
+    }
+  ],
+  "propertyDefinitions": [
+    {
+      "id": "displayName",
+      "dataType": "string",
+      "semantics": "显示名，不作为对象身份"
+    },
+    {
+      "id": "businessCode",
+      "dataType": "string",
+      "semantics": "业务可读编码，保留现有唯一性作用域"
+    },
+    {
+      "id": "status",
+      "dataType": "enum",
+      "semantics": "每种类型单独定义允许值及状态转换"
+    },
+    {
+      "id": "geometryRef",
+      "dataType": "objectRef",
+      "semantics": "版本化边界/几何引用，附坐标系、核实状态及有效期"
+    },
+    {
+      "id": "sourceRef",
+      "dataType": "sourceRef",
+      "semantics": "可信系统内定位，不接受客户端任意表名或文件路径"
+    },
+    {
+      "id": "validTime",
+      "dataType": "interval",
+      "semantics": "业务有效时间，与入库时间区分"
+    },
+    {
+      "id": "revision",
+      "dataType": "string",
+      "semantics": "记录版本或内容哈希，保留既有 supersedes_id 关系"
+    },
+    {
+      "id": "propertyId",
+      "dataType": "termId",
+      "semantics": "指标/可观测属性标识；术语映射与数值转换分开"
+    },
+    {
+      "id": "unit",
+      "dataType": "unitId",
+      "semantics": "带量纲校验的单位；本地编码可映射 QUDT"
+    },
+    {
+      "id": "quality",
+      "dataType": "qualityRecord",
+      "semantics": "完整率、测量不确定度、模型分数、复核状态分别存储"
+    }
+  ],
+  "linkTypes": [
+    {
+      "id": "partOf",
+      "from": [
+        "Field",
+        "Pond",
+        "Channel",
+        "Facility"
+      ],
+      "to": [
+        "Farm",
+        "Field",
+        "Facility"
+      ],
+      "category": "结构归属",
+      "cardinality": "many_to_one",
+      "rule": "反向 hasPart；空间包含需另有几何依据",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "locatedAt",
+      "from": [
+        "Device",
+        "Sample"
+      ],
+      "to": [
+        "Field",
+        "Pond",
+        "Facility"
+      ],
+      "category": "空间",
+      "cardinality": "many_to_many",
+      "rule": "附有效区间和定位依据，不能从邻近推定水力连通",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "hasPoint",
+      "from": [
+        "Device"
+      ],
+      "to": [
+        "MeasurementPoint"
+      ],
+      "category": "设备组成",
+      "cardinality": "one_to_many",
+      "rule": "现有 points.device_id",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "boundTo",
+      "from": [
+        "MeasurementPoint"
+      ],
+      "to": [
+        "Field",
+        "Pond",
+        "Channel",
+        "Facility"
+      ],
+      "category": "时态绑定",
+      "cardinality": "one_active_at_a_time",
+      "rule": "按采样时刻解析 point_bindings，不按设备当前位置改写历史",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "participatesIn",
+      "from": [
+        "Field",
+        "Pond",
+        "ProductionBatch"
+      ],
+      "to": [
+        "ProductionSystem"
+      ],
+      "category": "生产组织",
+      "cardinality": "many_to_many",
+      "rule": "以参与角色、空间及有效时段表达虾稻共作",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "producedIn",
+      "from": [
+        "ProductionBatch"
+      ],
+      "to": [
+        "Field",
+        "Pond",
+        "Facility"
+      ],
+      "category": "生产归属",
+      "cardinality": "many_to_one",
+      "rule": "现有 production_batches.object_id；跨场生产另设过程成员，不绕过现有约束",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "hasSpecies",
+      "from": [
+        "ProductionBatch"
+      ],
+      "to": [
+        "Species"
+      ],
+      "category": "生物分类",
+      "cardinality": "many_to_one",
+      "rule": "原 species 字符串保留，审核映射后建立标准术语关系",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "hasVariety",
+      "from": [
+        "ProductionBatch"
+      ],
+      "to": [
+        "Variety"
+      ],
+      "category": "品种",
+      "cardinality": "many_to_one",
+      "rule": "种与品种区别；同名不自动合并",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "observes",
+      "from": [
+        "ObservationRecord",
+        "MetricResult"
+      ],
+      "to": [
+        "Field",
+        "Pond",
+        "Sample",
+        "ProductionBatch",
+        "MeasurementPoint"
+      ],
+      "category": "观测对象",
+      "cardinality": "many_to_one",
+      "rule": "被测对象与授权空间对象分开；样本代表性不得推定",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "forecastFor",
+      "from": [
+        "ForecastRecord"
+      ],
+      "to": [
+        "Field",
+        "Pond",
+        "Farm"
+      ],
+      "category": "预报适用",
+      "cardinality": "many_to_many",
+      "rule": "记录网格覆盖和适用性；不转为现场实测",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "targets",
+      "from": [
+        "Task",
+        "BusinessEvent"
+      ],
+      "to": [
+        "Field",
+        "Pond",
+        "Facility",
+        "ProductionBatch",
+        "StockLot"
+      ],
+      "category": "活动对象",
+      "cardinality": "many_to_many",
+      "rule": "实际过程用带角色的参与表表达",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "uses",
+      "from": [
+        "BusinessEvent",
+        "ProcessingRun"
+      ],
+      "to": [
+        "StockLot",
+        "Asset",
+        "Document",
+        "ObservationRecord",
+        "MetricResult",
+        "ModelVersion",
+        "RuleDefinition"
+      ],
+      "category": "输入",
+      "cardinality": "many_to_many",
+      "rule": "过程节点保存输入角色、数量/单位、版本；物料输入与数据输入不同",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "produces",
+      "from": [
+        "BusinessEvent",
+        "ProcessingRun"
+      ],
+      "to": [
+        "StockLot",
+        "Asset",
+        "Feature",
+        "Assertion",
+        "MetricResult",
+        "ObservationRecord"
+      ],
+      "category": "输出",
+      "cardinality": "many_to_many",
+      "rule": "输出须引用实际执行记录；计划不产生实际产出",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "derivedFrom",
+      "from": [
+        "MetricResult",
+        "Feature",
+        "Assertion",
+        "Document",
+        "ObservationRecord"
+      ],
+      "to": [
+        "ObservationRecord",
+        "Asset",
+        "Document",
+        "MetricResult",
+        "Feature"
+      ],
+      "category": "数据血缘",
+      "cardinality": "many_to_many",
+      "rule": "信息派生关系，不代替实物转化链；保留运行节点",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "supports",
+      "from": [
+        "ObservationRecord",
+        "MetricResult",
+        "Document",
+        "Feature"
+      ],
+      "to": [
+        "Assertion"
+      ],
+      "category": "证据",
+      "cardinality": "many_to_many",
+      "rule": "支持不等于证明；同时允许 contradicts",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "contradicts",
+      "from": [
+        "ObservationRecord",
+        "MetricResult",
+        "Document",
+        "Feature"
+      ],
+      "to": [
+        "Assertion"
+      ],
+      "category": "证据冲突",
+      "cardinality": "many_to_many",
+      "rule": "保留各来源，不覆盖冲突",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "supersedes",
+      "from": [
+        "ProductionBatch",
+        "ObservationRecord",
+        "MetricResult",
+        "Document",
+        "Assertion",
+        "RuleDefinition"
+      ],
+      "to": [
+        "ProductionBatch",
+        "ObservationRecord",
+        "MetricResult",
+        "Document",
+        "Assertion",
+        "RuleDefinition"
+      ],
+      "category": "修订",
+      "cardinality": "many_to_one",
+      "rule": "同种记录且同一修订链；不允许循环，不能隐式改写历史",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    },
+    {
+      "id": "associatedWith",
+      "from": [
+        "BusinessEvent",
+        "ProcessingRun"
+      ],
+      "to": [
+        "Person",
+        "Organization"
+      ],
+      "category": "责任",
+      "cardinality": "many_to_many",
+      "rule": "按角色关联；传感器本身不默认当作责任主体",
+      "relationshipInstanceFields": [
+        "id",
+        "subjectRef",
+        "predicate",
+        "objectRef",
+        "validFrom",
+        "validTo",
+        "recordedAt",
+        "evidenceRefs",
+        "status",
+        "sourceRevision"
+      ]
+    }
+  ],
+  "actionTypes": [
+    {
+      "id": "RecordFarmWork",
+      "handlerBinding": "既有农事业务服务，具体签名实施时核对",
+      "targetTypes": [
+        "Field",
+        "Pond",
+        "ProductionBatch"
+      ],
+      "preconditions": [
+        "对象和批次匹配",
+        "事件发生时间有效",
+        "来源证据和当前操作权限"
+      ],
+      "produces": [
+        "BusinessEvent"
+      ],
+      "execution": "通过现有 API/service 事务执行并记录事件，图仅消费结果"
+    },
+    {
+      "id": "ReviewObservation",
+      "handlerBinding": "既有复测/知识或候选审核服务，按对象类型分别绑定",
+      "targetTypes": [
+        "ObservationRecord",
+        "Assertion"
+      ],
+      "preconditions": [
+        "具有对应对象/资源审核权限",
+        "版本未变更",
+        "证据仍有效"
+      ],
+      "produces": [
+        "BusinessEvent"
+      ],
+      "execution": "保留原值和人工裁定，不把复核覆盖为原实测"
+    },
+    {
+      "id": "DispatchTask",
+      "handlerBinding": "src/modules/tasks/service.ts transitionTask action=dispatch",
+      "targetTypes": [
+        "Task"
+      ],
+      "preconditions": [
+        "现有派发权限",
+        "draft 状态",
+        "明确确认",
+        "执行人资格和对象权限"
+      ],
+      "produces": [
+        "BusinessEvent"
+      ],
+      "execution": "沿用状态机；不是图边编辑器"
+    },
+    {
+      "id": "RecalculateMetric",
+      "handlerBinding": "既有 analysis/intelligence 指标计算任务",
+      "targetTypes": [
+        "RuleDefinition"
+      ],
+      "preconditions": [
+        "指标定义已审核",
+        "输入质量和窗口匹配"
+      ],
+      "produces": [
+        "MetricResult"
+      ],
+      "execution": "输出新结果版本并保留 input_hash，不替换历史"
+    }
+  ],
+  "objectSets": [
+    {
+      "id": "activeRiceCrayfishBatches",
+      "kind": "dynamic",
+      "baseType": "ProductionBatch",
+      "filters": [
+        "关联已核实的虾稻共作 ProductionSystem",
+        "查询时点处于批次有效期",
+        "当前用户有权读取"
+      ],
+      "freezeForDecision": true
+    },
+    {
+      "id": "reviewQueue",
+      "kind": "dynamic",
+      "baseType": "Assertion",
+      "filters": [
+        "尚未人工处置的模型/资料候选",
+        "证据和对象权限有效"
+      ],
+      "freezeForDecision": false
+    },
+    {
+      "id": "approvedReportInputs",
+      "kind": "snapshot",
+      "baseType": "mixed",
+      "stores": [
+        "成员 type/id 与记录版本",
+        "查询定义版本",
+        "业务时点",
+        "内容哈希"
+      ],
+      "recheckCurrentAuthorization": true
+    }
+  ],
+  "ontologyAlignment": {
+    "localNamespace": "lzh:",
+    "hub": "以本地农业业务模型作为领域枢纽，各标准按职责映射",
+    "roles": {
+      "CO_320": "水稻性状、方法、量表及观测变量，按版本选取真实术语",
+      "AGROVOC": "农业主题、名称与检索同义词",
+      "SOSA_SSN": "被测对象、可观测属性、观测活动、程序、采样",
+      "QUDT": "量纲和单位",
+      "PROV_O": "原始及派生实体、处理活动、责任主体",
+      "SSSOM": "映射记录交换格式，不是领域本体"
+    },
+    "mappingFields": [
+      "subject_id",
+      "predicate_id",
+      "object_id",
+      "subject_version",
+      "object_version",
+      "mapping_justification",
+      "review_state",
+      "reviewer_ref",
+      "evidence_ref"
+    ],
+    "rules": [
+      "同名只能产生候选映射",
+      "exactMatch/broadMatch/narrowMatch/relatedMatch 按语义区分",
+      "术语映射不执行单位换算",
+      "映射不自动合并现实对象",
+      "CO_320 术语号在导入快照中验证；不把水稻术语推广为水产指标",
+      "任何影响业务推断的映射必须通过范围和版本校验"
+    ]
+  },
+  "database": {
+    "strategy": "同一现有业务库中增加 ontology_ 前缀的定义、绑定和关系表，复用当前 schema 与测试随机 schema 隔离；不把现有业务搬进通用 EAV 表。",
+    "existingAuthority": [
+      "objects/object_versions",
+      "production_batches",
+      "devices/points/point_bindings",
+      "observations/observation_heads/raw_receipts",
+      "metric_definitions/metric_results",
+      "weather_records",
+      "knowledge_documents/knowledge_chunks",
+      "field_tasks/field_task_events"
+    ],
+    "proposedTables": {
+      "ontology_types": "类型和属性的版本化定义",
+      "ontology_link_types": "关系约束和版本",
+      "ontology_action_types": "动作契约和服务处理器白名单",
+      "ontology_object_sets": "查询定义及独立快照成员",
+      "ontology_sources": "外部本体发行版本和内容哈希",
+      "ontology_terms": "术语快照和弃用状态",
+      "ontology_term_mappings": "有方向、有审核与证据的映射",
+      "ontology_entity_registry": "最小跨类型身份登记；业务属性仍从权威表读取",
+      "ontology_source_bindings": "经审核的来源到类型/属性映射",
+      "ontology_assertions": "新增语义断言及不可变证据版本",
+      "ontology_projection_outbox": "与业务写入同事务的投影通知及逐条处理状态",
+      "ontology_projection_runs": "输入快照、词表、映射、代码版本、进度及切换状态"
+    },
+    "authorityRules": [
+      "已有关系只投影，不新增第二个可编辑副本",
+      "外部 sourceId 经服务器映射，不接受回传主键冒充对象",
+      "新指标分开 semantic_metric 与既有计算公式 metric_definitions",
+      "新观测类型可加扩展表，不弱化现有 telemetry 必填和不可变约束",
+      "涉及数据库对象的动态映射必须由受信任适配器解析，输入不得指定任意 SQL/表名"
+    ]
+  },
+  "graph": {
+    "firstVersion": "PostgreSQL 内的派生节点/关系查询或缓存加授权 API；保留图后端接口，用真实多跳查询和规模再决定 Neo4j 或 AGE。",
+    "nodeKey": [
+      "type",
+      "id"
+    ],
+    "edgeKey": "权威关系记录 ID；派生边采用源记录 ID + 映射版本 + 关系角色的确定性键",
+    "buildSteps": [
+      "从一致快照和已审核映射生成节点",
+      "通过主键和时间绑定解析边",
+      "为复杂过程建立事件节点及角色参与关系",
+      "保存关系证据、状态与版本",
+      "运行类型/基数/时间/血缘防环校验",
+      "构建新 projectionVersion 并核对查询，原子切换可见版本"
+    ],
+    "incremental": [
+      "业务事务写事实及 outbox",
+      "worker 逐条领取已提交未处理记录，幂等更新",
+      "按实体版本拒绝旧事件覆盖新状态",
+      "乱序和迟到记录触发相关窗口重算",
+      "撤回/替代保留历史，当前视图移除或标为失效",
+      "不使用 max(sequence) 游标跳过尚未提交的较小序号"
+    ],
+    "rebuild": [
+      "固定业务快照、水位和所有规则版本",
+      "构建新投影并校验节点/边/证据计数及代表查询",
+      "切换期间继续捕获变更，重放并核对后切换",
+      "保留可回滚投影版本；不影响事实库和告警任务"
+    ],
+    "authorization": [
+      "遍历每个节点/边/文档引用前检查现行对象及资源权限",
+      "隐藏节点不经路径长度、邻居数或图统计泄漏",
+      "历史可追溯不等于当前可授权",
+      "图数据过期时回读事实源；关键业务动作永远重新核验"
+    ],
+    "views": [
+      {
+        "id": "typeView",
+        "shows": "对象类型、属性、关系约束、动作及外部本体映射"
+      },
+      {
+        "id": "objectView",
+        "shows": "以一个对象/批次为中心，来源、性质、观测、事件、产出、横向联系六个入口"
+      },
+      {
+        "id": "lineageView",
+        "shows": "输入证据 → 运行/人工事件 → 输出结果；节点可展开原始证据"
+      },
+      {
+        "id": "productionView",
+        "shows": "种苗/投入批次 → 生产及加工事件 → 采收/库存批次；保留数量单位与损耗"
+      },
+      {
+        "id": "timeSpaceView",
+        "shows": "业务时间轴、空间范围、边界和设备绑定版本"
+      }
+    ],
+    "visualRules": [
+      "默认展示1至2跳，按关系类别/时段/可信状态筛选",
+      "关系箭头始终表明真实谓词方向",
+      "原始实测、模型推测、人工结论采用文字状态与不同线型",
+      "密集时序以序列或窗口摘要节点呈现，按需下钻",
+      "数据来源、生产投入和类型父类分开显示，不都标为上层来源",
+      "产出不是子类；相邻不是连通；先后不是因果"
+    ]
+  },
+  "sourcePipeline": [
+    "保留原始资产与 hash",
+    "适配来源协议和解析格式",
+    "识别对象及时间空间适用范围",
+    "按 recordType 标准化",
+    "校验单位、类型、质量、冲突及证据",
+    "通过既有服务持久化权威事实或待审候选",
+    "更新词表映射和图投影",
+    "以授权查询 API 提供图、表、地图和时间线"
+  ],
+  "recordTypes": [
+    "entity",
+    "observation",
+    "forecast",
+    "event",
+    "assertion",
+    "document",
+    "asset",
+    "feature"
+  ],
+  "validation": {
+    "schema": "canonical-record.schema.json",
+    "semanticChecks": [
+      "所有 type/id 可解析且引用版本合法",
+      "采样时刻处于唯一有效 point_binding 内",
+      "validFrom/validTo 与结果时间不能混淆",
+      "结果量纲、指标、方法、对象、统计窗口兼容",
+      "同 source+sourceRecordId+sourceVersion 相同内容为幂等，不同内容进入冲突",
+      "断言证据非空且有原始文件/行列/页段/视频帧定位",
+      "批次拆分合并与物料转换数量守恒按业务口径校验",
+      "来源撤回后沿血缘标记受影响结论和视图",
+      "血缘自引/循环/过深链路拒绝；环境水流等领域环路另行允许",
+      "当前权限、审核和来源有效性由服务器确定，不信任外部 JSON 自称状态"
+    ],
+    "doesNotProve": [
+      "现场测量真实",
+      "模型农业效果",
+      "来源自动获准使用",
+      "数据库迁移或图服务已实现"
+    ]
+  },
+  "deliveryPhases": [
+    {
+      "phase": 1,
+      "result": "选定一个虾稻共作单元、两类生产批次和三个业务问题，核对最新代码与字段"
+    },
+    {
+      "phase": 2,
+      "result": "发布最小对象/关系/术语目录和来源映射，接通一个内部测点与一类外部资料"
+    },
+    {
+      "phase": 3,
+      "result": "实现可重建图投影和对象视图、血缘视图；验证历史换塘与撤回传播"
+    },
+    {
+      "phase": 4,
+      "result": "接入图片候选和天气预报，保留人工复核；用真实样本验证识别与关联准确性"
+    },
+    {
+      "phase": 5,
+      "result": "按实际查询和容量评估专门图数据库及跨本体扩展"
+    }
+  ],
+  "acceptance": [
+    "同名对象不误合并，历史换塘不误归属",
+    "图片模型结果不冒充实测，预报不冒充现场天气",
+    "没有输入/运行/版本的结论不能进入可信视图",
+    "同一批次可追投入来源和产出去向，分合批数量口径明确",
+    "动作只经既有状态机，不从图写入绕过服务",
+    "重复投影幂等，乱序不回退，重建后代表查询一致",
+    "撤回源和权限变化及时生效，图缓存不扩大权限"
+  ],
+  "references": [
+    {
+      "title": "对象类型与实例",
+      "url": "https://www.palantir.com/docs/foundry/object-link-types/type-reference"
+    },
+    {
+      "title": "SOSA SSN",
+      "url": "https://www.w3.org/TR/vocab-ssn/"
+    },
+    {
+      "title": "PROV-O",
+      "url": "https://www.w3.org/TR/prov-o/"
+    },
+    {
+      "title": "SSSOM",
+      "url": "https://mapping-commons.github.io/sssom/1.0/spec-model/"
+    },
+    {
+      "title": "CO_320",
+      "url": "https://cropontology.org/ontology/CO_320"
+    },
+    {
+      "title": "AGROVOC",
+      "url": "https://www.fao.org/agrovoc/"
+    },
+    {
+      "title": "JSON Schema 2020-12",
+      "url": "https://json-schema.org/draft/2020-12"
+    }
+  ],
+  "sourceAdapters": [
+    {
+      "id": "internal_registry",
+      "source": "平台关系表和已授权服务",
+      "outputs": [
+        "entity",
+        "event"
+      ],
+      "rules": [
+        "沿用业务 UUID 和版本",
+        "只从经审核字段映射生成属性",
+        "业务 objects 不是所有本体对象的存储表"
+      ]
+    },
+    {
+      "id": "internal_telemetry",
+      "source": "原始回执、observations、point_bindings",
+      "outputs": [
+        "asset",
+        "observation"
+      ],
+      "rules": [
+        "保留 raw_value/value 和 canonical/conflicted/quality",
+        "按 sampled_at 解析唯一绑定",
+        "保留 sampled/reported/received 三种时间",
+        "模型推测不得写成 telemetry 实测"
+      ]
+    },
+    {
+      "id": "internal_process",
+      "source": "农事、任务、采收、库存和质量记录",
+      "outputs": [
+        "event",
+        "entity"
+      ],
+      "rules": [
+        "计划、实际执行和结果分开",
+        "批次输入/输出记录数量单位及湿干基口径",
+        "未知实物来源保持未知"
+      ]
+    },
+    {
+      "id": "external_weather",
+      "source": "天气 API 原响应",
+      "outputs": [
+        "asset",
+        "forecast",
+        "observation"
+      ],
+      "rules": [
+        "由来源契约区分 actual/forecast；当前所阅 QWeather 路径为 forecast",
+        "保存网格和适用范围",
+        "未知发布时间用 null；收到时间不能冒充发布时间",
+        "区域气温不能映射为塘口水温"
+      ]
+    },
+    {
+      "id": "image_video",
+      "source": "内部摄像头、人员图片、外部影像",
+      "outputs": [
+        "asset",
+        "event",
+        "feature",
+        "assertion"
+      ],
+      "rules": [
+        "资产 hash 与拍摄时间、来源设备分别保存",
+        "检测框保留原图坐标、图像大小、帧索引与时间偏移",
+        "模型和运行版本、参数、预处理与输入版本组成血缘",
+        "图像到田块/批次关联需证据；未定位先暂存",
+        "可见迹象不能自动升级为病害确诊、药量或因果结论"
+      ]
+    },
+    {
+      "id": "remote_sensing",
+      "source": "无人机、多光谱、卫星",
+      "outputs": [
+        "asset",
+        "feature",
+        "observation"
+      ],
+      "rules": [
+        "保留 CRS、波段、nodata、分辨率和校正状态",
+        "有效像元比例与云/阴影掩膜独立记录",
+        "田块聚合使用边界版本、观测时间及统计方法",
+        "缺肥等解释作为 assertion，不与 NDVI 数值混存"
+      ]
+    },
+    {
+      "id": "document_text",
+      "source": "标准、PDF、Word、网页、论文、专家记录",
+      "outputs": [
+        "asset",
+        "document",
+        "assertion"
+      ],
+      "rules": [
+        "提取段落/页码/表格单元格定位及源版本",
+        "记录物种、地区、阶段、适用条件和来源有效性",
+        "OCR 和实体抽取后保留待审候选",
+        "材料中的测值不冒充现场测量",
+        "大模型仅产生严格格式候选，不直接改规则或发动作"
+      ]
+    },
+    {
+      "id": "spreadsheet_api",
+      "source": "手工表格、官方统计、实验室报告",
+      "outputs": [
+        "asset",
+        "entity",
+        "observation",
+        "document"
+      ],
+      "rules": [
+        "保留行列来源和来源口径",
+        "单位换算留原值与转换公式版本",
+        "县级统计不是田块实测",
+        "同源重复和修订分别处理"
+      ]
+    },
+    {
+      "id": "embedding",
+      "source": "图片/文本/时序派生向量",
+      "outputs": [
+        "feature"
+      ],
+      "rules": [
+        "保存模型、维数、输入分块/裁剪引用及版本",
+        "不同模型向量不直接混比",
+        "相似度用于候选检索，身份确认使用主键和证据"
+      ]
+    }
+  ],
+  "queryContract": {
+    "operations": [
+      "getObject",
+      "getNeighbors",
+      "traceEvidence",
+      "traceMaterialFlow",
+      "queryObservations",
+      "evaluateObjectSet"
+    ],
+    "parameters": [
+      "objectRef",
+      "relationKinds",
+      "businessTime",
+      "maxDepth",
+      "cursor",
+      "projectionVersion"
+    ],
+    "serverOwned": [
+      "currentActor",
+      "authorizationScopes",
+      "sourceValidity",
+      "approvedMappingVersion"
+    ],
+    "limits": "关系种类和深度白名单；分页及节点上限；向量召回后仍核查事实、证据和权限",
+    "response": [
+      "nodes",
+      "edges",
+      "evidenceRefs",
+      "asOf",
+      "projectionVersion",
+      "limitations",
+      "nextCursor"
+    ],
+    "queryLanguage": "第一版固定查询接口及受限筛选 AST；不接受外部任意 SQL/Cypher。"
+  },
+  "domainExtensions": {
+    "note": "以下领域在 README 有业务能力说明；本轮未读取完整表和服务，纳入后续类型映射核对，不声明已经接入本体。",
+    "candidates": [
+      "Flight",
+      "QualityReport",
+      "StockMovement",
+      "MachineryOperation",
+      "Expense",
+      "ResearchExperiment",
+      "EnergyReading",
+      "CircularProcess"
+    ]
+  }
+}

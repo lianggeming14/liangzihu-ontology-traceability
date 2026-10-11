@@ -1,0 +1,9 @@
+{
+  "chapters": 16,
+  "tables": 30,
+  "figures": 2,
+  "references": 18,
+  "json_examples": 2,
+  "required_topics_present": true,
+  "bad_unicode": false
+}

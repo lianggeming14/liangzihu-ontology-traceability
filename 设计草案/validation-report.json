@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "schemaDraft": "2020-12",
+  "validExamples": 10,
+  "coveredRecordTypes": 8,
+  "negativeChecks": [
+    "unknown top-level field",
+    "invalid UUID",
+    "unknown record type",
+    "forecast payload disguised as observation",
+    "number supplied as text",
+    "assertion without evidence",
+    "unknown property in payload",
+    "asset checksum malformed",
+    "invalid time interval",
+    "probability outside bounds",
+    "image box outside asset dimensions"
+  ],
+  "referenceClosure": "passed for declared synthetic fixture registry",
+  "lineageCycleCheck": "passed",
+  "catalogLinkTypeReferences": "passed",
+  "limits": [
+    "设计契约与合成示例校验；未运行平台代码或数据库迁移",
+    "未验证外部源内容、资产字节/哈希、实际测量、模型效果或生产权限",
+    "跨单位、对象绑定、来源审核和撤回传播须平台集成测试验证"
+  ]
+}

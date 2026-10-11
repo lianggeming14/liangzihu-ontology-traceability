@@ -1,0 +1,31 @@
+梁子湖农业本体库与产品溯源系统 — 本地工程版 0.1
+
+执行方式：已按用户指示改用当前模型完成，Kimi 不再参与。
+
+1. 双击同目录的“启动系统.cmd”。
+   脚本使用本机 C:/ProgramData/anaconda3/python.exe，启动后打开 http://127.0.0.1:8787。
+   保持终端窗口打开；结束时在窗口按 Ctrl+C。端口被占用可运行：
+   python run_server.py --port 8790 --open-browser
+
+2. 首次界面点击“连接工作台”，选择管理员。合成数据包括虾稻、蔬菜、禽蛋。
+   对象与关系：登记对象、展开多维关系、查看证据包。
+   批次与溯源：查看生产与物料谱系、登记事件、发布、查看公众页和二维码。
+   证据与审核：上传原件、检查断言、撤回证据。
+   本体与接入：注册领域包、对象集、接入结构化记录。
+
+3. 数据保存到 data/agri.db，重复启动不会重复灌入演示记录。
+   不要把合成演示当作农产品认证或真实农场记录。
+   二维码默认编码本机地址，手机不能从其他设备访问该回环地址。
+
+4. API 契约：contracts/openapi.json；运行后访问 /api/v1/openapi.json。
+   私有接口需要 Bearer Token；首次启动生成 data/api-tokens.json，请勿公开。
+   写接口需要 Idempotency-Key。公开接口 /api/v1/public/trace/{code} 只输出白名单字段。
+
+5. 完整使用、备份恢复、接口和能力边界见 README.txt；
+   梁子湖原平台接入步骤见 PLATFORM_INTEGRATION.txt；
+   PostgreSQL 环境步骤见 ops/POSTGRESQL_SETUP.txt。
+
+验证边界：本环境禁止监听本机端口，因此没有保持运行中的服务器。
+已用实际 Flask 请求及独立 SQLite 库完成浏览器联调。正常终端监听启动仍需在本机执行。
+本版尚未接入真实农场、实时摄像头/传感器、第三方模型服务；PostgreSQL 实库测试尚未通过验收。
+历史 KIMI_TASK_*、run_kimi_isolated.py 和 Kimi 日志仅为早期记录，不是当前入口。

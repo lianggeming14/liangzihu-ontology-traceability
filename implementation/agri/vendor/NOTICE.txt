@@ -1,0 +1,4 @@
+qrencoder.py copied unmodified from the locally bundled ReportLab distribution.
+Copyright (c) 2014 Open End AB; Copyright (c) 2009 Kazuhiko Arase.
+MIT licensed; original attribution retained in source.
+Source: ReportLab graphics/barcode/qrencoder.py.

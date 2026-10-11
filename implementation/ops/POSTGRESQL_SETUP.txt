@@ -1,0 +1,31 @@
+隔离 PostgreSQL 运行说明
+
+本目录用于独立开发实例，不管理系统服务，不连接已有数据库。
+Python: C:/ProgramData/anaconda3/python.exe
+专用目录: implementation/runtime/pg-data
+固定监听地址: 127.0.0.1:55439（不是默认端口）
+专用数据库及用户: agri_dev
+
+官方二进制来源链:
+https://www.postgresql.org/download/windows/
+https://www.enterprisedb.com/download-postgresql-binaries
+下载 Windows x64 二进制 ZIP 到 implementation/runtime/。
+
+在网络与执行权限允许的正常终端、implementation 目录运行:
+  C:/ProgramData/anaconda3/python.exe ops/install_pg_driver.py
+  C:/ProgramData/anaconda3/python.exe ops/portable_pg.py install --archive runtime/postgresql-binaries.zip
+  C:/ProgramData/anaconda3/python.exe ops/portable_pg.py start
+  C:/ProgramData/anaconda3/python.exe ops/portable_pg.py verify
+
+如有独立可信 SHA-256，可在 install 后附加 --sha256 <摘要>。
+脚本拒绝覆盖已有数据目录，首次初始化会生成专用开发密码。
+密码仅保存在 runtime/pg-local-password.txt；不要提交、公开或复用。
+应用使用 host=127.0.0.1 port=55439 dbname=agri_dev user=agri_dev，
+密码从上述文件提供给应用进程。它们是规划配置，只有 verify 成功后才是可用实例。
+
+停止专用实例:
+  C:/ProgramData/anaconda3/python.exe ops/portable_pg.py stop
+
+当前环境状态与验证证据见 runtime/environment-status.json。
+没有运行 PostgreSQL 的测试不得标为 PostgreSQL 集成测试通过。
+内存/SQLite 演示不能替代真实 PostgreSQL 事务、并发和权限验收。

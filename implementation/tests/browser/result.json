@@ -1,0 +1,31 @@
+{
+  "bridge": "actual Flask test_client and persistent isolated SQLite, no mocked business results",
+  "page_errors": [],
+  "failed_requests": [],
+  "server_stderr": [],
+  "checks": [
+    "login",
+    "five views",
+    "multidimensional graph",
+    "entity creation",
+    "public DTO",
+    "public QR image",
+    "desktop and mobile",
+    "evidence withdrawal via UI",
+    "recall via UI",
+    "public invalidation",
+    "partial ingestion corrected without duplication"
+  ],
+  "screenshots": [
+    "01-overview.png",
+    "02-objects.png",
+    "03-trace.png",
+    "04-evidence.png",
+    "05-domains.png",
+    "06-public-desktop.png",
+    "07-public-mobile.png",
+    "08-workbench-mobile.png",
+    "09-public-withdrawn.png",
+    "10-public-recalled.png"
+  ]
+}

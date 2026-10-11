@@ -1,0 +1,15 @@
+data/
+.deps/
+runtime/pg-data/
+runtime/postgresql/
+.kimi-runtime/
+run-logs/
+__pycache__/
+.pytest_cache/
+*.pyc
+tests/browser/agri-ui-*/
+.kimi-skills/
+kimi-*.log
+kimi-*.jsonl
+runtime/pg-local-password.txt
+runtime/pg-*.log
