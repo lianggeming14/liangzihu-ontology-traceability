@@ -1,9 +1,9 @@
 {
-  "checked_at": "2026-10-11T04:53:22.290Z",
-  "implemented_api_operations": 46,
-  "documented_api_operations": 46,
+  "checked_at": "2026-10-13T09:35:59.947307+00:00",
+  "implemented_api_operations": 56,
+  "documented_api_operations": 56,
   "operation_set_matches": true,
-  "json_schemas_checked": 16,
+  "json_schemas_checked": 21,
   "json_schema_valid": true,
   "contract_file": "contracts/openapi.json",
   "scope": "Route coverage and JSON Schema syntax; response payloads are not fully typed"

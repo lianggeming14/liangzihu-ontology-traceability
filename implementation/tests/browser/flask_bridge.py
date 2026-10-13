@@ -8,7 +8,7 @@ BASE=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(BASE));sys.path.insert(0,str(BASE/'.deps'))
 from agri.app import create_app
 temporary=tempfile.TemporaryDirectory(prefix='agri-ui-',dir=str(BASE/'tests'/'browser'))
-app=create_app({'DATABASE_URL':'sqlite:///'+str(Path(temporary.name)/'ui.db'),'ALLOWED_HOSTS':['localhost','127.0.0.1'],'DEMO_MODE':True})
+app=create_app({'DATABASE_URL':'sqlite:///'+str(Path(temporary.name)/'ui.db'),'ALLOWED_HOSTS':['localhost','127.0.0.1'],'DEMO_MODE':True,'ASSET_ROOT':str(Path(temporary.name)/'assets')})
 from agri.seed import seed_demo
 manifest=seed_demo(app.extensions['agri_service'],BASE,persist_manifest=False)
 client=app.test_client(use_cookies=False)

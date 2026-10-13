@@ -1,20 +1,31 @@
-本地工程版 0.1.0 验证结果
-更新：2026-10-11T04:58:45.855Z
+梁子湖本体库与溯源系统 v0.2 验证结果
+日期：2026-10-13
 
-自动测试：92 通过，0 失败，38 跳过。
-跳过项均为 PostgreSQL 参数化测试，未设置专用 TEST_DATABASE_URL。
-报告：tests/latest-results.xml。
+一、自动回归
+执行：python -B -X utf8 -m pytest tests -q --junitxml=tests/latest-results.xml
+结果：150 passed，0 failed，59 skipped。
+58项跳过为未配置TEST_DATABASE_URL的PostgreSQL实库测试；1项为FFMPEG_BIN未配置的真实视频解码测试。跳过不计为通过。
 
-浏览器：真实 Flask 测试客户端与独立持久化 SQLite，通过标准输入输出桥接，无伪造业务响应。
-覆盖登录、五个视图、多维关系、对象登记、公开 DTO 与 QR 图像、桌面/移动端、证据撤回、批次召回、公开声明失效、部分批接入修正不重复。
-0 页面运行错误，0 失败请求。报告：tests/browser/result.json；截图：tests/browser/screenshots。
-环境未允许 TCP 监听，所以不包含实际 socket/TLS/公网/手机网络可达性测试。
+新增覆盖：摄像头/闸门身份、源ID冲突、并发幂等、周期/重点窗口和去重、事务回滚、跨租户访问、人工原始回执同事务、未来记录拒绝、001→002升级保留旧数据、真实PNG技术处理与鉴权预览、失效/损坏/不可解码证据可用性、设备→对象关系图、设备记录进入推理包，以及24项只读网关测试。
+网关的外部信源使用受控合成响应；其中两项完整通过真实Flask接口写入独立SQLite和资产目录，没有访问现场设备。
 
-API：46 个实现操作与 OpenAPI 路由逐项一致；16 份 JSON Schema 语法检查通过。
-语法：Python 应用/运维脚本与前端 JavaScript 语法通过。
+二、界面与实际HTTP
+新增15项界面流程通过，零页面错误、零失败请求、零桥接服务错误。
+见 tests/browser/structured-result.json 及 structured-screenshots/。
+覆盖观测、现场事件、人工采收、原文证据、真实提交丢回执后的幂等重试、领域包、类型赋值、限定关系、动态/跨页快照对象集、设备、常规/重点策略、待采集查询、真实PNG处理预览、闸门回执及超过200对象的全库搜索。
+旧 tests/browser/ui-smoke.cjs 回归同样通过，见 result.json。
+上述完整表单业务验收使用Playwright→真实Flask test_client→独立持久化SQLite/资产的请求桥接，不用伪造业务响应。
 
-演示库：16 对象、8 物料批次、9 事件、4 领域包，均为合成数据。
-SQLite 实际备份和恢复到新文件：完整性 ok，外键违规 0，备份及恢复 SHA-256 一致。
-本检查仅覆盖数据库；原始证据、配置和生产密钥必须独立受控备份。
+另外已启动真实127.0.0.1:8787服务，HTTP健康检查与首页200，并用Chrome完成首页、演示登录、统计加载和数据接入导航。见 runtime/http-intake-check.json。不是TLS、公网、生产部署或现场验收。
 
-不属于已完成验收：PostgreSQL 实库、真实平台连接、生产对象权限、现场设备/模型、独立质量放行、生产并发性能和正式公开部署。
+三、契约与迁移
+56个已实现API操作与OpenAPI匹配，21个JSON Schema语法校验通过。
+见 runtime/api-contract-check.json；可用 python ops/export_contract.py 重新生成契约。
+SQLite的001旧库升级到002通过、保留原记录；重复迁移不重复应用。PostgreSQL迁移脚本已提供但未进行实库验收。
+
+四、仍未验证
+没有取得真实摄像头/闸门接口地址、厂家合同及凭据。HTTP图片和闸门JSON网关程序已实现；RTSP单帧和视频抽帧依赖FFmpeg，本环境未配置，实际解码未验证。
+没有自动闸门控制、农业视觉诊断模型、持续录像平台、后台安装的采集服务、现场事件自动触发、厂商ONVIF/MQTT客户端、生产统一认证或TLS部署。
+图片质量指标和内容哈希不等于农业事实、设备测量精度或质量认证。来源回执与候选结论仍需按业务规则审核。
+
+既有SQLite备份恢复证据保留在runtime/sqlite-backup-check.json，属于早期数据库备份验证；本轮未声称重新完成全系统恢复或PostgreSQL恢复演练。

@@ -5,10 +5,12 @@ import json
 
 def describe(base, mutations, queries):
     schemas = json.loads((base / 'contracts' / 'input-schemas.json').read_text(encoding='utf-8'))
+    from .device_ingestion import DEVICE_SCHEMAS
+    schemas.update(copy.deepcopy(DEVICE_SCHEMAS))
     schemas['Error'] = {'type': 'object', 'required': ['error'], 'properties': {'error': {'type': 'object', 'properties': {'code': {'type': 'string'}, 'message': {'type': 'string'}, 'request_id': {'type': ['string','null']}, 'details': {}}}}}
     schemas['Envelope'] = {'type': 'object', 'properties': {'data': {}, 'request_id': {'type': 'string'}}}
     paths = {}
-    responses = {str(status): {'description': title, 'content': {'application/json': {'schema': {'$ref': '#/components/schemas/' + ('Envelope' if status == 200 else 'Error')}}}} for status, title in [(200,'成功；data 载荷因资源不同而不同'),(401,'未认证'),(403,'无权限或主机/来源受限'),(404,'不存在'),(409,'幂等、证据或业务状态冲突'),(413,'请求超过 2 MiB'),(422,'契约或业务约束不符')]}
+    responses = {str(status): {'description': title, 'content': {'application/json': {'schema': {'$ref': '#/components/schemas/' + ('Envelope' if status == 200 else 'Error')}}}} for status, title in [(200,'成功；data 载荷因资源不同而不同'),(401,'未认证'),(403,'无权限或主机/来源受限'),(404,'不存在'),(409,'幂等、证据或业务状态冲突'),(413,'结构化请求超过2MiB或原件超过配置上限(默认32MiB)'),(422,'契约或业务约束不符')]}
     def param(name, kind='query', schema=None, required=False, description=''):
         return {'name':name,'in':kind,'required':required,'description':description,'schema':schema or {'type':'string'}}
     def op(action, public=False, parameters=None, description=''):
@@ -22,7 +24,7 @@ def describe(base, mutations, queries):
         paths.setdefault('/api/v1'+path,{})['post']=operation
     for path, action in queries.items():
         paths.setdefault('/api/v1'+path,{})['get']=op(action,parameters=copy.deepcopy(page) if action not in ('graph','stats','action_types') else [])
-    graph_params=[param('center',description='可选的中心实体 UUID（entity_key）；虚拟关系/事件节点不能作为中心'),param('depth',schema={'type':'integer','minimum':1,'maximum':5,'default':3}),param('limit',schema={'type':'integer','minimum':1,'maximum':300,'default':150}),param('dimension',schema={'type':'string','enum':['all','identity','space','production','material','event','evidence','observation','assertion'],'default':'all'})]
+    graph_params=[param('center',description='可选的中心实体 UUID（entity_key）；虚拟关系/事件节点不能作为中心'),param('depth',schema={'type':'integer','minimum':1,'maximum':5,'default':3}),param('limit',schema={'type':'integer','minimum':1,'maximum':300,'default':150}),param('dimension',schema={'type':'string','enum':['all','identity','space','production','material','event','evidence','observation','assertion','device'],'default':'all'})]
     paths['/api/v1/ontology/entities']['get']['parameters'] += [param('entity_type'),param('name_contains')]
     paths['/api/v1/ontology/relations']['get']['parameters'] += [param('entity_key'),param('predicate_id'),param('dimension'),param('status',schema={'type':'string','enum':['accepted','candidate','rejected','needs_review','all'],'default':'accepted'}),param('valid_at',schema={'type':'string','format':'date-time'},description='仅过滤关系有效期，不重建当时知识快照')]
     paths['/api/v1/ontology/object-sets']['get']['parameters'].append(param('id'))
@@ -48,7 +50,7 @@ def describe(base, mutations, queries):
     export['responses']['200']={'description':'有界图谱导出','content':{'application/ld+json':{'schema':{'type':'object'}},'text/turtle':{'schema':{'type':'string'}}}}
     paths['/api/v1/ontology/export']={'get':export}
     source_kind={'type':'string','enum':['sensor','weather','image','video','remote_sensing','document','manual','official_api']}
-    asset=op('upload_asset',parameters=[idem],description='原件保存在租户私有目录，生成 SHA-256 和证据记录；整个请求限制 2 MiB。')
+    asset=op('upload_asset',parameters=[idem],description='原件保存在租户私有目录，生成 SHA-256 和证据记录；原件默认限制32MiB(请求33MiB，管理员可配置)；图片自动技术检查与私有预览，视频FFMPEG_BIN可用时进行有界抽帧，否则metadata.processing明确unavailable。处理结果不构成农业诊断。')
     body(asset,{'type':'object','required':['file'],'properties':{'file':{'type':'string','format':'binary'},'source_kind':source_kind,'source_id':{'type':'string'},'public_summary':{'type':'string'}}},'multipart/form-data')
     paths['/api/v1/ingestion/assets']={'post':asset}
     records=op('ingest_records',parameters=[param('Idempotency-Key','header',{'type':'string','minLength':1,'maxLength':150},True)],description='逐条事务，可部分成功，必须检查 receipts。原样重试保留相同键及顺序；图像/视频/遥感观测标为 estimated，forecast 和 model_candidate 均需后续审核。原件引用必填。')
@@ -57,10 +59,21 @@ def describe(base, mutations, queries):
         alternatives.append({'type':'object','required':['record_kind','payload'],'properties':{'record_kind':{'const':kind},'payload':{'$ref':'#/components/schemas/'+action}}})
     body(records,{'type':'object','required':['source_kind','records'],'properties':{'source_kind':source_kind,'synthetic':{'type':'boolean'},'records':{'type':'array','minItems':1,'maxItems':100,'items':{'oneOf':alternatives}}}})
     paths['/api/v1/ingestion/records']={'post':records}
+    for path, filters in [('/devices',['id','device_kind','bound_entity_key']),('/device-policies',['id','device_id']),('/device-records',['id','device_id','record_type'])]:
+        paths['/api/v1'+path]['get']['parameters']=[param('limit',schema={'type':'integer','minimum':1,'maximum':500,'default':100}),page[1]]+[param(name) for name in filters]
+    status_op=op('set_capture_policy_status',parameters=[idem,param('policy_id','path',required=True)],description='显式启停不可变采集策略；不执行闸门命令。')
+    body(status_op,{'type':'object','required':['enabled'],'properties':{'enabled':{'type':'boolean'}},'additionalProperties':False})
+    paths['/api/v1/device-policies/{policy_id}/status']={'post':status_op}
+    paths['/api/v1/device-captures/due']['get']['parameters']=[param('since',schema={'type':'string','format':'date-time'},required=True),param('as_of',schema={'type':'string','format':'date-time'}),param('device_id'),param('limit',schema={'type':'integer','minimum':1,'maximum':500}),page[1]]
+    paths['/api/v1/device-captures/due']['get']['description']='仅未收到回执的计划时点；最多七天/500策略/10000槽。周期与重点窗口并集，时点重复合并，窗口半开。不是已执行记录。查询期间回执会改变分页集合，网关应先完整取页再执行。'
+    paths['/api/v1/ingestion/manual']['post']['description']='原始人工表单、操作者和接收时间生成内嵌原文证据；证据与记录在同一幂等事务中提交或回滚。人工观测固定reported，陈述为manual候选，不自动采纳。现场事件不修改库存。'
+    preview=op('evidence_preview',parameters=[param('evidence_id','path',required=True),param('frame',schema={'type':'integer','minimum':0,'default':0})],description='当前租户、有效证据的JPEG派生预览；每次验证内容哈希，禁止公开或撤回后预览。')
+    preview['responses']['200']={'description':'受控JPEG预览','content':{'image/jpeg':{'schema':{'type':'string','format':'binary'}}}}
+    paths['/api/v1/evidence/{evidence_id}/preview']={'get':preview}
     paths['/api/v1/health']={'get':op('health',True,description='进程状态；不是数据库恢复、现场接入或生产验收证明。')}
     paths['/api/v1/auth/me']={'get':op('me')}
     login=op('demo_login',True,description='仅启用本地演示且来源回环时可用。生产必须关闭。')
     body(login,{'type':'object','properties':{'role':{'type':'string','enum':['admin','operator','reviewer','viewer'],'default':'viewer'}}})
     paths['/api/v1/auth/demo']={'post':login};paths['/api/v1/auth/logout']={'post':op('logout',True)}
     paths['/api/v1/openapi.json']={'get':op('openapi',True)}
-    return {'openapi':'3.1.0','info':{'title':'梁子湖农业本体与产品溯源 API','version':'0.1.0','description':'当前模型实现的本地工程版。租户身份由访问令牌确定；演示界面另外支持仅限回环的 Cookie 会话。响应载荷仍以领域实现和示例为准，Envelope 不构成完整强类型 SDK。真实平台、PostgreSQL 和现场验收待完成。'},'servers':[{'url':'/'}],'paths':paths,'components':{'securitySchemes':{'bearerAuth':{'type':'http','scheme':'bearer'}},'schemas':schemas}}
+    return {'openapi':'3.1.0','info':{'title':'梁子湖农业本体与产品溯源 API','version':'0.2.0','description':'当前模型实现的本地工程版。租户身份由访问令牌确定；演示界面另外支持仅限回环的 Cookie 会话。响应载荷仍以领域实现和示例为准，Envelope 不构成完整强类型 SDK。真实平台、PostgreSQL 和现场验收待完成。'},'servers':[{'url':'/'}],'paths':paths,'components':{'securitySchemes':{'bearerAuth':{'type':'http','scheme':'bearer'}},'schemas':schemas}}

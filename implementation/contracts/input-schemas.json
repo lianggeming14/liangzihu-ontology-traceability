@@ -502,7 +502,11 @@
           "transform",
           "package",
           "ship",
-          "receive"
+          "receive",
+          "inspection",
+          "irrigation",
+          "maintenance",
+          "incident"
         ]
       },
       "occurred_at": {
@@ -791,5 +795,36 @@
         }
       }
     ]
+  },
+  "ingest_manual": {
+    "type": "object",
+    "required": [
+      "record_kind",
+      "payload",
+      "note"
+    ],
+    "properties": {
+      "record_kind": {
+        "enum": [
+          "observation",
+          "assertion",
+          "event"
+        ]
+      },
+      "payload": {
+        "type": "object"
+      },
+      "note": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4000
+      },
+      "source_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "additionalProperties": false
   }
 }

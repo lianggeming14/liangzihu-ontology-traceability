@@ -137,29 +137,31 @@ class SQLiteDatabase:
             conn.close()
 
     def migrate(self):
-        migration = Path(__file__).resolve().parents[1] / 'migrations' / '001_core.sqlite.sql'
-        content = migration.read_text(encoding='utf-8')
-        digest = hashlib.sha256(content.encode('utf-8')).hexdigest()
+        folder = Path(__file__).resolve().parents[1] / 'migrations'
+        migrations = sorted(folder.glob('[0-9][0-9][0-9]_*.sqlite.sql'))
         conn = self._connect()
+        applied = []
         try:
             conn.execute('PRAGMA journal_mode=WAL')
             conn.execute('BEGIN IMMEDIATE')
-            conn.execute("""CREATE TABLE IF NOT EXISTS schema_migrations (
-                version TEXT PRIMARY KEY, checksum TEXT NOT NULL,
-                applied_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)""")
-            old = conn.execute('SELECT checksum FROM schema_migrations WHERE version=?',
-                               ('001',)).fetchone()
-            if old:
-                if old['checksum'] != digest:
-                    raise RuntimeError('SQLite migration 001 checksum changed; create a new migration')
-                conn.commit()
-                return {'backend': self.backend, 'schema': self.schema, 'migration': '001', 'applied': False}
-            for statement in _statements(content):
-                conn.execute(statement)
-            conn.execute('INSERT INTO schema_migrations(version,checksum) VALUES (?,?)',
-                         ('001', digest))
+            conn.execute('CREATE TABLE IF NOT EXISTS schema_migrations (version TEXT PRIMARY KEY, checksum TEXT NOT NULL, applied_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)')
+            versions = set()
+            for migration in migrations:
+                version = migration.name.split('_', 1)[0]
+                if version in versions: raise RuntimeError('Duplicate migration version: ' + version)
+                versions.add(version)
+                content = migration.read_text(encoding='utf-8')
+                digest = hashlib.sha256(content.encode('utf-8')).hexdigest()
+                old = conn.execute('SELECT checksum FROM schema_migrations WHERE version=?', (version,)).fetchone()
+                if old:
+                    if old['checksum'] != digest:
+                        raise RuntimeError('SQLite migration ' + version + ' checksum changed; create a new migration')
+                    continue
+                for statement in _statements(content): conn.execute(statement)
+                conn.execute('INSERT INTO schema_migrations(version,checksum) VALUES (?,?)', (version,digest))
+                applied.append(version)
             conn.commit()
-            return {'backend': self.backend, 'schema': self.schema, 'migration': '001', 'applied': True}
+            return {'backend':self.backend, 'schema':self.schema, 'migration':max(versions), 'applied':bool(applied), 'applied_versions':applied}
         except BaseException:
             conn.rollback()
             raise

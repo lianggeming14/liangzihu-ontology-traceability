@@ -15,10 +15,12 @@ from .service import DomainError
 LABELS = {
     "identity": "对象身份", "space": "空间关系", "production": "生产关系",
     "material": "物料谱系", "event": "事件参与", "evidence": "证据来源",
-    "observation": "观测", "assertion": "断言",
+    "observation": "观测", "assertion": "断言", "device": "设备与采集",
 }
-JSON_FIELDS = {"qualifiers", "evidence_ids", "value_json"}
+JSON_FIELDS = {"qualifiers", "evidence_ids", "value_json", "observation_ids"}
 SPECS = {
+    "device_registrations": ("id", "id,name,device_kind,device_entity_key,bound_entity_key", "created_at,id", ["device_entity_key","bound_entity_key"]),
+    "device_records": ("id", "id,device_id,device_entity_key,bound_entity_key,record_type,captured_at,priority,evidence_ids,observation_ids", "captured_at,id", ["device_entity_key","bound_entity_key"]),
     "entities": ("entity_key", "entity_key,entity_type,name,revision", "entity_key", ["entity_key"]),
     "relations": ("id", "id,subject_key,object_key,predicate_id,dimension,valid_from,valid_to,qualifiers,evidence_ids,status,revision", "created_at,id", ["subject_key", "object_key"]),
     "events": ("id", "id,event_type,occurred_at,evidence_ids,status", "occurred_at,id", []),
@@ -166,16 +168,18 @@ def build_network(service, tenant, actor, params=None):
         targets = defaultdict(set)
         for link in rows["evidence_links"]:
             targets[link["target_kind"]].add(link["target_id"])
+        ensure("device_records", targets["device_record"])
         ensure("relations", targets["relation"])
         ensure("observations", targets["observation"])
         ensure("assertions", targets["assertion"])
         ensure("events", targets["event"] | {x["event_id"] for x in rows["event_participants"]} |
                {x["event_id"] for x in rows["material_ancestry"]})
         evidence_ids = {x["evidence_id"] for x in rows["evidence_links"]}
-        for table in ("relations", "events", "observations", "assertions"):
+        for table in ("relations", "events", "observations", "assertions", "device_records"):
             for row in rows[table]:
                 evidence_ids.update(row.get("evidence_ids") or [])
         ensure("evidence", evidence_ids)
+        ensure("observations", {oid for r in rows["device_records"] for oid in r.get("observation_ids", [])})
         entity_ids = {center} if center else set()
         for table, columns in (
             ("relations", ("subject_key", "object_key")),
@@ -184,6 +188,8 @@ def build_network(service, tenant, actor, params=None):
             ("observations", ("subject_key",)),
             ("assertions", ("subject_key", "object_key")),
             ("lots", ("lot_key", "production_batch_key")),
+            ("device_registrations", ("device_entity_key", "bound_entity_key")),
+            ("device_records", ("device_entity_key", "bound_entity_key")),
         ):
             for row in rows[table]:
                 entity_ids.update(row.get(column) for column in columns)
@@ -229,6 +235,18 @@ def build_network(service, tenant, actor, params=None):
         node("assertion:"+item["id"], item["predicate_id"], "assertion", "assertion", item["status"],
              record_id=item["id"], origin=item["origin"], value=_preview(item["value_json"]),
              revision=item["revision"])
+    for item in rows["device_records"]:
+        node("device_record:"+item["id"],item["record_type"],"device_record","device","recorded",
+             record_id=item["id"],captured_at=item["captured_at"],priority=item["priority"])
+    for item in rows["device_registrations"]:
+        edge("device-binding:"+item["id"],item["device_entity_key"],item["bound_entity_key"],
+             "registered_at_object","device",device_kind=item["device_kind"],registration_id=item["id"])
+    for item in rows["device_records"]:
+        reference="device_record:"+item["id"]
+        edge(reference+":device",item["device_entity_key"],reference,"reported_by_device","device")
+        edge(reference+":object",reference,item["bound_entity_key"],"captured_for_object","device")
+        for oid in item.get("observation_ids",[]):
+            edge(reference+":observation:"+oid,reference,"observation:"+oid,"normalizes_to","observation")
     reified = {str(value) for value in targets["relation"]}
     reified.update(item["id"] for item in rows["relations"] if item.get("evidence_ids"))
     for item in rows["relations"]:
@@ -283,7 +301,7 @@ def build_network(service, tenant, actor, params=None):
 
     for item in rows["evidence_links"]:
         evidence_edge(item["evidence_id"], item["target_kind"], item["target_id"])
-    for table, kind in (("relations","relation"),("events","event"),("observations","observation"),("assertions","assertion")):
+    for table, kind in (("relations","relation"),("events","event"),("observations","observation"),("assertions","assertion"),("device_records","device_record")):
         for item in rows[table]:
             for eid in item.get("evidence_ids") or []:
                 evidence_edge(eid, kind, item["id"])

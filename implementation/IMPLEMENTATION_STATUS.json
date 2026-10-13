@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
-  "updated_at": "2026-10-11T04:58:45.855Z",
-  "application_version": "0.1.0",
-  "task": "农业本体数据库、多模态接入契约与对应产品溯源系统",
+  "updated_at": "2026-10-13T09:50:56.115Z",
+  "application_version": "0.2.0",
+  "task": "农业本体与溯源系统：可操作数据接入、通用摄像头/闸门只读网关",
   "implementation_status": "local_engineering_delivered",
   "implementation_model": "current_session_model",
   "kimi": {
@@ -15,16 +15,16 @@
     "backend": "sqlite-development",
     "persistent_database": "data/agri.db",
     "postgresql_adapter": "agri/db.py",
-    "postgresql_migration": "migrations/001_core.sql",
+    "postgresql_migration": "migrations/001_core.sql + 002_device_ingestion.sql",
     "postgresql_verified": false,
-    "listening_server_running": false,
-    "socket_listening_verified": false,
-    "socket_limitation": "受控环境 WinError 10013；在普通终端运行启动系统.cmd完成本机监听验证",
-    "startup": "启动系统.cmd"
+    "listening_server_running": true,
+    "socket_listening_verified": true,
+    "startup": "启动系统.cmd",
+    "verification_note": "2026-10-13 owned Python process on 127.0.0.1:8787; real HTTP health, home, browser session login and intake navigation verified; not a persistent service or TLS deployment"
   },
   "implemented": [
     "stable_entity_identity_and_versioned_domain_packages",
-    "qualified_relations_and_bounded_eight_dimension_network",
+    "qualified_relations_and_bounded_nine_dimension_network",
     "observations_assertions_and_evidence_separation",
     "file_evidence_hash_and_authorized_download",
     "multimodal_standard_record_ingestion_with_partial_retry",
@@ -35,13 +35,20 @@
     "reviewed_publication_public_dto_qr",
     "evidence_withdrawal_recall_and_late_conflict_invalidation",
     "scoped_jsonld_turtle_exchange",
-    "desktop_and_mobile_workbench_and_public_page"
+    "desktop_and_mobile_workbench_and_public_page",
+    "structured_manual_original_receipts_atomic_with_business_records",
+    "friendly_package_type_relation_object_set_forms_and_server_paged_entity_picker",
+    "camera_gate_identity_capture_policies_focus_windows_and_idempotent_receipts",
+    "readonly_edge_http_snapshot_rtsp_optional_gate_json_with_durable_retry_queue",
+    "image_technical_inspection_private_previews_and_explicit_video_processing_status",
+    "device_network_and_integrity_checked_inference_evidence_bundles",
+    "additive_002_sqlite_migration_preserves_existing_001_data"
   ],
   "tests": {
-    "passed": 92,
+    "passed": 150,
     "failed": 0,
-    "skipped": 38,
-    "skip_reason": "PostgreSQL test cases: TEST_DATABASE_URL not configured",
+    "skipped": 59,
+    "skip_reason": "58 PostgreSQL cases: TEST_DATABASE_URL not configured; 1 real video decode: FFMPEG_BIN not configured",
     "junit": "tests/latest-results.xml",
     "browser": {
       "passed": true,
@@ -49,11 +56,14 @@
       "report": "tests/browser/result.json",
       "page_errors": 0,
       "failed_requests": 0,
-      "tcp_or_tls_validated": false
+      "tcp_or_tls_validated": false,
+      "structured_checks": 15,
+      "structured_report": "tests/browser/structured-result.json",
+      "tcp_smoke": "separately verified via actual Chrome and HTTP on 8787; see runtime/http-intake-check.json; no TLS"
     },
     "contract": {
-      "operations": 46,
-      "json_schemas": 16,
+      "operations": 56,
+      "json_schemas": 21,
       "report": "runtime/api-contract-check.json"
     },
     "sqlite_backup": {
@@ -63,7 +73,16 @@
       "original_and_restored_hash_equal": true,
       "scope": "database only; assets/configuration need separate backup"
     },
-    "postgresql_integration": "not_run"
+    "postgresql_integration": "not_run",
+    "skip_breakdown": {
+      "postgresql": 58,
+      "real_video_decode": 1
+    },
+    "edge_gateway": {
+      "passed": 24,
+      "failed": 0,
+      "external_sources": "controlled transport responses; real Flask/SQLite destination in 2 integration tests; no field device"
+    }
   },
   "demo": {
     "synthetic": true,
@@ -81,18 +100,21 @@
   "limitations": [
     "No verified PostgreSQL deployment or production performance/recovery evidence",
     "No live Liangzihu connector; missing integration binding and source authoritative event projection channels",
-    "No live camera/sensor/vendor/model pipelines; accepts raw assets and structured records only",
     "No full bitemporal reconstruction, property dictionary, arbitrary OWL/SHACL reasoning or causal inference",
     "No event reversal/returns or independent quality release",
     "No production identity provider, object-level grants or public deployment",
     "No delivery worker/webhooks/consumer ACK management",
-    "Offset browsing is not a frozen snapshot; graph results can be explicitly truncated"
+    "Offset browsing is not a frozen snapshot; graph results can be explicitly truncated",
+    "No vendor field credentials or live device acceptance; generic readonly gateway is implemented",
+    "FFMPEG_BIN absent: real video decoding and RTSP capture unverified; image inspection is not agricultural vision reasoning",
+    "Capture policies require explicitly running gateway; no installed scheduler/service, historical playback or automatic event trigger",
+    "Media processing is bounded synchronous technical inspection; no continuous video storage or inference worker"
   ],
   "next_steps": [
-    "Verify local TCP startup in an ordinary terminal",
+    "Obtain camera/gate protocol, authorized endpoint and source/device identity mapping; run one camera and one gate readonly field pilot",
+    "Configure trusted FFmpeg and run real video/RTSP checks",
     "Run dedicated PostgreSQL tests and recovery/concurrency gates",
-    "Implement source identity/authorization and inventory projection seams in PLATFORM_INTEGRATION.txt",
-    "Integrate approved farm samples and external consumers, then complete field acceptance"
+    "Implement platform identity/authorization and authoritative production projection seams in DEVICE_PLATFORM_MAPPING.txt and PLATFORM_INTEGRATION.txt"
   ],
   "artifacts": {
     "readme": "README.txt",
@@ -100,6 +122,8 @@
     "openapi": "contracts/openapi.json",
     "schemas": "contracts/input-schemas.json",
     "design_doc": "../交付文档/梁子湖智慧农业本体库与溯源系统总体方案_v1.1.docx",
-    "source_archive": "../交付文档/梁子湖农业本体与溯源系统_本地工程版_v0.1.zip"
+    "source_archive": "../交付文档/梁子湖农业本体与溯源系统_本地工程版_v0.2.zip",
+    "intake_guide": "DATA_INTAKE_GUIDE.txt",
+    "device_platform_mapping": "DEVICE_PLATFORM_MAPPING.txt"
   }
 }

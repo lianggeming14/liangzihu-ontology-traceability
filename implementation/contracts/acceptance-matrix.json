@@ -61,6 +61,140 @@
       "id": "outbox",
       "acceptance": "变更事件可分页恢复，重试不重复业务效果",
       "status": "pending"
+    },
+    {
+      "id": "device_identity",
+      "acceptance": "设备以租户、source_id、external_device_id保持唯一身份；同名设备不合并；设备实体和被监测对象以同租户引用绑定；重复身份与跨租户引用拒绝，查看者不能登记设备。",
+      "tests": [
+        "test_registration_stable_source_identity_binding_and_tenant_isolation"
+      ],
+      "status": "local_verified_postgresql_unverified",
+      "testFile": "tests/test_device_ingestion.py",
+      "backendResults": {
+        "sqlite": {
+          "status": "passed",
+          "dataNature": "synthetic",
+          "verification": "local engineering behavior only"
+        },
+        "postgresql": {
+          "status": "unverified",
+          "execution": "skipped",
+          "reason": "TEST_DATABASE_URL is not configured"
+        }
+      }
+    },
+    {
+      "id": "device_receipts",
+      "acceptance": "同幂等键重放不新增记录；相同信源记录标识的相同内容只保留一条记录，不同内容拒绝覆盖；并发重送不重复观测；闸门状态和Decimal开度、采集时区与未来时刻严格校验；原件、记录、reported观测、审计及outbox在同一事务内提交或回滚，不提供闸门控制。",
+      "tests": [
+        "test_gate_receipt_idempotency_atomic_reported_observations_and_source_conflict",
+        "test_parallel_redelivery_creates_one_receipt_and_one_observation_pair",
+        "test_foreign_evidence_rejection_rolls_back_receipt_observations_and_idempotency",
+        "test_gate_rejects_invalid_quantity_enum_time_or_control_fields"
+      ],
+      "status": "local_verified_postgresql_unverified",
+      "testFile": "tests/test_device_ingestion.py",
+      "backendResults": {
+        "sqlite": {
+          "status": "passed",
+          "dataNature": "synthetic",
+          "verification": "local engineering behavior only"
+        },
+        "postgresql": {
+          "status": "unverified",
+          "execution": "skipped",
+          "reason": "TEST_DATABASE_URL is not configured"
+        }
+      }
+    },
+    {
+      "id": "capture_scheduling",
+      "acceptance": "UTC锚定周期与重点窗口采集时点取并集，同一时点去重；窗口左闭右开，重点优先；已收到记录的槽不再返回；停用策略不生成待采集槽且拒绝新计划记录；策略时间参数不可原地改写；分页和七天、500策略、10000候选槽预算明确，不将计划当成已抓拍。",
+      "tests": [
+        "test_focus_window_slots_have_defined_boundaries_deduplicate_and_resume",
+        "test_device_pagination_and_query_budgets_are_strict",
+        "test_policy_is_immutable_and_invalid_windows_do_not_write"
+      ],
+      "status": "local_verified_postgresql_unverified",
+      "testFile": "tests/test_device_ingestion.py",
+      "backendResults": {
+        "sqlite": {
+          "status": "passed",
+          "dataNature": "synthetic",
+          "verification": "local engineering behavior only"
+        },
+        "postgresql": {
+          "status": "unverified",
+          "execution": "skipped",
+          "reason": "TEST_DATABASE_URL is not configured"
+        }
+      }
+    },
+    {
+      "id": "device_media_evidence",
+      "acceptance": "camera_snapshot和camera_video必须分别引用同租户的image/video原始证据；人工重点记录保留原件和说明；撤回、原件损坏或解码失败不能标为可用于推理；仅有数据库引用且未核验原件时标记not_checked、不可用于推理；原件和技术处理结果不自动成为农业事实。",
+      "tests": [
+        "test_camera_requires_original_media_kind_and_schema_is_explicit",
+        "test_manual_focus_record_preserves_evidence_withdrawal_without_inference",
+        "test_corrupt_original_or_failed_media_decode_cannot_be_marked_inference_usable",
+        "test_gate_receipt_idempotency_atomic_reported_observations_and_source_conflict"
+      ],
+      "status": "local_verified_postgresql_unverified",
+      "testFile": "tests/test_device_ingestion.py",
+      "backendResults": {
+        "sqlite": {
+          "status": "passed",
+          "dataNature": "synthetic",
+          "verification": "local engineering behavior only"
+        },
+        "postgresql": {
+          "status": "unverified",
+          "execution": "skipped",
+          "reason": "TEST_DATABASE_URL is not configured"
+        }
+      }
+    },
+    {
+      "id": "device_inference_context",
+      "acceptance": "按设备实体或绑定对象获取推理证据包时，摄像头记录进入独立device_records并保留对应原始evidence；不把画面直接生成observations或adopted_assertions，检索证据不等于采用推理前提。",
+      "tests": [
+        "test_camera_record_original_is_retrievable_in_bound_object_inference_bundle"
+      ],
+      "status": "local_verified_postgresql_unverified",
+      "testFile": "tests/test_device_ingestion.py",
+      "backendResults": {
+        "sqlite": {
+          "status": "passed",
+          "dataNature": "synthetic",
+          "verification": "local engineering behavior only"
+        },
+        "postgresql": {
+          "status": "unverified",
+          "execution": "skipped",
+          "reason": "TEST_DATABASE_URL is not configured"
+        }
+      }
+    },
+    {
+      "id": "device_network",
+      "acceptance": "关系网明确呈现设备实体、被监测对象、采集记录及原始证据的有向连接；设备绑定不冒充物料谱系；跨租户对象中心查询及原件下载不可访问。",
+      "tests": [
+        "test_device_http_graph_keeps_device_object_and_original_evidence_connected"
+      ],
+      "status": "local_verified_postgresql_unverified",
+      "testFile": "tests/test_device_ingestion.py",
+      "backendResults": {
+        "sqlite": {
+          "status": "passed",
+          "dataNature": "synthetic",
+          "verification": "local engineering behavior only"
+        },
+        "postgresql": {
+          "status": "unverified",
+          "execution": "skipped",
+          "reason": "TEST_DATABASE_URL is not configured"
+        }
+      }
     }
   ],
   "references": [
@@ -69,5 +203,36 @@
       "url": "https://flask.palletsprojects.com/en/stable/testing/",
       "checkedAt": "2026-10-11"
     }
-  ]
+  ],
+  "backendResults": {
+    "deviceSuite": {
+      "testFile": "tests/test_device_ingestion.py",
+      "command": "python -X utf8 -m pytest tests/test_device_ingestion.py -q",
+      "workingDirectory": "implementation",
+      "checkedAt": "2026-10-13",
+      "sqlite": {
+        "status": "passed",
+        "passed": 20,
+        "failed": 0,
+        "database": "persistent temporary SQLite",
+        "dataNature": "synthetic"
+      },
+      "postgresql": {
+        "status": "unverified",
+        "passed": 0,
+        "failed": 0,
+        "skipped": 20,
+        "reason": "TEST_DATABASE_URL is not configured; no PostgreSQL execution claimed"
+      },
+      "scopeNote": "以上统计仅对应设备测试套件，不替代其他验收项、生产部署或现场验收。",
+      "unverified": [
+        "vendor_protocol_conformance",
+        "real_device_field_capture",
+        "production_scheduler_operation"
+      ],
+      "excluded": [
+        "gate_control"
+      ]
+    }
+  }
 }

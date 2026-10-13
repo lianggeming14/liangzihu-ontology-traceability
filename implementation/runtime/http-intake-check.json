@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-10-13T09:52:15.661Z",
+  "url": "http://127.0.0.1:8787/",
+  "process_id": 77348,
+  "health_status": 200,
+  "health": {
+    "application": "liangzihu-ontology",
+    "backend": "sqlite",
+    "demo_mode": true,
+    "mode": "local-engineering",
+    "status": "ok",
+    "version": "0.2.0"
+  },
+  "home_status": 200,
+  "home_contains_app": true,
+  "actual_chrome_verified": [
+    "home rendered",
+    "demo session login",
+    "stats loaded from real HTTP",
+    "data intake navigation rendered"
+  ],
+  "database": "existing synthetic SQLite demo; no production data writes",
+  "tls_verified": false,
+  "field_devices_connected": false,
+  "server_lifecycle": "explicit local process; not installed background service"
+}

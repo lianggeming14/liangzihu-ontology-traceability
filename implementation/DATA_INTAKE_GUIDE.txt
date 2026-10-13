@@ -1,0 +1,104 @@
+梁子湖数据接入操作指南 v0.2
+更新：2026-10-13
+
+一、这次可以实际使用的入口
+
+启动 implementation/启动系统.cmd，打开 http://127.0.0.1:8787/，选择本机演示管理员或操作员。左侧“数据接入”集中处理人工填报、原件上传、设备登记、采集计划和回执查询；本体管理提供领域包、类型赋值、限定关系和对象集表单。设备接入并不限定水稻或小龙虾，绑定的是通用对象 UUID；菜地、禽舍、池塘等对象可复用。
+
+先登记田块/池塘/设施等被监测对象，再登记设备。设备名称只是显示标签；内部设备 UUID、设备实体 UUID、信源 ID、厂家设备 ID 和绑定对象分别保存。相同信源内厂家设备 ID 重复会拒绝，不按名称自动合并。设备或所属位置变更需受控迁移；本版不提供无审计覆盖历史绑定的编辑入口。
+
+二、人工填报
+
+1. 选择“人工填报”，搜索并选择对象；检索在服务端执行，不受首页前200个对象限制。
+2. 填报观测：属性标识、数值、单位、发生时间、方法及备注，例如 water.temperature / 22.5 / Cel。时间由本地时区转换为带时区的标准时间。人工记录始终标为 reported，不因填写数值就升级成设备实测。
+3. 填报陈述：说明判断内容、范围和时间，作为人工候选陈述，后续另行评估，不自动变成事实。
+4. 填报现场事件：巡检、灌溉、维护、异常，选择参与对象及角色；现场事件不修改库存。采收、拆批等物料事件使用对应结构化表单和数量规则。
+5. 附件先上传并选取证据。即使没有附件，服务器也会把原始人工表单、操作者、接收时间生成不可混淆的原文回执，保存内容哈希，并与业务记录在同一事务内提交。
+6. 断网或回执丢失时，在未修改原表单的情况下重试。界面保留幂等键；同一个业务操作不会因重试写入两次。修改已成功请求且复用原键会返回冲突。
+
+发生记录不能在未来超过服务器五分钟；未来作业应登记计划，预测应作为候选陈述。人工来源证明“谁在何时填了什么”，不证明内容已被证实。
+
+三、摄像头和闸门 API
+
+写请求头：Authorization: Bearer <受控令牌>，Idempotency-Key: <稳定且唯一的业务请求键>。
+凭据通过本机受控配置或环境变量提供，不写进网页设备登记、仓库或请求示例。
+
+POST /api/v1/devices
+{
+  "name": "示例田块摄像头",
+  "device_kind": "camera",
+  "source_id": "liangzihu-platform",
+  "external_device_id": "替换为厂家设备ID",
+  "bound_entity_key": "替换为已有田块UUID"
+}
+闸门使用 device_kind=gate。响应包含 device_id（字段id）、device_entity_key、bound_entity_key。只有操作者/管理员可以登记或上报，租户从身份令牌确定。
+
+摄像头回传两步：
+A. POST /api/v1/ingestion/assets，multipart 表单 file、source_kind=image或video、source_id。取响应证据id。
+B. POST /api/v1/device-records：device_id、source_record_id、record_type=camera_snapshot或camera_video、captured_at、data={}、evidence_ids=[证据id]。如响应某个计划时点，另传 policy_id 和 slot_at。实际时间不得改成计划时间。
+source_record_id 使用厂家稳定事件ID；同设备同ID同载荷重放返回原记录，不同载荷冲突拒绝。
+
+闸门状态回传：先把厂家原始 JSON 上传为 document 原件，再上报 record_type=gate_status，data={"state":"partial","position_pct":"35"}，captured_at填写厂家带时区的采样时间，并关联证据。state为open/closed/partial/unknown，position_pct为0至100的十进制字符串（可不报开度）。未知枚举和单位不能自行猜测。
+闸门记录生成可查询的 reported 观测，原始回执仍独立保存。本版没有开闸、关闸或自动控制接口。
+
+GET /api/v1/devices
+GET /api/v1/device-records?device_id=<UUID>&limit=100&offset=0
+设备详情页可复制设备ID并展开回传示例。所有列表按返回的分页字段遍历，不能把第一页当全量。
+
+四、周期与特殊时间
+
+在“采集计划”选择设备、记录类型、起始时间和常规间隔；可添加最多20个重点窗口，每个窗口填开始、结束、更短间隔和标签。常规间隔支持60秒至7天；重点间隔不少于60秒且不长于常规间隔。示例：平时每30分钟采一张；灌溉开始前后一个小时每2分钟一张；重点时点可建长度仅一个间隔的窗口。
+
+POST /api/v1/device-policies 建立策略；POST /api/v1/device-policies/<id>/status，{"enabled":false}暂停（不删除历史）。
+GET /api/v1/device-captures/due?since=<带时区时间>&as_of=<带时区时间>&device_id=<UUID>&limit=100&offset=0 查询待采集时点。
+
+窗口左闭右开，常规与重点时点取并集并去重；回执完成后不再列为待采集。查询最多7天、500策略、10000个计划槽，超出预算明确报错。分页期间新增回执会改变集合，网关先读取所有页，再执行采集。
+
+这是采集计划，不是执行证明。必须显式启动网关或接入厂商推送才会产生真实记录；页面不会悄悄启动后台服务。事件驱动自动触发和录像回放补采尚未实现。临时重点记录可用重点窗口或主动推送回执；不能以当前画面冒充过去遗漏的画面。
+
+五、只读边缘网关
+
+ops/edge_gateway.py 支持：
+- http_snapshot：HTTP GET获取单张图像；
+- rtsp_snapshot：读取RTSP并取一帧，要求FFMPEG_BIN；
+- http_gate_json：GET获取厂家JSON，按显式字段路径/状态表/比例换算映射。
+
+从 ops/edge_gateway.example.json 复制配置到 data/edge-gateway.local.json（data目录不入库），替换登记后的设备UUID，确认协议后启用对应设备。示例默认全部禁用，避免把占位设备当真实接入。API地址、摄像头URL、闸门URL与令牌均使用环境变量名引用；配置不含真实凭据。
+
+先校验配置（不读取令牌或访问网络）：
+  python ops/edge_gateway.py --config data/edge-gateway.local.json --validate
+取得受控配置并设置环境变量后单次执行：
+  python ops/edge_gateway.py --config data/edge-gateway.local.json --once
+需要持续运行时显式启动：
+  python ops/edge_gateway.py --config data/edge-gateway.local.json --loop
+按Ctrl+C停止。本版不安装系统服务或定时任务。
+
+默认每30秒检查一次，计划回看与最大迟到窗口120秒；过旧时点不取当前画面冒充补采。网关本地outbox保存待提交原件/精确请求、稳定幂等键，遇到暂时故障重试同一份数据；源ID冲突应人工核对，不改键绕过。一个outbox限制单进程，多个部署不要共用本地队列。原件大小/队列数量/总字节和请求时限受限制，队列满和权限失败明确返回状态码；运维需检查输出及积压。
+
+六、媒体处理与推理边界
+
+原件单文件32MiB，结构化JSON请求2MiB；网关快照另设更小的1.5MiB上限，可在设备端调分辨率。图片支持JPEG/PNG/WEBP/BMP/TIFF，最多2400万像素；原图内容寻址存储，派生JPEG按EXIF方向纠正并去元数据，计算尺寸、亮度、对比度、感知哈希和偏暗/低对比标记。这些是技术检查，不是病虫害、长势或水质判断。
+
+视频使用外部FFMPEG_BIN路径，默认检查前120秒、每10秒最多12帧；处理是有时限的同步操作，不是连续录像平台或无限长视频转码。抽帧字段 target_offset_seconds 是抽样目标偏移，不能当精确PTS或摄像头墙钟时间。未配置FFmpeg时状态为unavailable，解码失败为failed，保留原件及失败原因，不能显示为已识别。当前环境尚未完成真实视频解码/RTSP验收。
+
+Pillow官方资料：https://pillow.readthedocs.io/en/stable/reference/Image.html
+FFmpeg官方资料：https://ffmpeg.org/ffmpeg.html
+可选requirements-media.txt提供imageio-ffmpeg依赖入口；安装完成后仍需显式配置FFMPEG_BIN到可信可执行文件。
+
+七、本体、对象集与输出
+
+本体管理：登记命名空间、版本、类型和谓词；为已有对象赋予语义类型；按主体/谓词/客体/有效时间/限定属性/证据建立关系。同义名称应作为受控映射处理，不把同名物体自动视作同一实体。领域包注册不自动实现新的业务执行服务。
+
+动态对象集按身份类型和名称过滤表达实时结果；快照对象集可跨页选择并保留固定成员。可检索全库对象，按返回分页查看。修改成员或规则应建新对象集；当前没有复杂自由查询语言和通用集合编辑/撤销。
+
+关系网新增“设备与采集”维度：对象←设备→采集记录→标准化观测，原始证据独立指向记录。身份/空间/生产/物料/事件/观测/断言/证据/设备共九个维度按预算查询，截断状态不可省略。
+
+受保护的对象 EvidenceBundle 现在按device_entity_key或bound_entity_key取按采集时间倒序的最近200条设备记录，并附原件引用、可用性、缺口和检索说明。设备记录仍是独立类别，不伪造视觉断言。当前原件须存在且哈希一致，图像/视频须处理成功，才能标技术证据可用于后续推理；reference_only、withdrawn、missing、unreadable、hash_mismatch、media_failed/unavailable均明确区分。有效性检查可能读取原件，会增加大记录包的I/O成本，生产需缓存和异步校验。
+
+Mutation幂等重放返回历史提交回执；想判断当前证据能否使用，应重新GET记录或证据包。技术可用性不等于事实可信度、质量认证或因果成立。溯源发布仍经过现有审核及白名单，新增设备证据不会自动公开现场原图或内部设备信息。
+
+八、与梁子湖现有系统的接轨
+
+详见 DEVICE_PLATFORM_MAPPING.txt。首批现场验收建议：一个已授权田块、一台摄像头、一个闸门，只读联调。核实原平台对象/设备ID、摄像头协议、原件下载授权、闸门状态枚举/开度单位/时间语义、幂等事件ID和API权限。逐项验证正常采集、重点窗口、断网重试、重复事件、错误图片、未知状态、设备断线和证据撤回；与原平台画面/状态人工逐条核对。
+
+当前已实现通用API、网关程序及本地闭环；未获得厂家协议/地址/凭据，未连接真实农场设备。PostgreSQL、TLS部署、生产统一身份和性能/恢复门槛仍待验收。禁止把合成测试通过写成现场验收通过。

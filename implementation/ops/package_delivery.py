@@ -5,9 +5,9 @@ import json
 import zipfile
 
 BASE=Path(__file__).resolve().parents[1]
-OUTPUT=BASE.parent / '交付文档' / '梁子湖农业本体与溯源系统_本地工程版_v0.1.zip'
+OUTPUT=BASE.parent / '交付文档' / '梁子湖农业本体与溯源系统_本地工程版_v0.2.zip'
 DIRECTORIES=('agri','migrations','contracts','web','ops','tests')
-FILES=('README.txt','LEGACY_KIMI.txt','验证结果.txt','启动说明.txt','启动系统.cmd','run_server.py','requirements.txt','requirements-postgresql.txt','PLATFORM_INTEGRATION.txt','IMPLEMENTATION_STATUS.json','database-gate.json','.gitignore')
+FILES=('README.txt','LEGACY_KIMI.txt','验证结果.txt','启动说明.txt','启动系统.cmd','run_server.py','requirements.txt','requirements-postgresql.txt','requirements-media.txt','PLATFORM_INTEGRATION.txt','DEVICE_PLATFORM_MAPPING.txt','DATA_INTAKE_GUIDE.txt','IMPLEMENTATION_STATUS.json','database-gate.json','.gitignore')
 SUFFIXES={'.py','.sql','.json','.html','.css','.js','.cjs','.txt','.xml','.png'}
 
 def collect():
@@ -24,7 +24,7 @@ def collect():
                 continue
             if path.is_file() and path.suffix in SUFFIXES:
                 files.append(path)
-    for name in ('api-contract-check.json','environment-status.json','sqlite-adapter-check.json','sqlite-backup-check.json'):
+    for name in ('api-contract-check.json','environment-status.json','sqlite-adapter-check.json','sqlite-backup-check.json','http-intake-check.json'):
         path=BASE/'runtime'/name
         if path.is_file(): files.append(path)
     return sorted(set(files),key=lambda p:p.relative_to(BASE).as_posix())
@@ -33,7 +33,7 @@ def collect():
 def main():
     selected=collect()
     OUTPUT.parent.mkdir(exist_ok=True)
-    manifest={'format':'agri-source-release/1','version':'0.1.0','excludes':['live databases','raw evidence assets','tokens and passwords','Kimi runtime and historical logs','downloaded dependencies','PostgreSQL binaries'],'files':[]}
+    manifest={'format':'agri-source-release/1','version':'0.2.0','excludes':['live databases','raw evidence assets','tokens and passwords','Kimi runtime and historical logs','downloaded dependencies','PostgreSQL binaries'],'files':[]}
     with zipfile.ZipFile(OUTPUT,'w',compression=zipfile.ZIP_DEFLATED) as archive:
         for path in selected:
             relative=path.relative_to(BASE).as_posix()

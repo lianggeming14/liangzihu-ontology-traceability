@@ -1,31 +1,92 @@
-梁子湖农业本体库与产品溯源系统 — 本地工程版 0.1
+梁子湖农业本体库与产品溯源系统 — 本地工程版 v0.2
+更新日期：2026 年 10 月 13 日
 
-执行方式：已按用户指示改用当前模型完成，Kimi 不再参与。
+执行方式：使用当前模型完成，Kimi 不再参与。
 
-1. 双击同目录的“启动系统.cmd”。
-   脚本使用本机 C:/ProgramData/anaconda3/python.exe，启动后打开 http://127.0.0.1:8787。
-   保持终端窗口打开；结束时在窗口按 Ctrl+C。端口被占用可运行：
-   python run_server.py --port 8790 --open-browser
+1. 启动与停止
+   双击同目录“启动系统.cmd”。脚本使用本机 C:/ProgramData/anaconda3/python.exe，
+   启动后打开 http://127.0.0.1:8787/。保持终端窗口打开；按 Ctrl+C 停止。
+   端口被占用时，可在 implementation 目录运行：
+   C:/ProgramData/anaconda3/python.exe -X utf8 run_server.py --port 8790 --open-browser
+   本轮已通过真实 HTTP 检查：8787 端口健康接口与首页成功返回。
+   检查成功不表示交付后存在自动后台服务；每次使用仍需启动进程。
 
-2. 首次界面点击“连接工作台”，选择管理员。合成数据包括虾稻、蔬菜、禽蛋。
-   对象与关系：登记对象、展开多维关系、查看证据包。
-   批次与溯源：查看生产与物料谱系、登记事件、发布、查看公众页和二维码。
-   证据与审核：上传原件、检查断言、撤回证据。
-   本体与接入：注册领域包、对象集、接入结构化记录。
+2. 连接与界面入口
+   首次进入点击“连接工作台”，在本机演示模式下选择管理员。
+   演示数据包含虾稻、蔬菜、禽蛋；所有示例均为合成记录。
 
-3. 数据保存到 data/agri.db，重复启动不会重复灌入演示记录。
-   不要把合成演示当作农产品认证或真实农场记录。
-   二维码默认编码本机地址，手机不能从其他设备访问该回环地址。
+   数据接入：
+   - “填写观测”：选择对象、指标、数值、单位、时间和方法，再填写说明。
+     原始填报内容自动形成证据，不必先另行上传附件；仍可附加已有原件。
+   - “记录事件”：巡检、灌排、维护和异常；也可填写采收、加工等物料事件。
+   - “记录情况”：保存文字候选陈述，审核与公开发布另行完成。
+   - “上传原始材料”：保存原图、视频和报告；默认请求上限 32 MiB。
+     图片完成尺寸、亮度、对比度等基础处理后可查看鉴权预览。
+     基础文件和画面处理不等于病虫害识别、作物诊断或产品合格判定。
+   - “登记设备”：选择摄像头或闸门状态接口，填写来源和外部设备编号，绑定对象。
+   - “新增采集计划”：设置常规间隔、起止时间和重点观察时段，可停用或启用。
+   - “查看待采集”：查询不超过 7 天的未完成采集时点，翻页保留相同时间范围。
+   - “补录设备记录”：保存摄像头原件或闸门状态及开度，保留来源证据。
 
-4. API 契约：contracts/openapi.json；运行后访问 /api/v1/openapi.json。
-   私有接口需要 Bearer Token；首次启动生成 data/api-tokens.json，请勿公开。
-   写接口需要 Idempotency-Key。公开接口 /api/v1/public/trace/{code} 只输出白名单字段。
+   本体管理：
+   通过字段化表单注册领域包、类型与关系定义；为对象赋予语义类型、登记限定关系。
+   动态对象集支持身份类型与名称条件；快照对象集支持跨页选择成员并固定成员版本。
+   对象选择器支持全库名称搜索及分页，不受首页前 200 项的显示范围限制。
+   高级 JSON 表单仍保留，日常录入无需手写 JSON。
 
-5. 完整使用、备份恢复、接口和能力边界见 README.txt；
-   梁子湖原平台接入步骤见 PLATFORM_INTEGRATION.txt；
-   PostgreSQL 环境步骤见 ops/POSTGRESQL_SETUP.txt。
+   对象与关系：登记对象，按多维关系查看网络、详情和证据包。
+   批次与溯源：查看谱系，登记物料事件，审核发布，查看公众页和二维码。
+   证据与审核：检查原件与候选断言；有权限时可审核、撤回证据或登记召回。
 
-验证边界：本环境禁止监听本机端口，因此没有保持运行中的服务器。
-已用实际 Flask 请求及独立 SQLite 库完成浏览器联调。正常终端监听启动仍需在本机执行。
-本版尚未接入真实农场、实时摄像头/传感器、第三方模型服务；PostgreSQL 实库测试尚未通过验收。
-历史 KIMI_TASK_*、run_kimi_isolated.py 和 Kimi 日志仅为早期记录，不是当前入口。
+3. 设备 API 与边缘网关
+   设备登记不是自动拉流，也不会控制闸门。
+   设备详情可复制设备 ID，并查看供接口人员使用的回传请求示例。
+   需由运维将设备 ID 配置到 ops/edge_gateway.example.json 的受控副本中，
+   按只读 HTTP 快照、RTSP 取帧或闸门 JSON 方式适配。地址与令牌通过环境变量提供。
+   示例设备默认停用；现场连接和协议映射尚未验收。
+
+   仅校验配置、不访问设备：
+   C:/ProgramData/anaconda3/python.exe ops/edge_gateway.py --config ops/edge_gateway.example.json --validate
+
+   完成配置后显式选择 --once 或 --loop；默认启动脚本不会自动运行网关。
+   当前 FFMPEG_BIN 未配置，视频原件可保存，但实际视频解码和 RTSP 取帧未验证。
+   未完成媒体处理时界面会明确显示状态，不能当作已成功识别。
+
+4. 保存、重试与公开数据
+   数据保存在 data/agri.db；重复启动不会重复灌入演示记录。
+   同一表单内容不变时，重试会复用幂等标识；写入成功后丢失回执也不应重复登记。
+   批量接入部分失败时，仅修正失败条目，保持顺序和成功条目的原内容；新业务另开表单。
+   刷新失败与列表截断均有持续提示，不能把未加载的数据视作不存在。
+   不要把合成演示当作真实农场记录、农产品认证或食品质量证明。
+   二维码默认指向本机回环地址；手机不能据此访问电脑，需要正式可达部署地址。
+
+5. 接口与授权
+   运行后查看 /api/v1/openapi.json；受保护接口需要受控身份或 Bearer Token。
+   首次启动生成 data/api-tokens.json，访问令牌不得公开或写入版本库。
+   写请求须有 Idempotency-Key；接口载荷以 OpenAPI 和契约文件为准。
+
+   人工接入：POST /api/v1/ingestion/manual
+   标准记录：POST /api/v1/ingestion/records
+   原件上传：POST /api/v1/ingestion/assets
+   设备登记：GET/POST /api/v1/devices
+   采集计划：GET/POST /api/v1/device-policies
+   启停计划：POST /api/v1/device-policies/{id}/status
+   采集记录：GET/POST /api/v1/device-records
+   待采安排：GET /api/v1/device-captures/due
+   鉴权预览：GET /api/v1/evidence/{id}/preview?frame=0
+   公开溯源：GET /api/v1/public/trace/{code}，只输出白名单字段。
+
+6. 验证范围与进一步说明
+   本轮本机 HTTP 8787 端口的健康与首页检查已通过。
+   v0.2 新增 15 项浏览器流程通过真实 Flask 桥接和隔离 SQLite/原件目录验证；
+   既有浏览器回归也通过。上述流程使用合成样例，不是农场现场或生产部署验收。
+   现场设备、PostgreSQL 实库、TLS、公网及真实消费者扫码可达性尚未验收。
+   FFmpeg 未配置，实际视频解码未验证。最终测试总数及跳过项以状态文件为准。
+
+   完整功能、权限、接口、备份恢复和边界：README.txt
+   当前验收状态：IMPLEMENTATION_STATUS.json、database-gate.json
+   新增浏览器结果：tests/browser/structured-result.json
+   原平台对接步骤：PLATFORM_INTEGRATION.txt
+   PostgreSQL 环境步骤：ops/POSTGRESQL_SETUP.txt
+
+   历史 KIMI_TASK_*、run_kimi_isolated.py 和 Kimi 日志仅为早期记录，不是当前入口。

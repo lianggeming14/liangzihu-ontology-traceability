@@ -3,3 +3,9 @@ jsonschema==4.23.0
 pytest==7.4.4
 # PostgreSQL driver is optional for local SQLite development
 # psycopg[binary]==3.3.6
+
+# Image inspection / private JPEG previews (validated locally with Pillow 10.4.0)
+Pillow>=10.4,<13
+
+# Read-only edge HTTP adapter (validated locally with requests 2.32.3)
+requests>=2.32.3,<3

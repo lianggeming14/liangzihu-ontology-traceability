@@ -1,0 +1,387 @@
+梁子湖平台设备契约映射与只读边缘网关实施说明
+版本：2026-10-13；执行：当前模型；Kimi 已退出本次建设。
+适用范围：implementation 工程版；摄像头定时单帧、闸门状态接收及后续农业数据接入。
+本文将“源码已验证”“本地工程测试”“厂家/现场待确认”分开记录，不代表现场设备已连通。
+
+一、核对范围与证据
+
+1. 本地原平台只读核对
+路径：
+C:/Users/robot/Desktop/feishu_xinyuan/AgriTwin-Liangzihu/research/liangzihu-farm-platform
+该目录为 101 个文件的研究摘录，不是完整仓库。核对了项目规则、README、文档索引、
+002_registry.sql、003_telemetry.sql、registry/devices.ts、registry/points.ts、
+telemetry/types.ts、identity.ts、ingest.ts、renke-pull.ts、quality.ts、queries.ts、
+points/[id]/readings 路由及“1b与1c真实联调交接”契约文档。
+摄像头与控制模块在该本地摘录中缺失，不能由此推断公开仓库没有相应代码。
+
+2. 公开原仓库只读核对
+仓库及 README：
+https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform
+截至本次核对，README 主体及后续追加说明区分“本地工程验证”与“真实设备联调”；
+2026-10-04 升级说明仍指出真实闸门执行适配器 G15 未实现。
+浏览器公开 main 文件页核对到：
+https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/src/modules/cameras/service.ts
+https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/src/modules/cameras/readonly.ts
+https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/src/modules/control/records.ts
+前两者文件页显示的最近文件提交为 b4acff3b0985d8c5df88831f4bfcddbd3e5dc4af；
+控制文件页显示为 495a1c396f306c7cd24deef8eee6081e4ddf13ab。
+这只是公开源码页面核验，不代表完整仓库 HEAD、实际部署版本或厂商线上行为已核验。
+
+3. 已执行与未执行
+已执行：只读源代码调查、编写独立网关、配置静态校验、24 项网关测试。
+测试包含实际 Flask 应用及独立 SQLite 临时库的资产上传与设备记录事务；设备 HTTP
+响应及 RTSP 单帧来自受控合成测试数据。没有调用真实摄像头、闸门、云厂商账户。
+未执行：原平台部署/配置更改、现场设备访问、开关闸、云端消息订阅、
+ONVIF 探测、真实 RTSP 解码、PG 集成验收、现场网络监听服务验收。
+当前环境没有可用 FFmpeg/cv2；本任务没有安装它们，也没有自动安装后台采集任务。
+
+二、系统职责与接入方向
+
+原梁子湖平台负责既有设备台账、现场点位、原始采集和原有业务工作流。本体库负责
+跨来源稳定身份、语义映射、证据关联、限定关系、事件时态、候选结论、修订与追溯。
+设备接入是本体库的一种输入，不是把现有平台所有表直接搬进图数据库。
+
+推荐数据方向：
+（A）原平台已接通的设备：
+原平台原始回执/验证后的导出 API → 受控平台适配器 → 原件资产 → 设备记录/观测
+→ 证据和本体关系 → 内部推理与审核 → 经发布审核的农业溯源结果。
+（B）尚未进入原平台、协议已确认的设备：
+设备只读 HTTP/RTSP → 本说明的边缘网关 → 同一接入 API 和证据链。
+选择单一采集责任方；同一物理设备不同时由多个无协调采集器重复消费收费抓拍额度。
+平台适配器、直接设备网关均不能直接写本体业务数据库或越过租户 API 权限。
+
+本期网关只读取源数据。向本体服务发出的 POST 是资产和记录入库，不是给设备下发命令。
+网关没有云台、预置点、闸门开闭、电机控制或自动执行农业决策的接口。
+农业溯源公开页只消费审核发布后的脱敏数据，不能直接暴露设备流地址、密钥、
+原始私有 JSON、内部证据下载 URL 或尚未审核的模型结论。
+
+三、原平台字段到本体库的明确映射
+
+1. 农场、田块、池塘、渠道与设施
+原平台 objects：
+id、parent_id、code、name、kind(farm/pond/field/channel/facility)、
+boundary_status(unknown/draft/verified)、boundary、来源及版本字段。
+映射建议：
+- 原 id 保存为命名空间化外部身份 original-platform:objects:<id>；本体 entity_key 独立。
+- code/name 分别作业务编码/显示名，不把显示名当唯一身份。
+- kind 映射稳定实体身份类型；水稻、小龙虾、其他作物等分类由可扩展领域语义声明表达。
+- parent_id 只对应空间或管理隶属关系，不能据此生成物料来源或因果关系。
+- boundary 保留坐标参考系、原件及版本；draft/unknown 不能提升为 verified。
+- 原平台的 UUID 与本体 UUID 字符串相同也不自动认定为同一身份。
+原平台范围对象到本体实体的映射表应至少记录：
+tenant、source_namespace、source_object_id、entity_key、mapping_version、
+valid_from/valid_to、验证依据及操作者。该完整平台映射表属于后续专用适配工作，
+本期网关配置只接受已经登记并绑定本体对象的 device_id。
+
+2. 数据源、设备及摄像头通道
+原 data_sources：id、object_id、code、name、provider、contract_ref、verified。
+原 devices：id、object_id、source_id、external_id、name、kind、
+parent_device_id、model、serial_number、source、verified；
+kind 为 physical/gateway/camera_channel；(source_id, external_id) 唯一。
+camera_channel 必须绑定父设备，不能把一个摄像头通道和物理摄像机重复当作同一对象。
+映射到本体登记 API：
+POST /api/v1/devices
+{
+  "name": "经核实的设备显示名",
+  "device_kind": "camera 或 gate",
+  "source_id": "稳定来源命名空间",
+  "external_device_id": "该来源内稳定编号",
+  "bound_entity_key": "已存在的农场/田块/池塘等对象 UUID"
+}
+返回 id 是本体设备登记标识，供网关 device_id 使用；
+device_entity_key 是设备本体身份，bound_entity_key 是监测对象，两者不可互换。
+已有 device 实体可通过 device_entity_key 关联；不能把被监测田块本身当作设备身份。
+父设备、通道关系、型号与固件可进入设备属性/限定关系和来源证据；当前登记 API
+不等于已经实现原平台设备台账的完整自动同步。
+原 verified 只有携带合同版本、对应验证证据后才可在映射审核中采用，不能复制布尔值
+就宣布本体端或现场端已经验证。source_id 应在设备登记和网关原件来源设置中保持一致。
+
+3. 点位、历史绑定与普通 IoT 观测
+原 points：id、device_id、code、name、metric、unit、
+max_age_ms、max_gap_ms、timing_source。
+原 point_bindings：point_id、object_id、valid_from、valid_to、verified、evidence，
+区间语义为 [valid_from, valid_to)，禁止相同点位时间区间重叠。
+本体映射：
+- point 的身份独立于 metric；同一指标可由多台设备、多个点位测量。
+- metric 映射 property_id/可观测性质；unit 显式映射标准单位并保留原值和转换规则版本。
+- sampledAt 决定该次观测的历史对象绑定，不能用“现在在哪个田块”覆盖过去的归属。
+- max_age_ms 是新鲜度阈值，max_gap_ms 是缺测判断依据，不能把过期有效值当作最新实况。
+- 时态绑定映射为有有效区间、有来源证据的限定关系。当前设备登记仅持有绑定对象，
+  不足以无损替代原平台全部历史 point_bindings；大批量历史导入须补专用映射层。
+普通温湿度、水质、土壤、气象等走 /api/v1/ingestion/records 的通用观测契约；
+本期 edge_gateway.py 只实现摄像头和闸门，不冒充已实现全部 IoT 厂商采集协议。
+
+原 ReadingInput 对应要求：
+sourceId                → 来源命名空间
+sourceRecordId          → 来源内记录身份，保留原值和作用域
+externalDeviceId/pointId→ 分别映射设备/点位身份
+metric/unit             → 性质定义与单位契约
+sampledAt               → 观测有效时间；来源缺失时不可伪造
+reportedAt/receivedAt   → 来源上报时间/系统接收时间，与 sampledAt 分开
+sequence                → 来源内序列，参与缺少来源记录号时的身份判定
+rawValue/value          → 原始值/规范化值，保持转换证据
+quality/reasons         → 原来源质量与原因，不静默改为 valid
+origin                  → live/history/manual，不能当成相同测量方式
+rawRef/mappingVersion   → 原始回执证据、转换活动及映射规则版本
+
+原平台已有去重、冲突标记、隔离、质量规则和追加记录机制。接入本体后应保留其冲突
+状态及每份内容，不采用“最新上报覆盖所有旧值”。厂家来源优先级不等于绝对真实性；
+来源可靠度、时空适用范围、单位兼容、校准状态、证据与冲突必须共同参与采用审核。
+
+4. 原平台历史读取 API 的边界
+已核对 GET /api/v1/points/{id}/readings?from&to&cursor&limit。
+默认最近 24 小时，最大 31 天；limit 默认 200、最大 500；按 sampled_at/id 游标分页。
+返回 point、items、current、dataState、communication、gaps、maintenance、manualChecks。
+items 包含观测 id、对象/点位、采样/上报/接收时间、原值/值/单位/指标、质量、原因、
+冲突、binding_id、raw_ref、origin、canonical 等。
+重要限制：
+- 当前该读取投影不完整提供 source_record_id、external_device_id、head_id、
+  合同快照等字段，不能当作无损 CDC 导出契约。
+- 如用其做 MVP 导入，应以平台实例+原 observation.id 建立外部记录身份，
+  明确缺失字段，不从时间和值反推本来不存在的来源记录号。
+- communication 通信成功不代表测量值有效/新鲜；两种状态分别保留。
+- 分页查询中看到的 gaps 不能无条件解释成全时间范围的完整缺测清单。
+后续应与原平台维护方约定专用只读导出/变更游标和证据下载授权，再做自动增量同步。
+本期没有调用该原平台历史接口，没有取得其生产凭据。
+
+5. 摄像头事件、抓拍与媒体
+公开 camera service 已验证：
+receiveCameraEvent 接收 deviceId、externalEventId、contractVersion、occurredAt、
+eventType；按来源+externalEventId 去重，内容变化报冲突；事件产生待人工复核告警，
+图像可处于待补充状态。attachCameraImage 将摄像头事件与同对象、已完成入库的
+image MIME 私有资产关联；另一个资产不能静默覆盖已关联原件。
+本体映射应分成：
+- CameraEvent：事件身份、发生时间、类型、合同版本、原始 payload/hash；
+- Evidence/MediaAsset：独立原件身份、SHA、媒体类型、私有位置与接收信息；
+- ImageAssessment：后续识别输出、模型版本、输入资产、候选结果与审核状态；
+- EventParticipation/证据关系：设备观察哪个对象、哪份原件支持哪个具体断言。
+“触发告警”不等于“农业事实已经成立”；“下载到图片”不等于“图片曝光时间已验证”。
+
+公开 readonly.ts 是受验证能力约束的 Ezviz 只读能力，核对到 live/playback/capture、
+通道 1..256、型号/固件、合同版本、人工证据、月调用预算、抓拍间隔和配置版本；
+生产调用还受 CAMERA_READS_ENABLED 等开关及 worker 检查约束。
+原平台抓拍原件私有存储；流代理路由为 /api/v1/cameras/streams/{readId}，
+鉴权 HLS 代理不等于给第三方一个永久裸流地址。
+preset 被拒绝。Hikvision/ONVIF/RTSP 不能仅因品牌或型号相似就套用 Ezviz 协议。
+原仓库深层 REST 调度路由未逐个核验，本文不编造“可直接请求”的摄像头任务端点。
+本期网关 HTTP 快照适配器只接受返回 JPEG/PNG 字节的只读 GET 地址，
+不直接兼容需要签名 POST、SDK、二步临时 URL、令牌刷新或专有加密的所有厂家接口。
+
+6. 闸门状态与五层控制反馈
+原控制记录分别保留申请/设备收到/电气/机械/效果等层级；vendor_receipt 和
+field_observation 是不同证据来源；observed/not_observed/unknown 不能混同。
+requestControl 明确加入“缺少已联合验收驱动”阻断原因，记录申请不发送命令。
+本体应将以下对象区分：
+CommandRequest（申请）→ DeviceAcknowledgement（收到）→ ElectricalObservation
+（通电/电流）→ MechanicalObservation（开度/位置）→ HydrologicalObservation
+（水位/流量/实际效果），每一步需要自己的事件、时间和证据。
+本期 gate_status 仅接收 state 与可选 position_pct。不能用设备“已收到”推断闸门已开，
+不能用开度推断实际水流，也不能为遥测伪造一条已执行控制事件。
+状态字段与开度字段冲突时拒绝本次规范化并保留本地失败诊断，禁止悄悄选一方。
+未映射状态记 unknown；即使 position_pct 为 100，也不据此自动改成 open。
+
+四、本期可运行 API 与网关
+
+1. 文件
+ops/edge_gateway.py：命令行只读采集器，HTTP 快照、可选 RTSP 单帧、HTTP 闸门 JSON。
+ops/edge_gateway.example.json：全部设备默认 disabled 的配置模板，无真实 URL/秘密值。
+tests/test_edge_gateway.py：受控响应与真实 Flask/SQLite 联调回归。
+本期运行依赖 Python、requests、Pillow；RTSP 另需管理员准备的 FFmpeg 可执行文件。
+当前机器未验证 FFmpeg 可用，未进行任何真实摄像头或闸门连接。
+
+2. 服务端设备计划
+登记设备后创建策略：
+POST /api/v1/device-policies
+{
+  "device_id": "<登记返回的 id>",
+  "name": "采集策略名",
+  "record_type": "camera_snapshot 或 gate_status",
+  "start_at": "<带时区 ISO 时间>",
+  "interval_seconds": 60,
+  "focus_windows": []
+}
+重点时间窗的完整字段以服务端当前契约和界面为准；网关消费服务端算出的 focus，
+不在网关复制一套生育期或时区计算规则。
+停用策略使用 POST /api/v1/device-policies/{policy_id}/status，具体 body 以 OpenAPI 为准。
+计划本身不会自动启动采集；due 返回 planning_only 是设计边界，不是“已拍摄”。
+
+读取待采集：
+GET /api/v1/device-captures/due?since=<UTC>&as_of=<UTC>&device_id=<UUID>&limit=500&offset=0
+data.items[]：
+slot_id、slot_at、policy_id、device_id、record_type、priority(routine/focus)、focus_labels。
+还有 has_more/truncated/next_offset、查询边界、total_pending、execution_status。
+服务端只返回未收到记录的计划槽；并发到达记录会影响 offset，不能固定翻页后假定
+期间列表不变。本期网关每轮只看短窗口第一页；遇截断拒绝本轮选择并报
+due_window_too_dense，要求减小窗口/策略密度，不从不完整列表推断最新槽。
+
+上传原件：
+POST /api/v1/ingestion/assets，multipart file/source_kind/source_id/public_summary。
+image 使用 source_kind=image；闸门原 JSON 使用 official_api。
+public_summary 留空；回执 data.id 是 evidence_ids 所需证据 UUID。
+服务端图片/视频预处理是后续媒体链能力；网关本身不承诺作物检测或闸门视觉识别。
+
+提交记录：
+POST /api/v1/device-records
+{
+  "device_id": "<UUID>",
+  "source_record_id": "<稳定 slot_id>",
+  "record_type": "camera_snapshot 或 gate_status",
+  "captured_at": "<实际来源时间或明确标注的抓取时间>",
+  "evidence_ids": ["<资产回执 data.id>"],
+  "data": {},
+  "policy_id": "<UUID>",
+  "slot_at": "<计划槽时间>",
+  "priority": "routine 或 focus",
+  "note": "<时间依据、mapping_version、fetched_at>"
+}
+camera_snapshot 的 data 为空对象；gate_status 的 data 仅含
+state(open/closed/partial/unknown)、可选 position_pct 十进制字符串 0..100。
+状态和位置同时存在时：open 必须 100、closed 必须 0、partial 必须严格在 0 与 100 之间；
+unknown 可以保留位置但不推导状态。转换后最多九位小数，超精度拒绝而非静默舍入。
+本期服务把闸门状态/开度形成设备观测，仍是设备上报，不代表现场真值或控制已完成。
+同来源记录身份且内容相同可重试；同身份不同内容返回冲突。不同来源记录占同一槽也拒绝。
+请求还带稳定 Idempotency-Key，避免网络重试产生重复事件和审计。
+策略停用不会给新记录绕过策略校验；已完成原请求的原内容重放按服务端幂等规则处理。
+
+3. 配置字段与时间语义
+api_base_url_env/api_token_env：本体 API 基地址和 Bearer token 的环境变量名称。
+device_id：已登记设备 UUID；url_env/token_env：只读源地址/可选 Bearer token 的变量名称。
+source_id：稳定来源命名空间；mapping_version：厂家字段映射版本。
+state_field/position_field/timestamp_field 支持点分对象路径，不支持 JSON 数组索引或任意代码。
+state_map 必须显式列出厂家原状态到规范状态的映射。缺失或未知映射归 unknown。
+position_pct = raw_position * position_scale + position_offset。
+模板 scale=100 只是示范“原开度 0..1 转百分比”；厂家若已给 0..100，应改为 1。
+这不是已核实的厂家协议，不能原样套到生产设备。
+timestamp_field 若配置，字段必须有有效带时区时间；缺失或无时区视为接入失败。
+不配置时 captured_at 使用响应完成时刻，note 明示
+fetch_time_not_verified_measurement_time；相机没有厂商曝光时间时明示
+fetch_time_not_verified_exposure_time。必须保留 slot_at 与 captured_at 的差异，
+不能把此刻抓到的图片写成昨天漏采的历史图片。原 JSON 保留厂商状态与时间原值。
+对 vendor_timestamp 只表示字段按合同解释，仍需校准设备时钟和延迟；不据此自动授予高可信度。
+
+4. 运行步骤（从 implementation 目录）
+（1）运行本体服务，使用已配置的同租户接入身份；在系统中登记真实设备与采集策略。
+（2）复制示例到 implementation/data/edge-gateway.local.json，由操作人员填写真实
+device_id、来源命名空间及经核实字段映射，把需要运行的设备 enabled 改为 true。
+保持全部 URL/token 为环境变量引用；不要把秘密写入 JSON、仓库或截图。
+（3）由部署人员在当前进程环境安全提供引用的地址和凭据。示例名称包括
+ONTOLOGY_API_BASE_URL、ONTOLOGY_API_TOKEN、FARM_CAMERA_SNAPSHOT_URL、
+FARM_CAMERA_READ_TOKEN、FARM_CAMERA_RTSP_URL、FARM_GATE_TELEMETRY_URL、
+FARM_GATE_READ_TOKEN；使用不到的变量无需提供。
+本体基地址只接受 origin，不包含路径/查询；本地开发可用 HTTP，部署跨主机应使用 TLS。
+HTTP 来源禁止 URL 内 user:password，采用受控 Bearer header；不支持任意签名算法。
+（4）仅检查配置形状，无网络、无采集、不会读取 URL/token 的实际值：
+python -B -X utf8 ops/edge_gateway.py --config ops/edge_gateway.example.json --validate
+（5）完成环境和字段配置后显式执行一轮：
+python -B -X utf8 ops/edge_gateway.py --config data/edge-gateway.local.json --once
+（6）明确需要持续采集时显式前台运行：
+python -B -X utf8 ops/edge_gateway.py --config data/edge-gateway.local.json --loop
+Ctrl+C 退出。没有安装 Windows 服务、计划任务或后台常驻进程。
+当前参考解释器为 C:/ProgramData/anaconda3/python.exe；命令中的 python 可替换为它。
+--once 返回的是一轮执行；退出码 0 不等于全部投递成功，仍需检查 JSON 的 errors、
+pending_or_failed、expired_without_capture、delivered 及本地 outbox。
+configuration valid 只表示配置形状通过，不表示环境变量已配置或厂家设备可连接。
+
+RTSP 额外步骤：
+FFMPEG_BIN 必须显式指向受信任的绝对可执行文件路径。未设置或文件不存在会保留失败
+诊断，不尝试自动下载/安装。网关每次仅取一帧 JPEG，禁止把它描述为完整录像采集。
+若 RTSP 地址含账户信息，只存在部署环境引用；本工具不打印命令和 stderr，
+但该 URL 会成为本机子进程参数，需通过运行账户和主机权限控制其可见性。
+本期没有 ONVIF 自动发现，没有 PTZ/预置点调用，也没有 Hikvision/Ezviz 签名 SDK。
+
+5. 调度、持久化与失败处理
+默认 poll=30 秒、lookback=120 秒、max_slot_age=120 秒。
+每台设备每轮最多新增一次采样：优先当前候选 focus，再选相同优先级中的最新槽。
+本地水位记录本轮已考虑的最新槽，防止下一轮用当前帧持续补拍旧槽。
+这是一种“近期优先，过期留缺口”的 MVP，不能保证每个历史计划槽都得到照片。
+未执行的槽不伪造已完成，平台仍保留计划/缺口；一期未实现逐槽跳过回执或全量历史回放。
+
+默认状态目录 implementation/data/edge-gateway，SQLite outbox 保存：
+slot/稳定请求 key → capture_pending → asset_pending → record_pending → delivered。
+成功抓取后原始字节、准确 captured_at、完整记录 body 先落本地事务，再发送。
+资产和记录分别使用稳定 key；进程重启后使用相同字节/body/key，不能重新抓一张图替换。
+记录确认成功才清除本地待发 blob；失败不丢待发内容，按指数延迟重试。
+尚未成功抓取就过期的任务记 expired_no_capture，保留诊断，不继续补拍历史。
+已经抓取但未送达的任务即便经过时间窗仍投递原件；保留真实取样时间。
+停用本地设备会阻断该设备待发投递并保留待发，不在后台继续发送。
+服务端永久 4xx/映射失败需要维护人员核对，不能靠重试自动“修好”；
+本期没有管理界面自动编辑 outbox、自动死信删除或无限制存储保留承诺。
+
+默认图片/JSON 单件上限 1.5 MiB，待发 200 条、待发 blob 总量 100 MiB；
+超额在抓取前阻止并保留任务，避免先读设备后丢掉已知容量无法保存的内容。
+图片仅接受 JPEG/PNG，解码验证且最多 2000 万像素。
+网关限制独立于本体服务器较大的媒体上限；需要大图/视频应另建评审后的专用适配。
+状态数据库历史元数据仍会增长；维护保留周期、磁盘监控和归档由运维安排。
+同一 outbox 有本机进程互斥锁；不同机器/不同目录之间没有分布式租约。
+必须给每台设备指定一个采集责任方，否则仍可能重复抓拍、计费或产生同槽内容冲突。
+
+HTTP 超时默认 15 秒；请求禁止重定向、禁用隐式环境代理/凭据和跨请求 cookie jar。
+源 GET、API POST 均有响应大小上限；错误日志只包含固定代码，不打印 URL/token。
+闸门 JSON 检查高置信凭据格式和敏感键，命中则拒绝原件归档。
+这不是通用 DLP：原始 JSON、图片仍可能含业务敏感内容，接入合同应限定允许字段与采集范围。
+本机时钟必须同步，访问令牌必须限租户/权限；工程版静态 token 不是完整生产 IAM。
+
+6. 备份与恢复
+主数据库、data/assets 原件、领域契约/配置、网关 outbox 是不同恢复对象。
+ops/backup_sqlite.py 只针对业务 DB 的既定备份范围，不能当作网关/原件/密钥全系统备份。
+网关运行时不要直接复制 outbox.sqlite 单文件并漏掉 WAL。
+可停止网关、关闭连接并确认无写入后受控备份完整状态目录，或使用 SQLite backup API
+获得一致快照；恢复前保持同一环境/租户/设备身份和请求 key，并验证服务器原件仍存在。
+网关待发 blob 和原件属于受控运行数据，不上传代码仓库。
+部署秘密通过受控秘密管理流程备份；不要和项目 ZIP、示例 JSON 一起归档。
+本期未提供网关专用一键恢复命令，也未做硬盘损坏/断电故障注入验收。
+
+五、ONVIF、MQTT 与厂家专用 API 的后续边界
+
+1. ONVIF/摄像头厂家 API
+先核实厂商、型号、固件、是否有只读账户和真实支持的媒体 Profile。
+如确认支持，可另做只读 GetProfiles/GetSnapshotUri/GetStreamUri 适配并复用本体资产 API；
+不开展无授权广播扫描，不因协议支持而打开 PTZ/预置点/配置修改权限。
+厂家“抓拍 POST→短期 URL→下载”要有独立合约、签名、响应脱敏、下载目标允许列表、
+密钥引用、限额和确定的错误语义；不能将任意请求 body 拼入当前 GET 适配器。
+当前实现没有 ONVIF/MQTT 客户端，没有厂家签名、token 自动刷新或 SDK 联调。
+原平台 Ezviz 通道应优先使用其已审核的私有媒体/导出链，避免重复调用厂家。
+Webhook 需要另外验签、防重放、原文存证及来源身份隔离；本期轮询网关不承担 webhook 验签。
+
+2. 闸门 HTTP/MQTT
+已实现通用只读 HTTP JSON 状态适配，字段由显式 config 指定。
+未来 MQTT 适配需要：
+- broker TLS、指定只读 topic ACL、禁止 command topic 发布；
+- vendor deviceId/sequence/messageId、真实发生/上报/接收时间及单位契约；
+- QoS1 重复消息幂等，重连游标和持久队列，原始 payload/hash 与 mapping_version；
+- telemetry.state 与电源/继电器/闸位/流量分开建性质，断电/离线标 unknown；
+- retained 消息和历史重放不能充当新鲜现场测量；
+- 同一原事件变化内容形成冲突，不以最后一次覆盖所有证据。
+只读遥测接通也不授权闸门执行。本期没有实现实际 MQTT 消费器和生产控制链。
+
+3. 明确需要厂家/现场确认的信息
+- 每台设备型号、固件、物理/通道身份、真实绑定对象及历史移动记录；
+- 可用协议、访问路径、网络路由、只读账户/权限、TLS、签名与凭据安全交付方式；
+- 真实响应样本和协议文档：状态枚举、开度单位/缩放、时间字段/时区、空值、异常码；
+- 摄像头抓拍格式/加密、限额、延迟、真实曝光时间、RTSP/ONVIF 支持与合法授权；
+- 闸门 position 是命令目标值还是实测位置，状态来自设备回执还是人工观察；
+- 离线/停电/手动接管时的上报行为，厂家心跳是否等价于遥测；
+- 最大载荷、频率、保留期限、隐私范围、原平台导出权限与签名/合同版本。
+这些资料未提供前，模板映射只作为工程契约示例，不能标记为某厂家已适配。
+
+六、验收与下一步
+
+本次新增测试：
+python -B -X utf8 -m pytest tests/test_edge_gateway.py -q
+本次结果：24 passed。覆盖真实取样时间与计划分离、focus 优先、旧槽/视频跳过、
+截断拒绝、原件及 body/key 重启重试、显式闸门状态/单位/时间映射、
+未知状态不推断、精度/异常值/凭据/重定向/体积/图片验证、
+容量在抓取前阻断、过期不补帧、FFmpeg 缺失、进程锁，
+及摄像头/闸门两类实际 Flask→原件资产→设备记录→SQLite 的完整接收链。
+这是该模块局部结果；全仓回归结果由项目最终验收记录统一登记。
+--validate 已验证示例配置合法，configured_devices=3、enabled_devices=0、network_called=false。
+
+后续现场验收建议按设备逐项：
+1）确认合同、字段、原始样本与映射版本，补齐原平台对象/设备跨库身份表。
+2）先单设备 --once；核验原件 SHA、接收回执、来源身份、实际时间和 slot_time 差异。
+3）模拟超时/重启/重复上传，确认没有重复事实、没有用新图替换旧失败请求。
+4）核对空值、unknown、离线、坏时间、冲突单位与状态/位置矛盾。
+5）以人工现场观测对照一段有记录的样本，确认采样时间与语义，不以测试假数据替代。
+6）验证原件内部鉴权、公开 DTO 脱敏、候选推理审核、撤回/召回与证据可追溯。
+7）现场、厂商配额、真实网络及生产 PostgreSQL 验收通过后，再决定部署常驻采集。
+不把“数据库接受了数据”“静态配置检查通过”“模型输出候选结论”写成“已验证农业事实”。

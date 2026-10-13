@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "api_base_url_env": "ONTOLOGY_API_BASE_URL",
+  "api_token_env": "ONTOLOGY_API_TOKEN",
+  "state_directory": "data/edge-gateway",
+  "poll_seconds": 30,
+  "lookback_seconds": 120,
+  "max_slot_age_seconds": 120,
+  "http_timeout_seconds": 15,
+  "max_asset_bytes": 1572864,
+  "max_pending_jobs": 200,
+  "max_pending_bytes": 104857600,
+  "retry_base_seconds": 5,
+  "max_jobs_per_pass": 50,
+  "devices": [
+    {
+      "device_id": "00000000-0000-4000-8000-000000000001",
+      "adapter": "http_snapshot",
+      "enabled": false,
+      "url_env": "FARM_CAMERA_SNAPSHOT_URL",
+      "token_env": "FARM_CAMERA_READ_TOKEN",
+      "source_id": "edge-camera-example",
+      "mapping_version": "camera-contract-v1"
+    },
+    {
+      "device_id": "00000000-0000-4000-8000-000000000002",
+      "adapter": "rtsp_snapshot",
+      "enabled": false,
+      "url_env": "FARM_CAMERA_RTSP_URL",
+      "source_id": "edge-rtsp-example",
+      "mapping_version": "rtsp-contract-v1"
+    },
+    {
+      "device_id": "00000000-0000-4000-8000-000000000003",
+      "adapter": "http_gate_json",
+      "enabled": false,
+      "url_env": "FARM_GATE_TELEMETRY_URL",
+      "token_env": "FARM_GATE_READ_TOKEN",
+      "source_id": "edge-gate-example",
+      "mapping_version": "gate-contract-example-v1",
+      "state_field": "telemetry.state",
+      "position_field": "telemetry.opening",
+      "timestamp_field": "telemetry.sampled_at",
+      "state_map": {
+        "OPEN": "open",
+        "CLOSED": "closed",
+        "PARTIAL": "partial",
+        "UNKNOWN": "unknown"
+      },
+      "position_scale": "100",
+      "position_offset": "0"
+    }
+  ]
+}

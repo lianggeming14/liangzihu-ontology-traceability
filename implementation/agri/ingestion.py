@@ -4,7 +4,7 @@ import copy
 import hashlib
 import json
 from pathlib import Path
-from flask import Blueprint, request, jsonify, send_file
+from flask import Blueprint, request, jsonify, send_file, current_app
 from jsonschema import Draft202012Validator, FormatChecker
 
 SOURCE_KINDS = {'sensor', 'weather', 'image', 'video', 'remote_sensing', 'document', 'manual', 'official_api'}
@@ -85,12 +85,14 @@ def create_ingestion_blueprint(service, authenticate, base):
         kind = request.form.get('source_kind', 'document')
         if kind not in SOURCE_KINDS:
             raise DomainError(422, 'invalid_source_kind', '无效信源类别')
-        content = item.read()
+        content = item.read(current_app.config.get('ASSET_MAX_BYTES', 32 * 1024 * 1024) + 1)
+        if len(content) > current_app.config.get('ASSET_MAX_BYTES', 32 * 1024 * 1024):
+            raise DomainError(413, 'asset_too_large', '原始文件超过配置上限')
         if not content:
             raise DomainError(422, 'empty_asset', '不能上传空材料')
         digest = hashlib.sha256(content).hexdigest()
         tenant_dir = hashlib.sha256(who['tenant_id'].encode()).hexdigest()
-        folder = base / 'data' / 'assets' / tenant_dir
+        folder = Path(current_app.config.get('ASSET_ROOT', base / 'data' / 'assets')) / tenant_dir
         folder.mkdir(parents=True, exist_ok=True)
         path = folder / digest
         original_name = Path(item.filename or 'asset').name[:200]
@@ -104,7 +106,11 @@ def create_ingestion_blueprint(service, authenticate, base):
             with path.open('xb') as stream:
                 stream.write(content)
         except FileExistsError:
-            pass
+            if hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+                raise DomainError(409, 'asset_integrity_failed', '已有原始资产哈希不一致')
+        if kind in {'image','video'}:
+            from .media import inspect_media
+            evidence['metadata']['processing'] = inspect_media(path,kind,folder / 'derived')
         result = service.mutate('create_evidence', who['tenant_id'], who, evidence, key)
         return jsonify({'data': result})
 

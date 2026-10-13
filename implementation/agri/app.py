@@ -27,6 +27,10 @@ MUTATIONS = {
     '/trace/publications': 'publish',
     '/trace/recalls': 'recall',
     '/ontology/object-sets': 'create_object_set',
+    '/ingestion/manual': 'ingest_manual',
+    '/devices': 'register_device',
+    '/device-policies': 'create_capture_policy',
+    '/device-records': 'ingest_device_record',
 }
 QUERIES = {
     '/ontology/packages': 'packages',
@@ -44,6 +48,10 @@ QUERIES = {
     '/stats': 'stats',
     '/ontology/object-sets': 'object_sets',
     '/ontology/action-types': 'action_types',
+    '/devices': 'devices',
+    '/device-policies': 'capture_policies',
+    '/device-records': 'device_records',
+    '/device-captures/due': 'due_captures',
 }
 
 
@@ -58,7 +66,9 @@ def create_app(config=None):
         AUTH_TOKENS={},
         DEMO_MODE=os.getenv('AGRI_DEMO_MODE', '1') == '1',
         SECRET_KEY=os.getenv('AGRI_SESSION_SECRET') or secrets.token_hex(32),
-        MAX_CONTENT_LENGTH=2 * 1024 * 1024,
+        MAX_CONTENT_LENGTH=33 * 1024 * 1024,
+        ASSET_MAX_BYTES=32 * 1024 * 1024,
+        ASSET_ROOT=BASE / 'data' / 'assets',
         SESSION_COOKIE_HTTPONLY=True,
         SESSION_COOKIE_SAMESITE='Strict',
         SESSION_COOKIE_NAME='agri_session',
@@ -71,7 +81,7 @@ def create_app(config=None):
     service = app.config.get('SERVICE')
     if service is None:
         from .db import Database
-        from .service import Service
+        from .field_service import FieldService
         database_url = app.config['DATABASE_URL']
         if database_url.startswith('sqlite:'):
             from .sqlite_db import SQLiteDatabase
@@ -80,11 +90,17 @@ def create_app(config=None):
             db = Database(database_url, app.config['DB_SCHEMA'])
         if app.config.get('AUTO_MIGRATE', True):
             db.migrate()
-        service = Service(db)
+        service = FieldService(db)
         app.extensions['agri_db'] = db
+    if hasattr(service, 'db'):
+        from .field_service import FieldService
+        if not isinstance(service, FieldService): service = FieldService(service.db)
+        service.asset_root = Path(app.config['ASSET_ROOT'])
     app.extensions['agri_service'] = service
     schema_path = BASE / 'contracts' / 'input-schemas.json'
     schema_map = json.loads(schema_path.read_text(encoding='utf-8')) if schema_path.exists() else {}
+    from .device_ingestion import DEVICE_SCHEMAS
+    schema_map.update(DEVICE_SCHEMAS)
     validators = {name: Draft202012Validator(s, format_checker=FormatChecker()) for name, s in schema_map.items()}
 
     def fail(status, code, message, details=None):
@@ -96,6 +112,8 @@ def create_app(config=None):
     @app.before_request
     def assign_request_id():
         request.request_id = str(uuid.uuid4())
+        if request.path != '/api/v1/ingestion/assets' and request.content_length and request.content_length > 2 * 1024 * 1024:
+            return fail(413, 'json_too_large', '结构化请求上限2MiB；媒体请使用文件接入入口')
         host = urlsplit('http://' + request.host).hostname
         if host not in app.config['ALLOWED_HOSTS']:
             return fail(403, 'host_denied', '当前服务仅接受配置的主机名')
@@ -163,11 +181,15 @@ def create_app(config=None):
 
     def mutation(action):
         @protected
-        def handler():
+        def handler(**path_params):
             key = request.headers.get('Idempotency-Key', '')
             if not key or len(key) > 200:
                 return fail(422, 'idempotency_key_required', '写入需要长度不超过 200 的 Idempotency-Key')
             body = payload()
+            if path_params:
+                if any(k in body and body[k] != v for k,v in path_params.items()):
+                    return fail(422, 'path_payload_mismatch', '路径与请求体标识不一致')
+                body.update(path_params)
             if action in validators:
                 issues = list(validators[action].iter_errors(body))
                 if issues:
@@ -193,6 +215,7 @@ def create_app(config=None):
         app.add_url_rule('/api/v1' + path, 'mutate_' + action, mutation(action), methods=['POST'])
     for path, action in QUERIES.items():
         app.add_url_rule('/api/v1' + path, 'query_' + action, query(action), methods=['GET'])
+    app.add_url_rule('/api/v1/device-policies/<policy_id>/status', 'device_policy_status', mutation('set_capture_policy_status'), methods=['POST'])
     app.add_url_rule('/api/v1/ontology/entities/<entity_key>', 'entity', query('entity'))
     app.add_url_rule('/api/v1/trace/lots/<lot_key>/lineage', 'lineage', query('lineage'))
     app.add_url_rule('/api/v1/trace/lots/<lot_key>/bundle', 'trace_bundle', query('trace_bundle'))
@@ -211,13 +234,32 @@ def create_app(config=None):
         digest = meta.get('asset_key', '')
         if not re.fullmatch('[0-9a-f]{64}', digest):
             return fail(404, 'asset_unavailable', '该证据没有本地原始资产')
-        path = BASE / 'data' / 'assets' / hashlib.sha256(request.tenant.encode()).hexdigest() / digest
+        path = Path(app.config['ASSET_ROOT']) / hashlib.sha256(request.tenant.encode()).hexdigest() / digest
         if not path.is_file():
             return fail(404, 'asset_unavailable', '原始资产不可用')
         if hashlib.sha256(path.read_bytes()).hexdigest() != item['content_hash']:
             return fail(409, 'asset_integrity_failed', '原始资产完整性检查失败')
         return send_file(path, mimetype='application/octet-stream', as_attachment=True,
                          download_name=Path(meta.get('filename', 'evidence.bin')).name)
+
+    @app.get('/api/v1/evidence/<evidence_id>/preview')
+    @protected
+    def evidence_preview(evidence_id):
+        import hashlib
+        import re
+        item = service.query('evidence', request.tenant, request.actor, {'evidence_id':evidence_id})
+        if item['status'] != 'active':
+            return fail(409, 'evidence_withdrawn', '证据已撤回，不显示其预览')
+        try: index = int(request.args.get('frame', '0'))
+        except ValueError: return fail(422, 'invalid_frame', 'frame必须为整数')
+        frames = item.get('metadata', {}).get('processing', {}).get('frames', [])
+        if not 0 <= index < len(frames): return fail(404, 'preview_unavailable', '该材料没有对应预览帧')
+        digest = frames[index].get('preview_hash', '')
+        if not re.fullmatch('[0-9a-f]{64}', digest): return fail(404,'preview_unavailable','预览不可用')
+        path = Path(app.config['ASSET_ROOT']) / hashlib.sha256(request.tenant.encode()).hexdigest() / 'derived' / digest
+        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+            return fail(409,'preview_integrity_failed','预览完整性检查失败')
+        return send_file(path,mimetype='image/jpeg',as_attachment=False)
 
     @app.get('/api/v1/ontology/export')
     @protected
@@ -235,7 +277,7 @@ def create_app(config=None):
 
     @app.get('/api/v1/health')
     def health():
-        return jsonify({'status': 'ok', 'application': 'liangzihu-ontology', 'version': '0.1.0',
+        return jsonify({'status': 'ok', 'application': 'liangzihu-ontology', 'version': '0.2.0',
                         'mode': 'local-engineering', 'demo_mode': app.config['DEMO_MODE'],
                         'backend': 'sqlite' if app.config['DATABASE_URL'].startswith('sqlite:') else 'postgresql'})
 

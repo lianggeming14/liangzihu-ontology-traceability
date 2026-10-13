@@ -1,0 +1,2 @@
+# Optional video/RTSP runtime; configure FFMPEG_BIN to the installed executable.
+imageio-ffmpeg==0.6.0

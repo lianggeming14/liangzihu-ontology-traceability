@@ -1,26 +1,28 @@
 {
   "schema_version": "2.0",
-  "updated_at": "2026-10-11T04:58:45.855Z",
+  "updated_at": "2026-10-13T09:50:56.115Z",
   "gate": "production_database_to_traceability_application",
   "passed": false,
   "status": "local_engineering_passed_production_gates_pending",
   "local_engineering": {
     "passed": true,
     "backend": "sqlite-development",
-    "tests_passed": 92,
+    "tests_passed": 150,
     "tests_failed": 0,
     "browser_actual_service_integration": true,
-    "backup_restore_database_only": true
+    "backup_restore_database_only": true,
+    "tests_skipped": 59,
+    "loopback_http_verified": true
   },
   "production_gates": {
     "postgresql_migrations": "unverified",
     "postgresql_transactions_concurrency": "unverified",
     "production_object_authorization": "not_integrated",
-    "existing_platform_adapter": "not_integrated",
+    "existing_platform_adapter": "generic_readonly_gateway_implemented_vendor_contract_pending",
     "live_multimodal_sources": "not_integrated",
     "independent_quality_release": "not_implemented",
     "field_acceptance": "not_run",
-    "tcp_tls_deployment": "not_verified"
+    "tcp_tls_deployment": "loopback_tcp_verified_production_tls_unverified"
   },
   "requirements_satisfied_locally": [
     "tenant_role_isolation",
@@ -28,7 +30,10 @@
     "lineage_and_evidence_contracts",
     "idempotency_outbox_replay",
     "publication_withdrawal_recall_late_conflict",
-    "database_backup_restore"
+    "database_backup_restore",
+    "device_idempotent_receipts_and_plans",
+    "manual_atomic_source_receipts",
+    "media_integrity_and_device_inference_context"
   ],
   "evidence": [
     "tests/latest-results.xml",
@@ -36,8 +41,8 @@
     "runtime/api-contract-check.json",
     "runtime/sqlite-adapter-check.json",
     "runtime/sqlite-backup-check.json",
-    "data/backups/delivery-demo-20261011.db.json",
-    "data/backups/delivery-restored-20261011.db.json"
+    "tests/browser/structured-result.json",
+    "runtime/http-intake-check.json"
   ],
-  "note": "界面为本地工程演示，不表示生产数据库门槛或现场验收已通过；38项PostgreSQL跳过不计入通过。"
+  "note": "本地工程150通过；58项PostgreSQL和1项实际视频解码跳过，不计入通过。现场设备、生产数据库与TLS部署仍待验收。"
 }

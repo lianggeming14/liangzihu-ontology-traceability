@@ -1,0 +1,32 @@
+{
+  "bridge": "actual Flask test_client and isolated SQLite/assets; no mocked business results",
+  "page_errors": [],
+  "failed_requests": [],
+  "server_stderr": [],
+  "checks": [
+    "lost response after real commit is safely replayed from unchanged form",
+    "manual observation automatically links original evidence",
+    "structured field inspection event",
+    "structured harvest updates lot quantity through recorded event",
+    "field-based domain package registration",
+    "semantic type assignment",
+    "qualified relation with package, direction, validity and evidence",
+    "dynamic object-set identity and name filter",
+    "snapshot cross-page selections persist",
+    "camera registration bound to ontology object",
+    "regular and focus-period capture policy",
+    "pending capture slots from actual scheduler query",
+    "original image upload, actual processing and authorized preview",
+    "gate state record with original evidence, no control command",
+    "server-side object search reaches beyond first 200"
+  ],
+  "screenshots": [
+    "01-intake.png",
+    "02-manual-observation.png",
+    "03-package-editor.png",
+    "04-focus-policy.png",
+    "05-media-processing.png",
+    "06-intake-mobile.png",
+    "07-picker-mobile.png"
+  ]
+}
