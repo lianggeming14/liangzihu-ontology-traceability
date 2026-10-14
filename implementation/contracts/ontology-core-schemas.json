@@ -1,0 +1,598 @@
+{
+  "register_package": {
+    "type": "object",
+    "properties": {
+      "package_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "version": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "namespace": {
+        "type": "string",
+        "format": "uri"
+      },
+      "types": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "identity_type": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": {
+              "type": "string",
+              "maxLength": 4000
+            }
+          },
+          "required": [
+            "type_id",
+            "identity_type",
+            "label"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1,
+        "maxItems": 200
+      },
+      "predicates": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "predicate_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "subject_types": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "object_types": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "dimension": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "description": {
+              "type": "string",
+              "maxLength": 4000
+            },
+            "subject_semantic_types": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "minItems": 1,
+              "maxItems": 100,
+              "uniqueItems": true
+            },
+            "object_semantic_types": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "minItems": 1,
+              "maxItems": 100,
+              "uniqueItems": true
+            },
+            "irreflexive": {
+              "type": "boolean"
+            },
+            "acyclic": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "predicate_id",
+            "subject_types",
+            "object_types",
+            "dimension"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 500
+      },
+      "dependencies": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "package_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            }
+          },
+          "required": [
+            "package_id",
+            "version"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "label": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 4000
+      },
+      "properties": {
+        "type": "array",
+        "maxItems": 500,
+        "items": {
+          "type": "object",
+          "properties": {
+            "property_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "description": {
+              "type": "string",
+              "maxLength": 4000
+            },
+            "applies_to": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "minItems": 1,
+              "maxItems": 100,
+              "uniqueItems": true
+            },
+            "value_type": {
+              "enum": [
+                "decimal",
+                "string",
+                "boolean",
+                "integer",
+                "enum",
+                "datetime"
+              ]
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "enum_values": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "minItems": 1,
+              "maxItems": 100,
+              "uniqueItems": true
+            },
+            "usage": {
+              "enum": [
+                "attribute",
+                "observation",
+                "assertion"
+              ]
+            },
+            "required": {
+              "type": "boolean"
+            },
+            "cardinality": {
+              "enum": [
+                "single",
+                "many"
+              ]
+            },
+            "minimum": {
+              "type": "number"
+            },
+            "maximum": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "property_id",
+            "label",
+            "applies_to",
+            "value_type",
+            "usage"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "package_id",
+      "version",
+      "namespace",
+      "types"
+    ],
+    "additionalProperties": false
+  },
+  "create_observation": {
+    "type": "object",
+    "properties": {
+      "subject_key": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "property_id": {
+        "type": "string",
+        "minLength": 1
+      },
+      "value": {
+        "type": "object",
+        "properties": {
+          "value": {},
+          "unit": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "required": [
+          "value"
+        ],
+        "additionalProperties": false
+      },
+      "observed_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "method": {
+        "type": "string",
+        "minLength": 1
+      },
+      "evidence_ids": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "uniqueItems": true
+      },
+      "origin": {
+        "enum": [
+          "measured",
+          "reported",
+          "estimated"
+        ]
+      },
+      "property_ref": {
+        "type": "object",
+        "properties": {
+          "package_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "property_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "required": [
+          "package_id",
+          "version",
+          "property_id"
+        ],
+        "additionalProperties": false
+      },
+      "spatial_context": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "subject_key",
+      "property_id",
+      "value",
+      "observed_at",
+      "method",
+      "evidence_ids"
+    ],
+    "additionalProperties": false
+  },
+  "create_assertion": {
+    "type": "object",
+    "properties": {
+      "subject_key": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "predicate_id": {
+        "type": "string",
+        "minLength": 1
+      },
+      "value": {
+        "type": "object"
+      },
+      "object_key": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "evidence_ids": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "uniqueItems": true
+      },
+      "origin": {
+        "enum": [
+          "reported",
+          "derived",
+          "forecast",
+          "model",
+          "manual"
+        ]
+      },
+      "property_ref": {
+        "type": "object",
+        "properties": {
+          "package_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "property_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "required": [
+          "package_id",
+          "version",
+          "property_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "subject_key",
+      "predicate_id",
+      "evidence_ids"
+    ],
+    "additionalProperties": false,
+    "oneOf": [
+      {
+        "required": [
+          "value"
+        ],
+        "not": {
+          "required": [
+            "object_key"
+          ]
+        }
+      },
+      {
+        "required": [
+          "object_key"
+        ],
+        "not": {
+          "required": [
+            "value"
+          ]
+        }
+      }
+    ]
+  },
+  "assign_type": {
+    "type": "object",
+    "properties": {
+      "entity_key": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "type_id": {
+        "type": "string",
+        "minLength": 1
+      },
+      "package_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "version": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "valid_from": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "valid_to": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    "required": [
+      "entity_key",
+      "type_id",
+      "package_id",
+      "version"
+    ],
+    "additionalProperties": false
+  },
+  "create_entity": {
+    "type": "object",
+    "properties": {
+      "entity_type": {
+        "type": "string",
+        "minLength": 1
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "attrs": {
+        "type": "object"
+      },
+      "semantic_types": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "package_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "valid_from": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "valid_to": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "type_id",
+            "package_id",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 100
+      }
+    },
+    "required": [
+      "entity_type",
+      "name"
+    ],
+    "additionalProperties": false
+  },
+  "update_package_labels": {
+    "type": "object",
+    "properties": {
+      "package_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "version": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "expected_revision": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "label": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 4000
+      },
+      "type_labels": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "maxProperties": 200
+      },
+      "property_labels": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "maxProperties": 500
+      },
+      "predicate_labels": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "maxProperties": 500
+      }
+    },
+    "required": [
+      "package_id",
+      "version",
+      "expected_revision"
+    ],
+    "additionalProperties": false
+  }
+}

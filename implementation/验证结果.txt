@@ -1,31 +1,30 @@
-梁子湖本体库与溯源系统 v0.2 验证结果
-日期：2026-10-13
+v0.3 验证结果
+更新：2026-10-14
 
-一、自动回归
-执行：python -B -X utf8 -m pytest tests -q --junitxml=tests/latest-results.xml
-结果：150 passed，0 failed，59 skipped。
-58项跳过为未配置TEST_DATABASE_URL的PostgreSQL实库测试；1项为FFMPEG_BIN未配置的真实视频解码测试。跳过不计为通过。
+自动测试：213 passed，0 failed / error，112 skipped。
+跳过：111项需要TEST_DATABASE_URL的PostgreSQL实库；1项旧媒体扩展需要FFMPEG_BIN的真实视频解码。新上传主流程不再解码视频。
+结果：tests/latest-results.xml。追加异常元数据断言专项5项通过，未增加测试数量。
 
-新增覆盖：摄像头/闸门身份、源ID冲突、并发幂等、周期/重点窗口和去重、事务回滚、跨租户访问、人工原始回执同事务、未来记录拒绝、001→002升级保留旧数据、真实PNG技术处理与鉴权预览、失效/损坏/不可解码证据可用性、设备→对象关系图、设备记录进入推理包，以及24项只读网关测试。
-网关的外部信源使用受控合成响应；其中两项完整通过真实Flask接口写入独立SQLite和资产目录，没有访问现场设备。
+浏览器三套共38项：
+- core-intake.cjs：12项新版数据库流程；
+- structured-intake.cjs：15项原有接入与对象集兼容流程；
+- ui-smoke.cjs：11项基础界面及溯源兼容流程。
+均无页面错误、失败请求或服务stderr。请求经过真实Flask test_client及隔离SQLite/原件目录，没有伪造业务返回；此通道本身不验证TCP/TLS。
+覆盖本体创建、类属性关系定义、中文改名与hash不变、按类生成对象属性、受约束人工观测和候选断言、来源映射、零写入预览、待映射回执、重试历史、失败队列、原件独立状态及390px手机布局。
+兼容检查保留采收、物料数量、断网后幂等、撤证召回、跨页对象集及200项以外对象检索。
+截图和报告：tests/browser/core-screenshots、core-result.json；structured-screenshots、structured-result.json；screenshots、result.json。
 
-二、界面与实际HTTP
-新增15项界面流程通过，零页面错误、零失败请求、零桥接服务错误。
-见 tests/browser/structured-result.json 及 structured-screenshots/。
-覆盖观测、现场事件、人工采收、原文证据、真实提交丢回执后的幂等重试、领域包、类型赋值、限定关系、动态/跨页快照对象集、设备、常规/重点策略、待采集查询、真实PNG处理预览、闸门回执及超过200对象的全库搜索。
-旧 tests/browser/ui-smoke.cjs 回归同样通过，见 result.json。
-上述完整表单业务验收使用Playwright→真实Flask test_client→独立持久化SQLite/资产的请求桥接，不用伪造业务响应。
+接口：65项实现操作与OpenAPI路由集合一致；26份JSON Schema语法有效。
+证据：runtime/api-contract-check.json。当前响应Envelope仍为宽泛结构，不表示已经提供完整强类型SDK。
 
-另外已启动真实127.0.0.1:8787服务，HTTP健康检查与首页200，并用Chrome完成首页、演示登录、统计加载和数据接入导航。见 runtime/http-intake-check.json。不是TLS、公网、生产部署或现场验收。
+实际HTTP与升级：
+本机127.0.0.1:8787健康、首页、本体、属性、映射、回执及OpenAPI返回成功；Chrome管理员登录和本体结构页面已检查。
+升级前使用SQLite在线备份API，integrity_check=ok，外键错误0。
+升级后001/002旧表原有行逐行仍存在（只排除会递增的outbox_counters）；新增003/004迁移和独立v0.3合成样例，未清空旧数据。
+原有合成领域包显示名称得到中文补充，定义hash不变，已由管理员修改过的名称不会被启动重置。
+证据：runtime/http-intake-check.json。实际端口与浏览器桥接验收分别记录。
 
-三、契约与迁移
-56个已实现API操作与OpenAPI匹配，21个JSON Schema语法校验通过。
-见 runtime/api-contract-check.json；可用 python ops/export_contract.py 重新生成契约。
-SQLite的001旧库升级到002通过、保留原记录；重复迁移不重复应用。PostgreSQL迁移脚本已提供但未进行实库验收。
-
-四、仍未验证
-没有取得真实摄像头/闸门接口地址、厂家合同及凭据。HTTP图片和闸门JSON网关程序已实现；RTSP单帧和视频抽帧依赖FFmpeg，本环境未配置，实际解码未验证。
-没有自动闸门控制、农业视觉诊断模型、持续录像平台、后台安装的采集服务、现场事件自动触发、厂商ONVIF/MQTT客户端、生产统一认证或TLS部署。
-图片质量指标和内容哈希不等于农业事实、设备测量精度或质量认证。来源回执与候选结论仍需按业务规则审核。
-
-既有SQLite备份恢复证据保留在runtime/sqlite-backup-check.json，属于早期数据库备份验证；本轮未声称重新完成全系统恢复或PostgreSQL恢复演练。
+范围：
+这是可运行的数据库核心本地工程版。未验证PostgreSQL、真实农场设备、现有平台生产连接、生产身份/TLS/容量和完整恢复。
+原件哈希校验≠来源真实；格式/语义约束≠农业结论正确；候选断言≠已确认事实。
+历史Word v1.1保留总体规划，当前代码及范围以v0.3说明为准。

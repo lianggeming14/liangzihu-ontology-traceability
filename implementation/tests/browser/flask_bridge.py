@@ -10,7 +10,11 @@ from agri.app import create_app
 temporary=tempfile.TemporaryDirectory(prefix='agri-ui-',dir=str(BASE/'tests'/'browser'))
 app=create_app({'DATABASE_URL':'sqlite:///'+str(Path(temporary.name)/'ui.db'),'ALLOWED_HOSTS':['localhost','127.0.0.1'],'DEMO_MODE':True,'ASSET_ROOT':str(Path(temporary.name)/'assets')})
 from agri.seed import seed_demo
-manifest=seed_demo(app.extensions['agri_service'],BASE,persist_manifest=False)
+from agri.service import Service
+from agri.ontology_core import seed_core_demo
+# Historical demo imported with its original contract; v0.3 additions use strict service.
+manifest=seed_demo(Service(app.extensions['agri_service'].db),BASE,persist_manifest=False)
+seed_core_demo(app.extensions['agri_service'])
 client=app.test_client(use_cookies=False)
 print(json.dumps({'ready':True,'public_code':manifest['public_code']}),flush=True)
 for line in sys.stdin:

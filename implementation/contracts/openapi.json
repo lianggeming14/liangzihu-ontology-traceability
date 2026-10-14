@@ -52,6 +52,14 @@
             "minLength": 1,
             "type": "string"
           },
+          "valid_from": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "valid_to": {
+            "format": "date-time",
+            "type": "string"
+          },
           "version": {
             "maxLength": 200,
             "minLength": 1,
@@ -115,6 +123,32 @@
           "predicate_id": {
             "minLength": 1,
             "type": "string"
+          },
+          "property_ref": {
+            "additionalProperties": false,
+            "properties": {
+              "package_id": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "property_id": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "version": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "package_id",
+              "version",
+              "property_id"
+            ],
+            "type": "object"
           },
           "subject_key": {
             "format": "uuid",
@@ -238,6 +272,14 @@
                   "minLength": 1,
                   "type": "string"
                 },
+                "valid_from": {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "valid_to": {
+                  "format": "date-time",
+                  "type": "string"
+                },
                 "version": {
                   "maxLength": 200,
                   "minLength": 1,
@@ -251,6 +293,7 @@
               ],
               "type": "object"
             },
+            "maxItems": 100,
             "type": "array"
           }
         },
@@ -588,6 +631,35 @@
             "minLength": 1,
             "type": "string"
           },
+          "property_ref": {
+            "additionalProperties": false,
+            "properties": {
+              "package_id": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "property_id": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "version": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "package_id",
+              "version",
+              "property_id"
+            ],
+            "type": "object"
+          },
+          "spatial_context": {
+            "type": "object"
+          },
           "subject_key": {
             "format": "uuid",
             "type": "string"
@@ -596,17 +668,14 @@
             "additionalProperties": false,
             "properties": {
               "unit": {
+                "maxLength": 200,
                 "minLength": 1,
                 "type": "string"
               },
-              "value": {
-                "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$",
-                "type": "string"
-              }
+              "value": {}
             },
             "required": [
-              "value",
-              "unit"
+              "value"
             ],
             "type": "object"
           }
@@ -880,6 +949,101 @@
         ],
         "type": "object"
       },
+      "preview_intake": {
+        "additionalProperties": false,
+        "dependentRequired": {
+          "mapping_id": [
+            "mapping_version"
+          ],
+          "mapping_version": [
+            "mapping_id"
+          ]
+        },
+        "properties": {
+          "content_type": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "evidence_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "maxItems": 99,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "mapping_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "mapping_version": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "payload": {
+            "type": "object"
+          },
+          "producer": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "version": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "version"
+            ],
+            "type": "object"
+          },
+          "record_kind": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "schema_version": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_category": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_record_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_id",
+          "source_record_id",
+          "schema_version",
+          "source_category",
+          "content_type",
+          "record_kind",
+          "payload"
+        ],
+        "type": "object"
+      },
       "publish": {
         "additionalProperties": false,
         "properties": {
@@ -950,6 +1114,101 @@
         ],
         "type": "object"
       },
+      "receive_intake": {
+        "additionalProperties": false,
+        "dependentRequired": {
+          "mapping_id": [
+            "mapping_version"
+          ],
+          "mapping_version": [
+            "mapping_id"
+          ]
+        },
+        "properties": {
+          "content_type": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "evidence_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "maxItems": 99,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "mapping_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "mapping_version": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "payload": {
+            "type": "object"
+          },
+          "producer": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "version": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "version"
+            ],
+            "type": "object"
+          },
+          "record_kind": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "schema_version": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_category": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_record_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_id",
+          "source_record_id",
+          "schema_version",
+          "source_category",
+          "content_type",
+          "record_kind",
+          "payload"
+        ],
+        "type": "object"
+      },
       "register_device": {
         "additionalProperties": false,
         "properties": {
@@ -992,6 +1251,163 @@
         ],
         "type": "object"
       },
+      "register_mapping": {
+        "additionalProperties": false,
+        "properties": {
+          "content_type": {
+            "const": "application/json"
+          },
+          "defaults": {
+            "type": "object"
+          },
+          "description": {
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "field_rules": {
+            "items": {
+              "additionalProperties": false,
+              "dependentRequired": {
+                "source_unit": [
+                  "source_unit_path"
+                ],
+                "source_unit_path": [
+                  "source_unit"
+                ]
+              },
+              "properties": {
+                "enum_map": {
+                  "maxProperties": 200,
+                  "minProperties": 1,
+                  "type": "object"
+                },
+                "offset": {
+                  "type": [
+                    "string",
+                    "integer",
+                    "number"
+                  ]
+                },
+                "scale": {
+                  "type": [
+                    "string",
+                    "integer",
+                    "number"
+                  ]
+                },
+                "source_path": {
+                  "pattern": "^/",
+                  "type": "string"
+                },
+                "source_unit": {
+                  "maxLength": 200,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "source_unit_path": {
+                  "pattern": "^/",
+                  "type": "string"
+                },
+                "target_path": {
+                  "pattern": "^/",
+                  "type": "string"
+                },
+                "unit": {
+                  "maxLength": 200,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "value_type": {
+                  "enum": [
+                    "decimal",
+                    "integer",
+                    "boolean",
+                    "string",
+                    "datetime"
+                  ]
+                }
+              },
+              "required": [
+                "source_path",
+                "target_path"
+              ],
+              "type": "object"
+            },
+            "maxItems": 100,
+            "type": "array"
+          },
+          "mapping_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "identity",
+              "fields"
+            ]
+          },
+          "record_kind": {
+            "enum": [
+              "entity",
+              "observation",
+              "assertion",
+              "event",
+              "relationship",
+              "evidence"
+            ]
+          },
+          "schema_version": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_category": {
+            "enum": [
+              "device",
+              "manual",
+              "external_system",
+              "model"
+            ]
+          },
+          "source_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "subject_key": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "target_action": {
+            "enum": [
+              "create_entity",
+              "create_observation",
+              "create_assertion",
+              "create_event",
+              "create_relation",
+              "create_evidence"
+            ]
+          },
+          "version": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "mapping_id",
+          "version",
+          "source_id",
+          "schema_version",
+          "record_kind",
+          "target_action",
+          "mode",
+          "source_category",
+          "content_type"
+        ],
+        "type": "object"
+      },
       "register_package": {
         "additionalProperties": false,
         "properties": {
@@ -1018,6 +1434,15 @@
             },
             "type": "array"
           },
+          "description": {
+            "maxLength": 4000,
+            "type": "string"
+          },
+          "label": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
           "namespace": {
             "format": "uri",
             "type": "string"
@@ -1031,9 +1456,35 @@
             "items": {
               "additionalProperties": false,
               "properties": {
+                "acyclic": {
+                  "type": "boolean"
+                },
+                "description": {
+                  "maxLength": 4000,
+                  "type": "string"
+                },
                 "dimension": {
                   "minLength": 1,
                   "type": "string"
+                },
+                "irreflexive": {
+                  "type": "boolean"
+                },
+                "label": {
+                  "maxLength": 200,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "object_semantic_types": {
+                  "items": {
+                    "maxLength": 200,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 100,
+                  "minItems": 1,
+                  "type": "array",
+                  "uniqueItems": true
                 },
                 "object_types": {
                   "items": {
@@ -1047,6 +1498,17 @@
                 "predicate_id": {
                   "minLength": 1,
                   "type": "string"
+                },
+                "subject_semantic_types": {
+                  "items": {
+                    "maxLength": 200,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 100,
+                  "minItems": 1,
+                  "type": "array",
+                  "uniqueItems": true
                 },
                 "subject_types": {
                   "items": {
@@ -1066,12 +1528,107 @@
               ],
               "type": "object"
             },
+            "maxItems": 500,
+            "type": "array"
+          },
+          "properties": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "applies_to": {
+                  "items": {
+                    "maxLength": 200,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 100,
+                  "minItems": 1,
+                  "type": "array",
+                  "uniqueItems": true
+                },
+                "cardinality": {
+                  "enum": [
+                    "single",
+                    "many"
+                  ]
+                },
+                "description": {
+                  "maxLength": 4000,
+                  "type": "string"
+                },
+                "enum_values": {
+                  "items": {
+                    "maxLength": 200,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 100,
+                  "minItems": 1,
+                  "type": "array",
+                  "uniqueItems": true
+                },
+                "label": {
+                  "maxLength": 200,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "maximum": {
+                  "type": "number"
+                },
+                "minimum": {
+                  "type": "number"
+                },
+                "property_id": {
+                  "maxLength": 200,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "required": {
+                  "type": "boolean"
+                },
+                "unit": {
+                  "maxLength": 200,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "usage": {
+                  "enum": [
+                    "attribute",
+                    "observation",
+                    "assertion"
+                  ]
+                },
+                "value_type": {
+                  "enum": [
+                    "decimal",
+                    "string",
+                    "boolean",
+                    "integer",
+                    "enum",
+                    "datetime"
+                  ]
+                }
+              },
+              "required": [
+                "property_id",
+                "label",
+                "applies_to",
+                "value_type",
+                "usage"
+              ],
+              "type": "object"
+            },
+            "maxItems": 500,
             "type": "array"
           },
           "types": {
             "items": {
               "additionalProperties": false,
               "properties": {
+                "description": {
+                  "maxLength": 4000,
+                  "type": "string"
+                },
                 "identity_type": {
                   "minLength": 1,
                   "type": "string"
@@ -1092,6 +1649,7 @@
               ],
               "type": "object"
             },
+            "maxItems": 200,
             "minItems": 1,
             "type": "array"
           },
@@ -1106,6 +1664,31 @@
           "version",
           "namespace",
           "types"
+        ],
+        "type": "object"
+      },
+      "retry_intake": {
+        "additionalProperties": false,
+        "properties": {
+          "mapping_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "mapping_version": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "receipt_id": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "receipt_id",
+          "mapping_id",
+          "mapping_version"
         ],
         "type": "object"
       },
@@ -1151,6 +1734,67 @@
         ],
         "type": "object"
       },
+      "update_package_labels": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "maxLength": 4000,
+            "type": "string"
+          },
+          "expected_revision": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "label": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "package_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "predicate_labels": {
+            "additionalProperties": {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxProperties": 500,
+            "type": "object"
+          },
+          "property_labels": {
+            "additionalProperties": {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxProperties": 500,
+            "type": "object"
+          },
+          "type_labels": {
+            "additionalProperties": {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxProperties": 200,
+            "type": "object"
+          },
+          "version": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "package_id",
+          "version",
+          "expected_revision"
+        ],
+        "type": "object"
+      },
       "withdraw_evidence": {
         "additionalProperties": false,
         "properties": {
@@ -1178,9 +1822,9 @@
     }
   },
   "info": {
-    "description": "当前模型实现的本地工程版。租户身份由访问令牌确定；演示界面另外支持仅限回环的 Cookie 会话。响应载荷仍以领域实现和示例为准，Envelope 不构成完整强类型 SDK。真实平台、PostgreSQL 和现场验收待完成。",
-    "title": "梁子湖农业本体与产品溯源 API",
-    "version": "0.2.0"
+    "description": "数据库职责收敛版：本体、显式映射、受约束存储、原件与血缘、数据输出；旧采集和产品溯源为兼容扩展。租户身份由访问令牌确定；演示界面另外支持仅限回环的 Cookie 会话。响应载荷仍以领域实现和示例为准，Envelope 不构成完整强类型 SDK。真实平台、PostgreSQL 和现场验收待完成。",
+    "title": "梁子湖农业本体数据库 API",
+    "version": "0.3.0"
   },
   "openapi": "3.1.0",
   "paths": {
@@ -1298,6 +1942,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       },
       "post": {
@@ -1402,6 +2049,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -1508,6 +2158,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -1910,6 +2563,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       }
     },
@@ -2036,6 +2692,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       },
       "post": {
@@ -2140,6 +2799,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       }
     },
@@ -2264,6 +2926,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       }
     },
@@ -2399,6 +3064,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       },
       "post": {
@@ -2503,6 +3171,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       }
     },
@@ -2638,6 +3309,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       },
       "post": {
@@ -2742,6 +3416,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       }
     },
@@ -2850,6 +3527,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       },
       "post": {
@@ -2954,6 +3634,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -3060,6 +3743,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -3154,6 +3840,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -3249,12 +3938,15 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
     "/api/v1/evidence/{evidence_id}/preview": {
       "get": {
-        "description": "当前租户、有效证据的JPEG派生预览；每次验证内容哈希，禁止公开或撤回后预览。",
+        "description": "兼容旧版已经生成的JPEG派生预览；新上传不再生成预览。每次验证哈希、租户与撤回状态。",
         "operationId": "evidence_preview",
         "parameters": [
           {
@@ -3355,6 +4047,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       }
     },
@@ -3529,12 +4224,15 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
     "/api/v1/ingestion/assets": {
       "post": {
-        "description": "原件保存在租户私有目录，生成 SHA-256 和证据记录；原件默认限制32MiB(请求33MiB，管理员可配置)；图片自动技术检查与私有预览，视频FFMPEG_BIN可用时进行有界抽帧，否则metadata.processing明确unavailable。处理结果不构成农业诊断。",
+        "description": "原件保存在租户私有目录，生成 SHA-256 和证据记录；原件默认限制32MiB(请求33MiB，管理员可配置)；仅做载体签名/图片结构校验，不解码视频、不生成预览、不执行识别。metadata.carrier 与原件哈希、外部processing状态分开，内容矛盾保留原件并标needs_mapping。",
         "operationId": "upload_asset",
         "parameters": [
           {
@@ -3663,6 +4361,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -3769,6 +4470,823 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      }
+    },
+    "/api/v1/ingestion/mappings": {
+      "get": {
+        "description": "当前集合的 offset/next_offset 分页；集合发生变化时不是冻结快照。需要可靠增量同步请用 trace/changes。",
+        "operationId": "mappings",
+        "parameters": [
+          {
+            "description": "",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 100,
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "source_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "mapping_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "version",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      },
+      "post": {
+        "description": "登记不可变的显式来源映射版本；只允许字段路径、单位缩放、枚举及时区转换，不执行代码或模型。",
+        "operationId": "register_mapping",
+        "parameters": [
+          {
+            "description": "同一业务请求重试复用；键相同但内容不同返回 409。租户从认证身份取得。",
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": true,
+            "schema": {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/register_mapping"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      }
+    },
+    "/api/v1/ingestion/preview": {
+      "post": {
+        "description": "只读样本预览；所有临时写入回滚，不创建回执、证据、audit、outbox或幂等键。输出状态与issues，不能当正式接收确认。",
+        "operationId": "preview_intake",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/receive_intake"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      }
+    },
+    "/api/v1/ingestion/receipts": {
+      "get": {
+        "description": "当前集合的 offset/next_offset 分页；集合发生变化时不是冻结快照。需要可靠增量同步请用 trace/changes。",
+        "operationId": "intake_receipts",
+        "parameters": [
+          {
+            "description": "",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 100,
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "source_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      },
+      "post": {
+        "description": "合法接入信封生成原文证据及持久回执。必须检查data.status：needs_mapping/validation_failed/stored；HTTP 200不等同目标数据已入库。相同来源记录冲突返回409。",
+        "operationId": "receive_intake",
+        "parameters": [
+          {
+            "description": "同一业务请求重试复用；键相同但内容不同返回 409。租户从认证身份取得。",
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": true,
+            "schema": {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/receive_intake"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      }
+    },
+    "/api/v1/ingestion/receipts/{receipt_id}": {
+      "get": {
+        "description": "",
+        "operationId": "intake_receipt",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "receipt_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      }
+    },
+    "/api/v1/ingestion/receipts/{receipt_id}/retry": {
+      "post": {
+        "description": "以指定映射版本重试原始信封，追加attempt历史；stored回执不可重复生成目标记录。",
+        "operationId": "retry_intake",
+        "parameters": [
+          {
+            "description": "同一业务请求重试复用；键相同但内容不同返回 409。租户从认证身份取得。",
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": true,
+            "schema": {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "receipt_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "mapping_id": {
+                    "maxLength": 200,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "mapping_version": {
+                    "maxLength": 200,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "receipt_id": {
+                    "format": "uuid",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "mapping_id",
+                  "mapping_version"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -3981,6 +5499,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       }
     },
@@ -4098,6 +5619,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       },
       "post": {
@@ -4202,6 +5726,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -4286,6 +5813,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -4412,6 +5942,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       },
       "post": {
@@ -4516,6 +6049,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -4610,6 +6146,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -4769,6 +6308,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -4909,6 +6451,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -5026,6 +6571,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       },
       "post": {
@@ -5130,12 +6678,124 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      }
+    },
+    "/api/v1/ontology/package-labels": {
+      "post": {
+        "description": "只修改本体、类、属性和关系显示名；expected_revision控制并发。语义结构变更须另发包版本。",
+        "operationId": "update_package_labels",
+        "parameters": [
+          {
+            "description": "同一业务请求重试复用；键相同但内容不同返回 409。租户从认证身份取得。",
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": true,
+            "schema": {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/update_package_labels"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
     "/api/v1/ontology/packages": {
       "get": {
-        "description": "当前集合的 offset/next_offset 分页；集合发生变化时不是冻结快照。需要可靠增量同步请用 trace/changes。",
+        "description": "返回结构化类/属性/关系和独立显示名revision；原定义与content_hash保持不变。",
         "operationId": "packages",
         "parameters": [
           {
@@ -5159,6 +6819,24 @@
               "default": 0,
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "package_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "version",
+            "required": false,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -5238,6 +6916,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       },
       "post": {
@@ -5342,6 +7023,174 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      }
+    },
+    "/api/v1/ontology/properties": {
+      "get": {
+        "description": "按对象有效语义类返回可用属性；at 为有效时点，并非知识历史快照。观测同时校验精确包版本、类、单位和值类型。",
+        "operationId": "properties",
+        "parameters": [
+          {
+            "description": "",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 100,
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "package_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "version",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "type_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "usage",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "entity_key",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "at",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -5504,6 +7353,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       },
       "post": {
@@ -5608,6 +7460,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -5714,6 +7569,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -5884,7 +7742,10 @@
             "description": "契约或业务约束不符"
           }
         },
-        "security": []
+        "security": [],
+        "tags": [
+          "compatibility-extensions"
+        ]
       }
     },
     "/api/v1/public/trace/{code}/qr.svg": {
@@ -5975,7 +7836,10 @@
             "description": "契约或业务约束不符"
           }
         },
-        "security": []
+        "security": [],
+        "tags": [
+          "compatibility-extensions"
+        ]
       }
     },
     "/api/v1/stats": {
@@ -6059,6 +7923,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "database-core"
         ]
       }
     },
@@ -6165,6 +8032,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       }
     },
@@ -6282,6 +8152,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       },
       "post": {
@@ -6386,6 +8259,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       }
     },
@@ -6480,6 +8356,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       }
     },
@@ -6597,6 +8476,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       },
       "post": {
@@ -6701,6 +8583,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       }
     },
@@ -6795,6 +8680,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       }
     },
@@ -6927,6 +8815,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       }
     },
@@ -7044,6 +8935,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       },
       "post": {
@@ -7148,6 +9042,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       }
     },
@@ -7256,6 +9153,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       },
       "post": {
@@ -7360,6 +9260,9 @@
           {
             "bearerAuth": []
           }
+        ],
+        "tags": [
+          "compatibility-extensions"
         ]
       }
     }

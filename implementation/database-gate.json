@@ -1,48 +1,40 @@
 {
-  "schema_version": "2.0",
-  "updated_at": "2026-10-13T09:50:56.115Z",
-  "gate": "production_database_to_traceability_application",
+  "schema_version": "3.0",
+  "updated_at": "2026-10-14T15:17:00Z",
+  "gate": "production_ontology_database",
   "passed": false,
   "status": "local_engineering_passed_production_gates_pending",
   "local_engineering": {
     "passed": true,
     "backend": "sqlite-development",
-    "tests_passed": 150,
+    "tests_passed": 213,
     "tests_failed": 0,
-    "browser_actual_service_integration": true,
-    "backup_restore_database_only": true,
-    "tests_skipped": 59,
-    "loopback_http_verified": true
+    "tests_skipped": 112,
+    "browser_checks": 38,
+    "loopback_http_verified": true,
+    "legacy_rows_preserved": true
   },
   "production_gates": {
-    "postgresql_migrations": "unverified",
-    "postgresql_transactions_concurrency": "unverified",
-    "production_object_authorization": "not_integrated",
-    "existing_platform_adapter": "generic_readonly_gateway_implemented_vendor_contract_pending",
-    "live_multimodal_sources": "not_integrated",
-    "independent_quality_release": "not_implemented",
-    "field_acceptance": "not_run",
-    "tcp_tls_deployment": "loopback_tcp_verified_production_tls_unverified"
+    "postgresql": "unverified",
+    "source_identity_binding": "not_integrated",
+    "object_authorization": "not_integrated",
+    "live_platform_sources": "not_integrated",
+    "production_tls_capacity_recovery": "unverified"
   },
-  "requirements_satisfied_locally": [
-    "tenant_role_isolation",
-    "three_domain_extension",
-    "lineage_and_evidence_contracts",
-    "idempotency_outbox_replay",
-    "publication_withdrawal_recall_late_conflict",
-    "database_backup_restore",
-    "device_idempotent_receipts_and_plans",
-    "manual_atomic_source_receipts",
-    "media_integrity_and_device_inference_context"
+  "out_of_core_scope": [
+    "agricultural_decision",
+    "image_recognition",
+    "model_execution",
+    "device_control",
+    "consumer_traceability_application"
   ],
   "evidence": [
     "tests/latest-results.xml",
+    "tests/browser/core-result.json",
+    "tests/browser/structured-result.json",
     "tests/browser/result.json",
     "runtime/api-contract-check.json",
-    "runtime/sqlite-adapter-check.json",
-    "runtime/sqlite-backup-check.json",
-    "tests/browser/structured-result.json",
     "runtime/http-intake-check.json"
   ],
-  "note": "本地工程150通过；58项PostgreSQL和1项实际视频解码跳过，不计入通过。现场设备、生产数据库与TLS部署仍待验收。"
+  "note": "111项PostgreSQL与1项旧视频扩展测试明确跳过；视频解码不再是数据库核心门槛。"
 }

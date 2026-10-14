@@ -1,0 +1,374 @@
+{
+  "register_mapping": {
+    "type": "object",
+    "properties": {
+      "mapping_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "version": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "source_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "schema_version": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "record_kind": {
+        "enum": [
+          "entity",
+          "observation",
+          "assertion",
+          "event",
+          "relationship",
+          "evidence"
+        ]
+      },
+      "target_action": {
+        "enum": [
+          "create_entity",
+          "create_observation",
+          "create_assertion",
+          "create_event",
+          "create_relation",
+          "create_evidence"
+        ]
+      },
+      "mode": {
+        "enum": [
+          "identity",
+          "fields"
+        ]
+      },
+      "subject_key": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "field_rules": {
+        "type": "array",
+        "maxItems": 100,
+        "items": {
+          "type": "object",
+          "properties": {
+            "source_path": {
+              "type": "string",
+              "pattern": "^/"
+            },
+            "target_path": {
+              "type": "string",
+              "pattern": "^/"
+            },
+            "value_type": {
+              "enum": [
+                "decimal",
+                "integer",
+                "boolean",
+                "string",
+                "datetime"
+              ]
+            },
+            "scale": {
+              "type": [
+                "string",
+                "integer",
+                "number"
+              ]
+            },
+            "offset": {
+              "type": [
+                "string",
+                "integer",
+                "number"
+              ]
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "source_unit": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "source_unit_path": {
+              "type": "string",
+              "pattern": "^/"
+            },
+            "enum_map": {
+              "type": "object",
+              "minProperties": 1,
+              "maxProperties": 200
+            }
+          },
+          "required": [
+            "source_path",
+            "target_path"
+          ],
+          "additionalProperties": false,
+          "dependentRequired": {
+            "source_unit": [
+              "source_unit_path"
+            ],
+            "source_unit_path": [
+              "source_unit"
+            ]
+          }
+        }
+      },
+      "defaults": {
+        "type": "object"
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 2000
+      },
+      "source_category": {
+        "enum": [
+          "device",
+          "manual",
+          "external_system",
+          "model"
+        ]
+      },
+      "content_type": {
+        "const": "application/json"
+      }
+    },
+    "required": [
+      "mapping_id",
+      "version",
+      "source_id",
+      "schema_version",
+      "record_kind",
+      "target_action",
+      "mode",
+      "source_category",
+      "content_type"
+    ],
+    "additionalProperties": false
+  },
+  "receive_intake": {
+    "type": "object",
+    "properties": {
+      "source_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "source_record_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "schema_version": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "source_category": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "content_type": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "record_kind": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "mapping_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "mapping_version": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "payload": {
+        "type": "object"
+      },
+      "evidence_ids": {
+        "type": "array",
+        "maxItems": 99,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "producer": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "required": [
+          "name",
+          "version"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "source_id",
+      "source_record_id",
+      "schema_version",
+      "source_category",
+      "content_type",
+      "record_kind",
+      "payload"
+    ],
+    "additionalProperties": false,
+    "dependentRequired": {
+      "mapping_id": [
+        "mapping_version"
+      ],
+      "mapping_version": [
+        "mapping_id"
+      ]
+    }
+  },
+  "preview_intake": {
+    "type": "object",
+    "properties": {
+      "source_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "source_record_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "schema_version": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "source_category": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "content_type": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "record_kind": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "mapping_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "mapping_version": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "payload": {
+        "type": "object"
+      },
+      "evidence_ids": {
+        "type": "array",
+        "maxItems": 99,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "producer": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "required": [
+          "name",
+          "version"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "source_id",
+      "source_record_id",
+      "schema_version",
+      "source_category",
+      "content_type",
+      "record_kind",
+      "payload"
+    ],
+    "additionalProperties": false,
+    "dependentRequired": {
+      "mapping_id": [
+        "mapping_version"
+      ],
+      "mapping_version": [
+        "mapping_id"
+      ]
+    }
+  },
+  "retry_intake": {
+    "type": "object",
+    "properties": {
+      "receipt_id": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "mapping_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "mapping_version": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "required": [
+      "receipt_id",
+      "mapping_id",
+      "mapping_version"
+    ],
+    "additionalProperties": false
+  }
+}

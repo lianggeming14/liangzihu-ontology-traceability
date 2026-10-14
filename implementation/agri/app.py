@@ -14,6 +14,9 @@ from jsonschema import Draft202012Validator, FormatChecker
 BASE = Path(__file__).resolve().parent.parent
 MUTATIONS = {
     '/ontology/packages': 'register_package',
+    '/ontology/package-labels': 'update_package_labels',
+    '/ingestion/mappings': 'register_mapping',
+    '/ingestion/receipts': 'receive_intake',
     '/ontology/entities': 'create_entity',
     '/ontology/type-assignments': 'assign_type',
     '/evidence': 'create_evidence',
@@ -34,6 +37,9 @@ MUTATIONS = {
 }
 QUERIES = {
     '/ontology/packages': 'packages',
+    '/ontology/properties': 'properties',
+    '/ingestion/mappings': 'mappings',
+    '/ingestion/receipts': 'intake_receipts',
     '/ontology/entities': 'entities',
     '/ontology/relations': 'relations',
     '/ontology/graph': 'graph',
@@ -81,7 +87,7 @@ def create_app(config=None):
     service = app.config.get('SERVICE')
     if service is None:
         from .db import Database
-        from .field_service import FieldService
+        from .core_intake import IntakeService
         database_url = app.config['DATABASE_URL']
         if database_url.startswith('sqlite:'):
             from .sqlite_db import SQLiteDatabase
@@ -90,17 +96,22 @@ def create_app(config=None):
             db = Database(database_url, app.config['DB_SCHEMA'])
         if app.config.get('AUTO_MIGRATE', True):
             db.migrate()
-        service = FieldService(db)
+        service = IntakeService(db)
         app.extensions['agri_db'] = db
     if hasattr(service, 'db'):
-        from .field_service import FieldService
-        if not isinstance(service, FieldService): service = FieldService(service.db)
+        from .core_intake import IntakeService
+        if not isinstance(service, IntakeService): service = IntakeService(service.db)
         service.asset_root = Path(app.config['ASSET_ROOT'])
     app.extensions['agri_service'] = service
     schema_path = BASE / 'contracts' / 'input-schemas.json'
     schema_map = json.loads(schema_path.read_text(encoding='utf-8')) if schema_path.exists() else {}
     from .device_ingestion import DEVICE_SCHEMAS
     schema_map.update(DEVICE_SCHEMAS)
+    from .ontology_core import CORE_SCHEMAS
+    from .core_intake import INTAKE_SCHEMAS
+    schema_map.update(CORE_SCHEMAS)
+    schema_map.update(INTAKE_SCHEMAS)
+    if hasattr(service,'db'): service.input_schemas = schema_map
     validators = {name: Draft202012Validator(s, format_checker=FormatChecker()) for name, s in schema_map.items()}
 
     def fail(status, code, message, details=None):
@@ -215,6 +226,8 @@ def create_app(config=None):
         app.add_url_rule('/api/v1' + path, 'mutate_' + action, mutation(action), methods=['POST'])
     for path, action in QUERIES.items():
         app.add_url_rule('/api/v1' + path, 'query_' + action, query(action), methods=['GET'])
+    app.add_url_rule('/api/v1/ingestion/receipts/<receipt_id>', 'intake_receipt', query('intake_receipts'))
+    app.add_url_rule('/api/v1/ingestion/receipts/<receipt_id>/retry', 'intake_retry', mutation('retry_intake'), methods=['POST'])
     app.add_url_rule('/api/v1/device-policies/<policy_id>/status', 'device_policy_status', mutation('set_capture_policy_status'), methods=['POST'])
     app.add_url_rule('/api/v1/ontology/entities/<entity_key>', 'entity', query('entity'))
     app.add_url_rule('/api/v1/trace/lots/<lot_key>/lineage', 'lineage', query('lineage'))
@@ -230,9 +243,11 @@ def create_app(config=None):
         import hashlib
         import re
         item = service.query('evidence', request.tenant, request.actor, {'evidence_id': evidence_id})
+        if item['status'] != 'active':
+            return fail(409, 'evidence_withdrawn', '证据已撤回，不再提供原件下载')
         meta = item.get('metadata', {})
         digest = meta.get('asset_key', '')
-        if not re.fullmatch('[0-9a-f]{64}', digest):
+        if not isinstance(digest,str) or not re.fullmatch('[0-9a-f]{64}', digest):
             return fail(404, 'asset_unavailable', '该证据没有本地原始资产')
         path = Path(app.config['ASSET_ROOT']) / hashlib.sha256(request.tenant.encode()).hexdigest() / digest
         if not path.is_file():
@@ -252,9 +267,11 @@ def create_app(config=None):
             return fail(409, 'evidence_withdrawn', '证据已撤回，不显示其预览')
         try: index = int(request.args.get('frame', '0'))
         except ValueError: return fail(422, 'invalid_frame', 'frame必须为整数')
-        frames = item.get('metadata', {}).get('processing', {}).get('frames', [])
+        processing = item.get('metadata', {}).get('processing', {})
+        frames = processing.get('frames', []) if isinstance(processing,dict) else []
+        if not isinstance(frames,list): frames=[]
         if not 0 <= index < len(frames): return fail(404, 'preview_unavailable', '该材料没有对应预览帧')
-        digest = frames[index].get('preview_hash', '')
+        digest = frames[index].get('preview_hash', '') if isinstance(frames[index],dict) else ''
         if not re.fullmatch('[0-9a-f]{64}', digest): return fail(404,'preview_unavailable','预览不可用')
         path = Path(app.config['ASSET_ROOT']) / hashlib.sha256(request.tenant.encode()).hexdigest() / 'derived' / digest
         if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != digest:
@@ -275,9 +292,15 @@ def create_app(config=None):
             return app.response_class(to_turtle(graph), mimetype='text/turtle')
         return app.response_class(json.dumps(to_jsonld(graph), ensure_ascii=False), mimetype='application/ld+json')
 
+    @app.post('/api/v1/ingestion/preview')
+    @protected
+    def preview_intake():
+        result = service.preview_intake(request.tenant, request.actor, payload())
+        return jsonify({'data':result,'request_id':request.request_id})
+
     @app.get('/api/v1/health')
     def health():
-        return jsonify({'status': 'ok', 'application': 'liangzihu-ontology', 'version': '0.2.0',
+        return jsonify({'status': 'ok', 'application': 'liangzihu-ontology', 'version': '0.3.0',
                         'mode': 'local-engineering', 'demo_mode': app.config['DEMO_MODE'],
                         'backend': 'sqlite' if app.config['DATABASE_URL'].startswith('sqlite:') else 'postgresql'})
 

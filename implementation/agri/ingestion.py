@@ -11,7 +11,7 @@ SOURCE_KINDS = {'sensor', 'weather', 'image', 'video', 'remote_sensing', 'docume
 
 def create_ingestion_blueprint(service, authenticate, base):
     bp = Blueprint('ingestion', __name__)
-    schemas = json.loads((base / 'contracts' / 'input-schemas.json').read_text(encoding='utf-8'))
+    schemas = dict(getattr(service, 'input_schemas', {}) or json.loads((base / 'contracts' / 'input-schemas.json').read_text(encoding='utf-8')))
     validators = {name: Draft202012Validator(s, format_checker=FormatChecker()) for name, s in schemas.items()}
 
     def actor():
@@ -108,9 +108,11 @@ def create_ingestion_blueprint(service, authenticate, base):
         except FileExistsError:
             if hashlib.sha256(path.read_bytes()).hexdigest() != digest:
                 raise DomainError(409, 'asset_integrity_failed', '已有原始资产哈希不一致')
-        if kind in {'image','video'}:
-            from .media import inspect_media
-            evidence['metadata']['processing'] = inspect_media(path,kind,folder / 'derived')
+        from .asset_inspection import inspect_asset
+        evidence['metadata']['carrier'] = inspect_asset(content,kind,item.mimetype)
+        evidence['metadata']['processing'] = {'status':'not_requested','scope':'external_service','agricultural_inference':False}
+        evidence['metadata']['integrity'] = {'algorithm':'sha256','verified_at_receipt':True}
+        evidence['metadata']['record_kind'] = 'raw_evidence'
         result = service.mutate('create_evidence', who['tenant_id'], who, evidence, key)
         return jsonify({'data': result})
 

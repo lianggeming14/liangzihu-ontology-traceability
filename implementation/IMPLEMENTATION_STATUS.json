@@ -1,129 +1,128 @@
 {
-  "schema_version": "2.0",
-  "updated_at": "2026-10-13T09:50:56.115Z",
-  "application_version": "0.2.0",
-  "task": "农业本体与溯源系统：可操作数据接入、通用摄像头/闸门只读网关",
-  "implementation_status": "local_engineering_delivered",
+  "schema_version": "3.0",
+  "updated_at": "2026-10-14T15:17:00Z",
+  "application_version": "0.3.0",
+  "task": "数据库职责收敛、本体领域包完善、显式来源映射与统一入库校验",
+  "implementation_status": "local_engineering_verified_production_pending",
   "implementation_model": "current_session_model",
   "kimi": {
     "status": "retired_by_user_request",
-    "required_for_runtime": false,
-    "model_request_confirmed": false,
-    "historical_attempt_record": "runtime/kimi-attempt-status.json"
+    "required_for_runtime": false
   },
   "runtime": {
     "backend": "sqlite-development",
     "persistent_database": "data/agri.db",
-    "postgresql_adapter": "agri/db.py",
-    "postgresql_migration": "migrations/001_core.sql + 002_device_ingestion.sql",
+    "migrations": [
+      "001",
+      "002",
+      "003",
+      "004"
+    ],
     "postgresql_verified": false,
-    "listening_server_running": true,
-    "socket_listening_verified": true,
     "startup": "启动系统.cmd",
-    "verification_note": "2026-10-13 owned Python process on 127.0.0.1:8787; real HTTP health, home, browser session login and intake navigation verified; not a persistent service or TLS deployment"
+    "loopback_http_verified": true,
+    "legacy_rows_preserved": true,
+    "verification_note": "本机HTTP与旧数据库逐行保留已验证；非生产服务、无TLS"
   },
   "implemented": [
-    "stable_entity_identity_and_versioned_domain_packages",
-    "qualified_relations_and_bounded_nine_dimension_network",
-    "observations_assertions_and_evidence_separation",
-    "file_evidence_hash_and_authorized_download",
-    "multimodal_standard_record_ingestion_with_partial_retry",
-    "events_exact_decimal_material_balance_and_lineage",
-    "object_sets_dynamic_and_frozen",
-    "role_tenant_idempotency_audit_transaction_outbox",
-    "inference_and_traceability_bundles",
-    "reviewed_publication_public_dto_qr",
-    "evidence_withdrawal_recall_and_late_conflict_invalidation",
-    "scoped_jsonld_turtle_exchange",
-    "desktop_and_mobile_workbench_and_public_page",
-    "structured_manual_original_receipts_atomic_with_business_records",
-    "friendly_package_type_relation_object_set_forms_and_server_paged_entity_picker",
-    "camera_gate_identity_capture_policies_focus_windows_and_idempotent_receipts",
-    "readonly_edge_http_snapshot_rtsp_optional_gate_json_with_durable_retry_queue",
-    "image_technical_inspection_private_previews_and_explicit_video_processing_status",
-    "device_network_and_integrity_checked_inference_evidence_bundles",
-    "additive_002_sqlite_migration_preserves_existing_001_data"
+    "readable_versioned_packages_with_editable_display_labels_and_revision_audit",
+    "class_scoped_property_dictionary_with_usage_unit_type_enum_range_cardinality",
+    "uniform_api_manual_and_compat_batch_validation",
+    "temporal_class_assignments_and_relation_endpoint_validation",
+    "legacy_records_preserved_and_explicitly_unvalidated",
+    "source_carrier_record_kind_and_ontology_mapping_separated",
+    "immutable_source_bound_mapping_and_deterministic_conversion",
+    "preview_without_persistent_records_audit_outbox_or_idempotency",
+    "durable_original_receipts_failure_queue_append_only_retry_attempts",
+    "source_record_deduplication_and_conflict_detection",
+    "external_model_candidates_with_producer_and_input_evidence",
+    "original_integrity_carrier_validation_external_processing_separated",
+    "withdrawn_original_download_denied",
+    "bounded_multidimensional_graph_objects_sets_evidence_bundles_and_outbox",
+    "typed_object_and_observation_forms_and_structured_package_details",
+    "legacy_demo_display_names_upgraded_without_overwriting_user_labels"
+  ],
+  "compatibility_extensions": [
+    "device_gateway_and_capture_plans",
+    "material_traceability_publication_qr_and_inventory",
+    "legacy_media_analysis_module_and_existing_preview_reads"
+  ],
+  "removed_from_default_path": [
+    "image_brightness_contrast_phash",
+    "video_decoding_and_frame_extraction",
+    "automatic_media_preview_generation"
   ],
   "tests": {
-    "passed": 150,
+    "passed": 213,
     "failed": 0,
-    "skipped": 59,
-    "skip_reason": "58 PostgreSQL cases: TEST_DATABASE_URL not configured; 1 real video decode: FFMPEG_BIN not configured",
+    "skipped": 112,
     "junit": "tests/latest-results.xml",
+    "skip_breakdown": {
+      "postgresql": 111,
+      "legacy_real_video_decode": 1
+    },
     "browser": {
       "passed": true,
-      "transport": "Playwright -> real Flask test_client via stdio; persistent isolated SQLite; no mocked business result",
-      "report": "tests/browser/result.json",
+      "total_checks": 38,
+      "core_checks": 12,
+      "structured_compat_checks": 15,
+      "legacy_smoke_checks": 11,
+      "reports": [
+        "tests/browser/core-result.json",
+        "tests/browser/structured-result.json",
+        "tests/browser/result.json"
+      ],
       "page_errors": 0,
       "failed_requests": 0,
-      "tcp_or_tls_validated": false,
-      "structured_checks": 15,
-      "structured_report": "tests/browser/structured-result.json",
-      "tcp_smoke": "separately verified via actual Chrome and HTTP on 8787; see runtime/http-intake-check.json; no TLS"
+      "transport": "Playwright to real Flask test_client with isolated SQLite/assets; no mocked business results",
+      "tcp_or_tls_validated": false
     },
     "contract": {
-      "operations": 56,
-      "json_schemas": 21,
+      "operations": 65,
+      "json_schemas": 26,
       "report": "runtime/api-contract-check.json"
     },
+    "http_upgrade": {
+      "report": "runtime/http-intake-check.json",
+      "loopback_http": true,
+      "existing_legacy_rows_preserved": true,
+      "migration_versions": [
+        "001",
+        "002",
+        "003",
+        "004"
+      ]
+    },
     "sqlite_backup": {
-      "passed": true,
       "integrity_check": "ok",
       "foreign_key_violations": 0,
-      "original_and_restored_hash_equal": true,
-      "scope": "database only; assets/configuration need separate backup"
+      "scope": "数据库单独备份；原件及配置需另行备份"
     },
-    "postgresql_integration": "not_run",
-    "skip_breakdown": {
-      "postgresql": 58,
-      "real_video_decode": 1
-    },
-    "edge_gateway": {
-      "passed": 24,
-      "failed": 0,
-      "external_sources": "controlled transport responses; real Flask/SQLite destination in 2 integration tests; no field device"
-    }
-  },
-  "demo": {
-    "synthetic": true,
-    "packages": [
-      "agri.core",
-      "agri.rice-crayfish",
-      "agri.vegetable",
-      "agri.poultry"
-    ],
-    "entities": 16,
-    "material_lots": 8,
-    "events": 9,
-    "existing_platform_connected": false
+    "postgresql_integration": "not_run"
   },
   "limitations": [
-    "No verified PostgreSQL deployment or production performance/recovery evidence",
-    "No live Liangzihu connector; missing integration binding and source authoritative event projection channels",
-    "No full bitemporal reconstruction, property dictionary, arbitrary OWL/SHACL reasoning or causal inference",
-    "No event reversal/returns or independent quality release",
-    "No production identity provider, object-level grants or public deployment",
-    "No delivery worker/webhooks/consumer ACK management",
-    "Offset browsing is not a frozen snapshot; graph results can be explicitly truncated",
-    "No vendor field credentials or live device acceptance; generic readonly gateway is implemented",
-    "FFMPEG_BIN absent: real video decoding and RTSP capture unverified; image inspection is not agricultural vision reasoning",
-    "Capture policies require explicitly running gateway; no installed scheduler/service, historical playback or automatic event trigger",
-    "Media processing is bounded synchronous technical inspection; no continuous video storage or inference worker"
-  ],
-  "next_steps": [
-    "Obtain camera/gate protocol, authorized endpoint and source/device identity mapping; run one camera and one gate readonly field pilot",
-    "Configure trusted FFmpeg and run real video/RTSP checks",
-    "Run dedicated PostgreSQL tests and recovery/concurrency gates",
-    "Implement platform identity/authorization and authoritative production projection seams in DEVICE_PLATFORM_MAPPING.txt and PLATFORM_INTEGRATION.txt"
+    "SQLite验证不代替PostgreSQL真实迁移、事务、并发、恢复与容量验收",
+    "未连接真实梁子湖生产平台、现场设备或外部溯源系统",
+    "source_id契约匹配不是来源认证；生产令牌到来源强绑定未实现",
+    "无类继承、任意OWL/SHACL推理、完整双时态重建或自动实体合并",
+    "required仅适用于对象属性；每实体/本体版本/类仅一个连续有效区间",
+    "定义改动需新版本；尚无完整草稿审批或自动历史迁移",
+    "图和证据包有预算与截断；offset列表不是冻结快照",
+    "无生产身份提供方、对象级授权、TLS或webhook/ACK投递运营",
+    "原件与数据库无分布式事务及自动孤儿文件生命周期管理"
   ],
   "artifacts": {
     "readme": "README.txt",
-    "platform_integration": "PLATFORM_INTEGRATION.txt",
-    "openapi": "contracts/openapi.json",
-    "schemas": "contracts/input-schemas.json",
-    "design_doc": "../交付文档/梁子湖智慧农业本体库与溯源系统总体方案_v1.1.docx",
-    "source_archive": "../交付文档/梁子湖农业本体与溯源系统_本地工程版_v0.2.zip",
     "intake_guide": "DATA_INTAKE_GUIDE.txt",
-    "device_platform_mapping": "DEVICE_PLATFORM_MAPPING.txt"
-  }
+    "database_scope": "DATABASE_CORE_V0.3.txt",
+    "openapi": "contracts/openapi.json",
+    "source_archive": "../交付文档/梁子湖农业本体数据库_本地工程版_v0.3.zip",
+    "historical_design_doc": "../交付文档/梁子湖智慧农业本体库与溯源系统总体方案_v1.1.docx"
+  },
+  "next_steps": [
+    "按实际来源样本登记本体和字段映射",
+    "由认证集成绑定来源权限",
+    "进行PostgreSQL及现场只读接入验收",
+    "对接外部溯源/推理消费方的增量读取"
+  ]
 }

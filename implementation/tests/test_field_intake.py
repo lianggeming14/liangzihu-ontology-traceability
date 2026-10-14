@@ -19,6 +19,9 @@ def intake(tmp_path):
     app=create_app({'TESTING':True,'SERVICE':service,'DEMO_MODE':False,'AUTH_TOKENS':{
         'operator-test':ACTOR,'viewer-test':dict(ACTOR,id='view',roles=['viewer']),
         'other-test':dict(ACTOR,id='other',tenant_id='field-b')},'ASSET_ROOT':tmp_path/'assets'})
+    service=app.extensions['agri_service']
+    service.mutate('register_package','field-a',ACTOR,{'package_id':'field-test','version':'1.0.0','namespace':'urn:field-test:', 'label':'现场测试本体','types':[{'type_id':'water_field','identity_type':'field','label':'水田'}],'properties':[{'property_id':'water.temperature','label':'水温','applies_to':['water_field'],'value_type':'decimal','unit':'Cel','usage':'observation'}]},'package')
+    service.mutate('assign_type','field-a',ACTOR,{'entity_key':entity['entity_key'],'package_id':'field-test','version':'1.0.0','type_id':'water_field','valid_from':'2020-01-01T00:00:00Z'},'type')
     return app.test_client(),service,entity,tmp_path
 
 def post(client,path,body,key='form',token='operator-test'):
@@ -80,37 +83,45 @@ def image_bytes():
 def upload(client,content,kind='image',key='asset',filename='capture.png'):
     return client.post('/api/v1/ingestion/assets',data={'file':(BytesIO(content),filename),'source_kind':kind,'source_id':'camera:test'},headers={'Authorization':'Bearer operator-test','Idempotency-Key':key})
 
-def test_image_processing_and_authorized_preview_integrity(intake):
+def test_image_original_integrity_is_independent_of_external_analysis(intake):
     client,service,entity,tmp=intake
     original=image_bytes();response=upload(client,original)
     assert response.status_code==200,response.json
-    ev=response.json['data'];processing=ev['metadata']['processing']
-    assert processing['status']=='processed'
-    assert processing['summary']['width']==96
-    assert processing['agricultural_inference'] is False
+    ev=response.json['data'];meta=ev['metadata']
+    assert meta['processing']['status']=='not_requested'
+    assert meta['carrier']['format_status']=='verified_structure'
+    assert meta['carrier']['width']==96
+    assert meta['carrier']['content_analysis']=='not_performed'
     assert ev['content_hash']==hashlib.sha256(original).hexdigest()
-    path='/api/v1/evidence/'+ev['id']+'/preview'
+    path='/api/v1/evidence/'+ev['id']+'/asset'
     assert client.get(path).status_code==401
     assert client.get(path,headers={'Authorization':'Bearer other-test'}).status_code==404
-    preview=client.get(path,headers={'Authorization':'Bearer operator-test'})
-    assert preview.status_code==200 and preview.mimetype=='image/jpeg'
+    original_response=client.get(path,headers={'Authorization':'Bearer operator-test'})
+    assert original_response.status_code==200 and original_response.data==original
+    assert service._availability('field-a',ev)=='verified'
     assert upload(client,original).json['data']==ev
-    assert client.get(path+'?frame=-1',headers={'Authorization':'Bearer operator-test'}).status_code==404
+    assert client.get('/api/v1/evidence/'+ev['id']+'/preview',headers={'Authorization':'Bearer operator-test'}).status_code==404
+    assert not (tmp/'assets'/'derived').exists()
     assert post(client,'/evidence/withdrawals',{'evidence_id':ev['id'],'reason':'synthetic withdrawal'},'withdraw').status_code==200
     assert client.get(path,headers={'Authorization':'Bearer operator-test'}).status_code==409
 
-def test_bad_image_keeps_raw_but_never_claims_processed(intake):
-    client,_,_,_=intake
+def test_bad_image_keeps_raw_with_carrier_mismatch(intake):
+    client,service,_,_=intake
     ev=upload(client,b'not an image').json['data']
-    assert ev['metadata']['processing']['status']=='failed'
+    assert ev['metadata']['processing']['status']=='not_requested'
+    assert ev['metadata']['carrier']['classification_status']=='needs_mapping'
     assert ev['content_hash']==hashlib.sha256(b'not an image').hexdigest()
+    assert service._availability('field-a',ev)=='verified'
+    assert service._evidence_checks('field-a',ev)['carrier_status']=='mismatch'
 
-def test_unconfigured_video_retains_explicit_unavailable(intake,monkeypatch):
-    monkeypatch.delenv('FFMPEG_BIN',raising=False)
-    client,_,_,_=intake
-    ev=upload(client,b'synthetic nondecoded video','video',filename='sample.mp4').json['data']
-    assert ev['metadata']['processing']['status']=='unavailable'
-    assert ev['metadata']['processing']['reason']=='ffmpeg_not_configured'
+def test_video_header_is_not_claimed_decoded_or_analyzed(intake):
+    client,service,_,_=intake
+    ev=upload(client,b'\x00\x00\x00\x18ftypisom'+b'0'*20,'video',filename='sample.mp4').json['data']
+    assert ev['metadata']['processing']['status']=='not_requested'
+    assert ev['metadata']['carrier']['format_status']=='recognized_header'
+    assert ev['metadata']['carrier']['decode_status']=='not_checked'
+    assert ev['metadata']['carrier']['content_analysis']=='not_performed'
+    assert service._availability('field-a',ev)=='verified'
 
 def test_existing_001_database_upgrade_preserves_records(tmp_path):
     from agri.sqlite_db import SQLiteDatabase, _statements

@@ -16,7 +16,7 @@
     "camera registration bound to ontology object",
     "regular and focus-period capture policy",
     "pending capture slots from actual scheduler query",
-    "original image upload, actual processing and authorized preview",
+    "original image upload retains file metadata and does not run visual analysis",
     "gate state record with original evidence, no control command",
     "server-side object search reaches beyond first 200"
   ],

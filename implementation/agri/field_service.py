@@ -20,10 +20,11 @@ class FieldService(DeviceService):
     def _availability(self, tenant, evidence):
         if evidence['status'] != 'active': return 'withdrawn'
         metadata=evidence.get('metadata',{})
+        if not isinstance(metadata,dict): return 'invalid_metadata'
         asset=metadata.get('asset_key','')
         if evidence.get('uri','').startswith('asset://'):
             import re
-            if not re.fullmatch('[0-9a-f]{64}',asset): return 'invalid_asset_reference'
+            if not isinstance(asset,str) or not re.fullmatch('[0-9a-f]{64}',asset): return 'invalid_asset_reference'
             path=self.asset_root / hashlib.sha256(tenant.encode()).hexdigest() / asset
             digest=hashlib.sha256()
             try:
@@ -33,11 +34,10 @@ class FieldService(DeviceService):
             except OSError:
                 return 'unreadable'
             if digest.hexdigest()!=evidence['content_hash']: return 'hash_mismatch'
-            processing=metadata.get('processing',{})
-            if evidence['kind'] in {'image','video'} and processing.get('status')!='processed':
-                return 'media_'+processing.get('status','not_checked')
             return 'verified'
-        if metadata.get('receipt_format')=='manual-receipt/1':
+        receipt_format=metadata.get('receipt_format','')
+        if not isinstance(receipt_format,str): return 'invalid_metadata'
+        if receipt_format in {'manual-receipt/1','intake-receipt/1'}:
             canonical=metadata.get('canonical_json','')
             if not isinstance(canonical,str) or hashlib.sha256(canonical.encode()).hexdigest()!=evidence['content_hash']:
                 return 'hash_mismatch'
@@ -45,12 +45,33 @@ class FieldService(DeviceService):
             return 'verified'
         return 'reference_only'
 
+    def _evidence_checks(self,tenant,evidence,integrity=None):
+        meta=evidence.get('metadata',{})
+        if not isinstance(meta,dict): meta={}
+        carrier=meta.get('carrier',{})
+        processing=meta.get('processing',{})
+        if not isinstance(carrier,dict): carrier={'format_status':'invalid_metadata'}
+        if not isinstance(processing,dict): processing={'status':'invalid_metadata'}
+        carrier_status=carrier.get('format_status','not_checked')
+        if not isinstance(carrier_status,str): carrier_status='invalid_metadata'
+        if not isinstance(processing.get('status','not_requested'),str): processing={'status':'invalid_metadata'}
+        if not carrier and evidence.get('kind') in {'image','video'}:
+            carrier_status='legacy_verified' if processing.get('status')=='processed' else 'legacy_unvalidated'
+        if carrier.get('classification_status')=='needs_mapping': carrier_status='mismatch'
+        return {'integrity_status':integrity or self._availability(tenant,evidence),
+                'carrier_status':carrier_status,
+                'external_processing_status':processing.get('status','not_requested'),
+                'truth_assessment':'not_performed'}
+
     def _record(self, tx, tenant, key):
         record=super()._record(tx,tenant,key)
         if record:
             evidence=self._evidence(tx,tenant,record['evidence_ids'],active=False)
             record['evidence_availability']={e['id']:self._availability(tenant,e) for e in evidence}
-            record['usable_for_inference']=bool(evidence) and all(v=='verified' for v in record['evidence_availability'].values())
+            record['evidence_checks']={e['id']:self._evidence_checks(tenant,e,record['evidence_availability'][e['id']]) for e in evidence}
+            record['originals_available']=bool(evidence) and all(v=='verified' for v in record['evidence_availability'].values())
+            record['usable_for_inference']=record['originals_available'] and all(v['carrier_status'] not in {'invalid','mismatch','invalid_metadata','legacy_unvalidated'} for v in record['evidence_checks'].values())
+            record['availability_semantics']='original integrity and carrier checks only; no truth assessment or requirement for external analysis'
         return record
 
     def _evidence_bundle(self,tx,tenant,p):
@@ -61,8 +82,10 @@ class FieldService(DeviceService):
         evidence={e['id']:e for e in bundle['evidence']}
         for record in records:
             for item in self._evidence(tx,tenant,record['evidence_ids'],active=False): evidence[item['id']]=item
-        for item in evidence.values(): item['availability']=self._availability(tenant,item)
-        usable={eid:item['availability']=='verified' for eid,item in evidence.items()}
+        for item in evidence.values():
+            item['availability']=self._availability(tenant,item)
+            item['checks']=self._evidence_checks(tenant,item,item['availability'])
+        usable={eid:item['availability']=='verified' and item['checks']['carrier_status'] not in {'invalid','mismatch','invalid_metadata','legacy_unvalidated'} for eid,item in evidence.items()}
         for observation in bundle['observations']:
             observation['usable_for_inference']=bool(observation['evidence_ids']) and all(usable[eid] for eid in observation['evidence_ids'])
         accepted=[]
@@ -97,7 +120,7 @@ class FieldService(DeviceService):
             if datetime.fromisoformat(observed)>datetime.now(timezone.utc)+timedelta(minutes=5):
                 raise DomainError(422,'future_observation','人工观测不能记录尚未发生的读数；预测请另作候选陈述')
         if kind == 'assertion': body['origin'] = 'manual'
-        schemas = json.loads((Path(__file__).resolve().parents[1] / 'contracts' / 'input-schemas.json').read_text(encoding='utf-8'))
+        schemas = getattr(self, 'input_schemas', None) or json.loads((Path(__file__).resolve().parents[1] / 'contracts' / 'input-schemas.json').read_text(encoding='utf-8'))
         issues = list(Draft202012Validator(schemas[action], format_checker=FormatChecker()).iter_errors(body))
         if issues:
             raise DomainError(422, 'schema_validation_failed', '人工填报内容不符合契约', [{'path': list(e.path), 'message': e.message} for e in issues[:10]])

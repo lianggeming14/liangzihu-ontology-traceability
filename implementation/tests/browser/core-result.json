@@ -1,0 +1,32 @@
+{
+  "bridge": "actual Flask test_client and isolated SQLite/assets; no mocked business results",
+  "page_errors": [],
+  "failed_requests": [],
+  "server_stderr": [],
+  "checks": [
+    "create labeled ontology with class-scoped typed property and relation constraints",
+    "ontology and term display labels update; stable identifiers and content hash remain unchanged",
+    "object registration generates class-scoped attributes with defined units",
+    "classify an object before its properties are available",
+    "manual observation selects only registered object-compatible properties and fixed units",
+    "candidate assertion uses registered property while truth status stays separate",
+    "unmapped JSON retained with original evidence; preview makes no writes",
+    "register source-bound, versioned mapping with explicit property reference and unit checks",
+    "retry uses retained original, records mapping attempt, stores validated observation",
+    "invalid value preserved in validation-failed queue; status filter works",
+    "raw attachment registered without automatic image judgment",
+    "mobile core pages fit 390px viewport"
+  ],
+  "screenshots": [
+    "01-ontology-editor.png",
+    "02-ontology-structure.png",
+    "03-ontology-library.png",
+    "03b-typed-object.png",
+    "04-constrained-observation.png",
+    "05-source-mapping.png",
+    "06-intake-receipt.png",
+    "07-core-intake-desktop.png",
+    "08-ontology-mobile.png",
+    "09-intake-mobile.png"
+  ]
+}

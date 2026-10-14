@@ -1,104 +1,252 @@
-梁子湖数据接入操作指南 v0.2
-更新：2026-10-13
+梁子湖农业知识库：数据接入操作指南 v0.3
+更新：2026-10-14
+适用：implementation 本地工程版；以当前 API 契约与页面为准。
 
-一、这次可以实际使用的入口
+一、这版聚焦什么
 
-启动 implementation/启动系统.cmd，打开 http://127.0.0.1:8787/，选择本机演示管理员或操作员。左侧“数据接入”集中处理人工填报、原件上传、设备登记、采集计划和回执查询；本体管理提供领域包、类型赋值、限定关系和对象集表单。设备接入并不限定水稻或小龙虾，绑定的是通用对象 UUID；菜地、禽舍、池塘等对象可复用。
+本版负责：接收原文与原件，识别声明的来源/载体/记录类型，按已登记本体执行明确映射、类型与单位校验，保存对象、关系、证据和处理历史，再提供查询结果。
+本版不执行图像识别、视频抽帧、OCR、农业诊断、可信度打分、自动因果推断或设备控制。外部处理程序通过接口读取证据并提交候选结果。
+既有设备计划、边缘网关、物料事件与消费者溯源功能保留为兼容扩展，不作为本体库的新建主流程。不要为完成数据库接入而同时部署完整采集与业务平台。
 
-先登记田块/池塘/设施等被监测对象，再登记设备。设备名称只是显示标签；内部设备 UUID、设备实体 UUID、信源 ID、厂家设备 ID 和绑定对象分别保存。相同信源内厂家设备 ID 重复会拒绝，不按名称自动合并。设备或所属位置变更需受控迁移；本版不提供无审计覆盖历史绑定的编辑入口。
+启动：运行 implementation/启动系统.cmd，访问 http://127.0.0.1:8787/。
+主导航：数据库总览、本体管理、数据接入、对象与关系、原件与断言；兼容扩展折叠为批次与溯源、设备采集。
+本体卡片可“查看结构”“编辑名称”；数据接入页可“登记来源映射”“接收结构化记录”，映射条目可“用样本预览”，回执可“选择映射重试”。
+本机演示登录只用于合成数据操作；正式接入需配置受控身份。数据库按租户隔离。API 文档：GET /api/v1/openapi.json。
+所有 POST 写接口均需 Authorization: Bearer <受控令牌> 与 Idempotency-Key: <唯一请求键>；只读 POST /ingestion/preview 无需幂等键。
+本指南中的 UUID 必须换成实际接口返回值；地址、令牌和厂家编号均为占位说明，不代表已接通真实设备。
 
-二、人工填报
+二、先登记本体，再登记对象
 
-1. 选择“人工填报”，搜索并选择对象；检索在服务端执行，不受首页前200个对象限制。
-2. 填报观测：属性标识、数值、单位、发生时间、方法及备注，例如 water.temperature / 22.5 / Cel。时间由本地时区转换为带时区的标准时间。人工记录始终标为 reported，不因填写数值就升级成设备实测。
-3. 填报陈述：说明判断内容、范围和时间，作为人工候选陈述，后续另行评估，不自动变成事实。
-4. 填报现场事件：巡检、灌溉、维护、异常，选择参与对象及角色；现场事件不修改库存。采收、拆批等物料事件使用对应结构化表单和数量规则。
-5. 附件先上传并选取证据。即使没有附件，服务器也会把原始人工表单、操作者、接收时间生成不可混淆的原文回执，保存内容哈希，并与业务记录在同一事务内提交。
-6. 断网或回执丢失时，在未修改原表单的情况下重试。界面保留幂等键；同一个业务操作不会因重试写入两次。修改已成功请求且复用原键会返回冲突。
+1. 创建本体时填写可读名称、稳定 package_id、版本和命名空间。
+2. 定义类：type_id、中文 label、identity_type。身份类型表示实体是什么，语义类表示该实体在本体中的分类；不能仅因名称相同就合并对象。
+3. 定义属性：property_id、label、applies_to 类列表、value_type、usage。按需设置 unit、enum_values、required、cardinality、minimum、maximum。
+4. 定义关系：明确主体/客体身份类型；如需更严格分类，再声明主体/客体语义类。使用有效时间、限定条件和证据，不把任意两个名称直接连成事实。
+5. 创建对象并分配语义类，确认分类有效期覆盖待导入记录的发生时间。
 
-发生记录不能在未来超过服务器五分钟；未来作业应登记计划，预测应作为候选陈述。人工来源证明“谁在何时填了什么”，不证明内容已被证实。
-
-三、摄像头和闸门 API
-
-写请求头：Authorization: Bearer <受控令牌>，Idempotency-Key: <稳定且唯一的业务请求键>。
-凭据通过本机受控配置或环境变量提供，不写进网页设备登记、仓库或请求示例。
-
-POST /api/v1/devices
+完整示例一：POST /api/v1/ontology/packages
 {
-  "name": "示例田块摄像头",
-  "device_kind": "camera",
-  "source_id": "liangzihu-platform",
-  "external_device_id": "替换为厂家设备ID",
-  "bound_entity_key": "替换为已有田块UUID"
+  "package_id": "liangzihu.water",
+  "version": "1.0.0",
+  "namespace": "urn:liangzihu:water:",
+  "label": "梁子湖水体监测本体",
+  "description": "登记水体对象与观测属性；数值范围为本项目示例配置，需业务人员确认。",
+  "types": [
+    {"type_id": "pond.water", "identity_type": "pond", "label": "池塘水体"}
+  ],
+  "properties": [
+    {
+      "property_id": "water.temperature",
+      "label": "水温",
+      "applies_to": ["pond.water"],
+      "value_type": "decimal",
+      "usage": "observation",
+      "unit": "Cel",
+      "cardinality": "single",
+      "minimum": -10,
+      "maximum": 80
+    },
+    {
+      "property_id": "water.condition",
+      "label": "外部报告的水体情况",
+      "applies_to": ["pond.water"],
+      "value_type": "enum",
+      "usage": "assertion",
+      "enum_values": ["normal", "attention"],
+      "cardinality": "single"
+    }
+  ],
+  "predicates": []
 }
-闸门使用 device_kind=gate。响应包含 device_id（字段id）、device_entity_key、bound_entity_key。只有操作者/管理员可以登记或上报，租户从身份令牌确定。
 
-摄像头回传两步：
-A. POST /api/v1/ingestion/assets，multipart 表单 file、source_kind=image或video、source_id。取响应证据id。
-B. POST /api/v1/device-records：device_id、source_record_id、record_type=camera_snapshot或camera_video、captured_at、data={}、evidence_ids=[证据id]。如响应某个计划时点，另传 policy_id 和 slot_at。实际时间不得改成计划时间。
-source_record_id 使用厂家稳定事件ID；同设备同ID同载荷重放返回原记录，不同载荷冲突拒绝。
+完整示例二：POST /api/v1/ontology/entities
+{
+  "entity_type": "pond",
+  "name": "梁子湖一号塘",
+  "attrs": {},
+  "semantic_types": [
+    {
+      "package_id": "liangzihu.water",
+      "version": "1.0.0",
+      "type_id": "pond.water",
+      "valid_from": "2026-01-01T00:00:00+08:00"
+    }
+  ]
+}
+保存响应中的 entity_key，后文用 <池塘UUID> 表示它。
+旧对象可通过 POST /api/v1/ontology/type-assignments 单独分类；带 entity_key、package_id、version、type_id、valid_from，必要时加 valid_to。分类生效时间不能无依据追溯到历史。
 
-闸门状态回传：先把厂家原始 JSON 上传为 document 原件，再上报 record_type=gate_status，data={"state":"partial","position_pct":"35"}，captured_at填写厂家带时区的采样时间，并关联证据。state为open/closed/partial/unknown，position_pct为0至100的十进制字符串（可不报开度）。未知枚举和单位不能自行猜测。
-闸门记录生成可查询的 reported 观测，原始回执仍独立保存。本版没有开闸、关闸或自动控制接口。
+属性类型支持 decimal、integer、boolean、string、enum、datetime。数字不等于文本、false 不等于 0；datetime 需要时区。unit 必须与定义完全一致；未定义单位的属性不要随意填写单位。多值属性使用数组；必填目前只用于 attribute（对象属性），不要求一次上报所有观测。
+同一 property_id 若存在多种有效版本，必须提供明确 property_ref；后端也检查对象在该时点是否属于属性适用类。没有唯一对应关系会返回 needs_mapping，不按属性中文名称猜测。
 
-GET /api/v1/devices
-GET /api/v1/device-records?device_id=<UUID>&limit=100&offset=0
-设备详情页可复制设备ID并展开回传示例。所有列表按返回的分页字段遍历，不能把第一页当全量。
+三、修改名称与维护版本
 
-四、周期与特殊时间
+GET /api/v1/ontology/packages 返回可读名称、类/属性/关系列表、display_revision 和不可变定义。
+POST /api/v1/ontology/package-labels 可以修改本体名称、说明，以及各类/属性/关系的显示名称。例如：
+{
+  "package_id": "liangzihu.water",
+  "version": "1.0.0",
+  "expected_revision": 1,
+  "label": "梁子湖池塘与水质知识库",
+  "description": "供水质数据映射和查询使用。",
+  "type_labels": {"pond.water": "养殖池塘水体"},
+  "property_labels": {"water.temperature": "池塘水温"}
+}
+expected_revision 使用最近 GET 返回的 display_revision。并发修改会返回 display_revision_conflict；先刷新再修改。
+显示名修改保留稳定标识和已有引用。本体已发布版本的类边界、属性类型/单位、关系语义不能覆盖；改变含义必须发布新版本并检查对象分类、来源映射和历史查询。当前不提供自动迁移整个历史库或完整草稿审批工作流。
 
-在“采集计划”选择设备、记录类型、起始时间和常规间隔；可添加最多20个重点窗口，每个窗口填开始、结束、更短间隔和标签。常规间隔支持60秒至7天；重点间隔不少于60秒且不长于常规间隔。示例：平时每30分钟采一张；灌溉开始前后一个小时每2分钟一张；重点时点可建长度仅一个间隔的窗口。
+四、接入前明确四个维度
 
-POST /api/v1/device-policies 建立策略；POST /api/v1/device-policies/<id>/status，{"enabled":false}暂停（不删除历史）。
-GET /api/v1/device-captures/due?since=<带时区时间>&as_of=<带时区时间>&device_id=<UUID>&limit=100&offset=0 查询待采集时点。
+来源：source_id 是来源系统标识；source_category 为 device / manual / external_system / model。
+载体：结构化转换目前使用 content_type=application/json。图片、视频、PDF 等文件走原件接口，再引用 evidence_id。
+记录类型：record_kind 为 entity / observation / assertion / event / relationship / evidence；未知字符串可接收为待映射回执。
+本体对应：固定对象 subject_key、属性 property_ref（package_id/version/property_id），或标准实体/关系载荷中的类和关系引用。
 
-窗口左闭右开，常规与重点时点取并集并去重；回执完成后不再列为待采集。查询最多7天、500策略、10000个计划槽，超出预算明确报错。分页期间新增回执会改变集合，网关先读取所有页，再执行采集。
+摄像头、图片、天气、人工不是同一级概念。摄像头是设备来源，JPEG 是载体，图片原件是证据；水温是由映射选定的属性。一个 temp 字段不会自动被解释为水温。
+天气实测与预报必须使用不同记录契约：实测可为 observation，预报应作为 assertion，origin=forecast，并在值中保留适用时间/范围。数据库不会自动把预报当成实测。
+来源分类依据管理员登记的契约和提交声明，不是对发送方身份真实性的证明。本版尚未实现令牌到 source_id 的强制绑定；正式部署需由 API 网关或认证集成完成该约束。
 
-这是采集计划，不是执行证明。必须显式启动网关或接入厂商推送才会产生真实记录；页面不会悄悄启动后台服务。事件驱动自动触发和录像回放补采尚未实现。临时重点记录可用重点窗口或主动推送回执；不能以当前画面冒充过去遗漏的画面。
+五、登记明确的来源映射
 
-五、只读边缘网关
+POST /api/v1/ingestion/mappings；仅 admin / ontology_admin 可登记。
+必填：mapping_id、version、source_id、schema_version、source_category、content_type、record_kind、target_action、mode。
+mode=fields 时至少一条 field_rules；mode=identity 时接收目标接口标准载荷，不能同时带转换规则。
+可选：subject_key 固定对象、defaults 固定目标字段、description 管理说明。
+source_id/schema_version/source_category/content_type/record_kind 必须与来件完全匹配；mapping_id+version 不可覆盖，修改规则要新建版本。
 
-ops/edge_gateway.py 支持：
-- http_snapshot：HTTP GET获取单张图像；
-- rtsp_snapshot：读取RTSP并取一帧，要求FFMPEG_BIN；
-- http_gate_json：GET获取厂家JSON，按显式字段路径/状态表/比例换算映射。
+完整示例三：接收设备以 0.1℃ 为单位的整数读数，显式转换为 Cel。
+{
+  "mapping_id": "pond-01-water-temperature",
+  "version": "1",
+  "source_id": "liangzihu-sensor-platform",
+  "schema_version": "sensor-json-v1",
+  "source_category": "device",
+  "content_type": "application/json",
+  "record_kind": "observation",
+  "target_action": "create_observation",
+  "mode": "fields",
+  "subject_key": "<池塘UUID>",
+  "description": "仅接收一号塘已核对的水温字段；来源单位为 deci-Cel。",
+  "defaults": {
+    "property_id": "water.temperature",
+    "property_ref": {
+      "package_id": "liangzihu.water",
+      "version": "1.0.0",
+      "property_id": "water.temperature"
+    },
+    "method": "platform sensor import",
+    "origin": "measured"
+  },
+  "field_rules": [
+    {
+      "source_path": "/readings/temperature",
+      "target_path": "/value/value",
+      "value_type": "decimal",
+      "scale": "0.1",
+      "offset": "0",
+      "source_unit_path": "/unit",
+      "source_unit": "deci-Cel",
+      "unit": "Cel"
+    },
+    {
+      "source_path": "/captured_at",
+      "target_path": "/observed_at",
+      "value_type": "datetime"
+    }
+  ]
+}
 
-从 ops/edge_gateway.example.json 复制配置到 data/edge-gateway.local.json（data目录不入库），替换登记后的设备UUID，确认协议后启用对应设备。示例默认全部禁用，避免把占位设备当真实接入。API地址、摄像头URL、闸门URL与令牌均使用环境变量名引用；配置不含真实凭据。
+field_rules 使用 JSON Pointer，不执行代码。/a~1b 表示键 a/b，~0 表示 ~。支持读取数组下标；写入目标以对象字段为主，复杂参与者数组可整体映射或使用 identity 标准载荷。
+value_type 可为 decimal/integer/boolean/string/datetime。decimal 使用十进制 scale 与 offset；本例 225 * 0.1 + 0 = 22.5。source_unit/source_unit_path 必须成对出现；错误来源单位拒绝转换。
+enum_map 可明确转换枚举，如 {"0":"closed","1":"open"}；未映射的值进入校验失败，不默认为关闭/正常。枚举转换不与缩放/其他类型转换混用。
+unit 只用于 /value/value 的同级 /value/unit。转换规则不能写 evidence_ids、status、origin；证据与候选状态由接入流程控制，来源性质由固定契约与标准载荷声明。
+相同或包含关系的目标路径禁止重复写入，字段规则不能靠顺序悄悄覆盖同一值。
 
-先校验配置（不读取令牌或访问网络）：
-  python ops/edge_gateway.py --config data/edge-gateway.local.json --validate
-取得受控配置并设置环境变量后单次执行：
-  python ops/edge_gateway.py --config data/edge-gateway.local.json --once
-需要持续运行时显式启动：
-  python ops/edge_gateway.py --config data/edge-gateway.local.json --loop
-按Ctrl+C停止。本版不安装系统服务或定时任务。
+六、先预览，再正式接收
 
-默认每30秒检查一次，计划回看与最大迟到窗口120秒；过旧时点不取当前画面冒充补采。网关本地outbox保存待提交原件/精确请求、稳定幂等键，遇到暂时故障重试同一份数据；源ID冲突应人工核对，不改键绕过。一个outbox限制单进程，多个部署不要共用本地队列。原件大小/队列数量/总字节和请求时限受限制，队列满和权限失败明确返回状态码；运维需检查输出及积压。
+完整示例四：POST /api/v1/ingestion/preview 或 POST /api/v1/ingestion/receipts 使用同一信封。
+{
+  "source_id": "liangzihu-sensor-platform",
+  "source_record_id": "pond-01-reading-20261014-080000",
+  "schema_version": "sensor-json-v1",
+  "source_category": "device",
+  "content_type": "application/json",
+  "record_kind": "observation",
+  "mapping_id": "pond-01-water-temperature",
+  "mapping_version": "1",
+  "payload": {
+    "readings": {"temperature": 225},
+    "unit": "deci-Cel",
+    "captured_at": "2026-10-14T08:00:00+08:00"
+  }
+}
 
-六、媒体处理与推理边界
+预览返回 status、would_store、issues、normalized_payload；read_only=true。status=stored 表示按当前状态可入库，不代表已提交。预览不留下对象、观测、证据、回执、审计、outbox 或幂等记录。预览后数据库可能改变，正式接收仍重新校验。
+正式接收返回持久回执 id、raw_evidence_id、raw_envelope、mapping_id/version、status、issues、record 和 attempts。
 
-原件单文件32MiB，结构化JSON请求2MiB；网关快照另设更小的1.5MiB上限，可在设备端调分辨率。图片支持JPEG/PNG/WEBP/BMP/TIFF，最多2400万像素；原图内容寻址存储，派生JPEG按EXIF方向纠正并去元数据，计算尺寸、亮度、对比度、感知哈希和偏暗/低对比标记。这些是技术检查，不是病虫害、长势或水质判断。
+三种接收状态：
+- needs_mapping：未指定映射、映射不存在、类别未支持，或本体类与属性无法唯一对应。
+- validation_failed：已找到映射，但字段缺失、类型/单位/范围/时间/引用错误，或来源契约与映射不匹配。
+- stored：目标写入与回执处理记录已提交，表示满足写入规则，不表示事实已被证实。
 
-视频使用外部FFMPEG_BIN路径，默认检查前120秒、每10秒最多12帧；处理是有时限的同步操作，不是连续录像平台或无限长视频转码。抽帧字段 target_offset_seconds 是抽样目标偏移，不能当精确PTS或摄像头墙钟时间。未配置FFmpeg时状态为unavailable，解码失败为failed，保留原件及失败原因，不能显示为已识别。当前环境尚未完成真实视频解码/RTSP验收。
+“合法信封”指来源记录标识等必要外层字段完整。缺少 source_record_id、JSON 不合法、未认证、无权限等请求直接报错，不创建回执。合法但未能转换的数据保留原文和错误。
+外层 evidence_ids 若包含不属于本租户的证据，直接拒绝；不允许借由接收回执读取他人原件。
 
-Pillow官方资料：https://pillow.readthedocs.io/en/stable/reference/Image.html
-FFmpeg官方资料：https://ffmpeg.org/ffmpeg.html
-可选requirements-media.txt提供imageio-ffmpeg依赖入口；安装完成后仍需显式配置FFMPEG_BIN到可信可执行文件。
+source_record_id 必须使用来源系统稳定事件编号。同租户+source_id+source_record_id 同内容重放返回原回执；内容改变返回 source_record_conflict，不覆盖原文。mapping 选择不计入原始业务内容哈希，改变映射通过重试接口执行。
+不要用新随机 source_record_id 掩盖冲突。来源数据确实修订时，应使用来源新的修订记录标识，并在原始载荷中保留旧记录关联。
 
-七、本体、对象集与输出
+七、查询和重试
 
-本体管理：登记命名空间、版本、类型和谓词；为已有对象赋予语义类型；按主体/谓词/客体/有效时间/限定属性/证据建立关系。同义名称应作为受控映射处理，不把同名物体自动视作同一实体。领域包注册不自动实现新的业务执行服务。
+GET /api/v1/ingestion/mappings?source_id=liangzihu-sensor-platform&limit=100&offset=0
+GET /api/v1/ingestion/receipts?status=needs_mapping&limit=100&offset=0
+GET /api/v1/ingestion/receipts/<回执UUID>
 
-动态对象集按身份类型和名称过滤表达实时结果；快照对象集可跨页选择并保留固定成员。可检索全库对象，按返回分页查看。修改成员或规则应建新对象集；当前没有复杂自由查询语言和通用集合编辑/撤销。
+先修复本体分类或登记新映射版本，再调用：
+POST /api/v1/ingestion/receipts/<回执UUID>/retry
+{
+  "mapping_id": "pond-01-water-temperature",
+  "mapping_version": "2"
+}
+需要新 Idempotency-Key。旧原文不会重写，attempt_number 逐次增长，每次保留采用的映射版本、标准化结果和错误。单回执最多 100 次处理尝试；超过时应检查来源与设计，不能无限循环重试。
+成功 stored 后禁止再次生成业务记录。修订已入库信息要通过新的来源修订记录及既有修订机制处理。
+未知来源类别或不支持载体不是改映射版本就能修复：应先补充受支持的来源契约/外部转换适配器；本版不提供篡改原信封类别的入口。
+所有列表依据 next_offset/truncated 分页。列表可筛选来源和状态；不要把第一页当成全量。
 
-关系网新增“设备与采集”维度：对象←设备→采集记录→标准化观测，原始证据独立指向记录。身份/空间/生产/物料/事件/观测/断言/证据/设备共九个维度按预算查询，截断状态不可省略。
+八、人工录入与文件原件
 
-受保护的对象 EvidenceBundle 现在按device_entity_key或bound_entity_key取按采集时间倒序的最近200条设备记录，并附原件引用、可用性、缺口和检索说明。设备记录仍是独立类别，不伪造视觉断言。当前原件须存在且哈希一致，图像/视频须处理成功，才能标技术证据可用于后续推理；reference_only、withdrawn、missing、unreadable、hash_mismatch、media_failed/unavailable均明确区分。有效性检查可能读取原件，会增加大记录包的I/O成本，生产需缓存和异步校验。
+人工录入仍可使用 POST /api/v1/ingestion/manual，record_kind=observation/assertion/event，payload 为标准记录。原始表单、操作者与接收时间生成证据，并与记录原子提交。人工观测 origin=reported；人工陈述进入候选状态。此便利接口失败时整条事务回滚；需要持久失败队列时使用通用 /ingestion/receipts。
+本体字典已经登记时，人工与 API 写入均执行相同后端校验。选择对象后应选择其适用属性，不再自由填写一个未登记属性就作为受校验观测入库。
 
-Mutation幂等重放返回历史提交回执；想判断当前证据能否使用，应重新GET记录或证据包。技术可用性不等于事实可信度、质量认证或因果成立。溯源发布仍经过现有审核及白名单，新增设备证据不会自动公开现场原图或内部设备信息。
+文件：POST /api/v1/ingestion/assets，multipart 字段 file、source_kind、source_id；仍需幂等键。source_kind 是旧文件接口的兼容分类，例如 image/video/document，不等同于四维信封中的 source_category。
+原文件单个最大 32 MiB，结构化 JSON 最大 2 MiB。保留原文件字节、SHA-256、文件名、声明 MIME、检测载体信息与来源；不会计算亮度、感知哈希、农业特征，也不会视频抽帧。
+载体检查用于核对声明与文件格式，不是内容识别。未知格式保留原件并明确状态；被声明为图片但格式不匹配时不得显示为已识别图片。
+响应 metadata 区分：
+- integrity：接收时内容哈希检查；
+- carrier：载体识别与格式状态；
+- processing.status=not_requested、scope=external_service：未调用外部处理。
+外部未处理不影响完整原件的受保护查询与下载。GET /api/v1/evidence/<证据UUID>/asset 返回原件；读取时检查当前文件哈希。文件缺失、损坏、撤回或仅外部引用与“尚未识别”分别处理。
 
-八、与梁子湖现有系统的接轨
+九、外部模型或报告结果怎样回来
 
-详见 DEVICE_PLATFORM_MAPPING.txt。首批现场验收建议：一个已授权田块、一台摄像头、一个闸门，只读联调。核实原平台对象/设备ID、摄像头协议、原件下载授权、闸门状态枚举/开度单位/时间语义、幂等事件ID和API权限。逐项验证正常采集、重点窗口、断网重试、重复事件、错误图片、未知状态、设备断线和证据撤回；与原平台画面/状态人工逐条核对。
+本体库不调用模型。外部程序先读取受保护证据；运行后以 source_category=model、record_kind=assertion 回传，映射也必须明确绑定该类别。信封必须有 producer={"name":"外部模型名称","version":"明确版本"}，并在 evidence_ids 中引用输入原件。
+可登记 mode=identity 的映射，target_action=create_assertion，payload 按标准断言格式提交 subject_key、predicate_id、property_ref、value 等。结果强制 origin=model、status=candidate；记录值不由本库重新推断。
+断言属性须 usage=assertion。未明确对应属性的历史/兼容断言可标 unvalidated；不能把它直接采纳为已验证事实。模型版本、原始结果、采用映射版本与原件链接均可从回执追查。
+人工认可或外部业务采纳是独立流程；结构校验通过与原件哈希正确均不等于农业结论正确。
 
-当前已实现通用API、网关程序及本地闭环；未获得厂家协议/地址/凭据，未连接真实农场设备。PostgreSQL、TLS部署、生产统一身份和性能/恢复门槛仍待验收。禁止把合成测试通过写成现场验收通过。
+十、输出与旧功能兼容
+
+对象：GET /api/v1/ontology/entities；属性：GET /api/v1/ontology/properties；观测与断言：GET /api/v1/observations、/assertions。
+关系与关系网：GET /api/v1/ontology/relations、/ontology/graph；对象集：GET/POST /api/v1/ontology/object-sets。
+证据包：GET /api/v1/inference/bundles/<对象UUID>；变更游标：GET /api/v1/trace/changes。
+JSON-LD/Turtle 导出沿用 /api/v1/ontology/export。导出是受限查询结果投影，不声称具备任意 OWL/RDF 无损往返能力。
+
+输出区分 validation_status、原件完整性/载体状态/外部处理状态、候选/采纳状态。接收回执保存当时处理结果；若要判断当前证据可用性，应重新查询证据包，不依赖旧幂等回执。
+旧属性自由字段与历史记录不被删除或自动标成已校验。旧本体显示 legacy_unvalidated，可逐步登记属性字典并建立新版映射。修改名称不改历史语义，升级定义不自动重写旧数据。
+
+兼容扩展仍保留：devices/device-policies/device-records、ops/edge_gateway.py、物料与溯源接口。网关采集/RTSP 取帧属于外部采集层，可单独运行；不是本体库核心的图像处理能力。新核心通用接入只接巡检、灌溉、维护、异常这类现场事件，不推动库存出入库。现有业务系统应作为其权威记录来源。
+
+十一、验收与现实限制
+
+建议先用一类对象、一个属性、一份真实但脱敏的来源样本完成：登记定义→对象分类→登记映射→预览→正式接收→重复重放→错误单位→修复后重试→查原件与证据包。
+再分别验证模型候选、手工观测和图片原件，确认三者未被混淆。
+当前不包含：厂家设备实连、统一身份来源绑定、自动同义合并、通用可信度判断、自动历史迁移、任意模型执行、大规模流式处理。PostgreSQL 实库、生产权限/TLS、并发容量、备份恢复、厂商字段含义仍需现场验收。
+合成 SQLite/HTTP 测试只能证明所覆盖的本地行为；测试结果与跳过项以本次交付验证报告为准，不能作为生产或田间验收结论。

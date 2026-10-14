@@ -24,7 +24,10 @@ def main():
     app=create_app({'DEMO_MODE':not args.no_demo_login})
     if not args.no_seed:
         from agri.seed import seed_demo
-        manifest=seed_demo(app.extensions['agri_service'],BASE)
+        from agri.service import Service
+        from agri.ontology_core import seed_core_demo
+        manifest=seed_demo(Service(app.extensions['agri_db']),BASE)
+        seed_core_demo(app.extensions['agri_service'],BASE)
         print('Synthetic demo is ready. Public path: /trace/'+manifest['public_code'],flush=True)
     print('Local engineering application: http://127.0.0.1:'+str(args.port),flush=True)
     print('Backend: '+app.extensions['agri_db'].backend+'; PostgreSQL and field validation are separate gates.',flush=True)

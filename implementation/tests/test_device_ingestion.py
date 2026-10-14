@@ -356,7 +356,7 @@ def test_corrupt_original_or_failed_media_decode_cannot_be_marked_inference_usab
         headers={'Authorization': 'Bearer synthetic-token'}).get_json()['data']['items'][0]
     assert status['usable_for_inference'] is False
     invalid = upload(client, b'this is not a decodable image', key='invalid-image-upload')
-    assert invalid['metadata']['processing']['status'] == 'failed'
+    assert invalid['metadata']['carrier']['classification_status'] == 'needs_mapping'
     rejected_or_unusable = post_camera(client, camera, invalid, key='invalid-camera-record')
     assert rejected_or_unusable.status_code in (200, 422)
     if rejected_or_unusable.status_code == 200:
