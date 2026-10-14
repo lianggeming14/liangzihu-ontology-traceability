@@ -1,10 +1,10 @@
 {
   "format": "liangzihu-github-snapshot/1",
-  "created_at": "2026-10-13T10:11:34.233305+00:00",
+  "created_at": "2026-10-14T15:17:56.053494+00:00",
   "source": {
     "selection_mode": "working-tree",
     "bytes": "working-tree",
-    "listing_sha256": "c81971fde45edd8dee7b6704052d1b7fd297c3b423a0c956de27da0856e80a2a"
+    "listing_sha256": "0c715b60624a63830b48ae6ebbad53d52f2eef4839057f5f061c745ce451c9bd"
   },
   "limits": {
     "archive_bytes": 18874368,
@@ -22,17 +22,17 @@
     },
     {
       "name": "snapshot-002.zip",
-      "size": 17106557,
-      "sha256": "f4a3788db7b87d6daa2b34acbe2f300540f87f09ef0f453b5214228891da1f83",
-      "file_count": 169,
-      "uncompressed_size": 19764732
+      "size": 18614811,
+      "sha256": "06eb8c112c3102d5c5e0d8b98a92aea3456accea89f9400e3681a1a79a32607a",
+      "file_count": 194,
+      "uncompressed_size": 21556539
     },
     {
       "name": "snapshot-003.zip",
-      "size": 3185488,
-      "sha256": "faaf0202f6a45bbe2fbb5e7a79c4b9786f89cdde6c531578f38a600ea5cdbf7b",
-      "file_count": 11,
-      "uncompressed_size": 3278609
+      "size": 6883866,
+      "sha256": "bf2f7319b12ea04bd8e0ec93bd4f3e8560aaa54c997713d719b830239af125a0",
+      "file_count": 13,
+      "uncompressed_size": 6985360
     }
   ],
   "files": [
@@ -861,8 +861,8 @@
     {
       "path": "README.md",
       "archive": "snapshot-002.zip",
-      "size": 3876,
-      "sha256": "a077869d852059151419deb25a23f6a76edcf79ad86168aaf088171f67a60342"
+      "size": 2589,
+      "sha256": "306a79c853c4358ffdefff590ebcb238f7af271d3eeeb1a4b7be1a61ec377cfb"
     },
     {
       "path": "implementation/.gitignore",
@@ -871,22 +871,28 @@
       "sha256": "7a44f0883aa50499d49ed688cdcdc9e90f06d3e0aacda223d80f4719347f3a09"
     },
     {
+      "path": "implementation/DATABASE_CORE_V0.3.txt",
+      "archive": "snapshot-002.zip",
+      "size": 17614,
+      "sha256": "b8290254df15144fd2b9c56ae8a1aabb4717c49dff1f86a68a22bea5af9fa58a"
+    },
+    {
       "path": "implementation/DATA_INTAKE_GUIDE.txt",
       "archive": "snapshot-002.zip",
-      "size": 10709,
-      "sha256": "ab1b6cf515ac676bdab0816eb8395d46dfb08d223f48bcce175134e495c862da"
+      "size": 17783,
+      "sha256": "78171963d10a6b8f8b83867fe907b90f1a798865661f96add850124f867e1c26"
     },
     {
       "path": "implementation/DEVICE_PLATFORM_MAPPING.txt",
       "archive": "snapshot-002.zip",
-      "size": 28348,
-      "sha256": "759c8a688a3a5c03974a7f21f4921d53b11b3f1e2e2a2d7c5226cb024ee3bb4a"
+      "size": 28686,
+      "sha256": "f95bd96b996e640caf70b1f4ece167cbc35146cb9784dfa1dc2e2796a278cf35"
     },
     {
       "path": "implementation/IMPLEMENTATION_STATUS.json",
       "archive": "snapshot-002.zip",
-      "size": 6118,
-      "sha256": "43488cd63e5bc2113073ea4d516457f60bf5544018e72aa3a2bee29a7eada0a6"
+      "size": 5042,
+      "sha256": "8feae9c2de3689563ed873ec28bdb60b2b7363a259d7eed39c1847487d1a5f0f"
     },
     {
       "path": "implementation/KIMI_TASK_DATABASE.txt",
@@ -909,14 +915,14 @@
     {
       "path": "implementation/PLATFORM_INTEGRATION.txt",
       "archive": "snapshot-002.zip",
-      "size": 19179,
-      "sha256": "62cb57a0bd0464967399872a2a768d1f4767314a8dccbded3f50603e01108b6a"
+      "size": 19517,
+      "sha256": "a255807961a72a526ee14ad0d87aaa65dcf1cad5d331e0bfbbcf8c622f654a6f"
     },
     {
       "path": "implementation/README.txt",
       "archive": "snapshot-002.zip",
-      "size": 22018,
-      "sha256": "64d7b2553430e2a0a0afe0561971af3e103383f7f27a57b59b77a70055fcee4b"
+      "size": 6118,
+      "sha256": "e306918a9729f3b8d75ee7da09d43d3aa1945422492e6a4922d49ec590bdcd7b"
     },
     {
       "path": "implementation/agri/__init__.py",
@@ -927,8 +933,20 @@
     {
       "path": "implementation/agri/app.py",
       "archive": "snapshot-002.zip",
-      "size": 16065,
-      "sha256": "fbe86cab59a88096b1ca3395c7ffc261014ab949875389bb29e65424d836cc03"
+      "size": 17375,
+      "sha256": "476bae3015aaa8aebec4d3a78421841c165864de59a3e4ba6e0d9c09e831e587"
+    },
+    {
+      "path": "implementation/agri/asset_inspection.py",
+      "archive": "snapshot-002.zip",
+      "size": 3713,
+      "sha256": "f179557ea748f0d53cbee61f2d374597c8c43f57222138cf5870f5ac01fe0663"
+    },
+    {
+      "path": "implementation/agri/core_intake.py",
+      "archive": "snapshot-002.zip",
+      "size": 22144,
+      "sha256": "4838f4193d35528d6db07a3b64043f71750f97fe6b3959790b7da43b3a85ac9b"
     },
     {
       "path": "implementation/agri/db.py",
@@ -951,14 +969,14 @@
     {
       "path": "implementation/agri/field_service.py",
       "archive": "snapshot-002.zip",
-      "size": 9629,
-      "sha256": "736ac2146056ee4250cb1a92ee8d8ecadbca773acdbc79de729d96d25bd056de"
+      "size": 11601,
+      "sha256": "205acfbb695f1aa846bb2d0c3c6be54ac8767588f1b79c6d47ca7720415faf78"
     },
     {
       "path": "implementation/agri/ingestion.py",
       "archive": "snapshot-002.zip",
-      "size": 6798,
-      "sha256": "39115e6fd16002c34a83ba1832aec9b48562f8e394fd6fff8ead73cbc50d5f47"
+      "size": 7090,
+      "sha256": "10600223e545dfda033588b92ddb1d8eb569de14ae5083d4e914c95cc9b422eb"
     },
     {
       "path": "implementation/agri/media.py",
@@ -973,10 +991,16 @@
       "sha256": "5445235fcc8a8392583b9c59ecb185b89af42aaa8f8ccf8f2d247740e4bd6e48"
     },
     {
+      "path": "implementation/agri/ontology_core.py",
+      "archive": "snapshot-002.zip",
+      "size": 30736,
+      "sha256": "7d5e937a6e8eb2ab176eebe43535ea05a55b873849f10c7f1106da21f3d3e86a"
+    },
+    {
       "path": "implementation/agri/openapi.py",
       "archive": "snapshot-002.zip",
-      "size": 12152,
-      "sha256": "74802dd380b338db43f74a3fc8c946bd87b8302cde6ab3122510fb46dd0e979b"
+      "size": 15358,
+      "sha256": "eb42220dd068565526f1344ac00cd176def5a9669040f9e2b06d0a28d68503ec"
     },
     {
       "path": "implementation/agri/qr.py",
@@ -1045,16 +1069,28 @@
       "sha256": "182a2639123354cb9e39e00147359e569958ddb4deb673f034d6530a92502da5"
     },
     {
+      "path": "implementation/contracts/intake-core-schemas.json",
+      "archive": "snapshot-002.zip",
+      "size": 7959,
+      "sha256": "4dff1e8fe52a6ff5424499947b1b96c7e8eb2b6dafa6daef2b67d4aa6c620fbb"
+    },
+    {
+      "path": "implementation/contracts/ontology-core-schemas.json",
+      "archive": "snapshot-002.zip",
+      "size": 13330,
+      "sha256": "5222e6e6bb37bb60d79f0ad69ba1351a9f0809b3afa62e29ef4c140e1f389e7d"
+    },
+    {
       "path": "implementation/contracts/openapi.json",
       "archive": "snapshot-002.zip",
-      "size": 208353,
-      "sha256": "46208bb076bfce8b365d4f2151055d68e6cf97422b9010358ba6c6b052d11b87"
+      "size": 261168,
+      "sha256": "10e39310e29582d1756c0d5ef7dd4f7e31df9b73b56fbabc4eb7c32051bc8f3e"
     },
     {
       "path": "implementation/database-gate.json",
       "archive": "snapshot-002.zip",
-      "size": 1837,
-      "sha256": "7a3f40492af7bfbaf96ae1d5a1d69badbdf7d7bc345d90ca44e25079b01857a7"
+      "size": 1240,
+      "sha256": "0eebb5ee65e43df7a6deab5d23a0b2769f00f12f9db916f6ec4474bd488eacfa"
     },
     {
       "path": "implementation/migrations/001_core.sql",
@@ -1079,6 +1115,30 @@
       "archive": "snapshot-002.zip",
       "size": 2986,
       "sha256": "ec9a4490ab1ca68634d8d4afb52d43050b44367829be2777ddd304e039e423c7"
+    },
+    {
+      "path": "implementation/migrations/003_ontology_core.sql",
+      "archive": "snapshot-002.zip",
+      "size": 1430,
+      "sha256": "f075226509b1f6c91909ad2f0ee7a806c1c490455371f8232fcfc9296dbbe765"
+    },
+    {
+      "path": "implementation/migrations/003_ontology_core.sqlite.sql",
+      "archive": "snapshot-002.zip",
+      "size": 1412,
+      "sha256": "fac1b758f8fdb95a7447e773bb78089bc1ae08d54c28e9d566facca9c4dad19c"
+    },
+    {
+      "path": "implementation/migrations/004_intake.sql",
+      "archive": "snapshot-002.zip",
+      "size": 1946,
+      "sha256": "ef414920875861c3658a13ad74e6c8765f36feb4dbad7a115c9915eee2cb02da"
+    },
+    {
+      "path": "implementation/migrations/004_intake.sqlite.sql",
+      "archive": "snapshot-002.zip",
+      "size": 1913,
+      "sha256": "5ad4711d2d4b08b9a9fe60e1bb1410e929b096f0cb326edccfd16479ed2fac78"
     },
     {
       "path": "implementation/ops/POSTGRESQL_SETUP.txt",
@@ -1119,8 +1179,8 @@
     {
       "path": "implementation/ops/package_delivery.py",
       "archive": "snapshot-002.zip",
-      "size": 3182,
-      "sha256": "aa0e636d035e9aa653e422704b90c23e3823fac4ff602db4258b9ea91e98c24e"
+      "size": 3201,
+      "sha256": "2a58fb549c8cffa055f109b1700e4062e0d7b8a2007e62aa897d424e17c5cc9b"
     },
     {
       "path": "implementation/ops/portable_pg.py",
@@ -1155,14 +1215,14 @@
     {
       "path": "implementation/run_server.py",
       "archive": "snapshot-002.zip",
-      "size": 1642,
-      "sha256": "d274b9d48b724e85647832630975ad31eab3c9aee07ec19a4248bc75bbc7ccec"
+      "size": 1801,
+      "sha256": "5356b409761bfb5287e7a599e9848ba0eafbc75943601684c0607a82ecb781f7"
     },
     {
       "path": "implementation/runtime/api-contract-check.json",
       "archive": "snapshot-002.zip",
       "size": 364,
-      "sha256": "8069d54f1def8b5f9ca2c499b2a63c159fcc7e141f6eb23b6733d5f34b1a677f"
+      "sha256": "64084323365ea17b8047e12fff306c294acad5e7eda12dae11df001347570b84"
     },
     {
       "path": "implementation/runtime/environment-status.json",
@@ -1173,8 +1233,8 @@
     {
       "path": "implementation/runtime/http-intake-check.json",
       "archive": "snapshot-002.zip",
-      "size": 737,
-      "sha256": "1b9035294866c3a477712b0d8a9971799806d2f750362c290a1cec27a0d9c60a"
+      "size": 1487,
+      "sha256": "8dd2c016fcffcd2c25b92cb2bc8243a662538d87255d75ca8b446df13f814af9"
     },
     {
       "path": "implementation/runtime/kimi-attempt-status.json",
@@ -1195,10 +1255,82 @@
       "sha256": "2ce8c48951ff8ee1f680aa5a7de4d81d5511ca2a767819366c558409915107df"
     },
     {
+      "path": "implementation/tests/browser/core-intake.cjs",
+      "archive": "snapshot-002.zip",
+      "size": 15609,
+      "sha256": "af0a1bb0026d372f105a0388cc83e4b52911f68149c26d3b738043b4b6bb55b8"
+    },
+    {
+      "path": "implementation/tests/browser/core-result.json",
+      "archive": "snapshot-002.zip",
+      "size": 1485,
+      "sha256": "841b8d1e30130f738bafa49e19a61b0950243f7207e1fd400318364447e6f36f"
+    },
+    {
+      "path": "implementation/tests/browser/core-screenshots/01-ontology-editor.png",
+      "archive": "snapshot-002.zip",
+      "size": 186249,
+      "sha256": "d9aa06e13afb438cdc47267b29e40f93ad8b6e666b5c2c2ed5eb5c5d74967592"
+    },
+    {
+      "path": "implementation/tests/browser/core-screenshots/02-ontology-structure.png",
+      "archive": "snapshot-002.zip",
+      "size": 160891,
+      "sha256": "2f95f27b009ea00e5931dea293ba985754486eaa4a80b001bdf7b3d14cca58c3"
+    },
+    {
+      "path": "implementation/tests/browser/core-screenshots/03-ontology-library.png",
+      "archive": "snapshot-002.zip",
+      "size": 144508,
+      "sha256": "b75767a4377ac30afbd3a1e3a44b4a4a4e199ad7636de085134906f8476298e5"
+    },
+    {
+      "path": "implementation/tests/browser/core-screenshots/03b-typed-object.png",
+      "archive": "snapshot-002.zip",
+      "size": 238285,
+      "sha256": "e0dca2cf3de28b1019641af2ec45069e3130e44ec76be264583d76bc4055371d"
+    },
+    {
+      "path": "implementation/tests/browser/core-screenshots/04-constrained-observation.png",
+      "archive": "snapshot-002.zip",
+      "size": 183258,
+      "sha256": "971bad022eb5e3cbc9ddc6d5acad9cebc4ca6afbbea9b6bf378b4006774fa9a6"
+    },
+    {
+      "path": "implementation/tests/browser/core-screenshots/05-source-mapping.png",
+      "archive": "snapshot-002.zip",
+      "size": 186294,
+      "sha256": "9de212aa96cedea6522b4334c6f6ff7442393cbda9cac847c650f481b360ce77"
+    },
+    {
+      "path": "implementation/tests/browser/core-screenshots/06-intake-receipt.png",
+      "archive": "snapshot-002.zip",
+      "size": 192326,
+      "sha256": "d6ccdbdf651f0c7c2d3b76d781de007fae1b3f5076ec2c1d0bc462defb00590a"
+    },
+    {
+      "path": "implementation/tests/browser/core-screenshots/07-core-intake-desktop.png",
+      "archive": "snapshot-002.zip",
+      "size": 106053,
+      "sha256": "06eac6beda632be965daa5d26929927b219b7c436e33b7f3e39a2ceaf51379d2"
+    },
+    {
+      "path": "implementation/tests/browser/core-screenshots/08-ontology-mobile.png",
+      "archive": "snapshot-002.zip",
+      "size": 127927,
+      "sha256": "806ffca77863b020be285394b28173dc6953053108ddee805cea5e590e1de316"
+    },
+    {
+      "path": "implementation/tests/browser/core-screenshots/09-intake-mobile.png",
+      "archive": "snapshot-002.zip",
+      "size": 87325,
+      "sha256": "e4d7a399f12c142e0245929e2c7d2263aac957b1e834e1592049f02ad5f12097"
+    },
+    {
       "path": "implementation/tests/browser/flask_bridge.py",
       "archive": "snapshot-002.zip",
-      "size": 1441,
-      "sha256": "c7f501b6c318b8ccd540d8f85d63a1e45201d34ffec517a687f7e328d6798ae3"
+      "size": 1669,
+      "sha256": "8cad1c3210a72dcb2ec0faeaf2e6784db9c1a722118d3cf266f22c1e85128626"
     },
     {
       "path": "implementation/tests/browser/probe.cjs",
@@ -1215,122 +1347,122 @@
     {
       "path": "implementation/tests/browser/screenshots/01-overview.png",
       "archive": "snapshot-002.zip",
-      "size": 114019,
-      "sha256": "f97d9bf6fda7f0fcf6056912c5707365e211a128e1cd3a668b76c7577ee6fbe0"
+      "size": 99154,
+      "sha256": "30d880fe16b4b4522ffb1dedfaf53f747549cd557f561b47cae55a9e6decf487"
     },
     {
       "path": "implementation/tests/browser/screenshots/02-objects.png",
       "archive": "snapshot-002.zip",
-      "size": 190193,
-      "sha256": "4350b641deb5c8a48f708bea21baae207e9142d8570d0cf97271c8d00496b708"
+      "size": 186419,
+      "sha256": "2268f16eaa955031064622520eed58917ea3de1eebc019933b614127349d2d58"
     },
     {
       "path": "implementation/tests/browser/screenshots/03-trace.png",
       "archive": "snapshot-002.zip",
-      "size": 139470,
-      "sha256": "3697b05e332d516a956973c8619b90d63f872fe54edbb6bc4a54cd62ad02bf42"
+      "size": 135461,
+      "sha256": "2ca582bd9694675bd843a269841614dc97879c02d88a2cb76612b09d38965730"
     },
     {
       "path": "implementation/tests/browser/screenshots/04-evidence.png",
       "archive": "snapshot-002.zip",
-      "size": 68854,
-      "sha256": "2275d81d8b7100de4c52a1199faa3bc24c665c62f37656e9cf31602bb20d1801"
+      "size": 62172,
+      "sha256": "cb1b5447411f8e5f010f634e312ea020f44e6af02a25b96ee204aefa74810c50"
     },
     {
       "path": "implementation/tests/browser/screenshots/05-domains.png",
       "archive": "snapshot-002.zip",
-      "size": 93210,
-      "sha256": "7f0116b0ef55efbfa5547e028d997dfc78cc86fd33a57e0fee04ab9b0cfcea72"
+      "size": 132779,
+      "sha256": "42b3652b9d01374149ceaca0e7edea6bd5829e03e42239c2947503edef39af2f"
     },
     {
       "path": "implementation/tests/browser/screenshots/06-public-desktop.png",
       "archive": "snapshot-002.zip",
-      "size": 76811,
-      "sha256": "5b8111138385f5c5f02f40825a6bd3e49e60810513c72e03de3b725078eca67e"
+      "size": 76529,
+      "sha256": "b6b212df6c4ba85f97534edc40d2e05e1d2fe63c15f7ed5416565c32fdb90669"
     },
     {
       "path": "implementation/tests/browser/screenshots/07-public-mobile.png",
       "archive": "snapshot-002.zip",
-      "size": 65163,
-      "sha256": "c6641dd318916b912768fe933df0f2b157a2fa4a01698137f2453f9d5342462d"
+      "size": 64888,
+      "sha256": "afe947d2cef6713202ce506558d19d71daaa11bb2b5d80535d1b12972cc49159"
     },
     {
       "path": "implementation/tests/browser/screenshots/08-workbench-mobile.png",
       "archive": "snapshot-002.zip",
-      "size": 90854,
-      "sha256": "8db087ad403dba0c2d6b520be3602fc3ab2a999ee584275b4c44db30961de531"
+      "size": 76198,
+      "sha256": "12ca4e302362c679166519c7d8e3222ea584d871a8a0ce99f69df836f66985c2"
     },
     {
       "path": "implementation/tests/browser/screenshots/09-public-withdrawn.png",
       "archive": "snapshot-002.zip",
-      "size": 57506,
-      "sha256": "2c0b2fc990ec8781d1c465b4744d031f08277d82a18e3db2a1a3b0884a6ba6f0"
+      "size": 57199,
+      "sha256": "3822377eb7289b3dc6d0a95a43346685295af3d80a6445ff2fe561bcbe37c552"
     },
     {
       "path": "implementation/tests/browser/screenshots/10-public-recalled.png",
       "archive": "snapshot-002.zip",
-      "size": 57562,
-      "sha256": "043dca016f6a7cbdc07c2c75d7e4678cb681cc924fcdd567249b80e56e6116db"
+      "size": 57361,
+      "sha256": "376b86efd858bf6d4423ac591d624e1a1f5be9eec0443a34352920d9821d2aa9"
     },
     {
       "path": "implementation/tests/browser/structured-intake.cjs",
       "archive": "snapshot-002.zip",
-      "size": 13726,
-      "sha256": "c66bfaf0f89eb0d48f51b6ed00cd853b646f36012b87cc0794ad5d680eeabe3f"
+      "size": 14663,
+      "sha256": "f7eced22ba7d69130b2e516aad1acf2b39f73994a3064d9b31475b25b46fce85"
     },
     {
       "path": "implementation/tests/browser/structured-result.json",
       "archive": "snapshot-002.zip",
-      "size": 1259,
-      "sha256": "f1e148cfcfe5facccc56e041ba50f38ddafbbcd0b7b8d07b91d6de3d32e89079"
+      "size": 1272,
+      "sha256": "a47820e9bd01d83d63eb59fe0ac2ae457bf1b3117be9921da69a6fc86fc09da9"
     },
     {
       "path": "implementation/tests/browser/structured-screenshots/01-intake.png",
       "archive": "snapshot-002.zip",
-      "size": 116002,
-      "sha256": "cc9d74abb4c8bd510e7fa50610b551b7a854ccd595d6197bbfdbd1358245eb37"
+      "size": 96049,
+      "sha256": "4dd4bc6e371e1004133ec54f118586af16e70c60ce288db16c9cb08145327efd"
     },
     {
       "path": "implementation/tests/browser/structured-screenshots/02-manual-observation.png",
       "archive": "snapshot-002.zip",
-      "size": 193514,
-      "sha256": "44410528abb2aa9f9b71a0f7a9a9663b3fc0501c5b6182af0034ddd39a95756e"
+      "size": 178127,
+      "sha256": "ca9ba0b32636279acf892a13cda76f2ac209819a91de0b2421b8acff458b2d59"
     },
     {
       "path": "implementation/tests/browser/structured-screenshots/03-package-editor.png",
       "archive": "snapshot-002.zip",
-      "size": 181236,
-      "sha256": "b2b0e5e382459a5c1030a9792283b940a8a89b166642a36f272fc16ced92c35f"
+      "size": 188871,
+      "sha256": "ff7673088adaec39722fb3156fa8b1cc4e83317b32431896ab87438df59bbfbf"
     },
     {
       "path": "implementation/tests/browser/structured-screenshots/04-focus-policy.png",
       "archive": "snapshot-002.zip",
-      "size": 198511,
-      "sha256": "64381fb4db3b90944f4cf374e2beb709cb8612bc321267f0a3d4ab5c85928007"
+      "size": 199668,
+      "sha256": "dbc66072337d740b2ffc1e37c81265463bae632f6aeabaa11be673e13b2f47d2"
     },
     {
       "path": "implementation/tests/browser/structured-screenshots/05-media-processing.png",
       "archive": "snapshot-002.zip",
-      "size": 212419,
-      "sha256": "4495412061067cabf49f1bc39345de3b8c314f7a1f9f6ac6e767c18b6b43542c"
+      "size": 200833,
+      "sha256": "abc9e9f9aa18f7f61112102cdbd27d7516ed28c48d4dd0eda2978b8b3b2dfef4"
     },
     {
       "path": "implementation/tests/browser/structured-screenshots/06-intake-mobile.png",
       "archive": "snapshot-002.zip",
-      "size": 113920,
-      "sha256": "a72a1811504ae36428457fb2f4daf6de94f0c850805fcbdd510c2246c3b02ded"
+      "size": 86973,
+      "sha256": "e594d304f4361fcb9f6163578b2cf5bad4a8ef15c72d825452c7e6237c329e1a"
     },
     {
       "path": "implementation/tests/browser/structured-screenshots/07-picker-mobile.png",
       "archive": "snapshot-002.zip",
-      "size": 115776,
-      "sha256": "f0041fd8d3f7634b368146c5b260e08cd76e5e267bc7394817a9d9a6fc1ecbdd"
+      "size": 91969,
+      "sha256": "92e9fefc4fa76430879becd76d9d2f8fd8de35da8fa281a50608628058771671"
     },
     {
       "path": "implementation/tests/browser/ui-smoke.cjs",
       "archive": "snapshot-002.zip",
-      "size": 8153,
-      "sha256": "94a43b0144d91d765239c5f6ae37e75db168d121950a55362eff58dabc77a7c2"
+      "size": 8783,
+      "sha256": "d9a517fd21fbb8d751e5eef4b7417e4ddc7f93d517e695e7c5f779670759f667"
     },
     {
       "path": "implementation/tests/conftest.py",
@@ -1341,14 +1473,20 @@
     {
       "path": "implementation/tests/latest-results.xml",
       "archive": "snapshot-002.zip",
-      "size": 43258,
-      "sha256": "b5c86900effb7b042782d03b5a75901fb130542e61b56774175718a77ac86caa"
+      "size": 73258,
+      "sha256": "4aefc4ae9b483772f64aedf7446bd024699275ae283f40c1525a6afb108906e9"
     },
     {
       "path": "implementation/tests/test_api.py",
       "archive": "snapshot-002.zip",
       "size": 7046,
       "sha256": "4d3f652b2288d205ec1118104d052e3d52347ac7b093031b7deb87506f46afb2"
+    },
+    {
+      "path": "implementation/tests/test_asset_inspection.py",
+      "archive": "snapshot-002.zip",
+      "size": 2757,
+      "sha256": "a4440fe15218b659024f698e93d2f3dce1ec62d45a02370071d02911951830c5"
     },
     {
       "path": "implementation/tests/test_conflict_invalidation.py",
@@ -1363,10 +1501,16 @@
       "sha256": "40f135fd5fa084be4f34a826a0406239b59bba085e5651e637e1a28f9a41eece"
     },
     {
+      "path": "implementation/tests/test_core_intake.py",
+      "archive": "snapshot-002.zip",
+      "size": 20377,
+      "sha256": "349e04188c74309f9005c748b5b6ebe0c2cab76b6f696bbeabec6d7e3c4ff99b"
+    },
+    {
       "path": "implementation/tests/test_device_ingestion.py",
       "archive": "snapshot-002.zip",
-      "size": 19342,
-      "sha256": "416b1da4951c9d4368d382b204b6d128c5ac7c1f327ca4bbc513ac71d9c102cc"
+      "size": 19361,
+      "sha256": "179e83df172aad42642c240acf8218dbbcc150df2ad7edc3c9fa3158914a28e0"
     },
     {
       "path": "implementation/tests/test_edge_gateway.py",
@@ -1383,8 +1527,8 @@
     {
       "path": "implementation/tests/test_field_intake.py",
       "archive": "snapshot-002.zip",
-      "size": 12031,
-      "sha256": "b08de6922b60180b699d830c566f2bc26eb479d80f5defdc16d4b55275ffbc88"
+      "size": 13274,
+      "sha256": "1397e15130cde8693cfc9eec2c91d8131c6658e9439ec18eb33862fb4b57e81c"
     },
     {
       "path": "implementation/tests/test_ingestion.py",
@@ -1399,6 +1543,12 @@
       "sha256": "03e8192c03abf5c8b79f9895da6fc579c5b5047681b0dcea9d65bb6a4285ca97"
     },
     {
+      "path": "implementation/tests/test_ontology_core.py",
+      "archive": "snapshot-002.zip",
+      "size": 21613,
+      "sha256": "d69065eb741608ea4f0f4572b927e97aae42baacabb431926af106d1c5fb2f2b"
+    },
+    {
       "path": "implementation/tests/test_pagination.py",
       "archive": "snapshot-002.zip",
       "size": 3058,
@@ -1407,20 +1557,20 @@
     {
       "path": "implementation/web/app.js",
       "archive": "snapshot-002.zip",
-      "size": 88390,
-      "sha256": "660fa0f949308a693f155aa3b25c2893fb1b7268ed1c8401ccfde0ce1a8a335c"
+      "size": 117392,
+      "sha256": "ada12c4b4e5c16bdacd26ff87a1a6fa6304b288ff0af6beb7c90a137261b142f"
     },
     {
       "path": "implementation/web/index.html",
       "archive": "snapshot-002.zip",
-      "size": 601,
-      "sha256": "1c9b80afda55e21d4f4cc6676126d7e26eeed01f463d9e935d4756ecdf7b20cd"
+      "size": 595,
+      "sha256": "5ed227bddd0d1eea0d1925ef644f23cdacabd166b5dda483d6fc7d68c327e016"
     },
     {
       "path": "implementation/web/styles.css",
       "archive": "snapshot-002.zip",
-      "size": 17054,
-      "sha256": "0b6ece5a2fcb0c5272ecb35cc08e9b5ef57bee14bcd273506e8728f8204f3579"
+      "size": 18618,
+      "sha256": "4092a81eee17b32dfe82be2476518f3345c0b0db68190ea3f12ce693a999280c"
     },
     {
       "path": "implementation/启动系统.cmd",
@@ -1431,14 +1581,14 @@
     {
       "path": "implementation/启动说明.txt",
       "archive": "snapshot-002.zip",
-      "size": 6102,
-      "sha256": "846f29d75349cc487cffb2204186ce562f34aef8b701500ac2e1cd2ffc9f422c"
+      "size": 2540,
+      "sha256": "19c8450f62b3a1611219e35301ef56352b0db7900d01c97d7a2f581b14477030"
     },
     {
       "path": "implementation/验证结果.txt",
       "archive": "snapshot-002.zip",
-      "size": 2965,
-      "sha256": "c4f3d1406f159a551262ed6f170ae2cb79fd27149ed94a894a46404a563b1f8b"
+      "size": 2507,
+      "sha256": "87a0d61e015cfbc7975653b313f3b09c7a5b9e0f4631b8d0415c973e1eaf24b6"
     },
     {
       "path": "tools/build_github_snapshot.py",
@@ -1493,6 +1643,18 @@
       "archive": "snapshot-003.zip",
       "size": 129,
       "sha256": "f1c079744b26b4d3dfed27c92fd5e7851dbc94f896b4eacdea0b436d7b793630"
+    },
+    {
+      "path": "交付文档/梁子湖农业本体数据库_本地工程版_v0.3.zip",
+      "archive": "snapshot-003.zip",
+      "size": 3706628,
+      "sha256": "dd5a1a26331c6b604a0ad3e23b657c76af7db9d49de5a309240ff4a64e99be60"
+    },
+    {
+      "path": "交付文档/梁子湖农业本体数据库_本地工程版_v0.3.zip.sha256.txt",
+      "archive": "snapshot-003.zip",
+      "size": 123,
+      "sha256": "3321e3db0613f693feb5217a9d50fdca474f1259654887468919e3fa68151b2b"
     },
     {
       "path": "交付文档/梁子湖智慧农业本体库与溯源系统总体方案_v1.1.docx",
