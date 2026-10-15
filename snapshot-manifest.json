@@ -1,10 +1,13 @@
 {
   "format": "liangzihu-github-snapshot/1",
-  "created_at": "2026-10-14T15:17:56.053494+00:00",
+  "created_at": "2026-10-15T10:36:17.315076+00:00",
   "source": {
-    "selection_mode": "working-tree",
-    "bytes": "working-tree",
-    "listing_sha256": "0c715b60624a63830b48ae6ebbad53d52f2eef4839057f5f061c745ce451c9bd"
+    "selection_mode": "reviewed-incremental",
+    "scope": [
+      "tools/ontology_export",
+      "outputs/liangzihu-ontology-20261015",
+      ".gitignore"
+    ]
   },
   "limits": {
     "archive_bytes": 18874368,
@@ -14,1707 +17,427 @@
   },
   "archives": [
     {
-      "name": "snapshot-001.zip",
-      "size": 18799062,
-      "sha256": "acc8fbe44d18ce6a4fae8442f9d31b8e640e13a3c4ef2f75af67c6f0a768b91e",
-      "file_count": 72,
-      "uncompressed_size": 20928389
-    },
-    {
-      "name": "snapshot-002.zip",
-      "size": 18614811,
-      "sha256": "06eb8c112c3102d5c5e0d8b98a92aea3456accea89f9400e3681a1a79a32607a",
-      "file_count": 194,
-      "uncompressed_size": 21556539
-    },
-    {
-      "name": "snapshot-003.zip",
-      "size": 6883866,
-      "sha256": "bf2f7319b12ea04bd8e0ec93bd4f3e8560aaa54c997713d719b830239af125a0",
-      "file_count": 13,
-      "uncompressed_size": 6985360
+      "name": "snapshot-101.zip",
+      "size": 2779197,
+      "sha256": "83a9a2f2ee79be2463162c99bf4c20e39aee9b0a2e197e81b0b31a3e79fc2f43",
+      "file_count": 68,
+      "uncompressed_size": 14884588
     }
   ],
   "files": [
     {
-      "path": ".document-build-v1.1/architecture.png",
-      "archive": "snapshot-001.zip",
-      "size": 181345,
-      "sha256": "6c04aacb10c1764f64cf87ae26d5e70700c8cab4f6536582b694b5c5743c927a"
-    },
-    {
-      "path": ".document-build-v1.1/contact-1.png",
-      "archive": "snapshot-001.zip",
-      "size": 863516,
-      "sha256": "1e0b9a1a07ee3bcd6ef33a070269e7bbf6dc725eab1e9ea1dd7f6a66f62ae48f"
-    },
-    {
-      "path": ".document-build-v1.1/contact-2.png",
-      "archive": "snapshot-001.zip",
-      "size": 981783,
-      "sha256": "c7fead58d3bdcb98c2928e3d11eb1df31a3576366ecac9095f0d31338bff1a4e"
-    },
-    {
-      "path": ".document-build-v1.1/contact-3.png",
-      "archive": "snapshot-001.zip",
-      "size": 1062720,
-      "sha256": "9f6303566c61cdb26aabe21e18f7cf2f6f0a55ddff074fa87d24cdc9d01e75cb"
-    },
-    {
-      "path": ".document-build-v1.1/contact-4.png",
-      "archive": "snapshot-001.zip",
-      "size": 1005140,
-      "sha256": "32a98ab4928813a89fb901e10fda260f37117f7dcce2f2eba668216db7507dd3"
-    },
-    {
-      "path": ".document-build-v1.1/contact-5.png",
-      "archive": "snapshot-001.zip",
-      "size": 1032174,
-      "sha256": "89a180da0852c5d71acda54a37f74bde7a5aef8d241c4fcd1d66246fddb1b468"
-    },
-    {
-      "path": ".document-build-v1.1/contact-6.png",
-      "archive": "snapshot-001.zip",
-      "size": 563610,
-      "sha256": "61e29128756159aafa31966e424e9dbcc72224f94d3a0b140d7cb570d15b0b77"
-    },
-    {
-      "path": ".document-build-v1.1/draw_diagrams.py",
-      "archive": "snapshot-001.zip",
-      "size": 3477,
-      "sha256": "898aab493ed9264d5507f8e07d70e2082806d389f4cb81f93b75935c24c2dd7c"
-    },
-    {
-      "path": ".document-build-v1.1/final-qa.json",
-      "archive": "snapshot-001.zip",
-      "size": 1139,
-      "sha256": "eedeffb494aa5a5a9fda683a31ca46a342aa57bd0cbadf8ab513f921b43d8976"
-    },
-    {
-      "path": ".document-build-v1.1/fixed-layout-preview.pdf",
-      "archive": "snapshot-001.zip",
-      "size": 1058723,
-      "sha256": "20e39a201a777e8df21ea7f8ca8a00cde9337ff8f80ad5beb2c3de56510abc75"
-    },
-    {
-      "path": ".document-build-v1.1/fixed_layout.py",
-      "archive": "snapshot-001.zip",
-      "size": 16833,
-      "sha256": "e4555f7b55ba93eb3d4a05a725a69c61b0264e4b393d96a704794820cbe26329"
-    },
-    {
-      "path": ".document-build-v1.1/native-render-attempt.json",
-      "archive": "snapshot-001.zip",
-      "size": 3049,
-      "sha256": "99bd2a7196fa09a944b8d0614be11ddf35ce82b1d114b6528b352b94e1fd9b0b"
-    },
-    {
-      "path": ".document-build-v1.1/pagination.json",
-      "archive": "snapshot-001.zip",
-      "size": 514808,
-      "sha256": "d2ce350a612d1cd71ae30a10cc8da77853800bfabea2ef70b32fb37485ea711d"
-    },
-    {
-      "path": ".document-build-v1.1/plan-content.json",
-      "archive": "snapshot-001.zip",
-      "size": 186361,
-      "sha256": "023a538435a4ec48f0ae3c84f5d16ec2fc0f4add0e9b1979575cff2c2060175d"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-1.png",
-      "archive": "snapshot-001.zip",
-      "size": 129357,
-      "sha256": "d93ba8344ee3118d8b25e7206d8b25a7867ecb3a75b029829982a10750db23dc"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-10.png",
-      "archive": "snapshot-001.zip",
-      "size": 249568,
-      "sha256": "c2abade67de6d35492b889878229450a7b723886d43b35e3fec20edc4e2a2679"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-11.png",
-      "archive": "snapshot-001.zip",
-      "size": 294245,
-      "sha256": "4f661b175d48e83a9d7327211ca742d3cf716d123e4f92e43693335b8e990b4a"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-12.png",
-      "archive": "snapshot-001.zip",
-      "size": 195584,
-      "sha256": "1cdcd34e81a5059d745dd998a9d6b23543c82a25fb6d329c43de7f43d6227a7e"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-13.png",
-      "archive": "snapshot-001.zip",
-      "size": 209737,
-      "sha256": "8a5685a227b893a15f057ca64454c301292d3d4c859426c34a8f0511e92f6c99"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-14.png",
-      "archive": "snapshot-001.zip",
-      "size": 253227,
-      "sha256": "3c23a5de301472497f8ab4ee31779c679d379eb4ba276a65d08cb53d6917fb57"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-15.png",
-      "archive": "snapshot-001.zip",
-      "size": 285286,
-      "sha256": "1b546e4925c282c9d101291aae82ee60551c3a7974a6fece2c7833d487e0116b"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-16.png",
-      "archive": "snapshot-001.zip",
-      "size": 234355,
-      "sha256": "9f0b0d0b16e94437a4bc82e2c89f3532febdc9e14f803b020fea0aa4edff41ab"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-17.png",
-      "archive": "snapshot-001.zip",
-      "size": 282727,
-      "sha256": "1196314b84894377712aa591013489c6896d7523ee87cbdf40e41e90b7c924ae"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-18.png",
-      "archive": "snapshot-001.zip",
-      "size": 276172,
-      "sha256": "f28d4431f35b95778c2bb6b4c266b6c452f681a03782b672fc669be3d3f4cb4d"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-19.png",
-      "archive": "snapshot-001.zip",
-      "size": 362037,
-      "sha256": "ee33497786feb2c00bb5f41e990a0eb7ec98c69ccf03fb71ea31ea1a77225aac"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-2.png",
-      "archive": "snapshot-001.zip",
-      "size": 112135,
-      "sha256": "f97f80f8790c4ffd2cf3ebd857ef1283a349d7a5d8a5f704399be84996fe0e6f"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-20.png",
-      "archive": "snapshot-001.zip",
-      "size": 381138,
-      "sha256": "91b98a7e6a85d6a930b0f245e08bd48b34eb2c626be650a4d918b77da18c3b20"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-21.png",
-      "archive": "snapshot-001.zip",
-      "size": 289211,
-      "sha256": "51939d61019cf0e7b310a461cf430468c6e9b781b01fdec96ff0b2b7596ca41a"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-22.png",
-      "archive": "snapshot-001.zip",
-      "size": 257583,
-      "sha256": "b7027659ff8f53abe4d36ed2cc972cc96230b70fe3f8a39d6d8a405f45f42719"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-23.png",
-      "archive": "snapshot-001.zip",
-      "size": 194406,
-      "sha256": "13406630d7b9b630e3d23fe1780e2c30268b48332f48e1924d6b9bc61d31c57f"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-24.png",
-      "archive": "snapshot-001.zip",
-      "size": 292355,
-      "sha256": "a2b2f2b61aaa7b974771b5576f06d2685e6b05db77489be2c38835828ba4bf02"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-25.png",
-      "archive": "snapshot-001.zip",
-      "size": 252371,
-      "sha256": "43cc9b02939ef55bf78cd3132ae32178593925bdc6e09cb51b449853bde58512"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-26.png",
-      "archive": "snapshot-001.zip",
-      "size": 265226,
-      "sha256": "3b51b12cc32ca7d6e9857b76bf085040457679686f12d944f8f08929901f328b"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-27.png",
-      "archive": "snapshot-001.zip",
-      "size": 276297,
-      "sha256": "2ecd33e488d38be9d3f42e96d056f4b9ba286cd6043f663337b155d7c80c481a"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-28.png",
-      "archive": "snapshot-001.zip",
-      "size": 192811,
-      "sha256": "40ffd925e58612d1e9c0f413c71b8d8b57e51c3a6db585d290b15816720ce5b7"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-29.png",
-      "archive": "snapshot-001.zip",
-      "size": 305469,
-      "sha256": "06ebb55ec174fb279b42c774338b7c612591144c5abff31e9b314a24fb4e22d1"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-3.png",
-      "archive": "snapshot-001.zip",
-      "size": 269767,
-      "sha256": "da33ac63fb45d21dfd6c1b2217bdda47baf321ba1bcd42718179fa5441987764"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-30.png",
-      "archive": "snapshot-001.zip",
-      "size": 284252,
-      "sha256": "8a9028e4c42b4bdbe2d6ad65dc1e3ce3c30362730ebcb30e5ce53dab4be3ec04"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-31.png",
-      "archive": "snapshot-001.zip",
-      "size": 330390,
-      "sha256": "ff8beaee90a5da27c6608c67831ffba52d4690971298a3d66c9706a75aa7d75d"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-32.png",
-      "archive": "snapshot-001.zip",
-      "size": 311918,
-      "sha256": "07060ec108035efc8b97c9a4aa198e2d5fe635c2b3cc7605f092e6ceac75e6b1"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-33.png",
-      "archive": "snapshot-001.zip",
-      "size": 304139,
-      "sha256": "ab383a97e4244107ba486d7059609cf8636813b0957ebd9bcefe3875fe687e9a"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-34.png",
-      "archive": "snapshot-001.zip",
-      "size": 229855,
-      "sha256": "7428ffb0983aaf56034fb026b74ad5b57777098d3b70931da3605aa34bd55c18"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-35.png",
-      "archive": "snapshot-001.zip",
-      "size": 259411,
-      "sha256": "a07b79b065a6baff872d101ea25d88af3872f671ee3abb2e866d1c86cf7bc0f1"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-36.png",
-      "archive": "snapshot-001.zip",
-      "size": 231219,
-      "sha256": "e2fee1b084eea3acbf1609cfa3dc75dc2e99f5b1a034166816866565cf8b4000"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-37.png",
-      "archive": "snapshot-001.zip",
-      "size": 284730,
-      "sha256": "1f1a4fcf0444f5393023f6d5880290466596af828c794c069a79438cec5f76f5"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-38.png",
-      "archive": "snapshot-001.zip",
-      "size": 251212,
-      "sha256": "c89c647037845da6e4416fb7b5db01bb71dc8e06a52d013b661b099ef2b941da"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-39.png",
-      "archive": "snapshot-001.zip",
-      "size": 263699,
-      "sha256": "feb0c1c48f0868373e0f7d6091e5b6e6619b5847d1389cd9e720733ddb52efef"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-4.png",
-      "archive": "snapshot-001.zip",
-      "size": 257295,
-      "sha256": "d5bbc99cd291cd937cb563496bcf827fba31f7afafbc5a4b4eaa1d90a7701506"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-40.png",
-      "archive": "snapshot-001.zip",
-      "size": 225745,
-      "sha256": "026bf5766fd7ef81b7e4ee3838e267a4a544537e21ecd38b02c464fb8e25c123"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-41.png",
-      "archive": "snapshot-001.zip",
-      "size": 270749,
-      "sha256": "3081f47884435dd037908308e0ab64c392e5e12042a5cc3f2fd7c8fca029976b"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-42.png",
-      "archive": "snapshot-001.zip",
-      "size": 294737,
-      "sha256": "05402b48e67c4a60cb870cf66e66d340e6f167f4c7f27d710f9df8dd11f5326f"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-43.png",
-      "archive": "snapshot-001.zip",
-      "size": 293860,
-      "sha256": "a4f37755ca3f700c52fed5dd645a82cc9d87f7ed5af32909df63c83ce28775cd"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-44.png",
-      "archive": "snapshot-001.zip",
-      "size": 259068,
-      "sha256": "fc53574a7b3c59622fb7848e9d2919bc12f12b6e48f2b330f206ebf3fd8049a2"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-45.png",
-      "archive": "snapshot-001.zip",
-      "size": 272844,
-      "sha256": "a1f08748bb66a92467621e06b57810f7d1350c5f2792c29b45754dfcd9632676"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-46.png",
-      "archive": "snapshot-001.zip",
-      "size": 160307,
-      "sha256": "88e51704cfc0875b4c8b9becc9317f31e9e2777b72171c3957dfbc1fd0bc232e"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-47.png",
-      "archive": "snapshot-001.zip",
-      "size": 163307,
-      "sha256": "fdfa7b27ce083a91f923ff2089a72ca70c1983db04d1f9a01197758078e2557d"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-48.png",
-      "archive": "snapshot-001.zip",
-      "size": 176966,
-      "sha256": "ebb1f3ba1a8b5c38a92d390c1cae5595c8027313b014ba8b9f678a340a7fd178"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-49.png",
-      "archive": "snapshot-001.zip",
-      "size": 191118,
-      "sha256": "5a1bd31a1cd625962da9905fd460e0462229cef29b9d04083df530130167dfc0"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-5.png",
-      "archive": "snapshot-001.zip",
-      "size": 215350,
-      "sha256": "9e7967877cb85d8f5c583466264c3bef95240955290375e9cc6e9faed0cbb229"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-50.png",
-      "archive": "snapshot-001.zip",
-      "size": 242657,
-      "sha256": "f741290ef4048fa17fadd429a5b84c3972ff2ca20b1b67bc2db61eccb8068094"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-51.png",
-      "archive": "snapshot-001.zip",
-      "size": 227390,
-      "sha256": "21c7228c5655e5835f0a93cb3cfe679ca2ef69e793c364cfbe77191164d55f74"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-52.png",
-      "archive": "snapshot-001.zip",
-      "size": 102915,
-      "sha256": "56f3259725648170939bc99c8c14d7ae077c525b94fe4aee98093756b632a80a"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-6.png",
-      "archive": "snapshot-001.zip",
-      "size": 236371,
-      "sha256": "d66d79803641e7d1a62adf7a218941f8c60023dd79b21d51ecaeaf47c3f6c775"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-7.png",
-      "archive": "snapshot-001.zip",
-      "size": 251371,
-      "sha256": "09a00baa63ca5d337c9afa9011f85e19e54b5cb50311ac81ba2320b21e026af0"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-8.png",
-      "archive": "snapshot-001.zip",
-      "size": 298049,
-      "sha256": "a7267f1b23489b9095bfdbd8f82217dc7f7be4ec9bdf0766cfc5753cf00e5b22"
-    },
-    {
-      "path": ".document-build-v1.1/preview-pages/page-9.png",
-      "archive": "snapshot-001.zip",
-      "size": 250103,
-      "sha256": "6429be1769a13807224a48cb1279bd9151dbccced172c79dea86b62db9165994"
-    },
-    {
-      "path": ".document-build-v1.1/preview_pages.py",
-      "archive": "snapshot-001.zip",
-      "size": 901,
-      "sha256": "45c6e90b1a7e355a3885b2d29ac5f8601ba49f8396e91dbf0894c91c18fd23db"
-    },
-    {
-      "path": ".document-build-v1.1/provenance.png",
-      "archive": "snapshot-001.zip",
-      "size": 125140,
-      "sha256": "bf7ac49d9cb36b9b8f0b07469e859a1fa3fe43cc00591801beeec9e4e92073d8"
-    },
-    {
-      "path": ".document-build-v1.1/qa_document.py",
-      "archive": "snapshot-001.zip",
-      "size": 2486,
-      "sha256": "7ba3e77ff2553a5ee9de840e95c18ec9bb1affec5b212c18d97f516c1dd608db"
-    },
-    {
-      "path": ".document-build-v1.1/traceability.png",
-      "archive": "snapshot-001.zip",
-      "size": 161925,
-      "sha256": "d6c6c2bbb09b8cac2cbf4a9db2bd671a317282292c62b8b87d16486be5ad7367"
-    },
-    {
-      "path": ".document-build/architecture.png",
-      "archive": "snapshot-001.zip",
-      "size": 147254,
-      "sha256": "a82cb15dfc97147295238ea687966ad9fb4f22b65188b788d01be751b62121f5"
-    },
-    {
-      "path": ".document-build/build_document.py",
-      "archive": "snapshot-001.zip",
-      "size": 13914,
-      "sha256": "3ea0e158d938523b192614ee942ada755e5b15414fe31befd20cace1723fbfea"
-    },
-    {
-      "path": ".document-build/contact-1.png",
-      "archive": "snapshot-002.zip",
-      "size": 806009,
-      "sha256": "12fd867217e22a218db74bad003fbe2017006759bb866371ac6c4f6b1bfb19fb"
-    },
-    {
-      "path": ".document-build/contact-2.png",
-      "archive": "snapshot-002.zip",
-      "size": 1031559,
-      "sha256": "e82a373f61aed67da685e65a40cd9d41a8cc38be3ef3d94eab899c0babc79cce"
-    },
-    {
-      "path": ".document-build/contact-3.png",
-      "archive": "snapshot-002.zip",
-      "size": 963932,
-      "sha256": "cd0f99587ef95d48563e42db6b5a5f328fb57b691d508e6b2e1fc08f868c69b2"
-    },
-    {
-      "path": ".document-build/contact-4.png",
-      "archive": "snapshot-002.zip",
-      "size": 887677,
-      "sha256": "947ea52943fe2a115ebbed01b8d7749cf110c36d3fccf48b748ee1ce7c812d61"
-    },
-    {
-      "path": ".document-build/contact-5.png",
-      "archive": "snapshot-002.zip",
-      "size": 204902,
-      "sha256": "837a98fb15c1dc18dbe791359e001d69459fd3cbabacc4b98755b4772d1535fd"
-    },
-    {
-      "path": ".document-build/content-checks.json",
-      "archive": "snapshot-002.zip",
-      "size": 161,
-      "sha256": "00e71301d0b08badb9964901577ddef1372f55d2a53d808005505fd136031e04"
-    },
-    {
-      "path": ".document-build/draw_provenance.py",
-      "archive": "snapshot-002.zip",
-      "size": 1827,
-      "sha256": "7ad9c5d8e0980067563455f9963057837aab87d4017b79dad1f7d9434b7b18c8"
-    },
-    {
-      "path": ".document-build/final-qa.json",
-      "archive": "snapshot-002.zip",
-      "size": 901,
-      "sha256": "1464129f90de4a32b7473194537684bf45446094e2904915b229c1e42eaf751f"
-    },
-    {
-      "path": ".document-build/fixed-layout-preview.pdf",
-      "archive": "snapshot-002.zip",
-      "size": 777582,
-      "sha256": "03c86a7c6dc8aca24ff208c5c5985c21c8a9056b64775ef7c461f56472d628b2"
-    },
-    {
-      "path": ".document-build/fixed_layout.py",
-      "archive": "snapshot-002.zip",
-      "size": 16793,
-      "sha256": "c7b1e756a2a8a4febf8452349279a20e3be71e58cc2076d9bdd92414f276214e"
-    },
-    {
-      "path": ".document-build/pagination.json",
-      "archive": "snapshot-002.zip",
-      "size": 386188,
-      "sha256": "d985e001a20c779f1257f673036c32dc37efbbb72a0cc6356e72d137d1f13a3a"
-    },
-    {
-      "path": ".document-build/plan-content.json",
-      "archive": "snapshot-002.zip",
-      "size": 134296,
-      "sha256": "bb619e53d6a492d63a49873772d40b39c55a4543e11f963d7ae1d49931c3932b"
-    },
-    {
-      "path": ".document-build/preview-pages/page-1.png",
-      "archive": "snapshot-002.zip",
-      "size": 124724,
-      "sha256": "98a664d22715c05bdd0cd539f194b7f273dca385e02ac9b58f4be52555ea8ffa"
-    },
-    {
-      "path": ".document-build/preview-pages/page-10.png",
-      "archive": "snapshot-002.zip",
-      "size": 274658,
-      "sha256": "a88f98e084893d42475e6f36822a477d0004ccec96f91ce745451d5a9deb11c1"
-    },
-    {
-      "path": ".document-build/preview-pages/page-11.png",
-      "archive": "snapshot-002.zip",
-      "size": 191774,
-      "sha256": "b68811d6f9fcf723d5ece7a1b8e5454c972a968ba4b2e85ba3f611778762cbcf"
-    },
-    {
-      "path": ".document-build/preview-pages/page-12.png",
-      "archive": "snapshot-002.zip",
-      "size": 209174,
-      "sha256": "dd4b2efe44bff0562945b2add198ecec8a78480d586c317e1c822e2874357462"
-    },
-    {
-      "path": ".document-build/preview-pages/page-13.png",
-      "archive": "snapshot-002.zip",
-      "size": 244405,
-      "sha256": "056faa23d82fdb21d62c225fbb98d37767b3812bee56d27c6c688830f3c3358b"
-    },
-    {
-      "path": ".document-build/preview-pages/page-14.png",
-      "archive": "snapshot-002.zip",
-      "size": 273244,
-      "sha256": "fffb01c87fe4e0e4f8d6ade10668a7ce8a8a2ba9ae6a017a922702719953eec7"
-    },
-    {
-      "path": ".document-build/preview-pages/page-15.png",
-      "archive": "snapshot-002.zip",
-      "size": 282722,
-      "sha256": "dc9a59ee433f35853f0fbbd9b826fcfa35fe6b410f42121d9a4e251822806da5"
-    },
-    {
-      "path": ".document-build/preview-pages/page-16.png",
-      "archive": "snapshot-002.zip",
-      "size": 276180,
-      "sha256": "d5ebeba24878f785d72d9901e36caa4ed20e070bb2f43dbaa4e26ed381580fcf"
-    },
-    {
-      "path": ".document-build/preview-pages/page-17.png",
-      "archive": "snapshot-002.zip",
-      "size": 362001,
-      "sha256": "33af9e733258c7c6e0a98ab11e20f6d327d02ff080be028b9d214965fda66b47"
-    },
-    {
-      "path": ".document-build/preview-pages/page-18.png",
-      "archive": "snapshot-002.zip",
-      "size": 381069,
-      "sha256": "e60cc6da11d1c2d0ca53427ca9ff7ae3abe8bb1d3563712dd4560d833df60210"
-    },
-    {
-      "path": ".document-build/preview-pages/page-19.png",
-      "archive": "snapshot-002.zip",
-      "size": 289235,
-      "sha256": "49f095050870f4ba0ef8f3c727647e822b8d43f445b4803242473147ad85c8df"
-    },
-    {
-      "path": ".document-build/preview-pages/page-2.png",
-      "archive": "snapshot-002.zip",
-      "size": 94193,
-      "sha256": "2cba999e23eae9a203dc4da5376610b7a629d77ad0a7d00676ff0e8443d54c9e"
-    },
-    {
-      "path": ".document-build/preview-pages/page-20.png",
-      "archive": "snapshot-002.zip",
-      "size": 257608,
-      "sha256": "ccbe63cd75fa6e0dde98e3e634ea14a82c64b8e5b4ca0f6e5c9849e71729cda6"
-    },
-    {
-      "path": ".document-build/preview-pages/page-21.png",
-      "archive": "snapshot-002.zip",
-      "size": 194366,
-      "sha256": "e5adb3f749e0fb89edd448de26b719f25ab184846e36116131375a13414e69fc"
-    },
-    {
-      "path": ".document-build/preview-pages/page-22.png",
-      "archive": "snapshot-002.zip",
-      "size": 292392,
-      "sha256": "2bd9514b9863d5129eeabe3ba3204e002f2484511a1ac8a0185f86ddebe60a67"
-    },
-    {
-      "path": ".document-build/preview-pages/page-23.png",
-      "archive": "snapshot-002.zip",
-      "size": 235100,
-      "sha256": "28ae98ae05cce5237ecbd9a0cc16ee16f09de92ec5db0b421b1bcda1832cf081"
-    },
-    {
-      "path": ".document-build/preview-pages/page-24.png",
-      "archive": "snapshot-002.zip",
-      "size": 282735,
-      "sha256": "e8129ee2184b9162627f6c15a03336e3bb84c888301dc4c896dd996abc7cd364"
-    },
-    {
-      "path": ".document-build/preview-pages/page-25.png",
-      "archive": "snapshot-002.zip",
-      "size": 216291,
-      "sha256": "9df869e247c83f6c84174b2034a3705189b7865b336765ce1c881a67e48de47b"
-    },
-    {
-      "path": ".document-build/preview-pages/page-26.png",
-      "archive": "snapshot-002.zip",
-      "size": 244728,
-      "sha256": "3c20f09548db5327a05736e84ffcc191e1a83f0943b8781f50d1595f6fdbbeeb"
-    },
-    {
-      "path": ".document-build/preview-pages/page-27.png",
-      "archive": "snapshot-002.zip",
-      "size": 277091,
-      "sha256": "2216dc2ac9d22f96f36218a2d60c551736abf8d7cceaada2ad2e4d9ff071f79a"
-    },
-    {
-      "path": ".document-build/preview-pages/page-28.png",
-      "archive": "snapshot-002.zip",
-      "size": 328050,
-      "sha256": "424bc1a00c958696c7d0816ddf8a639e6777e91f124a2bf6a2bbc9a6e7256b99"
-    },
-    {
-      "path": ".document-build/preview-pages/page-29.png",
-      "archive": "snapshot-002.zip",
-      "size": 345481,
-      "sha256": "c5852169582695db5fd0d78189346db40c0db801c6a0cb91f2c640df74cfea8c"
-    },
-    {
-      "path": ".document-build/preview-pages/page-3.png",
-      "archive": "snapshot-002.zip",
-      "size": 246473,
-      "sha256": "0d067c5db4619dc6fd176a46f0cb9967a4ef31bbb66df1260ad44960e3a926ad"
-    },
-    {
-      "path": ".document-build/preview-pages/page-30.png",
-      "archive": "snapshot-002.zip",
-      "size": 295437,
-      "sha256": "cc98ee6407876f1fff37f779ef7444be1ebdaa4978b0f8b497ff8dca97c53a5a"
-    },
-    {
-      "path": ".document-build/preview-pages/page-31.png",
-      "archive": "snapshot-002.zip",
-      "size": 252500,
-      "sha256": "d9c47a095becb77b1cfbcab7136de17fa436dde8564686dd39e51e29162a9aab"
-    },
-    {
-      "path": ".document-build/preview-pages/page-32.png",
-      "archive": "snapshot-002.zip",
-      "size": 200820,
-      "sha256": "848a199bde0bb5e85298b92effd34b96413f8497154148fec66bcbc93ba716db"
-    },
-    {
-      "path": ".document-build/preview-pages/page-33.png",
-      "archive": "snapshot-002.zip",
-      "size": 160333,
-      "sha256": "6ef33491dfe59723daeb064819324bfb4f3e6f88ab76ffebc32130aa55d9a4cb"
-    },
-    {
-      "path": ".document-build/preview-pages/page-34.png",
-      "archive": "snapshot-002.zip",
-      "size": 163308,
-      "sha256": "14bb614186c43f1e5839b5cbecf3c87cf7a692792d516b1018fcfb6e9a9fb41a"
-    },
-    {
-      "path": ".document-build/preview-pages/page-35.png",
-      "archive": "snapshot-002.zip",
-      "size": 176970,
-      "sha256": "1e249cd83d7822b19fd3641bf08f0f0a3cd028c06838800f401b3b31f184308c"
-    },
-    {
-      "path": ".document-build/preview-pages/page-36.png",
-      "archive": "snapshot-002.zip",
-      "size": 191128,
-      "sha256": "8bdd5bdec9959cbcfe93ece6cd1ec563b1dc81d994195e95dd3fa9e48a3c2819"
-    },
-    {
-      "path": ".document-build/preview-pages/page-37.png",
-      "archive": "snapshot-002.zip",
-      "size": 244795,
-      "sha256": "2714ddb344b668a76971fc7ae5ecd6e64b5f7776ff379026e28a4d56c93d1137"
-    },
-    {
-      "path": ".document-build/preview-pages/page-38.png",
-      "archive": "snapshot-002.zip",
-      "size": 210570,
-      "sha256": "49f9ad57a0e643fe51d029bb08551b62b11e0f6a7b97cddcc34299421c5e096d"
-    },
-    {
-      "path": ".document-build/preview-pages/page-39.png",
-      "archive": "snapshot-002.zip",
-      "size": 52329,
-      "sha256": "86e31cbc12f1ab0102915d5af49fdbd9e5bed820e5eb248df673b496c47f1823"
-    },
-    {
-      "path": ".document-build/preview-pages/page-4.png",
-      "archive": "snapshot-002.zip",
-      "size": 221514,
-      "sha256": "0269766b76e76e9d34b98586a4bc592a43688f649fbd89cec634d978cc2fa6ad"
-    },
-    {
-      "path": ".document-build/preview-pages/page-40.png",
-      "archive": "snapshot-002.zip",
-      "size": 43441,
-      "sha256": "039385ed91721a249c0d371138dca7919a4391d8fadc36ac37c817c871c1023b"
-    },
-    {
-      "path": ".document-build/preview-pages/page-41.png",
-      "archive": "snapshot-002.zip",
-      "size": 186345,
-      "sha256": "f0249681945edeae2ef17cc35f2eafec56059378673ab2aeb9433e0196c99322"
-    },
-    {
-      "path": ".document-build/preview-pages/page-42.png",
-      "archive": "snapshot-002.zip",
-      "size": 148061,
-      "sha256": "7ee1f414c44c9ccc6a6e54ca0c8d00b5bfeba8644a5d1b5d8e41c8579e55fae5"
-    },
-    {
-      "path": ".document-build/preview-pages/page-43.png",
-      "archive": "snapshot-002.zip",
-      "size": 244770,
-      "sha256": "77c203ab04b6e97e54f2a5f1b3fb1854617aaed93298c3fe60da7ba3b7430c72"
-    },
-    {
-      "path": ".document-build/preview-pages/page-44.png",
-      "archive": "snapshot-002.zip",
-      "size": 176764,
-      "sha256": "4ca38e9d2ab4df1a5675f08c544605c3a2e4b515832d732e6f7cdc3b724b6117"
-    },
-    {
-      "path": ".document-build/preview-pages/page-45.png",
-      "archive": "snapshot-002.zip",
-      "size": 44025,
-      "sha256": "18dea865f4806403775805e2897d9b7efcc55cf12bae32772a3d395a26b4d86d"
-    },
-    {
-      "path": ".document-build/preview-pages/page-5.png",
-      "archive": "snapshot-002.zip",
-      "size": 159879,
-      "sha256": "101b318a444792c2e6309eeb4c2628b70aaae49af03aee9cf23f5e61da9cbbc0"
-    },
-    {
-      "path": ".document-build/preview-pages/page-6.png",
-      "archive": "snapshot-002.zip",
-      "size": 236356,
-      "sha256": "5611b81d2e1fa306de85629a2f38a50c24742bfb4cafc2c73bc22125f9072b29"
-    },
-    {
-      "path": ".document-build/preview-pages/page-7.png",
-      "archive": "snapshot-002.zip",
-      "size": 247490,
-      "sha256": "3ebc411b21ef665871a3bd62b621ef22c55ba8b6ab942cdb0105c26beb2a7ebe"
-    },
-    {
-      "path": ".document-build/preview-pages/page-8.png",
-      "archive": "snapshot-002.zip",
-      "size": 282361,
-      "sha256": "f5a0247f19586f67910ad1518c5c50b232378d2f6db27e65fbf87e878dcfb7f7"
-    },
-    {
-      "path": ".document-build/preview-pages/page-9.png",
-      "archive": "snapshot-002.zip",
-      "size": 263704,
-      "sha256": "019f3a6ac63e72b04470759cf152d39f1c5088164125a4690999af7c0d174426"
-    },
-    {
-      "path": ".document-build/preview_pages.py",
-      "archive": "snapshot-002.zip",
-      "size": 896,
-      "sha256": "4a50cc0ff006644d6a417eb41c6384e009484e50d0d20d97d5c20441e7fa7b97"
-    },
-    {
-      "path": ".document-build/provenance.png",
-      "archive": "snapshot-002.zip",
-      "size": 125140,
-      "sha256": "bf7ac49d9cb36b9b8f0b07469e859a1fa3fe43cc00591801beeec9e4e92073d8"
-    },
-    {
-      "path": ".document-build/qa_document.py",
-      "archive": "snapshot-002.zip",
-      "size": 2481,
-      "sha256": "858a0fe0e24467db4ce6d83096964a8ef9c2c29bc8ebe489aaa63c4db6a5b8f9"
-    },
-    {
-      "path": ".document-build/render_word.ps1",
-      "archive": "snapshot-002.zip",
-      "size": 919,
-      "sha256": "af080ea6b75e6853afa9256b646ef723cc60330747d07b2887a33c1d3503c413"
-    },
-    {
-      "path": ".gitattributes",
-      "archive": "snapshot-002.zip",
-      "size": 88,
-      "sha256": "08211798840544a006a7147ca9e9db1a8600be4384971e06474cb35888f2468b"
-    },
-    {
       "path": ".gitignore",
-      "archive": "snapshot-002.zip",
-      "size": 598,
-      "sha256": "2234b6abc1c0f123bc63a390cd40847af5a8dac9d183bb26c873460ced84e0cd"
+      "archive": "snapshot-101.zip",
+      "size": 831,
+      "sha256": "a55ff27db2d1f43d0f540b22b59f08a09503c439da45ddcacf90b1a2e07d2926"
     },
     {
-      "path": "AGENTS.md",
-      "archive": "snapshot-002.zip",
-      "size": 1768,
-      "sha256": "5054ce55aa818af56040298b1eda03a4aaf3f2e08a5644f81b1f2e1c940b4101"
+      "path": "outputs/liangzihu-ontology-20261015/converter-test-results.xml",
+      "archive": "snapshot-101.zip",
+      "size": 3704,
+      "sha256": "31a8f26e743a2df31249158048b6e0cbc530117f7f54a2f0cf887d8d4b8c72bd"
     },
     {
-      "path": "GITHUB_SYNC.txt",
-      "archive": "snapshot-002.zip",
-      "size": 2884,
-      "sha256": "a77e5a163a276d638804cd7821f9028221107fe400111758aae54e5f15c5da2b"
+      "path": "outputs/liangzihu-ontology-20261015/export-tools-test-results.xml",
+      "archive": "snapshot-101.zip",
+      "size": 8278,
+      "sha256": "d9d4398ed81a5b7f8eac9c66e636c2165f93c797bf0b355b6aa391a7ef43677b"
     },
     {
-      "path": "README.md",
-      "archive": "snapshot-002.zip",
-      "size": 2589,
-      "sha256": "306a79c853c4358ffdefff590ebcb238f7af271d3eeeb1a4b7be1a61ec377cfb"
+      "path": "outputs/liangzihu-ontology-20261015/extra_sheets.json",
+      "archive": "snapshot-101.zip",
+      "size": 215464,
+      "sha256": "7d72daa243dea978a73d27086604388a743e606a21bce9cb8647b1083717213b"
     },
     {
-      "path": "implementation/.gitignore",
-      "archive": "snapshot-002.zip",
-      "size": 219,
-      "sha256": "7a44f0883aa50499d49ed688cdcdc9e90f06d3e0aacda223d80f4719347f3a09"
+      "path": "outputs/liangzihu-ontology-20261015/final-workbook-verification.json",
+      "archive": "snapshot-101.zip",
+      "size": 683,
+      "sha256": "cd816846daa52482d6f4749e0ac32baf46764fa88ce7e0f2c258be65f0c90a30"
     },
     {
-      "path": "implementation/DATABASE_CORE_V0.3.txt",
-      "archive": "snapshot-002.zip",
-      "size": 17614,
-      "sha256": "b8290254df15144fd2b9c56ae8a1aabb4717c49dff1f86a68a22bea5af9fa58a"
+      "path": "outputs/liangzihu-ontology-20261015/packages/001_lzhu.agronomy_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 23708,
+      "sha256": "23e1e3e99a321602a235080c4661e26da9a26387a99c4cf360b0871b9655465f"
     },
     {
-      "path": "implementation/DATA_INTAKE_GUIDE.txt",
-      "archive": "snapshot-002.zip",
-      "size": 17783,
-      "sha256": "78171963d10a6b8f8b83867fe907b90f1a798865661f96add850124f867e1c26"
+      "path": "outputs/liangzihu-ontology-20261015/packages/002_lzhu.analysis_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 27070,
+      "sha256": "725cd8565543d2faee936336405c4a2aea86d642d5a3f5f2415d22fa1045bcef"
     },
     {
-      "path": "implementation/DEVICE_PLATFORM_MAPPING.txt",
-      "archive": "snapshot-002.zip",
-      "size": 28686,
-      "sha256": "f95bd96b996e640caf70b1f4ece167cbc35146cb9784dfa1dc2e2796a278cf35"
+      "path": "outputs/liangzihu-ontology-20261015/packages/003_lzhu.finance_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 32429,
+      "sha256": "156dd021afbbe7cdaa651ba717d5accfb53c8088a13f668d06417720ae6b9c10"
     },
     {
-      "path": "implementation/IMPLEMENTATION_STATUS.json",
-      "archive": "snapshot-002.zip",
-      "size": 5042,
-      "sha256": "8feae9c2de3689563ed873ec28bdb60b2b7363a259d7eed39c1847487d1a5f0f"
+      "path": "outputs/liangzihu-ontology-20261015/packages/004_lzhu.governance_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 26205,
+      "sha256": "e8b8ddc0acccbce35ac74364ba4bf3415e4dc83585288a28ffb1bfac10757765"
     },
     {
-      "path": "implementation/KIMI_TASK_DATABASE.txt",
-      "archive": "snapshot-002.zip",
-      "size": 5142,
-      "sha256": "8a903f89b4839d4ed6147bad7ae4af3008a992a139bfa1c2c9fb4e8e0a92d964"
+      "path": "outputs/liangzihu-ontology-20261015/packages/005_lzhu.imagery_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 42193,
+      "sha256": "0ea289f8dbc153310abe19acc7e9ed668ab828d2d76614b296aa2afeab52b085"
     },
     {
-      "path": "implementation/KIMI_TASK_TRACEABILITY.txt",
-      "archive": "snapshot-002.zip",
-      "size": 1490,
-      "sha256": "2cc4872bb3b73f431cd26c15e037995e037c1e68eedbee1a6a9224063e0096e4"
+      "path": "outputs/liangzihu-ontology-20261015/packages/006_lzhu.knowledge_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 20765,
+      "sha256": "d1639fec8de597a2c9104d2e1622ecebab52702262852a7148f1bafbffa43b78"
     },
     {
-      "path": "implementation/LEGACY_KIMI.txt",
-      "archive": "snapshot-002.zip",
-      "size": 421,
-      "sha256": "09d1172b8f4fdce04ca545e0936f45f1afeeb9f56642cb9204369052f6c1374c"
+      "path": "outputs/liangzihu-ontology-20261015/packages/007_lzhu.machinery_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 22230,
+      "sha256": "c62d3debea5969e87fafd8cd60e948154663d2de25806430a87a6e4a0130bec5"
     },
     {
-      "path": "implementation/PLATFORM_INTEGRATION.txt",
-      "archive": "snapshot-002.zip",
-      "size": 19517,
-      "sha256": "a255807961a72a526ee14ad0d87aaa65dcf1cad5d331e0bfbbcf8c622f654a6f"
+      "path": "outputs/liangzihu-ontology-20261015/packages/008_lzhu.operations_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 55140,
+      "sha256": "acacc2deaf990702db2e4feb8d0f4fcf9e406f607fee43ca33ac026026be3e36"
     },
     {
-      "path": "implementation/README.txt",
-      "archive": "snapshot-002.zip",
-      "size": 6118,
-      "sha256": "e306918a9729f3b8d75ee7da09d43d3aa1945422492e6a4922d49ec590bdcd7b"
+      "path": "outputs/liangzihu-ontology-20261015/packages/009_lzhu.protection_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 24475,
+      "sha256": "37fe3e9599d7934024a0a34374acb2dbfd5ef619401efbbff4d7d152a0c68f28"
     },
     {
-      "path": "implementation/agri/__init__.py",
-      "archive": "snapshot-002.zip",
-      "size": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "path": "outputs/liangzihu-ontology-20261015/packages/010_lzhu.quality_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 23279,
+      "sha256": "63a1e961a91825e63f152dfe01f8e66a6a139b836f571d980c76799683097934"
     },
     {
-      "path": "implementation/agri/app.py",
-      "archive": "snapshot-002.zip",
-      "size": 17375,
-      "sha256": "476bae3015aaa8aebec4d3a78421841c165864de59a3e4ba6e0d9c09e831e587"
+      "path": "outputs/liangzihu-ontology-20261015/packages/011_lzhu.registry_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 63612,
+      "sha256": "9784dd8f385099b762bb506039688101eece02a4fabbfa174bfc7216b4dd8e3d"
     },
     {
-      "path": "implementation/agri/asset_inspection.py",
-      "archive": "snapshot-002.zip",
-      "size": 3713,
-      "sha256": "f179557ea748f0d53cbee61f2d374597c8c43f57222138cf5870f5ac01fe0663"
+      "path": "outputs/liangzihu-ontology-20261015/packages/012_lzhu.research_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 20026,
+      "sha256": "b57194d127de963c506e94b27454a5194fa3b70b86a41a481534caa2ff653a90"
     },
     {
-      "path": "implementation/agri/core_intake.py",
-      "archive": "snapshot-002.zip",
-      "size": 22144,
-      "sha256": "4838f4193d35528d6db07a3b64043f71750f97fe6b3959790b7da43b3a85ac9b"
+      "path": "outputs/liangzihu-ontology-20261015/packages/013_lzhu.resources_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 27178,
+      "sha256": "7fa69e8e1ef50feece8d5b7c18832dae4cfe52131d0382736de3c36d3df45b11"
     },
     {
-      "path": "implementation/agri/db.py",
-      "archive": "snapshot-002.zip",
-      "size": 3166,
-      "sha256": "af3423cee66da8d546962114e74ab3e036e0a30e846fa7fa9b7b77fda35dd538"
+      "path": "outputs/liangzihu-ontology-20261015/packages/014_lzhu.stock_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 27005,
+      "sha256": "f356cafbcd91cd76769142f9851df9afd0f221d5631cc23f03ff11739e7a1a90"
     },
     {
-      "path": "implementation/agri/device_ingestion.py",
-      "archive": "snapshot-002.zip",
-      "size": 27717,
-      "sha256": "533e19e402f30a8feb7df9f11af9de0bd52d2f4dcc752d6307017e12d886459b"
+      "path": "outputs/liangzihu-ontology-20261015/packages/015_lzhu.telemetry_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 11799,
+      "sha256": "880934c0c0a5edc3182f8acbbd64fec63848c0e1200457e0c7a0ab40415639a0"
     },
     {
-      "path": "implementation/agri/exchange.py",
-      "archive": "snapshot-002.zip",
-      "size": 4417,
-      "sha256": "04244c76b1834e204cb4fdffff35247ae559a852490352373d86f1f840b52020"
+      "path": "outputs/liangzihu-ontology-20261015/packages/016_lzhu.weather_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 8332,
+      "sha256": "bbf2597dded5920ea1ddf4afd9f80de58415fe6b895fc84e2c5fd17f18f70e1e"
     },
     {
-      "path": "implementation/agri/field_service.py",
-      "archive": "snapshot-002.zip",
-      "size": 11601,
-      "sha256": "205acfbb695f1aa846bb2d0c3c6be54ac8767588f1b79c6d47ca7720415faf78"
+      "path": "outputs/liangzihu-ontology-20261015/packages/017_lzhu.links1_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 191665,
+      "sha256": "2de8199a63fd9be190825542a94a70e259fcb80224d3e0c4d1996b04d0985f88"
     },
     {
-      "path": "implementation/agri/ingestion.py",
-      "archive": "snapshot-002.zip",
-      "size": 7090,
-      "sha256": "10600223e545dfda033588b92ddb1d8eb569de14ae5083d4e914c95cc9b422eb"
+      "path": "outputs/liangzihu-ontology-20261015/packages/018_lzhu.links2_0.1.0.json",
+      "archive": "snapshot-101.zip",
+      "size": 25312,
+      "sha256": "a33e41ea97a71e376e6f37b53c2c7899fa3b7036db8df5a30d1a7984508b8903"
     },
     {
-      "path": "implementation/agri/media.py",
-      "archive": "snapshot-002.zip",
-      "size": 4875,
-      "sha256": "5bc9afce46f11dbd2f713bc9b3ea922ff7f50a7aa81a5282320f4aa7c1842eeb"
+      "path": "outputs/liangzihu-ontology-20261015/packages/manifest.json",
+      "archive": "snapshot-101.zip",
+      "size": 5449,
+      "sha256": "140a13f2e6952dc7d17b7c039ed13fcb0e10e31e3190cecef2ec88cd3ba6ecc0"
     },
     {
-      "path": "implementation/agri/network.py",
-      "archive": "snapshot-002.zip",
-      "size": 21253,
-      "sha256": "5445235fcc8a8392583b9c59ecb185b89af42aaa8f8ccf8f2d247740e4bd6e48"
+      "path": "outputs/liangzihu-ontology-20261015/packages/validation-report.json",
+      "archive": "snapshot-101.zip",
+      "size": 307351,
+      "sha256": "39f3e05c6d9b53a5d8f1873340ee332bff8eb5c87f0aa9a0c77e82a427c3de84"
     },
     {
-      "path": "implementation/agri/ontology_core.py",
-      "archive": "snapshot-002.zip",
-      "size": 30736,
-      "sha256": "7d5e937a6e8eb2ab176eebe43535ea05a55b873849f10c7f1106da21f3d3e86a"
+      "path": "outputs/liangzihu-ontology-20261015/previews/DDL审计.png",
+      "archive": "snapshot-101.zip",
+      "size": 106940,
+      "sha256": "a80e81c42cb40df7c24e122d1f963427e8306fec6de302b90de23926b7ddaf8a"
     },
     {
-      "path": "implementation/agri/openapi.py",
-      "archive": "snapshot-002.zip",
-      "size": 15358,
-      "sha256": "eb42220dd068565526f1344ac00cd176def5a9669040f9e2b06d0a28d68503ec"
+      "path": "outputs/liangzihu-ontology-20261015/previews/使用说明.png",
+      "archive": "snapshot-101.zip",
+      "size": 118234,
+      "sha256": "9c6fe698e42b8278b8041cf2bb9c7f6127c61353f6a927ca835e55c24b902282"
     },
     {
-      "path": "implementation/agri/qr.py",
-      "archive": "snapshot-002.zip",
-      "size": 658,
-      "sha256": "0d62af51d370eccc0328f7770f707704cba8d6de36a03abfb46b23901d7d2734"
+      "path": "outputs/liangzihu-ontology-20261015/previews/关系类型.png",
+      "archive": "snapshot-101.zip",
+      "size": 97509,
+      "sha256": "8dd835760583529b5b7e475aff2abbb5b3e9853a3e7369e2d2a503c068617207"
     },
     {
-      "path": "implementation/agri/seed.py",
-      "archive": "snapshot-002.zip",
-      "size": 9042,
-      "sha256": "ddbbbc24556832a086ef58bdc4b481aaf0eb69b26802a645f2ff62bb29e8b5e0"
+      "path": "outputs/liangzihu-ontology-20261015/previews/包依赖.png",
+      "archive": "snapshot-101.zip",
+      "size": 77120,
+      "sha256": "2c4029e1accdfb7efcbeb4bc136c958e8ac83659c72ff7a27b8565bac75f088a"
     },
     {
-      "path": "implementation/agri/service.py",
-      "archive": "snapshot-002.zip",
-      "size": 82711,
-      "sha256": "157a4938e02ac132f9b45c73bf5a78933975d481a7559bcf054f7df55a72a801"
+      "path": "outputs/liangzihu-ontology-20261015/previews/填写字典.png",
+      "archive": "snapshot-101.zip",
+      "size": 98176,
+      "sha256": "d57598631dccdf36c872da921ea385c7e25278fb23af1267fdabc1defb30b4e4"
     },
     {
-      "path": "implementation/agri/sqlite_db.py",
-      "archive": "snapshot-002.zip",
-      "size": 6866,
-      "sha256": "c7679d9034293bd775f27bd166fdd7e5093cfa0414e748b9ace9baee570adf0f"
+      "path": "outputs/liangzihu-ontology-20261015/previews/多维关系路径.png",
+      "archive": "snapshot-101.zip",
+      "size": 68545,
+      "sha256": "49a02e09eff36700130bd9238b833806ebcdb9ac0cedca9cc343fedeaeb966d2"
     },
     {
-      "path": "implementation/agri/vendor/LICENSE-QR.txt",
-      "archive": "snapshot-002.zip",
-      "size": 1102,
-      "sha256": "929c84431a7fe49a2ccaeb2a71219c08da1d220067a1739798351a3fd5e4527b"
+      "path": "outputs/liangzihu-ontology-20261015/previews/对象类型.png",
+      "archive": "snapshot-101.zip",
+      "size": 57455,
+      "sha256": "12f9ca167ffd4ddc53b815ae1ffc8b2825dd45c60b433f37afb79b2f01edfdda"
     },
     {
-      "path": "implementation/agri/vendor/NOTICE.txt",
-      "archive": "snapshot-002.zip",
-      "size": 251,
-      "sha256": "740817425774bc3e68e4a86bf1490d499b42cc767dad1b788c5d74538982f1f5"
+      "path": "outputs/liangzihu-ontology-20261015/previews/属性定义.png",
+      "archive": "snapshot-101.zip",
+      "size": 60307,
+      "sha256": "2225c6adaec9a574fa7a772beb6cf6dd93f7713f586514d4bb478accc9b99d96"
     },
     {
-      "path": "implementation/agri/vendor/__init__.py",
-      "archive": "snapshot-002.zip",
-      "size": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "path": "outputs/liangzihu-ontology-20261015/previews/待映射项.png",
+      "archive": "snapshot-101.zip",
+      "size": 55346,
+      "sha256": "33cc9411710c3c58a15caf9f8e46d567893226bb423c8235f610e2dfe0a54417"
     },
     {
-      "path": "implementation/agri/vendor/qrencoder.py",
-      "archive": "snapshot-002.zip",
-      "size": 34117,
-      "sha256": "d604f2d1352562d4a5857ba5e54ee5635364c3b3d2f8f2b26a6b6b60cf0c6a99"
+      "path": "outputs/liangzihu-ontology-20261015/previews/接入字段说明.png",
+      "archive": "snapshot-101.zip",
+      "size": 128348,
+      "sha256": "694f84d72a6f2faf636952898e424269d5893686d6012939682f9b51d3ede2d3"
     },
     {
-      "path": "implementation/construction-spec.v1.1.json",
-      "archive": "snapshot-002.zip",
-      "size": 186361,
-      "sha256": "023a538435a4ec48f0ae3c84f5d16ec2fc0f4add0e9b1979575cff2c2060175d"
+      "path": "outputs/liangzihu-ontology-20261015/previews/源码覆盖.png",
+      "archive": "snapshot-101.zip",
+      "size": 103733,
+      "sha256": "3c549d7e0e18bdbbc66b5baa2ca8c23613669f73b8561e03c196aead6d1cfd96"
     },
     {
-      "path": "implementation/contracts/acceptance-matrix.json",
-      "archive": "snapshot-002.zip",
-      "size": 9266,
-      "sha256": "8ca17b0e2b3b2955ead956a270343c2dc70ec1ac0f147b20e435738c20c5114c"
+      "path": "outputs/liangzihu-ontology-20261015/previews/源表清单.png",
+      "archive": "snapshot-101.zip",
+      "size": 61659,
+      "sha256": "f15dd3d3dc10ef941ed7e2f61923383fde14810052ef4b39b7d77ea73dee1271"
     },
     {
-      "path": "implementation/contracts/input-schemas.json",
-      "archive": "snapshot-002.zip",
-      "size": 16892,
-      "sha256": "182a2639123354cb9e39e00147359e569958ddb4deb673f034d6530a92502da5"
+      "path": "outputs/liangzihu-ontology-20261015/previews/类别与枚举.png",
+      "archive": "snapshot-101.zip",
+      "size": 153250,
+      "sha256": "670c34b3a35bcdeb1e624987c20e3d910d7859ff27700df7c9d3e096ac15c2a1"
     },
     {
-      "path": "implementation/contracts/intake-core-schemas.json",
-      "archive": "snapshot-002.zip",
-      "size": 7959,
-      "sha256": "4dff1e8fe52a6ff5424499947b1b96c7e8eb2b6dafa6daef2b67d4aa6c620fbb"
+      "path": "outputs/liangzihu-ontology-20261015/previews/约束枚举.png",
+      "archive": "snapshot-101.zip",
+      "size": 72174,
+      "sha256": "8061f018844320f0da86abb8d70036b398bf9f1ecb4f720be62496e2c808cd49"
     },
     {
-      "path": "implementation/contracts/ontology-core-schemas.json",
-      "archive": "snapshot-002.zip",
-      "size": 13330,
-      "sha256": "5222e6e6bb37bb60d79f0ad69ba1351a9f0809b3afa62e29ef4c140e1f389e7d"
+      "path": "outputs/liangzihu-ontology-20261015/previews/试录关系.png",
+      "archive": "snapshot-101.zip",
+      "size": 22542,
+      "sha256": "a1fc5bf19cab6ec094bc6d58e2a8d52bacdcce56b7efccc695f61f823cca9b91"
     },
     {
-      "path": "implementation/contracts/openapi.json",
-      "archive": "snapshot-002.zip",
-      "size": 261168,
-      "sha256": "10e39310e29582d1756c0d5ef7dd4f7e31df9b73b56fbabc4eb7c32051bc8f3e"
+      "path": "outputs/liangzihu-ontology-20261015/previews/试录对象.png",
+      "archive": "snapshot-101.zip",
+      "size": 22710,
+      "sha256": "6c5ed6b1d98505282bd9109cac27ff449efba76e0ad3d3759ffd13802a3e628f"
     },
     {
-      "path": "implementation/database-gate.json",
-      "archive": "snapshot-002.zip",
-      "size": 1240,
-      "sha256": "0eebb5ee65e43df7a6deab5d23a0b2769f00f12f9db916f6ec4474bd488eacfa"
+      "path": "outputs/liangzihu-ontology-20261015/previews/试录属性.png",
+      "archive": "snapshot-101.zip",
+      "size": 23732,
+      "sha256": "5bf278d7a2be77fd45ccfadc7e6b9c7648835b541f4449ce8a3fcaea13485f57"
     },
     {
-      "path": "implementation/migrations/001_core.sql",
-      "archive": "snapshot-002.zip",
-      "size": 12243,
-      "sha256": "6b61f0c608718a3f8fc8ea0e216c7aff19a5327a52f24c17570b2869d518da5b"
+      "path": "outputs/liangzihu-ontology-20261015/previews/领域包.png",
+      "archive": "snapshot-101.zip",
+      "size": 194813,
+      "sha256": "bea1d59ab7c45b2287e96cb049043ca0754301ddaa96a934f3e4a7a476507f2b"
     },
     {
-      "path": "implementation/migrations/001_core.sqlite.sql",
-      "archive": "snapshot-002.zip",
-      "size": 12262,
-      "sha256": "47b4a6d622c54504708d0cdf2970cd99e73154b98e8aa8a020286a7112e636e0"
+      "path": "outputs/liangzihu-ontology-20261015/schema_catalog.json",
+      "archive": "snapshot-101.zip",
+      "size": 3284555,
+      "sha256": "4222392e7e5465781caaba2724731169b1fb5bfaecc0f787f49af06516505cc2"
     },
     {
-      "path": "implementation/migrations/002_device_ingestion.sql",
-      "archive": "snapshot-002.zip",
-      "size": 3038,
-      "sha256": "b3da4e8ffc8eb6189e3608dc34fef520864c930a36f4e787ba159bac1cf7b384"
+      "path": "outputs/liangzihu-ontology-20261015/schema_catalog_local_subset.json",
+      "archive": "snapshot-101.zip",
+      "size": 762859,
+      "sha256": "0244cfbbc36d1196f3782f722e1e19a4bde9c58ea414fc4bbd1f2ff8819de6dd"
     },
     {
-      "path": "implementation/migrations/002_device_ingestion.sqlite.sql",
-      "archive": "snapshot-002.zip",
-      "size": 2986,
-      "sha256": "ec9a4490ab1ca68634d8d4afb52d43050b44367829be2777ddd304e039e423c7"
+      "path": "outputs/liangzihu-ontology-20261015/visual-qa-part1.txt",
+      "archive": "snapshot-101.zip",
+      "size": 342,
+      "sha256": "8fe491cd031a1b8e1a7c75ae47b2aa514b8f4fb12f12e1ae36277ec541770822"
     },
     {
-      "path": "implementation/migrations/003_ontology_core.sql",
-      "archive": "snapshot-002.zip",
-      "size": 1430,
-      "sha256": "f075226509b1f6c91909ad2f0ee7a806c1c490455371f8232fcfc9296dbbe765"
+      "path": "outputs/liangzihu-ontology-20261015/visual-qa-part2.txt",
+      "archive": "snapshot-101.zip",
+      "size": 920,
+      "sha256": "5337a8348a9a80ba91758d3a9d4e0b07abb40d2d8ef2b544c0ef17419ccab209"
     },
     {
-      "path": "implementation/migrations/003_ontology_core.sqlite.sql",
-      "archive": "snapshot-002.zip",
-      "size": 1412,
-      "sha256": "fac1b758f8fdb95a7447e773bb78089bc1ae08d54c28e9d566facca9c4dad19c"
+      "path": "outputs/liangzihu-ontology-20261015/workbook-build-report.json",
+      "archive": "snapshot-101.zip",
+      "size": 4395,
+      "sha256": "ef53600947dbe7f49f4ff20be091b03985d75bd91da1fec556d126b715dbf19c"
     },
     {
-      "path": "implementation/migrations/004_intake.sql",
-      "archive": "snapshot-002.zip",
-      "size": 1946,
-      "sha256": "ef414920875861c3658a13ad74e6c8765f36feb4dbad7a115c9915eee2cb02da"
+      "path": "outputs/liangzihu-ontology-20261015/workbook-error-scan.json",
+      "archive": "snapshot-101.zip",
+      "size": 384,
+      "sha256": "9aeda6a7d1013b5cc88f85c77eee3b78415364cd3dbd8b8622e99fba201b3144"
     },
     {
-      "path": "implementation/migrations/004_intake.sqlite.sql",
-      "archive": "snapshot-002.zip",
-      "size": 1913,
-      "sha256": "5ad4711d2d4b08b9a9fe60e1bb1410e929b096f0cb326edccfd16479ed2fac78"
+      "path": "outputs/liangzihu-ontology-20261015/workbook-inspection.ndjson",
+      "archive": "snapshot-101.zip",
+      "size": 21394,
+      "sha256": "b857b3174de69c79dccd65f4e970d3c46345ebd2c945c190397f2399fac33f32"
     },
     {
-      "path": "implementation/ops/POSTGRESQL_SETUP.txt",
-      "archive": "snapshot-002.zip",
-      "size": 1624,
-      "sha256": "e4d67725d0b1b541272f2624c54151bbdbf7d353b5e2abedd0c5469020bd9ee6"
+      "path": "outputs/liangzihu-ontology-20261015/workbook_data.json",
+      "archive": "snapshot-101.zip",
+      "size": 6982110,
+      "sha256": "937b4abaddce7ac392a67a521eee23446409f1fd63628b1b8b418ba2965b40d7"
     },
     {
-      "path": "implementation/ops/backup_sqlite.py",
-      "archive": "snapshot-002.zip",
-      "size": 6019,
-      "sha256": "cda83eaedb1d6d4f793f14ea878d89bc3ceccd68518607308f6c64e24db2c15d"
+      "path": "outputs/liangzihu-ontology-20261015/导入说明.txt",
+      "archive": "snapshot-101.zip",
+      "size": 3596,
+      "sha256": "e5d0cc3c471eb005144ed3382be1726c6908f9000c6ac0856d162c96e72817c6"
     },
     {
-      "path": "implementation/ops/edge_gateway.example.json",
-      "archive": "snapshot-002.zip",
-      "size": 1643,
-      "sha256": "39a4d2b4a1afbd6705890e7aed8d016f95f43008b649d6b4f89c2c403c21af2a"
+      "path": "outputs/liangzihu-ontology-20261015/导出当前Excel为本体JSON.cmd",
+      "archive": "snapshot-101.zip",
+      "size": 272,
+      "sha256": "680af23f8c0df4efd7b04a3c65e98d9220dfb1296ac66d6fe02a5563e0ba1180"
     },
     {
-      "path": "implementation/ops/edge_gateway.py",
-      "archive": "snapshot-002.zip",
-      "size": 34694,
-      "sha256": "f5afb90fdf2eba1e7b5e25aa227bd66857e4aa5319074949afaa3f59b8749f80"
+      "path": "outputs/liangzihu-ontology-20261015/梁子湖项目_本体与关系全量结构导出.xlsx",
+      "archive": "snapshot-101.zip",
+      "size": 774700,
+      "sha256": "cad6ce945ff9187e0cb4e036b248e43b14f9bae2a7b231bcc919c04961dcc98c"
     },
     {
-      "path": "implementation/ops/export_contract.py",
-      "archive": "snapshot-002.zip",
-      "size": 1842,
-      "sha256": "980bc4ba16e37d70e7dcf68e1d47d2a20548d79cf0da7e0d18ce89176bca1522"
+      "path": "tools/ontology_export/README.txt",
+      "archive": "snapshot-101.zip",
+      "size": 7849,
+      "sha256": "4155077c4ecba89656a4cd93ac2b67cd2c1afb821ae0c0d949263d34c9cadc1e"
     },
     {
-      "path": "implementation/ops/install_pg_driver.py",
-      "archive": "snapshot-002.zip",
-      "size": 460,
-      "sha256": "233f32ff3676a0ae1ec415c1a82caaa58784846d4e3cd2b4f95dd6a1e50f5310"
+      "path": "tools/ontology_export/build_catalog_tables.py",
+      "archive": "snapshot-101.zip",
+      "size": 22703,
+      "sha256": "c8ce9197a0b82ad1ffa5475ce16779317df2f8fe330126b8849f9d3675edb456"
     },
     {
-      "path": "implementation/ops/package_delivery.py",
-      "archive": "snapshot-002.zip",
-      "size": 3201,
-      "sha256": "2a58fb549c8cffa055f109b1700e4062e0d7b8a2007e62aa897d424e17c5cc9b"
+      "path": "tools/ontology_export/build_export_snapshot.py",
+      "archive": "snapshot-101.zip",
+      "size": 2419,
+      "sha256": "2383d1bc8b74f2a191f7851a3a9d20f7ce8735a6c187651d435ff2288f5d48bd"
     },
     {
-      "path": "implementation/ops/portable_pg.py",
-      "archive": "snapshot-002.zip",
-      "size": 5935,
-      "sha256": "590e6ac8e0a2d2c77011c1256d119c510231092e5d773e98de0d7c095b77949c"
+      "path": "tools/ontology_export/build_workbook.mjs",
+      "archive": "snapshot-101.zip",
+      "size": 13198,
+      "sha256": "ed48f79a507553df3db899f974b7f7d91edc310e7cc5f459a7a9b409ac358108"
     },
     {
-      "path": "implementation/requirements-media.txt",
-      "archive": "snapshot-002.zip",
-      "size": 103,
-      "sha256": "4981c255425b157c4b1e62487bd2538862f506b927a8b27edc2da3e780c038b2"
+      "path": "tools/ontology_export/domain_labels.json",
+      "archive": "snapshot-101.zip",
+      "size": 132396,
+      "sha256": "91c46568f3d9a97ce9e0a42b99a3eda854ada0e4943211a7bb3199666f9ba31c"
     },
     {
-      "path": "implementation/requirements-postgresql.txt",
-      "archive": "snapshot-002.zip",
-      "size": 43,
-      "sha256": "89f50832bd91937e51a0393d097bd72f7657230032ea893e310f0bbd03def959"
+      "path": "tools/ontology_export/extract_schema.py",
+      "archive": "snapshot-101.zip",
+      "size": 40032,
+      "sha256": "144064c06154d13085c9da47c102ead626e50eb02d06714ee9194424a78864d1"
     },
     {
-      "path": "implementation/requirements.txt",
-      "archive": "snapshot-002.zip",
-      "size": 324,
-      "sha256": "d7c82de7f6ee9e060a620f40d4fecdb3921238c191ecb7fd048ca52a579705a1"
+      "path": "tools/ontology_export/test_build_catalog_tables.py",
+      "archive": "snapshot-101.zip",
+      "size": 6222,
+      "sha256": "ea8ed81945876381f39eabad2788f9159573b53f290d88a7c4e67ee028616003"
     },
     {
-      "path": "implementation/run_kimi_isolated.py",
-      "archive": "snapshot-002.zip",
-      "size": 2092,
-      "sha256": "84293e200671b87c262743205a077bf36d1f113c87704351bbceb8bbdef3db1a"
+      "path": "tools/ontology_export/test_extract_schema.py",
+      "archive": "snapshot-101.zip",
+      "size": 7362,
+      "sha256": "024fbab53f8b1ebbe3306a198bb26b3923211619a7a38788efc03915fd3af8d2"
     },
     {
-      "path": "implementation/run_server.py",
-      "archive": "snapshot-002.zip",
-      "size": 1801,
-      "sha256": "5356b409761bfb5287e7a599e9848ba0eafbc75943601684c0607a82ecb781f7"
+      "path": "tools/ontology_export/test_workbook_to_packages.py",
+      "archive": "snapshot-101.zip",
+      "size": 8871,
+      "sha256": "8e0bdb932bc563c35c2a4315efe6a98e30a22412d759b46d17f3600f58ec929e"
     },
     {
-      "path": "implementation/runtime/api-contract-check.json",
-      "archive": "snapshot-002.zip",
-      "size": 364,
-      "sha256": "64084323365ea17b8047e12fff306c294acad5e7eda12dae11df001347570b84"
+      "path": "tools/ontology_export/traceability_paths.json",
+      "archive": "snapshot-101.zip",
+      "size": 46000,
+      "sha256": "a9a9dfe13bae0d554afd07133dc5c151630871289c4da304738c096e23348163"
     },
     {
-      "path": "implementation/runtime/environment-status.json",
-      "archive": "snapshot-002.zip",
-      "size": 1216,
-      "sha256": "13e7009bb1926bfd0910490b2a83678def8eb2ca7fab80d4901ae5ad705e6417"
+      "path": "tools/ontology_export/validate_packages.py",
+      "archive": "snapshot-101.zip",
+      "size": 6548,
+      "sha256": "35bca270b8a5a25ee302e92b7dd8a0afa0563236df85a58c1d1b7ee5d42f39be"
     },
     {
-      "path": "implementation/runtime/http-intake-check.json",
-      "archive": "snapshot-002.zip",
-      "size": 1487,
-      "sha256": "8dd2c016fcffcd2c25b92cb2bc8243a662538d87255d75ca8b446df13f814af9"
+      "path": "tools/ontology_export/verify_workbook.py",
+      "archive": "snapshot-101.zip",
+      "size": 2503,
+      "sha256": "29fd294b5d255440be2e5c2625df7e7c1b90f273f3dbdffa1473f32bc93d058f"
     },
     {
-      "path": "implementation/runtime/kimi-attempt-status.json",
-      "archive": "snapshot-002.zip",
-      "size": 1589,
-      "sha256": "bf869a6d747afc823a77046eee729d0a7c1f9eec4da76ac95b4a7427c650dbc8"
+      "path": "tools/ontology_export/workbook_to_packages.py",
+      "archive": "snapshot-101.zip",
+      "size": 15322,
+      "sha256": "d7dcc1ed0958def0f4cf32d9677cad8ff201b5fb69899f443470ed799585e24e"
     },
     {
-      "path": "implementation/runtime/sqlite-adapter-check.json",
-      "archive": "snapshot-002.zip",
-      "size": 569,
-      "sha256": "29664692e42d50f56c01faa26b5ce6d250940924f2e088d4d6d808ab88f7ee60"
-    },
-    {
-      "path": "implementation/runtime/sqlite-backup-check.json",
-      "archive": "snapshot-002.zip",
-      "size": 325,
-      "sha256": "2ce8c48951ff8ee1f680aa5a7de4d81d5511ca2a767819366c558409915107df"
-    },
-    {
-      "path": "implementation/tests/browser/core-intake.cjs",
-      "archive": "snapshot-002.zip",
-      "size": 15609,
-      "sha256": "af0a1bb0026d372f105a0388cc83e4b52911f68149c26d3b738043b4b6bb55b8"
-    },
-    {
-      "path": "implementation/tests/browser/core-result.json",
-      "archive": "snapshot-002.zip",
-      "size": 1485,
-      "sha256": "841b8d1e30130f738bafa49e19a61b0950243f7207e1fd400318364447e6f36f"
-    },
-    {
-      "path": "implementation/tests/browser/core-screenshots/01-ontology-editor.png",
-      "archive": "snapshot-002.zip",
-      "size": 186249,
-      "sha256": "d9aa06e13afb438cdc47267b29e40f93ad8b6e666b5c2c2ed5eb5c5d74967592"
-    },
-    {
-      "path": "implementation/tests/browser/core-screenshots/02-ontology-structure.png",
-      "archive": "snapshot-002.zip",
-      "size": 160891,
-      "sha256": "2f95f27b009ea00e5931dea293ba985754486eaa4a80b001bdf7b3d14cca58c3"
-    },
-    {
-      "path": "implementation/tests/browser/core-screenshots/03-ontology-library.png",
-      "archive": "snapshot-002.zip",
-      "size": 144508,
-      "sha256": "b75767a4377ac30afbd3a1e3a44b4a4a4e199ad7636de085134906f8476298e5"
-    },
-    {
-      "path": "implementation/tests/browser/core-screenshots/03b-typed-object.png",
-      "archive": "snapshot-002.zip",
-      "size": 238285,
-      "sha256": "e0dca2cf3de28b1019641af2ec45069e3130e44ec76be264583d76bc4055371d"
-    },
-    {
-      "path": "implementation/tests/browser/core-screenshots/04-constrained-observation.png",
-      "archive": "snapshot-002.zip",
-      "size": 183258,
-      "sha256": "971bad022eb5e3cbc9ddc6d5acad9cebc4ca6afbbea9b6bf378b4006774fa9a6"
-    },
-    {
-      "path": "implementation/tests/browser/core-screenshots/05-source-mapping.png",
-      "archive": "snapshot-002.zip",
-      "size": 186294,
-      "sha256": "9de212aa96cedea6522b4334c6f6ff7442393cbda9cac847c650f481b360ce77"
-    },
-    {
-      "path": "implementation/tests/browser/core-screenshots/06-intake-receipt.png",
-      "archive": "snapshot-002.zip",
-      "size": 192326,
-      "sha256": "d6ccdbdf651f0c7c2d3b76d781de007fae1b3f5076ec2c1d0bc462defb00590a"
-    },
-    {
-      "path": "implementation/tests/browser/core-screenshots/07-core-intake-desktop.png",
-      "archive": "snapshot-002.zip",
-      "size": 106053,
-      "sha256": "06eac6beda632be965daa5d26929927b219b7c436e33b7f3e39a2ceaf51379d2"
-    },
-    {
-      "path": "implementation/tests/browser/core-screenshots/08-ontology-mobile.png",
-      "archive": "snapshot-002.zip",
-      "size": 127927,
-      "sha256": "806ffca77863b020be285394b28173dc6953053108ddee805cea5e590e1de316"
-    },
-    {
-      "path": "implementation/tests/browser/core-screenshots/09-intake-mobile.png",
-      "archive": "snapshot-002.zip",
-      "size": 87325,
-      "sha256": "e4d7a399f12c142e0245929e2c7d2263aac957b1e834e1592049f02ad5f12097"
-    },
-    {
-      "path": "implementation/tests/browser/flask_bridge.py",
-      "archive": "snapshot-002.zip",
-      "size": 1669,
-      "sha256": "8cad1c3210a72dcb2ec0faeaf2e6784db9c1a722118d3cf266f22c1e85128626"
-    },
-    {
-      "path": "implementation/tests/browser/probe.cjs",
-      "archive": "snapshot-002.zip",
-      "size": 590,
-      "sha256": "18941653ddf2cb73ed2bffec11338a3c83016b5ab596d74fccf5cdb0809640e3"
-    },
-    {
-      "path": "implementation/tests/browser/result.json",
-      "archive": "snapshot-002.zip",
-      "size": 758,
-      "sha256": "497dde4368809283045bc0df665d2958699baa62449faca1c7525116101b5ec6"
-    },
-    {
-      "path": "implementation/tests/browser/screenshots/01-overview.png",
-      "archive": "snapshot-002.zip",
-      "size": 99154,
-      "sha256": "30d880fe16b4b4522ffb1dedfaf53f747549cd557f561b47cae55a9e6decf487"
-    },
-    {
-      "path": "implementation/tests/browser/screenshots/02-objects.png",
-      "archive": "snapshot-002.zip",
-      "size": 186419,
-      "sha256": "2268f16eaa955031064622520eed58917ea3de1eebc019933b614127349d2d58"
-    },
-    {
-      "path": "implementation/tests/browser/screenshots/03-trace.png",
-      "archive": "snapshot-002.zip",
-      "size": 135461,
-      "sha256": "2ca582bd9694675bd843a269841614dc97879c02d88a2cb76612b09d38965730"
-    },
-    {
-      "path": "implementation/tests/browser/screenshots/04-evidence.png",
-      "archive": "snapshot-002.zip",
-      "size": 62172,
-      "sha256": "cb1b5447411f8e5f010f634e312ea020f44e6af02a25b96ee204aefa74810c50"
-    },
-    {
-      "path": "implementation/tests/browser/screenshots/05-domains.png",
-      "archive": "snapshot-002.zip",
-      "size": 132779,
-      "sha256": "42b3652b9d01374149ceaca0e7edea6bd5829e03e42239c2947503edef39af2f"
-    },
-    {
-      "path": "implementation/tests/browser/screenshots/06-public-desktop.png",
-      "archive": "snapshot-002.zip",
-      "size": 76529,
-      "sha256": "b6b212df6c4ba85f97534edc40d2e05e1d2fe63c15f7ed5416565c32fdb90669"
-    },
-    {
-      "path": "implementation/tests/browser/screenshots/07-public-mobile.png",
-      "archive": "snapshot-002.zip",
-      "size": 64888,
-      "sha256": "afe947d2cef6713202ce506558d19d71daaa11bb2b5d80535d1b12972cc49159"
-    },
-    {
-      "path": "implementation/tests/browser/screenshots/08-workbench-mobile.png",
-      "archive": "snapshot-002.zip",
-      "size": 76198,
-      "sha256": "12ca4e302362c679166519c7d8e3222ea584d871a8a0ce99f69df836f66985c2"
-    },
-    {
-      "path": "implementation/tests/browser/screenshots/09-public-withdrawn.png",
-      "archive": "snapshot-002.zip",
-      "size": 57199,
-      "sha256": "3822377eb7289b3dc6d0a95a43346685295af3d80a6445ff2fe561bcbe37c552"
-    },
-    {
-      "path": "implementation/tests/browser/screenshots/10-public-recalled.png",
-      "archive": "snapshot-002.zip",
-      "size": 57361,
-      "sha256": "376b86efd858bf6d4423ac591d624e1a1f5be9eec0443a34352920d9821d2aa9"
-    },
-    {
-      "path": "implementation/tests/browser/structured-intake.cjs",
-      "archive": "snapshot-002.zip",
-      "size": 14663,
-      "sha256": "f7eced22ba7d69130b2e516aad1acf2b39f73994a3064d9b31475b25b46fce85"
-    },
-    {
-      "path": "implementation/tests/browser/structured-result.json",
-      "archive": "snapshot-002.zip",
-      "size": 1272,
-      "sha256": "a47820e9bd01d83d63eb59fe0ac2ae457bf1b3117be9921da69a6fc86fc09da9"
-    },
-    {
-      "path": "implementation/tests/browser/structured-screenshots/01-intake.png",
-      "archive": "snapshot-002.zip",
-      "size": 96049,
-      "sha256": "4dd4bc6e371e1004133ec54f118586af16e70c60ce288db16c9cb08145327efd"
-    },
-    {
-      "path": "implementation/tests/browser/structured-screenshots/02-manual-observation.png",
-      "archive": "snapshot-002.zip",
-      "size": 178127,
-      "sha256": "ca9ba0b32636279acf892a13cda76f2ac209819a91de0b2421b8acff458b2d59"
-    },
-    {
-      "path": "implementation/tests/browser/structured-screenshots/03-package-editor.png",
-      "archive": "snapshot-002.zip",
-      "size": 188871,
-      "sha256": "ff7673088adaec39722fb3156fa8b1cc4e83317b32431896ab87438df59bbfbf"
-    },
-    {
-      "path": "implementation/tests/browser/structured-screenshots/04-focus-policy.png",
-      "archive": "snapshot-002.zip",
-      "size": 199668,
-      "sha256": "dbc66072337d740b2ffc1e37c81265463bae632f6aeabaa11be673e13b2f47d2"
-    },
-    {
-      "path": "implementation/tests/browser/structured-screenshots/05-media-processing.png",
-      "archive": "snapshot-002.zip",
-      "size": 200833,
-      "sha256": "abc9e9f9aa18f7f61112102cdbd27d7516ed28c48d4dd0eda2978b8b3b2dfef4"
-    },
-    {
-      "path": "implementation/tests/browser/structured-screenshots/06-intake-mobile.png",
-      "archive": "snapshot-002.zip",
-      "size": 86973,
-      "sha256": "e594d304f4361fcb9f6163578b2cf5bad4a8ef15c72d825452c7e6237c329e1a"
-    },
-    {
-      "path": "implementation/tests/browser/structured-screenshots/07-picker-mobile.png",
-      "archive": "snapshot-002.zip",
-      "size": 91969,
-      "sha256": "92e9fefc4fa76430879becd76d9d2f8fd8de35da8fa281a50608628058771671"
-    },
-    {
-      "path": "implementation/tests/browser/ui-smoke.cjs",
-      "archive": "snapshot-002.zip",
-      "size": 8783,
-      "sha256": "d9a517fd21fbb8d751e5eef4b7417e4ddc7f93d517e695e7c5f779670759f667"
-    },
-    {
-      "path": "implementation/tests/conftest.py",
-      "archive": "snapshot-002.zip",
-      "size": 1390,
-      "sha256": "6e4c9f433a54321a8d5137d81b29e54e20c0546798a303deba9268c2baa7e485"
-    },
-    {
-      "path": "implementation/tests/latest-results.xml",
-      "archive": "snapshot-002.zip",
-      "size": 73258,
-      "sha256": "4aefc4ae9b483772f64aedf7446bd024699275ae283f40c1525a6afb108906e9"
-    },
-    {
-      "path": "implementation/tests/test_api.py",
-      "archive": "snapshot-002.zip",
-      "size": 7046,
-      "sha256": "4d3f652b2288d205ec1118104d052e3d52347ac7b093031b7deb87506f46afb2"
-    },
-    {
-      "path": "implementation/tests/test_asset_inspection.py",
-      "archive": "snapshot-002.zip",
-      "size": 2757,
-      "sha256": "a4440fe15218b659024f698e93d2f3dce1ec62d45a02370071d02911951830c5"
-    },
-    {
-      "path": "implementation/tests/test_conflict_invalidation.py",
-      "archive": "snapshot-002.zip",
-      "size": 5288,
-      "sha256": "56f307a4cd282172f6248688055f4f13a0c31e30d9c330f77a0c8baa7f134b84"
-    },
-    {
-      "path": "implementation/tests/test_core.py",
-      "archive": "snapshot-002.zip",
-      "size": 23702,
-      "sha256": "40f135fd5fa084be4f34a826a0406239b59bba085e5651e637e1a28f9a41eece"
-    },
-    {
-      "path": "implementation/tests/test_core_intake.py",
-      "archive": "snapshot-002.zip",
-      "size": 20377,
-      "sha256": "349e04188c74309f9005c748b5b6ebe0c2cab76b6f696bbeabec6d7e3c4ff99b"
-    },
-    {
-      "path": "implementation/tests/test_device_ingestion.py",
-      "archive": "snapshot-002.zip",
-      "size": 19361,
-      "sha256": "179e83df172aad42642c240acf8218dbbcc150df2ad7edc3c9fa3158914a28e0"
-    },
-    {
-      "path": "implementation/tests/test_edge_gateway.py",
-      "archive": "snapshot-002.zip",
-      "size": 18951,
-      "sha256": "9945962cfd9416e52b527acbfec202f827b4732a8d7e9e3e0b260eba9b0690e0"
-    },
-    {
-      "path": "implementation/tests/test_exchange.py",
-      "archive": "snapshot-002.zip",
-      "size": 1705,
-      "sha256": "1384afe97ece20114d72c04c116a1b48d8635e947330509b00f29298d79c4f14"
-    },
-    {
-      "path": "implementation/tests/test_field_intake.py",
-      "archive": "snapshot-002.zip",
-      "size": 13274,
-      "sha256": "1397e15130cde8693cfc9eec2c91d8131c6658e9439ec18eb33862fb4b57e81c"
-    },
-    {
-      "path": "implementation/tests/test_ingestion.py",
-      "archive": "snapshot-002.zip",
-      "size": 9734,
-      "sha256": "218c8b33a7b7eeed3b2ce57f1759c3ccca866447bba5e932e2364f1aa3b7015c"
-    },
-    {
-      "path": "implementation/tests/test_network.py",
-      "archive": "snapshot-002.zip",
-      "size": 9320,
-      "sha256": "03e8192c03abf5c8b79f9895da6fc579c5b5047681b0dcea9d65bb6a4285ca97"
-    },
-    {
-      "path": "implementation/tests/test_ontology_core.py",
-      "archive": "snapshot-002.zip",
-      "size": 21613,
-      "sha256": "d69065eb741608ea4f0f4572b927e97aae42baacabb431926af106d1c5fb2f2b"
-    },
-    {
-      "path": "implementation/tests/test_pagination.py",
-      "archive": "snapshot-002.zip",
-      "size": 3058,
-      "sha256": "88a35beeac3f8d5af2243c2e55a6768d4722d3ef696997d4bafd5a60eeca70f9"
-    },
-    {
-      "path": "implementation/web/app.js",
-      "archive": "snapshot-002.zip",
-      "size": 117392,
-      "sha256": "ada12c4b4e5c16bdacd26ff87a1a6fa6304b288ff0af6beb7c90a137261b142f"
-    },
-    {
-      "path": "implementation/web/index.html",
-      "archive": "snapshot-002.zip",
-      "size": 595,
-      "sha256": "5ed227bddd0d1eea0d1925ef644f23cdacabd166b5dda483d6fc7d68c327e016"
-    },
-    {
-      "path": "implementation/web/styles.css",
-      "archive": "snapshot-002.zip",
-      "size": 18618,
-      "sha256": "4092a81eee17b32dfe82be2476518f3345c0b0db68190ea3f12ce693a999280c"
-    },
-    {
-      "path": "implementation/启动系统.cmd",
-      "archive": "snapshot-002.zip",
-      "size": 135,
-      "sha256": "489033a46c52c55a3d87043bcfa165ecea1c3a6716ecdea62fbf6766f13a641e"
-    },
-    {
-      "path": "implementation/启动说明.txt",
-      "archive": "snapshot-002.zip",
-      "size": 2540,
-      "sha256": "19c8450f62b3a1611219e35301ef56352b0db7900d01c97d7a2f581b14477030"
-    },
-    {
-      "path": "implementation/验证结果.txt",
-      "archive": "snapshot-002.zip",
-      "size": 2507,
-      "sha256": "87a0d61e015cfbc7975653b313f3b09c7a5b9e0f4631b8d0415c973e1eaf24b6"
-    },
-    {
-      "path": "tools/build_github_snapshot.py",
-      "archive": "snapshot-002.zip",
-      "size": 12925,
-      "sha256": "33090bf70c27cbbec744f6431073723315189f264ffb486bc8d1b02fc3d4f8be"
-    },
-    {
-      "path": "tools/restore_github_snapshot.py",
-      "archive": "snapshot-002.zip",
-      "size": 15130,
-      "sha256": "64778a98ffc930b9a6431bdfb1be5bef62e0dd3bcd27acb7346989ca1d77ab78"
-    },
-    {
-      "path": "tools/sync_to_github.py",
-      "archive": "snapshot-002.zip",
-      "size": 3755,
-      "sha256": "c07048e38275c8a9b667f89e9ee84750be037bc44182e7153041542cff96d431"
-    },
-    {
-      "path": "tools/test_snapshot.py",
-      "archive": "snapshot-002.zip",
-      "size": 19452,
-      "sha256": "9676d903ca5caf1728ded1745c7a6e78f67f419fdb663c4d3aa9a829bf46fdf6"
-    },
-    {
-      "path": "tools/test_sync_to_github.py",
-      "archive": "snapshot-002.zip",
-      "size": 9005,
-      "sha256": "6fa8b444a59bbbcfb83b7428d9709d9924e90966aa4be6e48c94c3db63442d5f"
-    },
-    {
-      "path": "交付文档/梁子湖农业本体与溯源系统_本地工程版_v0.1.zip",
-      "archive": "snapshot-002.zip",
-      "size": 994142,
-      "sha256": "727d32584fe4e4fe533c476227627573ecaf08e2f0e2788eba9788eb04d74018"
-    },
-    {
-      "path": "交付文档/梁子湖农业本体与溯源系统_本地工程版_v0.1.zip.sha256.txt",
-      "archive": "snapshot-002.zip",
-      "size": 129,
-      "sha256": "0af3e1b95a88baf1aa963cad94674867473e666fe00efb8d6bc93b7b03e7ae38"
-    },
-    {
-      "path": "交付文档/梁子湖农业本体与溯源系统_本地工程版_v0.2.zip",
-      "archive": "snapshot-003.zip",
-      "size": 2195488,
-      "sha256": "fad9ef46a893d04a1408cd078a8308880eee03fb63148684c80380b836d053bc"
-    },
-    {
-      "path": "交付文档/梁子湖农业本体与溯源系统_本地工程版_v0.2.zip.sha256.txt",
-      "archive": "snapshot-003.zip",
-      "size": 129,
-      "sha256": "f1c079744b26b4d3dfed27c92fd5e7851dbc94f896b4eacdea0b436d7b793630"
-    },
-    {
-      "path": "交付文档/梁子湖农业本体数据库_本地工程版_v0.3.zip",
-      "archive": "snapshot-003.zip",
-      "size": 3706628,
-      "sha256": "dd5a1a26331c6b604a0ad3e23b657c76af7db9d49de5a309240ff4a64e99be60"
-    },
-    {
-      "path": "交付文档/梁子湖农业本体数据库_本地工程版_v0.3.zip.sha256.txt",
-      "archive": "snapshot-003.zip",
-      "size": 123,
-      "sha256": "3321e3db0613f693feb5217a9d50fdca474f1259654887468919e3fa68151b2b"
-    },
-    {
-      "path": "交付文档/梁子湖智慧农业本体库与溯源系统总体方案_v1.1.docx",
-      "archive": "snapshot-003.zip",
-      "size": 576626,
-      "sha256": "aaa001db973b00aa680efec2fc960dbdca44a617112fa510c0e9c9e6f40e348a"
-    },
-    {
-      "path": "交付文档/梁子湖智慧农业本体论数据库总体建设方案.docx",
-      "archive": "snapshot-003.zip",
-      "size": 360897,
-      "sha256": "772db34a9797f8ef3fc75cf2d30f3cde3f23e43687c840e8b2b0ccb0e539bd76"
-    },
-    {
-      "path": "同步到GitHub.cmd",
-      "archive": "snapshot-003.zip",
-      "size": 120,
-      "sha256": "bbef4793c373465d293cc825458a3ffba67f4bcf8c23eaba3c09a5148c9c8e1c"
-    },
-    {
-      "path": "智慧农业本体论数据库架构与多模态数据处理.docx",
-      "archive": "snapshot-003.zip",
-      "size": 43891,
-      "sha256": "1f10c64f0eb1e233eb6a0409fadf9ba7479a7b1dc046aeb546ce3db4fdbd0e3d"
-    },
-    {
-      "path": "设计草案/canonical-record.examples.json",
-      "archive": "snapshot-003.zip",
-      "size": 20562,
-      "sha256": "31821cfe7dad17cd40fc60052f78dde6dbe11654b83bfe447edaa27fa725ad76"
-    },
-    {
-      "path": "设计草案/canonical-record.schema.json",
-      "archive": "snapshot-003.zip",
-      "size": 28385,
-      "sha256": "517faf74bca593e57298fc4035e6379ec09e47377fbf6c185961f9bfd671c495"
-    },
-    {
-      "path": "设计草案/liangzihu-ontology.v0.1.json",
-      "archive": "snapshot-003.zip",
-      "size": 45721,
-      "sha256": "b47298dfb5422108b72ba58b12e9234f279f19a5605bf4053563804f7961790b"
-    },
-    {
-      "path": "设计草案/validate_contracts.py",
-      "archive": "snapshot-003.zip",
-      "size": 5837,
-      "sha256": "3ac737fc9aa71792d76690d08c6587491ece97b8eb70499e92104936fd197952"
-    },
-    {
-      "path": "设计草案/validation-report.json",
-      "archive": "snapshot-003.zip",
-      "size": 953,
-      "sha256": "9f418245a04bbdfd4df91319eab86cdccef33cc4a16b7218ee0f840b66333454"
+      "path": "tools/ontology_export/导出本体JSON.cmd",
+      "archive": "snapshot-101.zip",
+      "size": 860,
+      "sha256": "77473f478c9b9ab4c318440ed43596a33b73c416f1d1f539c7336a3ce932f7d5"
     }
   ],
   "excluded": [
-    {
-      "path": ".github/workflows/import-snapshot.yml",
-      "reason": "workflow is uploaded and reviewed separately"
-    }
+    "source-cache",
+    "live-database",
+    "credentials",
+    "node_modules"
   ]
 }
