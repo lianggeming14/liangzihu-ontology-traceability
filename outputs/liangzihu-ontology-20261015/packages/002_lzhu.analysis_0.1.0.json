@@ -1,0 +1,764 @@
+{
+  "package_id": "lzhu.analysis",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:analysis:",
+  "label": "分析定义与结果",
+  "description": "来源平台已有分析定义、结果、复核及模型运行元数据。 固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。此包定义来源系统记录类；不是已经完成农业业务概念等价对齐的目标本体。",
+  "types": [
+    {
+      "type_id": "lzhu:metric_definitions",
+      "identity_type": "lzhu:metric_definitions",
+      "label": "分析指标定义",
+      "description": "外部分析指标的计算规范与版本；本体映射只保存定义。 来源表 metric_definitions；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:metric_results",
+      "identity_type": "lzhu:metric_results",
+      "label": "分析指标结果",
+      "description": "依据指定指标版本与时间窗口形成的结果和输入证据。 来源表 metric_results；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:image_reviews",
+      "identity_type": "lzhu:image_reviews",
+      "label": "图像复核结果",
+      "description": "外部或人工图像复核的结果及依据，不在本体库执行图像识别。 来源表 image_reviews；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:image_field_samples",
+      "identity_type": "lzhu:image_field_samples",
+      "label": "图像现场验证样本",
+      "description": "现场样本与摄像头触发、平台接收和人员接收的验证记录。 来源表 image_field_samples；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:comparison_definitions",
+      "identity_type": "lzhu:comparison_definitions",
+      "label": "分析对比定义",
+      "description": "当前与基线指标的对比口径与版本。 来源表 comparison_definitions；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:comparison_results",
+      "identity_type": "lzhu:comparison_results",
+      "label": "分析对比结果",
+      "description": "按已登记口径形成的当前与基线对比结果及限制。 来源表 comparison_results；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    }
+  ],
+  "properties": [
+    {
+      "property_id": "lzhu:metric_definitions.id",
+      "label": "分析指标定义 · 记录标识",
+      "description": "来源记录属性 metric_definitions.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:metric_definitions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_definitions.name",
+      "label": "分析指标定义 · 名称",
+      "description": "来源记录属性 metric_definitions.name。",
+      "applies_to": [
+        "lzhu:metric_definitions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_definitions.version",
+      "label": "分析指标定义 · 版本",
+      "description": "来源记录属性 metric_definitions.version。",
+      "applies_to": [
+        "lzhu:metric_definitions"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_definitions.source_ref",
+      "label": "分析指标定义 · 来源引用",
+      "description": "来源记录属性 metric_definitions.source_ref。",
+      "applies_to": [
+        "lzhu:metric_definitions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_definitions.approved_at",
+      "label": "分析指标定义 · 批准时间",
+      "description": "来源记录属性 metric_definitions.approved_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:metric_definitions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_definitions.retired_at",
+      "label": "分析指标定义 · 停用时间",
+      "description": "来源记录属性 metric_definitions.retired_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:metric_definitions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_definitions.created_at",
+      "label": "分析指标定义 · 创建时间",
+      "description": "来源记录属性 metric_definitions.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:metric_definitions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_results.id",
+      "label": "分析指标结果 · 记录标识",
+      "description": "来源记录属性 metric_results.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:metric_results"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_results.definition_version",
+      "label": "分析指标结果 · 定义版本",
+      "description": "来源记录属性 metric_results.definition_version。",
+      "applies_to": [
+        "lzhu:metric_results"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_results.window_start",
+      "label": "分析指标结果 · 窗口开始时间",
+      "description": "来源记录属性 metric_results.window_start。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:metric_results"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_results.window_end",
+      "label": "分析指标结果 · 窗口结束时间",
+      "description": "来源记录属性 metric_results.window_end。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:metric_results"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_results.calculated_at",
+      "label": "分析指标结果 · 计算时间",
+      "description": "来源记录属性 metric_results.calculated_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:metric_results"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_results.value",
+      "label": "分析指标结果 · 数值或内容",
+      "description": "来源记录属性 metric_results.value。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:metric_results"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_results.observed_value",
+      "label": "分析指标结果 · 观测值",
+      "description": "来源记录属性 metric_results.observed_value。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:metric_results"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_results.unit",
+      "label": "分析指标结果 · 单位",
+      "description": "来源记录属性 metric_results.unit。",
+      "applies_to": [
+        "lzhu:metric_results"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_results.status",
+      "label": "分析指标结果 · 状态",
+      "description": "来源记录属性 metric_results.status。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:metric_results"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "usable",
+        "insufficient",
+        "incomparable"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_results.coverage",
+      "label": "分析指标结果 · 覆盖程度",
+      "description": "来源记录属性 metric_results.coverage。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:metric_results"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_results.input_hash",
+      "label": "分析指标结果 · 输入内容哈希",
+      "description": "来源记录属性 metric_results.input_hash。",
+      "applies_to": [
+        "lzhu:metric_results"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:metric_results.version",
+      "label": "分析指标结果 · 版本",
+      "description": "来源记录属性 metric_results.version。",
+      "applies_to": [
+        "lzhu:metric_results"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_reviews.id",
+      "label": "图像复核结果 · 记录标识",
+      "description": "来源记录属性 image_reviews.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:image_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_reviews.checksum",
+      "label": "图像复核结果 · 校验值",
+      "description": "来源记录属性 image_reviews.checksum。",
+      "applies_to": [
+        "lzhu:image_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_reviews.model_version",
+      "label": "图像复核结果 · 模型版本",
+      "description": "来源记录属性 image_reviews.model_version。",
+      "applies_to": [
+        "lzhu:image_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_reviews.state",
+      "label": "图像复核结果 · 状态",
+      "description": "来源记录属性 image_reviews.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:image_reviews"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "queued",
+        "running",
+        "complete",
+        "failed",
+        "access_revoked",
+        "result_unknown"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_reviews.error_code",
+      "label": "图像复核结果 · 错误代码",
+      "description": "来源记录属性 image_reviews.error_code。",
+      "applies_to": [
+        "lzhu:image_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_reviews.request_key",
+      "label": "图像复核结果 · 请求幂等键",
+      "description": "来源记录属性 image_reviews.request_key。",
+      "applies_to": [
+        "lzhu:image_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_reviews.created_at",
+      "label": "图像复核结果 · 创建时间",
+      "description": "来源记录属性 image_reviews.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:image_reviews"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_reviews.completed_at",
+      "label": "图像复核结果 · 完成时间",
+      "description": "来源记录属性 image_reviews.completed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:image_reviews"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_reviews.canonical",
+      "label": "图像复核结果 · 规范值",
+      "description": "来源记录属性 image_reviews.canonical。",
+      "applies_to": [
+        "lzhu:image_reviews"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_field_samples.id",
+      "label": "图像现场验证样本 · 记录标识",
+      "description": "来源记录属性 image_field_samples.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:image_field_samples"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_field_samples.scene",
+      "label": "图像现场验证样本 · 场景内容",
+      "description": "来源记录属性 image_field_samples.scene。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:image_field_samples"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "day",
+        "night",
+        "rain_fog"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_field_samples.source_ref",
+      "label": "图像现场验证样本 · 来源引用",
+      "description": "来源记录属性 image_field_samples.source_ref。",
+      "applies_to": [
+        "lzhu:image_field_samples"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_field_samples.occurred_at",
+      "label": "图像现场验证样本 · 业务发生时间",
+      "description": "来源记录属性 image_field_samples.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:image_field_samples"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_field_samples.target",
+      "label": "图像现场验证样本 · 目标",
+      "description": "来源记录属性 image_field_samples.target。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:image_field_samples"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "person",
+        "vehicle",
+        "absent",
+        "unknown"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_field_samples.expected_trigger",
+      "label": "图像现场验证样本 · 是否预期触发",
+      "description": "来源记录属性 image_field_samples.expected_trigger。",
+      "applies_to": [
+        "lzhu:image_field_samples"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_field_samples.camera_triggered",
+      "label": "图像现场验证样本 · 摄像头是否触发",
+      "description": "来源记录属性 image_field_samples.camera_triggered。",
+      "applies_to": [
+        "lzhu:image_field_samples"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_field_samples.platform_received",
+      "label": "图像现场验证样本 · 平台是否接收",
+      "description": "来源记录属性 image_field_samples.platform_received。",
+      "applies_to": [
+        "lzhu:image_field_samples"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_field_samples.person_received",
+      "label": "图像现场验证样本 · 人员是否接收",
+      "description": "来源记录属性 image_field_samples.person_received。",
+      "applies_to": [
+        "lzhu:image_field_samples"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_field_samples.human_label",
+      "label": "图像现场验证样本 · 人工标注",
+      "description": "来源记录属性 image_field_samples.human_label。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:image_field_samples"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "person",
+        "vehicle",
+        "person_vehicle",
+        "absent",
+        "unknown"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_field_samples.labelled_at",
+      "label": "图像现场验证样本 · 标注时间",
+      "description": "来源记录属性 image_field_samples.labelled_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:image_field_samples"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_field_samples.created_at",
+      "label": "图像现场验证样本 · 创建时间",
+      "description": "来源记录属性 image_field_samples.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:image_field_samples"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_field_samples.request_key",
+      "label": "图像现场验证样本 · 请求幂等键",
+      "description": "来源记录属性 image_field_samples.request_key。",
+      "applies_to": [
+        "lzhu:image_field_samples"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_field_samples.content_hash",
+      "label": "图像现场验证样本 · 内容哈希",
+      "description": "来源记录属性 image_field_samples.content_hash。",
+      "applies_to": [
+        "lzhu:image_field_samples"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:image_field_samples.human_labels",
+      "label": "图像现场验证样本 · 人工标注列表",
+      "description": "来源记录属性 image_field_samples.human_labels。文本数组逐元素映射；本库数组长度1至100，元素空白/业务含义由接入映射复核。SQL空数组映射为属性缺省。",
+      "applies_to": [
+        "lzhu:image_field_samples"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "many"
+    },
+    {
+      "property_id": "lzhu:comparison_definitions.id",
+      "label": "分析对比定义 · 记录标识",
+      "description": "来源记录属性 comparison_definitions.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:comparison_definitions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:comparison_definitions.name",
+      "label": "分析对比定义 · 名称",
+      "description": "来源记录属性 comparison_definitions.name。",
+      "applies_to": [
+        "lzhu:comparison_definitions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:comparison_definitions.threshold",
+      "label": "分析对比定义 · 阈值",
+      "description": "来源记录属性 comparison_definitions.threshold。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:comparison_definitions"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:comparison_definitions.source_ref",
+      "label": "分析对比定义 · 来源引用",
+      "description": "来源记录属性 comparison_definitions.source_ref。",
+      "applies_to": [
+        "lzhu:comparison_definitions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:comparison_definitions.created_at",
+      "label": "分析对比定义 · 创建时间",
+      "description": "来源记录属性 comparison_definitions.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:comparison_definitions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:comparison_definitions.approved_at",
+      "label": "分析对比定义 · 批准时间",
+      "description": "来源记录属性 comparison_definitions.approved_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:comparison_definitions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:comparison_definitions.retired_at",
+      "label": "分析对比定义 · 停用时间",
+      "description": "来源记录属性 comparison_definitions.retired_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:comparison_definitions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:comparison_results.id",
+      "label": "分析对比结果 · 记录标识",
+      "description": "来源记录属性 comparison_results.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:comparison_results"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:comparison_results.state",
+      "label": "分析对比结果 · 状态",
+      "description": "来源记录属性 comparison_results.state。",
+      "applies_to": [
+        "lzhu:comparison_results"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:comparison_results.advance_days",
+      "label": "分析对比结果 · 提前天数",
+      "description": "来源记录属性 comparison_results.advance_days。",
+      "applies_to": [
+        "lzhu:comparison_results"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:comparison_results.current_date_label",
+      "label": "分析对比结果 · 当前日期标签",
+      "description": "来源记录属性 comparison_results.current_date_label。",
+      "applies_to": [
+        "lzhu:comparison_results"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:comparison_results.baseline_date_label",
+      "label": "分析对比结果 · 基线日期标签",
+      "description": "来源记录属性 comparison_results.baseline_date_label。",
+      "applies_to": [
+        "lzhu:comparison_results"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:comparison_results.input_hash",
+      "label": "分析对比结果 · 输入内容哈希",
+      "description": "来源记录属性 comparison_results.input_hash。",
+      "applies_to": [
+        "lzhu:comparison_results"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:comparison_results.created_at",
+      "label": "分析对比结果 · 创建时间",
+      "description": "来源记录属性 comparison_results.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:comparison_results"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    }
+  ],
+  "predicates": [],
+  "dependencies": []
+}

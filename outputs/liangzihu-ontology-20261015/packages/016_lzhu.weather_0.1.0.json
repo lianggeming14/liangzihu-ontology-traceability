@@ -1,0 +1,235 @@
+{
+  "package_id": "lzhu.weather",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:weather:",
+  "label": "天气资料",
+  "description": "天气来源、时效资料及其同步配置。 固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。此包定义来源系统记录类；不是已经完成农业业务概念等价对齐的目标本体。",
+  "types": [
+    {
+      "type_id": "lzhu:weather_records",
+      "identity_type": "lzhu:weather_records",
+      "label": "天气资料记录",
+      "description": "有发布时刻与适用时段的天气来源资料，按源类型区分观测和预报。 来源表 weather_records；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:weather_source_versions",
+      "identity_type": "lzhu:weather_source_versions",
+      "label": "天气来源版本",
+      "description": "一组天气资料的来源版本、内容哈希和记录清单。 来源表 weather_source_versions；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    }
+  ],
+  "properties": [
+    {
+      "property_id": "lzhu:weather_records.id",
+      "label": "天气资料记录 · 记录标识",
+      "description": "来源记录属性 weather_records.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:weather_records"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_records.kind",
+      "label": "天气资料记录 · 种类",
+      "description": "来源记录属性 weather_records.kind。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:weather_records"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "actual",
+        "forecast",
+        "warning",
+        "baseline"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_records.source",
+      "label": "天气资料记录 · 来源内容",
+      "description": "来源记录属性 weather_records.source。",
+      "applies_to": [
+        "lzhu:weather_records"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_records.source_version",
+      "label": "天气资料记录 · 来源版本",
+      "description": "来源记录属性 weather_records.source_version。",
+      "applies_to": [
+        "lzhu:weather_records"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_records.station_ref",
+      "label": "天气资料记录 · 气象站引用",
+      "description": "来源记录属性 weather_records.station_ref。",
+      "applies_to": [
+        "lzhu:weather_records"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_records.published_at",
+      "label": "天气资料记录 · 发布时间",
+      "description": "来源记录属性 weather_records.published_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:weather_records"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_records.valid_from",
+      "label": "天气资料记录 · 有效开始时间",
+      "description": "来源记录属性 weather_records.valid_from。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:weather_records"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_records.valid_to",
+      "label": "天气资料记录 · 有效结束时间",
+      "description": "来源记录属性 weather_records.valid_to。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:weather_records"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_records.request_key",
+      "label": "天气资料记录 · 请求幂等键",
+      "description": "来源记录属性 weather_records.request_key。",
+      "applies_to": [
+        "lzhu:weather_records"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_records.content_hash",
+      "label": "天气资料记录 · 内容哈希",
+      "description": "来源记录属性 weather_records.content_hash。",
+      "applies_to": [
+        "lzhu:weather_records"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_records.created_at",
+      "label": "天气资料记录 · 创建时间",
+      "description": "来源记录属性 weather_records.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:weather_records"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_records.received_at",
+      "label": "天气资料记录 · 接收时间",
+      "description": "来源记录属性 weather_records.received_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:weather_records"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_source_versions.id",
+      "label": "天气来源版本 · 记录标识",
+      "description": "来源记录属性 weather_source_versions.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:weather_source_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_source_versions.configuration_version",
+      "label": "天气来源版本 · 配置版本",
+      "description": "来源记录属性 weather_source_versions.configuration_version。",
+      "applies_to": [
+        "lzhu:weather_source_versions"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_source_versions.source_tag",
+      "label": "天气来源版本 · 来源标签",
+      "description": "来源记录属性 weather_source_versions.source_tag。",
+      "applies_to": [
+        "lzhu:weather_source_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_source_versions.content_hash",
+      "label": "天气来源版本 · 内容哈希",
+      "description": "来源记录属性 weather_source_versions.content_hash。",
+      "applies_to": [
+        "lzhu:weather_source_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:weather_source_versions.created_at",
+      "label": "天气来源版本 · 创建时间",
+      "description": "来源记录属性 weather_source_versions.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:weather_source_versions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    }
+  ],
+  "predicates": [],
+  "dependencies": []
+}

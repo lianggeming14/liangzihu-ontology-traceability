@@ -1,0 +1,775 @@
+{
+  "package_id": "lzhu.resources",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:resources:",
+  "label": "水能与循环资源",
+  "description": "水流、能源计量及循环物料称重和处理。 固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。此包定义来源系统记录类；不是已经完成农业业务概念等价对齐的目标本体。",
+  "types": [
+    {
+      "type_id": "lzhu:flow_observations",
+      "identity_type": "lzhu:flow_observations",
+      "label": "水流观测",
+      "description": "保存时段流量或水量及实测、标定或模型来源依据。 来源表 flow_observations；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:energy_meters",
+      "identity_type": "lzhu:energy_meters",
+      "label": "能源计量配置",
+      "description": "定义发电、负荷或储能设备的计量角色和版本。 来源表 energy_meters；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:energy_meter_reviews",
+      "identity_type": "lzhu:energy_meter_reviews",
+      "label": "能源计量审核",
+      "description": "保存计量配置批准或撤回的业务审核事件。 来源表 energy_meter_reviews；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:energy_readings",
+      "identity_type": "lzhu:energy_readings",
+      "label": "能源读数",
+      "description": "保存电量、功率或储能读数，区分质量、重置和修订。 来源表 energy_readings；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:circular_batches",
+      "identity_type": "lzhu:circular_batches",
+      "label": "循环物料批次",
+      "description": "为库存批次补充淤泥、粪肥、秸秆等资源化类别和来源。 来源表 circular_batches；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:circular_weighings",
+      "identity_type": "lzhu:circular_weighings",
+      "label": "循环物料称重",
+      "description": "记录毛皮净重、水分和干湿基准，并关联库存单据。 来源表 circular_weighings；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:circular_processes",
+      "identity_type": "lzhu:circular_processes",
+      "label": "循环物料处理",
+      "description": "记录处理、筛分或返工业务及关联库存单据。 来源表 circular_processes；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    }
+  ],
+  "properties": [
+    {
+      "property_id": "lzhu:flow_observations.id",
+      "label": "水流观测 · 记录标识",
+      "description": "来源记录属性 flow_observations.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:flow_observations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flow_observations.from_at",
+      "label": "水流观测 · 区间开始时间",
+      "description": "来源记录属性 flow_observations.from_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:flow_observations"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flow_observations.to_at",
+      "label": "水流观测 · 结束时间",
+      "description": "来源记录属性 flow_observations.to_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:flow_observations"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flow_observations.value",
+      "label": "水流观测 · 数值或内容",
+      "description": "来源记录属性 flow_observations.value。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:flow_observations"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flow_observations.unit",
+      "label": "水流观测 · 单位",
+      "description": "来源记录属性 flow_observations.unit。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:flow_observations"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "m3/s",
+        "m3"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flow_observations.source_kind",
+      "label": "水流观测 · 来源类别",
+      "description": "来源记录属性 flow_observations.source_kind。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:flow_observations"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "measured",
+        "calibrated",
+        "model"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flow_observations.basis_ref",
+      "label": "水流观测 · 依据引用",
+      "description": "来源记录属性 flow_observations.basis_ref。",
+      "applies_to": [
+        "lzhu:flow_observations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flow_observations.basis_version",
+      "label": "水流观测 · 依据版本",
+      "description": "来源记录属性 flow_observations.basis_version。",
+      "applies_to": [
+        "lzhu:flow_observations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flow_observations.applicability",
+      "label": "水流观测 · 适用范围",
+      "description": "来源记录属性 flow_observations.applicability。",
+      "applies_to": [
+        "lzhu:flow_observations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flow_observations.valid_until",
+      "label": "水流观测 · 有效截止时间",
+      "description": "来源记录属性 flow_observations.valid_until。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:flow_observations"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flow_observations.created_at",
+      "label": "水流观测 · 创建时间",
+      "description": "来源记录属性 flow_observations.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:flow_observations"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_meters.id",
+      "label": "能源计量配置 · 记录标识",
+      "description": "来源记录属性 energy_meters.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:energy_meters"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_meters.name",
+      "label": "能源计量配置 · 名称",
+      "description": "来源记录属性 energy_meters.name。",
+      "applies_to": [
+        "lzhu:energy_meters"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_meters.purpose",
+      "label": "能源计量配置 · 用途",
+      "description": "来源记录属性 energy_meters.purpose。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:energy_meters"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "generation",
+        "load",
+        "storage"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_meters.capacity_kwh",
+      "label": "能源计量配置 · 容量千瓦时",
+      "description": "来源记录属性 energy_meters.capacity_kwh。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:energy_meters"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_meters.max_gap_seconds",
+      "label": "能源计量配置 · 最大间隔秒数",
+      "description": "来源记录属性 energy_meters.max_gap_seconds。",
+      "applies_to": [
+        "lzhu:energy_meters"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_meters.source_ref",
+      "label": "能源计量配置 · 来源引用",
+      "description": "来源记录属性 energy_meters.source_ref。",
+      "applies_to": [
+        "lzhu:energy_meters"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_meters.version",
+      "label": "能源计量配置 · 版本",
+      "description": "来源记录属性 energy_meters.version。",
+      "applies_to": [
+        "lzhu:energy_meters"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_meters.created_at",
+      "label": "能源计量配置 · 创建时间",
+      "description": "来源记录属性 energy_meters.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:energy_meters"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_meter_reviews.id",
+      "label": "能源计量审核 · 记录标识",
+      "description": "来源记录属性 energy_meter_reviews.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:energy_meter_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_meter_reviews.seq",
+      "label": "能源计量审核 · 序号",
+      "description": "来源记录属性 energy_meter_reviews.seq。",
+      "applies_to": [
+        "lzhu:energy_meter_reviews"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_meter_reviews.action",
+      "label": "能源计量审核 · 动作",
+      "description": "来源记录属性 energy_meter_reviews.action。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:energy_meter_reviews"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "approve",
+        "withdraw"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_meter_reviews.evidence",
+      "label": "能源计量审核 · 依据材料",
+      "description": "来源记录属性 energy_meter_reviews.evidence。",
+      "applies_to": [
+        "lzhu:energy_meter_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_meter_reviews.created_at",
+      "label": "能源计量审核 · 创建时间",
+      "description": "来源记录属性 energy_meter_reviews.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:energy_meter_reviews"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_readings.id",
+      "label": "能源读数 · 记录标识",
+      "description": "来源记录属性 energy_readings.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:energy_readings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_readings.metric",
+      "label": "能源读数 · 指标",
+      "description": "来源记录属性 energy_readings.metric。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:energy_readings"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "generation_kwh",
+        "consumption_kwh",
+        "charge_kwh",
+        "discharge_kwh",
+        "power_kw",
+        "soc_pct",
+        "soh_pct"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_readings.value",
+      "label": "能源读数 · 数值或内容",
+      "description": "来源记录属性 energy_readings.value。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:energy_readings"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_readings.observed_at",
+      "label": "能源读数 · 观测时间",
+      "description": "来源记录属性 energy_readings.observed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:energy_readings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_readings.quality",
+      "label": "能源读数 · 质量状态",
+      "description": "来源记录属性 energy_readings.quality。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:energy_readings"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "valid",
+        "suspect",
+        "missing"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_readings.reset",
+      "label": "能源读数 · 重置标记",
+      "description": "来源记录属性 energy_readings.reset。",
+      "applies_to": [
+        "lzhu:energy_readings"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_readings.source_kind",
+      "label": "能源读数 · 来源类别",
+      "description": "来源记录属性 energy_readings.source_kind。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:energy_readings"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "manual",
+        "file"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_readings.evidence",
+      "label": "能源读数 · 依据材料",
+      "description": "来源记录属性 energy_readings.evidence。",
+      "applies_to": [
+        "lzhu:energy_readings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_readings.operating_state",
+      "label": "能源读数 · 运行状态",
+      "description": "来源记录属性 energy_readings.operating_state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:energy_readings"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "charging",
+        "discharging",
+        "idle",
+        "unknown"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_readings.alarm_note",
+      "label": "能源读数 · 告警说明",
+      "description": "来源记录属性 energy_readings.alarm_note。",
+      "applies_to": [
+        "lzhu:energy_readings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_readings.version",
+      "label": "能源读数 · 版本",
+      "description": "来源记录属性 energy_readings.version。",
+      "applies_to": [
+        "lzhu:energy_readings"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:energy_readings.created_at",
+      "label": "能源读数 · 创建时间",
+      "description": "来源记录属性 energy_readings.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:energy_readings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_batches.id",
+      "label": "循环物料批次 · 记录标识",
+      "description": "来源记录属性 circular_batches.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:circular_batches"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_batches.material_kind",
+      "label": "循环物料批次 · 物料类别",
+      "description": "来源记录属性 circular_batches.material_kind。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:circular_batches"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "silt",
+        "manure",
+        "straw",
+        "mushroom",
+        "compost",
+        "other"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_batches.origin_ref",
+      "label": "循环物料批次 · 来源依据引用",
+      "description": "来源记录属性 circular_batches.origin_ref。",
+      "applies_to": [
+        "lzhu:circular_batches"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_batches.created_at",
+      "label": "循环物料批次 · 创建时间",
+      "description": "来源记录属性 circular_batches.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:circular_batches"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_weighings.id",
+      "label": "循环物料称重 · 记录标识",
+      "description": "来源记录属性 circular_weighings.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:circular_weighings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_weighings.gross_kg",
+      "label": "循环物料称重 · 毛重千克数",
+      "description": "来源记录属性 circular_weighings.gross_kg。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:circular_weighings"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_weighings.tare_kg",
+      "label": "循环物料称重 · 皮重（千克）",
+      "description": "来源记录属性 circular_weighings.tare_kg。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:circular_weighings"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_weighings.net_kg",
+      "label": "循环物料称重 · 净重千克数",
+      "description": "来源记录属性 circular_weighings.net_kg。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:circular_weighings"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_weighings.moisture_pct",
+      "label": "循环物料称重 · 含水率百分数",
+      "description": "来源记录属性 circular_weighings.moisture_pct。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:circular_weighings"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_weighings.dry_kg",
+      "label": "循环物料称重 · 干重千克数",
+      "description": "来源记录属性 circular_weighings.dry_kg。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:circular_weighings"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_weighings.basis",
+      "label": "循环物料称重 · 依据",
+      "description": "来源记录属性 circular_weighings.basis。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:circular_weighings"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "wet",
+        "dry",
+        "as_is"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_weighings.voucher",
+      "label": "循环物料称重 · 凭证内容",
+      "description": "来源记录属性 circular_weighings.voucher。",
+      "applies_to": [
+        "lzhu:circular_weighings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_weighings.occurred_at",
+      "label": "循环物料称重 · 业务发生时间",
+      "description": "来源记录属性 circular_weighings.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:circular_weighings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_weighings.evidence",
+      "label": "循环物料称重 · 依据材料",
+      "description": "来源记录属性 circular_weighings.evidence。",
+      "applies_to": [
+        "lzhu:circular_weighings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_weighings.created_at",
+      "label": "循环物料称重 · 创建时间",
+      "description": "来源记录属性 circular_weighings.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:circular_weighings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_processes.id",
+      "label": "循环物料处理 · 记录标识",
+      "description": "来源记录属性 circular_processes.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:circular_processes"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_processes.process_kind",
+      "label": "循环物料处理 · 处理工艺类型",
+      "description": "来源记录属性 circular_processes.process_kind。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:circular_processes"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "treatment",
+        "screening",
+        "rework"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_processes.evidence",
+      "label": "循环物料处理 · 依据材料",
+      "description": "来源记录属性 circular_processes.evidence。",
+      "applies_to": [
+        "lzhu:circular_processes"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:circular_processes.created_at",
+      "label": "循环物料处理 · 创建时间",
+      "description": "来源记录属性 circular_processes.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:circular_processes"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    }
+  ],
+  "predicates": [],
+  "dependencies": []
+}

@@ -1,0 +1,757 @@
+{
+  "package_id": "lzhu.stock",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:stock:",
+  "label": "库存与物料谱系",
+  "description": "库存批次、单据、分录、加工转换、包装和交接。 固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。此包定义来源系统记录类；不是已经完成农业业务概念等价对齐的目标本体。",
+  "types": [
+    {
+      "type_id": "lzhu:stock_locations",
+      "identity_type": "lzhu:stock_locations",
+      "label": "库存库位",
+      "description": "标识所属库存位置，不等同于地理地块。 来源表 stock_locations；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:stock_lots",
+      "identity_type": "lzhu:stock_lots",
+      "label": "物料批次",
+      "description": "标识投入品、收获物或加工物批次，区别于生产批次。 来源表 stock_lots；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:stock_documents",
+      "identity_type": "lzhu:stock_documents",
+      "label": "库存业务单据",
+      "description": "记录库存业务发生及冲销依据，数量变化由分录表达。 来源表 stock_documents；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:stock_entries",
+      "identity_type": "lzhu:stock_entries",
+      "label": "库存变动分录",
+      "description": "表达单据对批次与库位的数量增减，不直接保存余额。 来源表 stock_entries；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:input_purchases",
+      "identity_type": "lzhu:input_purchases",
+      "label": "投入品采购记录",
+      "description": "记录供应商、采购凭证和数量，不等于付款流水。 来源表 input_purchases；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:input_applications",
+      "identity_type": "lzhu:input_applications",
+      "label": "投入品使用记录",
+      "description": "将投入品用量关联到出库单及可选农事记录。 来源表 input_applications；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:stock_transformations",
+      "identity_type": "lzhu:stock_transformations",
+      "label": "物料转换登记",
+      "description": "标识加工转换业务，具体输入输出批次由谱系关联表达。 来源表 stock_transformations；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:stock_lineage",
+      "identity_type": "lzhu:stock_lineage",
+      "label": "批次转换关联",
+      "description": "保存转换输入批次、输出批次与单据关系，不推断原因。 来源表 stock_lineage；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:stock_packages",
+      "identity_type": "lzhu:stock_packages",
+      "label": "包装单元",
+      "description": "标识实际装载包装，不是本体领域包或批次定义。 来源表 stock_packages；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:stock_package_events",
+      "identity_type": "lzhu:stock_package_events",
+      "label": "装包变更事件",
+      "description": "记录包装中物料的加入或移出及数量。 来源表 stock_package_events；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:stock_handoffs",
+      "identity_type": "lzhu:stock_handoffs",
+      "label": "物料交接记录",
+      "description": "区分发出与接收，并关联原发出记录形成交接链。 来源表 stock_handoffs；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    }
+  ],
+  "properties": [
+    {
+      "property_id": "lzhu:stock_locations.id",
+      "label": "库存库位 · 记录标识",
+      "description": "来源记录属性 stock_locations.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:stock_locations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_locations.code",
+      "label": "库存库位 · 编码",
+      "description": "来源记录属性 stock_locations.code。",
+      "applies_to": [
+        "lzhu:stock_locations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_locations.name",
+      "label": "库存库位 · 名称",
+      "description": "来源记录属性 stock_locations.name。",
+      "applies_to": [
+        "lzhu:stock_locations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_locations.created_at",
+      "label": "库存库位 · 创建时间",
+      "description": "来源记录属性 stock_locations.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:stock_locations"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_lots.id",
+      "label": "物料批次 · 记录标识",
+      "description": "来源记录属性 stock_lots.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:stock_lots"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_lots.code",
+      "label": "物料批次 · 编码",
+      "description": "来源记录属性 stock_lots.code。",
+      "applies_to": [
+        "lzhu:stock_lots"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_lots.product",
+      "label": "物料批次 · 产品",
+      "description": "来源记录属性 stock_lots.product。",
+      "applies_to": [
+        "lzhu:stock_lots"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_lots.kind",
+      "label": "物料批次 · 种类",
+      "description": "来源记录属性 stock_lots.kind。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:stock_lots"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "input",
+        "harvest",
+        "processed"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_lots.unit",
+      "label": "物料批次 · 单位",
+      "description": "来源记录属性 stock_lots.unit。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:stock_lots"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "kg",
+        "L",
+        "piece"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_lots.basis",
+      "label": "物料批次 · 依据",
+      "description": "来源记录属性 stock_lots.basis。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:stock_lots"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "as_is",
+        "wet",
+        "dry"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_lots.source",
+      "label": "物料批次 · 来源内容",
+      "description": "来源记录属性 stock_lots.source。",
+      "applies_to": [
+        "lzhu:stock_lots"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_lots.state",
+      "label": "物料批次 · 状态",
+      "description": "来源记录属性 stock_lots.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:stock_lots"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "pending",
+        "available",
+        "returned",
+        "recalled",
+        "blocked"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_lots.version",
+      "label": "物料批次 · 版本",
+      "description": "来源记录属性 stock_lots.version。",
+      "applies_to": [
+        "lzhu:stock_lots"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_lots.created_at",
+      "label": "物料批次 · 创建时间",
+      "description": "来源记录属性 stock_lots.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:stock_lots"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_documents.id",
+      "label": "库存业务单据 · 记录标识",
+      "description": "来源记录属性 stock_documents.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:stock_documents"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_documents.kind",
+      "label": "库存业务单据 · 种类",
+      "description": "来源记录属性 stock_documents.kind。",
+      "applies_to": [
+        "lzhu:stock_documents"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_documents.occurred_at",
+      "label": "库存业务单据 · 业务发生时间",
+      "description": "来源记录属性 stock_documents.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:stock_documents"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_documents.evidence",
+      "label": "库存业务单据 · 依据材料",
+      "description": "来源记录属性 stock_documents.evidence。",
+      "applies_to": [
+        "lzhu:stock_documents"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_documents.created_at",
+      "label": "库存业务单据 · 创建时间",
+      "description": "来源记录属性 stock_documents.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:stock_documents"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_entries.id",
+      "label": "库存变动分录 · 记录标识",
+      "description": "来源记录属性 stock_entries.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:stock_entries"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_entries.delta",
+      "label": "库存变动分录 · 变化量",
+      "description": "来源记录属性 stock_entries.delta。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:stock_entries"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:input_purchases.id",
+      "label": "投入品采购记录 · 记录标识",
+      "description": "来源记录属性 input_purchases.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:input_purchases"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:input_purchases.supplier",
+      "label": "投入品采购记录 · 供应商",
+      "description": "来源记录属性 input_purchases.supplier。",
+      "applies_to": [
+        "lzhu:input_purchases"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:input_purchases.voucher",
+      "label": "投入品采购记录 · 凭证内容",
+      "description": "来源记录属性 input_purchases.voucher。",
+      "applies_to": [
+        "lzhu:input_purchases"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:input_purchases.quantity",
+      "label": "投入品采购记录 · 数量",
+      "description": "来源记录属性 input_purchases.quantity。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:input_purchases"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:input_purchases.occurred_at",
+      "label": "投入品采购记录 · 业务发生时间",
+      "description": "来源记录属性 input_purchases.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:input_purchases"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:input_purchases.created_at",
+      "label": "投入品采购记录 · 创建时间",
+      "description": "来源记录属性 input_purchases.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:input_purchases"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:input_applications.id",
+      "label": "投入品使用记录 · 记录标识",
+      "description": "来源记录属性 input_applications.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:input_applications"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:input_applications.quantity",
+      "label": "投入品使用记录 · 数量",
+      "description": "来源记录属性 input_applications.quantity。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:input_applications"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:input_applications.occurred_at",
+      "label": "投入品使用记录 · 业务发生时间",
+      "description": "来源记录属性 input_applications.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:input_applications"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:input_applications.evidence",
+      "label": "投入品使用记录 · 依据材料",
+      "description": "来源记录属性 input_applications.evidence。",
+      "applies_to": [
+        "lzhu:input_applications"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:input_applications.created_at",
+      "label": "投入品使用记录 · 创建时间",
+      "description": "来源记录属性 input_applications.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:input_applications"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_transformations.id",
+      "label": "物料转换登记 · 记录标识",
+      "description": "来源记录属性 stock_transformations.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:stock_transformations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_transformations.code",
+      "label": "物料转换登记 · 编码",
+      "description": "来源记录属性 stock_transformations.code。",
+      "applies_to": [
+        "lzhu:stock_transformations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_transformations.kind",
+      "label": "物料转换登记 · 种类",
+      "description": "来源记录属性 stock_transformations.kind。",
+      "applies_to": [
+        "lzhu:stock_transformations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_transformations.source_ref",
+      "label": "物料转换登记 · 来源引用",
+      "description": "来源记录属性 stock_transformations.source_ref。",
+      "applies_to": [
+        "lzhu:stock_transformations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_transformations.created_at",
+      "label": "物料转换登记 · 创建时间",
+      "description": "来源记录属性 stock_transformations.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:stock_transformations"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_lineage.id",
+      "label": "批次转换关联 · 记录标识",
+      "description": "来源记录属性 stock_lineage.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:stock_lineage"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_packages.id",
+      "label": "包装单元 · 记录标识",
+      "description": "来源记录属性 stock_packages.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:stock_packages"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_packages.code",
+      "label": "包装单元 · 编码",
+      "description": "来源记录属性 stock_packages.code。",
+      "applies_to": [
+        "lzhu:stock_packages"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_packages.created_at",
+      "label": "包装单元 · 创建时间",
+      "description": "来源记录属性 stock_packages.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:stock_packages"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_package_events.id",
+      "label": "装包变更事件 · 记录标识",
+      "description": "来源记录属性 stock_package_events.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:stock_package_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_package_events.action",
+      "label": "装包变更事件 · 动作",
+      "description": "来源记录属性 stock_package_events.action。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:stock_package_events"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "add",
+        "remove"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_package_events.quantity",
+      "label": "装包变更事件 · 数量",
+      "description": "来源记录属性 stock_package_events.quantity。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:stock_package_events"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_package_events.occurred_at",
+      "label": "装包变更事件 · 业务发生时间",
+      "description": "来源记录属性 stock_package_events.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:stock_package_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_package_events.evidence",
+      "label": "装包变更事件 · 依据材料",
+      "description": "来源记录属性 stock_package_events.evidence。",
+      "applies_to": [
+        "lzhu:stock_package_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_package_events.created_at",
+      "label": "装包变更事件 · 创建时间",
+      "description": "来源记录属性 stock_package_events.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:stock_package_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_handoffs.id",
+      "label": "物料交接记录 · 记录标识",
+      "description": "来源记录属性 stock_handoffs.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:stock_handoffs"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_handoffs.direction",
+      "label": "物料交接记录 · 方向",
+      "description": "来源记录属性 stock_handoffs.direction。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:stock_handoffs"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "dispatch",
+        "receipt"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_handoffs.party",
+      "label": "物料交接记录 · 参与方",
+      "description": "来源记录属性 stock_handoffs.party。",
+      "applies_to": [
+        "lzhu:stock_handoffs"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_handoffs.quantity",
+      "label": "物料交接记录 · 数量",
+      "description": "来源记录属性 stock_handoffs.quantity。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:stock_handoffs"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_handoffs.occurred_at",
+      "label": "物料交接记录 · 业务发生时间",
+      "description": "来源记录属性 stock_handoffs.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:stock_handoffs"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_handoffs.evidence",
+      "label": "物料交接记录 · 依据材料",
+      "description": "来源记录属性 stock_handoffs.evidence。",
+      "applies_to": [
+        "lzhu:stock_handoffs"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:stock_handoffs.created_at",
+      "label": "物料交接记录 · 创建时间",
+      "description": "来源记录属性 stock_handoffs.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:stock_handoffs"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    }
+  ],
+  "predicates": [],
+  "dependencies": []
+}

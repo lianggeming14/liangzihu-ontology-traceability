@@ -1,0 +1,700 @@
+{
+  "package_id": "lzhu.links2",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:links2:",
+  "label": "来源关系桥接包 2",
+  "description": "固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。显式SQL外键的跨包链接；端点使用独立身份类型，方向是引用方到被引用方。维度只是检索建议，不推定因果、无环或空间包含。",
+  "types": [
+    {
+      "type_id": "lzhu:IntegrationRelation2",
+      "identity_type": "lzhu:IntegrationRelation2",
+      "label": "关系登记辅助类型 2",
+      "description": "满足每个本体包至少一个类型的登记约束；不是来源SQL表，不生成实例；真实链接使用来源记录身份类型。"
+    }
+  ],
+  "properties": [],
+  "predicates": [
+    {
+      "predicate_id": "lzhu:fk:machinery_evidence:machinery_evidence_supersedes_id_fkey",
+      "label": "农机作业证据 → 农机作业证据（supersedes_id）",
+      "description": "源显式外键 machinery_evidence(supersedes_id) → machinery_evidence(id)。证据/来源列名推导；不等同于因果或可信断言。",
+      "subject_types": [
+        "lzhu:machinery_evidence"
+      ],
+      "object_types": [
+        "lzhu:machinery_evidence"
+      ],
+      "dimension": "provenance",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:machinery_evidence:machinery_evidence_created_by_fkey",
+      "label": "农机作业证据 → 参与者身份（created_by）",
+      "description": "源显式外键 machinery_evidence(created_by) → users(id)。人员角色列名推导；角色由具体列定义。",
+      "subject_types": [
+        "lzhu:machinery_evidence"
+      ],
+      "object_types": [
+        "lzhu:users"
+      ],
+      "dimension": "participation",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:machinery_reviews:machinery_reviews_object_id_fkey",
+      "label": "农机作业验收 → 农场空间对象（object_id）",
+      "description": "源显式外键 machinery_reviews(object_id) → objects(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:machinery_reviews"
+      ],
+      "object_types": [
+        "lzhu:objects"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:machinery_reviews:machinery_reviews_order_id_fkey",
+      "label": "农机作业验收 → 农机作业订单（order_id）",
+      "description": "源显式外键 machinery_reviews(order_id) → machinery_orders(id)。流程对象名推导；不据此推导已执行或已完成。",
+      "subject_types": [
+        "lzhu:machinery_reviews"
+      ],
+      "object_types": [
+        "lzhu:machinery_orders"
+      ],
+      "dimension": "workflow",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:machinery_reviews:machinery_reviews_created_by_fkey",
+      "label": "农机作业验收 → 参与者身份（created_by）",
+      "description": "源显式外键 machinery_reviews(created_by) → users(id)。人员角色列名推导；角色由具体列定义。",
+      "subject_types": [
+        "lzhu:machinery_reviews"
+      ],
+      "object_types": [
+        "lzhu:users"
+      ],
+      "dimension": "participation",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:business_expenses:business_expenses_object_id_fkey",
+      "label": "业务费用记录 → 农场空间对象（object_id）",
+      "description": "源显式外键 business_expenses(object_id) → objects(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:business_expenses"
+      ],
+      "object_types": [
+        "lzhu:objects"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:business_expenses:business_expenses_supersedes_id_fkey",
+      "label": "业务费用记录 → 业务费用记录（supersedes_id）",
+      "description": "源显式外键 business_expenses(supersedes_id) → business_expenses(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:business_expenses"
+      ],
+      "object_types": [
+        "lzhu:business_expenses"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:business_expenses:business_expenses_created_by_fkey",
+      "label": "业务费用记录 → 参与者身份（created_by）",
+      "description": "源显式外键 business_expenses(created_by) → users(id)。人员角色列名推导；角色由具体列定义。",
+      "subject_types": [
+        "lzhu:business_expenses"
+      ],
+      "object_types": [
+        "lzhu:users"
+      ],
+      "dimension": "participation",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:expense_reviews:expense_reviews_object_id_fkey",
+      "label": "费用审核事件 → 农场空间对象（object_id）",
+      "description": "源显式外键 expense_reviews(object_id) → objects(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:expense_reviews"
+      ],
+      "object_types": [
+        "lzhu:objects"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:expense_reviews:expense_reviews_expense_id_fkey",
+      "label": "费用审核事件 → 业务费用记录（expense_id）",
+      "description": "源显式外键 expense_reviews(expense_id) → business_expenses(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:expense_reviews"
+      ],
+      "object_types": [
+        "lzhu:business_expenses"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:expense_reviews:expense_reviews_created_by_fkey",
+      "label": "费用审核事件 → 参与者身份（created_by）",
+      "description": "源显式外键 expense_reviews(created_by) → users(id)。人员角色列名推导；角色由具体列定义。",
+      "subject_types": [
+        "lzhu:expense_reviews"
+      ],
+      "object_types": [
+        "lzhu:users"
+      ],
+      "dimension": "participation",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:expense_payments:expense_payments_object_id_fkey",
+      "label": "费用支付流水 → 农场空间对象（object_id）",
+      "description": "源显式外键 expense_payments(object_id) → objects(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:expense_payments"
+      ],
+      "object_types": [
+        "lzhu:objects"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:expense_payments:expense_payments_expense_id_fkey",
+      "label": "费用支付流水 → 业务费用记录（expense_id）",
+      "description": "源显式外键 expense_payments(expense_id) → business_expenses(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:expense_payments"
+      ],
+      "object_types": [
+        "lzhu:business_expenses"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:expense_payments:expense_payments_reverses_id_fkey",
+      "label": "费用支付流水 → 费用支付流水（reverses_id）",
+      "description": "源显式外键 expense_payments(reverses_id) → expense_payments(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:expense_payments"
+      ],
+      "object_types": [
+        "lzhu:expense_payments"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:expense_payments:expense_payments_created_by_fkey",
+      "label": "费用支付流水 → 参与者身份（created_by）",
+      "description": "源显式外键 expense_payments(created_by) → users(id)。人员角色列名推导；角色由具体列定义。",
+      "subject_types": [
+        "lzhu:expense_payments"
+      ],
+      "object_types": [
+        "lzhu:users"
+      ],
+      "dimension": "participation",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:subsidy_claims:subsidy_claims_object_id_fkey",
+      "label": "补贴申请 → 农场空间对象（object_id）",
+      "description": "源显式外键 subsidy_claims(object_id) → objects(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:subsidy_claims"
+      ],
+      "object_types": [
+        "lzhu:objects"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:subsidy_claims:subsidy_claims_created_by_fkey",
+      "label": "补贴申请 → 参与者身份（created_by）",
+      "description": "源显式外键 subsidy_claims(created_by) → users(id)。人员角色列名推导；角色由具体列定义。",
+      "subject_types": [
+        "lzhu:subsidy_claims"
+      ],
+      "object_types": [
+        "lzhu:users"
+      ],
+      "dimension": "participation",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:subsidy_expenses:subsidy_expenses_object_id_fkey",
+      "label": "补贴费用关联 → 农场空间对象（object_id）",
+      "description": "源显式外键 subsidy_expenses(object_id) → objects(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:subsidy_expenses"
+      ],
+      "object_types": [
+        "lzhu:objects"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:subsidy_expenses:subsidy_expenses_claim_id_fkey",
+      "label": "补贴费用关联 → 补贴申请（claim_id）",
+      "description": "源显式外键 subsidy_expenses(claim_id) → subsidy_claims(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:subsidy_expenses"
+      ],
+      "object_types": [
+        "lzhu:subsidy_claims"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:subsidy_expenses:subsidy_expenses_expense_id_fkey",
+      "label": "补贴费用关联 → 业务费用记录（expense_id）",
+      "description": "源显式外键 subsidy_expenses(expense_id) → business_expenses(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:subsidy_expenses"
+      ],
+      "object_types": [
+        "lzhu:business_expenses"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:subsidy_events:subsidy_events_object_id_fkey",
+      "label": "补贴办理事件 → 农场空间对象（object_id）",
+      "description": "源显式外键 subsidy_events(object_id) → objects(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:subsidy_events"
+      ],
+      "object_types": [
+        "lzhu:objects"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:subsidy_events:subsidy_events_claim_id_fkey",
+      "label": "补贴办理事件 → 补贴申请（claim_id）",
+      "description": "源显式外键 subsidy_events(claim_id) → subsidy_claims(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:subsidy_events"
+      ],
+      "object_types": [
+        "lzhu:subsidy_claims"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:subsidy_events:subsidy_events_reverses_id_fkey",
+      "label": "补贴办理事件 → 补贴办理事件（reverses_id）",
+      "description": "源显式外键 subsidy_events(reverses_id) → subsidy_events(id)。流程对象名推导；不据此推导已执行或已完成。",
+      "subject_types": [
+        "lzhu:subsidy_events"
+      ],
+      "object_types": [
+        "lzhu:subsidy_events"
+      ],
+      "dimension": "workflow",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:subsidy_events:subsidy_events_created_by_fkey",
+      "label": "补贴办理事件 → 参与者身份（created_by）",
+      "description": "源显式外键 subsidy_events(created_by) → users(id)。人员角色列名推导；角色由具体列定义。",
+      "subject_types": [
+        "lzhu:subsidy_events"
+      ],
+      "object_types": [
+        "lzhu:users"
+      ],
+      "dimension": "participation",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:subsidy_events:subsidy_events_corrects_id_fkey",
+      "label": "补贴办理事件 → 补贴办理事件（corrects_id）",
+      "description": "源显式外键 subsidy_events(corrects_id) → subsidy_events(id)。流程对象名推导；不据此推导已执行或已完成。",
+      "subject_types": [
+        "lzhu:subsidy_events"
+      ],
+      "object_types": [
+        "lzhu:subsidy_events"
+      ],
+      "dimension": "workflow",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_protocols:research_protocols_object_id_fkey",
+      "label": "科研试验方案 → 农场空间对象（object_id）",
+      "description": "源显式外键 research_protocols(object_id) → objects(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:research_protocols"
+      ],
+      "object_types": [
+        "lzhu:objects"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_protocols:research_protocols_supersedes_id_fkey",
+      "label": "科研试验方案 → 科研试验方案（supersedes_id）",
+      "description": "源显式外键 research_protocols(supersedes_id) → research_protocols(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:research_protocols"
+      ],
+      "object_types": [
+        "lzhu:research_protocols"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_protocols:research_protocols_created_by_fkey",
+      "label": "科研试验方案 → 参与者身份（created_by）",
+      "description": "源显式外键 research_protocols(created_by) → users(id)。人员角色列名推导；角色由具体列定义。",
+      "subject_types": [
+        "lzhu:research_protocols"
+      ],
+      "object_types": [
+        "lzhu:users"
+      ],
+      "dimension": "participation",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_reviews:research_reviews_object_id_fkey",
+      "label": "科研方案审核 → 农场空间对象（object_id）",
+      "description": "源显式外键 research_reviews(object_id) → objects(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:research_reviews"
+      ],
+      "object_types": [
+        "lzhu:objects"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_reviews:research_reviews_protocol_id_fkey",
+      "label": "科研方案审核 → 科研试验方案（protocol_id）",
+      "description": "源显式外键 research_reviews(protocol_id) → research_protocols(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:research_reviews"
+      ],
+      "object_types": [
+        "lzhu:research_protocols"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_reviews:research_reviews_created_by_fkey",
+      "label": "科研方案审核 → 参与者身份（created_by）",
+      "description": "源显式外键 research_reviews(created_by) → users(id)。人员角色列名推导；角色由具体列定义。",
+      "subject_types": [
+        "lzhu:research_reviews"
+      ],
+      "object_types": [
+        "lzhu:users"
+      ],
+      "dimension": "participation",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_observations:research_observations_object_id_fkey",
+      "label": "科研观测记录 → 农场空间对象（object_id）",
+      "description": "源显式外键 research_observations(object_id) → objects(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:research_observations"
+      ],
+      "object_types": [
+        "lzhu:objects"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_observations:research_observations_protocol_id_fkey",
+      "label": "科研观测记录 → 科研试验方案（protocol_id）",
+      "description": "源显式外键 research_observations(protocol_id) → research_protocols(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:research_observations"
+      ],
+      "object_types": [
+        "lzhu:research_protocols"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_observations:research_observations_plot_object_id_fkey",
+      "label": "科研观测记录 → 农场空间对象（plot_object_id）",
+      "description": "源显式外键 research_observations(plot_object_id) → objects(id)。空间/归属对象名推导；FK不证明空间包含。",
+      "subject_types": [
+        "lzhu:research_observations"
+      ],
+      "object_types": [
+        "lzhu:objects"
+      ],
+      "dimension": "spatial",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_observations:research_observations_supersedes_id_fkey",
+      "label": "科研观测记录 → 科研观测记录（supersedes_id）",
+      "description": "源显式外键 research_observations(supersedes_id) → research_observations(id)。证据/来源列名推导；不等同于因果或可信断言。",
+      "subject_types": [
+        "lzhu:research_observations"
+      ],
+      "object_types": [
+        "lzhu:research_observations"
+      ],
+      "dimension": "provenance",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_observations:research_observations_created_by_fkey",
+      "label": "科研观测记录 → 参与者身份（created_by）",
+      "description": "源显式外键 research_observations(created_by) → users(id)。人员角色列名推导；角色由具体列定义。",
+      "subject_types": [
+        "lzhu:research_observations"
+      ],
+      "object_types": [
+        "lzhu:users"
+      ],
+      "dimension": "participation",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_results:research_results_object_id_fkey",
+      "label": "科研结果陈述 → 农场空间对象（object_id）",
+      "description": "源显式外键 research_results(object_id) → objects(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:research_results"
+      ],
+      "object_types": [
+        "lzhu:objects"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_results:research_results_protocol_id_fkey",
+      "label": "科研结果陈述 → 科研试验方案（protocol_id）",
+      "description": "源显式外键 research_results(protocol_id) → research_protocols(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:research_results"
+      ],
+      "object_types": [
+        "lzhu:research_protocols"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_results:research_results_created_by_fkey",
+      "label": "科研结果陈述 → 参与者身份（created_by）",
+      "description": "源显式外键 research_results(created_by) → users(id)。人员角色列名推导；角色由具体列定义。",
+      "subject_types": [
+        "lzhu:research_results"
+      ],
+      "object_types": [
+        "lzhu:users"
+      ],
+      "dimension": "participation",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_result_reviews:research_result_reviews_object_id_fkey",
+      "label": "科研结果审核 → 农场空间对象（object_id）",
+      "description": "源显式外键 research_result_reviews(object_id) → objects(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:research_result_reviews"
+      ],
+      "object_types": [
+        "lzhu:objects"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_result_reviews:research_result_reviews_result_id_fkey",
+      "label": "科研结果审核 → 科研结果陈述（result_id）",
+      "description": "源显式外键 research_result_reviews(result_id) → research_results(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:research_result_reviews"
+      ],
+      "object_types": [
+        "lzhu:research_results"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:research_result_reviews:research_result_reviews_created_by_fkey",
+      "label": "科研结果审核 → 参与者身份（created_by）",
+      "description": "源显式外键 research_result_reviews(created_by) → users(id)。人员角色列名推导；角色由具体列定义。",
+      "subject_types": [
+        "lzhu:research_result_reviews"
+      ],
+      "object_types": [
+        "lzhu:users"
+      ],
+      "dimension": "participation",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:management_reports:management_reports_object_id_fkey",
+      "label": "管理报告快照 → 农场空间对象（object_id）",
+      "description": "源显式外键 management_reports(object_id) → objects(id)。显式外键关联；未自动推定业务因果。",
+      "subject_types": [
+        "lzhu:management_reports"
+      ],
+      "object_types": [
+        "lzhu:objects"
+      ],
+      "dimension": "association",
+      "irreflexive": false,
+      "acyclic": false
+    },
+    {
+      "predicate_id": "lzhu:fk:management_reports:management_reports_created_by_fkey",
+      "label": "管理报告快照 → 参与者身份（created_by）",
+      "description": "源显式外键 management_reports(created_by) → users(id)。人员角色列名推导；角色由具体列定义。",
+      "subject_types": [
+        "lzhu:management_reports"
+      ],
+      "object_types": [
+        "lzhu:users"
+      ],
+      "dimension": "participation",
+      "irreflexive": false,
+      "acyclic": false
+    }
+  ],
+  "dependencies": [
+    {
+      "package_id": "lzhu.agronomy",
+      "version": "0.1.0"
+    },
+    {
+      "package_id": "lzhu.analysis",
+      "version": "0.1.0"
+    },
+    {
+      "package_id": "lzhu.finance",
+      "version": "0.1.0"
+    },
+    {
+      "package_id": "lzhu.governance",
+      "version": "0.1.0"
+    },
+    {
+      "package_id": "lzhu.imagery",
+      "version": "0.1.0"
+    },
+    {
+      "package_id": "lzhu.knowledge",
+      "version": "0.1.0"
+    },
+    {
+      "package_id": "lzhu.machinery",
+      "version": "0.1.0"
+    },
+    {
+      "package_id": "lzhu.operations",
+      "version": "0.1.0"
+    },
+    {
+      "package_id": "lzhu.protection",
+      "version": "0.1.0"
+    },
+    {
+      "package_id": "lzhu.quality",
+      "version": "0.1.0"
+    },
+    {
+      "package_id": "lzhu.registry",
+      "version": "0.1.0"
+    },
+    {
+      "package_id": "lzhu.research",
+      "version": "0.1.0"
+    },
+    {
+      "package_id": "lzhu.resources",
+      "version": "0.1.0"
+    },
+    {
+      "package_id": "lzhu.stock",
+      "version": "0.1.0"
+    },
+    {
+      "package_id": "lzhu.telemetry",
+      "version": "0.1.0"
+    },
+    {
+      "package_id": "lzhu.weather",
+      "version": "0.1.0"
+    }
+  ]
+}

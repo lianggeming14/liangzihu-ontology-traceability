@@ -1,0 +1,3895 @@
+{
+  "sheets": [
+    {
+      "name": "多维关系路径",
+      "columns": [
+        {
+          "key": "label",
+          "label": "关系维度",
+          "width": 25
+        },
+        {
+          "key": "step",
+          "label": "步骤",
+          "width": 10
+        },
+        {
+          "key": "source_type",
+          "label": "起点记录类",
+          "width": 28
+        },
+        {
+          "key": "source_column",
+          "label": "引用字段",
+          "width": 30
+        },
+        {
+          "key": "target_type",
+          "label": "终点记录类",
+          "width": 28
+        },
+        {
+          "key": "target_column",
+          "label": "被引用字段",
+          "width": 22
+        },
+        {
+          "key": "question",
+          "label": "可查询的问题",
+          "width": 65
+        },
+        {
+          "key": "notes",
+          "label": "概念边界与注意",
+          "width": 80
+        },
+        {
+          "key": "source_table",
+          "label": "起点源表",
+          "width": 30
+        },
+        {
+          "key": "target_table",
+          "label": "终点源表",
+          "width": 30
+        },
+        {
+          "key": "source_url",
+          "label": "逐边来源证据",
+          "width": 65
+        }
+      ],
+      "rows": [
+        {
+          "label": "环境观测与来源证据",
+          "step": 1,
+          "source_type": "环境观测记录",
+          "source_column": "point_id",
+          "target_type": "测点与指标登记",
+          "target_column": "id",
+          "question": "一条环境观测对应哪个测点、设备、数据来源和原始接收证据？",
+          "notes": "同一来源应分别核对观测来源与设备来源；外键连通不证明校准有效，也不证明环境变化成因。",
+          "source_table": "observations",
+          "target_table": "points",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L13"
+        },
+        {
+          "label": "环境观测与来源证据",
+          "step": 2,
+          "source_type": "测点与指标登记",
+          "source_column": "device_id",
+          "target_type": "设备登记",
+          "target_column": "id",
+          "question": "一条环境观测对应哪个测点、设备、数据来源和原始接收证据？",
+          "notes": "同一来源应分别核对观测来源与设备来源；外键连通不证明校准有效，也不证明环境变化成因。",
+          "source_table": "points",
+          "target_table": "devices",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L71"
+        },
+        {
+          "label": "环境观测与来源证据",
+          "step": 3,
+          "source_type": "设备登记",
+          "source_column": "source_id",
+          "target_type": "数据来源登记",
+          "target_column": "id",
+          "question": "一条环境观测对应哪个测点、设备、数据来源和原始接收证据？",
+          "notes": "同一来源应分别核对观测来源与设备来源；外键连通不证明校准有效，也不证明环境变化成因。",
+          "source_table": "devices",
+          "target_table": "data_sources",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L55"
+        },
+        {
+          "label": "环境观测与来源证据",
+          "step": 4,
+          "source_type": "环境观测记录",
+          "source_column": "raw_ref",
+          "target_type": "原始接收证据",
+          "target_column": "id",
+          "question": "一条环境观测对应哪个测点、设备、数据来源和原始接收证据？",
+          "notes": "同一来源应分别核对观测来源与设备来源；外键连通不证明校准有效，也不证明环境变化成因。",
+          "source_table": "observations",
+          "target_table": "raw_receipts",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L18"
+        },
+        {
+          "label": "环境观测与来源证据",
+          "step": 5,
+          "source_type": "环境观测记录",
+          "source_column": "source_id",
+          "target_type": "数据来源登记",
+          "target_column": "id",
+          "question": "一条环境观测对应哪个测点、设备、数据来源和原始接收证据？",
+          "notes": "同一来源应分别核对观测来源与设备来源；外键连通不证明校准有效，也不证明环境变化成因。",
+          "source_table": "observations",
+          "target_table": "data_sources",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L12"
+        },
+        {
+          "label": "生产记录与投入品",
+          "step": 1,
+          "source_type": "投入品使用记录",
+          "source_column": "farm_record_id",
+          "target_type": "农事记录",
+          "target_column": "id",
+          "question": "一次投入品使用记在哪条农事记录、哪个生产批次和地块，使用了哪个物料批次？",
+          "notes": "可空外键缺失时须显示追溯缺口；投入品批次与生产批次是不同概念，不能直接合并。",
+          "source_table": "input_applications",
+          "target_table": "farm_records",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L36"
+        },
+        {
+          "label": "生产记录与投入品",
+          "step": 2,
+          "source_type": "农事记录",
+          "source_column": "batch_id",
+          "target_type": "生产批次",
+          "target_column": "id",
+          "question": "一次投入品使用记在哪条农事记录、哪个生产批次和地块，使用了哪个物料批次？",
+          "notes": "可空外键缺失时须显示追溯缺口；投入品批次与生产批次是不同概念，不能直接合并。",
+          "source_table": "farm_records",
+          "target_table": "production_batches",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/012_records.sql#L12"
+        },
+        {
+          "label": "生产记录与投入品",
+          "step": 3,
+          "source_type": "生产批次",
+          "source_column": "object_id",
+          "target_type": "农场空间对象",
+          "target_column": "id",
+          "question": "一次投入品使用记在哪条农事记录、哪个生产批次和地块，使用了哪个物料批次？",
+          "notes": "可空外键缺失时须显示追溯缺口；投入品批次与生产批次是不同概念，不能直接合并。",
+          "source_table": "production_batches",
+          "target_table": "objects",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L28"
+        },
+        {
+          "label": "生产记录与投入品",
+          "step": 4,
+          "source_type": "投入品使用记录",
+          "source_column": "lot_id",
+          "target_type": "物料批次",
+          "target_column": "id",
+          "question": "一次投入品使用记在哪条农事记录、哪个生产批次和地块，使用了哪个物料批次？",
+          "notes": "可空外键缺失时须显示追溯缺口；投入品批次与生产批次是不同概念，不能直接合并。",
+          "source_table": "input_applications",
+          "target_table": "stock_lots",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L35"
+        },
+        {
+          "label": "生产记录与投入品",
+          "step": 5,
+          "source_type": "投入品使用记录",
+          "source_column": "issue_document_id",
+          "target_type": "库存业务单据",
+          "target_column": "id",
+          "question": "一次投入品使用记在哪条农事记录、哪个生产批次和地块，使用了哪个物料批次？",
+          "notes": "可空外键缺失时须显示追溯缺口；投入品批次与生产批次是不同概念，不能直接合并。",
+          "source_table": "input_applications",
+          "target_table": "stock_documents",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L36"
+        },
+        {
+          "label": "加工转换与批次谱系",
+          "step": 1,
+          "source_type": "批次转换关联",
+          "source_column": "transformation_id",
+          "target_type": "物料转换登记",
+          "target_column": "id",
+          "question": "一次加工转换的输入、输出物料批次及库存业务单据是什么，能否继续追到生产批次？",
+          "notes": "input_lot_id和output_lot_id需保留角色；谱系支持追溯与影响范围查找，不单独证明损耗成因或质量因果。",
+          "source_table": "stock_lineage",
+          "target_table": "stock_transformations",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L45"
+        },
+        {
+          "label": "加工转换与批次谱系",
+          "step": 2,
+          "source_type": "批次转换关联",
+          "source_column": "document_id",
+          "target_type": "库存业务单据",
+          "target_column": "id",
+          "question": "一次加工转换的输入、输出物料批次及库存业务单据是什么，能否继续追到生产批次？",
+          "notes": "input_lot_id和output_lot_id需保留角色；谱系支持追溯与影响范围查找，不单独证明损耗成因或质量因果。",
+          "source_table": "stock_lineage",
+          "target_table": "stock_documents",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L46"
+        },
+        {
+          "label": "加工转换与批次谱系",
+          "step": 3,
+          "source_type": "批次转换关联",
+          "source_column": "input_lot_id",
+          "target_type": "物料批次",
+          "target_column": "id",
+          "question": "一次加工转换的输入、输出物料批次及库存业务单据是什么，能否继续追到生产批次？",
+          "notes": "input_lot_id和output_lot_id需保留角色；谱系支持追溯与影响范围查找，不单独证明损耗成因或质量因果。",
+          "source_table": "stock_lineage",
+          "target_table": "stock_lots",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L46"
+        },
+        {
+          "label": "加工转换与批次谱系",
+          "step": 4,
+          "source_type": "批次转换关联",
+          "source_column": "output_lot_id",
+          "target_type": "物料批次",
+          "target_column": "id",
+          "question": "一次加工转换的输入、输出物料批次及库存业务单据是什么，能否继续追到生产批次？",
+          "notes": "input_lot_id和output_lot_id需保留角色；谱系支持追溯与影响范围查找，不单独证明损耗成因或质量因果。",
+          "source_table": "stock_lineage",
+          "target_table": "stock_lots",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L46"
+        },
+        {
+          "label": "加工转换与批次谱系",
+          "step": 5,
+          "source_type": "物料批次",
+          "source_column": "production_batch_id",
+          "target_type": "生产批次",
+          "target_column": "id",
+          "question": "一次加工转换的输入、输出物料批次及库存业务单据是什么，能否继续追到生产批次？",
+          "notes": "input_lot_id和output_lot_id需保留角色；谱系支持追溯与影响范围查找，不单独证明损耗成因或质量因果。",
+          "source_table": "stock_lots",
+          "target_table": "production_batches",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L13"
+        },
+        {
+          "label": "质量检测与批次来源",
+          "step": 1,
+          "source_type": "样品检测结果",
+          "source_column": "sample_id",
+          "target_type": "质检样品",
+          "target_column": "id",
+          "question": "某检测结果使用哪个样品、来自哪个物料批次和生产批次？",
+          "notes": "查询需展示采样时间、检测时间、有效截止和结果替代链；数组字段test_ids或credential_ids不冒充数据库外键。",
+          "source_table": "quality_tests",
+          "target_table": "quality_samples",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L7"
+        },
+        {
+          "label": "质量检测与批次来源",
+          "step": 2,
+          "source_type": "质检样品",
+          "source_column": "lot_id",
+          "target_type": "物料批次",
+          "target_column": "id",
+          "question": "某检测结果使用哪个样品、来自哪个物料批次和生产批次？",
+          "notes": "查询需展示采样时间、检测时间、有效截止和结果替代链；数组字段test_ids或credential_ids不冒充数据库外键。",
+          "source_table": "quality_samples",
+          "target_table": "stock_lots",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L2"
+        },
+        {
+          "label": "质量检测与批次来源",
+          "step": 3,
+          "source_type": "物料批次",
+          "source_column": "production_batch_id",
+          "target_type": "生产批次",
+          "target_column": "id",
+          "question": "某检测结果使用哪个样品、来自哪个物料批次和生产批次？",
+          "notes": "查询需展示采样时间、检测时间、有效截止和结果替代链；数组字段test_ids或credential_ids不冒充数据库外键。",
+          "source_table": "stock_lots",
+          "target_table": "production_batches",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L13"
+        },
+        {
+          "label": "质量检测与批次来源",
+          "step": 4,
+          "source_type": "生产批次",
+          "source_column": "object_id",
+          "target_type": "农场空间对象",
+          "target_column": "id",
+          "question": "某检测结果使用哪个样品、来自哪个物料批次和生产批次？",
+          "notes": "查询需展示采样时间、检测时间、有效截止和结果替代链；数组字段test_ids或credential_ids不冒充数据库外键。",
+          "source_table": "production_batches",
+          "target_table": "objects",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L28"
+        },
+        {
+          "label": "质量检测与批次来源",
+          "step": 5,
+          "source_type": "样品检测结果",
+          "source_column": "supersedes_id",
+          "target_type": "样品检测结果",
+          "target_column": "id",
+          "question": "某检测结果使用哪个样品、来自哪个物料批次和生产批次？",
+          "notes": "查询需展示采样时间、检测时间、有效截止和结果替代链；数组字段test_ids或credential_ids不冒充数据库外键。",
+          "source_table": "quality_tests",
+          "target_table": "quality_tests",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L9"
+        },
+        {
+          "label": "图像结果与媒体原件",
+          "step": 1,
+          "source_type": "图像复核结果",
+          "source_column": "asset_id",
+          "target_type": "媒体原件资产",
+          "target_column": "id",
+          "question": "图像复核结果依据哪个媒体原件、摄像头事件、设备和来源？",
+          "notes": "同一媒体的原件/预览关系与分析结果分开保存；源系统已有图像结果可作为断言接入，不要求本数据库运行识别模型。",
+          "source_table": "image_reviews",
+          "target_table": "media_assets",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/018_image_reviews.sql#L3"
+        },
+        {
+          "label": "图像结果与媒体原件",
+          "step": 2,
+          "source_type": "图像复核结果",
+          "source_column": "camera_event_id",
+          "target_type": "摄像头来源事件",
+          "target_column": "id",
+          "question": "图像复核结果依据哪个媒体原件、摄像头事件、设备和来源？",
+          "notes": "同一媒体的原件/预览关系与分析结果分开保存；源系统已有图像结果可作为断言接入，不要求本数据库运行识别模型。",
+          "source_table": "image_reviews",
+          "target_table": "camera_events",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/018_image_reviews.sql#L2"
+        },
+        {
+          "label": "图像结果与媒体原件",
+          "step": 3,
+          "source_type": "摄像头来源事件",
+          "source_column": "asset_id",
+          "target_type": "媒体原件资产",
+          "target_column": "id",
+          "question": "图像复核结果依据哪个媒体原件、摄像头事件、设备和来源？",
+          "notes": "同一媒体的原件/预览关系与分析结果分开保存；源系统已有图像结果可作为断言接入，不要求本数据库运行识别模型。",
+          "source_table": "camera_events",
+          "target_table": "media_assets",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/014_imagery.sql#L11"
+        },
+        {
+          "label": "图像结果与媒体原件",
+          "step": 4,
+          "source_type": "摄像头来源事件",
+          "source_column": "device_id",
+          "target_type": "设备登记",
+          "target_column": "id",
+          "question": "图像复核结果依据哪个媒体原件、摄像头事件、设备和来源？",
+          "notes": "同一媒体的原件/预览关系与分析结果分开保存；源系统已有图像结果可作为断言接入，不要求本数据库运行识别模型。",
+          "source_table": "camera_events",
+          "target_table": "devices",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/014_imagery.sql#L8"
+        },
+        {
+          "label": "图像结果与媒体原件",
+          "step": 5,
+          "source_type": "摄像头来源事件",
+          "source_column": "source_id",
+          "target_type": "数据来源登记",
+          "target_column": "id",
+          "question": "图像复核结果依据哪个媒体原件、摄像头事件、设备和来源？",
+          "notes": "同一媒体的原件/预览关系与分析结果分开保存；源系统已有图像结果可作为断言接入，不要求本数据库运行识别模型。",
+          "source_table": "camera_events",
+          "target_table": "data_sources",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/014_imagery.sql#L9"
+        },
+        {
+          "label": "图像结果与媒体原件",
+          "step": 6,
+          "source_type": "媒体原件资产",
+          "source_column": "preview_of",
+          "target_type": "媒体原件资产",
+          "target_column": "id",
+          "question": "图像复核结果依据哪个媒体原件、摄像头事件、设备和来源？",
+          "notes": "同一媒体的原件/预览关系与分析结果分开保存；源系统已有图像结果可作为断言接入，不要求本数据库运行识别模型。",
+          "source_table": "media_assets",
+          "target_table": "media_assets",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/012_records.sql#L4"
+        },
+        {
+          "label": "观测时空绑定与地形版本",
+          "step": 1,
+          "source_type": "环境观测记录",
+          "source_column": "binding_id",
+          "target_type": "测点对象绑定",
+          "target_column": "id",
+          "question": "观测发生时测点绑定哪个空间对象，该对象有哪些带时间的地形测量与来源场景？",
+          "notes": "以objects为汇合节点时，查找地形测量需要反向查询外键；必须按采样时间过滤绑定valid_from/valid_to，并核对坐标参考系、高程基准和版本，不能只连接同名地块。",
+          "source_table": "observations",
+          "target_table": "point_bindings",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L14"
+        },
+        {
+          "label": "观测时空绑定与地形版本",
+          "step": 2,
+          "source_type": "测点对象绑定",
+          "source_column": "point_id",
+          "target_type": "测点与指标登记",
+          "target_column": "id",
+          "question": "观测发生时测点绑定哪个空间对象，该对象有哪些带时间的地形测量与来源场景？",
+          "notes": "以objects为汇合节点时，查找地形测量需要反向查询外键；必须按采样时间过滤绑定valid_from/valid_to，并核对坐标参考系、高程基准和版本，不能只连接同名地块。",
+          "source_table": "point_bindings",
+          "target_table": "points",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L85"
+        },
+        {
+          "label": "观测时空绑定与地形版本",
+          "step": 3,
+          "source_type": "测点对象绑定",
+          "source_column": "object_id",
+          "target_type": "农场空间对象",
+          "target_column": "id",
+          "question": "观测发生时测点绑定哪个空间对象，该对象有哪些带时间的地形测量与来源场景？",
+          "notes": "以objects为汇合节点时，查找地形测量需要反向查询外键；必须按采样时间过滤绑定valid_from/valid_to，并核对坐标参考系、高程基准和版本，不能只连接同名地块。",
+          "source_table": "point_bindings",
+          "target_table": "objects",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L86"
+        },
+        {
+          "label": "观测时空绑定与地形版本",
+          "step": 4,
+          "source_type": "地形校核测量",
+          "source_column": "object_id",
+          "target_type": "农场空间对象",
+          "target_column": "id",
+          "question": "观测发生时测点绑定哪个空间对象，该对象有哪些带时间的地形测量与来源场景？",
+          "notes": "以objects为汇合节点时，查找地形测量需要反向查询外键；必须按采样时间过滤绑定valid_from/valid_to，并核对坐标参考系、高程基准和版本，不能只连接同名地块。",
+          "source_table": "terrain_surveys",
+          "target_table": "objects",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L17"
+        },
+        {
+          "label": "观测时空绑定与地形版本",
+          "step": 5,
+          "source_type": "地形校核测量",
+          "source_column": "scene_id",
+          "target_type": "地形场景",
+          "target_column": "id",
+          "question": "观测发生时测点绑定哪个空间对象，该对象有哪些带时间的地形测量与来源场景？",
+          "notes": "以objects为汇合节点时，查找地形测量需要反向查询外键；必须按采样时间过滤绑定valid_from/valid_to，并核对坐标参考系、高程基准和版本，不能只连接同名地块。",
+          "source_table": "terrain_surveys",
+          "target_table": "terrain_scenes",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L17"
+        },
+        {
+          "label": "观测时空绑定与地形版本",
+          "step": 6,
+          "source_type": "地形场景",
+          "source_column": "flight_id",
+          "target_type": "无人机航次",
+          "target_column": "id",
+          "question": "观测发生时测点绑定哪个空间对象，该对象有哪些带时间的地形测量与来源场景？",
+          "notes": "以objects为汇合节点时，查找地形测量需要反向查询外键；必须按采样时间过滤绑定valid_from/valid_to，并核对坐标参考系、高程基准和版本，不能只连接同名地块。",
+          "source_table": "terrain_scenes",
+          "target_table": "flights",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L2"
+        },
+        {
+          "label": "观测时空绑定与地形版本",
+          "step": 7,
+          "source_type": "地形校核测量",
+          "source_column": "supersedes_id",
+          "target_type": "地形校核测量",
+          "target_column": "id",
+          "question": "观测发生时测点绑定哪个空间对象，该对象有哪些带时间的地形测量与来源场景？",
+          "notes": "以objects为汇合节点时，查找地形测量需要反向查询外键；必须按采样时间过滤绑定valid_from/valid_to，并核对坐标参考系、高程基准和版本，不能只连接同名地块。",
+          "source_table": "terrain_surveys",
+          "target_table": "terrain_surveys",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L18"
+        },
+        {
+          "label": "人员责任与操作事件",
+          "step": 1,
+          "source_type": "工单状态事件",
+          "source_column": "work_order_id",
+          "target_type": "运维工单",
+          "target_column": "id",
+          "question": "一个工单事件由谁执行，工单分配给谁，关联哪个空间对象？",
+          "notes": "执行人、受派人和创建人须保留不同角色；users仅暴露经批准的参与者身份字段，不输出密码、令牌、认证因子和联系方式。",
+          "source_table": "work_order_events",
+          "target_table": "work_orders",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L20"
+        },
+        {
+          "label": "人员责任与操作事件",
+          "step": 2,
+          "source_type": "工单状态事件",
+          "source_column": "actor_id",
+          "target_type": "参与者身份",
+          "target_column": "id",
+          "question": "一个工单事件由谁执行，工单分配给谁，关联哪个空间对象？",
+          "notes": "执行人、受派人和创建人须保留不同角色；users仅暴露经批准的参与者身份字段，不输出密码、令牌、认证因子和联系方式。",
+          "source_table": "work_order_events",
+          "target_table": "users",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L21"
+        },
+        {
+          "label": "人员责任与操作事件",
+          "step": 3,
+          "source_type": "运维工单",
+          "source_column": "assigned_to",
+          "target_type": "参与者身份",
+          "target_column": "id",
+          "question": "一个工单事件由谁执行，工单分配给谁，关联哪个空间对象？",
+          "notes": "执行人、受派人和创建人须保留不同角色；users仅暴露经批准的参与者身份字段，不输出密码、令牌、认证因子和联系方式。",
+          "source_table": "work_orders",
+          "target_table": "users",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L16"
+        },
+        {
+          "label": "人员责任与操作事件",
+          "step": 4,
+          "source_type": "运维工单",
+          "source_column": "object_id",
+          "target_type": "农场空间对象",
+          "target_column": "id",
+          "question": "一个工单事件由谁执行，工单分配给谁，关联哪个空间对象？",
+          "notes": "执行人、受派人和创建人须保留不同角色；users仅暴露经批准的参与者身份字段，不输出密码、令牌、认证因子和联系方式。",
+          "source_table": "work_orders",
+          "target_table": "objects",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L14"
+        },
+        {
+          "label": "科研方案、观测与结果审核",
+          "step": 1,
+          "source_type": "科研结果审核",
+          "source_column": "result_id",
+          "target_type": "科研结果陈述",
+          "target_column": "id",
+          "question": "某科研结果及其审核来自哪个试验方案，该方案有哪些地块观测？",
+          "notes": "以方案为汇合节点时须反向查询科研观测；结果主张、原始观测和审核分别呈现，方案关联本身不证明结果充分或因果成立。",
+          "source_table": "research_result_reviews",
+          "target_table": "research_results",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L23"
+        },
+        {
+          "label": "科研方案、观测与结果审核",
+          "step": 2,
+          "source_type": "科研结果陈述",
+          "source_column": "protocol_id",
+          "target_type": "科研试验方案",
+          "target_column": "id",
+          "question": "某科研结果及其审核来自哪个试验方案，该方案有哪些地块观测？",
+          "notes": "以方案为汇合节点时须反向查询科研观测；结果主张、原始观测和审核分别呈现，方案关联本身不证明结果充分或因果成立。",
+          "source_table": "research_results",
+          "target_table": "research_protocols",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L18"
+        },
+        {
+          "label": "科研方案、观测与结果审核",
+          "step": 3,
+          "source_type": "科研观测记录",
+          "source_column": "protocol_id",
+          "target_type": "科研试验方案",
+          "target_column": "id",
+          "question": "某科研结果及其审核来自哪个试验方案，该方案有哪些地块观测？",
+          "notes": "以方案为汇合节点时须反向查询科研观测；结果主张、原始观测和审核分别呈现，方案关联本身不证明结果充分或因果成立。",
+          "source_table": "research_observations",
+          "target_table": "research_protocols",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L11"
+        },
+        {
+          "label": "科研方案、观测与结果审核",
+          "step": 4,
+          "source_type": "科研观测记录",
+          "source_column": "plot_object_id",
+          "target_type": "农场空间对象",
+          "target_column": "id",
+          "question": "某科研结果及其审核来自哪个试验方案，该方案有哪些地块观测？",
+          "notes": "以方案为汇合节点时须反向查询科研观测；结果主张、原始观测和审核分别呈现，方案关联本身不证明结果充分或因果成立。",
+          "source_table": "research_observations",
+          "target_table": "objects",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L11"
+        },
+        {
+          "label": "科研方案、观测与结果审核",
+          "step": 5,
+          "source_type": "科研观测记录",
+          "source_column": "supersedes_id",
+          "target_type": "科研观测记录",
+          "target_column": "id",
+          "question": "某科研结果及其审核来自哪个试验方案，该方案有哪些地块观测？",
+          "notes": "以方案为汇合节点时须反向查询科研观测；结果主张、原始观测和审核分别呈现，方案关联本身不证明结果充分或因果成立。",
+          "source_table": "research_observations",
+          "target_table": "research_observations",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L14"
+        }
+      ]
+    },
+    {
+      "name": "试录对象",
+      "columns": [
+        {
+          "key": "local_ref",
+          "label": "本批次对象引用（短名）",
+          "width": 25
+        },
+        {
+          "key": "source_system",
+          "label": "来源系统",
+          "width": 24
+        },
+        {
+          "key": "source_table",
+          "label": "源表名",
+          "width": 28
+        },
+        {
+          "key": "source_primary_key",
+          "label": "来源主键原值（不是本库UUID）",
+          "width": 40
+        },
+        {
+          "key": "type_id",
+          "label": "已登记的类标识",
+          "width": 36
+        },
+        {
+          "key": "display_name",
+          "label": "对象中文名称",
+          "width": 30
+        },
+        {
+          "key": "source_record_url",
+          "label": "原始记录或证据位置",
+          "width": 50
+        },
+        {
+          "key": "occurred_at",
+          "label": "业务时间（带时区）",
+          "width": 30
+        },
+        {
+          "key": "notes",
+          "label": "备注",
+          "width": 50
+        }
+      ],
+      "rows": []
+    },
+    {
+      "name": "试录属性",
+      "columns": [
+        {
+          "key": "local_ref",
+          "label": "对应对象本批次引用",
+          "width": 26
+        },
+        {
+          "key": "property_id",
+          "label": "属性标识（从属性定义复制）",
+          "width": 45
+        },
+        {
+          "key": "value",
+          "label": "属性值（原值，勿改单位）",
+          "width": 36
+        },
+        {
+          "key": "unit",
+          "label": "原始单位",
+          "width": 20
+        },
+        {
+          "key": "observed_at",
+          "label": "观测时间（带时区）",
+          "width": 30
+        },
+        {
+          "key": "source_record_id",
+          "label": "来源记录编号",
+          "width": 36
+        },
+        {
+          "key": "evidence_ref",
+          "label": "证据引用",
+          "width": 45
+        },
+        {
+          "key": "notes",
+          "label": "备注",
+          "width": 45
+        }
+      ],
+      "rows": []
+    },
+    {
+      "name": "试录关系",
+      "columns": [
+        {
+          "key": "subject_local_ref",
+          "label": "起点对象本批次引用",
+          "width": 30
+        },
+        {
+          "key": "predicate_id",
+          "label": "关系标识（从关系类型复制）",
+          "width": 50
+        },
+        {
+          "key": "object_local_ref",
+          "label": "终点对象本批次引用",
+          "width": 30
+        },
+        {
+          "key": "valid_from",
+          "label": "有效起点（带时区）",
+          "width": 30
+        },
+        {
+          "key": "valid_to",
+          "label": "有效终点（可空，带时区）",
+          "width": 30
+        },
+        {
+          "key": "evidence_ref",
+          "label": "关系证据",
+          "width": 45
+        },
+        {
+          "key": "notes",
+          "label": "备注",
+          "width": 45
+        }
+      ],
+      "rows": []
+    },
+    {
+      "name": "接入字段说明",
+      "columns": [
+        {
+          "key": "item",
+          "label": "接入事项",
+          "width": 25
+        },
+        {
+          "key": "rule",
+          "label": "填写与处理规则",
+          "width": 85
+        },
+        {
+          "key": "implementation",
+          "label": "当前实现边界",
+          "width": 75
+        }
+      ],
+      "rows": [
+        {
+          "item": "领域包与类",
+          "rule": "先导入packages中定义；源表的中文标签可改，类和属性ID保持稳定。无需逐条手填2114个字段。",
+          "implementation": "本次提供Excel→JSON离线转换及当前register_package隔离校验。"
+        },
+        {
+          "item": "本库系统UUID",
+          "rule": "创建对象时不填entity_key/entity_id。由数据库生成并将返回值保存为源系统主键绑定。",
+          "implementation": "当前公开create_entity契约生成UUID；模板原始主键只作为来源身份。"
+        },
+        {
+          "item": "对象本地引用",
+          "rule": "本批次随意使用唯一短名，例如某地块的工作名；关系端点引用该短名。它不是正式数据库主键。",
+          "implementation": "三张试录表目前仅是暂存模板，转换器不会批量创建实例。"
+        },
+        {
+          "item": "来源去重键",
+          "rule": "建议用 source_system + source_table + 原始主键；复合PK以列名和值的稳定JSON保存。禁止凭名称合并。",
+          "implementation": "需后续来源绑定适配器实现；不能把相似名称当同一个对象。"
+        },
+        {
+          "item": "记录与观测",
+          "rule": "源observations、weather_records等先导出记录类；每条记录保留时间、质量、来源、原始引用。",
+          "implementation": "源记录类属性usage=attribute；不代表已映射到本库observation接口。天气content JSON须再拆指标。"
+        },
+        {
+          "item": "单位与数值",
+          "rule": "保留源unit；数值精度与小数位保留。时间需ISO8601加时区；date保持YYYY-MM-DD，不能随意补午夜。",
+          "implementation": "记录类不为value猜固定单位。转入观测通道前须将metric+unit映射到已登记属性。"
+        },
+        {
+          "item": "多值与空值",
+          "rule": "空白表示待填/未知，不替换为0、false或空字符串。源数组不能直接逗号拼接。",
+          "implementation": "many属性只支持1–100项；空数组或超长数组需要适配，UUID数组暂不转换。"
+        },
+        {
+          "item": "闸门/摄像头",
+          "rule": "devices与control_profiles、control_feedback、camera_events保留设备、操作记录和反馈来源。",
+          "implementation": "只提供记录结构；不控制闸门、不调用摄像头、不识别图像。"
+        },
+        {
+          "item": "溯源系统输出",
+          "rule": "按源批次→生产批次→农事/投入品→检测→凭证→公开溯源码取关系链，同时带版本和证据。",
+          "implementation": "本次是关系结构供后续查询适配；不自动发布源public_trace_cards内容。"
+        },
+        {
+          "item": "复杂字段与多态关联",
+          "rule": "保留JSON原文及schema/版本、内容摘要；明确目标类后拆分。link_kind + link_id 必须一起判别。",
+          "implementation": "默认停用复杂属性；待映射项有具体源字段，不能直接宣称已支持全部内容。"
+        },
+        {
+          "item": "Excel原值保护",
+          "rule": "三张试录表已设文本格式，长编号、小数和ISO时间按原始文本保存。粘贴时选“仅保留文本”，避免源应用覆盖格式。",
+          "implementation": "暂存模板不会自动推断数值类型；后续适配时依据属性定义转换和校验。"
+        },
+        {
+          "item": "类型与属性对应",
+          "rule": "试录表下拉选已有标识；填写字典显示属性适用类。核对对象类再选属性，关系端点也须对应指定身份类型。",
+          "implementation": "下拉仅辅助选择，不是跨表实例校验；结构转换器校验的是五张定义表的对应关系。"
+        }
+      ]
+    },
+    {
+      "name": "类别与枚举",
+      "columns": [
+        {
+          "key": "source_table",
+          "label": "来源表",
+          "width": 30
+        },
+        {
+          "key": "source_column",
+          "label": "分类字段",
+          "width": 25
+        },
+        {
+          "key": "value",
+          "label": "可选机器值",
+          "width": 30
+        },
+        {
+          "key": "meaning",
+          "label": "语义说明",
+          "width": 55
+        },
+        {
+          "key": "source_url",
+          "label": "来源证据链接",
+          "width": 65
+        }
+      ],
+      "rows": [
+        {
+          "source_table": "users",
+          "source_column": "role",
+          "value": "admin",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L6"
+        },
+        {
+          "source_table": "users",
+          "source_column": "role",
+          "value": "owner",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L6"
+        },
+        {
+          "source_table": "users",
+          "source_column": "role",
+          "value": "technician",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L6"
+        },
+        {
+          "source_table": "users",
+          "source_column": "role",
+          "value": "worker",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L6"
+        },
+        {
+          "source_table": "users",
+          "source_column": "role",
+          "value": "maintainer",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L6"
+        },
+        {
+          "source_table": "users",
+          "source_column": "role",
+          "value": "expert",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L6"
+        },
+        {
+          "source_table": "grants",
+          "source_column": "action",
+          "value": "read",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L59"
+        },
+        {
+          "source_table": "grants",
+          "source_column": "action",
+          "value": "record",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L59"
+        },
+        {
+          "source_table": "grants",
+          "source_column": "action",
+          "value": "claim",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L59"
+        },
+        {
+          "source_table": "grants",
+          "source_column": "action",
+          "value": "close_alert",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L59"
+        },
+        {
+          "source_table": "grants",
+          "source_column": "action",
+          "value": "review",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L59"
+        },
+        {
+          "source_table": "grants",
+          "source_column": "action",
+          "value": "dispatch",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L59"
+        },
+        {
+          "source_table": "grants",
+          "source_column": "action",
+          "value": "share",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L59"
+        },
+        {
+          "source_table": "grants",
+          "source_column": "action",
+          "value": "configure",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L59"
+        },
+        {
+          "source_table": "grants",
+          "source_column": "action",
+          "value": "export",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L59"
+        },
+        {
+          "source_table": "grants",
+          "source_column": "action",
+          "value": "act",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L59"
+        },
+        {
+          "source_table": "integration_tokens",
+          "source_column": "action",
+          "value": "read",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L74"
+        },
+        {
+          "source_table": "integration_tokens",
+          "source_column": "action",
+          "value": "record",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/001_identity.sql#L74"
+        },
+        {
+          "source_table": "objects",
+          "source_column": "kind",
+          "value": "farm",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L6"
+        },
+        {
+          "source_table": "objects",
+          "source_column": "kind",
+          "value": "pond",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L6"
+        },
+        {
+          "source_table": "objects",
+          "source_column": "kind",
+          "value": "field",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L6"
+        },
+        {
+          "source_table": "objects",
+          "source_column": "kind",
+          "value": "channel",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L6"
+        },
+        {
+          "source_table": "objects",
+          "source_column": "kind",
+          "value": "facility",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L6"
+        },
+        {
+          "source_table": "objects",
+          "source_column": "boundary_status",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L7"
+        },
+        {
+          "source_table": "objects",
+          "source_column": "boundary_status",
+          "value": "draft",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L7"
+        },
+        {
+          "source_table": "objects",
+          "source_column": "boundary_status",
+          "value": "verified",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L7"
+        },
+        {
+          "source_table": "devices",
+          "source_column": "kind",
+          "value": "physical",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L58"
+        },
+        {
+          "source_table": "devices",
+          "source_column": "kind",
+          "value": "gateway",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L58"
+        },
+        {
+          "source_table": "devices",
+          "source_column": "kind",
+          "value": "camera_channel",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L58"
+        },
+        {
+          "source_table": "observations",
+          "source_column": "quality",
+          "value": "valid",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L17"
+        },
+        {
+          "source_table": "observations",
+          "source_column": "quality",
+          "value": "suspect",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L17"
+        },
+        {
+          "source_table": "observations",
+          "source_column": "quality",
+          "value": "invalid",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L17"
+        },
+        {
+          "source_table": "observations",
+          "source_column": "origin",
+          "value": "live",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L18"
+        },
+        {
+          "source_table": "observations",
+          "source_column": "origin",
+          "value": "history",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L18"
+        },
+        {
+          "source_table": "observations",
+          "source_column": "origin",
+          "value": "manual",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L18"
+        },
+        {
+          "source_table": "source_health",
+          "source_column": "state",
+          "value": "ok",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L40"
+        },
+        {
+          "source_table": "source_health",
+          "source_column": "state",
+          "value": "unavailable",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L40"
+        },
+        {
+          "source_table": "source_health",
+          "source_column": "state",
+          "value": "unauthorized",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L40"
+        },
+        {
+          "source_table": "source_health",
+          "source_column": "state",
+          "value": "rate_limited",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L40"
+        },
+        {
+          "source_table": "source_health",
+          "source_column": "state",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L40"
+        },
+        {
+          "source_table": "jobs",
+          "source_column": "state",
+          "value": "queued",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/004_jobs.sql#L3"
+        },
+        {
+          "source_table": "jobs",
+          "source_column": "state",
+          "value": "running",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/004_jobs.sql#L3"
+        },
+        {
+          "source_table": "jobs",
+          "source_column": "state",
+          "value": "retry_wait",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/004_jobs.sql#L3"
+        },
+        {
+          "source_table": "jobs",
+          "source_column": "state",
+          "value": "awaiting_receipt",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/004_jobs.sql#L3"
+        },
+        {
+          "source_table": "jobs",
+          "source_column": "state",
+          "value": "done",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/004_jobs.sql#L3"
+        },
+        {
+          "source_table": "jobs",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/004_jobs.sql#L3"
+        },
+        {
+          "source_table": "rule_versions",
+          "source_column": "comparison",
+          "value": "lt",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L8"
+        },
+        {
+          "source_table": "rule_versions",
+          "source_column": "comparison",
+          "value": "lte",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L8"
+        },
+        {
+          "source_table": "rule_versions",
+          "source_column": "comparison",
+          "value": "gt",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L8"
+        },
+        {
+          "source_table": "rule_versions",
+          "source_column": "comparison",
+          "value": "gte",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L8"
+        },
+        {
+          "source_table": "rule_versions",
+          "source_column": "severity",
+          "value": "info",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L10"
+        },
+        {
+          "source_table": "rule_versions",
+          "source_column": "severity",
+          "value": "warning",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L10"
+        },
+        {
+          "source_table": "rule_versions",
+          "source_column": "severity",
+          "value": "severe",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L10"
+        },
+        {
+          "source_table": "alerts",
+          "source_column": "kind",
+          "value": "measurement",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/014_imagery.sql#L2"
+        },
+        {
+          "source_table": "alerts",
+          "source_column": "kind",
+          "value": "monitoring_gap",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/014_imagery.sql#L2"
+        },
+        {
+          "source_table": "alerts",
+          "source_column": "kind",
+          "value": "source_unavailable",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/014_imagery.sql#L2"
+        },
+        {
+          "source_table": "alerts",
+          "source_column": "kind",
+          "value": "camera",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/014_imagery.sql#L2"
+        },
+        {
+          "source_table": "alerts",
+          "source_column": "severity",
+          "value": "info",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L20"
+        },
+        {
+          "source_table": "alerts",
+          "source_column": "severity",
+          "value": "warning",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L20"
+        },
+        {
+          "source_table": "alerts",
+          "source_column": "severity",
+          "value": "severe",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L20"
+        },
+        {
+          "source_table": "alerts",
+          "source_column": "state",
+          "value": "open",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L21"
+        },
+        {
+          "source_table": "alerts",
+          "source_column": "state",
+          "value": "recovered",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L21"
+        },
+        {
+          "source_table": "alerts",
+          "source_column": "state",
+          "value": "closed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L21"
+        },
+        {
+          "source_table": "alert_events",
+          "source_column": "classification",
+          "value": "normal",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L29"
+        },
+        {
+          "source_table": "alert_events",
+          "source_column": "classification",
+          "value": "false_alarm",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L29"
+        },
+        {
+          "source_table": "alert_events",
+          "source_column": "classification",
+          "value": "device_issue",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L29"
+        },
+        {
+          "source_table": "alert_events",
+          "source_column": "classification",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L29"
+        },
+        {
+          "source_table": "alert_claims",
+          "source_column": "purpose",
+          "value": "field_check",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L34"
+        },
+        {
+          "source_table": "alert_claims",
+          "source_column": "purpose",
+          "value": "repair",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/005_alerts.sql#L34"
+        },
+        {
+          "source_table": "notification_contacts",
+          "source_column": "channel",
+          "value": "wecom",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L11"
+        },
+        {
+          "source_table": "notification_contacts",
+          "source_column": "channel",
+          "value": "voice",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L11"
+        },
+        {
+          "source_table": "notification_intents",
+          "source_column": "channel",
+          "value": "wecom",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L17"
+        },
+        {
+          "source_table": "notification_intents",
+          "source_column": "channel",
+          "value": "voice",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L17"
+        },
+        {
+          "source_table": "notification_intents",
+          "source_column": "phase",
+          "value": "initial",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L18"
+        },
+        {
+          "source_table": "notification_intents",
+          "source_column": "phase",
+          "value": "recovery",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L18"
+        },
+        {
+          "source_table": "notification_intents",
+          "source_column": "phase",
+          "value": "escalation",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L18"
+        },
+        {
+          "source_table": "notification_intents",
+          "source_column": "phase",
+          "value": "reminder",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L18"
+        },
+        {
+          "source_table": "notification_intents",
+          "source_column": "phase",
+          "value": "admin_reminder",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L18"
+        },
+        {
+          "source_table": "notification_intents",
+          "source_column": "state",
+          "value": "queued",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L20"
+        },
+        {
+          "source_table": "notification_intents",
+          "source_column": "state",
+          "value": "sending",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L20"
+        },
+        {
+          "source_table": "notification_intents",
+          "source_column": "state",
+          "value": "accepted",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L20"
+        },
+        {
+          "source_table": "notification_intents",
+          "source_column": "state",
+          "value": "delivered",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L20"
+        },
+        {
+          "source_table": "notification_intents",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L20"
+        },
+        {
+          "source_table": "notification_intents",
+          "source_column": "state",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L20"
+        },
+        {
+          "source_table": "notification_intents",
+          "source_column": "state",
+          "value": "cancelled",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L20"
+        },
+        {
+          "source_table": "notification_intents",
+          "source_column": "state",
+          "value": "blocked",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L20"
+        },
+        {
+          "source_table": "notification_receipts",
+          "source_column": "state",
+          "value": "accepted",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L30"
+        },
+        {
+          "source_table": "notification_receipts",
+          "source_column": "state",
+          "value": "delivered",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L30"
+        },
+        {
+          "source_table": "notification_receipts",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L30"
+        },
+        {
+          "source_table": "notification_receipts",
+          "source_column": "state",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/006_notifications.sql#L30"
+        },
+        {
+          "source_table": "maintenance_records",
+          "source_column": "record_type",
+          "value": "cleaning",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L3"
+        },
+        {
+          "source_table": "maintenance_records",
+          "source_column": "record_type",
+          "value": "calibration",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L3"
+        },
+        {
+          "source_table": "maintenance_records",
+          "source_column": "record_type",
+          "value": "replacement",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L3"
+        },
+        {
+          "source_table": "maintenance_records",
+          "source_column": "record_type",
+          "value": "installation",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L3"
+        },
+        {
+          "source_table": "maintenance_records",
+          "source_column": "record_type",
+          "value": "repair",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L3"
+        },
+        {
+          "source_table": "work_orders",
+          "source_column": "state",
+          "value": "open",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L15"
+        },
+        {
+          "source_table": "work_orders",
+          "source_column": "state",
+          "value": "assigned",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L15"
+        },
+        {
+          "source_table": "work_orders",
+          "source_column": "state",
+          "value": "handled",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L15"
+        },
+        {
+          "source_table": "work_orders",
+          "source_column": "state",
+          "value": "reviewed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L15"
+        },
+        {
+          "source_table": "service_heartbeats",
+          "source_column": "state",
+          "value": "ok",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L29"
+        },
+        {
+          "source_table": "service_heartbeats",
+          "source_column": "state",
+          "value": "blocked",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L29"
+        },
+        {
+          "source_table": "service_heartbeats",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L29"
+        },
+        {
+          "source_table": "budget_alerts",
+          "source_column": "level",
+          "value": "eighty_percent",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L44"
+        },
+        {
+          "source_table": "budget_alerts",
+          "source_column": "level",
+          "value": "limit",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L44"
+        },
+        {
+          "source_table": "backup_runs",
+          "source_column": "state",
+          "value": "running",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L50"
+        },
+        {
+          "source_table": "backup_runs",
+          "source_column": "state",
+          "value": "verified",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L50"
+        },
+        {
+          "source_table": "backup_runs",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L50"
+        },
+        {
+          "source_table": "feedback_items",
+          "source_column": "state",
+          "value": "open",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/010_feedback.sql#L4"
+        },
+        {
+          "source_table": "feedback_items",
+          "source_column": "state",
+          "value": "triaged",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/010_feedback.sql#L4"
+        },
+        {
+          "source_table": "feedback_items",
+          "source_column": "state",
+          "value": "resolved",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/010_feedback.sql#L4"
+        },
+        {
+          "source_table": "boundary_versions",
+          "source_column": "status",
+          "value": "draft",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/011_map.sql#L11"
+        },
+        {
+          "source_table": "boundary_versions",
+          "source_column": "status",
+          "value": "verified",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/011_map.sql#L11"
+        },
+        {
+          "source_table": "media_assets",
+          "source_column": "ingest_state",
+          "value": "pending",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/012_records.sql#L6"
+        },
+        {
+          "source_table": "media_assets",
+          "source_column": "ingest_state",
+          "value": "complete",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/012_records.sql#L6"
+        },
+        {
+          "source_table": "media_assets",
+          "source_column": "ingest_state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/012_records.sql#L6"
+        },
+        {
+          "source_table": "media_assets",
+          "source_column": "backup_state",
+          "value": "pending",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/012_records.sql#L7"
+        },
+        {
+          "source_table": "media_assets",
+          "source_column": "backup_state",
+          "value": "verified",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/012_records.sql#L7"
+        },
+        {
+          "source_table": "media_assets",
+          "source_column": "backup_state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/012_records.sql#L7"
+        },
+        {
+          "source_table": "farm_records",
+          "source_column": "status",
+          "value": "submitted",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/012_records.sql#L14"
+        },
+        {
+          "source_table": "farm_records",
+          "source_column": "status",
+          "value": "reviewed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/012_records.sql#L14"
+        },
+        {
+          "source_table": "field_tasks",
+          "source_column": "kind",
+          "value": "inspection",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/013_field_operations.sql#L10"
+        },
+        {
+          "source_table": "field_tasks",
+          "source_column": "kind",
+          "value": "farm_work",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/013_field_operations.sql#L10"
+        },
+        {
+          "source_table": "field_tasks",
+          "source_column": "kind",
+          "value": "irrigation",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/013_field_operations.sql#L10"
+        },
+        {
+          "source_table": "field_tasks",
+          "source_column": "state",
+          "value": "draft",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/013_field_operations.sql#L10"
+        },
+        {
+          "source_table": "field_tasks",
+          "source_column": "state",
+          "value": "dispatched",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/013_field_operations.sql#L10"
+        },
+        {
+          "source_table": "field_tasks",
+          "source_column": "state",
+          "value": "claimed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/013_field_operations.sql#L10"
+        },
+        {
+          "source_table": "field_tasks",
+          "source_column": "state",
+          "value": "reported",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/013_field_operations.sql#L10"
+        },
+        {
+          "source_table": "field_tasks",
+          "source_column": "state",
+          "value": "reviewed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/013_field_operations.sql#L10"
+        },
+        {
+          "source_table": "field_tasks",
+          "source_column": "state",
+          "value": "cancelled",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/013_field_operations.sql#L10"
+        },
+        {
+          "source_table": "irrigation_entries",
+          "source_column": "step",
+          "value": "application",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/013_field_operations.sql#L26"
+        },
+        {
+          "source_table": "irrigation_entries",
+          "source_column": "step",
+          "value": "confirmation",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/013_field_operations.sql#L26"
+        },
+        {
+          "source_table": "irrigation_entries",
+          "source_column": "step",
+          "value": "execution",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/013_field_operations.sql#L26"
+        },
+        {
+          "source_table": "irrigation_entries",
+          "source_column": "step",
+          "value": "result",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/013_field_operations.sql#L26"
+        },
+        {
+          "source_table": "irrigation_entries",
+          "source_column": "step",
+          "value": "not_executed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/013_field_operations.sql#L26"
+        },
+        {
+          "source_table": "camera_events",
+          "source_column": "image_state",
+          "value": "pending",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/014_imagery.sql#L12"
+        },
+        {
+          "source_table": "camera_events",
+          "source_column": "image_state",
+          "value": "complete",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/014_imagery.sql#L12"
+        },
+        {
+          "source_table": "camera_events",
+          "source_column": "image_state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/014_imagery.sql#L12"
+        },
+        {
+          "source_table": "metric_results",
+          "source_column": "status",
+          "value": "usable",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/015_analysis.sql#L9"
+        },
+        {
+          "source_table": "metric_results",
+          "source_column": "status",
+          "value": "insufficient",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/015_analysis.sql#L9"
+        },
+        {
+          "source_table": "metric_results",
+          "source_column": "status",
+          "value": "incomparable",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/015_analysis.sql#L9"
+        },
+        {
+          "source_table": "weather_records",
+          "source_column": "kind",
+          "value": "actual",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/015_analysis.sql#L14"
+        },
+        {
+          "source_table": "weather_records",
+          "source_column": "kind",
+          "value": "forecast",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/015_analysis.sql#L14"
+        },
+        {
+          "source_table": "weather_records",
+          "source_column": "kind",
+          "value": "warning",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/015_analysis.sql#L14"
+        },
+        {
+          "source_table": "weather_records",
+          "source_column": "kind",
+          "value": "baseline",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/015_analysis.sql#L14"
+        },
+        {
+          "source_table": "knowledge_documents",
+          "source_column": "format",
+          "value": "markdown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/016_knowledge.sql#L3"
+        },
+        {
+          "source_table": "knowledge_documents",
+          "source_column": "format",
+          "value": "text",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/016_knowledge.sql#L3"
+        },
+        {
+          "source_table": "knowledge_documents",
+          "source_column": "state",
+          "value": "draft",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/016_knowledge.sql#L4"
+        },
+        {
+          "source_table": "knowledge_documents",
+          "source_column": "state",
+          "value": "approved",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/016_knowledge.sql#L4"
+        },
+        {
+          "source_table": "knowledge_documents",
+          "source_column": "state",
+          "value": "withdrawn",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/016_knowledge.sql#L4"
+        },
+        {
+          "source_table": "model_reservations",
+          "source_column": "state",
+          "value": "reserved",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/017_assistant.sql#L15"
+        },
+        {
+          "source_table": "model_reservations",
+          "source_column": "state",
+          "value": "settled",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/017_assistant.sql#L15"
+        },
+        {
+          "source_table": "model_reservations",
+          "source_column": "state",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/017_assistant.sql#L15"
+        },
+        {
+          "source_table": "model_reservations",
+          "source_column": "state",
+          "value": "cancelled",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/017_assistant.sql#L15"
+        },
+        {
+          "source_table": "briefings",
+          "source_column": "period",
+          "value": "daily",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/017_assistant.sql#L20"
+        },
+        {
+          "source_table": "briefings",
+          "source_column": "period",
+          "value": "weekly",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/017_assistant.sql#L20"
+        },
+        {
+          "source_table": "briefings",
+          "source_column": "period",
+          "value": "monthly",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/017_assistant.sql#L20"
+        },
+        {
+          "source_table": "briefing_items",
+          "source_column": "decision",
+          "value": "draft",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/017_assistant.sql#L26"
+        },
+        {
+          "source_table": "briefing_items",
+          "source_column": "decision",
+          "value": "adopted",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/017_assistant.sql#L26"
+        },
+        {
+          "source_table": "briefing_items",
+          "source_column": "decision",
+          "value": "modified",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/017_assistant.sql#L26"
+        },
+        {
+          "source_table": "briefing_items",
+          "source_column": "decision",
+          "value": "rejected",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/017_assistant.sql#L26"
+        },
+        {
+          "source_table": "briefing_publications",
+          "source_column": "role_version",
+          "value": "owner",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/017_assistant.sql#L36"
+        },
+        {
+          "source_table": "briefing_publications",
+          "source_column": "role_version",
+          "value": "worker",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/017_assistant.sql#L36"
+        },
+        {
+          "source_table": "briefing_publications",
+          "source_column": "role_version",
+          "value": "expert",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/017_assistant.sql#L36"
+        },
+        {
+          "source_table": "briefing_publications",
+          "source_column": "role_version",
+          "value": "technician",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/017_assistant.sql#L36"
+        },
+        {
+          "source_table": "image_reviews",
+          "source_column": "state",
+          "value": "queued",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/025_intelligence_runtime.sql#L5"
+        },
+        {
+          "source_table": "image_reviews",
+          "source_column": "state",
+          "value": "running",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/025_intelligence_runtime.sql#L5"
+        },
+        {
+          "source_table": "image_reviews",
+          "source_column": "state",
+          "value": "complete",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/025_intelligence_runtime.sql#L5"
+        },
+        {
+          "source_table": "image_reviews",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/025_intelligence_runtime.sql#L5"
+        },
+        {
+          "source_table": "image_reviews",
+          "source_column": "state",
+          "value": "access_revoked",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/025_intelligence_runtime.sql#L5"
+        },
+        {
+          "source_table": "image_reviews",
+          "source_column": "state",
+          "value": "result_unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/025_intelligence_runtime.sql#L5"
+        },
+        {
+          "source_table": "image_field_samples",
+          "source_column": "scene",
+          "value": "day",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/018_image_reviews.sql#L10"
+        },
+        {
+          "source_table": "image_field_samples",
+          "source_column": "scene",
+          "value": "night",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/018_image_reviews.sql#L10"
+        },
+        {
+          "source_table": "image_field_samples",
+          "source_column": "scene",
+          "value": "rain_fog",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/018_image_reviews.sql#L10"
+        },
+        {
+          "source_table": "image_field_samples",
+          "source_column": "target",
+          "value": "person",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/018_image_reviews.sql#L11"
+        },
+        {
+          "source_table": "image_field_samples",
+          "source_column": "target",
+          "value": "vehicle",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/018_image_reviews.sql#L11"
+        },
+        {
+          "source_table": "image_field_samples",
+          "source_column": "target",
+          "value": "absent",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/018_image_reviews.sql#L11"
+        },
+        {
+          "source_table": "image_field_samples",
+          "source_column": "target",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/018_image_reviews.sql#L11"
+        },
+        {
+          "source_table": "image_field_samples",
+          "source_column": "human_label",
+          "value": "person",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/029_image_quality.sql#L14"
+        },
+        {
+          "source_table": "image_field_samples",
+          "source_column": "human_label",
+          "value": "vehicle",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/029_image_quality.sql#L14"
+        },
+        {
+          "source_table": "image_field_samples",
+          "source_column": "human_label",
+          "value": "person_vehicle",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/029_image_quality.sql#L14"
+        },
+        {
+          "source_table": "image_field_samples",
+          "source_column": "human_label",
+          "value": "absent",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/029_image_quality.sql#L14"
+        },
+        {
+          "source_table": "image_field_samples",
+          "source_column": "human_label",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/029_image_quality.sql#L14"
+        },
+        {
+          "source_table": "briefing_schedules",
+          "source_column": "period",
+          "value": "daily",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/028_analysis_schedules.sql#L1"
+        },
+        {
+          "source_table": "briefing_schedules",
+          "source_column": "period",
+          "value": "weekly",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/028_analysis_schedules.sql#L1"
+        },
+        {
+          "source_table": "briefing_schedules",
+          "source_column": "period",
+          "value": "monthly",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/028_analysis_schedules.sql#L1"
+        },
+        {
+          "source_table": "weather_sync_runs",
+          "source_column": "state",
+          "value": "queued",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/021_weather_connections.sql#L16"
+        },
+        {
+          "source_table": "weather_sync_runs",
+          "source_column": "state",
+          "value": "running",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/021_weather_connections.sql#L16"
+        },
+        {
+          "source_table": "weather_sync_runs",
+          "source_column": "state",
+          "value": "succeeded",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/021_weather_connections.sql#L16"
+        },
+        {
+          "source_table": "weather_sync_runs",
+          "source_column": "state",
+          "value": "no_data",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/021_weather_connections.sql#L16"
+        },
+        {
+          "source_table": "weather_sync_runs",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/021_weather_connections.sql#L16"
+        },
+        {
+          "source_table": "weather_sync_runs",
+          "source_column": "state",
+          "value": "blocked",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/021_weather_connections.sql#L16"
+        },
+        {
+          "source_table": "weather_sync_runs",
+          "source_column": "state",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/021_weather_connections.sql#L16"
+        },
+        {
+          "source_table": "remote_media_imports",
+          "source_column": "target_kind",
+          "value": "camera_event",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/022_remote_media.sql#L4"
+        },
+        {
+          "source_table": "remote_media_imports",
+          "source_column": "target_kind",
+          "value": "flight_file",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/022_remote_media.sql#L4"
+        },
+        {
+          "source_table": "remote_media_imports",
+          "source_column": "state",
+          "value": "queued",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/022_remote_media.sql#L9"
+        },
+        {
+          "source_table": "remote_media_imports",
+          "source_column": "state",
+          "value": "running",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/022_remote_media.sql#L9"
+        },
+        {
+          "source_table": "remote_media_imports",
+          "source_column": "state",
+          "value": "complete",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/022_remote_media.sql#L9"
+        },
+        {
+          "source_table": "remote_media_imports",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/022_remote_media.sql#L9"
+        },
+        {
+          "source_table": "remote_media_imports",
+          "source_column": "state",
+          "value": "blocked",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/022_remote_media.sql#L9"
+        },
+        {
+          "source_table": "remote_media_imports",
+          "source_column": "state",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/022_remote_media.sql#L9"
+        },
+        {
+          "source_table": "ezviz_receipts",
+          "source_column": "state",
+          "value": "queued",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/023_ezviz_webhook.sql#L16"
+        },
+        {
+          "source_table": "ezviz_receipts",
+          "source_column": "state",
+          "value": "processed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/023_ezviz_webhook.sql#L16"
+        },
+        {
+          "source_table": "ezviz_receipts",
+          "source_column": "state",
+          "value": "awaiting_contract",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/023_ezviz_webhook.sql#L16"
+        },
+        {
+          "source_table": "ezviz_receipts",
+          "source_column": "state",
+          "value": "blocked",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/023_ezviz_webhook.sql#L16"
+        },
+        {
+          "source_table": "ezviz_receipts",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/023_ezviz_webhook.sql#L16"
+        },
+        {
+          "source_table": "ezviz_receipts",
+          "source_column": "image_state",
+          "value": "pending",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/023_ezviz_webhook.sql#L17"
+        },
+        {
+          "source_table": "ezviz_receipts",
+          "source_column": "image_state",
+          "value": "none",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/023_ezviz_webhook.sql#L17"
+        },
+        {
+          "source_table": "ezviz_receipts",
+          "source_column": "image_state",
+          "value": "queued",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/023_ezviz_webhook.sql#L17"
+        },
+        {
+          "source_table": "ezviz_receipts",
+          "source_column": "image_state",
+          "value": "encrypted",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/023_ezviz_webhook.sql#L17"
+        },
+        {
+          "source_table": "ezviz_receipts",
+          "source_column": "image_state",
+          "value": "disabled",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/023_ezviz_webhook.sql#L17"
+        },
+        {
+          "source_table": "ezviz_receipts",
+          "source_column": "image_state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/023_ezviz_webhook.sql#L17"
+        },
+        {
+          "source_table": "dji_runs",
+          "source_column": "purpose",
+          "value": "sync",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/024_flighthub.sql#L10"
+        },
+        {
+          "source_table": "dji_runs",
+          "source_column": "purpose",
+          "value": "file",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/024_flighthub.sql#L10"
+        },
+        {
+          "source_table": "dji_runs",
+          "source_column": "state",
+          "value": "queued",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/024_flighthub.sql#L12"
+        },
+        {
+          "source_table": "dji_runs",
+          "source_column": "state",
+          "value": "running",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/024_flighthub.sql#L12"
+        },
+        {
+          "source_table": "dji_runs",
+          "source_column": "state",
+          "value": "succeeded",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/024_flighthub.sql#L12"
+        },
+        {
+          "source_table": "dji_runs",
+          "source_column": "state",
+          "value": "empty",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/024_flighthub.sql#L12"
+        },
+        {
+          "source_table": "dji_runs",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/024_flighthub.sql#L12"
+        },
+        {
+          "source_table": "dji_runs",
+          "source_column": "state",
+          "value": "blocked",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/024_flighthub.sql#L12"
+        },
+        {
+          "source_table": "dji_runs",
+          "source_column": "state",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/024_flighthub.sql#L12"
+        },
+        {
+          "source_table": "flight_coverages",
+          "source_column": "status",
+          "value": "draft",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/027_spatial_evidence.sql#L4"
+        },
+        {
+          "source_table": "flight_coverages",
+          "source_column": "status",
+          "value": "verified",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/027_spatial_evidence.sql#L4"
+        },
+        {
+          "source_table": "camera_reads",
+          "source_column": "operation",
+          "value": "live",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/031_camera_reads.sql#L5"
+        },
+        {
+          "source_table": "camera_reads",
+          "source_column": "operation",
+          "value": "playback",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/031_camera_reads.sql#L5"
+        },
+        {
+          "source_table": "camera_reads",
+          "source_column": "operation",
+          "value": "capture",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/031_camera_reads.sql#L5"
+        },
+        {
+          "source_table": "sms_challenges",
+          "source_column": "state",
+          "value": "reserved",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/033_expert_sms.sql#L10"
+        },
+        {
+          "source_table": "sms_challenges",
+          "source_column": "state",
+          "value": "accepted",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/033_expert_sms.sql#L10"
+        },
+        {
+          "source_table": "sms_challenges",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/033_expert_sms.sql#L10"
+        },
+        {
+          "source_table": "sms_challenges",
+          "source_column": "state",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/033_expert_sms.sql#L10"
+        },
+        {
+          "source_table": "terrain_scenes",
+          "source_column": "surface_state",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L5"
+        },
+        {
+          "source_table": "terrain_scenes",
+          "source_column": "surface_state",
+          "value": "bare_ground",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L5"
+        },
+        {
+          "source_table": "terrain_scenes",
+          "source_column": "surface_state",
+          "value": "canopy",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L5"
+        },
+        {
+          "source_table": "terrain_scenes",
+          "source_column": "surface_state",
+          "value": "water",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L5"
+        },
+        {
+          "source_table": "terrain_scenes",
+          "source_column": "surface_state",
+          "value": "mixed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L5"
+        },
+        {
+          "source_table": "terrain_scenes",
+          "source_column": "state",
+          "value": "validating",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L7"
+        },
+        {
+          "source_table": "terrain_scenes",
+          "source_column": "state",
+          "value": "ready",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L7"
+        },
+        {
+          "source_table": "terrain_scenes",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L7"
+        },
+        {
+          "source_table": "terrain_scenes",
+          "source_column": "state",
+          "value": "withdrawn",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L7"
+        },
+        {
+          "source_table": "terrain_surveys",
+          "source_column": "purpose",
+          "value": "control",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L19"
+        },
+        {
+          "source_table": "terrain_surveys",
+          "source_column": "purpose",
+          "value": "check",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L19"
+        },
+        {
+          "source_table": "terrain_reviews",
+          "source_column": "decision",
+          "value": "accepted",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L28"
+        },
+        {
+          "source_table": "terrain_reviews",
+          "source_column": "decision",
+          "value": "display_only",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L28"
+        },
+        {
+          "source_table": "hydraulic_links",
+          "source_column": "direction",
+          "value": "forward",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L41"
+        },
+        {
+          "source_table": "hydraulic_links",
+          "source_column": "direction",
+          "value": "bidirectional",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L41"
+        },
+        {
+          "source_table": "stock_lots",
+          "source_column": "kind",
+          "value": "input",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L12"
+        },
+        {
+          "source_table": "stock_lots",
+          "source_column": "kind",
+          "value": "harvest",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L12"
+        },
+        {
+          "source_table": "stock_lots",
+          "source_column": "kind",
+          "value": "processed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L12"
+        },
+        {
+          "source_table": "stock_lots",
+          "source_column": "unit",
+          "value": "kg",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L12"
+        },
+        {
+          "source_table": "stock_lots",
+          "source_column": "unit",
+          "value": "L",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L12"
+        },
+        {
+          "source_table": "stock_lots",
+          "source_column": "unit",
+          "value": "piece",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L12"
+        },
+        {
+          "source_table": "stock_lots",
+          "source_column": "basis",
+          "value": "as_is",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L13"
+        },
+        {
+          "source_table": "stock_lots",
+          "source_column": "basis",
+          "value": "wet",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L13"
+        },
+        {
+          "source_table": "stock_lots",
+          "source_column": "basis",
+          "value": "dry",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L13"
+        },
+        {
+          "source_table": "stock_lots",
+          "source_column": "state",
+          "value": "pending",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L14"
+        },
+        {
+          "source_table": "stock_lots",
+          "source_column": "state",
+          "value": "available",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L14"
+        },
+        {
+          "source_table": "stock_lots",
+          "source_column": "state",
+          "value": "returned",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L14"
+        },
+        {
+          "source_table": "stock_lots",
+          "source_column": "state",
+          "value": "recalled",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L14"
+        },
+        {
+          "source_table": "stock_lots",
+          "source_column": "state",
+          "value": "blocked",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L14"
+        },
+        {
+          "source_table": "stock_package_events",
+          "source_column": "action",
+          "value": "add",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L57"
+        },
+        {
+          "source_table": "stock_package_events",
+          "source_column": "action",
+          "value": "remove",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L57"
+        },
+        {
+          "source_table": "stock_handoffs",
+          "source_column": "direction",
+          "value": "dispatch",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L62"
+        },
+        {
+          "source_table": "stock_handoffs",
+          "source_column": "direction",
+          "value": "receipt",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L62"
+        },
+        {
+          "source_table": "quality_samples",
+          "source_column": "stage",
+          "value": "raw",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L3"
+        },
+        {
+          "source_table": "quality_samples",
+          "source_column": "stage",
+          "value": "finished",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L3"
+        },
+        {
+          "source_table": "quality_tests",
+          "source_column": "result",
+          "value": "pass",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L8"
+        },
+        {
+          "source_table": "quality_tests",
+          "source_column": "result",
+          "value": "fail",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L8"
+        },
+        {
+          "source_table": "quality_tests",
+          "source_column": "result",
+          "value": "inconclusive",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L8"
+        },
+        {
+          "source_table": "quality_credentials",
+          "source_column": "kind",
+          "value": "certificate",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L14"
+        },
+        {
+          "source_table": "quality_credentials",
+          "source_column": "kind",
+          "value": "certification",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L14"
+        },
+        {
+          "source_table": "quality_credentials",
+          "source_column": "kind",
+          "value": "brand",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L14"
+        },
+        {
+          "source_table": "trace_queries",
+          "source_column": "direction",
+          "value": "forward",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L25"
+        },
+        {
+          "source_table": "trace_queries",
+          "source_column": "direction",
+          "value": "backward",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L25"
+        },
+        {
+          "source_table": "quality_cases",
+          "source_column": "state",
+          "value": "open",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L30"
+        },
+        {
+          "source_table": "quality_cases",
+          "source_column": "state",
+          "value": "closed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L30"
+        },
+        {
+          "source_table": "quality_case_events",
+          "source_column": "action",
+          "value": "notice",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L35"
+        },
+        {
+          "source_table": "quality_case_events",
+          "source_column": "action",
+          "value": "recover",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L35"
+        },
+        {
+          "source_table": "quality_case_events",
+          "source_column": "action",
+          "value": "dispose",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L35"
+        },
+        {
+          "source_table": "quality_case_events",
+          "source_column": "action",
+          "value": "close",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L35"
+        },
+        {
+          "source_table": "public_trace_cards",
+          "source_column": "state",
+          "value": "draft",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L41"
+        },
+        {
+          "source_table": "public_trace_cards",
+          "source_column": "state",
+          "value": "approved",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L41"
+        },
+        {
+          "source_table": "public_trace_cards",
+          "source_column": "state",
+          "value": "revoked",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L41"
+        },
+        {
+          "source_table": "prescription_maps",
+          "source_column": "state",
+          "value": "draft",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/037_protection.sql#L10"
+        },
+        {
+          "source_table": "prescription_maps",
+          "source_column": "state",
+          "value": "approved",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/037_protection.sql#L10"
+        },
+        {
+          "source_table": "prescription_maps",
+          "source_column": "state",
+          "value": "withdrawn",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/037_protection.sql#L10"
+        },
+        {
+          "source_table": "prescription_events",
+          "source_column": "action",
+          "value": "shared",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/037_protection.sql#L23"
+        },
+        {
+          "source_table": "prescription_events",
+          "source_column": "action",
+          "value": "downloaded",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/037_protection.sql#L23"
+        },
+        {
+          "source_table": "prescription_events",
+          "source_column": "action",
+          "value": "applied",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/037_protection.sql#L23"
+        },
+        {
+          "source_table": "crop_analyses",
+          "source_column": "state",
+          "value": "queued",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L4"
+        },
+        {
+          "source_table": "crop_analyses",
+          "source_column": "state",
+          "value": "running",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L4"
+        },
+        {
+          "source_table": "crop_analyses",
+          "source_column": "state",
+          "value": "complete",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L4"
+        },
+        {
+          "source_table": "crop_analyses",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L4"
+        },
+        {
+          "source_table": "crop_analyses",
+          "source_column": "state",
+          "value": "blocked",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L4"
+        },
+        {
+          "source_table": "crop_labels",
+          "source_column": "label",
+          "value": "canopy",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L9"
+        },
+        {
+          "source_table": "crop_labels",
+          "source_column": "label",
+          "value": "lodging",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L9"
+        },
+        {
+          "source_table": "crop_labels",
+          "source_column": "label",
+          "value": "waterlogging",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L9"
+        },
+        {
+          "source_table": "crop_labels",
+          "source_column": "label",
+          "value": "bare",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L9"
+        },
+        {
+          "source_table": "crop_labels",
+          "source_column": "label",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L9"
+        },
+        {
+          "source_table": "crop_capture_runs",
+          "source_column": "state",
+          "value": "waiting",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L21"
+        },
+        {
+          "source_table": "crop_capture_runs",
+          "source_column": "state",
+          "value": "queued",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L21"
+        },
+        {
+          "source_table": "crop_capture_runs",
+          "source_column": "state",
+          "value": "blocked",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L21"
+        },
+        {
+          "source_table": "crop_capture_runs",
+          "source_column": "state",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L21"
+        },
+        {
+          "source_table": "crop_capture_runs",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L21"
+        },
+        {
+          "source_table": "spectral_products",
+          "source_column": "index_kind",
+          "value": "NDVI",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L26"
+        },
+        {
+          "source_table": "spectral_products",
+          "source_column": "index_kind",
+          "value": "NDRE",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L26"
+        },
+        {
+          "source_table": "spectral_products",
+          "source_column": "state",
+          "value": "queued",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L27"
+        },
+        {
+          "source_table": "spectral_products",
+          "source_column": "state",
+          "value": "running",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L27"
+        },
+        {
+          "source_table": "spectral_products",
+          "source_column": "state",
+          "value": "complete",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L27"
+        },
+        {
+          "source_table": "spectral_products",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L27"
+        },
+        {
+          "source_table": "spectral_products",
+          "source_column": "state",
+          "value": "blocked",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L27"
+        },
+        {
+          "source_table": "agronomy_notices",
+          "source_column": "state",
+          "value": "draft",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L36"
+        },
+        {
+          "source_table": "agronomy_notices",
+          "source_column": "state",
+          "value": "approved",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L36"
+        },
+        {
+          "source_table": "agronomy_notices",
+          "source_column": "state",
+          "value": "withdrawn",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L36"
+        },
+        {
+          "source_table": "flow_observations",
+          "source_column": "unit",
+          "value": "m3/s",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L42"
+        },
+        {
+          "source_table": "flow_observations",
+          "source_column": "unit",
+          "value": "m3",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L42"
+        },
+        {
+          "source_table": "flow_observations",
+          "source_column": "source_kind",
+          "value": "measured",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L43"
+        },
+        {
+          "source_table": "flow_observations",
+          "source_column": "source_kind",
+          "value": "calibrated",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L43"
+        },
+        {
+          "source_table": "flow_observations",
+          "source_column": "source_kind",
+          "value": "model",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L43"
+        },
+        {
+          "source_table": "control_profiles",
+          "source_column": "permission",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L48"
+        },
+        {
+          "source_table": "control_profiles",
+          "source_column": "permission",
+          "value": "allowed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L48"
+        },
+        {
+          "source_table": "control_profiles",
+          "source_column": "permission",
+          "value": "denied",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L48"
+        },
+        {
+          "source_table": "control_profiles",
+          "source_column": "mode",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L48"
+        },
+        {
+          "source_table": "control_profiles",
+          "source_column": "mode",
+          "value": "manual",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L48"
+        },
+        {
+          "source_table": "control_profiles",
+          "source_column": "mode",
+          "value": "remote",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L48"
+        },
+        {
+          "source_table": "control_profiles",
+          "source_column": "protection",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L49"
+        },
+        {
+          "source_table": "control_profiles",
+          "source_column": "protection",
+          "value": "active",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L49"
+        },
+        {
+          "source_table": "control_profiles",
+          "source_column": "protection",
+          "value": "clear",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L49"
+        },
+        {
+          "source_table": "control_rules",
+          "source_column": "state",
+          "value": "draft",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L56"
+        },
+        {
+          "source_table": "control_rules",
+          "source_column": "state",
+          "value": "approved",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L56"
+        },
+        {
+          "source_table": "control_rules",
+          "source_column": "state",
+          "value": "withdrawn",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L56"
+        },
+        {
+          "source_table": "control_feedback",
+          "source_column": "layer",
+          "value": "request",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L67"
+        },
+        {
+          "source_table": "control_feedback",
+          "source_column": "layer",
+          "value": "device_received",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L67"
+        },
+        {
+          "source_table": "control_feedback",
+          "source_column": "layer",
+          "value": "electrical",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L67"
+        },
+        {
+          "source_table": "control_feedback",
+          "source_column": "layer",
+          "value": "mechanical",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L67"
+        },
+        {
+          "source_table": "control_feedback",
+          "source_column": "layer",
+          "value": "effect",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L67"
+        },
+        {
+          "source_table": "control_feedback",
+          "source_column": "result",
+          "value": "observed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L68"
+        },
+        {
+          "source_table": "control_feedback",
+          "source_column": "result",
+          "value": "not_observed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L68"
+        },
+        {
+          "source_table": "control_feedback",
+          "source_column": "result",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L68"
+        },
+        {
+          "source_table": "control_feedback",
+          "source_column": "source",
+          "value": "platform_record",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L68"
+        },
+        {
+          "source_table": "control_feedback",
+          "source_column": "source",
+          "value": "vendor_receipt",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L68"
+        },
+        {
+          "source_table": "control_feedback",
+          "source_column": "source",
+          "value": "field_observation",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/038_agronomy.sql#L68"
+        },
+        {
+          "source_table": "energy_meters",
+          "source_column": "purpose",
+          "value": "generation",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L3"
+        },
+        {
+          "source_table": "energy_meters",
+          "source_column": "purpose",
+          "value": "load",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L3"
+        },
+        {
+          "source_table": "energy_meters",
+          "source_column": "purpose",
+          "value": "storage",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L3"
+        },
+        {
+          "source_table": "energy_meter_reviews",
+          "source_column": "action",
+          "value": "approve",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L10"
+        },
+        {
+          "source_table": "energy_meter_reviews",
+          "source_column": "action",
+          "value": "withdraw",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L10"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "metric",
+          "value": "generation_kwh",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L14"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "metric",
+          "value": "consumption_kwh",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L14"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "metric",
+          "value": "charge_kwh",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L14"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "metric",
+          "value": "discharge_kwh",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L14"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "metric",
+          "value": "power_kw",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L14"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "metric",
+          "value": "soc_pct",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L14"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "metric",
+          "value": "soh_pct",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L14"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "quality",
+          "value": "valid",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L15"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "quality",
+          "value": "suspect",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L15"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "quality",
+          "value": "missing",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L15"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "source_kind",
+          "value": "manual",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L16"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "source_kind",
+          "value": "file",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L16"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "operating_state",
+          "value": "charging",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L17"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "operating_state",
+          "value": "discharging",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L17"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "operating_state",
+          "value": "idle",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L17"
+        },
+        {
+          "source_table": "energy_readings",
+          "source_column": "operating_state",
+          "value": "unknown",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L17"
+        },
+        {
+          "source_table": "circular_batches",
+          "source_column": "material_kind",
+          "value": "silt",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L25"
+        },
+        {
+          "source_table": "circular_batches",
+          "source_column": "material_kind",
+          "value": "manure",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L25"
+        },
+        {
+          "source_table": "circular_batches",
+          "source_column": "material_kind",
+          "value": "straw",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L25"
+        },
+        {
+          "source_table": "circular_batches",
+          "source_column": "material_kind",
+          "value": "mushroom",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L25"
+        },
+        {
+          "source_table": "circular_batches",
+          "source_column": "material_kind",
+          "value": "compost",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L25"
+        },
+        {
+          "source_table": "circular_batches",
+          "source_column": "material_kind",
+          "value": "other",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L25"
+        },
+        {
+          "source_table": "circular_weighings",
+          "source_column": "basis",
+          "value": "wet",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L31"
+        },
+        {
+          "source_table": "circular_weighings",
+          "source_column": "basis",
+          "value": "dry",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L31"
+        },
+        {
+          "source_table": "circular_weighings",
+          "source_column": "basis",
+          "value": "as_is",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L31"
+        },
+        {
+          "source_table": "circular_processes",
+          "source_column": "process_kind",
+          "value": "treatment",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L37"
+        },
+        {
+          "source_table": "circular_processes",
+          "source_column": "process_kind",
+          "value": "screening",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L37"
+        },
+        {
+          "source_table": "circular_processes",
+          "source_column": "process_kind",
+          "value": "rework",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/039_resources.sql#L37"
+        },
+        {
+          "source_table": "machinery_contract_reviews",
+          "source_column": "action",
+          "value": "approve",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L8"
+        },
+        {
+          "source_table": "machinery_contract_reviews",
+          "source_column": "action",
+          "value": "withdraw",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L8"
+        },
+        {
+          "source_table": "machinery_orders",
+          "source_column": "unit",
+          "value": "mu",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L17"
+        },
+        {
+          "source_table": "machinery_orders",
+          "source_column": "unit",
+          "value": "ha",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L17"
+        },
+        {
+          "source_table": "machinery_orders",
+          "source_column": "unit",
+          "value": "hour",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L17"
+        },
+        {
+          "source_table": "machinery_orders",
+          "source_column": "unit",
+          "value": "job",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L17"
+        },
+        {
+          "source_table": "machinery_orders",
+          "source_column": "state",
+          "value": "draft",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L18"
+        },
+        {
+          "source_table": "machinery_orders",
+          "source_column": "state",
+          "value": "dispatched",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L18"
+        },
+        {
+          "source_table": "machinery_orders",
+          "source_column": "state",
+          "value": "cancelled",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L18"
+        },
+        {
+          "source_table": "machinery_evidence",
+          "source_column": "kind",
+          "value": "track",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L22"
+        },
+        {
+          "source_table": "machinery_evidence",
+          "source_column": "kind",
+          "value": "work_order",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L22"
+        },
+        {
+          "source_table": "machinery_evidence",
+          "source_column": "kind",
+          "value": "arrival",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L22"
+        },
+        {
+          "source_table": "machinery_evidence",
+          "source_column": "kind",
+          "value": "spotcheck",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L22"
+        },
+        {
+          "source_table": "machinery_reviews",
+          "source_column": "action",
+          "value": "accept",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L28"
+        },
+        {
+          "source_table": "machinery_reviews",
+          "source_column": "action",
+          "value": "withdraw",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L28"
+        },
+        {
+          "source_table": "business_expenses",
+          "source_column": "category",
+          "value": "material",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L39"
+        },
+        {
+          "source_table": "business_expenses",
+          "source_column": "category",
+          "value": "service",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L39"
+        },
+        {
+          "source_table": "business_expenses",
+          "source_column": "category",
+          "value": "remediation",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L39"
+        },
+        {
+          "source_table": "business_expenses",
+          "source_column": "category",
+          "value": "research",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L39"
+        },
+        {
+          "source_table": "business_expenses",
+          "source_column": "category",
+          "value": "other",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L39"
+        },
+        {
+          "source_table": "business_expenses",
+          "source_column": "link_kind",
+          "value": "manual",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L41"
+        },
+        {
+          "source_table": "business_expenses",
+          "source_column": "link_kind",
+          "value": "input_purchase",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L41"
+        },
+        {
+          "source_table": "business_expenses",
+          "source_column": "link_kind",
+          "value": "protection_execution",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L41"
+        },
+        {
+          "source_table": "business_expenses",
+          "source_column": "link_kind",
+          "value": "machine_order",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L41"
+        },
+        {
+          "source_table": "business_expenses",
+          "source_column": "link_kind",
+          "value": "research_protocol",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L41"
+        },
+        {
+          "source_table": "business_expenses",
+          "source_column": "link_kind",
+          "value": "research_result",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L41"
+        },
+        {
+          "source_table": "expense_reviews",
+          "source_column": "action",
+          "value": "approve",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L47"
+        },
+        {
+          "source_table": "expense_reviews",
+          "source_column": "action",
+          "value": "withdraw",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L47"
+        },
+        {
+          "source_table": "expense_payments",
+          "source_column": "direction",
+          "value": "pay",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L50"
+        },
+        {
+          "source_table": "expense_payments",
+          "source_column": "direction",
+          "value": "reverse",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L50"
+        },
+        {
+          "source_table": "subsidy_claims",
+          "source_column": "category",
+          "value": "purchase",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L55"
+        },
+        {
+          "source_table": "subsidy_claims",
+          "source_column": "category",
+          "value": "replacement",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L55"
+        },
+        {
+          "source_table": "subsidy_claims",
+          "source_column": "category",
+          "value": "service",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L55"
+        },
+        {
+          "source_table": "subsidy_claims",
+          "source_column": "state",
+          "value": "draft",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L57"
+        },
+        {
+          "source_table": "subsidy_claims",
+          "source_column": "state",
+          "value": "reviewed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L57"
+        },
+        {
+          "source_table": "subsidy_claims",
+          "source_column": "state",
+          "value": "submitted",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L57"
+        },
+        {
+          "source_table": "subsidy_claims",
+          "source_column": "state",
+          "value": "awarded",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L57"
+        },
+        {
+          "source_table": "subsidy_claims",
+          "source_column": "state",
+          "value": "rejected",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L57"
+        },
+        {
+          "source_table": "subsidy_claims",
+          "source_column": "state",
+          "value": "withdrawn",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/040_services_finance.sql#L57"
+        },
+        {
+          "source_table": "subsidy_events",
+          "source_column": "action",
+          "value": "review",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/043_subsidy_event_time.sql#L4"
+        },
+        {
+          "source_table": "subsidy_events",
+          "source_column": "action",
+          "value": "submit",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/043_subsidy_event_time.sql#L4"
+        },
+        {
+          "source_table": "subsidy_events",
+          "source_column": "action",
+          "value": "award",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/043_subsidy_event_time.sql#L4"
+        },
+        {
+          "source_table": "subsidy_events",
+          "source_column": "action",
+          "value": "received",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/043_subsidy_event_time.sql#L4"
+        },
+        {
+          "source_table": "subsidy_events",
+          "source_column": "action",
+          "value": "refund",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/043_subsidy_event_time.sql#L4"
+        },
+        {
+          "source_table": "subsidy_events",
+          "source_column": "action",
+          "value": "reject",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/043_subsidy_event_time.sql#L4"
+        },
+        {
+          "source_table": "subsidy_events",
+          "source_column": "action",
+          "value": "withdraw",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/043_subsidy_event_time.sql#L4"
+        },
+        {
+          "source_table": "subsidy_events",
+          "source_column": "action",
+          "value": "correct",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/043_subsidy_event_time.sql#L4"
+        },
+        {
+          "source_table": "research_reviews",
+          "source_column": "action",
+          "value": "approve",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L8"
+        },
+        {
+          "source_table": "research_reviews",
+          "source_column": "action",
+          "value": "withdraw",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L8"
+        },
+        {
+          "source_table": "research_observations",
+          "source_column": "kind",
+          "value": "field",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L13"
+        },
+        {
+          "source_table": "research_observations",
+          "source_column": "kind",
+          "value": "lab_report",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L13"
+        },
+        {
+          "source_table": "research_results",
+          "source_column": "claim_level",
+          "value": "verifiable",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L19"
+        },
+        {
+          "source_table": "research_results",
+          "source_column": "claim_level",
+          "value": "official",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L19"
+        },
+        {
+          "source_table": "research_results",
+          "source_column": "claim_level",
+          "value": "self_reported",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L19"
+        },
+        {
+          "source_table": "research_result_reviews",
+          "source_column": "action",
+          "value": "approve",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L24"
+        },
+        {
+          "source_table": "research_result_reviews",
+          "source_column": "action",
+          "value": "withdraw",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L24"
+        },
+        {
+          "source_table": "management_reports",
+          "source_column": "state",
+          "value": "queued",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L28"
+        },
+        {
+          "source_table": "management_reports",
+          "source_column": "state",
+          "value": "running",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L28"
+        },
+        {
+          "source_table": "management_reports",
+          "source_column": "state",
+          "value": "complete",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L28"
+        },
+        {
+          "source_table": "management_reports",
+          "source_column": "state",
+          "value": "failed",
+          "meaning": "源CHECK直接枚举；保留机器值，中文语义待业务确认。",
+          "source_url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L28"
+        }
+      ]
+    }
+  ]
+}

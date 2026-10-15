@@ -1,0 +1,576 @@
+{
+  "package_id": "lzhu.research",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:research:",
+  "label": "科研试验",
+  "description": "试验方案、观测、结果主张和审核。 固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。此包定义来源系统记录类；不是已经完成农业业务概念等价对齐的目标本体。",
+  "types": [
+    {
+      "type_id": "lzhu:research_protocols",
+      "identity_type": "lzhu:research_protocols",
+      "label": "科研试验方案",
+      "description": "定义问题、基线、地块、指标、时段和停止规则。 来源表 research_protocols；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:research_reviews",
+      "identity_type": "lzhu:research_reviews",
+      "label": "科研方案审核",
+      "description": "保存试验方案批准或撤回的业务审核事件。 来源表 research_reviews；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:research_observations",
+      "identity_type": "lzhu:research_observations",
+      "label": "科研观测记录",
+      "description": "保存地块样本指标、方法、缺失原因或实验室报告证据。 来源表 research_observations；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:research_results",
+      "identity_type": "lzhu:research_results",
+      "label": "科研结果陈述",
+      "description": "保存按方案形成的主张层级、输入和摘要，不自动证明结论。 来源表 research_results；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:research_result_reviews",
+      "identity_type": "lzhu:research_result_reviews",
+      "label": "科研结果审核",
+      "description": "保存科研结果批准或撤回的业务审核事件。 来源表 research_result_reviews；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    }
+  ],
+  "properties": [
+    {
+      "property_id": "lzhu:research_protocols.id",
+      "label": "科研试验方案 · 记录标识",
+      "description": "来源记录属性 research_protocols.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:research_protocols"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_protocols.title",
+      "label": "科研试验方案 · 标题",
+      "description": "来源记录属性 research_protocols.title。",
+      "applies_to": [
+        "lzhu:research_protocols"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_protocols.question",
+      "label": "科研试验方案 · 提问内容",
+      "description": "来源记录属性 research_protocols.question。",
+      "applies_to": [
+        "lzhu:research_protocols"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_protocols.baseline",
+      "label": "科研试验方案 · 基线",
+      "description": "来源记录属性 research_protocols.baseline。",
+      "applies_to": [
+        "lzhu:research_protocols"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_protocols.starts_at",
+      "label": "科研试验方案 · 计划开始时间",
+      "description": "来源记录属性 research_protocols.starts_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:research_protocols"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_protocols.ends_at",
+      "label": "科研试验方案 · 计划结束时间",
+      "description": "来源记录属性 research_protocols.ends_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:research_protocols"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_protocols.testing_plan",
+      "label": "科研试验方案 · 检测方案",
+      "description": "来源记录属性 research_protocols.testing_plan。",
+      "applies_to": [
+        "lzhu:research_protocols"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_protocols.stop_rules",
+      "label": "科研试验方案 · 停止规则",
+      "description": "来源记录属性 research_protocols.stop_rules。",
+      "applies_to": [
+        "lzhu:research_protocols"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_protocols.source_ref",
+      "label": "科研试验方案 · 来源引用",
+      "description": "来源记录属性 research_protocols.source_ref。",
+      "applies_to": [
+        "lzhu:research_protocols"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_protocols.version",
+      "label": "科研试验方案 · 版本",
+      "description": "来源记录属性 research_protocols.version。",
+      "applies_to": [
+        "lzhu:research_protocols"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_protocols.created_at",
+      "label": "科研试验方案 · 创建时间",
+      "description": "来源记录属性 research_protocols.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:research_protocols"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_reviews.id",
+      "label": "科研方案审核 · 记录标识",
+      "description": "来源记录属性 research_reviews.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:research_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_reviews.seq",
+      "label": "科研方案审核 · 序号",
+      "description": "来源记录属性 research_reviews.seq。",
+      "applies_to": [
+        "lzhu:research_reviews"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_reviews.action",
+      "label": "科研方案审核 · 动作",
+      "description": "来源记录属性 research_reviews.action。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:research_reviews"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "approve",
+        "withdraw"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_reviews.evidence",
+      "label": "科研方案审核 · 依据材料",
+      "description": "来源记录属性 research_reviews.evidence。",
+      "applies_to": [
+        "lzhu:research_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_reviews.created_at",
+      "label": "科研方案审核 · 创建时间",
+      "description": "来源记录属性 research_reviews.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:research_reviews"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_observations.id",
+      "label": "科研观测记录 · 记录标识",
+      "description": "来源记录属性 research_observations.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:research_observations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_observations.metric",
+      "label": "科研观测记录 · 指标",
+      "description": "来源记录属性 research_observations.metric。",
+      "applies_to": [
+        "lzhu:research_observations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_observations.sample_key",
+      "label": "科研观测记录 · 样本键",
+      "description": "来源记录属性 research_observations.sample_key。",
+      "applies_to": [
+        "lzhu:research_observations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_observations.value",
+      "label": "科研观测记录 · 数值或内容",
+      "description": "来源记录属性 research_observations.value。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:research_observations"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_observations.unit",
+      "label": "科研观测记录 · 单位",
+      "description": "来源记录属性 research_observations.unit。",
+      "applies_to": [
+        "lzhu:research_observations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_observations.observed_at",
+      "label": "科研观测记录 · 观测时间",
+      "description": "来源记录属性 research_observations.observed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:research_observations"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_observations.method",
+      "label": "科研观测记录 · 方法",
+      "description": "来源记录属性 research_observations.method。",
+      "applies_to": [
+        "lzhu:research_observations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_observations.kind",
+      "label": "科研观测记录 · 种类",
+      "description": "来源记录属性 research_observations.kind。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:research_observations"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "field",
+        "lab_report"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_observations.agency",
+      "label": "科研观测记录 · 机构",
+      "description": "来源记录属性 research_observations.agency。",
+      "applies_to": [
+        "lzhu:research_observations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_observations.report_ref",
+      "label": "科研观测记录 · 报告引用",
+      "description": "来源记录属性 research_observations.report_ref。",
+      "applies_to": [
+        "lzhu:research_observations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_observations.missing_reason",
+      "label": "科研观测记录 · 缺失原因",
+      "description": "来源记录属性 research_observations.missing_reason。",
+      "applies_to": [
+        "lzhu:research_observations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_observations.evidence",
+      "label": "科研观测记录 · 依据材料",
+      "description": "来源记录属性 research_observations.evidence。",
+      "applies_to": [
+        "lzhu:research_observations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_observations.version",
+      "label": "科研观测记录 · 版本",
+      "description": "来源记录属性 research_observations.version。",
+      "applies_to": [
+        "lzhu:research_observations"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_observations.created_at",
+      "label": "科研观测记录 · 创建时间",
+      "description": "来源记录属性 research_observations.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:research_observations"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_results.id",
+      "label": "科研结果陈述 · 记录标识",
+      "description": "来源记录属性 research_results.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:research_results"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_results.title",
+      "label": "科研结果陈述 · 标题",
+      "description": "来源记录属性 research_results.title。",
+      "applies_to": [
+        "lzhu:research_results"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_results.claim",
+      "label": "科研结果陈述 · 申请或认领内容",
+      "description": "来源记录属性 research_results.claim。",
+      "applies_to": [
+        "lzhu:research_results"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_results.claim_level",
+      "label": "科研结果陈述 · 声明层级",
+      "description": "来源记录属性 research_results.claim_level。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:research_results"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "verifiable",
+        "official",
+        "self_reported"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_results.source_ref",
+      "label": "科研结果陈述 · 来源引用",
+      "description": "来源记录属性 research_results.source_ref。",
+      "applies_to": [
+        "lzhu:research_results"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_results.input_hash",
+      "label": "科研结果陈述 · 输入内容哈希",
+      "description": "来源记录属性 research_results.input_hash。",
+      "applies_to": [
+        "lzhu:research_results"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_results.version",
+      "label": "科研结果陈述 · 版本",
+      "description": "来源记录属性 research_results.version。",
+      "applies_to": [
+        "lzhu:research_results"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_results.created_at",
+      "label": "科研结果陈述 · 创建时间",
+      "description": "来源记录属性 research_results.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:research_results"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_result_reviews.id",
+      "label": "科研结果审核 · 记录标识",
+      "description": "来源记录属性 research_result_reviews.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:research_result_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_result_reviews.seq",
+      "label": "科研结果审核 · 序号",
+      "description": "来源记录属性 research_result_reviews.seq。",
+      "applies_to": [
+        "lzhu:research_result_reviews"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_result_reviews.action",
+      "label": "科研结果审核 · 动作",
+      "description": "来源记录属性 research_result_reviews.action。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:research_result_reviews"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "approve",
+        "withdraw"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_result_reviews.evidence",
+      "label": "科研结果审核 · 依据材料",
+      "description": "来源记录属性 research_result_reviews.evidence。",
+      "applies_to": [
+        "lzhu:research_result_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:research_result_reviews.created_at",
+      "label": "科研结果审核 · 创建时间",
+      "description": "来源记录属性 research_result_reviews.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:research_result_reviews"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    }
+  ],
+  "predicates": [],
+  "dependencies": []
+}

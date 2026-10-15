@@ -1,0 +1,1259 @@
+{
+  "package_id": "lzhu.imagery",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:imagery:",
+  "label": "媒体与无人机",
+  "description": "媒体原件、摄像头事件、航次、覆盖与栅格资料。 固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。此包定义来源系统记录类；不是已经完成农业业务概念等价对齐的目标本体。",
+  "types": [
+    {
+      "type_id": "lzhu:media_assets",
+      "identity_type": "lzhu:media_assets",
+      "label": "媒体原件资产",
+      "description": "图像、视频及其他媒体原件的身份、来源和保存元数据。 来源表 media_assets；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:camera_events",
+      "identity_type": "lzhu:camera_events",
+      "label": "摄像头来源事件",
+      "description": "摄像头供应方上报的事件及原始载荷，不自动视为农业结论。 来源表 camera_events；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:flights",
+      "identity_type": "lzhu:flights",
+      "label": "无人机航次",
+      "description": "无人机一次飞行采集的时段、设备和来源条件。 来源表 flights；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:flight_files",
+      "identity_type": "lzhu:flight_files",
+      "label": "航次文件",
+      "description": "航次产生或关联的文件清单与媒体原件引用。 来源表 flight_files；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:flight_annotations",
+      "identity_type": "lzhu:flight_annotations",
+      "label": "航次标注",
+      "description": "围绕航次资料登记的人工或外部标注及其来源。 来源表 flight_annotations；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:ezviz_receipts",
+      "identity_type": "lzhu:ezviz_receipts",
+      "label": "萤石原始回调证据",
+      "description": "供应方回调原文、接收时间与验证状态，区别于解析后的摄像头事件。 来源表 ezviz_receipts；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:dji_snapshots",
+      "identity_type": "lzhu:dji_snapshots",
+      "label": "无人机云平台快照",
+      "description": "外部无人机平台返回的时间点资料快照，保留来源版本。 来源表 dji_snapshots；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:dji_resources",
+      "identity_type": "lzhu:dji_resources",
+      "label": "无人机云平台资源",
+      "description": "外部无人机平台资源及本地媒体原件之间的登记关联。 来源表 dji_resources；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:flight_coverages",
+      "identity_type": "lzhu:flight_coverages",
+      "label": "航次覆盖范围",
+      "description": "航次覆盖几何、坐标转换和版本证据。 来源表 flight_coverages；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:flight_rasters",
+      "identity_type": "lzhu:flight_rasters",
+      "label": "航次栅格产品",
+      "description": "航次生成栅格文件的地理范围和空间元数据。 来源表 flight_rasters；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    }
+  ],
+  "properties": [
+    {
+      "property_id": "lzhu:media_assets.id",
+      "label": "媒体原件资产 · 记录标识",
+      "description": "来源记录属性 media_assets.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.submission_key",
+      "label": "媒体原件资产 · 提交去重键",
+      "description": "来源记录属性 media_assets.submission_key。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.request_key",
+      "label": "媒体原件资产 · 请求幂等键",
+      "description": "来源记录属性 media_assets.request_key。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.content_hash",
+      "label": "媒体原件资产 · 内容哈希",
+      "description": "来源记录属性 media_assets.content_hash。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.checksum",
+      "label": "媒体原件资产 · 校验值",
+      "description": "来源记录属性 media_assets.checksum。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.byte_length",
+      "label": "媒体原件资产 · 字节长度",
+      "description": "来源记录属性 media_assets.byte_length。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.name",
+      "label": "媒体原件资产 · 名称",
+      "description": "来源记录属性 media_assets.name。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.mime",
+      "label": "媒体原件资产 · 媒体MIME类型",
+      "description": "来源记录属性 media_assets.mime。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.storage_key",
+      "label": "媒体原件资产 · 存储键",
+      "description": "来源记录属性 media_assets.storage_key。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.backup_key",
+      "label": "媒体原件资产 · 备份键",
+      "description": "来源记录属性 media_assets.backup_key。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.captured_at",
+      "label": "媒体原件资产 · 采集时间",
+      "description": "来源记录属性 media_assets.captured_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.version",
+      "label": "媒体原件资产 · 版本",
+      "description": "来源记录属性 media_assets.version。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.source",
+      "label": "媒体原件资产 · 来源内容",
+      "description": "来源记录属性 media_assets.source。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.ingest_state",
+      "label": "媒体原件资产 · 接入状态",
+      "description": "来源记录属性 media_assets.ingest_state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "pending",
+        "complete",
+        "failed"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.backup_state",
+      "label": "媒体原件资产 · 备份状态",
+      "description": "来源记录属性 media_assets.backup_state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "pending",
+        "verified",
+        "failed"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.backup_error",
+      "label": "媒体原件资产 · 备用方案错误",
+      "description": "来源记录属性 media_assets.backup_error。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:media_assets.created_at",
+      "label": "媒体原件资产 · 创建时间",
+      "description": "来源记录属性 media_assets.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:media_assets"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:camera_events.id",
+      "label": "摄像头来源事件 · 记录标识",
+      "description": "来源记录属性 camera_events.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:camera_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:camera_events.external_event_id",
+      "label": "摄像头来源事件 · 外部事件编号",
+      "description": "来源记录属性 camera_events.external_event_id。",
+      "applies_to": [
+        "lzhu:camera_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:camera_events.contract_version",
+      "label": "摄像头来源事件 · 契约版本",
+      "description": "来源记录属性 camera_events.contract_version。",
+      "applies_to": [
+        "lzhu:camera_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:camera_events.occurred_at",
+      "label": "摄像头来源事件 · 业务发生时间",
+      "description": "来源记录属性 camera_events.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:camera_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:camera_events.received_at",
+      "label": "摄像头来源事件 · 接收时间",
+      "description": "来源记录属性 camera_events.received_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:camera_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:camera_events.event_type",
+      "label": "摄像头来源事件 · 事件类型",
+      "description": "来源记录属性 camera_events.event_type。",
+      "applies_to": [
+        "lzhu:camera_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:camera_events.payload_hash",
+      "label": "摄像头来源事件 · 载荷哈希",
+      "description": "来源记录属性 camera_events.payload_hash。",
+      "applies_to": [
+        "lzhu:camera_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:camera_events.image_state",
+      "label": "摄像头来源事件 · 图像处理状态",
+      "description": "来源记录属性 camera_events.image_state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:camera_events"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "pending",
+        "complete",
+        "failed"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:camera_events.image_error",
+      "label": "摄像头来源事件 · 图像处理错误",
+      "description": "来源记录属性 camera_events.image_error。",
+      "applies_to": [
+        "lzhu:camera_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:camera_events.model_queue_error",
+      "label": "摄像头来源事件 · 模型队列错误",
+      "description": "来源记录属性 camera_events.model_queue_error。",
+      "applies_to": [
+        "lzhu:camera_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flights.id",
+      "label": "无人机航次 · 记录标识",
+      "description": "来源记录属性 flights.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:flights"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flights.external_id",
+      "label": "无人机航次 · 外部编号",
+      "description": "来源记录属性 flights.external_id。",
+      "applies_to": [
+        "lzhu:flights"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flights.started_at",
+      "label": "无人机航次 · 实际开始时间",
+      "description": "来源记录属性 flights.started_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:flights"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flights.finished_at",
+      "label": "无人机航次 · 执行结束时间",
+      "description": "来源记录属性 flights.finished_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:flights"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flights.aircraft_model",
+      "label": "无人机航次 · 航空器型号",
+      "description": "来源记录属性 flights.aircraft_model。",
+      "applies_to": [
+        "lzhu:flights"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flights.dock_model",
+      "label": "无人机航次 · 机库型号",
+      "description": "来源记录属性 flights.dock_model。",
+      "applies_to": [
+        "lzhu:flights"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flights.provider_version",
+      "label": "无人机航次 · 提供方版本",
+      "description": "来源记录属性 flights.provider_version。",
+      "applies_to": [
+        "lzhu:flights"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flights.source_ref",
+      "label": "无人机航次 · 来源引用",
+      "description": "来源记录属性 flights.source_ref。",
+      "applies_to": [
+        "lzhu:flights"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flights.crs",
+      "label": "无人机航次 · 坐标参考系",
+      "description": "来源记录属性 flights.crs。",
+      "applies_to": [
+        "lzhu:flights"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flights.manifest_hash",
+      "label": "无人机航次 · 清单内容哈希",
+      "description": "来源记录属性 flights.manifest_hash。",
+      "applies_to": [
+        "lzhu:flights"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flights.created_at",
+      "label": "无人机航次 · 创建时间",
+      "description": "来源记录属性 flights.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:flights"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_files.id",
+      "label": "航次文件 · 记录标识",
+      "description": "来源记录属性 flight_files.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:flight_files"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_files.external_file_id",
+      "label": "航次文件 · 外部文件编号",
+      "description": "来源记录属性 flight_files.external_file_id。",
+      "applies_to": [
+        "lzhu:flight_files"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_files.name",
+      "label": "航次文件 · 名称",
+      "description": "来源记录属性 flight_files.name。",
+      "applies_to": [
+        "lzhu:flight_files"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_files.kind",
+      "label": "航次文件 · 种类",
+      "description": "来源记录属性 flight_files.kind。",
+      "applies_to": [
+        "lzhu:flight_files"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_files.version",
+      "label": "航次文件 · 版本",
+      "description": "来源记录属性 flight_files.version。",
+      "applies_to": [
+        "lzhu:flight_files"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_files.checksum",
+      "label": "航次文件 · 校验值",
+      "description": "来源记录属性 flight_files.checksum。",
+      "applies_to": [
+        "lzhu:flight_files"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_files.processing_source",
+      "label": "航次文件 · 处理来源",
+      "description": "来源记录属性 flight_files.processing_source。",
+      "applies_to": [
+        "lzhu:flight_files"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_annotations.id",
+      "label": "航次标注 · 记录标识",
+      "description": "来源记录属性 flight_annotations.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:flight_annotations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_annotations.note",
+      "label": "航次标注 · 备注",
+      "description": "来源记录属性 flight_annotations.note。",
+      "applies_to": [
+        "lzhu:flight_annotations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_annotations.created_at",
+      "label": "航次标注 · 创建时间",
+      "description": "来源记录属性 flight_annotations.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:flight_annotations"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_annotations.source_ref",
+      "label": "航次标注 · 来源引用",
+      "description": "来源记录属性 flight_annotations.source_ref。",
+      "applies_to": [
+        "lzhu:flight_annotations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_annotations.version",
+      "label": "航次标注 · 版本",
+      "description": "来源记录属性 flight_annotations.version。",
+      "applies_to": [
+        "lzhu:flight_annotations"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_annotations.request_key",
+      "label": "航次标注 · 请求幂等键",
+      "description": "来源记录属性 flight_annotations.request_key。",
+      "applies_to": [
+        "lzhu:flight_annotations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_annotations.input_hash",
+      "label": "航次标注 · 输入内容哈希",
+      "description": "来源记录属性 flight_annotations.input_hash。",
+      "applies_to": [
+        "lzhu:flight_annotations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.id",
+      "label": "萤石原始回调证据 · 记录标识",
+      "description": "来源记录属性 ezviz_receipts.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.configuration_version",
+      "label": "萤石原始回调证据 · 配置版本",
+      "description": "来源记录属性 ezviz_receipts.configuration_version。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.source_contract_ref",
+      "label": "萤石原始回调证据 · 来源契约引用",
+      "description": "来源记录属性 ezviz_receipts.source_contract_ref。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.message_id",
+      "label": "萤石原始回调证据 · 消息标识",
+      "description": "来源记录属性 ezviz_receipts.message_id。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.message_type",
+      "label": "萤石原始回调证据 · 消息类型",
+      "description": "来源记录属性 ezviz_receipts.message_type。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.device_serial",
+      "label": "萤石原始回调证据 · 设备序列号",
+      "description": "来源记录属性 ezviz_receipts.device_serial。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.channel_no",
+      "label": "萤石原始回调证据 · 通道编号",
+      "description": "来源记录属性 ezviz_receipts.channel_no。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.pushed_at",
+      "label": "萤石原始回调证据 · 推送时间",
+      "description": "来源记录属性 ezviz_receipts.pushed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.signature_at",
+      "label": "萤石原始回调证据 · 签名时间",
+      "description": "来源记录属性 ezviz_receipts.signature_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.received_at",
+      "label": "萤石原始回调证据 · 接收时间",
+      "description": "来源记录属性 ezviz_receipts.received_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.raw_sha256",
+      "label": "萤石原始回调证据 · 原文SHA256",
+      "description": "来源记录属性 ezviz_receipts.raw_sha256。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.content_hash",
+      "label": "萤石原始回调证据 · 内容哈希",
+      "description": "来源记录属性 ezviz_receipts.content_hash。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.encrypted_message",
+      "label": "萤石原始回调证据 · 加密消息",
+      "description": "来源记录属性 ezviz_receipts.encrypted_message。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.state",
+      "label": "萤石原始回调证据 · 状态",
+      "description": "来源记录属性 ezviz_receipts.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "queued",
+        "processed",
+        "awaiting_contract",
+        "blocked",
+        "failed"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.image_state",
+      "label": "萤石原始回调证据 · 图像处理状态",
+      "description": "来源记录属性 ezviz_receipts.image_state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "pending",
+        "none",
+        "queued",
+        "encrypted",
+        "disabled",
+        "failed"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.image_error",
+      "label": "萤石原始回调证据 · 图像处理错误",
+      "description": "来源记录属性 ezviz_receipts.image_error。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.error_code",
+      "label": "萤石原始回调证据 · 错误代码",
+      "description": "来源记录属性 ezviz_receipts.error_code。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:ezviz_receipts.processed_at",
+      "label": "萤石原始回调证据 · 处理时间",
+      "description": "来源记录属性 ezviz_receipts.processed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:ezviz_receipts"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:dji_snapshots.id",
+      "label": "无人机云平台快照 · 记录标识",
+      "description": "来源记录属性 dji_snapshots.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:dji_snapshots"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:dji_snapshots.configuration_version",
+      "label": "无人机云平台快照 · 配置版本",
+      "description": "来源记录属性 dji_snapshots.configuration_version。",
+      "applies_to": [
+        "lzhu:dji_snapshots"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:dji_snapshots.task_uuid",
+      "label": "无人机云平台快照 · 外部任务唯一编号",
+      "description": "来源记录属性 dji_snapshots.task_uuid。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:dji_snapshots"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:dji_snapshots.metadata_hash",
+      "label": "无人机云平台快照 · 元数据哈希",
+      "description": "来源记录属性 dji_snapshots.metadata_hash。",
+      "applies_to": [
+        "lzhu:dji_snapshots"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:dji_snapshots.received_at",
+      "label": "无人机云平台快照 · 接收时间",
+      "description": "来源记录属性 dji_snapshots.received_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:dji_snapshots"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:dji_snapshots.confirmation_evidence",
+      "label": "无人机云平台快照 · 确认依据",
+      "description": "来源记录属性 dji_snapshots.confirmation_evidence。",
+      "applies_to": [
+        "lzhu:dji_snapshots"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:dji_resources.id",
+      "label": "无人机云平台资源 · 记录标识",
+      "description": "来源记录属性 dji_resources.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:dji_resources"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:dji_resources.external_id",
+      "label": "无人机云平台资源 · 外部编号",
+      "description": "来源记录属性 dji_resources.external_id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:dji_resources"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:dji_resources.encrypted_url",
+      "label": "无人机云平台资源 · 加密资源地址",
+      "description": "来源记录属性 dji_resources.encrypted_url。",
+      "applies_to": [
+        "lzhu:dji_resources"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_coverages.id",
+      "label": "航次覆盖范围 · 记录标识",
+      "description": "来源记录属性 flight_coverages.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:flight_coverages"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_coverages.version",
+      "label": "航次覆盖范围 · 版本",
+      "description": "来源记录属性 flight_coverages.version。",
+      "applies_to": [
+        "lzhu:flight_coverages"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_coverages.source_crs",
+      "label": "航次覆盖范围 · 来源坐标参考系",
+      "description": "来源记录属性 flight_coverages.source_crs。",
+      "applies_to": [
+        "lzhu:flight_coverages"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_coverages.source_ref",
+      "label": "航次覆盖范围 · 来源引用",
+      "description": "来源记录属性 flight_coverages.source_ref。",
+      "applies_to": [
+        "lzhu:flight_coverages"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_coverages.status",
+      "label": "航次覆盖范围 · 状态",
+      "description": "来源记录属性 flight_coverages.status。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:flight_coverages"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "draft",
+        "verified"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_coverages.request_key",
+      "label": "航次覆盖范围 · 请求幂等键",
+      "description": "来源记录属性 flight_coverages.request_key。",
+      "applies_to": [
+        "lzhu:flight_coverages"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_coverages.input_hash",
+      "label": "航次覆盖范围 · 输入内容哈希",
+      "description": "来源记录属性 flight_coverages.input_hash。",
+      "applies_to": [
+        "lzhu:flight_coverages"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_coverages.created_at",
+      "label": "航次覆盖范围 · 创建时间",
+      "description": "来源记录属性 flight_coverages.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:flight_coverages"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_rasters.id",
+      "label": "航次栅格产品 · 记录标识",
+      "description": "来源记录属性 flight_rasters.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:flight_rasters"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_rasters.source_checksum",
+      "label": "航次栅格产品 · 来源校验摘要",
+      "description": "来源记录属性 flight_rasters.source_checksum。",
+      "applies_to": [
+        "lzhu:flight_rasters"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_rasters.source_ref",
+      "label": "航次栅格产品 · 来源引用",
+      "description": "来源记录属性 flight_rasters.source_ref。",
+      "applies_to": [
+        "lzhu:flight_rasters"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_rasters.request_key",
+      "label": "航次栅格产品 · 请求幂等键",
+      "description": "来源记录属性 flight_rasters.request_key。",
+      "applies_to": [
+        "lzhu:flight_rasters"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_rasters.input_hash",
+      "label": "航次栅格产品 · 输入内容哈希",
+      "description": "来源记录属性 flight_rasters.input_hash。",
+      "applies_to": [
+        "lzhu:flight_rasters"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_rasters.state",
+      "label": "航次栅格产品 · 状态",
+      "description": "来源记录属性 flight_rasters.state。",
+      "applies_to": [
+        "lzhu:flight_rasters"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_rasters.error_code",
+      "label": "航次栅格产品 · 错误代码",
+      "description": "来源记录属性 flight_rasters.error_code。",
+      "applies_to": [
+        "lzhu:flight_rasters"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_rasters.created_at",
+      "label": "航次栅格产品 · 创建时间",
+      "description": "来源记录属性 flight_rasters.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:flight_rasters"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:flight_rasters.completed_at",
+      "label": "航次栅格产品 · 完成时间",
+      "description": "来源记录属性 flight_rasters.completed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:flight_rasters"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    }
+  ],
+  "predicates": [],
+  "dependencies": []
+}

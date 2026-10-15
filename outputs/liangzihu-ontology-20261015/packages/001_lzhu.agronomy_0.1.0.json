@@ -1,0 +1,697 @@
+{
+  "package_id": "lzhu.agronomy",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:agronomy:",
+  "label": "农艺与作物资料",
+  "description": "农事日历、作物影像分析、状态标注、光谱产品及农技公告。 固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。此包定义来源系统记录类；不是已经完成农业业务概念等价对齐的目标本体。",
+  "types": [
+    {
+      "type_id": "lzhu:calendar_versions",
+      "identity_type": "lzhu:calendar_versions",
+      "label": "农事日历版本",
+      "description": "按作物品种阶段登记的日历计划及来源版本，不等同实际发生记录。 来源表 calendar_versions；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:crop_analyses",
+      "identity_type": "lzhu:crop_analyses",
+      "label": "作物影像分析",
+      "description": "保存指定影像和模型版本的分析任务及结果，不直接等同现场事实。 来源表 crop_analyses；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:crop_labels",
+      "identity_type": "lzhu:crop_labels",
+      "label": "作物状态标注",
+      "description": "保存对分析结果的冠层、倒伏、积水等有证据标注。 来源表 crop_labels；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:spectral_products",
+      "identity_type": "lzhu:spectral_products",
+      "label": "光谱指数产品",
+      "description": "保存光谱指数产品、标定、原件、算法版本和处理结果。 来源表 spectral_products；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:agronomy_notices",
+      "identity_type": "lzhu:agronomy_notices",
+      "label": "农技公告",
+      "description": "保存机构农技内容及适用区域作物、有效期和审核状态。 来源表 agronomy_notices；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    }
+  ],
+  "properties": [
+    {
+      "property_id": "lzhu:calendar_versions.id",
+      "label": "农事日历版本 · 记录标识",
+      "description": "来源记录属性 calendar_versions.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:calendar_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:calendar_versions.name",
+      "label": "农事日历版本 · 名称",
+      "description": "来源记录属性 calendar_versions.name。",
+      "applies_to": [
+        "lzhu:calendar_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:calendar_versions.version",
+      "label": "农事日历版本 · 版本",
+      "description": "来源记录属性 calendar_versions.version。",
+      "applies_to": [
+        "lzhu:calendar_versions"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:calendar_versions.species",
+      "label": "农事日历版本 · 物种",
+      "description": "来源记录属性 calendar_versions.species。",
+      "applies_to": [
+        "lzhu:calendar_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:calendar_versions.variety",
+      "label": "农事日历版本 · 品种",
+      "description": "来源记录属性 calendar_versions.variety。",
+      "applies_to": [
+        "lzhu:calendar_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:calendar_versions.stage",
+      "label": "农事日历版本 · 阶段",
+      "description": "来源记录属性 calendar_versions.stage。",
+      "applies_to": [
+        "lzhu:calendar_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:calendar_versions.source_ref",
+      "label": "农事日历版本 · 来源引用",
+      "description": "来源记录属性 calendar_versions.source_ref。",
+      "applies_to": [
+        "lzhu:calendar_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:calendar_versions.effective_from",
+      "label": "农事日历版本 · 生效开始时间",
+      "description": "来源记录属性 calendar_versions.effective_from。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:calendar_versions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:calendar_versions.approved_at",
+      "label": "农事日历版本 · 批准时间",
+      "description": "来源记录属性 calendar_versions.approved_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:calendar_versions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:calendar_versions.retired_at",
+      "label": "农事日历版本 · 停用时间",
+      "description": "来源记录属性 calendar_versions.retired_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:calendar_versions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:calendar_versions.created_at",
+      "label": "农事日历版本 · 创建时间",
+      "description": "来源记录属性 calendar_versions.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:calendar_versions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:crop_analyses.id",
+      "label": "作物影像分析 · 记录标识",
+      "description": "来源记录属性 crop_analyses.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:crop_analyses"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:crop_analyses.captured_at",
+      "label": "作物影像分析 · 采集时间",
+      "description": "来源记录属性 crop_analyses.captured_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:crop_analyses"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:crop_analyses.checksum",
+      "label": "作物影像分析 · 校验值",
+      "description": "来源记录属性 crop_analyses.checksum。",
+      "applies_to": [
+        "lzhu:crop_analyses"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:crop_analyses.model_version",
+      "label": "作物影像分析 · 模型版本",
+      "description": "来源记录属性 crop_analyses.model_version。",
+      "applies_to": [
+        "lzhu:crop_analyses"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:crop_analyses.evaluation_mode",
+      "label": "作物影像分析 · 评估模式",
+      "description": "来源记录属性 crop_analyses.evaluation_mode。",
+      "applies_to": [
+        "lzhu:crop_analyses"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:crop_analyses.state",
+      "label": "作物影像分析 · 状态",
+      "description": "来源记录属性 crop_analyses.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:crop_analyses"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "queued",
+        "running",
+        "complete",
+        "failed",
+        "blocked"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:crop_analyses.error_code",
+      "label": "作物影像分析 · 错误代码",
+      "description": "来源记录属性 crop_analyses.error_code。",
+      "applies_to": [
+        "lzhu:crop_analyses"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:crop_analyses.created_at",
+      "label": "作物影像分析 · 创建时间",
+      "description": "来源记录属性 crop_analyses.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:crop_analyses"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:crop_analyses.completed_at",
+      "label": "作物影像分析 · 完成时间",
+      "description": "来源记录属性 crop_analyses.completed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:crop_analyses"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:crop_labels.id",
+      "label": "作物状态标注 · 记录标识",
+      "description": "来源记录属性 crop_labels.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:crop_labels"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:crop_labels.label",
+      "label": "作物状态标注 · 标签",
+      "description": "来源记录属性 crop_labels.label。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:crop_labels"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "canopy",
+        "lodging",
+        "waterlogging",
+        "bare",
+        "unknown"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:crop_labels.evidence",
+      "label": "作物状态标注 · 依据材料",
+      "description": "来源记录属性 crop_labels.evidence。",
+      "applies_to": [
+        "lzhu:crop_labels"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:crop_labels.observed_at",
+      "label": "作物状态标注 · 观测时间",
+      "description": "来源记录属性 crop_labels.observed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:crop_labels"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:crop_labels.created_at",
+      "label": "作物状态标注 · 创建时间",
+      "description": "来源记录属性 crop_labels.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:crop_labels"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:spectral_products.id",
+      "label": "光谱指数产品 · 记录标识",
+      "description": "来源记录属性 spectral_products.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:spectral_products"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:spectral_products.captured_at",
+      "label": "光谱指数产品 · 采集时间",
+      "description": "来源记录属性 spectral_products.captured_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:spectral_products"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:spectral_products.source_ref",
+      "label": "光谱指数产品 · 来源引用",
+      "description": "来源记录属性 spectral_products.source_ref。",
+      "applies_to": [
+        "lzhu:spectral_products"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:spectral_products.processor",
+      "label": "光谱指数产品 · 处理器名称",
+      "description": "来源记录属性 spectral_products.processor。",
+      "applies_to": [
+        "lzhu:spectral_products"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:spectral_products.index_kind",
+      "label": "光谱指数产品 · 指数类别",
+      "description": "来源记录属性 spectral_products.index_kind。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:spectral_products"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "NDVI",
+        "NDRE"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:spectral_products.checksum",
+      "label": "光谱指数产品 · 校验值",
+      "description": "来源记录属性 spectral_products.checksum。",
+      "applies_to": [
+        "lzhu:spectral_products"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:spectral_products.version",
+      "label": "光谱指数产品 · 版本",
+      "description": "来源记录属性 spectral_products.version。",
+      "applies_to": [
+        "lzhu:spectral_products"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:spectral_products.algorithm_version",
+      "label": "光谱指数产品 · 算法版本",
+      "description": "来源记录属性 spectral_products.algorithm_version。",
+      "applies_to": [
+        "lzhu:spectral_products"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:spectral_products.state",
+      "label": "光谱指数产品 · 状态",
+      "description": "来源记录属性 spectral_products.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:spectral_products"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "queued",
+        "running",
+        "complete",
+        "failed",
+        "blocked"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:spectral_products.error_code",
+      "label": "光谱指数产品 · 错误代码",
+      "description": "来源记录属性 spectral_products.error_code。",
+      "applies_to": [
+        "lzhu:spectral_products"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:spectral_products.created_at",
+      "label": "光谱指数产品 · 创建时间",
+      "description": "来源记录属性 spectral_products.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:spectral_products"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:spectral_products.completed_at",
+      "label": "光谱指数产品 · 完成时间",
+      "description": "来源记录属性 spectral_products.completed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:spectral_products"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:agronomy_notices.id",
+      "label": "农技公告 · 记录标识",
+      "description": "来源记录属性 agronomy_notices.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:agronomy_notices"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:agronomy_notices.title",
+      "label": "农技公告 · 标题",
+      "description": "来源记录属性 agronomy_notices.title。",
+      "applies_to": [
+        "lzhu:agronomy_notices"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:agronomy_notices.agency",
+      "label": "农技公告 · 机构",
+      "description": "来源记录属性 agronomy_notices.agency。",
+      "applies_to": [
+        "lzhu:agronomy_notices"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:agronomy_notices.source_ref",
+      "label": "农技公告 · 来源引用",
+      "description": "来源记录属性 agronomy_notices.source_ref。",
+      "applies_to": [
+        "lzhu:agronomy_notices"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:agronomy_notices.published_at",
+      "label": "农技公告 · 发布时间",
+      "description": "来源记录属性 agronomy_notices.published_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:agronomy_notices"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:agronomy_notices.valid_from",
+      "label": "农技公告 · 有效开始时间",
+      "description": "来源记录属性 agronomy_notices.valid_from。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:agronomy_notices"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:agronomy_notices.valid_until",
+      "label": "农技公告 · 有效截止时间",
+      "description": "来源记录属性 agronomy_notices.valid_until。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:agronomy_notices"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:agronomy_notices.crop",
+      "label": "农技公告 · 作物",
+      "description": "来源记录属性 agronomy_notices.crop。",
+      "applies_to": [
+        "lzhu:agronomy_notices"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:agronomy_notices.region",
+      "label": "农技公告 · 区域",
+      "description": "来源记录属性 agronomy_notices.region。",
+      "applies_to": [
+        "lzhu:agronomy_notices"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:agronomy_notices.body",
+      "label": "农技公告 · 原始报文体",
+      "description": "来源记录属性 agronomy_notices.body。",
+      "applies_to": [
+        "lzhu:agronomy_notices"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:agronomy_notices.version",
+      "label": "农技公告 · 版本",
+      "description": "来源记录属性 agronomy_notices.version。",
+      "applies_to": [
+        "lzhu:agronomy_notices"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:agronomy_notices.state",
+      "label": "农技公告 · 状态",
+      "description": "来源记录属性 agronomy_notices.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:agronomy_notices"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "draft",
+        "approved",
+        "withdrawn"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:agronomy_notices.created_at",
+      "label": "农技公告 · 创建时间",
+      "description": "来源记录属性 agronomy_notices.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:agronomy_notices"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:agronomy_notices.reviewed_at",
+      "label": "农技公告 · 审核时间",
+      "description": "来源记录属性 agronomy_notices.reviewed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:agronomy_notices"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:agronomy_notices.review_note",
+      "label": "农技公告 · 审核备注",
+      "description": "来源记录属性 agronomy_notices.review_note。",
+      "applies_to": [
+        "lzhu:agronomy_notices"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    }
+  ],
+  "predicates": [],
+  "dependencies": []
+}

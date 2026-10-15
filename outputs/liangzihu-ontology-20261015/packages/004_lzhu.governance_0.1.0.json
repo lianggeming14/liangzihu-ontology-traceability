@@ -1,0 +1,764 @@
+{
+  "package_id": "lzhu.governance",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:governance:",
+  "label": "治理与平台支撑",
+  "description": "设备控制治理、管理报告、身份授权及平台技术支撑；分类分别保留。 固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。此包定义来源系统记录类；不是已经完成农业业务概念等价对齐的目标本体。",
+  "types": [
+    {
+      "type_id": "lzhu:control_profiles",
+      "identity_type": "lzhu:control_profiles",
+      "label": "设备控制条件",
+      "description": "描述设备可控性、模式、保护及断电行为，不是用户权限。 来源表 control_profiles；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:control_rules",
+      "identity_type": "lzhu:control_rules",
+      "label": "设备控制规则",
+      "description": "保存按用途、物种和阶段定义的条件及审核版本。 来源表 control_rules；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:control_requests",
+      "identity_type": "lzhu:control_requests",
+      "label": "控制预检请求",
+      "description": "仅保存被阻断且未派发的请求与原因，不能称已执行指令。 来源表 control_requests；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:control_feedback",
+      "identity_type": "lzhu:control_feedback",
+      "label": "控制分层反馈",
+      "description": "区分请求、设备接收、电气、机械和效果层的观察证据。 来源表 control_feedback；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:control_takeovers",
+      "identity_type": "lzhu:control_takeovers",
+      "label": "人工接管记录",
+      "description": "保存现场人员接管设备时的条件、时刻和依据。 来源表 control_takeovers；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:management_reports",
+      "identity_type": "lzhu:management_reports",
+      "label": "管理报告快照",
+      "description": "保存生成任务及完成后的不可变输入与结果快照。 来源表 management_reports；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    }
+  ],
+  "properties": [
+    {
+      "property_id": "lzhu:control_profiles.id",
+      "label": "设备控制条件 · 记录标识",
+      "description": "来源记录属性 control_profiles.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:control_profiles"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_profiles.version",
+      "label": "设备控制条件 · 版本",
+      "description": "来源记录属性 control_profiles.version。",
+      "applies_to": [
+        "lzhu:control_profiles"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_profiles.permission",
+      "label": "设备控制条件 · 设备可控性许可说明",
+      "description": "来源记录属性 control_profiles.permission。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:control_profiles"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "unknown",
+        "allowed",
+        "denied"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_profiles.mode",
+      "label": "设备控制条件 · 模式",
+      "description": "来源记录属性 control_profiles.mode。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:control_profiles"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "unknown",
+        "manual",
+        "remote"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_profiles.protection",
+      "label": "设备控制条件 · 防护或保护说明",
+      "description": "来源记录属性 control_profiles.protection。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:control_profiles"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "unknown",
+        "active",
+        "clear"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_profiles.load_type",
+      "label": "设备控制条件 · 负载类型",
+      "description": "来源记录属性 control_profiles.load_type。",
+      "applies_to": [
+        "lzhu:control_profiles"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_profiles.offline_behavior",
+      "label": "设备控制条件 · 离线行为说明",
+      "description": "来源记录属性 control_profiles.offline_behavior。",
+      "applies_to": [
+        "lzhu:control_profiles"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_profiles.power_loss_behavior",
+      "label": "设备控制条件 · 断电行为说明",
+      "description": "来源记录属性 control_profiles.power_loss_behavior。",
+      "applies_to": [
+        "lzhu:control_profiles"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_profiles.power_return_behavior",
+      "label": "设备控制条件 · 来电恢复行为说明",
+      "description": "来源记录属性 control_profiles.power_return_behavior。",
+      "applies_to": [
+        "lzhu:control_profiles"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_profiles.protocol_ref",
+      "label": "设备控制条件 · 协议或方案引用",
+      "description": "来源记录属性 control_profiles.protocol_ref。",
+      "applies_to": [
+        "lzhu:control_profiles"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_profiles.feedback_ref",
+      "label": "设备控制条件 · 反馈引用",
+      "description": "来源记录属性 control_profiles.feedback_ref。",
+      "applies_to": [
+        "lzhu:control_profiles"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_profiles.valid_until",
+      "label": "设备控制条件 · 有效截止时间",
+      "description": "来源记录属性 control_profiles.valid_until。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:control_profiles"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_profiles.created_at",
+      "label": "设备控制条件 · 创建时间",
+      "description": "来源记录属性 control_profiles.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:control_profiles"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_rules.id",
+      "label": "设备控制规则 · 记录标识",
+      "description": "来源记录属性 control_rules.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:control_rules"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_rules.version",
+      "label": "设备控制规则 · 版本",
+      "description": "来源记录属性 control_rules.version。",
+      "applies_to": [
+        "lzhu:control_rules"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_rules.purpose",
+      "label": "设备控制规则 · 用途",
+      "description": "来源记录属性 control_rules.purpose。",
+      "applies_to": [
+        "lzhu:control_rules"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_rules.species",
+      "label": "设备控制规则 · 物种",
+      "description": "来源记录属性 control_rules.species。",
+      "applies_to": [
+        "lzhu:control_rules"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_rules.stage",
+      "label": "设备控制规则 · 阶段",
+      "description": "来源记录属性 control_rules.stage。",
+      "applies_to": [
+        "lzhu:control_rules"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_rules.conditions",
+      "label": "设备控制规则 · 条件",
+      "description": "来源记录属性 control_rules.conditions。",
+      "applies_to": [
+        "lzhu:control_rules"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_rules.source_ref",
+      "label": "设备控制规则 · 来源引用",
+      "description": "来源记录属性 control_rules.source_ref。",
+      "applies_to": [
+        "lzhu:control_rules"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_rules.state",
+      "label": "设备控制规则 · 状态",
+      "description": "来源记录属性 control_rules.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:control_rules"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "draft",
+        "approved",
+        "withdrawn"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_rules.created_at",
+      "label": "设备控制规则 · 创建时间",
+      "description": "来源记录属性 control_rules.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:control_rules"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_rules.reviewed_at",
+      "label": "设备控制规则 · 审核时间",
+      "description": "来源记录属性 control_rules.reviewed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:control_rules"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_rules.review_note",
+      "label": "设备控制规则 · 审核备注",
+      "description": "来源记录属性 control_rules.review_note。",
+      "applies_to": [
+        "lzhu:control_rules"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_requests.id",
+      "label": "控制预检请求 · 记录标识",
+      "description": "来源记录属性 control_requests.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:control_requests"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_requests.purpose",
+      "label": "控制预检请求 · 用途",
+      "description": "来源记录属性 control_requests.purpose。",
+      "applies_to": [
+        "lzhu:control_requests"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_requests.authorization_ref",
+      "label": "控制预检请求 · 授权依据引用",
+      "description": "来源记录属性 control_requests.authorization_ref。",
+      "applies_to": [
+        "lzhu:control_requests"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_requests.conditions",
+      "label": "控制预检请求 · 条件",
+      "description": "来源记录属性 control_requests.conditions。",
+      "applies_to": [
+        "lzhu:control_requests"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_requests.state",
+      "label": "控制预检请求 · 状态",
+      "description": "来源记录属性 control_requests.state。",
+      "applies_to": [
+        "lzhu:control_requests"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_requests.dispatched",
+      "label": "控制预检请求 · 是否已派发",
+      "description": "来源记录属性 control_requests.dispatched。",
+      "applies_to": [
+        "lzhu:control_requests"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_requests.created_at",
+      "label": "控制预检请求 · 创建时间",
+      "description": "来源记录属性 control_requests.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:control_requests"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_feedback.id",
+      "label": "控制分层反馈 · 记录标识",
+      "description": "来源记录属性 control_feedback.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:control_feedback"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_feedback.layer",
+      "label": "控制分层反馈 · 图层",
+      "description": "来源记录属性 control_feedback.layer。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:control_feedback"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "request",
+        "device_received",
+        "electrical",
+        "mechanical",
+        "effect"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_feedback.result",
+      "label": "控制分层反馈 · 结果内容",
+      "description": "来源记录属性 control_feedback.result。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:control_feedback"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "observed",
+        "not_observed",
+        "unknown"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_feedback.value",
+      "label": "控制分层反馈 · 数值或内容",
+      "description": "来源记录属性 control_feedback.value。",
+      "applies_to": [
+        "lzhu:control_feedback"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_feedback.source",
+      "label": "控制分层反馈 · 来源内容",
+      "description": "来源记录属性 control_feedback.source。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:control_feedback"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "platform_record",
+        "vendor_receipt",
+        "field_observation"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_feedback.observed_at",
+      "label": "控制分层反馈 · 观测时间",
+      "description": "来源记录属性 control_feedback.observed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:control_feedback"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_feedback.evidence",
+      "label": "控制分层反馈 · 依据材料",
+      "description": "来源记录属性 control_feedback.evidence。",
+      "applies_to": [
+        "lzhu:control_feedback"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_feedback.created_at",
+      "label": "控制分层反馈 · 创建时间",
+      "description": "来源记录属性 control_feedback.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:control_feedback"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_takeovers.id",
+      "label": "人工接管记录 · 记录标识",
+      "description": "来源记录属性 control_takeovers.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:control_takeovers"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_takeovers.person",
+      "label": "人工接管记录 · 人员",
+      "description": "来源记录属性 control_takeovers.person。",
+      "applies_to": [
+        "lzhu:control_takeovers"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_takeovers.manual_device",
+      "label": "人工接管记录 · 人工登记设备资料",
+      "description": "来源记录属性 control_takeovers.manual_device。",
+      "applies_to": [
+        "lzhu:control_takeovers"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_takeovers.conditions",
+      "label": "人工接管记录 · 条件",
+      "description": "来源记录属性 control_takeovers.conditions。",
+      "applies_to": [
+        "lzhu:control_takeovers"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_takeovers.occurred_at",
+      "label": "人工接管记录 · 业务发生时间",
+      "description": "来源记录属性 control_takeovers.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:control_takeovers"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_takeovers.evidence",
+      "label": "人工接管记录 · 依据材料",
+      "description": "来源记录属性 control_takeovers.evidence。",
+      "applies_to": [
+        "lzhu:control_takeovers"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:control_takeovers.created_at",
+      "label": "人工接管记录 · 创建时间",
+      "description": "来源记录属性 control_takeovers.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:control_takeovers"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:management_reports.id",
+      "label": "管理报告快照 · 记录标识",
+      "description": "来源记录属性 management_reports.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:management_reports"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:management_reports.from_at",
+      "label": "管理报告快照 · 区间开始时间",
+      "description": "来源记录属性 management_reports.from_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:management_reports"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:management_reports.to_at",
+      "label": "管理报告快照 · 结束时间",
+      "description": "来源记录属性 management_reports.to_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:management_reports"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:management_reports.source_ref",
+      "label": "管理报告快照 · 来源引用",
+      "description": "来源记录属性 management_reports.source_ref。",
+      "applies_to": [
+        "lzhu:management_reports"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:management_reports.definition_version",
+      "label": "管理报告快照 · 定义版本",
+      "description": "来源记录属性 management_reports.definition_version。",
+      "applies_to": [
+        "lzhu:management_reports"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:management_reports.state",
+      "label": "管理报告快照 · 状态",
+      "description": "来源记录属性 management_reports.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:management_reports"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "queued",
+        "running",
+        "complete",
+        "failed"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:management_reports.input_hash",
+      "label": "管理报告快照 · 输入内容哈希",
+      "description": "来源记录属性 management_reports.input_hash。",
+      "applies_to": [
+        "lzhu:management_reports"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:management_reports.error_code",
+      "label": "管理报告快照 · 错误代码",
+      "description": "来源记录属性 management_reports.error_code。",
+      "applies_to": [
+        "lzhu:management_reports"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:management_reports.created_at",
+      "label": "管理报告快照 · 创建时间",
+      "description": "来源记录属性 management_reports.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:management_reports"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:management_reports.finished_at",
+      "label": "管理报告快照 · 执行结束时间",
+      "description": "来源记录属性 management_reports.finished_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:management_reports"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    }
+  ],
+  "predicates": [],
+  "dependencies": []
+}

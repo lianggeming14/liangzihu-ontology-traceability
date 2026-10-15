@@ -1,0 +1,233 @@
+{
+  "authoring_library": "@oai/artifact-tool",
+  "sheets": [
+    {
+      "sheet": "领域包",
+      "rows": 18,
+      "columns": 8,
+      "first_columns": [
+        "enabled",
+        "label",
+        "package_id",
+        "version",
+        "namespace",
+        "description"
+      ]
+    },
+    {
+      "sheet": "对象类型",
+      "rows": 192,
+      "columns": 14,
+      "first_columns": [
+        "enabled",
+        "label",
+        "source_table",
+        "type_id",
+        "identity_type",
+        "package_id"
+      ]
+    },
+    {
+      "sheet": "属性定义",
+      "rows": 2114,
+      "columns": 29,
+      "first_columns": [
+        "enabled",
+        "label",
+        "source_table",
+        "source_column",
+        "value_type",
+        "handling"
+      ]
+    },
+    {
+      "sheet": "关系类型",
+      "rows": 555,
+      "columns": 29,
+      "first_columns": [
+        "enabled",
+        "label",
+        "source_table",
+        "target_table",
+        "dimension",
+        "predicate_id"
+      ]
+    },
+    {
+      "sheet": "包依赖",
+      "rows": 32,
+      "columns": 6,
+      "first_columns": [
+        "enabled",
+        "package_id",
+        "version",
+        "depends_on_package_id",
+        "depends_on_version",
+        "notes"
+      ]
+    },
+    {
+      "sheet": "源表清单",
+      "rows": 190,
+      "columns": 15,
+      "first_columns": [
+        "source_table",
+        "label",
+        "domain",
+        "classification",
+        "enabled",
+        "type_id"
+      ]
+    },
+    {
+      "sheet": "约束枚举",
+      "rows": 1155,
+      "columns": 15,
+      "first_columns": [
+        "row_kind",
+        "source_table",
+        "source_constraint",
+        "kind",
+        "source_columns",
+        "definition"
+      ]
+    },
+    {
+      "sheet": "待映射项",
+      "rows": 1138,
+      "columns": 13,
+      "first_columns": [
+        "row_kind",
+        "package_id",
+        "source_table",
+        "source_column",
+        "property_id",
+        "enabled"
+      ]
+    },
+    {
+      "sheet": "源码覆盖",
+      "rows": 44,
+      "columns": 9,
+      "first_columns": [
+        "sha256",
+        "bytes",
+        "statements",
+        "ddl_count",
+        "unparsed_count",
+        "source_path"
+      ]
+    },
+    {
+      "sheet": "DDL审计",
+      "rows": 285,
+      "columns": 8,
+      "first_columns": [
+        "status",
+        "operation",
+        "object",
+        "sql",
+        "parts",
+        "source_path"
+      ]
+    },
+    {
+      "sheet": "多维关系路径",
+      "rows": 42,
+      "columns": 11,
+      "first_columns": [
+        "label",
+        "step",
+        "source_type",
+        "source_column",
+        "target_type",
+        "target_column"
+      ]
+    },
+    {
+      "sheet": "试录对象",
+      "rows": 0,
+      "columns": 9,
+      "first_columns": [
+        "local_ref",
+        "source_system",
+        "source_table",
+        "source_primary_key",
+        "type_id",
+        "display_name"
+      ]
+    },
+    {
+      "sheet": "试录属性",
+      "rows": 0,
+      "columns": 8,
+      "first_columns": [
+        "local_ref",
+        "property_id",
+        "value",
+        "unit",
+        "observed_at",
+        "source_record_id"
+      ]
+    },
+    {
+      "sheet": "试录关系",
+      "rows": 0,
+      "columns": 7,
+      "first_columns": [
+        "subject_local_ref",
+        "predicate_id",
+        "object_local_ref",
+        "valid_from",
+        "valid_to",
+        "evidence_ref"
+      ]
+    },
+    {
+      "sheet": "接入字段说明",
+      "rows": 12,
+      "columns": 3,
+      "first_columns": [
+        "item",
+        "rule",
+        "implementation"
+      ]
+    },
+    {
+      "sheet": "类别与枚举",
+      "rows": 433,
+      "columns": 5,
+      "first_columns": [
+        "source_table",
+        "source_column",
+        "value",
+        "meaning",
+        "source_url"
+      ]
+    },
+    {
+      "sheet": "填写字典",
+      "rows": 979,
+      "columns": 6,
+      "first_columns": [
+        "type_id",
+        "type_label",
+        "property_id",
+        "property_class",
+        "predicate_id",
+        "relation_label"
+      ]
+    }
+  ],
+  "source_counts": {
+    "tables": 190,
+    "columns": 2114,
+    "foreign_keys": 555,
+    "constraints": 1118,
+    "indexes": 37,
+    "enum_types": 0,
+    "table_ddl_statements": 248,
+    "unparsed_ddl": 0,
+    "unresolved_references": 0
+  }
+}

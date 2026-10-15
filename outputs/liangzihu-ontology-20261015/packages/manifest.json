@@ -1,0 +1,153 @@
+{
+  "format": "ontology-package-export/1",
+  "source_workbook": "梁子湖项目_本体与关系全量结构导出.xlsx",
+  "workbook_sha256": "cad6ce945ff9187e0cb4e036b248e43b14f9bae2a7b231bcc919c04961dcc98c",
+  "import_order": "packages数组顺序；精确版本依赖在前",
+  "automatic_import": false,
+  "packages": [
+    {
+      "package_id": "lzhu.agronomy",
+      "version": "0.1.0",
+      "file": "001_lzhu.agronomy_0.1.0.json",
+      "sha256": "23e1e3e99a321602a235080c4661e26da9a26387a99c4cf360b0871b9655465f",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.analysis",
+      "version": "0.1.0",
+      "file": "002_lzhu.analysis_0.1.0.json",
+      "sha256": "725cd8565543d2faee936336405c4a2aea86d642d5a3f5f2415d22fa1045bcef",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.finance",
+      "version": "0.1.0",
+      "file": "003_lzhu.finance_0.1.0.json",
+      "sha256": "156dd021afbbe7cdaa651ba717d5accfb53c8088a13f668d06417720ae6b9c10",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.governance",
+      "version": "0.1.0",
+      "file": "004_lzhu.governance_0.1.0.json",
+      "sha256": "e8b8ddc0acccbce35ac74364ba4bf3415e4dc83585288a28ffb1bfac10757765",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.imagery",
+      "version": "0.1.0",
+      "file": "005_lzhu.imagery_0.1.0.json",
+      "sha256": "0ea289f8dbc153310abe19acc7e9ed668ab828d2d76614b296aa2afeab52b085",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.knowledge",
+      "version": "0.1.0",
+      "file": "006_lzhu.knowledge_0.1.0.json",
+      "sha256": "d1639fec8de597a2c9104d2e1622ecebab52702262852a7148f1bafbffa43b78",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.machinery",
+      "version": "0.1.0",
+      "file": "007_lzhu.machinery_0.1.0.json",
+      "sha256": "c62d3debea5969e87fafd8cd60e948154663d2de25806430a87a6e4a0130bec5",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.operations",
+      "version": "0.1.0",
+      "file": "008_lzhu.operations_0.1.0.json",
+      "sha256": "acacc2deaf990702db2e4feb8d0f4fcf9e406f607fee43ca33ac026026be3e36",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.protection",
+      "version": "0.1.0",
+      "file": "009_lzhu.protection_0.1.0.json",
+      "sha256": "37fe3e9599d7934024a0a34374acb2dbfd5ef619401efbbff4d7d152a0c68f28",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.quality",
+      "version": "0.1.0",
+      "file": "010_lzhu.quality_0.1.0.json",
+      "sha256": "63a1e961a91825e63f152dfe01f8e66a6a139b836f571d980c76799683097934",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.registry",
+      "version": "0.1.0",
+      "file": "011_lzhu.registry_0.1.0.json",
+      "sha256": "9784dd8f385099b762bb506039688101eece02a4fabbfa174bfc7216b4dd8e3d",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.research",
+      "version": "0.1.0",
+      "file": "012_lzhu.research_0.1.0.json",
+      "sha256": "b57194d127de963c506e94b27454a5194fa3b70b86a41a481534caa2ff653a90",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.resources",
+      "version": "0.1.0",
+      "file": "013_lzhu.resources_0.1.0.json",
+      "sha256": "7fa69e8e1ef50feece8d5b7c18832dae4cfe52131d0382736de3c36d3df45b11",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.stock",
+      "version": "0.1.0",
+      "file": "014_lzhu.stock_0.1.0.json",
+      "sha256": "f356cafbcd91cd76769142f9851df9afd0f221d5631cc23f03ff11739e7a1a90",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.telemetry",
+      "version": "0.1.0",
+      "file": "015_lzhu.telemetry_0.1.0.json",
+      "sha256": "880934c0c0a5edc3182f8acbbd64fec63848c0e1200457e0c7a0ab40415639a0",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.weather",
+      "version": "0.1.0",
+      "file": "016_lzhu.weather_0.1.0.json",
+      "sha256": "bbf2597dded5920ea1ddf4afd9f80de58415fe6b895fc84e2c5fd17f18f70e1e",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.links1",
+      "version": "0.1.0",
+      "file": "017_lzhu.links1_0.1.0.json",
+      "sha256": "2de8199a63fd9be190825542a94a70e259fcb80224d3e0c4d1996b04d0985f88",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    },
+    {
+      "package_id": "lzhu.links2",
+      "version": "0.1.0",
+      "file": "018_lzhu.links2_0.1.0.json",
+      "sha256": "a33e41ea97a71e376e6f37b53c2c7899fa3b7036db8df5a30d1a7984508b8903",
+      "method": "POST",
+      "endpoint": "/api/v1/ontology/packages"
+    }
+  ]
+}

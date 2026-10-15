@@ -1,0 +1,1240 @@
+{
+  "schema_version": "1.0.0",
+  "status": "source_structure_mapping_draft",
+  "provenance": {
+    "repository": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform",
+    "commit": "9995fc20cd84093adcaa3fab954ffe9d08b9f45a",
+    "catalog": "outputs/liangzihu-ontology-20261015/schema_catalog.json"
+  },
+  "interpretation": "8条多维追溯路径全部取自源SQL明确外键；箭头始终从引用列指向被引用列。路径可含分支和汇合，反向查询须显式处理。它们说明可查询的结构联系，不证明已有业务数据完整，不表示因果关系，不将数组、JSON或弱引用伪造为外键。",
+  "paths": [
+    {
+      "path_id": "environment",
+      "label": "环境观测与来源证据",
+      "question": "一条环境观测对应哪个测点、设备、数据来源和原始接收证据？",
+      "edges": [
+        {
+          "from_table": "observations",
+          "from_label": "环境观测记录",
+          "from_columns": [
+            "point_id"
+          ],
+          "to_table": "points",
+          "to_label": "测点与指标登记",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "observations_point_id_fkey",
+          "source": {
+            "path": "db/migrations/003_telemetry.sql",
+            "line": 13,
+            "end_line": 13,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L13"
+          }
+        },
+        {
+          "from_table": "points",
+          "from_label": "测点与指标登记",
+          "from_columns": [
+            "device_id"
+          ],
+          "to_table": "devices",
+          "to_label": "设备登记",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "points_device_id_fkey",
+          "source": {
+            "path": "db/migrations/002_registry.sql",
+            "line": 71,
+            "end_line": 71,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L71"
+          }
+        },
+        {
+          "from_table": "devices",
+          "from_label": "设备登记",
+          "from_columns": [
+            "source_id"
+          ],
+          "to_table": "data_sources",
+          "to_label": "数据来源登记",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "devices_source_id_fkey",
+          "source": {
+            "path": "db/migrations/002_registry.sql",
+            "line": 55,
+            "end_line": 55,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L55"
+          }
+        },
+        {
+          "from_table": "observations",
+          "from_label": "环境观测记录",
+          "from_columns": [
+            "raw_ref"
+          ],
+          "to_table": "raw_receipts",
+          "to_label": "原始接收证据",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "observations_raw_ref_fkey",
+          "source": {
+            "path": "db/migrations/003_telemetry.sql",
+            "line": 18,
+            "end_line": 18,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L18"
+          }
+        },
+        {
+          "from_table": "observations",
+          "from_label": "环境观测记录",
+          "from_columns": [
+            "source_id"
+          ],
+          "to_table": "data_sources",
+          "to_label": "数据来源登记",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "observations_source_id_fkey",
+          "source": {
+            "path": "db/migrations/003_telemetry.sql",
+            "line": 12,
+            "end_line": 12,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L12"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "table": "observations",
+          "label": "环境观测记录",
+          "domain": "telemetry",
+          "time_fields": []
+        },
+        {
+          "table": "points",
+          "label": "测点与指标登记",
+          "domain": "registry",
+          "time_fields": []
+        },
+        {
+          "table": "devices",
+          "label": "设备登记",
+          "domain": "registry",
+          "time_fields": []
+        },
+        {
+          "table": "data_sources",
+          "label": "数据来源登记",
+          "domain": "registry",
+          "time_fields": []
+        },
+        {
+          "table": "raw_receipts",
+          "label": "原始接收证据",
+          "domain": "telemetry",
+          "time_fields": []
+        }
+      ],
+      "notes": "同一来源应分别核对观测来源与设备来源；外键连通不证明校准有效，也不证明环境变化成因。",
+      "display": "observations.point_id → points.id；points.device_id → devices.id；devices.source_id → data_sources.id；observations.raw_ref → raw_receipts.id；observations.source_id → data_sources.id"
+    },
+    {
+      "path_id": "production",
+      "label": "生产记录与投入品",
+      "question": "一次投入品使用记在哪条农事记录、哪个生产批次和地块，使用了哪个物料批次？",
+      "edges": [
+        {
+          "from_table": "input_applications",
+          "from_label": "投入品使用记录",
+          "from_columns": [
+            "farm_record_id"
+          ],
+          "to_table": "farm_records",
+          "to_label": "农事记录",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "input_applications_farm_record_id_fkey",
+          "source": {
+            "path": "db/migrations/035_stock.sql",
+            "line": 36,
+            "end_line": 36,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L36"
+          }
+        },
+        {
+          "from_table": "farm_records",
+          "from_label": "农事记录",
+          "from_columns": [
+            "batch_id"
+          ],
+          "to_table": "production_batches",
+          "to_label": "生产批次",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "farm_records_batch_id_fkey",
+          "source": {
+            "path": "db/migrations/012_records.sql",
+            "line": 12,
+            "end_line": 12,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/012_records.sql#L12"
+          }
+        },
+        {
+          "from_table": "production_batches",
+          "from_label": "生产批次",
+          "from_columns": [
+            "object_id"
+          ],
+          "to_table": "objects",
+          "to_label": "农场空间对象",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "production_batches_object_id_fkey",
+          "source": {
+            "path": "db/migrations/002_registry.sql",
+            "line": 28,
+            "end_line": 28,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L28"
+          }
+        },
+        {
+          "from_table": "input_applications",
+          "from_label": "投入品使用记录",
+          "from_columns": [
+            "lot_id"
+          ],
+          "to_table": "stock_lots",
+          "to_label": "物料批次",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "input_applications_lot_id_fkey",
+          "source": {
+            "path": "db/migrations/035_stock.sql",
+            "line": 35,
+            "end_line": 35,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L35"
+          }
+        },
+        {
+          "from_table": "input_applications",
+          "from_label": "投入品使用记录",
+          "from_columns": [
+            "issue_document_id"
+          ],
+          "to_table": "stock_documents",
+          "to_label": "库存业务单据",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "input_applications_issue_document_id_fkey",
+          "source": {
+            "path": "db/migrations/035_stock.sql",
+            "line": 36,
+            "end_line": 36,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L36"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "table": "input_applications",
+          "label": "投入品使用记录",
+          "domain": "stock",
+          "time_fields": []
+        },
+        {
+          "table": "farm_records",
+          "label": "农事记录",
+          "domain": "operations",
+          "time_fields": []
+        },
+        {
+          "table": "production_batches",
+          "label": "生产批次",
+          "domain": "registry",
+          "time_fields": []
+        },
+        {
+          "table": "objects",
+          "label": "农场空间对象",
+          "domain": "registry",
+          "time_fields": []
+        },
+        {
+          "table": "stock_lots",
+          "label": "物料批次",
+          "domain": "stock",
+          "time_fields": []
+        },
+        {
+          "table": "stock_documents",
+          "label": "库存业务单据",
+          "domain": "stock",
+          "time_fields": []
+        }
+      ],
+      "notes": "可空外键缺失时须显示追溯缺口；投入品批次与生产批次是不同概念，不能直接合并。",
+      "display": "input_applications.farm_record_id → farm_records.id；farm_records.batch_id → production_batches.id；production_batches.object_id → objects.id；input_applications.lot_id → stock_lots.id；input_applications.issue_document_id → stock_documents.id"
+    },
+    {
+      "path_id": "processing",
+      "label": "加工转换与批次谱系",
+      "question": "一次加工转换的输入、输出物料批次及库存业务单据是什么，能否继续追到生产批次？",
+      "edges": [
+        {
+          "from_table": "stock_lineage",
+          "from_label": "批次转换关联",
+          "from_columns": [
+            "transformation_id"
+          ],
+          "to_table": "stock_transformations",
+          "to_label": "物料转换登记",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "stock_lineage_transformation_id_fkey",
+          "source": {
+            "path": "db/migrations/035_stock.sql",
+            "line": 45,
+            "end_line": 45,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L45"
+          }
+        },
+        {
+          "from_table": "stock_lineage",
+          "from_label": "批次转换关联",
+          "from_columns": [
+            "document_id"
+          ],
+          "to_table": "stock_documents",
+          "to_label": "库存业务单据",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "stock_lineage_document_id_fkey",
+          "source": {
+            "path": "db/migrations/035_stock.sql",
+            "line": 46,
+            "end_line": 46,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L46"
+          }
+        },
+        {
+          "from_table": "stock_lineage",
+          "from_label": "批次转换关联",
+          "from_columns": [
+            "input_lot_id"
+          ],
+          "to_table": "stock_lots",
+          "to_label": "物料批次",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "stock_lineage_input_lot_id_fkey",
+          "source": {
+            "path": "db/migrations/035_stock.sql",
+            "line": 46,
+            "end_line": 46,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L46"
+          }
+        },
+        {
+          "from_table": "stock_lineage",
+          "from_label": "批次转换关联",
+          "from_columns": [
+            "output_lot_id"
+          ],
+          "to_table": "stock_lots",
+          "to_label": "物料批次",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "stock_lineage_output_lot_id_fkey",
+          "source": {
+            "path": "db/migrations/035_stock.sql",
+            "line": 46,
+            "end_line": 46,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L46"
+          }
+        },
+        {
+          "from_table": "stock_lots",
+          "from_label": "物料批次",
+          "from_columns": [
+            "production_batch_id"
+          ],
+          "to_table": "production_batches",
+          "to_label": "生产批次",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "stock_lots_production_batch_id_fkey",
+          "source": {
+            "path": "db/migrations/035_stock.sql",
+            "line": 13,
+            "end_line": 13,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L13"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "table": "stock_lineage",
+          "label": "批次转换关联",
+          "domain": "stock",
+          "time_fields": []
+        },
+        {
+          "table": "stock_transformations",
+          "label": "物料转换登记",
+          "domain": "stock",
+          "time_fields": []
+        },
+        {
+          "table": "stock_documents",
+          "label": "库存业务单据",
+          "domain": "stock",
+          "time_fields": []
+        },
+        {
+          "table": "stock_lots",
+          "label": "物料批次",
+          "domain": "stock",
+          "time_fields": []
+        },
+        {
+          "table": "production_batches",
+          "label": "生产批次",
+          "domain": "registry",
+          "time_fields": []
+        }
+      ],
+      "notes": "input_lot_id和output_lot_id需保留角色；谱系支持追溯与影响范围查找，不单独证明损耗成因或质量因果。",
+      "display": "stock_lineage.transformation_id → stock_transformations.id；stock_lineage.document_id → stock_documents.id；stock_lineage.input_lot_id → stock_lots.id；stock_lineage.output_lot_id → stock_lots.id；stock_lots.production_batch_id → production_batches.id"
+    },
+    {
+      "path_id": "quality",
+      "label": "质量检测与批次来源",
+      "question": "某检测结果使用哪个样品、来自哪个物料批次和生产批次？",
+      "edges": [
+        {
+          "from_table": "quality_tests",
+          "from_label": "样品检测结果",
+          "from_columns": [
+            "sample_id"
+          ],
+          "to_table": "quality_samples",
+          "to_label": "质检样品",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "quality_tests_sample_id_fkey",
+          "source": {
+            "path": "db/migrations/036_quality_trace.sql",
+            "line": 7,
+            "end_line": 7,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L7"
+          }
+        },
+        {
+          "from_table": "quality_samples",
+          "from_label": "质检样品",
+          "from_columns": [
+            "lot_id"
+          ],
+          "to_table": "stock_lots",
+          "to_label": "物料批次",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "quality_samples_lot_id_fkey",
+          "source": {
+            "path": "db/migrations/036_quality_trace.sql",
+            "line": 2,
+            "end_line": 2,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L2"
+          }
+        },
+        {
+          "from_table": "stock_lots",
+          "from_label": "物料批次",
+          "from_columns": [
+            "production_batch_id"
+          ],
+          "to_table": "production_batches",
+          "to_label": "生产批次",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "stock_lots_production_batch_id_fkey",
+          "source": {
+            "path": "db/migrations/035_stock.sql",
+            "line": 13,
+            "end_line": 13,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/035_stock.sql#L13"
+          }
+        },
+        {
+          "from_table": "production_batches",
+          "from_label": "生产批次",
+          "from_columns": [
+            "object_id"
+          ],
+          "to_table": "objects",
+          "to_label": "农场空间对象",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "production_batches_object_id_fkey",
+          "source": {
+            "path": "db/migrations/002_registry.sql",
+            "line": 28,
+            "end_line": 28,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L28"
+          }
+        },
+        {
+          "from_table": "quality_tests",
+          "from_label": "样品检测结果",
+          "from_columns": [
+            "supersedes_id"
+          ],
+          "to_table": "quality_tests",
+          "to_label": "样品检测结果",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "quality_tests_supersedes_id_fkey",
+          "source": {
+            "path": "db/migrations/036_quality_trace.sql",
+            "line": 9,
+            "end_line": 9,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/036_quality_trace.sql#L9"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "table": "quality_tests",
+          "label": "样品检测结果",
+          "domain": "quality",
+          "time_fields": []
+        },
+        {
+          "table": "quality_samples",
+          "label": "质检样品",
+          "domain": "quality",
+          "time_fields": []
+        },
+        {
+          "table": "stock_lots",
+          "label": "物料批次",
+          "domain": "stock",
+          "time_fields": []
+        },
+        {
+          "table": "production_batches",
+          "label": "生产批次",
+          "domain": "registry",
+          "time_fields": []
+        },
+        {
+          "table": "objects",
+          "label": "农场空间对象",
+          "domain": "registry",
+          "time_fields": []
+        }
+      ],
+      "notes": "查询需展示采样时间、检测时间、有效截止和结果替代链；数组字段test_ids或credential_ids不冒充数据库外键。",
+      "display": "quality_tests.sample_id → quality_samples.id；quality_samples.lot_id → stock_lots.id；stock_lots.production_batch_id → production_batches.id；production_batches.object_id → objects.id；quality_tests.supersedes_id → quality_tests.id"
+    },
+    {
+      "path_id": "imagery",
+      "label": "图像结果与媒体原件",
+      "question": "图像复核结果依据哪个媒体原件、摄像头事件、设备和来源？",
+      "edges": [
+        {
+          "from_table": "image_reviews",
+          "from_label": "图像复核结果",
+          "from_columns": [
+            "asset_id"
+          ],
+          "to_table": "media_assets",
+          "to_label": "媒体原件资产",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "image_reviews_asset_id_fkey",
+          "source": {
+            "path": "db/migrations/018_image_reviews.sql",
+            "line": 3,
+            "end_line": 3,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/018_image_reviews.sql#L3"
+          }
+        },
+        {
+          "from_table": "image_reviews",
+          "from_label": "图像复核结果",
+          "from_columns": [
+            "camera_event_id"
+          ],
+          "to_table": "camera_events",
+          "to_label": "摄像头来源事件",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "image_reviews_camera_event_id_fkey",
+          "source": {
+            "path": "db/migrations/018_image_reviews.sql",
+            "line": 2,
+            "end_line": 2,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/018_image_reviews.sql#L2"
+          }
+        },
+        {
+          "from_table": "camera_events",
+          "from_label": "摄像头来源事件",
+          "from_columns": [
+            "asset_id"
+          ],
+          "to_table": "media_assets",
+          "to_label": "媒体原件资产",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "camera_events_asset_id_fkey",
+          "source": {
+            "path": "db/migrations/014_imagery.sql",
+            "line": 11,
+            "end_line": 11,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/014_imagery.sql#L11"
+          }
+        },
+        {
+          "from_table": "camera_events",
+          "from_label": "摄像头来源事件",
+          "from_columns": [
+            "device_id"
+          ],
+          "to_table": "devices",
+          "to_label": "设备登记",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "camera_events_device_id_fkey",
+          "source": {
+            "path": "db/migrations/014_imagery.sql",
+            "line": 8,
+            "end_line": 8,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/014_imagery.sql#L8"
+          }
+        },
+        {
+          "from_table": "camera_events",
+          "from_label": "摄像头来源事件",
+          "from_columns": [
+            "source_id"
+          ],
+          "to_table": "data_sources",
+          "to_label": "数据来源登记",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "camera_events_source_id_fkey",
+          "source": {
+            "path": "db/migrations/014_imagery.sql",
+            "line": 9,
+            "end_line": 9,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/014_imagery.sql#L9"
+          }
+        },
+        {
+          "from_table": "media_assets",
+          "from_label": "媒体原件资产",
+          "from_columns": [
+            "preview_of"
+          ],
+          "to_table": "media_assets",
+          "to_label": "媒体原件资产",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "media_assets_preview_of_fkey",
+          "source": {
+            "path": "db/migrations/012_records.sql",
+            "line": 4,
+            "end_line": 4,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/012_records.sql#L4"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "table": "image_reviews",
+          "label": "图像复核结果",
+          "domain": "analysis",
+          "time_fields": []
+        },
+        {
+          "table": "media_assets",
+          "label": "媒体原件资产",
+          "domain": "imagery",
+          "time_fields": []
+        },
+        {
+          "table": "camera_events",
+          "label": "摄像头来源事件",
+          "domain": "imagery",
+          "time_fields": []
+        },
+        {
+          "table": "devices",
+          "label": "设备登记",
+          "domain": "registry",
+          "time_fields": []
+        },
+        {
+          "table": "data_sources",
+          "label": "数据来源登记",
+          "domain": "registry",
+          "time_fields": []
+        }
+      ],
+      "notes": "同一媒体的原件/预览关系与分析结果分开保存；源系统已有图像结果可作为断言接入，不要求本数据库运行识别模型。",
+      "display": "image_reviews.asset_id → media_assets.id；image_reviews.camera_event_id → camera_events.id；camera_events.asset_id → media_assets.id；camera_events.device_id → devices.id；camera_events.source_id → data_sources.id；media_assets.preview_of → media_assets.id"
+    },
+    {
+      "path_id": "spatiotemporal",
+      "label": "观测时空绑定与地形版本",
+      "question": "观测发生时测点绑定哪个空间对象，该对象有哪些带时间的地形测量与来源场景？",
+      "edges": [
+        {
+          "from_table": "observations",
+          "from_label": "环境观测记录",
+          "from_columns": [
+            "binding_id"
+          ],
+          "to_table": "point_bindings",
+          "to_label": "测点对象绑定",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "observations_binding_id_fkey",
+          "source": {
+            "path": "db/migrations/003_telemetry.sql",
+            "line": 14,
+            "end_line": 14,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/003_telemetry.sql#L14"
+          }
+        },
+        {
+          "from_table": "point_bindings",
+          "from_label": "测点对象绑定",
+          "from_columns": [
+            "point_id"
+          ],
+          "to_table": "points",
+          "to_label": "测点与指标登记",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "point_bindings_point_id_fkey",
+          "source": {
+            "path": "db/migrations/002_registry.sql",
+            "line": 85,
+            "end_line": 85,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L85"
+          }
+        },
+        {
+          "from_table": "point_bindings",
+          "from_label": "测点对象绑定",
+          "from_columns": [
+            "object_id"
+          ],
+          "to_table": "objects",
+          "to_label": "农场空间对象",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "point_bindings_object_id_fkey",
+          "source": {
+            "path": "db/migrations/002_registry.sql",
+            "line": 86,
+            "end_line": 86,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/002_registry.sql#L86"
+          }
+        },
+        {
+          "from_table": "terrain_surveys",
+          "from_label": "地形校核测量",
+          "from_columns": [
+            "object_id"
+          ],
+          "to_table": "objects",
+          "to_label": "农场空间对象",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "terrain_surveys_object_id_fkey",
+          "source": {
+            "path": "db/migrations/034_phase2_terrain.sql",
+            "line": 17,
+            "end_line": 17,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L17"
+          }
+        },
+        {
+          "from_table": "terrain_surveys",
+          "from_label": "地形校核测量",
+          "from_columns": [
+            "scene_id"
+          ],
+          "to_table": "terrain_scenes",
+          "to_label": "地形场景",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "terrain_surveys_scene_id_fkey",
+          "source": {
+            "path": "db/migrations/034_phase2_terrain.sql",
+            "line": 17,
+            "end_line": 17,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L17"
+          }
+        },
+        {
+          "from_table": "terrain_scenes",
+          "from_label": "地形场景",
+          "from_columns": [
+            "flight_id"
+          ],
+          "to_table": "flights",
+          "to_label": "无人机航次",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "terrain_scenes_flight_id_fkey",
+          "source": {
+            "path": "db/migrations/034_phase2_terrain.sql",
+            "line": 2,
+            "end_line": 2,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L2"
+          }
+        },
+        {
+          "from_table": "terrain_surveys",
+          "from_label": "地形校核测量",
+          "from_columns": [
+            "supersedes_id"
+          ],
+          "to_table": "terrain_surveys",
+          "to_label": "地形校核测量",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "terrain_surveys_supersedes_id_fkey",
+          "source": {
+            "path": "db/migrations/034_phase2_terrain.sql",
+            "line": 18,
+            "end_line": 18,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/034_phase2_terrain.sql#L18"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "table": "observations",
+          "label": "环境观测记录",
+          "domain": "telemetry",
+          "time_fields": []
+        },
+        {
+          "table": "point_bindings",
+          "label": "测点对象绑定",
+          "domain": "registry",
+          "time_fields": []
+        },
+        {
+          "table": "points",
+          "label": "测点与指标登记",
+          "domain": "registry",
+          "time_fields": []
+        },
+        {
+          "table": "objects",
+          "label": "农场空间对象",
+          "domain": "registry",
+          "time_fields": []
+        },
+        {
+          "table": "terrain_surveys",
+          "label": "地形校核测量",
+          "domain": "registry",
+          "time_fields": []
+        },
+        {
+          "table": "terrain_scenes",
+          "label": "地形场景",
+          "domain": "registry",
+          "time_fields": []
+        },
+        {
+          "table": "flights",
+          "label": "无人机航次",
+          "domain": "imagery",
+          "time_fields": []
+        }
+      ],
+      "notes": "以objects为汇合节点时，查找地形测量需要反向查询外键；必须按采样时间过滤绑定valid_from/valid_to，并核对坐标参考系、高程基准和版本，不能只连接同名地块。",
+      "display": "observations.binding_id → point_bindings.id；point_bindings.point_id → points.id；point_bindings.object_id → objects.id；terrain_surveys.object_id → objects.id；terrain_surveys.scene_id → terrain_scenes.id；terrain_scenes.flight_id → flights.id；terrain_surveys.supersedes_id → terrain_surveys.id"
+    },
+    {
+      "path_id": "personnel",
+      "label": "人员责任与操作事件",
+      "question": "一个工单事件由谁执行，工单分配给谁，关联哪个空间对象？",
+      "edges": [
+        {
+          "from_table": "work_order_events",
+          "from_label": "工单状态事件",
+          "from_columns": [
+            "work_order_id"
+          ],
+          "to_table": "work_orders",
+          "to_label": "运维工单",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "work_order_events_work_order_id_fkey",
+          "source": {
+            "path": "db/migrations/007_operations.sql",
+            "line": 20,
+            "end_line": 20,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L20"
+          }
+        },
+        {
+          "from_table": "work_order_events",
+          "from_label": "工单状态事件",
+          "from_columns": [
+            "actor_id"
+          ],
+          "to_table": "users",
+          "to_label": "参与者身份",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "work_order_events_actor_id_fkey",
+          "source": {
+            "path": "db/migrations/007_operations.sql",
+            "line": 21,
+            "end_line": 21,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L21"
+          }
+        },
+        {
+          "from_table": "work_orders",
+          "from_label": "运维工单",
+          "from_columns": [
+            "assigned_to"
+          ],
+          "to_table": "users",
+          "to_label": "参与者身份",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "work_orders_assigned_to_fkey",
+          "source": {
+            "path": "db/migrations/007_operations.sql",
+            "line": 16,
+            "end_line": 16,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L16"
+          }
+        },
+        {
+          "from_table": "work_orders",
+          "from_label": "运维工单",
+          "from_columns": [
+            "object_id"
+          ],
+          "to_table": "objects",
+          "to_label": "农场空间对象",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "work_orders_object_id_fkey",
+          "source": {
+            "path": "db/migrations/007_operations.sql",
+            "line": 14,
+            "end_line": 14,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/007_operations.sql#L14"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "table": "work_order_events",
+          "label": "工单状态事件",
+          "domain": "operations",
+          "time_fields": []
+        },
+        {
+          "table": "work_orders",
+          "label": "运维工单",
+          "domain": "operations",
+          "time_fields": []
+        },
+        {
+          "table": "users",
+          "label": "参与者身份",
+          "domain": "registry",
+          "time_fields": []
+        },
+        {
+          "table": "objects",
+          "label": "农场空间对象",
+          "domain": "registry",
+          "time_fields": []
+        }
+      ],
+      "notes": "执行人、受派人和创建人须保留不同角色；users仅暴露经批准的参与者身份字段，不输出密码、令牌、认证因子和联系方式。",
+      "display": "work_order_events.work_order_id → work_orders.id；work_order_events.actor_id → users.id；work_orders.assigned_to → users.id；work_orders.object_id → objects.id"
+    },
+    {
+      "path_id": "research",
+      "label": "科研方案、观测与结果审核",
+      "question": "某科研结果及其审核来自哪个试验方案，该方案有哪些地块观测？",
+      "edges": [
+        {
+          "from_table": "research_result_reviews",
+          "from_label": "科研结果审核",
+          "from_columns": [
+            "result_id"
+          ],
+          "to_table": "research_results",
+          "to_label": "科研结果陈述",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "research_result_reviews_result_id_fkey",
+          "source": {
+            "path": "db/migrations/041_research_management.sql",
+            "line": 23,
+            "end_line": 23,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L23"
+          }
+        },
+        {
+          "from_table": "research_results",
+          "from_label": "科研结果陈述",
+          "from_columns": [
+            "protocol_id"
+          ],
+          "to_table": "research_protocols",
+          "to_label": "科研试验方案",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "research_results_protocol_id_fkey",
+          "source": {
+            "path": "db/migrations/041_research_management.sql",
+            "line": 18,
+            "end_line": 18,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L18"
+          }
+        },
+        {
+          "from_table": "research_observations",
+          "from_label": "科研观测记录",
+          "from_columns": [
+            "protocol_id"
+          ],
+          "to_table": "research_protocols",
+          "to_label": "科研试验方案",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "research_observations_protocol_id_fkey",
+          "source": {
+            "path": "db/migrations/041_research_management.sql",
+            "line": 11,
+            "end_line": 11,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L11"
+          }
+        },
+        {
+          "from_table": "research_observations",
+          "from_label": "科研观测记录",
+          "from_columns": [
+            "plot_object_id"
+          ],
+          "to_table": "objects",
+          "to_label": "农场空间对象",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "research_observations_plot_object_id_fkey",
+          "source": {
+            "path": "db/migrations/041_research_management.sql",
+            "line": 11,
+            "end_line": 11,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L11"
+          }
+        },
+        {
+          "from_table": "research_observations",
+          "from_label": "科研观测记录",
+          "from_columns": [
+            "supersedes_id"
+          ],
+          "to_table": "research_observations",
+          "to_label": "科研观测记录",
+          "to_columns": [
+            "id"
+          ],
+          "relationship_kind": "source_sql_foreign_key",
+          "direction": "referencing_to_referenced",
+          "constraint_name": "research_observations_supersedes_id_fkey",
+          "source": {
+            "path": "db/migrations/041_research_management.sql",
+            "line": 14,
+            "end_line": 14,
+            "url": "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations/041_research_management.sql#L14"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "table": "research_result_reviews",
+          "label": "科研结果审核",
+          "domain": "research",
+          "time_fields": []
+        },
+        {
+          "table": "research_results",
+          "label": "科研结果陈述",
+          "domain": "research",
+          "time_fields": []
+        },
+        {
+          "table": "research_protocols",
+          "label": "科研试验方案",
+          "domain": "research",
+          "time_fields": []
+        },
+        {
+          "table": "research_observations",
+          "label": "科研观测记录",
+          "domain": "research",
+          "time_fields": []
+        },
+        {
+          "table": "objects",
+          "label": "农场空间对象",
+          "domain": "registry",
+          "time_fields": []
+        }
+      ],
+      "notes": "以方案为汇合节点时须反向查询科研观测；结果主张、原始观测和审核分别呈现，方案关联本身不证明结果充分或因果成立。",
+      "display": "research_result_reviews.result_id → research_results.id；research_results.protocol_id → research_protocols.id；research_observations.protocol_id → research_protocols.id；research_observations.plot_object_id → objects.id；research_observations.supersedes_id → research_observations.id"
+    }
+  ],
+  "validation": {
+    "path_count": 8,
+    "foreign_key_steps": 42,
+    "all_edges_verified_against_catalog": true,
+    "production_records_loaded": false
+  }
+}

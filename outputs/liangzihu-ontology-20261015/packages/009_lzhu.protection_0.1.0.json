@@ -1,0 +1,695 @@
+{
+  "package_id": "lzhu.protection",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:protection:",
+  "label": "植保与处方",
+  "description": "植保方案、处方、实际作业、交付及回访。 固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。此包定义来源系统记录类；不是已经完成农业业务概念等价对齐的目标本体。",
+  "types": [
+    {
+      "type_id": "lzhu:protection_plans",
+      "identity_type": "lzhu:protection_plans",
+      "label": "植保作业方案",
+      "description": "定义作物、目标、边界、敏感区、投入品和作业条件。 来源表 protection_plans；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:prescription_maps",
+      "identity_type": "lzhu:prescription_maps",
+      "label": "植保处方图",
+      "description": "保存植保分区和剂量方案及版本，区别于执行记录。 来源表 prescription_maps；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:protection_executions",
+      "identity_type": "lzhu:protection_executions",
+      "label": "植保作业记录",
+      "description": "记录实际作业时段、轨迹、用量、覆盖及补救关联。 来源表 protection_executions；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:prescription_events",
+      "identity_type": "lzhu:prescription_events",
+      "label": "处方使用事件",
+      "description": "区分分享、下载和应用，应用可关联具体作业。 来源表 prescription_events；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:protection_deliveries",
+      "identity_type": "lzhu:protection_deliveries",
+      "label": "植保资料交付",
+      "description": "记录服务方交付资产、缺项、接收人和交付依据。 来源表 protection_deliveries；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:protection_followups",
+      "identity_type": "lzhu:protection_followups",
+      "label": "植保作业回访",
+      "description": "保存作业后观察、判断和行动，不自动证明作业效果。 来源表 protection_followups；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    }
+  ],
+  "properties": [
+    {
+      "property_id": "lzhu:protection_plans.id",
+      "label": "植保作业方案 · 记录标识",
+      "description": "来源记录属性 protection_plans.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:protection_plans"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_plans.title",
+      "label": "植保作业方案 · 标题",
+      "description": "来源记录属性 protection_plans.title。",
+      "applies_to": [
+        "lzhu:protection_plans"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_plans.crop",
+      "label": "植保作业方案 · 作物",
+      "description": "来源记录属性 protection_plans.crop。",
+      "applies_to": [
+        "lzhu:protection_plans"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_plans.target",
+      "label": "植保作业方案 · 目标",
+      "description": "来源记录属性 protection_plans.target。",
+      "applies_to": [
+        "lzhu:protection_plans"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_plans.stage",
+      "label": "植保作业方案 · 阶段",
+      "description": "来源记录属性 protection_plans.stage。",
+      "applies_to": [
+        "lzhu:protection_plans"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_plans.obstacles",
+      "label": "植保作业方案 · 障碍物资料",
+      "description": "来源记录属性 protection_plans.obstacles。",
+      "applies_to": [
+        "lzhu:protection_plans"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_plans.sensitive_note",
+      "label": "植保作业方案 · 敏感信息说明",
+      "description": "来源记录属性 protection_plans.sensitive_note。",
+      "applies_to": [
+        "lzhu:protection_plans"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_plans.conditions",
+      "label": "植保作业方案 · 条件",
+      "description": "来源记录属性 protection_plans.conditions。",
+      "applies_to": [
+        "lzhu:protection_plans"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_plans.source",
+      "label": "植保作业方案 · 来源内容",
+      "description": "来源记录属性 protection_plans.source。",
+      "applies_to": [
+        "lzhu:protection_plans"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_plans.version",
+      "label": "植保作业方案 · 版本",
+      "description": "来源记录属性 protection_plans.version。",
+      "applies_to": [
+        "lzhu:protection_plans"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_plans.created_at",
+      "label": "植保作业方案 · 创建时间",
+      "description": "来源记录属性 protection_plans.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:protection_plans"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:prescription_maps.id",
+      "label": "植保处方图 · 记录标识",
+      "description": "来源记录属性 prescription_maps.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:prescription_maps"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:prescription_maps.version",
+      "label": "植保处方图 · 版本",
+      "description": "来源记录属性 prescription_maps.version。",
+      "applies_to": [
+        "lzhu:prescription_maps"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:prescription_maps.dose_unit",
+      "label": "植保处方图 · 剂量单位",
+      "description": "来源记录属性 prescription_maps.dose_unit。",
+      "applies_to": [
+        "lzhu:prescription_maps"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:prescription_maps.basis",
+      "label": "植保处方图 · 依据",
+      "description": "来源记录属性 prescription_maps.basis。",
+      "applies_to": [
+        "lzhu:prescription_maps"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:prescription_maps.state",
+      "label": "植保处方图 · 状态",
+      "description": "来源记录属性 prescription_maps.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:prescription_maps"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "draft",
+        "approved",
+        "withdrawn"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:prescription_maps.created_at",
+      "label": "植保处方图 · 创建时间",
+      "description": "来源记录属性 prescription_maps.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:prescription_maps"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:prescription_maps.reviewed_at",
+      "label": "植保处方图 · 审核时间",
+      "description": "来源记录属性 prescription_maps.reviewed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:prescription_maps"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:prescription_maps.review_note",
+      "label": "植保处方图 · 审核备注",
+      "description": "来源记录属性 prescription_maps.review_note。",
+      "applies_to": [
+        "lzhu:prescription_maps"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_executions.id",
+      "label": "植保作业记录 · 记录标识",
+      "description": "来源记录属性 protection_executions.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:protection_executions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_executions.operator",
+      "label": "植保作业记录 · 操作方",
+      "description": "来源记录属性 protection_executions.operator。",
+      "applies_to": [
+        "lzhu:protection_executions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_executions.started_at",
+      "label": "植保作业记录 · 实际开始时间",
+      "description": "来源记录属性 protection_executions.started_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:protection_executions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_executions.ended_at",
+      "label": "植保作业记录 · 实际结束时间",
+      "description": "来源记录属性 protection_executions.ended_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:protection_executions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_executions.swath_m",
+      "label": "植保作业记录 · 作业幅宽（米）",
+      "description": "来源记录属性 protection_executions.swath_m。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:protection_executions"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_executions.max_gap_seconds",
+      "label": "植保作业记录 · 最大间隔秒数",
+      "description": "来源记录属性 protection_executions.max_gap_seconds。",
+      "applies_to": [
+        "lzhu:protection_executions"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_executions.material_quantity",
+      "label": "植保作业记录 · 物料数量",
+      "description": "来源记录属性 protection_executions.material_quantity。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:protection_executions"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_executions.unit",
+      "label": "植保作业记录 · 单位",
+      "description": "来源记录属性 protection_executions.unit。",
+      "applies_to": [
+        "lzhu:protection_executions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_executions.result_check",
+      "label": "植保作业记录 · 结果核验",
+      "description": "来源记录属性 protection_executions.result_check。",
+      "applies_to": [
+        "lzhu:protection_executions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_executions.cause",
+      "label": "植保作业记录 · 源记录声明原因",
+      "description": "来源记录属性 protection_executions.cause。",
+      "applies_to": [
+        "lzhu:protection_executions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_executions.remediation_cost",
+      "label": "植保作业记录 · 补救费用",
+      "description": "来源记录属性 protection_executions.remediation_cost。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:protection_executions"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_executions.evidence",
+      "label": "植保作业记录 · 依据材料",
+      "description": "来源记录属性 protection_executions.evidence。",
+      "applies_to": [
+        "lzhu:protection_executions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_executions.created_at",
+      "label": "植保作业记录 · 创建时间",
+      "description": "来源记录属性 protection_executions.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:protection_executions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:prescription_events.id",
+      "label": "处方使用事件 · 记录标识",
+      "description": "来源记录属性 prescription_events.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:prescription_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:prescription_events.action",
+      "label": "处方使用事件 · 动作",
+      "description": "来源记录属性 prescription_events.action。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:prescription_events"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "shared",
+        "downloaded",
+        "applied"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:prescription_events.party",
+      "label": "处方使用事件 · 参与方",
+      "description": "来源记录属性 prescription_events.party。",
+      "applies_to": [
+        "lzhu:prescription_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:prescription_events.occurred_at",
+      "label": "处方使用事件 · 业务发生时间",
+      "description": "来源记录属性 prescription_events.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:prescription_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:prescription_events.evidence",
+      "label": "处方使用事件 · 依据材料",
+      "description": "来源记录属性 prescription_events.evidence。",
+      "applies_to": [
+        "lzhu:prescription_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:prescription_events.created_at",
+      "label": "处方使用事件 · 创建时间",
+      "description": "来源记录属性 prescription_events.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:prescription_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_deliveries.id",
+      "label": "植保资料交付 · 记录标识",
+      "description": "来源记录属性 protection_deliveries.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:protection_deliveries"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_deliveries.provider",
+      "label": "植保资料交付 · 提供方",
+      "description": "来源记录属性 protection_deliveries.provider。",
+      "applies_to": [
+        "lzhu:protection_deliveries"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_deliveries.kind",
+      "label": "植保资料交付 · 种类",
+      "description": "来源记录属性 protection_deliveries.kind。",
+      "applies_to": [
+        "lzhu:protection_deliveries"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_deliveries.missing",
+      "label": "植保资料交付 · 缺失内容",
+      "description": "来源记录属性 protection_deliveries.missing。",
+      "applies_to": [
+        "lzhu:protection_deliveries"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_deliveries.received_by",
+      "label": "植保资料交付 · 接收人标识",
+      "description": "来源记录属性 protection_deliveries.received_by。",
+      "applies_to": [
+        "lzhu:protection_deliveries"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_deliveries.occurred_at",
+      "label": "植保资料交付 · 业务发生时间",
+      "description": "来源记录属性 protection_deliveries.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:protection_deliveries"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_deliveries.evidence",
+      "label": "植保资料交付 · 依据材料",
+      "description": "来源记录属性 protection_deliveries.evidence。",
+      "applies_to": [
+        "lzhu:protection_deliveries"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_deliveries.created_at",
+      "label": "植保资料交付 · 创建时间",
+      "description": "来源记录属性 protection_deliveries.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:protection_deliveries"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_followups.id",
+      "label": "植保作业回访 · 记录标识",
+      "description": "来源记录属性 protection_followups.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:protection_followups"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_followups.observation",
+      "label": "植保作业回访 · 观测描述",
+      "description": "来源记录属性 protection_followups.observation。",
+      "applies_to": [
+        "lzhu:protection_followups"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_followups.judgment",
+      "label": "植保作业回访 · 来源人员判断",
+      "description": "来源记录属性 protection_followups.judgment。",
+      "applies_to": [
+        "lzhu:protection_followups"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_followups.action",
+      "label": "植保作业回访 · 动作",
+      "description": "来源记录属性 protection_followups.action。",
+      "applies_to": [
+        "lzhu:protection_followups"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_followups.occurred_at",
+      "label": "植保作业回访 · 业务发生时间",
+      "description": "来源记录属性 protection_followups.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:protection_followups"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_followups.evidence",
+      "label": "植保作业回访 · 依据材料",
+      "description": "来源记录属性 protection_followups.evidence。",
+      "applies_to": [
+        "lzhu:protection_followups"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:protection_followups.created_at",
+      "label": "植保作业回访 · 创建时间",
+      "description": "来源记录属性 protection_followups.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:protection_followups"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    }
+  ],
+  "predicates": [],
+  "dependencies": []
+}

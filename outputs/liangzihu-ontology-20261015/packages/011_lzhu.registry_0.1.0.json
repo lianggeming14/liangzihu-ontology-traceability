@@ -1,0 +1,1903 @@
+{
+  "package_id": "lzhu.registry",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:registry:",
+  "label": "对象与身份登记",
+  "description": "农场对象、参与者、生产批次、设备及空间身份与版本。 固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。此包定义来源系统记录类；不是已经完成农业业务概念等价对齐的目标本体。",
+  "types": [
+    {
+      "type_id": "lzhu:users",
+      "identity_type": "lzhu:users",
+      "label": "参与者身份",
+      "description": "平台参与者身份及业务角色；认证秘密和账户安全字段不纳入业务属性。 来源表 users；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:objects",
+      "identity_type": "lzhu:objects",
+      "label": "农场空间对象",
+      "description": "源平台登记的农场空间或设施对象，保留其原始类别与边界。 来源表 objects；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:object_versions",
+      "identity_type": "lzhu:object_versions",
+      "label": "对象历史版本",
+      "description": "空间对象的修订快照及修订原因，不另造现实对象身份。 来源表 object_versions；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:production_batches",
+      "identity_type": "lzhu:production_batches",
+      "label": "生产批次",
+      "description": "某对象上的物种品种与生产阶段周期，不等同库存物料批次。 来源表 production_batches；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:data_sources",
+      "identity_type": "lzhu:data_sources",
+      "label": "数据来源登记",
+      "description": "提供数据的系统或服务及其接口契约、核验状态。 来源表 data_sources；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:devices",
+      "identity_type": "lzhu:devices",
+      "label": "设备登记",
+      "description": "源系统中的设备身份和设备资料，不等同测点。 来源表 devices；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:points",
+      "identity_type": "lzhu:points",
+      "label": "测点与指标登记",
+      "description": "设备采集的测点或通道及指标、单位定义。 来源表 points；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:point_bindings",
+      "identity_type": "lzhu:point_bindings",
+      "label": "测点对象绑定",
+      "description": "测点与被观测对象在有效时间内的绑定及证据。 来源表 point_bindings；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:boundary_versions",
+      "identity_type": "lzhu:boundary_versions",
+      "label": "空间边界版本",
+      "description": "对象边界的版本、坐标参考系和来源依据。 来源表 boundary_versions；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:device_positions",
+      "identity_type": "lzhu:device_positions",
+      "label": "设备位置版本",
+      "description": "设备的空间位置与核验资料，不等同实时轨迹。 来源表 device_positions；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:terrain_scenes",
+      "identity_type": "lzhu:terrain_scenes",
+      "label": "地形场景",
+      "description": "地形模型场景、坐标及高程基准、修补声明和来源，不等同现场测量真值。 来源表 terrain_scenes；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:terrain_resources",
+      "identity_type": "lzhu:terrain_resources",
+      "label": "地形资源文件",
+      "description": "地形场景关联的文件资源与用途。 来源表 terrain_resources；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:terrain_surveys",
+      "identity_type": "lzhu:terrain_surveys",
+      "label": "地形校核测量",
+      "description": "现场测量坐标与模型坐标的对应及基准依据。 来源表 terrain_surveys；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:terrain_reviews",
+      "identity_type": "lzhu:terrain_reviews",
+      "label": "地形场景审核",
+      "description": "对地形场景适用性和证据作出的人工审核。 来源表 terrain_reviews；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:device_elevations",
+      "identity_type": "lzhu:device_elevations",
+      "label": "设备高程记录",
+      "description": "设备参考点高程及其垂直基准和测量依据。 来源表 device_elevations；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:hydraulic_links",
+      "identity_type": "lzhu:hydraulic_links",
+      "label": "水力连通关系",
+      "description": "对象间登记的水力连接及其核验证据，不据此自动推导流量或因果。 来源表 hydraulic_links；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    }
+  ],
+  "properties": [
+    {
+      "property_id": "lzhu:users.id",
+      "label": "参与者身份 · 记录标识",
+      "description": "来源记录属性 users.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:users"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:users.username",
+      "label": "参与者身份 · 用户名",
+      "description": "来源记录属性 users.username。",
+      "applies_to": [
+        "lzhu:users"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:users.display_name",
+      "label": "参与者身份 · 显示名称",
+      "description": "来源记录属性 users.display_name。",
+      "applies_to": [
+        "lzhu:users"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:users.role",
+      "label": "参与者身份 · 角色",
+      "description": "来源记录属性 users.role。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:users"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "admin",
+        "owner",
+        "technician",
+        "worker",
+        "maintainer",
+        "expert"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:users.wecom_corp_id",
+      "label": "参与者身份 · 企业微信组织标识",
+      "description": "来源记录属性 users.wecom_corp_id。",
+      "applies_to": [
+        "lzhu:users"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:users.wecom_user_id",
+      "label": "参与者身份 · 企业微信用户标识",
+      "description": "来源记录属性 users.wecom_user_id。",
+      "applies_to": [
+        "lzhu:users"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:users.created_at",
+      "label": "参与者身份 · 创建时间",
+      "description": "来源记录属性 users.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:users"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:objects.id",
+      "label": "农场空间对象 · 记录标识",
+      "description": "来源记录属性 objects.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:objects"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:objects.code",
+      "label": "农场空间对象 · 编码",
+      "description": "来源记录属性 objects.code。",
+      "applies_to": [
+        "lzhu:objects"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:objects.name",
+      "label": "农场空间对象 · 名称",
+      "description": "来源记录属性 objects.name。",
+      "applies_to": [
+        "lzhu:objects"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:objects.kind",
+      "label": "农场空间对象 · 种类",
+      "description": "来源记录属性 objects.kind。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:objects"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "farm",
+        "pond",
+        "field",
+        "channel",
+        "facility"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:objects.boundary_status",
+      "label": "农场空间对象 · 边界状态",
+      "description": "来源记录属性 objects.boundary_status。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:objects"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "unknown",
+        "draft",
+        "verified"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:objects.source",
+      "label": "农场空间对象 · 来源内容",
+      "description": "来源记录属性 objects.source。",
+      "applies_to": [
+        "lzhu:objects"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:objects.version",
+      "label": "农场空间对象 · 版本",
+      "description": "来源记录属性 objects.version。",
+      "applies_to": [
+        "lzhu:objects"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:objects.created_at",
+      "label": "农场空间对象 · 创建时间",
+      "description": "来源记录属性 objects.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:objects"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:object_versions.id",
+      "label": "对象历史版本 · 记录标识",
+      "description": "来源记录属性 object_versions.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:object_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:object_versions.version",
+      "label": "对象历史版本 · 版本",
+      "description": "来源记录属性 object_versions.version。",
+      "applies_to": [
+        "lzhu:object_versions"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:object_versions.reason",
+      "label": "对象历史版本 · 原因",
+      "description": "来源记录属性 object_versions.reason。",
+      "applies_to": [
+        "lzhu:object_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:object_versions.created_at",
+      "label": "对象历史版本 · 创建时间",
+      "description": "来源记录属性 object_versions.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:object_versions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:production_batches.id",
+      "label": "生产批次 · 记录标识",
+      "description": "来源记录属性 production_batches.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:production_batches"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:production_batches.code",
+      "label": "生产批次 · 编码",
+      "description": "来源记录属性 production_batches.code。",
+      "applies_to": [
+        "lzhu:production_batches"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:production_batches.species",
+      "label": "生产批次 · 物种",
+      "description": "来源记录属性 production_batches.species。",
+      "applies_to": [
+        "lzhu:production_batches"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:production_batches.variety",
+      "label": "生产批次 · 品种",
+      "description": "来源记录属性 production_batches.variety。",
+      "applies_to": [
+        "lzhu:production_batches"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:production_batches.stage",
+      "label": "生产批次 · 阶段",
+      "description": "来源记录属性 production_batches.stage。",
+      "applies_to": [
+        "lzhu:production_batches"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:production_batches.source",
+      "label": "生产批次 · 来源内容",
+      "description": "来源记录属性 production_batches.source。",
+      "applies_to": [
+        "lzhu:production_batches"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:production_batches.verified",
+      "label": "生产批次 · 已核验标记",
+      "description": "来源记录属性 production_batches.verified。",
+      "applies_to": [
+        "lzhu:production_batches"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:production_batches.started_at",
+      "label": "生产批次 · 实际开始时间",
+      "description": "来源记录属性 production_batches.started_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:production_batches"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:production_batches.ended_at",
+      "label": "生产批次 · 实际结束时间",
+      "description": "来源记录属性 production_batches.ended_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:production_batches"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:production_batches.created_at",
+      "label": "生产批次 · 创建时间",
+      "description": "来源记录属性 production_batches.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:production_batches"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:data_sources.id",
+      "label": "数据来源登记 · 记录标识",
+      "description": "来源记录属性 data_sources.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:data_sources"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:data_sources.code",
+      "label": "数据来源登记 · 编码",
+      "description": "来源记录属性 data_sources.code。",
+      "applies_to": [
+        "lzhu:data_sources"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:data_sources.name",
+      "label": "数据来源登记 · 名称",
+      "description": "来源记录属性 data_sources.name。",
+      "applies_to": [
+        "lzhu:data_sources"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:data_sources.provider",
+      "label": "数据来源登记 · 提供方",
+      "description": "来源记录属性 data_sources.provider。",
+      "applies_to": [
+        "lzhu:data_sources"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:data_sources.contract_ref",
+      "label": "数据来源登记 · 契约或合同引用",
+      "description": "来源记录属性 data_sources.contract_ref。",
+      "applies_to": [
+        "lzhu:data_sources"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:data_sources.verified",
+      "label": "数据来源登记 · 已核验标记",
+      "description": "来源记录属性 data_sources.verified。",
+      "applies_to": [
+        "lzhu:data_sources"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:devices.id",
+      "label": "设备登记 · 记录标识",
+      "description": "来源记录属性 devices.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:devices"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:devices.external_id",
+      "label": "设备登记 · 外部编号",
+      "description": "来源记录属性 devices.external_id。",
+      "applies_to": [
+        "lzhu:devices"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:devices.name",
+      "label": "设备登记 · 名称",
+      "description": "来源记录属性 devices.name。",
+      "applies_to": [
+        "lzhu:devices"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:devices.kind",
+      "label": "设备登记 · 种类",
+      "description": "来源记录属性 devices.kind。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:devices"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "physical",
+        "gateway",
+        "camera_channel"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:devices.model",
+      "label": "设备登记 · 模型或设备型号",
+      "description": "来源记录属性 devices.model。",
+      "applies_to": [
+        "lzhu:devices"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:devices.serial_number",
+      "label": "设备登记 · 设备序列号",
+      "description": "来源记录属性 devices.serial_number。",
+      "applies_to": [
+        "lzhu:devices"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:devices.source",
+      "label": "设备登记 · 来源内容",
+      "description": "来源记录属性 devices.source。",
+      "applies_to": [
+        "lzhu:devices"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:devices.verified",
+      "label": "设备登记 · 已核验标记",
+      "description": "来源记录属性 devices.verified。",
+      "applies_to": [
+        "lzhu:devices"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:devices.created_at",
+      "label": "设备登记 · 创建时间",
+      "description": "来源记录属性 devices.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:devices"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:points.id",
+      "label": "测点与指标登记 · 记录标识",
+      "description": "来源记录属性 points.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:points"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:points.code",
+      "label": "测点与指标登记 · 编码",
+      "description": "来源记录属性 points.code。",
+      "applies_to": [
+        "lzhu:points"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:points.name",
+      "label": "测点与指标登记 · 名称",
+      "description": "来源记录属性 points.name。",
+      "applies_to": [
+        "lzhu:points"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:points.metric",
+      "label": "测点与指标登记 · 指标",
+      "description": "来源记录属性 points.metric。",
+      "applies_to": [
+        "lzhu:points"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:points.unit",
+      "label": "测点与指标登记 · 单位",
+      "description": "来源记录属性 points.unit。",
+      "applies_to": [
+        "lzhu:points"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:points.max_age_ms",
+      "label": "测点与指标登记 · 最长数据龄期毫秒数",
+      "description": "来源记录属性 points.max_age_ms。",
+      "applies_to": [
+        "lzhu:points"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:points.max_gap_ms",
+      "label": "测点与指标登记 · 最大间隔毫秒数",
+      "description": "来源记录属性 points.max_gap_ms。",
+      "applies_to": [
+        "lzhu:points"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:points.timing_source",
+      "label": "测点与指标登记 · 时间来源",
+      "description": "来源记录属性 points.timing_source。",
+      "applies_to": [
+        "lzhu:points"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:point_bindings.id",
+      "label": "测点对象绑定 · 记录标识",
+      "description": "来源记录属性 point_bindings.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:point_bindings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:point_bindings.valid_from",
+      "label": "测点对象绑定 · 有效开始时间",
+      "description": "来源记录属性 point_bindings.valid_from。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:point_bindings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:point_bindings.valid_to",
+      "label": "测点对象绑定 · 有效结束时间",
+      "description": "来源记录属性 point_bindings.valid_to。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:point_bindings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:point_bindings.verified",
+      "label": "测点对象绑定 · 已核验标记",
+      "description": "来源记录属性 point_bindings.verified。",
+      "applies_to": [
+        "lzhu:point_bindings"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:point_bindings.evidence",
+      "label": "测点对象绑定 · 依据材料",
+      "description": "来源记录属性 point_bindings.evidence。",
+      "applies_to": [
+        "lzhu:point_bindings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:point_bindings.created_at",
+      "label": "测点对象绑定 · 创建时间",
+      "description": "来源记录属性 point_bindings.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:point_bindings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:boundary_versions.id",
+      "label": "空间边界版本 · 记录标识",
+      "description": "来源记录属性 boundary_versions.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:boundary_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:boundary_versions.object_version",
+      "label": "空间边界版本 · 对象版本",
+      "description": "来源记录属性 boundary_versions.object_version。",
+      "applies_to": [
+        "lzhu:boundary_versions"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:boundary_versions.source_crs",
+      "label": "空间边界版本 · 来源坐标参考系",
+      "description": "来源记录属性 boundary_versions.source_crs。",
+      "applies_to": [
+        "lzhu:boundary_versions"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:boundary_versions.source",
+      "label": "空间边界版本 · 来源内容",
+      "description": "来源记录属性 boundary_versions.source。",
+      "applies_to": [
+        "lzhu:boundary_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:boundary_versions.status",
+      "label": "空间边界版本 · 状态",
+      "description": "来源记录属性 boundary_versions.status。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:boundary_versions"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "draft",
+        "verified"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:boundary_versions.created_at",
+      "label": "空间边界版本 · 创建时间",
+      "description": "来源记录属性 boundary_versions.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:boundary_versions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_positions.id",
+      "label": "设备位置版本 · 记录标识",
+      "description": "来源记录属性 device_positions.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:device_positions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_positions.version",
+      "label": "设备位置版本 · 版本",
+      "description": "来源记录属性 device_positions.version。",
+      "applies_to": [
+        "lzhu:device_positions"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_positions.source",
+      "label": "设备位置版本 · 来源内容",
+      "description": "来源记录属性 device_positions.source。",
+      "applies_to": [
+        "lzhu:device_positions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_positions.verified",
+      "label": "设备位置版本 · 已核验标记",
+      "description": "来源记录属性 device_positions.verified。",
+      "applies_to": [
+        "lzhu:device_positions"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_positions.created_at",
+      "label": "设备位置版本 · 创建时间",
+      "description": "来源记录属性 device_positions.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:device_positions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.id",
+      "label": "地形场景 · 记录标识",
+      "description": "来源记录属性 terrain_scenes.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.name",
+      "label": "地形场景 · 名称",
+      "description": "来源记录属性 terrain_scenes.name。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.version",
+      "label": "地形场景 · 版本",
+      "description": "来源记录属性 terrain_scenes.version。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.root_path",
+      "label": "地形场景 · 根路径",
+      "description": "来源记录属性 terrain_scenes.root_path。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.captured_at",
+      "label": "地形场景 · 采集时间",
+      "description": "来源记录属性 terrain_scenes.captured_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.source_crs",
+      "label": "地形场景 · 来源坐标参考系",
+      "description": "来源记录属性 terrain_scenes.source_crs。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.survey_crs",
+      "label": "地形场景 · 测量坐标参考系",
+      "description": "来源记录属性 terrain_scenes.survey_crs。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.vertical_datum",
+      "label": "地形场景 · 高程基准",
+      "description": "来源记录属性 terrain_scenes.vertical_datum。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.conversion_ref",
+      "label": "地形场景 · 转换依据引用",
+      "description": "来源记录属性 terrain_scenes.conversion_ref。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.source_ref",
+      "label": "地形场景 · 来源引用",
+      "description": "来源记录属性 terrain_scenes.source_ref。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.surface_state",
+      "label": "地形场景 · 表面状态",
+      "description": "来源记录属性 terrain_scenes.surface_state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "unknown",
+        "bare_ground",
+        "canopy",
+        "water",
+        "mixed"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.repairs_declared",
+      "label": "地形场景 · 是否声明模型修补",
+      "description": "来源记录属性 terrain_scenes.repairs_declared。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.state",
+      "label": "地形场景 · 状态",
+      "description": "来源记录属性 terrain_scenes.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "validating",
+        "ready",
+        "failed",
+        "withdrawn"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.error_code",
+      "label": "地形场景 · 错误代码",
+      "description": "来源记录属性 terrain_scenes.error_code。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.request_key",
+      "label": "地形场景 · 请求幂等键",
+      "description": "来源记录属性 terrain_scenes.request_key。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.input_hash",
+      "label": "地形场景 · 输入内容哈希",
+      "description": "来源记录属性 terrain_scenes.input_hash。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.created_at",
+      "label": "地形场景 · 创建时间",
+      "description": "来源记录属性 terrain_scenes.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.completed_at",
+      "label": "地形场景 · 完成时间",
+      "description": "来源记录属性 terrain_scenes.completed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.withdrawn_at",
+      "label": "地形场景 · 撤回时间",
+      "description": "来源记录属性 terrain_scenes.withdrawn_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_scenes.withdraw_reason",
+      "label": "地形场景 · 撤回原因",
+      "description": "来源记录属性 terrain_scenes.withdraw_reason。",
+      "applies_to": [
+        "lzhu:terrain_scenes"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_resources.path",
+      "label": "地形资源文件 · 路径",
+      "description": "来源记录属性 terrain_resources.path。",
+      "applies_to": [
+        "lzhu:terrain_resources"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_resources.checksum",
+      "label": "地形资源文件 · 校验值",
+      "description": "来源记录属性 terrain_resources.checksum。",
+      "applies_to": [
+        "lzhu:terrain_resources"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_resources.byte_length",
+      "label": "地形资源文件 · 字节长度",
+      "description": "来源记录属性 terrain_resources.byte_length。",
+      "applies_to": [
+        "lzhu:terrain_resources"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_resources.mime",
+      "label": "地形资源文件 · 媒体MIME类型",
+      "description": "来源记录属性 terrain_resources.mime。",
+      "applies_to": [
+        "lzhu:terrain_resources"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.id",
+      "label": "地形校核测量 · 记录标识",
+      "description": "来源记录属性 terrain_surveys.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.point_key",
+      "label": "地形校核测量 · 测点业务键",
+      "description": "来源记录属性 terrain_surveys.point_key。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.version",
+      "label": "地形校核测量 · 版本",
+      "description": "来源记录属性 terrain_surveys.version。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.purpose",
+      "label": "地形校核测量 · 用途",
+      "description": "来源记录属性 terrain_surveys.purpose。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "control",
+        "check"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.independent",
+      "label": "地形校核测量 · 是否独立",
+      "description": "来源记录属性 terrain_surveys.independent。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.survey_e",
+      "label": "地形校核测量 · 测量东坐标",
+      "description": "来源记录属性 terrain_surveys.survey_e。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.survey_n",
+      "label": "地形校核测量 · 测量北坐标",
+      "description": "来源记录属性 terrain_surveys.survey_n。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.survey_h",
+      "label": "地形校核测量 · 测量高程值",
+      "description": "来源记录属性 terrain_surveys.survey_h。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.model_e",
+      "label": "地形校核测量 · 模型东坐标",
+      "description": "来源记录属性 terrain_surveys.model_e。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.model_n",
+      "label": "地形校核测量 · 模型北坐标",
+      "description": "来源记录属性 terrain_surveys.model_n。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.model_h",
+      "label": "地形校核测量 · 模型高程",
+      "description": "来源记录属性 terrain_surveys.model_h。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.horizontal_crs",
+      "label": "地形校核测量 · 平面坐标参考系",
+      "description": "来源记录属性 terrain_surveys.horizontal_crs。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.vertical_datum",
+      "label": "地形校核测量 · 高程基准",
+      "description": "来源记录属性 terrain_surveys.vertical_datum。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.measured_at",
+      "label": "地形校核测量 · 测量时间",
+      "description": "来源记录属性 terrain_surveys.measured_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.source_ref",
+      "label": "地形校核测量 · 来源引用",
+      "description": "来源记录属性 terrain_surveys.source_ref。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.created_at",
+      "label": "地形校核测量 · 创建时间",
+      "description": "来源记录属性 terrain_surveys.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.request_key",
+      "label": "地形校核测量 · 请求幂等键",
+      "description": "来源记录属性 terrain_surveys.request_key。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_surveys.input_hash",
+      "label": "地形校核测量 · 输入内容哈希",
+      "description": "来源记录属性 terrain_surveys.input_hash。",
+      "applies_to": [
+        "lzhu:terrain_surveys"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_reviews.id",
+      "label": "地形场景审核 · 记录标识",
+      "description": "来源记录属性 terrain_reviews.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:terrain_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_reviews.input_hash",
+      "label": "地形场景审核 · 输入内容哈希",
+      "description": "来源记录属性 terrain_reviews.input_hash。",
+      "applies_to": [
+        "lzhu:terrain_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_reviews.decision",
+      "label": "地形场景审核 · 源记录审核决定",
+      "description": "来源记录属性 terrain_reviews.decision。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:terrain_reviews"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "accepted",
+        "display_only"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_reviews.purpose",
+      "label": "地形场景审核 · 用途",
+      "description": "来源记录属性 terrain_reviews.purpose。",
+      "applies_to": [
+        "lzhu:terrain_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_reviews.evidence",
+      "label": "地形场景审核 · 依据材料",
+      "description": "来源记录属性 terrain_reviews.evidence。",
+      "applies_to": [
+        "lzhu:terrain_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_reviews.review_due_at",
+      "label": "地形场景审核 · 应复核时间",
+      "description": "来源记录属性 terrain_reviews.review_due_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:terrain_reviews"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_reviews.created_at",
+      "label": "地形场景审核 · 创建时间",
+      "description": "来源记录属性 terrain_reviews.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:terrain_reviews"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_reviews.request_key",
+      "label": "地形场景审核 · 请求幂等键",
+      "description": "来源记录属性 terrain_reviews.request_key。",
+      "applies_to": [
+        "lzhu:terrain_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:terrain_reviews.content_hash",
+      "label": "地形场景审核 · 内容哈希",
+      "description": "来源记录属性 terrain_reviews.content_hash。",
+      "applies_to": [
+        "lzhu:terrain_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_elevations.id",
+      "label": "设备高程记录 · 记录标识",
+      "description": "来源记录属性 device_elevations.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:device_elevations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_elevations.version",
+      "label": "设备高程记录 · 版本",
+      "description": "来源记录属性 device_elevations.version。",
+      "applies_to": [
+        "lzhu:device_elevations"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_elevations.survey_height",
+      "label": "设备高程记录 · 测量高度",
+      "description": "来源记录属性 device_elevations.survey_height。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:device_elevations"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_elevations.ellipsoid_height",
+      "label": "设备高程记录 · 椭球高",
+      "description": "来源记录属性 device_elevations.ellipsoid_height。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:device_elevations"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_elevations.vertical_datum",
+      "label": "设备高程记录 · 高程基准",
+      "description": "来源记录属性 device_elevations.vertical_datum。",
+      "applies_to": [
+        "lzhu:device_elevations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_elevations.reference_point",
+      "label": "设备高程记录 · 参考点",
+      "description": "来源记录属性 device_elevations.reference_point。",
+      "applies_to": [
+        "lzhu:device_elevations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_elevations.conversion_ref",
+      "label": "设备高程记录 · 转换依据引用",
+      "description": "来源记录属性 device_elevations.conversion_ref。",
+      "applies_to": [
+        "lzhu:device_elevations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_elevations.measured_at",
+      "label": "设备高程记录 · 测量时间",
+      "description": "来源记录属性 device_elevations.measured_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:device_elevations"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_elevations.source_ref",
+      "label": "设备高程记录 · 来源引用",
+      "description": "来源记录属性 device_elevations.source_ref。",
+      "applies_to": [
+        "lzhu:device_elevations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_elevations.verified",
+      "label": "设备高程记录 · 已核验标记",
+      "description": "来源记录属性 device_elevations.verified。",
+      "applies_to": [
+        "lzhu:device_elevations"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_elevations.created_at",
+      "label": "设备高程记录 · 创建时间",
+      "description": "来源记录属性 device_elevations.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:device_elevations"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_elevations.request_key",
+      "label": "设备高程记录 · 请求幂等键",
+      "description": "来源记录属性 device_elevations.request_key。",
+      "applies_to": [
+        "lzhu:device_elevations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:device_elevations.input_hash",
+      "label": "设备高程记录 · 输入内容哈希",
+      "description": "来源记录属性 device_elevations.input_hash。",
+      "applies_to": [
+        "lzhu:device_elevations"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:hydraulic_links.id",
+      "label": "水力连通关系 · 记录标识",
+      "description": "来源记录属性 hydraulic_links.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:hydraulic_links"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:hydraulic_links.name",
+      "label": "水力连通关系 · 名称",
+      "description": "来源记录属性 hydraulic_links.name。",
+      "applies_to": [
+        "lzhu:hydraulic_links"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:hydraulic_links.version",
+      "label": "水力连通关系 · 版本",
+      "description": "来源记录属性 hydraulic_links.version。",
+      "applies_to": [
+        "lzhu:hydraulic_links"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:hydraulic_links.direction",
+      "label": "水力连通关系 · 方向",
+      "description": "来源记录属性 hydraulic_links.direction。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:hydraulic_links"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "forward",
+        "bidirectional"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:hydraulic_links.evidence",
+      "label": "水力连通关系 · 依据材料",
+      "description": "来源记录属性 hydraulic_links.evidence。",
+      "applies_to": [
+        "lzhu:hydraulic_links"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:hydraulic_links.verified",
+      "label": "水力连通关系 · 已核验标记",
+      "description": "来源记录属性 hydraulic_links.verified。",
+      "applies_to": [
+        "lzhu:hydraulic_links"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:hydraulic_links.review_due_at",
+      "label": "水力连通关系 · 应复核时间",
+      "description": "来源记录属性 hydraulic_links.review_due_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:hydraulic_links"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:hydraulic_links.created_at",
+      "label": "水力连通关系 · 创建时间",
+      "description": "来源记录属性 hydraulic_links.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:hydraulic_links"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:hydraulic_links.withdrawn_at",
+      "label": "水力连通关系 · 撤回时间",
+      "description": "来源记录属性 hydraulic_links.withdrawn_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:hydraulic_links"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:hydraulic_links.withdraw_reason",
+      "label": "水力连通关系 · 撤回原因",
+      "description": "来源记录属性 hydraulic_links.withdraw_reason。",
+      "applies_to": [
+        "lzhu:hydraulic_links"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:hydraulic_links.request_key",
+      "label": "水力连通关系 · 请求幂等键",
+      "description": "来源记录属性 hydraulic_links.request_key。",
+      "applies_to": [
+        "lzhu:hydraulic_links"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:hydraulic_links.input_hash",
+      "label": "水力连通关系 · 输入内容哈希",
+      "description": "来源记录属性 hydraulic_links.input_hash。",
+      "applies_to": [
+        "lzhu:hydraulic_links"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    }
+  ],
+  "predicates": [],
+  "dependencies": []
+}

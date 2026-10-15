@@ -1,0 +1,660 @@
+{
+  "package_id": "lzhu.quality",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:quality:",
+  "label": "质量与溯源",
+  "description": "样品、检测、质量凭证、处置及公开溯源内容。 固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。此包定义来源系统记录类；不是已经完成农业业务概念等价对齐的目标本体。",
+  "types": [
+    {
+      "type_id": "lzhu:quality_samples",
+      "identity_type": "lzhu:quality_samples",
+      "label": "质检样品",
+      "description": "标识从原料或成品批次取得的样品及采样时刻。 来源表 quality_samples；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:quality_tests",
+      "identity_type": "lzhu:quality_tests",
+      "label": "样品检测结果",
+      "description": "保存检测方法、报告、结论和有效期，可用新结果替代。 来源表 quality_tests；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:quality_credentials",
+      "identity_type": "lzhu:quality_credentials",
+      "label": "质量凭证",
+      "description": "保存证书、认证或品牌依据及适用产品批次和有效期。 来源表 quality_credentials；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:quality_decisions",
+      "identity_type": "lzhu:quality_decisions",
+      "label": "批次质量状态变更",
+      "description": "保存依据检测和凭证作出的状态转换，不是检测原始值。 来源表 quality_decisions；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:quality_cases",
+      "identity_type": "lzhu:quality_cases",
+      "label": "质量处置案件",
+      "description": "管理某批次质量问题的目标处置数量与案件状态。 来源表 quality_cases；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:quality_case_events",
+      "identity_type": "lzhu:quality_case_events",
+      "label": "质量处置事件",
+      "description": "保存通知、回收、处置和结案动作及数量。 来源表 quality_case_events；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:public_trace_cards",
+      "identity_type": "lzhu:public_trace_cards",
+      "label": "公开溯源卡",
+      "description": "保存对外内容版本和审核状态，区别于内部完整证据。 来源表 public_trace_cards；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    }
+  ],
+  "properties": [
+    {
+      "property_id": "lzhu:quality_samples.id",
+      "label": "质检样品 · 记录标识",
+      "description": "来源记录属性 quality_samples.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:quality_samples"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_samples.sample_code",
+      "label": "质检样品 · 样品编号",
+      "description": "来源记录属性 quality_samples.sample_code。",
+      "applies_to": [
+        "lzhu:quality_samples"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_samples.stage",
+      "label": "质检样品 · 阶段",
+      "description": "来源记录属性 quality_samples.stage。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:quality_samples"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "raw",
+        "finished"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_samples.sampled_at",
+      "label": "质检样品 · 采样时间",
+      "description": "来源记录属性 quality_samples.sampled_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:quality_samples"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_samples.source",
+      "label": "质检样品 · 来源内容",
+      "description": "来源记录属性 quality_samples.source。",
+      "applies_to": [
+        "lzhu:quality_samples"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_samples.created_at",
+      "label": "质检样品 · 创建时间",
+      "description": "来源记录属性 quality_samples.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:quality_samples"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_tests.id",
+      "label": "样品检测结果 · 记录标识",
+      "description": "来源记录属性 quality_tests.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:quality_tests"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_tests.method",
+      "label": "样品检测结果 · 方法",
+      "description": "来源记录属性 quality_tests.method。",
+      "applies_to": [
+        "lzhu:quality_tests"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_tests.result",
+      "label": "样品检测结果 · 结果内容",
+      "description": "来源记录属性 quality_tests.result。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:quality_tests"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "pass",
+        "fail",
+        "inconclusive"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_tests.report_ref",
+      "label": "样品检测结果 · 报告引用",
+      "description": "来源记录属性 quality_tests.report_ref。",
+      "applies_to": [
+        "lzhu:quality_tests"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_tests.tested_at",
+      "label": "样品检测结果 · 检测时间",
+      "description": "来源记录属性 quality_tests.tested_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:quality_tests"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_tests.valid_until",
+      "label": "样品检测结果 · 有效截止时间",
+      "description": "来源记录属性 quality_tests.valid_until。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:quality_tests"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_tests.created_at",
+      "label": "样品检测结果 · 创建时间",
+      "description": "来源记录属性 quality_tests.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:quality_tests"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_credentials.id",
+      "label": "质量凭证 · 记录标识",
+      "description": "来源记录属性 quality_credentials.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:quality_credentials"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_credentials.kind",
+      "label": "质量凭证 · 种类",
+      "description": "来源记录属性 quality_credentials.kind。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:quality_credentials"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "certificate",
+        "certification",
+        "brand"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_credentials.subject",
+      "label": "质量凭证 · 主题或主体",
+      "description": "来源记录属性 quality_credentials.subject。",
+      "applies_to": [
+        "lzhu:quality_credentials"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_credentials.product",
+      "label": "质量凭证 · 产品",
+      "description": "来源记录属性 quality_credentials.product。",
+      "applies_to": [
+        "lzhu:quality_credentials"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_credentials.valid_from",
+      "label": "质量凭证 · 有效开始时间",
+      "description": "来源记录属性 quality_credentials.valid_from。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:quality_credentials"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_credentials.valid_until",
+      "label": "质量凭证 · 有效截止时间",
+      "description": "来源记录属性 quality_credentials.valid_until。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:quality_credentials"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_credentials.evidence",
+      "label": "质量凭证 · 依据材料",
+      "description": "来源记录属性 quality_credentials.evidence。",
+      "applies_to": [
+        "lzhu:quality_credentials"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_credentials.verified",
+      "label": "质量凭证 · 已核验标记",
+      "description": "来源记录属性 quality_credentials.verified。",
+      "applies_to": [
+        "lzhu:quality_credentials"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_credentials.created_at",
+      "label": "质量凭证 · 创建时间",
+      "description": "来源记录属性 quality_credentials.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:quality_credentials"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_decisions.id",
+      "label": "批次质量状态变更 · 记录标识",
+      "description": "来源记录属性 quality_decisions.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:quality_decisions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_decisions.from_state",
+      "label": "批次质量状态变更 · 变更前状态",
+      "description": "来源记录属性 quality_decisions.from_state。",
+      "applies_to": [
+        "lzhu:quality_decisions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_decisions.to_state",
+      "label": "批次质量状态变更 · 变更后状态",
+      "description": "来源记录属性 quality_decisions.to_state。",
+      "applies_to": [
+        "lzhu:quality_decisions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_decisions.version",
+      "label": "批次质量状态变更 · 版本",
+      "description": "来源记录属性 quality_decisions.version。",
+      "applies_to": [
+        "lzhu:quality_decisions"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_decisions.evidence",
+      "label": "批次质量状态变更 · 依据材料",
+      "description": "来源记录属性 quality_decisions.evidence。",
+      "applies_to": [
+        "lzhu:quality_decisions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_decisions.created_at",
+      "label": "批次质量状态变更 · 创建时间",
+      "description": "来源记录属性 quality_decisions.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:quality_decisions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_cases.id",
+      "label": "质量处置案件 · 记录标识",
+      "description": "来源记录属性 quality_cases.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:quality_cases"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_cases.title",
+      "label": "质量处置案件 · 标题",
+      "description": "来源记录属性 quality_cases.title。",
+      "applies_to": [
+        "lzhu:quality_cases"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_cases.target_quantity",
+      "label": "质量处置案件 · 目标数量",
+      "description": "来源记录属性 quality_cases.target_quantity。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:quality_cases"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_cases.evidence",
+      "label": "质量处置案件 · 依据材料",
+      "description": "来源记录属性 quality_cases.evidence。",
+      "applies_to": [
+        "lzhu:quality_cases"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_cases.state",
+      "label": "质量处置案件 · 状态",
+      "description": "来源记录属性 quality_cases.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:quality_cases"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "open",
+        "closed"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_cases.created_at",
+      "label": "质量处置案件 · 创建时间",
+      "description": "来源记录属性 quality_cases.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:quality_cases"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_case_events.id",
+      "label": "质量处置事件 · 记录标识",
+      "description": "来源记录属性 quality_case_events.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:quality_case_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_case_events.action",
+      "label": "质量处置事件 · 动作",
+      "description": "来源记录属性 quality_case_events.action。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:quality_case_events"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "notice",
+        "recover",
+        "dispose",
+        "close"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_case_events.quantity",
+      "label": "质量处置事件 · 数量",
+      "description": "来源记录属性 quality_case_events.quantity。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:quality_case_events"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_case_events.occurred_at",
+      "label": "质量处置事件 · 业务发生时间",
+      "description": "来源记录属性 quality_case_events.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:quality_case_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_case_events.evidence",
+      "label": "质量处置事件 · 依据材料",
+      "description": "来源记录属性 quality_case_events.evidence。",
+      "applies_to": [
+        "lzhu:quality_case_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:quality_case_events.created_at",
+      "label": "质量处置事件 · 创建时间",
+      "description": "来源记录属性 quality_case_events.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:quality_case_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:public_trace_cards.id",
+      "label": "公开溯源卡 · 记录标识",
+      "description": "来源记录属性 public_trace_cards.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:public_trace_cards"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:public_trace_cards.version",
+      "label": "公开溯源卡 · 版本",
+      "description": "来源记录属性 public_trace_cards.version。",
+      "applies_to": [
+        "lzhu:public_trace_cards"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:public_trace_cards.code",
+      "label": "公开溯源卡 · 编码",
+      "description": "来源记录属性 public_trace_cards.code。",
+      "applies_to": [
+        "lzhu:public_trace_cards"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:public_trace_cards.state",
+      "label": "公开溯源卡 · 状态",
+      "description": "来源记录属性 public_trace_cards.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:public_trace_cards"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "draft",
+        "approved",
+        "revoked"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:public_trace_cards.valid_until",
+      "label": "公开溯源卡 · 有效截止时间",
+      "description": "来源记录属性 public_trace_cards.valid_until。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:public_trace_cards"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:public_trace_cards.created_at",
+      "label": "公开溯源卡 · 创建时间",
+      "description": "来源记录属性 public_trace_cards.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:public_trace_cards"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:public_trace_cards.reviewed_at",
+      "label": "公开溯源卡 · 审核时间",
+      "description": "来源记录属性 public_trace_cards.reviewed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:public_trace_cards"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:public_trace_cards.review_note",
+      "label": "公开溯源卡 · 审核备注",
+      "description": "来源记录属性 public_trace_cards.review_note。",
+      "applies_to": [
+        "lzhu:public_trace_cards"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    }
+  ],
+  "predicates": [],
+  "dependencies": []
+}

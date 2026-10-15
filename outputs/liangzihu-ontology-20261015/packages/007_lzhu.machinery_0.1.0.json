@@ -1,0 +1,626 @@
+{
+  "package_id": "lzhu.machinery",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:machinery:",
+  "label": "农机与服务",
+  "description": "农机契约、终端绑定、作业订单、证据与验收。 固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。此包定义来源系统记录类；不是已经完成农业业务概念等价对齐的目标本体。",
+  "types": [
+    {
+      "type_id": "lzhu:machinery_contracts",
+      "identity_type": "lzhu:machinery_contracts",
+      "label": "农机服务契约",
+      "description": "保存服务商接口、迁移退出约定及有效版本，不是身份凭据。 来源表 machinery_contracts；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:machinery_contract_reviews",
+      "identity_type": "lzhu:machinery_contract_reviews",
+      "label": "农机契约审核",
+      "description": "保存服务契约批准或撤回的业务事件。 来源表 machinery_contract_reviews；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:machinery_bindings",
+      "identity_type": "lzhu:machinery_bindings",
+      "label": "农机终端绑定",
+      "description": "表达机器与终端设备在明确有效期内的绑定。 来源表 machinery_bindings；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:machinery_orders",
+      "identity_type": "lzhu:machinery_orders",
+      "label": "农机作业订单",
+      "description": "定义边界、时段、数量和派单状态，区别于执行证据。 来源表 machinery_orders；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:machinery_evidence",
+      "identity_type": "lzhu:machinery_evidence",
+      "label": "农机作业证据",
+      "description": "保存轨迹、工单、到场或抽查记录及版本和通过标记。 来源表 machinery_evidence；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:machinery_reviews",
+      "identity_type": "lzhu:machinery_reviews",
+      "label": "农机作业验收",
+      "description": "保存依据作业证据作出的验收或撤回事件。 来源表 machinery_reviews；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    }
+  ],
+  "properties": [
+    {
+      "property_id": "lzhu:machinery_contracts.id",
+      "label": "农机服务契约 · 记录标识",
+      "description": "来源记录属性 machinery_contracts.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:machinery_contracts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_contracts.provider",
+      "label": "农机服务契约 · 提供方",
+      "description": "来源记录属性 machinery_contracts.provider。",
+      "applies_to": [
+        "lzhu:machinery_contracts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_contracts.account_ref",
+      "label": "农机服务契约 · 账户引用",
+      "description": "来源记录属性 machinery_contracts.account_ref。",
+      "applies_to": [
+        "lzhu:machinery_contracts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_contracts.fields_ref",
+      "label": "农机服务契约 · 田块资料引用",
+      "description": "来源记录属性 machinery_contracts.fields_ref。",
+      "applies_to": [
+        "lzhu:machinery_contracts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_contracts.export_ref",
+      "label": "农机服务契约 · 导出产物引用",
+      "description": "来源记录属性 machinery_contracts.export_ref。",
+      "applies_to": [
+        "lzhu:machinery_contracts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_contracts.migration_ref",
+      "label": "农机服务契约 · 迁移依据引用",
+      "description": "来源记录属性 machinery_contracts.migration_ref。",
+      "applies_to": [
+        "lzhu:machinery_contracts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_contracts.exit_ref",
+      "label": "农机服务契约 · 退出依据引用",
+      "description": "来源记录属性 machinery_contracts.exit_ref。",
+      "applies_to": [
+        "lzhu:machinery_contracts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_contracts.valid_until",
+      "label": "农机服务契约 · 有效截止时间",
+      "description": "来源记录属性 machinery_contracts.valid_until。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:machinery_contracts"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_contracts.source_ref",
+      "label": "农机服务契约 · 来源引用",
+      "description": "来源记录属性 machinery_contracts.source_ref。",
+      "applies_to": [
+        "lzhu:machinery_contracts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_contracts.version",
+      "label": "农机服务契约 · 版本",
+      "description": "来源记录属性 machinery_contracts.version。",
+      "applies_to": [
+        "lzhu:machinery_contracts"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_contracts.created_at",
+      "label": "农机服务契约 · 创建时间",
+      "description": "来源记录属性 machinery_contracts.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:machinery_contracts"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_contract_reviews.id",
+      "label": "农机契约审核 · 记录标识",
+      "description": "来源记录属性 machinery_contract_reviews.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:machinery_contract_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_contract_reviews.seq",
+      "label": "农机契约审核 · 序号",
+      "description": "来源记录属性 machinery_contract_reviews.seq。",
+      "applies_to": [
+        "lzhu:machinery_contract_reviews"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_contract_reviews.action",
+      "label": "农机契约审核 · 动作",
+      "description": "来源记录属性 machinery_contract_reviews.action。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:machinery_contract_reviews"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "approve",
+        "withdraw"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_contract_reviews.evidence",
+      "label": "农机契约审核 · 依据材料",
+      "description": "来源记录属性 machinery_contract_reviews.evidence。",
+      "applies_to": [
+        "lzhu:machinery_contract_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_contract_reviews.created_at",
+      "label": "农机契约审核 · 创建时间",
+      "description": "来源记录属性 machinery_contract_reviews.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:machinery_contract_reviews"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_bindings.id",
+      "label": "农机终端绑定 · 记录标识",
+      "description": "来源记录属性 machinery_bindings.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:machinery_bindings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_bindings.valid_from",
+      "label": "农机终端绑定 · 有效开始时间",
+      "description": "来源记录属性 machinery_bindings.valid_from。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:machinery_bindings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_bindings.valid_until",
+      "label": "农机终端绑定 · 有效截止时间",
+      "description": "来源记录属性 machinery_bindings.valid_until。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:machinery_bindings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_bindings.evidence",
+      "label": "农机终端绑定 · 依据材料",
+      "description": "来源记录属性 machinery_bindings.evidence。",
+      "applies_to": [
+        "lzhu:machinery_bindings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_bindings.revoked_at",
+      "label": "农机终端绑定 · 撤销时间",
+      "description": "来源记录属性 machinery_bindings.revoked_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:machinery_bindings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_bindings.created_at",
+      "label": "农机终端绑定 · 创建时间",
+      "description": "来源记录属性 machinery_bindings.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:machinery_bindings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_orders.id",
+      "label": "农机作业订单 · 记录标识",
+      "description": "来源记录属性 machinery_orders.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:machinery_orders"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_orders.title",
+      "label": "农机作业订单 · 标题",
+      "description": "来源记录属性 machinery_orders.title。",
+      "applies_to": [
+        "lzhu:machinery_orders"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_orders.operation",
+      "label": "农机作业订单 · 操作",
+      "description": "来源记录属性 machinery_orders.operation。",
+      "applies_to": [
+        "lzhu:machinery_orders"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_orders.starts_at",
+      "label": "农机作业订单 · 计划开始时间",
+      "description": "来源记录属性 machinery_orders.starts_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:machinery_orders"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_orders.ends_at",
+      "label": "农机作业订单 · 计划结束时间",
+      "description": "来源记录属性 machinery_orders.ends_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:machinery_orders"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_orders.quantity",
+      "label": "农机作业订单 · 数量",
+      "description": "来源记录属性 machinery_orders.quantity。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:machinery_orders"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_orders.unit",
+      "label": "农机作业订单 · 单位",
+      "description": "来源记录属性 machinery_orders.unit。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:machinery_orders"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "mu",
+        "ha",
+        "hour",
+        "job"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_orders.source_ref",
+      "label": "农机作业订单 · 来源引用",
+      "description": "来源记录属性 machinery_orders.source_ref。",
+      "applies_to": [
+        "lzhu:machinery_orders"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_orders.state",
+      "label": "农机作业订单 · 状态",
+      "description": "来源记录属性 machinery_orders.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:machinery_orders"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "draft",
+        "dispatched",
+        "cancelled"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_orders.dispatched_at",
+      "label": "农机作业订单 · 派发时间",
+      "description": "来源记录属性 machinery_orders.dispatched_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:machinery_orders"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_orders.dispatch_evidence",
+      "label": "农机作业订单 · 派发依据",
+      "description": "来源记录属性 machinery_orders.dispatch_evidence。",
+      "applies_to": [
+        "lzhu:machinery_orders"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_orders.created_at",
+      "label": "农机作业订单 · 创建时间",
+      "description": "来源记录属性 machinery_orders.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:machinery_orders"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_evidence.id",
+      "label": "农机作业证据 · 记录标识",
+      "description": "来源记录属性 machinery_evidence.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:machinery_evidence"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_evidence.kind",
+      "label": "农机作业证据 · 种类",
+      "description": "来源记录属性 machinery_evidence.kind。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:machinery_evidence"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "track",
+        "work_order",
+        "arrival",
+        "spotcheck"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_evidence.passed",
+      "label": "农机作业证据 · 是否通过",
+      "description": "来源记录属性 machinery_evidence.passed。",
+      "applies_to": [
+        "lzhu:machinery_evidence"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_evidence.occurred_at",
+      "label": "农机作业证据 · 业务发生时间",
+      "description": "来源记录属性 machinery_evidence.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:machinery_evidence"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_evidence.evidence",
+      "label": "农机作业证据 · 依据材料",
+      "description": "来源记录属性 machinery_evidence.evidence。",
+      "applies_to": [
+        "lzhu:machinery_evidence"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_evidence.version",
+      "label": "农机作业证据 · 版本",
+      "description": "来源记录属性 machinery_evidence.version。",
+      "applies_to": [
+        "lzhu:machinery_evidence"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_evidence.created_at",
+      "label": "农机作业证据 · 创建时间",
+      "description": "来源记录属性 machinery_evidence.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:machinery_evidence"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_reviews.id",
+      "label": "农机作业验收 · 记录标识",
+      "description": "来源记录属性 machinery_reviews.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:machinery_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_reviews.seq",
+      "label": "农机作业验收 · 序号",
+      "description": "来源记录属性 machinery_reviews.seq。",
+      "applies_to": [
+        "lzhu:machinery_reviews"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_reviews.action",
+      "label": "农机作业验收 · 动作",
+      "description": "来源记录属性 machinery_reviews.action。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:machinery_reviews"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "accept",
+        "withdraw"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_reviews.evidence",
+      "label": "农机作业验收 · 依据材料",
+      "description": "来源记录属性 machinery_reviews.evidence。",
+      "applies_to": [
+        "lzhu:machinery_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:machinery_reviews.created_at",
+      "label": "农机作业验收 · 创建时间",
+      "description": "来源记录属性 machinery_reviews.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:machinery_reviews"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    }
+  ],
+  "predicates": [],
+  "dependencies": []
+}

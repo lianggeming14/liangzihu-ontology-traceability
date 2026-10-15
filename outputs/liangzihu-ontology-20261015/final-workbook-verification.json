@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "sheets": 18,
+  "source_row_counts": {
+    "领域包": 18,
+    "对象类型": 192,
+    "属性定义": 2114,
+    "关系类型": 555,
+    "包依赖": 32,
+    "源表清单": 190,
+    "约束枚举": 1155,
+    "待映射项": 1138,
+    "源码覆盖": 44,
+    "DDL审计": 285
+  },
+  "excel_error_cells": [],
+  "formula_cells": [],
+  "blank_instance_templates": true,
+  "text_format_preserves_input_tokens": true,
+  "data_validations": 6,
+  "frozen_headers": true,
+  "package_manifest_matches_workbook": true,
+  "workbook_sha256": "cad6ce945ff9187e0cb4e036b248e43b14f9bae2a7b231bcc919c04961dcc98c",
+  "database_imported": false
+}

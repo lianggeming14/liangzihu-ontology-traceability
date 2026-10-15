@@ -1,0 +1,609 @@
+{
+  "package_id": "lzhu.knowledge",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:knowledge:",
+  "label": "知识与简报",
+  "description": "知识文档、简报内容、审核和发布快照。 固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。此包定义来源系统记录类；不是已经完成农业业务概念等价对齐的目标本体。",
+  "types": [
+    {
+      "type_id": "lzhu:knowledge_documents",
+      "identity_type": "lzhu:knowledge_documents",
+      "label": "知识文档",
+      "description": "知识材料的文档身份、版本及来源范围，不把文档内容自动当作现场事实。 来源表 knowledge_documents；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:briefings",
+      "identity_type": "lzhu:briefings",
+      "label": "农业简报",
+      "description": "按周期生成并待审核的农业简报文档。 来源表 briefings；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:briefing_items",
+      "identity_type": "lzhu:briefing_items",
+      "label": "简报条目",
+      "description": "简报中的事实引用、原始陈述与审核结果，保留来源和限制。 来源表 briefing_items；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:briefing_reviews",
+      "identity_type": "lzhu:briefing_reviews",
+      "label": "简报条目审核",
+      "description": "对简报条目采纳、修改或拒绝的人工审核记录。 来源表 briefing_reviews；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:briefing_publications",
+      "identity_type": "lzhu:briefing_publications",
+      "label": "简报发布快照",
+      "description": "针对收件人和角色确认发布的简报快照，不等同公开发布。 来源表 briefing_publications；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    }
+  ],
+  "properties": [
+    {
+      "property_id": "lzhu:knowledge_documents.id",
+      "label": "知识文档 · 记录标识",
+      "description": "来源记录属性 knowledge_documents.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:knowledge_documents"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:knowledge_documents.title",
+      "label": "知识文档 · 标题",
+      "description": "来源记录属性 knowledge_documents.title。",
+      "applies_to": [
+        "lzhu:knowledge_documents"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:knowledge_documents.version",
+      "label": "知识文档 · 版本",
+      "description": "来源记录属性 knowledge_documents.version。",
+      "applies_to": [
+        "lzhu:knowledge_documents"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:knowledge_documents.source_ref",
+      "label": "知识文档 · 来源引用",
+      "description": "来源记录属性 knowledge_documents.source_ref。",
+      "applies_to": [
+        "lzhu:knowledge_documents"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:knowledge_documents.source_url",
+      "label": "知识文档 · 来源地址",
+      "description": "来源记录属性 knowledge_documents.source_url。",
+      "applies_to": [
+        "lzhu:knowledge_documents"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:knowledge_documents.source_checksum",
+      "label": "知识文档 · 来源校验摘要",
+      "description": "来源记录属性 knowledge_documents.source_checksum。",
+      "applies_to": [
+        "lzhu:knowledge_documents"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:knowledge_documents.body",
+      "label": "知识文档 · 原始报文体",
+      "description": "来源记录属性 knowledge_documents.body。",
+      "applies_to": [
+        "lzhu:knowledge_documents"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:knowledge_documents.format",
+      "label": "知识文档 · 格式",
+      "description": "来源记录属性 knowledge_documents.format。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:knowledge_documents"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "markdown",
+        "text"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:knowledge_documents.evidence_nature",
+      "label": "知识文档 · 证据性质",
+      "description": "来源记录属性 knowledge_documents.evidence_nature。",
+      "applies_to": [
+        "lzhu:knowledge_documents"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:knowledge_documents.state",
+      "label": "知识文档 · 状态",
+      "description": "来源记录属性 knowledge_documents.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:knowledge_documents"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "draft",
+        "approved",
+        "withdrawn"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:knowledge_documents.approved_at",
+      "label": "知识文档 · 批准时间",
+      "description": "来源记录属性 knowledge_documents.approved_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:knowledge_documents"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:knowledge_documents.withdrawn_at",
+      "label": "知识文档 · 撤回时间",
+      "description": "来源记录属性 knowledge_documents.withdrawn_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:knowledge_documents"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:knowledge_documents.created_at",
+      "label": "知识文档 · 创建时间",
+      "description": "来源记录属性 knowledge_documents.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:knowledge_documents"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefings.id",
+      "label": "农业简报 · 记录标识",
+      "description": "来源记录属性 briefings.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:briefings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefings.request_key",
+      "label": "农业简报 · 请求幂等键",
+      "description": "来源记录属性 briefings.request_key。",
+      "applies_to": [
+        "lzhu:briefings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefings.input_hash",
+      "label": "农业简报 · 输入内容哈希",
+      "description": "来源记录属性 briefings.input_hash。",
+      "applies_to": [
+        "lzhu:briefings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefings.period",
+      "label": "农业简报 · 周期",
+      "description": "来源记录属性 briefings.period。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:briefings"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "daily",
+        "weekly",
+        "monthly"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefings.from_at",
+      "label": "农业简报 · 区间开始时间",
+      "description": "来源记录属性 briefings.from_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:briefings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefings.to_at",
+      "label": "农业简报 · 结束时间",
+      "description": "来源记录属性 briefings.to_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:briefings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefings.state",
+      "label": "农业简报 · 状态",
+      "description": "来源记录属性 briefings.state。",
+      "applies_to": [
+        "lzhu:briefings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefings.created_at",
+      "label": "农业简报 · 创建时间",
+      "description": "来源记录属性 briefings.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:briefings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefings.review_due_at",
+      "label": "农业简报 · 应复核时间",
+      "description": "来源记录属性 briefings.review_due_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:briefings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_items.id",
+      "label": "简报条目 · 记录标识",
+      "description": "来源记录属性 briefing_items.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:briefing_items"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_items.kind",
+      "label": "简报条目 · 种类",
+      "description": "来源记录属性 briefing_items.kind。",
+      "applies_to": [
+        "lzhu:briefing_items"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_items.original_text",
+      "label": "简报条目 · 原始文字",
+      "description": "来源记录属性 briefing_items.original_text。",
+      "applies_to": [
+        "lzhu:briefing_items"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_items.decision",
+      "label": "简报条目 · 源记录审核决定",
+      "description": "来源记录属性 briefing_items.decision。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:briefing_items"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "draft",
+        "adopted",
+        "modified",
+        "rejected"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_items.reviewed_text",
+      "label": "简报条目 · 审核后文本",
+      "description": "来源记录属性 briefing_items.reviewed_text。",
+      "applies_to": [
+        "lzhu:briefing_items"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_items.review_reason",
+      "label": "简报条目 · 审核原因",
+      "description": "来源记录属性 briefing_items.review_reason。",
+      "applies_to": [
+        "lzhu:briefing_items"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_items.reviewed_at",
+      "label": "简报条目 · 审核时间",
+      "description": "来源记录属性 briefing_items.reviewed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:briefing_items"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_items.version",
+      "label": "简报条目 · 版本",
+      "description": "来源记录属性 briefing_items.version。",
+      "applies_to": [
+        "lzhu:briefing_items"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_reviews.id",
+      "label": "简报条目审核 · 记录标识",
+      "description": "来源记录属性 briefing_reviews.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:briefing_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_reviews.decision",
+      "label": "简报条目审核 · 源记录审核决定",
+      "description": "来源记录属性 briefing_reviews.decision。",
+      "applies_to": [
+        "lzhu:briefing_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_reviews.text",
+      "label": "简报条目审核 · 文本内容",
+      "description": "来源记录属性 briefing_reviews.text。",
+      "applies_to": [
+        "lzhu:briefing_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_reviews.reason",
+      "label": "简报条目审核 · 原因",
+      "description": "来源记录属性 briefing_reviews.reason。",
+      "applies_to": [
+        "lzhu:briefing_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_reviews.request_key",
+      "label": "简报条目审核 · 请求幂等键",
+      "description": "来源记录属性 briefing_reviews.request_key。",
+      "applies_to": [
+        "lzhu:briefing_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_reviews.content_hash",
+      "label": "简报条目审核 · 内容哈希",
+      "description": "来源记录属性 briefing_reviews.content_hash。",
+      "applies_to": [
+        "lzhu:briefing_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_reviews.created_at",
+      "label": "简报条目审核 · 创建时间",
+      "description": "来源记录属性 briefing_reviews.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:briefing_reviews"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_publications.id",
+      "label": "简报发布快照 · 记录标识",
+      "description": "来源记录属性 briefing_publications.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:briefing_publications"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_publications.role_version",
+      "label": "简报发布快照 · 角色版本",
+      "description": "来源记录属性 briefing_publications.role_version。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:briefing_publications"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "owner",
+        "worker",
+        "expert",
+        "technician"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_publications.created_at",
+      "label": "简报发布快照 · 创建时间",
+      "description": "来源记录属性 briefing_publications.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:briefing_publications"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_publications.revoked_at",
+      "label": "简报发布快照 · 撤销时间",
+      "description": "来源记录属性 briefing_publications.revoked_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:briefing_publications"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_publications.expires_at",
+      "label": "简报发布快照 · 过期时间",
+      "description": "来源记录属性 briefing_publications.expires_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:briefing_publications"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_publications.request_key",
+      "label": "简报发布快照 · 请求幂等键",
+      "description": "来源记录属性 briefing_publications.request_key。",
+      "applies_to": [
+        "lzhu:briefing_publications"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_publications.content_hash",
+      "label": "简报发布快照 · 内容哈希",
+      "description": "来源记录属性 briefing_publications.content_hash。",
+      "applies_to": [
+        "lzhu:briefing_publications"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:briefing_publications.revoke_reason",
+      "label": "简报发布快照 · 撤销原因",
+      "description": "来源记录属性 briefing_publications.revoke_reason。",
+      "applies_to": [
+        "lzhu:briefing_publications"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    }
+  ],
+  "predicates": [],
+  "dependencies": []
+}

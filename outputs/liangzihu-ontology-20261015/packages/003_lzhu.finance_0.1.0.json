@@ -1,0 +1,933 @@
+{
+  "package_id": "lzhu.finance",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:finance:",
+  "label": "费用与补贴",
+  "description": "预算、用量费用、付款及补贴办理。 固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。此包定义来源系统记录类；不是已经完成农业业务概念等价对齐的目标本体。",
+  "types": [
+    {
+      "type_id": "lzhu:budgets",
+      "identity_type": "lzhu:budgets",
+      "label": "资源费用预算",
+      "description": "按对象、类别和月份登记的费用限额，不等同实际支出。 来源表 budgets；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:usage_events",
+      "identity_type": "lzhu:usage_events",
+      "label": "资源用量费用事件",
+      "description": "已记录的资源用量、金额与价格来源，不自动认定付款完成。 来源表 usage_events；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:budget_alerts",
+      "identity_type": "lzhu:budget_alerts",
+      "label": "预算提示记录",
+      "description": "预算阈值达到时源平台形成的提示事项。 来源表 budget_alerts；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:business_expenses",
+      "identity_type": "lzhu:business_expenses",
+      "label": "业务费用记录",
+      "description": "保存费用项目、金额、凭证及来源，不等于已付款。 来源表 business_expenses；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:expense_reviews",
+      "identity_type": "lzhu:expense_reviews",
+      "label": "费用审核事件",
+      "description": "保存费用批准或撤回的业务审核历史。 来源表 expense_reviews；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:expense_payments",
+      "identity_type": "lzhu:expense_payments",
+      "label": "费用支付流水",
+      "description": "区分支付及冲正，并关联原费用和被冲正流水。 来源表 expense_payments；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:subsidy_claims",
+      "identity_type": "lzhu:subsidy_claims",
+      "label": "补贴申请",
+      "description": "保存政策依据、受益人、申报期间、金额和申请状态。 来源表 subsidy_claims；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:subsidy_expenses",
+      "identity_type": "lzhu:subsidy_expenses",
+      "label": "补贴费用关联",
+      "description": "关联申请与费用，约束同一费用的有效重复申报。 来源表 subsidy_expenses；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:subsidy_events",
+      "identity_type": "lzhu:subsidy_events",
+      "label": "补贴办理事件",
+      "description": "保存审核、申报、拨付、收款、退款及纠正的业务时间和证据。 来源表 subsidy_events；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    }
+  ],
+  "properties": [
+    {
+      "property_id": "lzhu:budgets.id",
+      "label": "资源费用预算 · 记录标识",
+      "description": "来源记录属性 budgets.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:budgets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:budgets.category",
+      "label": "资源费用预算 · 类别",
+      "description": "来源记录属性 budgets.category。",
+      "applies_to": [
+        "lzhu:budgets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:budgets.month",
+      "label": "资源费用预算 · 月份",
+      "description": "来源记录属性 budgets.month。日期字符串YYYY-MM-DD；不伪造时区/零点，格式由接入映射显式校验。",
+      "applies_to": [
+        "lzhu:budgets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:budgets.limit_amount",
+      "label": "资源费用预算 · 限额",
+      "description": "来源记录属性 budgets.limit_amount。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:budgets"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:budgets.currency",
+      "label": "资源费用预算 · 币种",
+      "description": "来源记录属性 budgets.currency。",
+      "applies_to": [
+        "lzhu:budgets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:budgets.source",
+      "label": "资源费用预算 · 来源内容",
+      "description": "来源记录属性 budgets.source。",
+      "applies_to": [
+        "lzhu:budgets"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:usage_events.id",
+      "label": "资源用量费用事件 · 记录标识",
+      "description": "来源记录属性 usage_events.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:usage_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:usage_events.category",
+      "label": "资源用量费用事件 · 类别",
+      "description": "来源记录属性 usage_events.category。",
+      "applies_to": [
+        "lzhu:usage_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:usage_events.business_key",
+      "label": "资源用量费用事件 · 业务幂等键",
+      "description": "来源记录属性 usage_events.business_key。",
+      "applies_to": [
+        "lzhu:usage_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:usage_events.occurred_at",
+      "label": "资源用量费用事件 · 业务发生时间",
+      "description": "来源记录属性 usage_events.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:usage_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:usage_events.units",
+      "label": "资源用量费用事件 · 计量单位或数量集合",
+      "description": "来源记录属性 usage_events.units。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:usage_events"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:usage_events.amount",
+      "label": "资源用量费用事件 · 金额",
+      "description": "来源记录属性 usage_events.amount。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:usage_events"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:usage_events.currency",
+      "label": "资源用量费用事件 · 币种",
+      "description": "来源记录属性 usage_events.currency。",
+      "applies_to": [
+        "lzhu:usage_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:usage_events.price_source",
+      "label": "资源用量费用事件 · 价格来源",
+      "description": "来源记录属性 usage_events.price_source。",
+      "applies_to": [
+        "lzhu:usage_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:usage_events.recorded_at",
+      "label": "资源用量费用事件 · 记录入库时间",
+      "description": "来源记录属性 usage_events.recorded_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:usage_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:budget_alerts.id",
+      "label": "预算提示记录 · 记录标识",
+      "description": "来源记录属性 budget_alerts.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:budget_alerts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:budget_alerts.level",
+      "label": "预算提示记录 · 等级",
+      "description": "来源记录属性 budget_alerts.level。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:budget_alerts"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "eighty_percent",
+        "limit"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:budget_alerts.observed_at",
+      "label": "预算提示记录 · 观测时间",
+      "description": "来源记录属性 budget_alerts.observed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:budget_alerts"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.id",
+      "label": "业务费用记录 · 记录标识",
+      "description": "来源记录属性 business_expenses.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.category",
+      "label": "业务费用记录 · 类别",
+      "description": "来源记录属性 business_expenses.category。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "material",
+        "service",
+        "remediation",
+        "research",
+        "other"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.quantity",
+      "label": "业务费用记录 · 数量",
+      "description": "来源记录属性 business_expenses.quantity。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.unit",
+      "label": "业务费用记录 · 单位",
+      "description": "来源记录属性 business_expenses.unit。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.unit_price",
+      "label": "业务费用记录 · 单价",
+      "description": "来源记录属性 business_expenses.unit_price。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.amount_cny",
+      "label": "业务费用记录 · 人民币金额",
+      "description": "来源记录属性 business_expenses.amount_cny。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.payer",
+      "label": "业务费用记录 · 付款方",
+      "description": "来源记录属性 business_expenses.payer。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.payee",
+      "label": "业务费用记录 · 收款方",
+      "description": "来源记录属性 business_expenses.payee。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.voucher",
+      "label": "业务费用记录 · 凭证内容",
+      "description": "来源记录属性 business_expenses.voucher。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.identity_key",
+      "label": "业务费用记录 · 身份对应键",
+      "description": "来源记录属性 business_expenses.identity_key。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.occurred_at",
+      "label": "业务费用记录 · 业务发生时间",
+      "description": "来源记录属性 business_expenses.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.link_kind",
+      "label": "业务费用记录 · 关联类型",
+      "description": "来源记录属性 business_expenses.link_kind。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "manual",
+        "input_purchase",
+        "protection_execution",
+        "machine_order",
+        "research_protocol",
+        "research_result"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.link_id",
+      "label": "业务费用记录 · 关联记录标识",
+      "description": "来源记录属性 business_expenses.link_id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.evidence",
+      "label": "业务费用记录 · 依据材料",
+      "description": "来源记录属性 business_expenses.evidence。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.version",
+      "label": "业务费用记录 · 版本",
+      "description": "来源记录属性 business_expenses.version。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:business_expenses.created_at",
+      "label": "业务费用记录 · 创建时间",
+      "description": "来源记录属性 business_expenses.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:business_expenses"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:expense_reviews.id",
+      "label": "费用审核事件 · 记录标识",
+      "description": "来源记录属性 expense_reviews.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:expense_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:expense_reviews.seq",
+      "label": "费用审核事件 · 序号",
+      "description": "来源记录属性 expense_reviews.seq。",
+      "applies_to": [
+        "lzhu:expense_reviews"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:expense_reviews.action",
+      "label": "费用审核事件 · 动作",
+      "description": "来源记录属性 expense_reviews.action。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:expense_reviews"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "approve",
+        "withdraw"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:expense_reviews.evidence",
+      "label": "费用审核事件 · 依据材料",
+      "description": "来源记录属性 expense_reviews.evidence。",
+      "applies_to": [
+        "lzhu:expense_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:expense_reviews.created_at",
+      "label": "费用审核事件 · 创建时间",
+      "description": "来源记录属性 expense_reviews.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:expense_reviews"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:expense_payments.id",
+      "label": "费用支付流水 · 记录标识",
+      "description": "来源记录属性 expense_payments.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:expense_payments"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:expense_payments.direction",
+      "label": "费用支付流水 · 方向",
+      "description": "来源记录属性 expense_payments.direction。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:expense_payments"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "pay",
+        "reverse"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:expense_payments.amount_cny",
+      "label": "费用支付流水 · 人民币金额",
+      "description": "来源记录属性 expense_payments.amount_cny。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:expense_payments"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:expense_payments.voucher",
+      "label": "费用支付流水 · 凭证内容",
+      "description": "来源记录属性 expense_payments.voucher。",
+      "applies_to": [
+        "lzhu:expense_payments"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:expense_payments.occurred_at",
+      "label": "费用支付流水 · 业务发生时间",
+      "description": "来源记录属性 expense_payments.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:expense_payments"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:expense_payments.evidence",
+      "label": "费用支付流水 · 依据材料",
+      "description": "来源记录属性 expense_payments.evidence。",
+      "applies_to": [
+        "lzhu:expense_payments"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:expense_payments.created_at",
+      "label": "费用支付流水 · 创建时间",
+      "description": "来源记录属性 expense_payments.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:expense_payments"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_claims.id",
+      "label": "补贴申请 · 记录标识",
+      "description": "来源记录属性 subsidy_claims.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:subsidy_claims"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_claims.category",
+      "label": "补贴申请 · 类别",
+      "description": "来源记录属性 subsidy_claims.category。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:subsidy_claims"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "purchase",
+        "replacement",
+        "service"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_claims.policy_ref",
+      "label": "补贴申请 · 政策或策略依据引用",
+      "description": "来源记录属性 subsidy_claims.policy_ref。",
+      "applies_to": [
+        "lzhu:subsidy_claims"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_claims.policy_version",
+      "label": "补贴申请 · 政策或策略版本",
+      "description": "来源记录属性 subsidy_claims.policy_version。",
+      "applies_to": [
+        "lzhu:subsidy_claims"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_claims.beneficiary",
+      "label": "补贴申请 · 受益方",
+      "description": "来源记录属性 subsidy_claims.beneficiary。",
+      "applies_to": [
+        "lzhu:subsidy_claims"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_claims.period_from",
+      "label": "补贴申请 · 期间开始时间",
+      "description": "来源记录属性 subsidy_claims.period_from。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:subsidy_claims"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_claims.period_to",
+      "label": "补贴申请 · 期间结束时间",
+      "description": "来源记录属性 subsidy_claims.period_to。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:subsidy_claims"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_claims.amount_cny",
+      "label": "补贴申请 · 人民币金额",
+      "description": "来源记录属性 subsidy_claims.amount_cny。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:subsidy_claims"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_claims.evidence",
+      "label": "补贴申请 · 依据材料",
+      "description": "来源记录属性 subsidy_claims.evidence。",
+      "applies_to": [
+        "lzhu:subsidy_claims"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_claims.state",
+      "label": "补贴申请 · 状态",
+      "description": "来源记录属性 subsidy_claims.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:subsidy_claims"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "draft",
+        "reviewed",
+        "submitted",
+        "awarded",
+        "rejected",
+        "withdrawn"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_claims.awarded_cny",
+      "label": "补贴申请 · 获批人民币金额",
+      "description": "来源记录属性 subsidy_claims.awarded_cny。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:subsidy_claims"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_claims.created_at",
+      "label": "补贴申请 · 创建时间",
+      "description": "来源记录属性 subsidy_claims.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:subsidy_claims"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_expenses.id",
+      "label": "补贴费用关联 · 记录标识",
+      "description": "来源记录属性 subsidy_expenses.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:subsidy_expenses"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_expenses.active",
+      "label": "补贴费用关联 · 是否有效",
+      "description": "来源记录属性 subsidy_expenses.active。",
+      "applies_to": [
+        "lzhu:subsidy_expenses"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_events.id",
+      "label": "补贴办理事件 · 记录标识",
+      "description": "来源记录属性 subsidy_events.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:subsidy_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_events.seq",
+      "label": "补贴办理事件 · 序号",
+      "description": "来源记录属性 subsidy_events.seq。",
+      "applies_to": [
+        "lzhu:subsidy_events"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_events.action",
+      "label": "补贴办理事件 · 动作",
+      "description": "来源记录属性 subsidy_events.action。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:subsidy_events"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "review",
+        "submit",
+        "award",
+        "received",
+        "refund",
+        "reject",
+        "withdraw",
+        "correct"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_events.amount_cny",
+      "label": "补贴办理事件 · 人民币金额",
+      "description": "来源记录属性 subsidy_events.amount_cny。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:subsidy_events"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_events.external_ref",
+      "label": "补贴办理事件 · 外部依据引用",
+      "description": "来源记录属性 subsidy_events.external_ref。",
+      "applies_to": [
+        "lzhu:subsidy_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_events.evidence",
+      "label": "补贴办理事件 · 依据材料",
+      "description": "来源记录属性 subsidy_events.evidence。",
+      "applies_to": [
+        "lzhu:subsidy_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_events.created_at",
+      "label": "补贴办理事件 · 创建时间",
+      "description": "来源记录属性 subsidy_events.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:subsidy_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:subsidy_events.occurred_at",
+      "label": "补贴办理事件 · 业务发生时间",
+      "description": "来源记录属性 subsidy_events.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:subsidy_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    }
+  ],
+  "predicates": [],
+  "dependencies": []
+}

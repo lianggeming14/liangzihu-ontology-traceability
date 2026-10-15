@@ -1,0 +1,28 @@
+梁子湖项目本体与关系结构导出 — 2026-10-15
+
+打开“梁子湖项目_本体与关系全量结构导出.xlsx”，先阅读“使用说明”。
+来源固定为 https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/tree/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/migrations
+44份迁移SQL，190张表、2114个字段、555条显式外键、1118项最终表约束。
+这是源码结构提取和本体映射草案，不是源项目原生发布的正式本体，不包含真实农场实例。没有连接或写入现有数据库。
+
+最快开始
+1. 查看“源表清单”和“对象类型”，核对中文名称与概念边界。
+2. packages/manifest.json已经列出默认启用的领域包及导入顺序；每个JSON可用作当前数据库 POST /api/v1/ontology/packages 请求体。使用当前部署的鉴权配置。先领域包，后关系桥接包。
+3. 若需修改，黄色label/description等列可直接编辑。机器第一行不能更名。enabled用Excel真正的TRUE/FALSE，不用文本。需要停用整个包时应同时停用其子定义及依赖，转换器会检查不一致并报告行号。
+4. 在完整项目工作区双击“导出当前Excel为本体JSON.cmd”，输出reviewed_packages目录。程序定位根目录tools/ontology_export，需要Python和implementation/requirements.txt依赖及openpyxl。没有自动安装依赖，不连接生产数据库。
+5. 程序提供定义校验、依赖排序、SHA256清单、临时SQLite注册验证。修改已注册的结构请升级语义版本并同步依赖；不能覆盖已有包版本。改显示名可使用数据库现有名称修改功能。
+
+真实数据填写
+“试录对象、试录属性、试录关系”均为空白暂存模板，按原始文本存编号和高精度数据。它们不参与本次领域包JSON转换，也尚无批量实例导入功能。
+对象本地引用用于同一批次内连接行；来源原始主键保留原值。本库系统UUID由创建接口生成，不能自己编造或以名称代替。
+推荐先取objects、production_batches、devices、points、point_bindings真实记录；以来源系统+源表+原始主键建立稳定映射，再根据返回UUID建立关系。获取真实数据应从你有权限的平台导出/API进行，本次仅提取公开源码。
+JSON、空间、二进制、向量、UUID数组、多态引用需要显式映射；不要仅改enabled来强行注册。所有字段仍保留在Excel与schema_catalog.json中。
+源观测记录映射为“来源记录类”，属性usage=attribute；把天气content或设备读数送入本库观测接口前，还须匹配metric/单位/时间/对象及证据，不能把记录类注册视为观测接入完成。
+
+完整性与验证
+schema_catalog.json保留最终结构、源文件摘要、来源行URL、DDL审计及未建模范围。
+完整覆盖的是44份迁移中显式声明的表、字段与关系。应用层规则、JSON内部结构、隐含关联、现场种养知识和运行时表不在“已全量提取”承诺中。
+约束工作表保留SQL的NOT NULL/唯一/CHECK等信息，但当前本体服务不会直接执行全部SQL约束。源码触发器和函数仅列审计，不等于重现其行为。
+validation-report与测试报告明确临时SQLite验证；PostgreSQL、现场数据及生产接口仍待实测。
+
+源码摘要注意：源码来自GitHub可见代码查看器；SHA256针对保存的提取文本副本。查看器可能省略文件末尾换行，因此该摘要不是经Git原始blob字节验证的摘要。来源定位仍使用固定提交与行号。

@@ -1,0 +1,1629 @@
+{
+  "package_id": "lzhu.operations",
+  "version": "0.1.0",
+  "namespace": "urn:lzhu:operations:",
+  "label": "农事与运维",
+  "description": "农事、灌排、巡检、告警与工单的业务过程和证据。 固定源提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。此包定义来源系统记录类；不是已经完成农业业务概念等价对齐的目标本体。",
+  "types": [
+    {
+      "type_id": "lzhu:rule_bindings",
+      "identity_type": "lzhu:rule_bindings",
+      "label": "告警规则绑定",
+      "description": "业务告警规则与对象或测点的适用绑定，映射不执行规则。 来源表 rule_bindings；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:rule_versions",
+      "identity_type": "lzhu:rule_versions",
+      "label": "告警规则版本",
+      "description": "外部平台登记的告警规则版本定义，不据此自动判定农业状态。 来源表 rule_versions；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:alerts",
+      "identity_type": "lzhu:alerts",
+      "label": "告警事项",
+      "description": "源平台已生成的告警生命周期及责任状态。 来源表 alerts；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:alert_events",
+      "identity_type": "lzhu:alert_events",
+      "label": "告警状态事件",
+      "description": "告警发生、延续、恢复及处置等变更记录。 来源表 alert_events；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:alert_claims",
+      "identity_type": "lzhu:alert_claims",
+      "label": "告警认领",
+      "description": "参与者对告警事项的认领与责任承接。 来源表 alert_claims；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:duty_rosters",
+      "identity_type": "lzhu:duty_rosters",
+      "label": "值班安排",
+      "description": "人员在指定时间区间内的值班责任安排。 来源表 duty_rosters；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:maintenance_records",
+      "identity_type": "lzhu:maintenance_records",
+      "label": "设备维护记录",
+      "description": "清洁、校准、更换、安装或维修事项及其证据。 来源表 maintenance_records；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:manual_checks",
+      "identity_type": "lzhu:manual_checks",
+      "label": "人工复核读数",
+      "description": "人工仪表或现场检查获得的读数，记录方法与来源。 来源表 manual_checks；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:work_orders",
+      "identity_type": "lzhu:work_orders",
+      "label": "运维工单",
+      "description": "对象或测点故障的处置任务、分工与状态。 来源表 work_orders；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:work_order_events",
+      "identity_type": "lzhu:work_order_events",
+      "label": "工单状态事件",
+      "description": "工单分派、处理和复核的过程记录。 来源表 work_order_events；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:farm_records",
+      "identity_type": "lzhu:farm_records",
+      "label": "农事记录",
+      "description": "源平台人工或业务形成的农事活动记录。 来源表 farm_records；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:record_attachments",
+      "identity_type": "lzhu:record_attachments",
+      "label": "农事记录附件",
+      "description": "农事记录与媒体原件的引用关联。 来源表 record_attachments；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:record_reviews",
+      "identity_type": "lzhu:record_reviews",
+      "label": "农事记录审核",
+      "description": "参与者对农事记录作出的审核及理由，不替代原始内容。 来源表 record_reviews；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:field_tasks",
+      "identity_type": "lzhu:field_tasks",
+      "label": "田间任务",
+      "description": "对对象或生产批次安排的田间作业任务。 来源表 field_tasks；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:field_task_events",
+      "identity_type": "lzhu:field_task_events",
+      "label": "田间任务事件",
+      "description": "田间任务状态与责任人变化的过程记录。 来源表 field_task_events；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:inspection_reports",
+      "identity_type": "lzhu:inspection_reports",
+      "label": "现场巡检报告",
+      "description": "巡检中的观测、人员判断和已采取行动，三者按源字段区分。 来源表 inspection_reports；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    },
+    {
+      "type_id": "lzhu:irrigation_entries",
+      "identity_type": "lzhu:irrigation_entries",
+      "label": "灌溉排水记录",
+      "description": "源平台记录的灌排活动及其时间和数量依据。 来源表 irrigation_entries；来源记录具有独立身份，源主键通过外部身份映射关联本库主键。"
+    }
+  ],
+  "properties": [
+    {
+      "property_id": "lzhu:rule_bindings.id",
+      "label": "告警规则绑定 · 记录标识",
+      "description": "来源记录属性 rule_bindings.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:rule_bindings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_bindings.name",
+      "label": "告警规则绑定 · 名称",
+      "description": "来源记录属性 rule_bindings.name。",
+      "applies_to": [
+        "lzhu:rule_bindings"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_bindings.enabled",
+      "label": "告警规则绑定 · 是否启用",
+      "description": "来源记录属性 rule_bindings.enabled。",
+      "applies_to": [
+        "lzhu:rule_bindings"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_bindings.enabled_at",
+      "label": "告警规则绑定 · 启用时间",
+      "description": "来源记录属性 rule_bindings.enabled_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:rule_bindings"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.id",
+      "label": "告警规则版本 · 记录标识",
+      "description": "来源记录属性 rule_versions.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.version",
+      "label": "告警规则版本 · 版本",
+      "description": "来源记录属性 rule_versions.version。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.metric",
+      "label": "告警规则版本 · 指标",
+      "description": "来源记录属性 rule_versions.metric。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.unit",
+      "label": "告警规则版本 · 单位",
+      "description": "来源记录属性 rule_versions.unit。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.comparison",
+      "label": "告警规则版本 · 对比内容",
+      "description": "来源记录属性 rule_versions.comparison。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "lt",
+        "lte",
+        "gt",
+        "gte"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.threshold",
+      "label": "告警规则版本 · 阈值",
+      "description": "来源记录属性 rule_versions.threshold。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.duration_ms",
+      "label": "告警规则版本 · 持续毫秒数",
+      "description": "来源记录属性 rule_versions.duration_ms。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.max_gap_ms",
+      "label": "告警规则版本 · 最大间隔毫秒数",
+      "description": "来源记录属性 rule_versions.max_gap_ms。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.max_age_ms",
+      "label": "告警规则版本 · 最长数据龄期毫秒数",
+      "description": "来源记录属性 rule_versions.max_age_ms。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.severity",
+      "label": "告警规则版本 · 严重程度",
+      "description": "来源记录属性 rule_versions.severity。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "info",
+        "warning",
+        "severe"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.source",
+      "label": "告警规则版本 · 来源内容",
+      "description": "来源记录属性 rule_versions.source。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.approved_at",
+      "label": "告警规则版本 · 批准时间",
+      "description": "来源记录属性 rule_versions.approved_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.approval_evidence",
+      "label": "告警规则版本 · 批准依据",
+      "description": "来源记录属性 rule_versions.approval_evidence。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.effective_from",
+      "label": "告警规则版本 · 生效开始时间",
+      "description": "来源记录属性 rule_versions.effective_from。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.effective_to",
+      "label": "告警规则版本 · 生效结束时间",
+      "description": "来源记录属性 rule_versions.effective_to。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:rule_versions.created_at",
+      "label": "告警规则版本 · 创建时间",
+      "description": "来源记录属性 rule_versions.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:rule_versions"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alerts.id",
+      "label": "告警事项 · 记录标识",
+      "description": "来源记录属性 alerts.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:alerts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alerts.correlation_key",
+      "label": "告警事项 · 关联键",
+      "description": "来源记录属性 alerts.correlation_key。",
+      "applies_to": [
+        "lzhu:alerts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alerts.kind",
+      "label": "告警事项 · 种类",
+      "description": "来源记录属性 alerts.kind。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:alerts"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "measurement",
+        "monitoring_gap",
+        "source_unavailable",
+        "camera"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alerts.title",
+      "label": "告警事项 · 标题",
+      "description": "来源记录属性 alerts.title。",
+      "applies_to": [
+        "lzhu:alerts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alerts.severity",
+      "label": "告警事项 · 严重程度",
+      "description": "来源记录属性 alerts.severity。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:alerts"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "info",
+        "warning",
+        "severe"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alerts.state",
+      "label": "告警事项 · 状态",
+      "description": "来源记录属性 alerts.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:alerts"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "open",
+        "recovered",
+        "closed"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alerts.data_quality",
+      "label": "告警事项 · 数据质量状态",
+      "description": "来源记录属性 alerts.data_quality。",
+      "applies_to": [
+        "lzhu:alerts"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alerts.opened_at",
+      "label": "告警事项 · 开启时间",
+      "description": "来源记录属性 alerts.opened_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:alerts"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alerts.recovered_at",
+      "label": "告警事项 · 恢复时间",
+      "description": "来源记录属性 alerts.recovered_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:alerts"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alerts.closed_at",
+      "label": "告警事项 · 关闭时间",
+      "description": "来源记录属性 alerts.closed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:alerts"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alerts.first_notification_at",
+      "label": "告警事项 · 首次通知时间",
+      "description": "来源记录属性 alerts.first_notification_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:alerts"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alerts.recurrences",
+      "label": "告警事项 · 重复发生次数",
+      "description": "来源记录属性 alerts.recurrences。",
+      "applies_to": [
+        "lzhu:alerts"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alerts.continuations",
+      "label": "告警事项 · 延续次数",
+      "description": "来源记录属性 alerts.continuations。",
+      "applies_to": [
+        "lzhu:alerts"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alerts.unmanaged",
+      "label": "告警事项 · 非托管标记",
+      "description": "来源记录属性 alerts.unmanaged。",
+      "applies_to": [
+        "lzhu:alerts"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alert_events.id",
+      "label": "告警状态事件 · 记录标识",
+      "description": "来源记录属性 alert_events.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:alert_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alert_events.event_type",
+      "label": "告警状态事件 · 事件类型",
+      "description": "来源记录属性 alert_events.event_type。",
+      "applies_to": [
+        "lzhu:alert_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alert_events.occurred_at",
+      "label": "告警状态事件 · 业务发生时间",
+      "description": "来源记录属性 alert_events.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:alert_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alert_events.recorded_at",
+      "label": "告警状态事件 · 记录入库时间",
+      "description": "来源记录属性 alert_events.recorded_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:alert_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alert_events.note",
+      "label": "告警状态事件 · 备注",
+      "description": "来源记录属性 alert_events.note。",
+      "applies_to": [
+        "lzhu:alert_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alert_events.request_key",
+      "label": "告警状态事件 · 请求幂等键",
+      "description": "来源记录属性 alert_events.request_key。",
+      "applies_to": [
+        "lzhu:alert_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alert_events.classification",
+      "label": "告警状态事件 · 分类",
+      "description": "来源记录属性 alert_events.classification。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:alert_events"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "normal",
+        "false_alarm",
+        "device_issue",
+        "unknown"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alert_claims.id",
+      "label": "告警认领 · 记录标识",
+      "description": "来源记录属性 alert_claims.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:alert_claims"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alert_claims.purpose",
+      "label": "告警认领 · 用途",
+      "description": "来源记录属性 alert_claims.purpose。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:alert_claims"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "field_check",
+        "repair"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alert_claims.request_key",
+      "label": "告警认领 · 请求幂等键",
+      "description": "来源记录属性 alert_claims.request_key。",
+      "applies_to": [
+        "lzhu:alert_claims"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alert_claims.claimed_at",
+      "label": "告警认领 · 认领时间",
+      "description": "来源记录属性 alert_claims.claimed_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:alert_claims"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:alert_claims.ended_at",
+      "label": "告警认领 · 实际结束时间",
+      "description": "来源记录属性 alert_claims.ended_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:alert_claims"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:duty_rosters.id",
+      "label": "值班安排 · 记录标识",
+      "description": "来源记录属性 duty_rosters.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:duty_rosters"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:duty_rosters.starts_at",
+      "label": "值班安排 · 计划开始时间",
+      "description": "来源记录属性 duty_rosters.starts_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:duty_rosters"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:duty_rosters.ends_at",
+      "label": "值班安排 · 计划结束时间",
+      "description": "来源记录属性 duty_rosters.ends_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:duty_rosters"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:duty_rosters.night_shift",
+      "label": "值班安排 · 是否夜班",
+      "description": "来源记录属性 duty_rosters.night_shift。",
+      "applies_to": [
+        "lzhu:duty_rosters"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:duty_rosters.call_timeout_ms",
+      "label": "值班安排 · 调用超时毫秒数",
+      "description": "来源记录属性 duty_rosters.call_timeout_ms。",
+      "applies_to": [
+        "lzhu:duty_rosters"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:duty_rosters.verified",
+      "label": "值班安排 · 已核验标记",
+      "description": "来源记录属性 duty_rosters.verified。",
+      "applies_to": [
+        "lzhu:duty_rosters"
+      ],
+      "value_type": "boolean",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:duty_rosters.evidence",
+      "label": "值班安排 · 依据材料",
+      "description": "来源记录属性 duty_rosters.evidence。",
+      "applies_to": [
+        "lzhu:duty_rosters"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:duty_rosters.cancelled_at",
+      "label": "值班安排 · 取消时间",
+      "description": "来源记录属性 duty_rosters.cancelled_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:duty_rosters"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:maintenance_records.id",
+      "label": "设备维护记录 · 记录标识",
+      "description": "来源记录属性 maintenance_records.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:maintenance_records"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:maintenance_records.occurred_at",
+      "label": "设备维护记录 · 业务发生时间",
+      "description": "来源记录属性 maintenance_records.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:maintenance_records"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:maintenance_records.record_type",
+      "label": "设备维护记录 · 记录类型",
+      "description": "来源记录属性 maintenance_records.record_type。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:maintenance_records"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "cleaning",
+        "calibration",
+        "replacement",
+        "installation",
+        "repair"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:maintenance_records.source",
+      "label": "设备维护记录 · 来源内容",
+      "description": "来源记录属性 maintenance_records.source。",
+      "applies_to": [
+        "lzhu:maintenance_records"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:maintenance_records.recorded_at",
+      "label": "设备维护记录 · 记录入库时间",
+      "description": "来源记录属性 maintenance_records.recorded_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:maintenance_records"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:maintenance_records.request_key",
+      "label": "设备维护记录 · 请求幂等键",
+      "description": "来源记录属性 maintenance_records.request_key。",
+      "applies_to": [
+        "lzhu:maintenance_records"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:manual_checks.id",
+      "label": "人工复核读数 · 记录标识",
+      "description": "来源记录属性 manual_checks.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:manual_checks"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:manual_checks.occurred_at",
+      "label": "人工复核读数 · 业务发生时间",
+      "description": "来源记录属性 manual_checks.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:manual_checks"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:manual_checks.metric",
+      "label": "人工复核读数 · 指标",
+      "description": "来源记录属性 manual_checks.metric。",
+      "applies_to": [
+        "lzhu:manual_checks"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:manual_checks.raw_value",
+      "label": "人工复核读数 · 原始值",
+      "description": "来源记录属性 manual_checks.raw_value。",
+      "applies_to": [
+        "lzhu:manual_checks"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:manual_checks.value",
+      "label": "人工复核读数 · 数值或内容",
+      "description": "来源记录属性 manual_checks.value。精确小数接入用十进制字符串，不先转浮点再声称保持精度。",
+      "applies_to": [
+        "lzhu:manual_checks"
+      ],
+      "value_type": "decimal",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:manual_checks.unit",
+      "label": "人工复核读数 · 单位",
+      "description": "来源记录属性 manual_checks.unit。",
+      "applies_to": [
+        "lzhu:manual_checks"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:manual_checks.method",
+      "label": "人工复核读数 · 方法",
+      "description": "来源记录属性 manual_checks.method。",
+      "applies_to": [
+        "lzhu:manual_checks"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:manual_checks.source",
+      "label": "人工复核读数 · 来源内容",
+      "description": "来源记录属性 manual_checks.source。",
+      "applies_to": [
+        "lzhu:manual_checks"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:manual_checks.recorded_at",
+      "label": "人工复核读数 · 记录入库时间",
+      "description": "来源记录属性 manual_checks.recorded_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:manual_checks"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:manual_checks.request_key",
+      "label": "人工复核读数 · 请求幂等键",
+      "description": "来源记录属性 manual_checks.request_key。",
+      "applies_to": [
+        "lzhu:manual_checks"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:work_orders.id",
+      "label": "运维工单 · 记录标识",
+      "description": "来源记录属性 work_orders.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:work_orders"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:work_orders.fault",
+      "label": "运维工单 · 故障说明",
+      "description": "来源记录属性 work_orders.fault。",
+      "applies_to": [
+        "lzhu:work_orders"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:work_orders.state",
+      "label": "运维工单 · 状态",
+      "description": "来源记录属性 work_orders.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:work_orders"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "open",
+        "assigned",
+        "handled",
+        "reviewed"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:work_orders.responsible_role",
+      "label": "运维工单 · 责任角色",
+      "description": "来源记录属性 work_orders.responsible_role。",
+      "applies_to": [
+        "lzhu:work_orders"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:work_orders.created_at",
+      "label": "运维工单 · 创建时间",
+      "description": "来源记录属性 work_orders.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:work_orders"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:work_orders.request_key",
+      "label": "运维工单 · 请求幂等键",
+      "description": "来源记录属性 work_orders.request_key。",
+      "applies_to": [
+        "lzhu:work_orders"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:work_order_events.id",
+      "label": "工单状态事件 · 记录标识",
+      "description": "来源记录属性 work_order_events.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:work_order_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:work_order_events.state",
+      "label": "工单状态事件 · 状态",
+      "description": "来源记录属性 work_order_events.state。",
+      "applies_to": [
+        "lzhu:work_order_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:work_order_events.note",
+      "label": "工单状态事件 · 备注",
+      "description": "来源记录属性 work_order_events.note。",
+      "applies_to": [
+        "lzhu:work_order_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:work_order_events.occurred_at",
+      "label": "工单状态事件 · 业务发生时间",
+      "description": "来源记录属性 work_order_events.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:work_order_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:farm_records.id",
+      "label": "农事记录 · 记录标识",
+      "description": "来源记录属性 farm_records.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:farm_records"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:farm_records.object_version",
+      "label": "农事记录 · 对象版本",
+      "description": "来源记录属性 farm_records.object_version。",
+      "applies_to": [
+        "lzhu:farm_records"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:farm_records.kind",
+      "label": "农事记录 · 种类",
+      "description": "来源记录属性 farm_records.kind。",
+      "applies_to": [
+        "lzhu:farm_records"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:farm_records.occurred_at",
+      "label": "农事记录 · 业务发生时间",
+      "description": "来源记录属性 farm_records.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:farm_records"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:farm_records.recorded_at",
+      "label": "农事记录 · 记录入库时间",
+      "description": "来源记录属性 farm_records.recorded_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:farm_records"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:farm_records.submission_id",
+      "label": "农事记录 · 提交标识",
+      "description": "来源记录属性 farm_records.submission_id。",
+      "applies_to": [
+        "lzhu:farm_records"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:farm_records.content_hash",
+      "label": "农事记录 · 内容哈希",
+      "description": "来源记录属性 farm_records.content_hash。",
+      "applies_to": [
+        "lzhu:farm_records"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:farm_records.status",
+      "label": "农事记录 · 状态",
+      "description": "来源记录属性 farm_records.status。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:farm_records"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "submitted",
+        "reviewed"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:farm_records.version",
+      "label": "农事记录 · 版本",
+      "description": "来源记录属性 farm_records.version。",
+      "applies_to": [
+        "lzhu:farm_records"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:farm_records.correction_reason",
+      "label": "农事记录 · 更正原因",
+      "description": "来源记录属性 farm_records.correction_reason。",
+      "applies_to": [
+        "lzhu:farm_records"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:record_reviews.id",
+      "label": "农事记录审核 · 记录标识",
+      "description": "来源记录属性 record_reviews.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:record_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:record_reviews.note",
+      "label": "农事记录审核 · 备注",
+      "description": "来源记录属性 record_reviews.note。",
+      "applies_to": [
+        "lzhu:record_reviews"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:record_reviews.created_at",
+      "label": "农事记录审核 · 创建时间",
+      "description": "来源记录属性 record_reviews.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:record_reviews"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_tasks.id",
+      "label": "田间任务 · 记录标识",
+      "description": "来源记录属性 field_tasks.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:field_tasks"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_tasks.title",
+      "label": "田间任务 · 标题",
+      "description": "来源记录属性 field_tasks.title。",
+      "applies_to": [
+        "lzhu:field_tasks"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_tasks.instructions",
+      "label": "田间任务 · 说明或指示",
+      "description": "来源记录属性 field_tasks.instructions。",
+      "applies_to": [
+        "lzhu:field_tasks"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_tasks.due_at",
+      "label": "田间任务 · 到期时间",
+      "description": "来源记录属性 field_tasks.due_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:field_tasks"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_tasks.kind",
+      "label": "田间任务 · 种类",
+      "description": "来源记录属性 field_tasks.kind。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:field_tasks"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "inspection",
+        "farm_work",
+        "irrigation"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_tasks.state",
+      "label": "田间任务 · 状态",
+      "description": "来源记录属性 field_tasks.state。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:field_tasks"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "draft",
+        "dispatched",
+        "claimed",
+        "reported",
+        "reviewed",
+        "cancelled"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_tasks.version",
+      "label": "田间任务 · 版本",
+      "description": "来源记录属性 field_tasks.version。",
+      "applies_to": [
+        "lzhu:field_tasks"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_tasks.created_at",
+      "label": "田间任务 · 创建时间",
+      "description": "来源记录属性 field_tasks.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:field_tasks"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_tasks.request_key",
+      "label": "田间任务 · 请求幂等键",
+      "description": "来源记录属性 field_tasks.request_key。",
+      "applies_to": [
+        "lzhu:field_tasks"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_tasks.content_hash",
+      "label": "田间任务 · 内容哈希",
+      "description": "来源记录属性 field_tasks.content_hash。",
+      "applies_to": [
+        "lzhu:field_tasks"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_task_events.id",
+      "label": "田间任务事件 · 记录标识",
+      "description": "来源记录属性 field_task_events.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:field_task_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_task_events.version",
+      "label": "田间任务事件 · 版本",
+      "description": "来源记录属性 field_task_events.version。",
+      "applies_to": [
+        "lzhu:field_task_events"
+      ],
+      "value_type": "integer",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_task_events.action",
+      "label": "田间任务事件 · 动作",
+      "description": "来源记录属性 field_task_events.action。",
+      "applies_to": [
+        "lzhu:field_task_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_task_events.request_key",
+      "label": "田间任务事件 · 请求幂等键",
+      "description": "来源记录属性 field_task_events.request_key。",
+      "applies_to": [
+        "lzhu:field_task_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_task_events.content_hash",
+      "label": "田间任务事件 · 内容哈希",
+      "description": "来源记录属性 field_task_events.content_hash。",
+      "applies_to": [
+        "lzhu:field_task_events"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:field_task_events.created_at",
+      "label": "田间任务事件 · 创建时间",
+      "description": "来源记录属性 field_task_events.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:field_task_events"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:inspection_reports.id",
+      "label": "现场巡检报告 · 记录标识",
+      "description": "来源记录属性 inspection_reports.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:inspection_reports"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:inspection_reports.observation",
+      "label": "现场巡检报告 · 观测描述",
+      "description": "来源记录属性 inspection_reports.observation。",
+      "applies_to": [
+        "lzhu:inspection_reports"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:inspection_reports.judgment",
+      "label": "现场巡检报告 · 来源人员判断",
+      "description": "来源记录属性 inspection_reports.judgment。",
+      "applies_to": [
+        "lzhu:inspection_reports"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:inspection_reports.action_taken",
+      "label": "现场巡检报告 · 已采取行动",
+      "description": "来源记录属性 inspection_reports.action_taken。",
+      "applies_to": [
+        "lzhu:inspection_reports"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:inspection_reports.occurred_at",
+      "label": "现场巡检报告 · 业务发生时间",
+      "description": "来源记录属性 inspection_reports.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:inspection_reports"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:inspection_reports.created_at",
+      "label": "现场巡检报告 · 创建时间",
+      "description": "来源记录属性 inspection_reports.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:inspection_reports"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:irrigation_entries.id",
+      "label": "灌溉排水记录 · 记录标识",
+      "description": "来源记录属性 irrigation_entries.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+      "applies_to": [
+        "lzhu:irrigation_entries"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:irrigation_entries.step",
+      "label": "灌溉排水记录 · 步骤",
+      "description": "来源记录属性 irrigation_entries.step。枚举来自单列直接CHECK IN；复杂条件另列在约束目录，未自动移植。",
+      "applies_to": [
+        "lzhu:irrigation_entries"
+      ],
+      "value_type": "enum",
+      "enum_values": [
+        "application",
+        "confirmation",
+        "execution",
+        "result",
+        "not_executed"
+      ],
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:irrigation_entries.details",
+      "label": "灌溉排水记录 · 详细内容",
+      "description": "来源记录属性 irrigation_entries.details。",
+      "applies_to": [
+        "lzhu:irrigation_entries"
+      ],
+      "value_type": "string",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:irrigation_entries.occurred_at",
+      "label": "灌溉排水记录 · 业务发生时间",
+      "description": "来源记录属性 irrigation_entries.occurred_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:irrigation_entries"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    },
+    {
+      "property_id": "lzhu:irrigation_entries.created_at",
+      "label": "灌溉排水记录 · 创建时间",
+      "description": "来源记录属性 irrigation_entries.created_at。接入须含明确时区；无时区值不能默认为UTC。",
+      "applies_to": [
+        "lzhu:irrigation_entries"
+      ],
+      "value_type": "datetime",
+      "usage": "attribute",
+      "required": false,
+      "cardinality": "single"
+    }
+  ],
+  "predicates": [],
+  "dependencies": []
+}
