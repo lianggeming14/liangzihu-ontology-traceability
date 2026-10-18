@@ -1,0 +1,18 @@
+{
+  "planned_pages": 19,
+  "preview_pdf_pages": 19,
+  "docx_sha256": "29745169ef0bb694bb44bf0911790503f12813ca8c6d2b912071f90e19e474e2",
+  "changes_since_original_review": [
+    1,
+    10
+  ],
+  "changes_in_final_count_refresh": [
+    10
+  ],
+  "all_original_content_preserved_except_authorized_test_counts": true,
+  "docx_text_matches_layout": true,
+  "maximum_body_height_pt": 720,
+  "body_budget_pt": 721.89,
+  "native_render_verified": false,
+  "preview_method": "Measured explicit line and page layout using ReportLab; not a native Word render"
+}

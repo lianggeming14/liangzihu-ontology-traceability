@@ -11,6 +11,8 @@ def describe(base, mutations, queries):
     from .core_intake import INTAKE_SCHEMAS
     schemas.update(copy.deepcopy(CORE_SCHEMAS))
     schemas.update(copy.deepcopy(INTAKE_SCHEMAS))
+    from .source_mapping import SOURCE_SCHEMAS
+    schemas.update(copy.deepcopy(SOURCE_SCHEMAS))
     schemas['Error'] = {'type': 'object', 'required': ['error'], 'properties': {'error': {'type': 'object', 'properties': {'code': {'type': 'string'}, 'message': {'type': 'string'}, 'request_id': {'type': ['string','null']}, 'details': {}}}}}
     schemas['Envelope'] = {'type': 'object', 'properties': {'data': {}, 'request_id': {'type': 'string'}}}
     paths = {}
@@ -36,7 +38,7 @@ def describe(base, mutations, queries):
         if 'get' in methods and any(p['name']=='offset' for p in methods['get']['parameters']):
             methods['get']['description']='当前集合的 offset/next_offset 分页；集合发生变化时不是冻结快照。需要可靠增量同步请用 trace/changes。'
     paths['/api/v1/ontology/graph']['get']['parameters']=graph_params
-    paths['/api/v1/ontology/graph']['get']['description']='当前有界子图；必须处理 truncated/gaps。不支持 valid_at、known_at、revision 历史重建。候选断言不等同于已确认事实。'
+    paths['/api/v1/ontology/graph']['get']['description']='当前存储的有界关系记录网络，包含候选和已结束区间。关系边 temporal_status/within_valid_interval 只说明时间有效性，采纳状态另见status。必须处理truncated/gaps；不支持valid_at、known_at、revision历史重建。'
     paths['/api/v1/trace/changes']['get']['parameters']=[param('cursor',description='首次省略；后续原样传 next_cursor'),page[0]]
     paths['/api/v1/trace/changes']['get']['description']='按租户递增 outbox。至少一次交付，消费端按事件 ID 去重，持久化业务结果后再保存游标；尚无 webhook 和 ACK 服务。'
     for route in ('observations','assertions','trace/events'):
@@ -92,6 +94,26 @@ def describe(base, mutations, queries):
     intake_preview=op('preview_intake',description='只读样本预览；所有临时写入回滚，不创建回执、证据、audit、outbox或幂等键。输出状态与issues，不能当正式接收确认。')
     body(intake_preview,{'$ref':'#/components/schemas/receive_intake'})
     paths['/api/v1/ingestion/preview']={'post':intake_preview}
+    for route, filters in [('/integration/profiles', ['source_id','profile_id','version']),
+                           ('/integration/bindings', ['source_id','table','entity_key','binding_id','profile_id','version']),
+                           ('/integration/batches', ['source_id','batch_id','profile_id','version'])]:
+        paths['/api/v1'+route]['get']['parameters'] += [param(n) for n in filters]
+    paths['/api/v1/integration/profiles']['post']['description']='登记不可变来源映射版本。精确引用本体版本、类、属性和关系；未知字段拒绝，延期字段保留并报告；来源主键不成为本体UUID。'
+    paths['/api/v1/integration/batches']['post']['description']='最多100条及2MiB，整批事务。来源系统/表/主键绑定系统UUID；先对象后关系。同批次同内容重试返回原回执；修改对象需expected_revision。外键关系为候选，不自动认定业务事实。'
+    paths['/api/v1/integration/bindings']['get']['description']='租户内来源身份到本体对象的映射；详情含来源修订及证据。来源ID与本体UUID分开。'
+    paths['/api/v1/integration/bindings']['get']['parameters'].append(param('projection',schema={'type':'string','enum':['full','identity'],'default':'full'},description='identity仅返回规划所需的身份与修订，不能同时展开历史'))
+    for kind in ('history','relationship'):
+        paths['/api/v1/integration/bindings']['get']['parameters'] += [
+            param(kind+'_limit',schema={'type':'integer','minimum':1,'maximum':100,'default':100},description='需同时指定binding_id或entity_key；按返回的next_offset继续查询'),
+            param(kind+'_offset',schema={'type':'integer','minimum':0,'default':0})]
+    paths['/api/v1/inference/bundles/{entity_key}']['get']['description']='区分观测、候选/采纳断言与source_snapshots来源快照；快照返回证据有效状态、数据性质和修订。来源快照默认usable_for_inference=false，不自动采纳为推理前提。'
+    source_preview=op('preview_source_batch',description='执行与导入相同的校验并完整回滚；不落对象、关系、证据、回执。返回的临时UUID不得作为正式对象身份使用。')
+    body(source_preview,{'$ref':'#/components/schemas/import_source_batch'})
+    paths['/api/v1/integration/preview']={'post':source_preview}
+    paths['/api/v1/integration/bundles']['post']['description']='同一事务安装依赖顺序排列的领域包与来源映射，任一错误全部回滚；重复安装已存在相同版本不会覆盖定义。'
+    bundle_preview=op('preview_source_bundle',description='在回滚事务中验证完整领域包与映射安装，无持久变更。')
+    body(bundle_preview,{'$ref':'#/components/schemas/install_source_bundle'})
+    paths['/api/v1/integration/bundles/preview']={'post':bundle_preview}
     for route,methods in paths.items():
         compatibility=route.startswith(('/api/v1/devices','/api/v1/device-','/api/v1/trace/','/api/v1/public/trace')) or route.endswith('/preview') and '/evidence/' in route or route=='/api/v1/ingestion/records'
         for method,operation in methods.items():
@@ -102,4 +124,4 @@ def describe(base, mutations, queries):
     body(login,{'type':'object','properties':{'role':{'type':'string','enum':['admin','operator','reviewer','viewer'],'default':'viewer'}}})
     paths['/api/v1/auth/demo']={'post':login};paths['/api/v1/auth/logout']={'post':op('logout',True)}
     paths['/api/v1/openapi.json']={'get':op('openapi',True)}
-    return {'openapi':'3.1.0','info':{'title':'梁子湖农业本体数据库 API','version':'0.3.0','description':'数据库职责收敛版：本体、显式映射、受约束存储、原件与血缘、数据输出；旧采集和产品溯源为兼容扩展。租户身份由访问令牌确定；演示界面另外支持仅限回环的 Cookie 会话。响应载荷仍以领域实现和示例为准，Envelope 不构成完整强类型 SDK。真实平台、PostgreSQL 和现场验收待完成。'},'servers':[{'url':'/'}],'paths':paths,'components':{'securitySchemes':{'bearerAuth':{'type':'http','scheme':'bearer'}},'schemas':schemas}}
+    return {'openapi':'3.1.0','info':{'title':'梁子湖农业本体数据库 API','version':'0.4.0','description':'来源对象批量映射版：本体、来源身份绑定、显式映射、受约束存储、原件与血缘、数据输出；旧采集和产品溯源为兼容扩展。租户身份由访问令牌确定；演示界面另外支持仅限回环的 Cookie 会话。响应载荷仍以领域实现和示例为准，Envelope 不构成完整强类型 SDK。生产数据与现场验收状态见交付验证报告。'},'servers':[{'url':'/'}],'paths':paths,'components':{'securitySchemes':{'bearerAuth':{'type':'http','scheme':'bearer'}},'schemas':schemas}}

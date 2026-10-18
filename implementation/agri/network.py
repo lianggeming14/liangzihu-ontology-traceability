@@ -102,6 +102,7 @@ def build_network(service, tenant, actor, params=None):
     # Use the public service boundary first to perform its current read checks.
     service.query("entities", tenant, actor, {"limit": 1})
     p = params or {}
+    generated_at = datetime.now(timezone.utc)
     if not isinstance(p, dict):
         raise DomainError(422, "invalid_query", "Graph parameters must be an object")
     if any(p.get(key) for key in ("valid_at", "known_at", "revision")):
@@ -257,13 +258,24 @@ def build_network(service, tenant, actor, params=None):
     for item in rows["relations"]:
         rid = item["id"]
         ref = "relation:"+rid if rid in reified else None
+        try:
+            starts = datetime.fromisoformat(str(item['valid_from']).replace('Z','+00:00'))
+            ends = datetime.fromisoformat(str(item['valid_to']).replace('Z','+00:00')) if item['valid_to'] else None
+            temporal_status = 'not_started' if starts > generated_at else 'ended' if ends and ends <= generated_at else 'active'
+        except (ValueError, TypeError):
+            temporal_status = 'unknown'
+            gaps.add('invalid_relation_interval:'+rid)
         common = {"qualifiers": _preview(item.get("qualifiers") or {}),
                   "evidence_ids": item.get("evidence_ids") or [],
                   "valid_from": item["valid_from"], "valid_to": item["valid_to"],
-                  "relation_ref": ref, "record_id": rid}
+                  "relation_ref": ref, "record_id": rid,
+                  "temporal_status": temporal_status,
+                  "within_valid_interval": temporal_status == 'active'}
         edge("relation-edge:"+rid, item["subject_key"], item["object_key"], item["predicate_id"],
              item["dimension"], item["status"], **common)
         if ref:
+            nodes[ref]['temporal_status'] = temporal_status
+            nodes[ref]['within_valid_interval'] = temporal_status == 'active'
             edge(ref+":subject", ref, item["subject_key"], "relation_subject", item["dimension"], item["status"])
             edge(ref+":object", ref, item["object_key"], "relation_object", item["dimension"], item["status"])
 
@@ -380,7 +392,9 @@ def build_network(service, tenant, actor, params=None):
                  "row_budget_per_table":cap,"reference_budget_per_table":cap,"edge_budget":edge_cap,
                  "json_field_character_limit":8192,"depth_applied":bool(center)},
         "view":{"kind":"current","historical_slice_supported":False,
-                "generated_at":datetime.now(timezone.utc).isoformat(),
+                "generated_at":generated_at.isoformat(),
+                "relation_membership":"stored_records_including_candidates_and_ended_intervals",
+                "temporal_note":"within_valid_interval describes time only; adoption status is separate",
                 "direction_for_neighborhood":"undirected_reachability_preserving_directed_edges",
                 "evidence_semantics":"source links do not automatically establish truth or causality"},
     }

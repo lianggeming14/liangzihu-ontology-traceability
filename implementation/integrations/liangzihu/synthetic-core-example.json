@@ -1,0 +1,20 @@
+{
+  "format": "liangzihu-source-records/1",
+  "data_nature": "synthetic",
+  "source_commit": "9995fc20cd84093adcaa3fab954ffe9d08b9f45a",
+  "observed_at": "2026-10-18T08:00:00Z",
+  "batch_id": "synthetic-core-example-v1",
+  "records": [
+    {"table": "users", "values": {"id": "00000000-0000-4000-8000-000000000001", "username": "synthetic-operator", "display_name": "合成示例登记员", "role": "worker"}},
+    {"table": "objects", "values": {"id": "00000000-0000-4000-8000-000000000002", "parent_id": null, "code": "SYNTH-FARM-001", "name": "合成示例农场", "kind": "farm", "boundary_status": "unknown", "source": "synthetic-example", "version": 1, "created_by": "00000000-0000-4000-8000-000000000001"}},
+    {"table": "objects", "values": {"id": "00000000-0000-4000-8000-000000000003", "parent_id": "00000000-0000-4000-8000-000000000002", "code": "SYNTH-FIELD-001", "name": "合成示例稻田", "kind": "field", "boundary_status": "unknown", "source": "synthetic-example", "version": 1, "created_by": "00000000-0000-4000-8000-000000000001"}},
+    {"table": "objects", "values": {"id": "00000000-0000-4000-8000-000000000004", "parent_id": "00000000-0000-4000-8000-000000000002", "code": "SYNTH-POND-001", "name": "合成示例养殖塘", "kind": "pond", "boundary_status": "unknown", "source": "synthetic-example", "version": 1, "created_by": "00000000-0000-4000-8000-000000000001"}},
+    {"table": "data_sources", "values": {"id": "00000000-0000-4000-8000-000000000005", "object_id": "00000000-0000-4000-8000-000000000002", "code": "SYNTH-SOURCE-001", "name": "合成设备来源", "provider": "synthetic", "contract_ref": "urn:example:synthetic-contract", "verified": false, "created_by": "00000000-0000-4000-8000-000000000001"}},
+    {"table": "devices", "values": {"id": "00000000-0000-4000-8000-000000000006", "object_id": "00000000-0000-4000-8000-000000000003", "source_id": "00000000-0000-4000-8000-000000000005", "external_id": "SYNTH-CAMERA-001", "name": "合成示例摄像头通道", "kind": "camera_channel", "source": "synthetic-example", "verified": false, "created_by": "00000000-0000-4000-8000-000000000001"}},
+    {"table": "devices", "values": {"id": "00000000-0000-4000-8000-000000000007", "object_id": "00000000-0000-4000-8000-000000000004", "source_id": "00000000-0000-4000-8000-000000000005", "external_id": "SYNTH-GATE-001", "name": "合成示例闸门", "kind": "physical", "source": "synthetic-example", "verified": false, "created_by": "00000000-0000-4000-8000-000000000001"}},
+    {"table": "points", "values": {"id": "00000000-0000-4000-8000-000000000008", "device_id": "00000000-0000-4000-8000-000000000007", "code": "SYNTH-GATE-POSITION", "name": "合成示例闸门开度测点", "metric": "gate.position_pct", "unit": "%", "created_by": "00000000-0000-4000-8000-000000000001"}},
+    {"table": "point_bindings", "values": {"id": "00000000-0000-4000-8000-000000000009", "point_id": "00000000-0000-4000-8000-000000000008", "object_id": "00000000-0000-4000-8000-000000000004", "valid_from": "2026-10-18T00:00:00+08:00", "valid_to": null, "verified": false, "evidence": "synthetic demonstration only", "created_by": "00000000-0000-4000-8000-000000000001"}},
+    {"table": "production_batches", "values": {"id": "00000000-0000-4000-8000-000000000010", "object_id": "00000000-0000-4000-8000-000000000003", "code": "SYNTH-RICE-001", "species": "水稻", "stage": "合成演示", "source": "synthetic-example", "verified": false, "started_at": "2026-05-01T08:00:00+08:00", "created_by": "00000000-0000-4000-8000-000000000001"}},
+    {"table": "production_batches", "values": {"id": "00000000-0000-4000-8000-000000000011", "object_id": "00000000-0000-4000-8000-000000000004", "code": "SYNTH-CRAYFISH-001", "species": "小龙虾", "stage": "合成演示", "source": "synthetic-example", "verified": false, "started_at": "2026-05-01T08:00:00+08:00", "created_by": "00000000-0000-4000-8000-000000000001"}}
+  ]
+}

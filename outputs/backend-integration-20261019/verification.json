@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-19",
+  "suite": {
+    "tests": 558,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 180,
+    "passed": 378
+  },
+  "skip_reasons": {
+    "PostgreSQL gate UNVERIFIED: TEST_DATABASE_URL is not configured": 178,
+    "Real video decode UNVERIFIED: FFMPEG_BIN not configured": 1,
+    "OS does not grant symlink creation to this test process": 1
+  },
+  "data_nature": "synthetic_isolated_tests",
+  "postgresql_verified": false,
+  "production_source_connected": false,
+  "field_acceptance": false,
+  "evidence": [
+    "final-tests.xml",
+    "upgrade-preflight.json",
+    "upgrade-applied.json",
+    "http-release-check.json"
+  ]
+}

@@ -32,5 +32,8 @@
 # 公开上游源码的临时分析副本；交付仅含派生目录和来源摘要
 /implementation/runtime/ontology-source/
 
+# 私有平台导出、批次计划及接收回执，禁止同步到公开仓库
+/implementation/runtime/source-imports/
+
 # 渲染库自动逐单元格调试缓存（正式检查报告另存）
 /outputs/**/*.xlsx.inspect.ndjson

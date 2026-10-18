@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-19",
+  "repository": "https://github.com/lianggeming14/liangzihu-ontology-traceability",
+  "visibility": "Public",
+  "branch": "main",
+  "remote_baseline_verified_in_browser": "b27f730f271e8fa8f84bc7c53e30aaa1d9b911cf",
+  "normal_sync": {
+    "command": "python tools/sync_to_github.py --message <release description>",
+    "success": false,
+    "reason": "error: cannot open '.git/FETCH_HEAD': Permission denied"
+  },
+  "fallback": "Reviewed incremental snapshot, browser upload, existing manually triggered Import reviewed project snapshot workflow",
+  "excluded": ["active database", "database backup", "credentials", "real source exports", "runtime assets", "dependencies"],
+  "note": "This is a pre-publication check, not a claim that publication has completed. The remote workflow and resulting commit must be verified separately."
+}

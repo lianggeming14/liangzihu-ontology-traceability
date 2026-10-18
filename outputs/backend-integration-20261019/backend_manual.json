@@ -1,0 +1,487 @@
+{
+  "title": "梁子湖农业本体数据库后端操作与维护手册",
+  "subtitle": "来源对象映射与批量接入版本 0.4",
+  "intro": [
+    "本手册面向数据库管理员、后端开发人员和梁子湖平台接入人员。它说明如何启动后端、把来源记录映射为本体对象、查询身份与证据、修改本体及代码，以及如何验证和回退变更。操作路径以本项目实际 Python 服务、JSON 契约和迁移文件为准。",
+    "本次新增的接入层将来源系统、来源表和来源主键绑定到系统生成的对象 UUID。对象属性经过已登记本体版本校验，外键转为有方向的候选关系，原始记录及每次修订保留证据。相同输入重试不产生重复对象；有实质修改时必须提供预期修订号。",
+    "本库负责数据接收、身份对齐、语义约束、关系存储与可追溯输出。图像识别、模型执行、农业决策和闸门控制由外部系统承担。使用来源记录建立关系，不能证明现场实物、业务事件或农业因果已经得到核实。"
+  ],
+  "sections": [
+    {
+      "title": "一 使用顺序与交付边界",
+      "paragraphs": [
+        "首次使用建议依次完成隔离环境启动、定义安装预检、样本导入预检、正式提交、身份回查、关系与证据核对。熟悉之后再接入定期导出或外部服务。不要先向空库发送带外键的任意数据，也不要直接修改数据库表绕过服务校验。",
+        "梁子湖结构基线为 2026 年 10 月 15 日导出的 Excel 及 schema_catalog.json，来源固定到上游提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a。目录覆盖 44 份 SQL、190 张表、2114 个字段、555 条外键；其中默认启用 122 个业务来源类。该覆盖是源码结构覆盖，不是现场数据完整率。",
+        "结构映射保留来源表的边界。例如 objects 表中的 farm、field、pond 等值保存在 kind 属性，devices 与 points 分别表达设备与测点；production_batches 表达生产周期，库存物料批次仍属于另一类记录。不同记录不因名字相同而自动合并。"
+      ],
+      "tables": [
+        {
+          "headers": [
+            "事项",
+            "执行要求"
+          ],
+          "widths": [
+            24,
+            76
+          ],
+          "rows": [
+            [
+              "定义变更",
+              "先检查类、属性、关系端点与版本，再安装。改显示名不改稳定标识。"
+            ],
+            [
+              "现场输入",
+              "使用实际来源编号和带时区时间；保留导出批次与取数范围。示例文件仅用于隔离测试。"
+            ],
+            [
+              "正式写入",
+              "先检查 preview 返回，再使用 apply。检查回执内容，不只检查 HTTP 200。"
+            ],
+            [
+              "验收",
+              "本地测试、PostgreSQL、原平台联调和现场核对分别记录；跳过不计作通过。"
+            ]
+          ]
+        }
+      ],
+      "code": []
+    },
+    {
+      "title": "二 如何合理阅读后端代码",
+      "paragraphs": [
+        "按一次请求的流向阅读，而不是从最大文件第一行读到最后一行。先找 HTTP 路由，再看该动作的 JSON Schema，接着跟到服务方法与迁移定义，最后阅读同名测试。这样能同时看到输入边界、授权、事务规则和失败行为。",
+        "当前服务通过继承组合能力：SourceMappingService 继承 IntakeService，后者依次继承 OntologyService、FieldService、DeviceService 和基础 Service。新入口尽量只完成来源对齐并复用下层校验，不复制一套对象、属性或关系规则。阅读时注意 super() 的真实调用链。",
+        "以 import_source_batch 为例，先定位 app.py 中的 /integration/batches，再看 source-mapping-schemas.json 的请求结构，然后看 source_mapping.py 的批次方法。确认来源锁、绑定查询、预期修订、属性更新、FK 解析和证据记录在哪个事务内发生。最后运行对应测试，观察失败后没有半批对象留下。"
+      ],
+      "tables": [
+        {
+          "headers": [
+            "文件或目录",
+            "主要职责",
+            "修改时重点"
+          ],
+          "widths": [
+            35,
+            30,
+            35
+          ],
+          "rows": [
+            [
+              "run_server.py",
+              "本地工程启动与合成示例开关",
+              "正式数据环境关闭演示和自动 seed"
+            ],
+            [
+              "agri/app.py",
+              "认证、路由、请求体限制、错误响应",
+              "租户来自认证身份；不要相信客户端租户头"
+            ],
+            [
+              "contracts/*.json",
+              "输入契约与公开 OpenAPI",
+              "新增字段必须说明可空、类型、范围与未知字段策略"
+            ],
+            [
+              "agri/source_mapping.py",
+              "来源绑定、批次、修订和原子导入",
+              "身份不变、无隐式合并、失败回滚"
+            ],
+            [
+              "agri/ontology_core.py",
+              "类、属性、版本与语义校验",
+              "property applies_to、单位、必填、适用时间"
+            ],
+            [
+              "agri/core_intake.py",
+              "单条来源信封与映射回执",
+              "待映射、失败与成功状态不能混淆"
+            ],
+            [
+              "agri/service.py",
+              "基础对象、证据、关系、审计、outbox",
+              "tenant 过滤、幂等键、事务、审核权限"
+            ],
+            [
+              "agri/db.py 和 sqlite_db.py",
+              "数据库边界与迁移",
+              "PostgreSQL 和 SQLite 行为不可假设完全相同"
+            ],
+            [
+              "agri/network.py 和 exchange.py",
+              "有界关系网络与 JSON-LD 输出",
+              "处理 truncated、gaps、候选状态和历史边界"
+            ],
+            [
+              "migrations 和 tests",
+              "持久结构与行为证明",
+              "新增迁移，不篡改已执行历史；测试负向场景"
+            ]
+          ]
+        }
+      ],
+      "code": []
+    },
+    {
+      "title": "三 环境准备与运行",
+      "paragraphs": [
+        "在项目根目录创建隔离 Python 环境并安装 implementation/requirements.txt。本文命令中的 python 指向该环境；本机已验证的执行器是 C:/ProgramData/anaconda3/python.exe。服务运行需要 Flask、jsonschema 等依赖；PostgreSQL 额外使用 requirements-postgresql.txt。不要把依赖目录、令牌或活动数据库提交到公开仓库。",
+        "开发环境可使用绝对路径 SQLite DSN。实际部署应明确设置 DATABASE_URL、DB_SCHEMA、AGRI_SESSION_SECRET 与主机白名单，关闭 DEMO_MODE；AUTH_TOKENS 映射必须来自受控配置。run_server.py 仅监听 127.0.0.1，属于本地工程入口，不能将 Flask 开发服务器直接当生产网关。",
+        "不要在新数据环境直接运行带默认 seed 的启动命令。--no-seed 防止写入合成演示，--no-demo-login 关闭本机演示身份。生产用户与来源系统的授权映射需由部署方配置；本项目的租户隔离不等于已复制原平台对象级 grants 权限。"
+      ],
+      "code": [
+        "python -m venv implementation/.venv",
+        "implementation/.venv/Scripts/python.exe -m pip install -r implementation/requirements.txt",
+        "implementation/.venv/Scripts/python.exe implementation/run_server.py --no-seed --no-demo-login --port 8787",
+        "implementation/.venv/Scripts/python.exe -m pytest implementation/tests -q",
+        "implementation/.venv/Scripts/python.exe implementation/ops/export_contract.py"
+      ],
+      "tables": [
+        {
+          "headers": [
+            "检查项",
+            "合格表现"
+          ],
+          "widths": [
+            29,
+            71
+          ],
+          "rows": [
+            [
+              "健康接口",
+              "/api/v1/health 返回版本与实际 backend；它只代表进程响应。"
+            ],
+            [
+              "授权接口",
+              "/api/v1/auth/me 返回当前租户与角色；错误令牌返回 401。"
+            ],
+            [
+              "迁移记录",
+              "新增迁移执行成功，再次启动不重复执行；历史 checksum 改动必须报错。"
+            ],
+            [
+              "接口契约",
+              "export_contract.py 核对实际路由集合与 OpenAPI 一致。"
+            ],
+            [
+              "正式数据库",
+              "使用独立 PostgreSQL 测试库执行同一测试集，再做备份恢复和并发验证。"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "四 身份规则与来源数据准备",
+      "paragraphs": [
+        "对象 UUID 由后端生成。来源系统原有 id、复合主键或业务编码放在来源记录中，不能要求管理员手工填写新 UUID。绑定键由租户、source_id、来源表和规范化主键共同确定。同一张表在不同来源系统可以出现相同主键，但会形成不同对象；不同租户始终隔离。",
+        "source_id 表示一个稳定的数据身份空间，应由接入管理员一次确定，例如 liangzihu-platform。不要每次导出都换 source_id；备份恢复、API 和 CSV 若来自同一逻辑数据库，应复用同一身份空间。生产与测试来源必须使用不同 source_id 或不同租户。",
+        "source_id 不等于访问令牌。令牌决定可访问哪个租户，source_id 只是租户内的来源标识。不能因为请求声明了一个来源名就允许访问另一租户的数据。",
+        "主键按配置类型规范化，复合主键按字段定义共同识别。UUID、长整数和业务编码建议从导出起以字符串传递，避免 Excel 科学计数法或 JavaScript 浮点数损失精度。名称只用于展示，不作为跨记录合并依据。",
+        "首次导入使用来源记录的实际字段名。时间戳必须显式带时区，日期型字段保留 YYYY-MM-DD；数量与精确小数采用十进制字符串。未知值用契约允许的 null 或省略，不以 0、空字符串或当前时间代替。"
+      ],
+      "code": []
+    },
+    {
+      "title": "五 领域包和映射配置如何配套",
+      "paragraphs": [
+        "领域包描述类型、属性和关系的语义；来源 profile 描述某个来源表如何对应这些已登记定义。前者回答是什么，后者回答从哪里取值、如何认出同一个对象以及如何解析外键。不能只安装字段映射而不安装其引用的本体版本。",
+        "梁子湖配置从已验收 Excel 的导出 JSON 生成，启用 18 个领域包，其中 2 个用于跨包关系桥接。122 个业务来源类及桥接辅助类不等于 124 种实物。摄像头、测点、天气报告和观测记录可以是不同层次对象，不能全部解释成田块或设备。",
+        "profile 中的 type_ref 精确指定 package_id、version 和 type_id；fields 指定来源字段到 property_id；relations 指定源 FK 字段、目标表主键及 predicate_ref。字段不属于该类、单位或类型不匹配、关系端点不兼容时应拒绝安装或导入。",
+        "enabled 之外的字段仍保留在覆盖清单中。明确延期字段会保留为来源原文并在回执报告，但不会假装已形成可推理属性；拒收字段不能进入证据。认证凭据、密码、令牌及执行控制信息应在导出白名单阶段排除。一个字段延期，与一个字段不存在，是两种不同状态。",
+        "使用 bundle 接口可在同一事务中安装依赖顺序排列的包和 profile；可附带首批记录共同预检。任一包、映射或记录失败全部回滚。已存在且内容相同的定义可以重放，同一版本内容不同必须发新版本。",
+        "带单位的目标属性要求 profile 的字段映射显式声明 source_unit，并与目标单位相同；可用 source_unit_field 对来源行中的单位列逐值核对。缺失或不符会拒绝接入。此入口不自动识别单位或换算；需要亩与公顷、K 与摄氏度等转换时，使用明确配置的 intake 转换规则并保留原值。"
+      ],
+      "tables": [
+        {
+          "headers": [
+            "变更需求",
+            "正确做法"
+          ],
+          "widths": [
+            35,
+            65
+          ],
+          "rows": [
+            [
+              "改本体或类的中文名",
+              "调用 package-labels，并提交 expected_revision；稳定标识不变。"
+            ],
+            [
+              "增加新物种或新领域",
+              "新建或升级领域包，明确概念边界；添加对应来源 profile。"
+            ],
+            [
+              "调整属性单位或含义",
+              "新包版本与新 profile 版本，迁移前预检现有对象；不能直接改旧定义。"
+            ],
+            [
+              "原项目新增数据库字段",
+              "重建目录，判断字段属于属性、关系、证据或拒收项，再更新映射。"
+            ],
+            [
+              "跨来源记录其实同一实物",
+              "先人工核实身份依据，使用独立身份对齐设计；当前导入器不按名称自动合并。"
+            ]
+          ]
+        }
+      ],
+      "code": []
+    },
+    {
+      "title": "六 批次导入的事务与修订规则",
+      "paragraphs": [
+        "每个批次包含 source_id、profile_id、version、batch_id、observed_at 和 records。observed_at 表示本次来源快照被见证的时间，不应冒充种植、采样或转运发生时间；这些业务时间保存在各记录自己的字段中。后端另记接收时间和操作者。",
+        "每批最多 100 条、请求最多 2 MiB。后端先创建或更新对象绑定，再解析本批或先前批次已存在的目标绑定，因而同批记录不必按父子顺序排列。缺失引用、属性错误或版本冲突会使整个批次回滚。大数据集的不同批次各自提交，不是一个跨文件大事务。",
+        "同 batch_id 同内容返回原回执；同 batch_id 不同内容返回冲突。HTTP Idempotency-Key 还保护网络重试，两层身份用途不同。内容更正应使用新的 batch_id 与新的幂等键；网络重试则保留原请求与原键。",
+        "绑定已有对象时，变化必须携带该绑定当前 expected_revision。相同来源快照内容可成为 no-op；有变化但修订落后时返回 409，调用方先读取最新绑定，人工或程序明确合并，再提交新批次。不能盲目自动取最新 revision 覆盖。",
+        "部分更新中省略字段表示保持原值，显式 null 表示清除可空属性或关闭该来源关系。删除必填属性会校验失败。源表行被删除不会因某次导出未出现而自动删除本体对象；本轮没有把缺失行当作删除指令。",
+        "FK 关系以 candidate 保存，并附来源证据和快照限定。来源关系变动会保留旧关系的历史状态与证据，不把历史记录从库中抹去。关系的结构正确不等于现场事实已确认，外部推理方必须显式选择可使用状态。",
+        "data_nature 可声明 production、synthetic、test 或 unspecified。production 只是来源声明，不是现场真实性认证。已有绑定的数据性质不可隐式改变；合成或测试身份不能改标成生产。修订快照必须晚于上一个已提交快照，且不能在未来；预报未来有效时间放在业务字段中。"
+      ],
+      "code": []
+    },
+    {
+      "title": "七 API 调用与查询结果使用",
+      "paragraphs": [
+        "私有接口要求 Authorization: Bearer 访问令牌。写入要求 Idempotency-Key。租户从认证配置读取，不能通过 X-Tenant-ID 或请求体改变。预检接口只做完整回滚验证，不占用正式回执，不应保存预检返回的临时 UUID 作为真实引用。",
+        "正式提交后优先保存批次回执和返回的 binding_id、entity_key、revision。下游系统应保存来源主键到 entity_key 的映射结果，而不是依赖显示名称。批次报告中的 deferred 信息需要进入接入工作清单，不能因为 HTTP 成功便宣称所有字段已语义化。",
+        "HTTP 关系网络接口展示当前存储的有界关系记录网络，其中包含候选和有效期已结束的关系。temporal_status 与 within_valid_interval 说明时间区间，status 另说明采纳状态，不能只看连线便认定当前归属。必须检查 truncated 与 gaps，按中心对象和维度继续查询。JSON-LD 和 Turtle 输出采用本项目交换配置，不是任意 RDF 或 OWL 文件的自动导入器。",
+        "溯源系统应在私有 API 侧查询来源对象、关系、证据和变更游标，再按自己的权限与公开字段策略呈现。source_records 里的原始天气、观测或质检记录不会仅因导入而自动成为原生 observations、质量合格声明或公开溯源码；这些转换需要另外的明确业务契约。",
+        "查询来源绑定详情时，用 binding_id 或 entity_key 定位；history_limit/history_offset 控制来源修订，relationship_limit/relationship_offset 控制关系历史，分页大小为 1–100。根据 history_page 或 relationships_page 的 has_more 与 next_offset 继续取页。仅依赖规划可用 projection=identity，避免读取全部来源原文；该投影不能同时展开历史。",
+        "GET /api/v1/inference/bundles/{entity_key} 返回独立 source_snapshots 分组。每个来源快照带绑定、修订、数据性质、属性、证据有效状态和 retrieval_manifest。usable_for_inference 默认 false，采纳前提由外部流程决定；证据撤回或实体修订不一致会产生 gaps，不能拿旧快照无条件驱动结论。"
+      ],
+      "tables": [
+        {
+          "headers": [
+            "接口",
+            "用途"
+          ],
+          "widths": [
+            52,
+            48
+          ],
+          "rows": [
+            [
+              "POST /api/v1/integration/bundles/preview",
+              "预检本体包、profile 及可选首批数据"
+            ],
+            [
+              "POST /api/v1/integration/bundles",
+              "原子安装定义与可选首批数据"
+            ],
+            [
+              "POST /api/v1/integration/preview",
+              "既有 profile 的批次预检"
+            ],
+            [
+              "POST /api/v1/integration/batches",
+              "正式批次写入"
+            ],
+            [
+              "GET /api/v1/integration/batches",
+              "按来源和批次读取回执"
+            ],
+            [
+              "GET /api/v1/integration/bindings",
+              "按来源、表或对象查询身份映射及修订"
+            ],
+            [
+              "GET /api/v1/integration/profiles",
+              "查看映射版本"
+            ],
+            [
+              "GET /api/v1/ontology/entities/{entity_key}",
+              "查看对象属性与语义分类"
+            ],
+            [
+              "GET /api/v1/ontology/relations?status=all",
+              "查看指定valid_at时刻的不同状态关系；未传时为当前。完整历史见来源绑定relationships分页。"
+            ],
+            [
+              "GET /api/v1/ontology/graph",
+              "有界多维网络，处理截断与缺口"
+            ],
+            [
+              "GET /api/v1/evidence/{evidence_id}",
+              "查询原文证据、摘要和有效状态"
+            ],
+            [
+              "GET /api/v1/trace/changes",
+              "按持久游标取得至少一次交付的变更"
+            ]
+          ]
+        }
+      ],
+      "code": []
+    },
+    {
+      "title": "八 属性 观测 断言与事件的区别",
+      "paragraphs": [
+        "属性描述对象在当前投影中的字段，例如名称、种类、型号或来源记录状态。观测描述谁在何时用什么方法测了哪个对象的哪个性质。断言表达来源提出的陈述及其依据；模型输出通常先作为候选断言。事件表达一次发生或被报告发生的过程，含参与对象和时间。",
+        "本次全量来源导入首先建立结构与可追溯映射。例如 observations 源表的一行映射为来源观测记录对象，其中 sampled_at、value、quality 等字段仍有来源语义。它没有被自动提升为本库原生观测，因为 metric 名称、单位、测点时态绑定、质量状态以及原始证据需要另外核实。",
+        "需要供推理服务直接消费标准观测时，使用既有 intake 映射和 create_observation 契约，并引用正确 property_ref、subject_key、observed_at、method、origin 与 evidence_ids。预测天气不能标成实测天气；模型识别置信度不能当作世界事实的准确率。",
+        "推理输入应带对象身份、精确属性版本、时间范围、来源、证据状态、修订号和缺口信息。数据库只执行确定的类型与约束校验，不替业务系统选出哪条矛盾信息为真，不把来源可信度自动当作结论可靠性。"
+      ],
+      "code": []
+    },
+    {
+      "title": "九 如何修改本体核心代码",
+      "paragraphs": [
+        "先区分配置变更与代码变更。增加一个常规类、字符串属性或显式 FK 映射通常只需发布新的领域包和 profile，无需修改 Python。新增值类型、复杂约束或存储语义才需要同时修改契约、服务、迁移及测试。",
+        "修改属性校验时从 ontology_core.py 的 validate_property_value、resolve_property 和 _check_attributes 开始。保持属性适用类、usage、cardinality、unit、枚举、范围与时态分类的校验一致。不能只在前端下拉框限制值，也不能在导入器中绕过这些方法。",
+        "新增一种值类型必须定义 JSON 表示、规范化、未知值规则、比较方式和持久化方式。例如高精度数字不可先转 float 再回字符串；带单位的值必须同时校验单位。需要空间几何或光谱向量时，应另建受控契约并保留坐标系、采集时间和来源文件引用，不能用任意 JSON 伪装已校验的空间本体。",
+        "修改关系语义时检查 predicate 的端点身份类型、语义类限定、方向、维度、有效期和循环约束。来源 FK 只说明数据库引用，不能自动改名成 causes 或物料来源。生产批次到库存批次的关联也不等于数量守恒的物料流转。",
+        "身份策略变化风险最高。已存在绑定的主键字段、主键类型、来源身份空间或目标 identity_type 不应被悄悄改变。需要专门迁移方案、旧新身份对照表、重复检测和回退证据；不要通过编辑绑定表直接重指向另一个对象。"
+      ],
+      "code": [
+        "rg -n 'validate_property_value|resolve_property|_check_attributes' implementation/agri",
+        "rg -n 'register_source_profile|import_source_batch' implementation",
+        "implementation/.venv/Scripts/python.exe -m pytest implementation/tests/test_ontology_core.py -q",
+        "implementation/.venv/Scripts/python.exe -m pytest implementation/tests/test_source_mapping.py -q",
+        "implementation/.venv/Scripts/python.exe -m pytest implementation/tests/test_liangzihu_adapter.py -q"
+      ]
+    },
+    {
+      "title": "十 修改服务和数据库结构的流程",
+      "paragraphs": [
+        "修改前写出一个具体失败或扩展场景、预期响应和不能破坏的约束，然后补一个能暴露该问题的测试。修改后先运行相关测试，再运行全套回归和接口契约核对。测试应该验证结果与失败后状态，而不是仅检查某个函数被调用。",
+        "HTTP 路由与业务服务分离。app.py 负责认证、输入和输出边界，业务规则放到服务方法。服务内所有查询包含 tenant_id；动态表名只能来自经校验的固定映射，不拼接任意用户 SQL。敏感原文不能出现在错误日志或公开响应中。",
+        "新增持久结构使用下一个 migration 编号，并同时提供 PostgreSQL 与 SQLite 版本。不要改 001 至 005 中已经部署的 SQL，因为启动会检查 checksum。新增列先兼容旧代码，完成回填与验证后再收紧约束；大表迁移需单独评估锁和执行窗口。",
+        "mutate 管理授权、幂等、事务、审计与租户 outbox 序号。新增动作必须进入 ACTION_ROLES 并有对应契约。避免在 _do 方法内部另开独立数据库事务，否则预检回滚和整批原子性可能失效。也不要在事务中调用外部模型、网络 API 或设备。",
+        "预检应走与正式导入相同的核心路径并完整回滚。预检成功只证明当时输入和数据库状态兼容；正式提交前的并发修改仍可能触发修订冲突，因此必须检查正式响应。"
+      ],
+      "code": []
+    },
+    {
+      "title": "十一 备份 恢复与错误处理",
+      "paragraphs": [
+        "SQLite 使用 ops/backup_sqlite.py 的备份路径，避免直接复制仍有 WAL 写入的活动文件。PostgreSQL 使用部署环境的逻辑备份或物理备份方案，并实际恢复到隔离数据库验证。证据文件、领域包、profile、绑定历史与数据库应有对应备份，只有数据库行而没有原件不构成完整溯源恢复。",
+        "恢复前停止写入，保留故障库和日志，以新目录或新数据库验证恢复结果。核对迁移 checksum、租户对象计数、来源绑定唯一性、证据 SHA-256、修订历史和 outbox 游标；验证完成后再切换服务。不得把较旧备份直接覆盖运行库。",
+        "批次失败时先按 error.code 和 details 定位表、记录和字段，再修正输入或映射。不要通过取消外键、放开未知字段或把错误值改成 null 来强行通过。已经成功的批次可按原输入重放确认；失败批次没有正式业务结果，但应保留接入方的失败报告供排查。",
+        "公开 GitHub 只同步代码、契约、合成示例、测试报告与文档。实际导出数据放入 implementation/runtime/source-imports 这一已忽略的私有运行目录，并额外检查路径是否受 .gitignore 保护；不能把生产 JSON 移到公开模板或 outputs 目录。"
+      ],
+      "tables": [
+        {
+          "headers": [
+            "现象",
+            "处理"
+          ],
+          "widths": [
+            30,
+            70
+          ],
+          "rows": [
+            [
+              "401 或 403",
+              "检查令牌配置、租户、角色、主机和 Origin；不要把令牌贴入日志。"
+            ],
+            [
+              "未知字段或类型错误",
+              "对照 profile 和覆盖清单；新增语义要发布新版本。"
+            ],
+            [
+              "缺失 FK 目标",
+              "补充真实目标记录或先前批次；不得创建假对象占位。"
+            ],
+            [
+              "409 修订冲突",
+              "读取最新绑定历史，明确合并内容后提交新批次。"
+            ],
+            [
+              "同批次内容冲突",
+              "网络重试保持原内容；业务修订使用新 batch_id。"
+            ],
+            [
+              "数据库迁移校验失败",
+              "恢复原迁移文件，新增迁移承载变更；不要重置 checksum 绕过。"
+            ],
+            [
+              "图谱缺少连线",
+              "检查关系状态、来源 binding、有效期与查询预算，再检查 gaps。"
+            ],
+            [
+              "证据无法下载",
+              "检查租户权限、撤回状态、资产存在性与哈希；不可绕过完整性检查。"
+            ]
+          ]
+        }
+      ],
+      "code": []
+    },
+    {
+      "title": "十二 验收与后续扩展",
+      "paragraphs": [
+        "代码测试应覆盖新对象、已有对象修订、同名不同身份、复合主键、重复批次、不同内容冲突、属性与关系校验、缺失引用、整批回滚、预检无落库、跨租户拒绝、来源关系变更与历史查询。并发一致性与数据库约束还需在 PostgreSQL 执行，不能由 SQLite 的写入串行化替代。",
+        "平台联调先选择一组可人工核对的真实对象链：农场、田块或池塘、设备、测点、生产批次和少量对应记录。逐项核对原项目主键、本库 UUID、属性值、关系方向、业务时间与证据，再扩大到库存、质检、天气、影像等领域。",
+        "正式上线还需要对象级授权、凭据管理、TLS、服务进程管理、容量测试、监控告警、备份恢复演练和真实数据责任人签字。没有完成这些工作时，应把系统称为本地工程或联调版本。",
+        "可扩展的下一步包括标准观测适配、跨来源同一实物身份核对、经过审核的公开溯源输出。优先根据真实接口契约增加适配器，不预先把模型判断或现场执行服务塞入数据库事务。"
+      ],
+      "code": []
+    },
+    {
+      "title": "十三 梁子湖导入工具实操",
+      "paragraphs": [
+        "以下命令在项目根目录运行。AGRI_API_TOKEN 应通过受控终端环境提供，不要写进命令历史、脚本或文档。默认命令只预检；加 --apply 才正式写入。完整参数、SQL取数和恢复说明见 implementation/integrations/liangzihu/README.txt。",
+        "先用 synthetic 来源和配套 11 条样例验证工具。已有本地数据库本轮只安装 18 个定义包和 liangzihu-platform 来源映射，不导入这 11 条样例。后续真实来源可使用该 source_id，或安装另一个明确命名的来源实例。",
+        "真实源库使用授权只读账号执行 readonly-export-core.sql 或 readonly-export.sql。使用 psql 的 --output 参数保存 UTF-8 JSONL，避免 Windows PowerShell 5 的 > 重定向生成 UTF-16。SQL使用只读一致快照、显式列白名单和精确数值字符串，不使用 SELECT *。",
+        "超过 100 条时先生成依赖计划。工具把同一循环依赖分量放在同批，先导入其他被依赖对象；超过预算的循环、缺失父记录和过大载荷会报错。plan 只是依赖规划，不表示远端值域已经验证。",
+        "apply-plan 不加 --apply 只核查计划文件与 SHA-256，不调用远端写入。正式执行时逐批进行远端预检和提交，失败立即停止，保留 progress.json 和回执。整计划不是原子事务；恢复时重放原计划，不重建随机批次。--fetch-bindings 会取得已有身份与修订号用于计划，正式执行仍受并发修订检查。"
+      ],
+      "code": [
+        "implementation/.venv/Scripts/python.exe implementation/ops/import_liangzihu.py coverage",
+        "implementation/.venv/Scripts/python.exe implementation/ops/import_liangzihu.py preview --source-id synthetic-liangzihu --input implementation/integrations/liangzihu/synthetic-core-example.json --install-definitions",
+        "implementation/.venv/Scripts/python.exe implementation/ops/import_liangzihu.py install-definitions --source-id liangzihu-platform --apply",
+        "psql --no-psqlrc --quiet --tuples-only --no-align --set ON_ERROR_STOP=1 --file implementation/integrations/liangzihu/readonly-export-core.sql --output implementation/runtime/source-imports/core.jsonl",
+        "implementation/.venv/Scripts/python.exe implementation/ops/import_liangzihu.py plan --source-id liangzihu-platform --input implementation/runtime/source-imports/core.jsonl --observed-at 2026-10-19T00:00:00+08:00 --data-nature production --output-dir implementation/runtime/source-imports/plan-001",
+        "implementation/.venv/Scripts/python.exe implementation/ops/import_liangzihu.py apply-plan --plan-dir implementation/runtime/source-imports/plan-001 --apply"
+      ]
+    },
+    {
+      "title": "十四 本次交付验证记录",
+      "page_break_before": true,
+      "paragraphs": [
+        "以下结果来自本轮隔离合成测试。通过项不包含原平台生产数据、真实设备或 PostgreSQL 实库验收。SOURCE_SCHEMA 的确定映射已实现，不代表真实农场实例已经录入。",
+        "本地升级使用 upgrade_local.py 在数据库一致副本上先预检，再备份活动文件，执行 005 迁移并只安装定义。旧对象和旧领域包记录逐行摘要核对，实体数量保持不变。报告见 outputs/backend-integration-20261019/upgrade-applied.json。",
+        "两份文档与生成脚本一同交付，代码发生变化后应同步更新契约、测试和操作说明。使用公开 GitHub 同步时，必须保留 .gitignore 对真实数据目录的保护。"
+      ],
+      "tables": [
+        {
+          "headers": [
+            "项目",
+            "实际结果"
+          ],
+          "widths": [
+            40,
+            60
+          ],
+          "rows": [
+            [
+              "完整回归",
+              "378 通过，0 失败，180 跳过"
+            ],
+            [
+              "数据库测试性质",
+              "持久 SQLite 隔离数据库与明确合成实例"
+            ],
+            [
+              "PostgreSQL 实库",
+              "未配置独立测试库及驱动，未验收"
+            ],
+            [
+              "来源结构覆盖",
+              "190 表、2114 字段、555 FK 已逐项分类"
+            ],
+            [
+              "默认启用映射",
+              "122 业务来源类、979 属性、409 FK"
+            ],
+            [
+              "真实平台与现场",
+              "未取得真实导出或生产 API，待联调及人工核对"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

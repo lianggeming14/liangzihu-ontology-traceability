@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-10-18T16:35:46.232606+00:00",
+  "data_imported": false,
+  "postgresql_verified": false,
+  "source_id": "liangzihu-platform",
+  "preflight_migrations": {
+    "backend": "sqlite-development",
+    "schema": "main",
+    "migration": "005",
+    "applied": true,
+    "applied_versions": [
+      "005"
+    ]
+  },
+  "preflight_passed": true,
+  "package_count": 18,
+  "table_count": 122,
+  "applied": false
+}

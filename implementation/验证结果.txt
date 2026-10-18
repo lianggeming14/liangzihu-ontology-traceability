@@ -1,30 +1,63 @@
-v0.3 验证结果
-更新：2026-10-14
+v0.4.0 验证结果
+更新：2026-10-19（Asia/Shanghai）
 
-自动测试：213 passed，0 failed / error，112 skipped。
-跳过：111项需要TEST_DATABASE_URL的PostgreSQL实库；1项旧媒体扩展需要FFMPEG_BIN的真实视频解码。新上传主流程不再解码视频。
-结果：tests/latest-results.xml。追加异常元数据断言专项5项通过，未增加测试数量。
+本轮权威自动测试
+----------------
+558 项：378 passed，0 failed，0 error，180 skipped。
+权威结果：../outputs/backend-integration-20261019/final-tests.xml。
+汇总：../outputs/backend-integration-20261019/verification.json。
+测试覆盖 implementation 与 tools；实例数据为隔离环境中的 synthetic 合成数据。
+tests/latest-results.xml 是 v0.3 历史结果，不代表本轮总数。
 
-浏览器三套共38项：
-- core-intake.cjs：12项新版数据库流程；
-- structured-intake.cjs：15项原有接入与对象集兼容流程；
-- ui-smoke.cjs：11项基础界面及溯源兼容流程。
-均无页面错误、失败请求或服务stderr。请求经过真实Flask test_client及隔离SQLite/原件目录，没有伪造业务返回；此通道本身不验证TCP/TLS。
-覆盖本体创建、类属性关系定义、中文改名与hash不变、按类生成对象属性、受约束人工观测和候选断言、来源映射、零写入预览、待映射回执、重试历史、失败队列、原件独立状态及390px手机布局。
-兼容检查保留采收、物料数量、断网后幂等、撤证召回、跨页对象集及200项以外对象检索。
-截图和报告：tests/browser/core-screenshots、core-result.json；structured-screenshots、structured-result.json；screenshots、result.json。
+跳过明细：
+- 178 项 PostgreSQL：未配置 TEST_DATABASE_URL，不能计为实库通过。
+- 1 项旧媒体扩展真实视频解码：未配置 FFMPEG_BIN；识别和视频解码不属于本轮数据库核心。
+- 1 项 Windows 符号链接测试：测试进程未获操作系统创建权限。
 
-接口：65项实现操作与OpenAPI路由集合一致；26份JSON Schema语法有效。
-证据：runtime/api-contract-check.json。当前响应Envelope仍为宽泛结构，不表示已经提供完整强类型SDK。
+新增验证包含来源主键与复合主键、类属性映射、严格值转换、原子安装和整批回滚、候选外键关系、
+乐观修订、相同批次重放、租户隔离、来源证据与历史、身份投影查询、安全字段拒收、依赖图分批、
+循环依赖预算、计划摘要防改及中途失败恢复。HTTP 严格 JSON 解析拒绝顶层/嵌套重复键、
+NaN/Infinity 和指数溢出产生的非有限值；拒绝请求不写库，也不占用幂等键。
+数据约束通过不证明农业内容真实。
 
-实际HTTP与升级：
-本机127.0.0.1:8787健康、首页、本体、属性、映射、回执及OpenAPI返回成功；Chrome管理员登录和本体结构页面已检查。
-升级前使用SQLite在线备份API，integrity_check=ok，外键错误0。
-升级后001/002旧表原有行逐行仍存在（只排除会递增的outbox_counters）；新增003/004迁移和独立v0.3合成样例，未清空旧数据。
-原有合成领域包显示名称得到中文补充，定义hash不变，已由管理员修改过的名称不会被启动重置。
-证据：runtime/http-intake-check.json。实际端口与浏览器桥接验收分别记录。
+实际本机升级与 HTTP
+------------------
+已将本地应用启动为 v0.4.0，后端仍是 SQLite development。
+先完成隔离副本预检和升级前 SQLite 在线备份，再应用 005 迁移；备份与升级后完整性检查为 ok。
+新增安装 18 个梁子湖来源领域包，当前共 23 包；登记 1 份映射配置，覆盖 122 张来源业务表。
+原有 17 个实体及历史行完整保留。本次没有持久导入新的合成样例，也没有导入真实生产记录。
 
-范围：
-这是可运行的数据库核心本地工程版。未验证PostgreSQL、真实农场设备、现有平台生产连接、生产身份/TLS/容量和完整恢复。
-原件哈希校验≠来源真实；格式/语义约束≠农业结论正确；候选断言≠已确认事实。
-历史Word v1.1保留总体规划，当前代码及范围以v0.3说明为准。
+通过实际 127.0.0.1 HTTP 预检 11 条 synthetic 来源记录，预计创建 11 个实体和 22 条关系；
+预检完整回滚，实体数量前后均为 17。健康接口返回 version=0.4.0。
+证据：upgrade-preflight.json、upgrade-applied.json、http-release-check.json（均在本轮 outputs 目录）。
+该结果验证 loopback HTTP，不代表生产 TLS、反向代理、容量或现场设备连接通过。
+
+接口契约
+--------
+73 项 API 操作，31 份 JSON Schema；最新定义见 contracts/openapi.json 与 contracts/*schemas.json。
+契约一致性纳入本轮自动测试；http-release-check.json 同时记录 73 项描述操作。
+当前响应 Envelope 仍有宽泛结构，不表示已提供所有资源的完整强类型 SDK。
+
+浏览器历史记录：historical_v0.3
+-----------------------------
+以下 38 项是 2026-10-14 的历史结果，本轮没有重新执行，不计入上述 378 项通过：
+- core-intake.cjs：12 项；structured-intake.cjs：15 项；ui-smoke.cjs：11 项。
+- 当时均无页面错误、失败请求或服务 stderr。
+- 当时经真实 Flask test_client 与隔离 SQLite/原件目录桥接，没有伪造业务结果；不验证 TCP/TLS。
+历史报告位于 tests/browser/core-result.json、structured-result.json、result.json 及对应截图目录。
+
+Word 文档与预览
+---------------
+交付文档/梁子湖本体数据库后端操作说明书_v0.4.docx：代码阅读、修改、运行、接入、运维与限制。
+交付文档/原梁子湖项目数据库分析与本体库比较报告.docx：源结构、底层逻辑、特点、证据和比较。
+上述位置相对项目根目录；详细源内容与 QA 位于 outputs/backend-integration-20261019。
+ReportLab 测量布局预览已逐页检查。缺少 LibreOffice 且 Word COM 不可用，原生 DOCX 渲染未通过；
+不能将预览检查写成 Word 原生分页或字体验证通过。native-render.json 保留失败信息。
+
+已实现与尚未验收
+----------------
+已实现：在租户内按来源实例、来源表和规范主键，确定绑定到系统生成的本体 UUID；修订与证据可追溯。
+未实现：认证主体或生产令牌到 source_id 的服务端强绑定。现有来源匹配不能证明发送方真实性。
+已实现的是基于已核对来源结构的确定映射；未做真实梁子湖生产数据导入、PostgreSQL 实库或现场验收。
+未验证生产身份、对象级授权、TLS、容量和完整恢复。来源 FK 默认候选，来源快照不是已采纳事实。
+旧 Word v1.1 与 v0.3 ZIP/浏览器报告保留历史用途，当前状态以 v0.4.0 和本轮权威证据为准。

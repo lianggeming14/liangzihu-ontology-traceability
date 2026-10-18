@@ -1,24 +1,48 @@
 {
-  "schema_version": "3.0",
-  "updated_at": "2026-10-14T15:17:00Z",
+  "schema_version": "4.0",
+  "application_version": "0.4.0",
+  "updated_at": "2026-10-18T16:41:01Z",
   "gate": "production_ontology_database",
   "passed": false,
   "status": "local_engineering_passed_production_gates_pending",
   "local_engineering": {
     "passed": true,
     "backend": "sqlite-development",
-    "tests_passed": 213,
+    "tests_total": 558,
+    "tests_passed": 378,
     "tests_failed": 0,
-    "tests_skipped": 112,
-    "browser_checks": 38,
+    "tests_errors": 0,
+    "tests_skipped": 180,
+    "current_browser_suite_rerun": false,
+    "historical_browser_checks": {
+      "status": "historical_v0.3",
+      "passed": 38
+    },
     "loopback_http_verified": true,
-    "legacy_rows_preserved": true
+    "legacy_rows_preserved": true,
+    "entities_before_and_after": 17,
+    "new_migration": "005",
+    "installed_packages_total": 23,
+    "installed_packages_new": 18,
+    "mapped_source_tables": 122,
+    "synthetic_http_preview": {
+      "entities": 11,
+      "relations": 22,
+      "rolled_back": true
+    },
+    "production_records_imported": false
   },
   "production_gates": {
     "postgresql": "unverified",
-    "source_identity_binding": "not_integrated",
+    "source_identity_binding": {
+      "status": "implemented_locally",
+      "scope": "tenant + source_id + source_table + canonical primary key -> generated ontology UUID",
+      "postgresql_acceptance": "unverified"
+    },
+    "authentication_principal_to_source_id": "not_integrated",
     "object_authorization": "not_integrated",
     "live_platform_sources": "not_integrated",
+    "field_acceptance": "not_run",
     "production_tls_capacity_recovery": "unverified"
   },
   "out_of_core_scope": [
@@ -28,13 +52,22 @@
     "device_control",
     "consumer_traceability_application"
   ],
-  "evidence": [
-    "tests/latest-results.xml",
+  "current_evidence": [
+    "../outputs/backend-integration-20261019/final-tests.xml",
+    "../outputs/backend-integration-20261019/verification.json",
+    "../outputs/backend-integration-20261019/upgrade-preflight.json",
+    "../outputs/backend-integration-20261019/upgrade-applied.json",
+    "../outputs/backend-integration-20261019/http-release-check.json"
+  ],
+  "historical_v03_browser_evidence": [
     "tests/browser/core-result.json",
     "tests/browser/structured-result.json",
-    "tests/browser/result.json",
-    "runtime/api-contract-check.json",
-    "runtime/http-intake-check.json"
+    "tests/browser/result.json"
   ],
-  "note": "111项PostgreSQL与1项旧视频扩展测试明确跳过；视频解码不再是数据库核心门槛。"
+  "skip_breakdown": {
+    "postgresql": 178,
+    "legacy_ffmpeg": 1,
+    "windows_symlink_permission": 1
+  },
+  "note": "来源记录与本体实体的数据库身份绑定已实现；这不等于发送方认证与source_id强绑定。生产门禁仍未通过。178项PostgreSQL、1项FFMPEG旧扩展和1项Windows符号链接权限测试跳过；38项浏览器检查仅为v0.3历史结果。"
 }

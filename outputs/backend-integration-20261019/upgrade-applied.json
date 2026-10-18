@@ -1,0 +1,37 @@
+{
+  "checked_at": "2026-10-18T16:37:00.766020+00:00",
+  "data_imported": false,
+  "postgresql_verified": false,
+  "source_id": "liangzihu-platform",
+  "preflight_migrations": {
+    "backend": "sqlite-development",
+    "schema": "main",
+    "migration": "005",
+    "applied": true,
+    "applied_versions": [
+      "005"
+    ]
+  },
+  "preflight_passed": true,
+  "package_count": 23,
+  "table_count": 122,
+  "backup": {
+    "path": "data\\backups\\before-source-mapping-20261018T163702481291Z.db",
+    "sha256": "1f0514535c1fc843d1262a81b35df028207a982d94545f3f0d59548a81a680f5",
+    "integrity_check": "ok"
+  },
+  "migrations": {
+    "backend": "sqlite-development",
+    "schema": "main",
+    "migration": "005",
+    "applied": true,
+    "applied_versions": [
+      "005"
+    ]
+  },
+  "applied": true,
+  "existing_rows_preserved": true,
+  "entity_count": 17,
+  "installed_bundle_packages": 18,
+  "integrity": "ok"
+}

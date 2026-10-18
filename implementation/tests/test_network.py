@@ -111,6 +111,24 @@ def test_small_node_budget_marks_truncation(network_data):
     closed(result)
 
 
+def test_stored_graph_labels_ended_relations_without_promoting_candidates(network_data):
+    service, _, actor = network_data
+    with service.db.transaction() as tx:
+        existing = tx.execute('SELECT id FROM relations WHERE tenant_id=%s ORDER BY id LIMIT 2',('demo-farm',)).fetchall()
+        assert len(existing) == 2
+        tx.execute('UPDATE relations SET valid_from=%s,valid_to=%s WHERE tenant_id=%s AND id=%s',
+                   ('2020-01-01T00:00:00Z','2021-01-01T00:00:00Z','demo-farm',existing[0]['id']))
+        tx.execute('UPDATE relations SET valid_from=%s,valid_to=NULL,status=%s WHERE tenant_id=%s AND id=%s',
+                   ('2020-01-01T00:00:00Z','candidate','demo-farm',existing[1]['id']))
+    graph = build_network(service,'demo-farm',actor,{'limit':300})
+    by_id = {e['record_id']:e for e in graph['edges'] if e['id'].startswith('relation-edge:')}
+    assert by_id[existing[0]['id']]['temporal_status'] == 'ended'
+    assert by_id[existing[0]['id']]['within_valid_interval'] is False
+    assert by_id[existing[1]['id']]['temporal_status'] == 'active'
+    assert by_id[existing[1]['id']]['status'] == 'candidate'
+    assert graph['view']['relation_membership'] == 'stored_records_including_candidates_and_ended_intervals'
+
+
 def test_other_tenant_and_center_are_not_visible(network_data):
     service, _, actor = network_data
     other = service.mutate("create_entity","other-tenant",

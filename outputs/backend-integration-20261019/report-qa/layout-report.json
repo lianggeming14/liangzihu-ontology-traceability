@@ -1,0 +1,6418 @@
+{
+  "docx": "原梁子湖项目数据库分析与本体库比较报告.docx",
+  "sha256": "29745169ef0bb694bb44bf0911790503f12813ca8c6d2b912071f90e19e474e2",
+  "planned_pages": 19,
+  "native_render_verified": false,
+  "preview_method": "Measured explicit line and page layout using ReportLab; not a native Word render",
+  "body_budget_pt": 721.89,
+  "minimum_reserved_body_bottom_pt": 72.0,
+  "footer_baseline_pt": 27,
+  "pages": [
+    [
+      {
+        "kind": "title",
+        "lines": [
+          "梁子湖农场平台数据库分析",
+          "与本体论数据库对比报告"
+        ],
+        "size": 22,
+        "lead": 31,
+        "bold": true,
+        "before": 8,
+        "after": 14,
+        "top": 0,
+        "height": 84
+      },
+      {
+        "kind": "subtitle",
+        "lines": [
+          "源码结构、业务约束、证据链与接轨方案    2026 年 10 月 19 日"
+        ],
+        "size": 12,
+        "lead": 19,
+        "bold": false,
+        "before": 0,
+        "after": 12,
+        "top": 84,
+        "height": 31
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "本报告依据固定提交的 44 份 SQL 迁移、完整 schema_catalog.json、原项目本地 TypeScript 代码快",
+          "照及本体论数据库当前实现作静态分析。没有连接原项目生产数据库，没有导出现场实物记录，也未重跑",
+          "原平台整套工程验收。44 份 DDL 的提交来源已记录；本地 TypeScript 快照未逐文件与该提交核对，因",
+          "此相关行为注明为快照静态证据。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 115,
+        "height": 75
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "原平台是围绕农场业务开展事务处理、采集、审核和作业协同的关系型应用系统，已经具有对象身份、时",
+          "态绑定、证据归档、库存血缘与公开溯源能力；本体论库应成为它的语义接入与数据供给层。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 190,
+        "height": 41
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "190 张源表不是 190 个农业本体。源表同时包含实物档案、观测、过程事件、派生结果、审核记录、安",
+          "全与运行设施。Excel 导出是带来源的模式映射目录，不能自动证明现场事实。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 231,
+        "height": 41
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "最重要的接轨约束是保留来源身份、记录性质、版本、业务时间、证据和处理状态，先解决确定映射，再",
+          "对未决项给出可操作反馈。不能把所有源表行直接升级为已采纳事实。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 272,
+        "height": 41
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "数据库结构可验证引用和状态，不能仅凭外键证明因果关系，也不能仅凭导入成功证明设备、质量或农业",
+          "效果真实有效。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 313,
+        "height": 41
+      },
+      {
+        "kind": "h1",
+        "lines": [
+          "1 审阅范围 证据等级与统计口径"
+        ],
+        "size": 14,
+        "lead": 22,
+        "bold": true,
+        "before": 14,
+        "after": 8,
+        "top": 354,
+        "height": 44
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "本次研究固定于源仓库提交 9995fc20cd84093adcaa3fab954ffe9d08b9f45a，以 000—043 迁移顺序归并",
+          "CREATE、ALTER、约束和索引，得到最终结构。源 README 的功能和验收描述属于项目自述；本报告不会",
+          "将其测试数量复述成本轮已经执行的验证。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 398,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "统计为 190 张最终存续表、2,114 个字段、555 项外键、1,118 项表约束、37 项显式索引和 248 项表",
+          "结构 DDL。索引数不包括 PostgreSQL 自动为主键、唯一约束建立的索引。简单 CHECK 枚举并未被统计",
+          "为原生 CREATE TYPE 枚举，目录中的 enum_types 为 0。结构解析未发现未解析表 DDL 或未解析引用，",
+          "但这不等于 SQL 已在本轮真实数据库执行。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 456,
+        "height": 75
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "源文件来自公开 GitHub 页面可见内容。归档文本有可追踪来源与文本校验，尚未核对 Git blob 字节一",
+          "致性。因此不使用“完整复刻原仓库”或“原库逐字节验证”的表述。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 531,
+        "height": 41
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "本地 TypeScript 快照可证实具体函数中的静态逻辑，但缺少 src/db/pool.ts、src/db/migrate.ts 等",
+          "实现。只能确认调用了事务封装，不能凭调用点断言连接释放、回滚和迁移锁的全部内部行为已经审阅。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 572,
+        "height": 41
+      },
+      {
+        "kind": "table",
+        "widths": [
+          77.64416,
+          131.02452,
+          140.73004,
+          135.87727999999998
+        ],
+        "rows": [
+          {
+            "cells": [
+              [
+                "等级"
+              ],
+              [
+                "依据"
+              ],
+              [
+                "可以支持"
+              ],
+              [
+                "不支持"
+              ]
+            ],
+            "height": 24,
+            "head": true
+          },
+          {
+            "cells": [
+              [
+                "A：固定提交",
+                "DDL"
+              ],
+              [
+                "44 份迁移及解析目录"
+              ],
+              [
+                "表、字段、外键、CHECK、索",
+                "引、触发器的声明"
+              ],
+              [
+                "部署状态、数据规模、生产运",
+                "行结果"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "B：本地代码静",
+                "态证据"
+              ],
+              [
+                "可读 TypeScript 服务与",
+                "API"
+              ],
+              [
+                "明确分支、SQL 调用、输入校",
+                "验及事务调用点"
+              ],
+              [
+                "未读取模块的行为、测试通",
+                "过、完整运行可行性"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          }
+        ],
+        "top": 613,
+        "height": 107
+      }
+    ],
+    [
+      {
+        "kind": "table",
+        "widths": [
+          77.64416,
+          131.02452,
+          140.73004,
+          135.87727999999998
+        ],
+        "rows": [
+          {
+            "cells": [
+              [
+                "等级"
+              ],
+              [
+                "依据"
+              ],
+              [
+                "可以支持"
+              ],
+              [
+                "不支持"
+              ]
+            ],
+            "height": 24,
+            "head": true
+          },
+          {
+            "cells": [
+              [
+                "C：项目说明自",
+                "述"
+              ],
+              [
+                "README 与可读设计文档"
+              ],
+              [
+                "设计意图、模块目录、上游报",
+                "告的完成边界"
+              ],
+              [
+                "本轮已经重新验收"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "D：接轨建议"
+              ],
+              [
+                "基于两套结构的设计判断"
+              ],
+              [
+                "应增加的映射、对账、审批和",
+                "验证步骤"
+              ],
+              [
+                "已经实现或已导入真实记录"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          }
+        ],
+        "top": 0,
+        "height": 107
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D00 db/migrations/000_platform.sql:1（固定提交 DDL 范围）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 107,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "C01 README.md:7（项目说明自述）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 125,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "L01 outputs/liangzihu-ontology-20261015/schema_catalog.json:1（本项目解析产物）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 143,
+        "height": 18
+      },
+      {
+        "kind": "h1",
+        "lines": [
+          "2 底层技术架构与职责分布"
+        ],
+        "size": 14,
+        "lead": 22,
+        "bold": true,
+        "before": 14,
+        "after": 8,
+        "top": 161,
+        "height": 44
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "原平台前端与业务 API 同属 Next.js / React / TypeScript 工程，业务模块使用 pg 客户端执行参数",
+          "化 SQL。独立 Node.js worker 承接采集、后台任务与模型相关工作。README 描述的存储组成是",
+          "PostgreSQL、PostGIS、pgvector 与私有本地/S3 文件存储；DDL 中可以直接确认 geometry 和",
+          "public.vector(512) 的使用。安装版本与现场运行配置仍应由部署环境核对。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 205,
+        "height": 75
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "典型写入链为 route.ts → writeApi → 会话与来源检查 → 读取受限 JSON → transaction(callback",
+          ") → 领域服务 → 参数化 SQL。objects 路由把 POST 委托给 saveObject；writeApi 在事务回调中执",
+          "行工作函数。读取链经过 requireActor，再由业务服务按对象和资源权限过滤。浏览器不会直接修改数",
+          "据库。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 280,
+        "height": 75
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "数据库不只是最终报表仓库。它同时保存业务主数据、原始回执、后台任务状态、运行证据和公开资料版",
+          "本。后台任务表具备 business_key、状态、租约 token、到期时间、重试次数等字段；这些字段表示数",
+          "据库支持任务调度协议，不足以单独证明 worker 的崩溃恢复全部正确。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 355,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "对象存储负责大文件原件，数据库负责文件元数据、哈希、归属和使用关系。接轨本体论库时应复制可授",
+          "权使用的元数据或受控引用，不应把视频原件、临时签名地址或凭据嵌入普通属性，更不应把所有媒体自",
+          "动识别为农业结论。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 413,
+        "height": 58
+      },
+      {
+        "kind": "table",
+        "widths": [
+          116.46624,
+          189.25763999999998,
+          179.55212
+        ],
+        "rows": [
+          {
+            "cells": [
+              [
+                "层"
+              ],
+              [
+                "原项目主要入口"
+              ],
+              [
+                "核心作用"
+              ]
+            ],
+            "height": 24,
+            "head": true
+          },
+          {
+            "cells": [
+              [
+                "HTTP 与身份入口"
+              ],
+              [
+                "src/platform/api.ts；src/app/api/v1/*"
+              ],
+              [
+                "认证、同源检查、输入大小限制、事务",
+                "边界与响应"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "领域服务"
+              ],
+              [
+                "src/modules/registry、telemetry、",
+                "weather、knowledge 等"
+              ],
+              [
+                "校验对象、版本、状态与权限；执行一",
+                "致性写入"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "后台任务"
+              ],
+              [
+                "workers/*；jobs / job_attempts"
+              ],
+              [
+                "异步执行、租约与重试证据；与请求处",
+                "理分开"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "关系数据"
+              ],
+              [
+                "db/migrations/000—043"
+              ],
+              [
+                "主数据、观测、台账、审核、证据与关",
+                "系"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "空间与检索"
+              ],
+              [
+                "geometry(…,4326)；vector(512)"
+              ],
+              [
+                "地理对象和知识检索；不等同于本体推",
+                "理"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          }
+        ],
+        "top": 471,
+        "height": 221
+      }
+    ],
+    [
+      {
+        "kind": "table",
+        "widths": [
+          116.46624,
+          189.25763999999998,
+          179.55212
+        ],
+        "rows": [
+          {
+            "cells": [
+              [
+                "层"
+              ],
+              [
+                "原项目主要入口"
+              ],
+              [
+                "核心作用"
+              ]
+            ],
+            "height": 24,
+            "head": true
+          },
+          {
+            "cells": [
+              [
+                "私有原件"
+              ],
+              [
+                "媒体与地形相关表中的存储引用"
+              ],
+              [
+                "保留原件，向数据库输出有来源的元数",
+                "据"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          }
+        ],
+        "top": 0,
+        "height": 69
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B01 src/platform/api.ts:7（本地 TypeScript 快照静态证据）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 69,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B02 src/app/api/v1/objects/route.ts:1（本地 TypeScript 快照静态证据）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 87,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D01 db/migrations/002_registry.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 105,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D03 db/migrations/004_jobs.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 123,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D07 db/migrations/016_knowledge.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 141,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "C01 README.md:7（项目说明自述）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 159,
+        "height": 18
+      },
+      {
+        "kind": "h1",
+        "lines": [
+          "3 数据模型全景 主数据 记录 关系与运行设施"
+        ],
+        "size": 14,
+        "lead": 22,
+        "bold": true,
+        "before": 14,
+        "after": 8,
+        "top": 177,
+        "height": 44
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "为接轨而划分的 16 个领域是本项目的分析分类，不是原仓库正式发布的 16 个农业本体。领域间仍通过",
+          "外键、UUID 数组、JSON 引用和业务代码相连。显式外键可自动提取，数组与多态引用需要额外解释。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 221,
+        "height": 41
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "映射目录将 122 张表归为业务表、55 张归为技术表、13 张归为安全表。这里的“业务表”仍可能是分",
+          "析运行、审核或事件记录，不表示每一行都是田块、设备等实物。默认启用清单比全量目录更小，属于导",
+          "入边界而非信息丢失；未启用字段须在待映射清单中保留原因。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 262,
+        "height": 58
+      },
+      {
+        "kind": "table",
+        "widths": [
+          116.46624,
+          189.25763999999998,
+          179.55212
+        ],
+        "rows": [
+          {
+            "cells": [
+              [
+                "映射领域"
+              ],
+              [
+                "表数"
+              ],
+              [
+                "主要内容及边界"
+              ]
+            ],
+            "height": 24,
+            "head": true
+          },
+          {
+            "cells": [
+              [
+                "治理 / 登记 / 遥测"
+              ],
+              [
+                "34 / 16 / 9"
+              ],
+              [
+                "身份与授权；场地、设备、测点；原始",
+                "回执和观测"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "作业 / 影像 / 农情"
+              ],
+              [
+                "18 / 21 / 7"
+              ],
+              [
+                "农事、任务、相片、航次、处理过程与",
+                "分析候选"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "分析 / 天气 / 知识"
+              ],
+              [
+                "14 / 5 / 9"
+              ],
+              [
+                "指标、预报与实况、资料、检索、助手",
+                "相关记录"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "库存 / 质量 / 植保"
+              ],
+              [
+                "12 / 8 / 8"
+              ],
+              [
+                "物料台账、批次血缘、检验、质量与溯",
+                "源卡"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "资源 / 农机 / 财务 /",
+                "科研"
+              ],
+              [
+                "7 / 8 / 9 / 5"
+              ],
+              [
+                "资源记录、机具服务、费用补贴、试验",
+                "和结果"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          }
+        ],
+        "top": 320,
+        "height": 221
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "L01 outputs/liangzihu-ontology-20261015/schema_catalog.json:1（本项目解析产物）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 541,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "L02 tools/ontology_export/domain_labels.json:1（本项目分析分类）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 559,
+        "height": 18
+      },
+      {
+        "kind": "h1",
+        "lines": [
+          "4 概念边界与身份机制 先分清 是什么  再连接 哪一个 "
+        ],
+        "size": 14,
+        "lead": 22,
+        "bold": true,
+        "before": 14,
+        "after": 8,
+        "top": 577,
+        "height": 44
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "objects 是原平台的空间及业务授权对象，kind 取 farm、pond、field、channel、facility。其 id 为",
+          "数据库 UUID，code 为业务编号，name 为显示名称，parent_id 构成组织关系，boundary 与",
+          "boundary_status 表达空间边界和核验程度。不能把 name 当作唯一身份；对象改名不会因此变成新对",
+          "象。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 621,
+        "height": 75
+      }
+    ],
+    [
+      {
+        "kind": "p",
+        "lines": [
+          "saveObject 对更新采用 version 检查，类型 kind 不允许原地改变，并写入 object_versions 快照。",
+          "SQL 层约束与服务层校验相互补充：数据库维护编号唯一与引用有效，服务负责权限、版本冲突、变更理",
+          "由等业务语义。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 0,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "production_batches 表示在特定对象上的生产批次，species、variety、stage 是生产描述；species",
+          "是文本，并没有把系统限制为水稻与小龙虾。stock_lots 则是库存或交付中的物料批次，含产品、单",
+          "位、干湿口径和库存状态。两类批次相互关联但不能合并为一个类型，否则数量流转与生产周期将混淆。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 58,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "devices 以 source_id 与 external_id 的组合识别来源设备，points 表示设备上的指标通道，",
+          "point_bindings 表示测点在一段时间服务于哪个对象。设备、测点、绑定和读数是四类不同信息，不能",
+          "将一个设备 ID 直接当作所有观测的实物归属。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 116,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "本体论库应保留系统生成 UUID 与外部来源主键的分工：外部系统仍按原表主键识别记录，本体库生成内",
+          "部实体身份，并通过来源系统、源表、来源主键进行显式绑定。相同名字只可作为人工候选线索，不能触",
+          "发自动实体合并。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 174,
+        "height": 58
+      },
+      {
+        "kind": "table",
+        "widths": [
+          116.46624,
+          189.25763999999998,
+          179.55212
+        ],
+        "rows": [
+          {
+            "cells": [
+              [
+                "原表 / 概念"
+              ],
+              [
+                "应映射的信息性质"
+              ],
+              [
+                "不能混同"
+              ]
+            ],
+            "height": 24,
+            "head": true
+          },
+          {
+            "cells": [
+              [
+                "objects"
+              ],
+              [
+                "场地 / 设施实体，按 kind 细分"
+              ],
+              [
+                "地理实物与平台账号"
+              ]
+            ],
+            "height": 24,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "object_versions"
+              ],
+              [
+                "实体版本快照"
+              ],
+              [
+                "新的现场实物"
+              ]
+            ],
+            "height": 24,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "production_batches"
+              ],
+              [
+                "生产过程对象"
+              ],
+              [
+                "库存批号"
+              ]
+            ],
+            "height": 24,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "stock_lots"
+              ],
+              [
+                "物料批次对象"
+              ],
+              [
+                "田块或生产季"
+              ]
+            ],
+            "height": 24,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "devices / points"
+              ],
+              [
+                "设备与采集通道"
+              ],
+              [
+                "测量值本身"
+              ]
+            ],
+            "height": 24,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "point_bindings"
+              ],
+              [
+                "具有效期与证据的关系"
+              ],
+              [
+                "永久不可变的设备位置"
+              ]
+            ],
+            "height": 24,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "weather_records"
+              ],
+              [
+                "天气记录，区分实况、预报、警报、基线"
+              ],
+              [
+                "未来预报与已发生观测"
+              ]
+            ],
+            "height": 24,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "quality_tests /",
+                "crop_analyses"
+              ],
+              [
+                "检验记录 / 分析结果"
+              ],
+              [
+                "自动成立的质量事实或农业成因"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          }
+        ],
+        "top": 232,
+        "height": 237
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D01 db/migrations/002_registry.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 469,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D09 db/migrations/035_stock.sql:10（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 487,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B03 src/modules/registry/objects.ts:8（本地 TypeScript 快照静态证据）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 505,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B04 src/modules/registry/points.ts:21（本地 TypeScript 快照静态证据）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 523,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B07 src/modules/weather/service.ts:6（本地 TypeScript 快照静态证据）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 541,
+        "height": 18
+      },
+      {
+        "kind": "h1",
+        "lines": [
+          "5 遥测接入的实际代码逻辑 原件 身份 映射 冲突与当前值"
+        ],
+        "size": 14,
+        "lead": 22,
+        "bold": true,
+        "before": 14,
+        "after": 8,
+        "top": 559,
+        "height": 44
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "遥测服务是本次最完整可审阅的数据流。persistBatch 在同一事务回调中锁定来源、核对",
+          "expectedCursor、归档原始回执、逐条写入观测，最后推进游标并更新来源健康状态。因此在该函数层",
+          "面，游标与批次记录不会被有意分拆成两次独立提交；事务封装本体的异常处理仍需在完整仓库核验。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 603,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "archiveReceipt 限制单批原报文 1 MB，计算 SHA-256，并可记录接口契约版本、引用、快照和契约摘",
+          "要。函数会检查已解析 JSON 中常见凭据键和 Bearer 鉴权文本，避免直接把运输层认证材料存入证据。",
+          "这是针对明确格式的防线，不应理解为可以自动识别所有敏感信息。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 661,
+        "height": 58
+      }
+    ],
+    [
+      {
+        "kind": "p",
+        "lines": [
+          "ingest 先核对原始回执归属、测点来源、外部设备和 metric，再解析观测身份。readingIdentity 优先",
+          "使用来源记录号，没有记录号时退回采样时点与序列号；两者都缺失则进入隔离。随后按 sampledAt 解",
+          "析有效 point_binding，未核验映射或绑定冲突也进入 quarantined_readings，保留可追查输入。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 0,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "单位不一致、非有限数值、未来采样时间会影响质量状态。相同身份与相同内容摘要视为重复，追加回执",
+          "关联；相同身份而内容不同则保存两条观测并写 measurement_conflicts，将相关当前值标记可疑，而不",
+          "是用后到数据覆盖先到记录。这里的 canonical_id 是系统选定的首个版本，不是绝对真值认证。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 58,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "只有质量 valid、数值有限、采样时间存在、非人工 origin、未过新鲜度期限、比已有值更新且当前绑",
+          "定仍匹配的数据才可能进入 point_current。point_current 是当前展示投影，不应替代不可变",
+          "observations 历史。SQLite 或本体导入器若只复制最新值，将失去冲突、换塘历史和接收证据。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 116,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "应保留 sampled_at、reported_at、received_at 三个时间，分别表达现场测量、来源报告和平台接收；",
+          "本体库自身导入时间再单独记录。四个时间不能为了查询方便全部写成 now()。读数与事件产生有记录的",
+          "对应，但并非天然存在农业因果。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 174,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "1. 读取来源状态并核对游标 → 来源不一致或并发游标改变则终止。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 232,
+        "height": 24
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "2. 归档原报文与契约证据 → 给每条读数绑定 raw_ref。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 256,
+        "height": 24
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "3. 校验测点身份与采样时点绑定 → 不明确项隔离。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 280,
+        "height": 24
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "4. 校验单位、数值、时间 → 保留质量与原因。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 304,
+        "height": 24
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "5. 按身份摘要与内容摘要去重或登记冲突 → 原观测不覆写。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 328,
+        "height": 24
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "6. 按新鲜度和当前绑定决定是否更新当前投影 → 发布领域事件并入队后续任务。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 352,
+        "height": 24
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "7. 事务内推进游标 → 返回 inserted、duplicate、conflict 或 quarantined。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 376,
+        "height": 24
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B05 src/modules/telemetry/ingest.ts:14（本地 TypeScript 快照静态证据）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 400,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B06 src/modules/telemetry/identity.ts:2（本地 TypeScript 快照静态证据）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 418,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B08 src/modules/telemetry/quality.ts:2（本地 TypeScript 快照静态证据）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 436,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D02 db/migrations/003_telemetry.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 454,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D04 db/migrations/009_ingest_contract_evidence.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 472,
+        "height": 18
+      },
+      {
+        "kind": "h1",
+        "lines": [
+          "6 关系语义 事件时态 事务与授权"
+        ],
+        "size": 14,
+        "lead": 22,
+        "bold": true,
+        "before": 14,
+        "after": 8,
+        "top": 490,
+        "height": 44
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "源平台最强的显式关系来自 FK，但 FK 只说明引用完整性。例如 created_by 说明记录创建者，不能解",
+          "读为生产责任主体；sample_id 指向样品，不能直接证明整个批次全部合格；supersedes_id 表示修订",
+          "链，不能与物料加工上游混用。映射时应明确谓词名、方向、端点类型、关系性质及有效时间。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 534,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "point_bindings 的时间区间采用 [valid_from, valid_to)，接续边界不重复占用。bindPoint 会锁定测",
+          "点、检查时段重叠；对换塘操作还检查旧规则和历史观测，防止将既有读数追溯归属到新塘口。这比单个",
+          "current_object_id 更适合溯源。它是具体领域的时态设计，并非整个原库实现了统一双时态数据库。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 592,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "业务幂等由 request_key、input_hash、唯一约束与 advisory lock 等机制组合实现。例如天气导入按",
+          "created_by 与 request_key 检查旧内容，同键异内容返回冲突。设备批量导入使用每行 SAVEPOINT，所"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 650,
+        "height": 41
+      }
+    ],
+    [
+      {
+        "kind": "p",
+        "lines": [
+          "以它是逐行成功/失败的导入模式；不能假定原平台所有批量入口都全有或全无。接轨接口应显式公布自",
+          "己的事务语义。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 0,
+        "height": 41
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "授权同时看角色、对象范围、账户当前状态和服务器当前时间。assertAccess 的注释明确 scope.at 是",
+          "业务时间，授权有效性始终按服务器时间检查，避免用历史业务日期绕过已撤销权限。专家资源还要通过",
+          "resource_grants 的事项级范围检查。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 41,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "数据库的 FK、CHECK、唯一约束、触发器与应用层校验不能互相替代。比如只有 SQL 表上的 status 枚",
+          "举，不足以保证任意状态跃迁都合法；只有前端表单限制，也挡不住直接 API 请求。接轨时要重复校验",
+          "外部输入的结构、来源身份、类属性适用范围、时间与单位。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 99,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "领域事件的 id 在已读 DDL 中是随机 UUID，consumer_offsets 按 consumer 与 event_id 记录处理情",
+          "况，不能直接把最大 UUID 当作严格递增游标。对接增量同步应使用明确的提交序列、已确认的变更流，",
+          "或具备补扫与去重的时间窗协议；本体库的 outbox 序列与外部原记录号属于不同编号空间。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 157,
+        "height": 58
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B04 src/modules/registry/points.ts:21（本地 TypeScript 快照静态证据）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 215,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B07 src/modules/weather/service.ts:6（本地 TypeScript 快照静态证据）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 233,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B09 src/modules/registry/import.ts:5（本地 TypeScript 快照静态证据）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 251,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B10 src/modules/identity/access.ts:6（本地 TypeScript 快照静态证据）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 269,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B11 src/modules/field/common.ts:8（本地 TypeScript 快照静态证据）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 287,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D01 db/migrations/002_registry.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 305,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D03 db/migrations/004_jobs.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 323,
+        "height": 18
+      },
+      {
+        "kind": "h1",
+        "lines": [
+          "7 多模态与知识资料 保留记录性质和证据来源"
+        ],
+        "size": 14,
+        "lead": 22,
+        "bold": true,
+        "before": 14,
+        "after": 8,
+        "top": 341,
+        "height": 44
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "原平台以不同表承接媒体、天气、遥感地形、知识文档、模型运行等资料。它们有共同的对象范围和来源",
+          "原则，但没有完全相同的数据含义。接入本体库首先识别“原件元数据、测量、预报、人工填报、模型候",
+          "选、审核结论”中的哪一类，再选择相应记录类型；不得只凭 JSON 能解析就一律转成 observation。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 385,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "天气服务把 actual、forecast、warning、baseline 分开，保存 sourceVersion、stationRef、",
+          "publishedAt、validFrom、validTo 和 comparisonBasis。comparisonAllowed 要求指标、单位、统计方",
+          "式、站点、时期、覆盖、物种、品种、阶段和起始日期均可比才返回 true。跨信源比较需要这些上下",
+          "文，数据库不应自动用最新预报覆盖历史实况。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 443,
+        "height": 75
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "知识文档按来源与版本识别，以内容摘要检测同版本冲突；资料需要对象适用范围、来源、正文和证据性",
+          "质。审核通过后才能进入索引与检索，撤回后旧引用返回 source_inactive。知识检索支持关键词与 512",
+          "维向量组合，保存引用文档、版本、分块和检索版本。检索相似度是排序依据，不是农业事实置信度，也",
+          "不是原因证明。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 518,
+        "height": 75
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "影像、光谱、地形和外部模型结果应保留原件/产品 ID、采集时点、空间范围、处理算法或模型版本、结",
+          "果摘要、质量状态及人工核验信息。本体库负责引用完整性、元数据归一和权限边界；识别和预测仍由外",
+          "部服务实施。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 593,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "原始回执与主要观测具有追加保护触发器；部分后期业务表也禁止更新或删除输入事实，而用审核记录、",
+          "版本或反向事件表达变化。这有利于追责，但追加保护不自动提供备份、保留期和灾难恢复，仍需独立运",
+          "维机制。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 651,
+        "height": 58
+      }
+    ],
+    [
+      {
+        "kind": "source",
+        "lines": [
+          "D02 db/migrations/003_telemetry.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 0,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D05 db/migrations/012_records.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 18,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D06 db/migrations/021_weather_connections.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 36,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D07 db/migrations/016_knowledge.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 54,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D08 db/migrations/034_phase2_terrain.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 72,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B07 src/modules/weather/service.ts:6（本地 TypeScript 快照静态证据）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 90,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B12 src/modules/knowledge/service.ts:13（本地 TypeScript 快照静态证据）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 108,
+        "height": 18
+      },
+      {
+        "kind": "h1",
+        "lines": [
+          "8 农业溯源 库存血缘 质量证据与公开卡片"
+        ],
+        "size": 14,
+        "lead": 22,
+        "bold": true,
+        "before": 14,
+        "after": 8,
+        "top": 126,
+        "height": 44
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "原项目并非没有溯源系统。035_stock.sql 已声明 stock_documents、stock_entries、",
+          "stock_transformations、stock_lineage、stock_package_events 和 stock_handoffs；",
+          "036_quality_trace.sql 已声明样品、检验、证书、质量判断、追溯快照、召回处理与公开溯源卡。接轨",
+          "时应继承这些来源语义，不建立互相矛盾的第二份库存账。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 170,
+        "height": 75
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "库存记录以单据和带正负 delta 的流水表达出入，stock_lineage 把加工输入批次连到输出批次，",
+          "stock_documents.reverses_id 表示冲销。生产批次与库存批次之间有明确引用；包装组合与交接记录继",
+          "续连接物流过程。DDL 能证明账本与血缘结构，但没有读取对应完整业务服务时，不能声称已经核验所有",
+          "数量守恒、超领限制或撤销规则。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 245,
+        "height": 75
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "质量链为 stock_lots ← quality_samples ← quality_tests，并关联 quality_credentials 和",
+          "quality_decisions。检验有 method、result、tested_at、valid_until；结果包括 inconclusive，不",
+          "能强行折为合格/不合格。证书有效期与 verified 状态是输出依据的一部分。质量判断中的 test_ids、",
+          "credential_ids 是 UUID 数组，不等价于逐项外键保障，接入器需要逐个解析、校验对象范围并保留缺",
+          "项。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 320,
+        "height": 92
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "public_trace_cards 保存 code、version、content、证书引用、有效期与 draft/approved/revoked 状",
+          "态；trace_queries 则保留正向/反向查询快照和输入摘要。公开卡片是经选择和审核的输出，不应直接",
+          "暴露内部图数据库、人员账号、媒体私有地址或全部源报文。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 412,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "本体库向溯源系统提供的是统一实体身份、来源绑定、证据索引、限定时态的关系路径与修订提示。对同",
+          "一批次，应同时呈现物料上游、质量证据、过程记录、空间归属、事件时间与处理状态。若来源证据被撤",
+          "回或记录修订，需在增量接口中显式告知使用方失效或变更，不能保持旧公开结论静默有效。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 470,
+        "height": 58
+      },
+      {
+        "kind": "table",
+        "widths": [
+          116.46624,
+          189.25763999999998,
+          179.55212
+        ],
+        "rows": [
+          {
+            "cells": [
+              [
+                "关系维度"
+              ],
+              [
+                "原平台可用路径"
+              ],
+              [
+                "映射时保留"
+              ]
+            ],
+            "height": 24,
+            "head": true
+          },
+          {
+            "cells": [
+              [
+                "物料"
+              ],
+              [
+                "生产批次 → 库存批次 → 加工输入/输出",
+                "→ 包装 → 交接"
+              ],
+              [
+                "数量、单位、干湿口径、单据与冲销"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "质量"
+              ],
+              [
+                "批次 → 样品 → 检验；批次 → 证书 /",
+                "质量判断"
+              ],
+              [
+                "检验方法、有效期、结论性质、审核版",
+                "本"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "现场"
+              ],
+              [
+                "场地 → 测点绑定 → 观测 → 原始回执"
+              ],
+              [
+                "采样时态、质量标志、绑定依据、原件",
+                "摘要"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "空间 / 影像"
+              ],
+              [
+                "场地 → 航次 / 媒体 / 地形 → 分析记",
+                "录"
+              ],
+              [
+                "采集范围、坐标参考、版本与处理来源"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          }
+        ],
+        "top": 528,
+        "height": 183
+      }
+    ],
+    [
+      {
+        "kind": "table",
+        "widths": [
+          116.46624,
+          189.25763999999998,
+          179.55212
+        ],
+        "rows": [
+          {
+            "cells": [
+              [
+                "关系维度"
+              ],
+              [
+                "原平台可用路径"
+              ],
+              [
+                "映射时保留"
+              ]
+            ],
+            "height": 24,
+            "head": true
+          },
+          {
+            "cells": [
+              [
+                "公开输出"
+              ],
+              [
+                "批次 → 追溯快照 → 溯源卡版本"
+              ],
+              [
+                "发布依据、允许字段、有效期、撤回状",
+                "态"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          }
+        ],
+        "top": 0,
+        "height": 69
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D09 db/migrations/035_stock.sql:10（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 69,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D10 db/migrations/036_quality_trace.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 87,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D08 db/migrations/034_phase2_terrain.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 105,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N04 implementation/agri/service.py:964（本体库当前实现）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 123,
+        "height": 18
+      },
+      {
+        "kind": "h1",
+        "lines": [
+          "9 扩展业务与重要边界"
+        ],
+        "size": 14,
+        "lead": 22,
+        "bold": true,
+        "before": 14,
+        "after": 8,
+        "top": 141,
+        "height": 44
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "后期迁移纳入资源、植保、农机、费用补贴与科研。它们说明原平台已超出单一物联网台账，能够表达经",
+          "营证据和多过程关系；本体库没有必要照搬每个业务状态机，而应为已明确的数据类型建立可追踪映射。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 185,
+        "height": 41
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "business_expenses 的 link_kind 与 link_id 是多态引用：link_id 没有由一个普通 FK 直接约束到所",
+          "有目标表。自动外键抽取只能列出确定关系，不能声称已覆盖这种关联。迁移 043 又为 subsidy_events",
+          "增加 occurred_at 和 corrects_id，区分业务发生时间、内容更正与退款 reverses_id。后续映射必须",
+          "按最终结构理解，而不是只读取最初 CREATE TABLE。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 226,
+        "height": 75
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "control_requests 在 DDL 层明确 CHECK(state='blocked') 和 CHECK(NOT dispatched)。因此本报告只",
+          "能确认存在控制准备与阻断记录，不会据表名写成已经对闸门执行远程控制。现阶段本体库保留闸门状态",
+          "和外部执行回执的数据入口即可。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 301,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "同样，crop_analyses、spectral_products、assistant_runs 等存在模型结果字段，并不证明模型已部",
+          "署、识别准确或现场效果有效。导入这些结果时应保留“模型生成/待审核”的性质，避免污染事实层。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 359,
+        "height": 41
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D11 db/migrations/038_agronomy.sql:59（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 400,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D12 db/migrations/040_services_finance.sql:38（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 418,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D13 db/migrations/043_subsidy_event_time.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 436,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D14 db/migrations/042_import_identity.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 454,
+        "height": 18
+      },
+      {
+        "kind": "h1",
+        "lines": [
+          "10 与本体论数据库的对比 优势互补及当前限制"
+        ],
+        "size": 14,
+        "lead": 22,
+        "bold": true,
+        "before": 14,
+        "after": 8,
+        "top": 472,
+        "height": 44
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "两套系统均以关系数据库保存数据，不应将比较简化为 SQL 与图数据库的对立。本体库在关系表中实现",
+          "对象、属性定义、类型赋值、限定关系、证据、断言和对象集，再提供图与交换视图；它不是完整 OWL",
+          "推理器，也没有因 JSON-LD 导出而自动获得通用 RDF 语义兼容。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 516,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "当前本体实现对领域包版本保持定义不可变，同时将可修改显示名称与版本定义分开。属性必须属于对象",
+          "当前有效语义类，按 usage、数据类型、单位、枚举、数值界限和基数校验。无法唯一确定属性版本时返",
+          "回 needs_mapping。这正好补足跨模块字段可能同名异义的接轨难题。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 574,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "当前图交换采用 agri-graph-exchange/1.0 固定 profile，将限定关系独立表示，并用 payload 保存信",
+          "息。代码明确只接收冻结上下文，不支持任意外部 RDF 导入；Turtle 是可交换表达，不是自动同步执行",
+          "的数据库写回。若需公共词汇互操作，应在现有 profile 之外增加经过版本管理的词汇映射。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 632,
+        "height": 58
+      }
+    ],
+    [
+      {
+        "kind": "p",
+        "lines": [
+          "本轮已实现 SourceMappingService 及 005 迁移，提供来源身份绑定、可回滚预检、领域包与映射原子",
+          "安装、批次幂等、对象修订、两阶段 FK 解析、单位契约、历史分页和独立来源证据快照。配套适配器支",
+          "持 122 个来源类、979 个属性和 409 条外键。它首先完成来源记录到语义库的确定映射，不自动把源记",
+          "录升级为原生观测或已采纳事实。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 0,
+        "height": 75
+      },
+      {
+        "kind": "table",
+        "widths": [
+          77.64416,
+          131.02452,
+          140.73004,
+          135.87727999999998
+        ],
+        "rows": [
+          {
+            "cells": [
+              [
+                "比较项"
+              ],
+              [
+                "原梁子湖平台"
+              ],
+              [
+                "本体论数据库"
+              ],
+              [
+                "接轨原则"
+              ]
+            ],
+            "height": 24,
+            "head": true
+          },
+          {
+            "cells": [
+              [
+                "目标"
+              ],
+              [
+                "业务办理、监测、审核、生",
+                "产与经营协同"
+              ],
+              [
+                "统一概念、身份、关系、证据",
+                "与数据供给"
+              ],
+              [
+                "原业务保持主责，语义库补充",
+                "可查询映射"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "概念与身份"
+              ],
+              [
+                "源表、UUID、业务 code、局",
+                "部版本规则"
+              ],
+              [
+                "实体身份 + 版本化类与属性定",
+                "义"
+              ],
+              [
+                "显式来源身份绑定；名称不做",
+                "主键"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "关系语义"
+              ],
+              [
+                "外键、关联表、数组、JSO",
+                "N、业务代码"
+              ],
+              [
+                "有类型、方向、时效、证据和",
+                "状态的关系"
+              ],
+              [
+                "FK 是引用证据；数组与多态",
+                "引用单独处理"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "时空与事件"
+              ],
+              [
+                "采样/报告/接收时间，时段",
+                "绑定，领域事件"
+              ],
+              [
+                "类型有效期、关系有效期、事",
+                "件参与与来源"
+              ],
+              [
+                "保留源时间口径，不覆盖成导",
+                "入时间"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "观测与证据"
+              ],
+              [
+                "原件摘要、观测质量、冲",
+                "突、知识审核"
+              ],
+              [
+                "观测与候选/采纳断言分离，证",
+                "据包与修订"
+              ],
+              [
+                "预报和模型候选不自动成为事",
+                "实"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "约束"
+              ],
+              [
+                "FK / CHECK / UNIQUE / 触",
+                "发器 + TS 校验"
+              ],
+              [
+                "SQL 约束 + JSON Schema + 类",
+                "属性语义校验"
+              ],
+              [
+                "数据库校验输入含义，业务规",
+                "则仍由原系统负责"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "业务处理"
+              ],
+              [
+                "库存、农事、质量、人员和",
+                "任务等丰富流程"
+              ],
+              [
+                "数据库核心与有限的溯源数据",
+                "协议"
+              ],
+              [
+                "不复制完整 ERP、识别器或设",
+                "备调度器"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "查询输出"
+              ],
+              [
+                "业务 API、报表、溯源卡、",
+                "知识检索"
+              ],
+              [
+                "图查询、对象集、证据包、固",
+                "定 JSON-LD/Turtle profile"
+              ],
+              [
+                "面向代码输出稳定版本和状态"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "并发与运行"
+              ],
+              [
+                "PostgreSQL 锁、队列、租约",
+                "协议"
+              ],
+              [
+                "PostgreSQL 服务；SQLite 开",
+                "发适配器"
+              ],
+              [
+                "SQLite 串行写测试不能证明",
+                "PG 并发等价"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "扩展方式"
+              ],
+              [
+                "新增迁移和模块代码"
+              ],
+              [
+                "新增领域包、来源映射及必要",
+                "迁移"
+              ],
+              [
+                "简单新领域先配定义；新处理",
+                "语义再改代码"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          }
+        ],
+        "top": 75,
+        "height": 411
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N01 implementation/agri/ontology_core.py:103（本体库当前实现）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 486,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N02 implementation/agri/core_intake.py:66（本体库当前实现）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 504,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N03 implementation/agri/exchange.py:1（本体库当前实现）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 522,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N04 implementation/agri/service.py:964（本体库当前实现）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 540,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N05 implementation/agri/db.py:24（本体库当前实现）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 558,
+        "height": 18
+      },
+      {
+        "kind": "h1",
+        "lines": [
+          "11 接轨执行策略与可核验的验收标准"
+        ],
+        "size": 14,
+        "lead": 22,
+        "bold": true,
+        "before": 14,
+        "after": 8,
+        "top": 576,
+        "height": 44
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "先按公开结构打通系统，再通过授权导出或 API 接收真实记录。结构目录证明系统知道哪些表和字段可",
+          "能出现，不证明已经拥有真实农场、设备、批次或检测数据。首次现场接入应选择一个农场、少量田塘、",
+          "设备、测点、绑定和一个批次，按闭环样本核对后扩大。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 620,
+        "height": 58
+      }
+    ],
+    [
+      {
+        "kind": "p",
+        "lines": [
+          "源平台是原业务事实与状态的维护方。本体库应保存来源系统标识、源表、来源主键、源版本/摘要、来",
+          "源更新时间、实际接收时间、映射版本与处理回执。使用稳定内部 UUID，外部导出不要求人工重编原主",
+          "键；改变映射规则需要新版本并可比较影响。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 0,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "对首次导入，先验证类和属性定义，再建立实体身份，最后解析 FK 关系。缺目标记录不应按名称猜测；",
+          "应返回明确待补记录，允许补入目标后重试。重复发送相同数据应返回稳定对应，不同内容则需要显式更",
+          "新语义或冲突响应，不能静默追加重复实物。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 58,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "复杂 JSON、空间、多态引用和 UUID 数组先进入待映射清单或受控原始证据。源 SQL NOT NULL、条件",
+          "CHECK 和状态机不能机械等价为“属性必填”；例如空数组、复合唯一性和跨行数量约束需要单独处理。",
+          "未支持字段应报告，不得默默丢弃后宣称全量成功。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 116,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "对账以来源行数、接收行数、成功/重复/失败数、绑定数、可解析 FK 数、未决引用数和源摘要为基础。",
+          "再抽样沿实物→记录→关系→证据回查，确认批次与设备没有串属，事件时点没有漂移，所有样例均明确",
+          "标注真实或合成。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 174,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "本轮完整回归结果为 378 通过、0 失败、180 跳过。测试使用合成实例与隔离 SQLite；PostgreSQL、原",
+          "平台真实数据联调和现场验收均未完成。工具可从授权源库只读导出，再按依赖分批导入，逐批保留回执",
+          "和重放身份。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 232,
+        "height": 58
+      },
+      {
+        "kind": "table",
+        "widths": [
+          116.46624,
+          189.25763999999998,
+          179.55212
+        ],
+        "rows": [
+          {
+            "cells": [
+              [
+                "验证主题"
+              ],
+              [
+                "至少验证的案例"
+              ],
+              [
+                "通过条件"
+              ]
+            ],
+            "height": 24,
+            "head": true
+          },
+          {
+            "cells": [
+              [
+                "身份与幂等"
+              ],
+              [
+                "同一主键重复发送；同名不同主键；不同",
+                "租户同源编号"
+              ],
+              [
+                "不重复建实体、不误合并、不跨租户读",
+                "取"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "语义校验"
+              ],
+              [
+                "未知类型、属性不适用、单位错误、枚举",
+                "非法、超范围"
+              ],
+              [
+                "返回定位到记录/字段的可修复错误"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "关系完整性"
+              ],
+              [
+                "父记录后到、自引用、循环/非法端点、跨",
+                "批次引用"
+              ],
+              [
+                "不猜测目标；记录等待或明确拒绝；重",
+                "试可收敛"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "时空与来源"
+              ],
+              [
+                "时区缺失、有效期倒置、旧绑定、源版本",
+                "变更"
+              ],
+              [
+                "保留原时间与证据；拒绝歧义或给出待",
+                "核状态"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "事务与并发"
+              ],
+              [
+                "中途失败、并发重复、同键异内容、服务",
+                "重启后重试"
+              ],
+              [
+                "无半套关系或失控重复；回执稳定且可",
+                "恢复"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "公开输出"
+              ],
+              [
+                "撤回证据、未审结论、私有地址和身份字",
+                "段"
+              ],
+              [
+                "只输出允许字段；失效状态可被下游感",
+                "知"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "真实接轨"
+              ],
+              [
+                "原平台授权只读导出与本体库对账、现场",
+                "抽样"
+              ],
+              [
+                "由真实源数据与人员核验确认，不能以",
+                "合成测试替代"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          }
+        ],
+        "top": 290,
+        "height": 297
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "L01 outputs/liangzihu-ontology-20261015/schema_catalog.json:1（本项目解析产物）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 587,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "L02 tools/ontology_export/domain_labels.json:1（本项目分析分类）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 605,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N01 implementation/agri/ontology_core.py:103（本体库当前实现）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 623,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N02 implementation/agri/core_intake.py:66（本体库当前实现）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 641,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N03 implementation/agri/exchange.py:1（本体库当前实现）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 659,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N05 implementation/agri/db.py:24（本体库当前实现）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 677,
+        "height": 18
+      }
+    ],
+    [
+      {
+        "kind": "h1",
+        "lines": [
+          "12 评价 风险与后续优先级"
+        ],
+        "size": 14,
+        "lead": 22,
+        "bold": true,
+        "before": 0,
+        "after": 8,
+        "top": 0,
+        "height": 30
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "原平台的主要价值是把农业现场对象、采样时间、审核依据、物料流和业务责任联系起来。原件追加保",
+          "护、冲突保留、时态测点绑定以及修订/冲销链，构成了较好的证据基础。应将这些设计视为接轨资产，",
+          "而不是把原库简单评价为“只有普通表”。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 30,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "主要不足在跨领域语义统一：表结构和服务代码承载大量含义，通用客户端难以知道一个字段是原始观",
+          "测、预报、模型候选还是已审结论；某些关系藏在数组、JSON 或多态字段中，无法仅凭 FK 目录自动复",
+          "原。新增本体层能够改善这一问题，但需要明确映射责任人、版本和核验机制。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 88,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "结构复杂度也带来维护成本。190 表与 2,114 字段覆盖面广，但导入接口不应一次暴露全部系统设施。",
+          "优先启用登记、遥测、生产/库存批次和质量证据；财务、研究、控制准备和特殊媒体关系按需要逐步扩",
+          "展。管理员账号和认证材料应继续由原身份系统管理，业务参与者映射不能兼任登录账号同步。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 146,
+        "height": 58
+      },
+      {
+        "kind": "p",
+        "lines": [
+          "本轮报告不对原项目生产容量、安全完备性或农业效果作保证。需要补充的工程证据包括原项目完整迁移",
+          "器/连接池审阅、实际 PostgreSQL 兼容性与并发测试、授权源数据对账、复杂关系补齐以及现场真实性",
+          "核验。报告内“已证”描述均可回到下列证据目录，不依赖演示数据推定。"
+        ],
+        "size": 10.5,
+        "lead": 17,
+        "bold": false,
+        "before": 0,
+        "after": 7,
+        "top": 204,
+        "height": 58
+      },
+      {
+        "kind": "table",
+        "widths": [
+          116.46624,
+          189.25763999999998,
+          179.55212
+        ],
+        "rows": [
+          {
+            "cells": [
+              [
+                "优先级"
+              ],
+              [
+                "事项"
+              ],
+              [
+                "完成依据"
+              ]
+            ],
+            "height": 24,
+            "head": true
+          },
+          {
+            "cells": [
+              [
+                "P0"
+              ],
+              [
+                "稳定来源身份、输入合同、错误定位、幂",
+                "等和事务"
+              ],
+              [
+                "自动化负例及并发测试 + 可复查导入回",
+                "执"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "P0"
+              ],
+              [
+                "避免把源记录、模型结果或预报误当现场",
+                "事实"
+              ],
+              [
+                "类型映射审阅 + 证据性质输出检查"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "P1"
+              ],
+              [
+                "FK 关系闭环与未决引用治理"
+              ],
+              [
+                "关系对账、补数重试、人工抽样"
+              ]
+            ],
+            "height": 24,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "P1"
+              ],
+              [
+                "公开溯源输出与失效通知"
+              ],
+              [
+                "白名单和撤回传播测试"
+              ]
+            ],
+            "height": 24,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "P2"
+              ],
+              [
+                "空间、数组、复杂 JSON 与多态引用扩展"
+              ],
+              [
+                "专项映射说明、版本与验证案例"
+              ]
+            ],
+            "height": 24,
+            "head": false
+          },
+          {
+            "cells": [
+              [
+                "上线前"
+              ],
+              [
+                "真实 PostgreSQL 与现场验证"
+              ],
+              [
+                "环境、数据性质、通过/失败/跳过结果",
+                "分别留档"
+              ]
+            ],
+            "height": 38,
+            "head": false
+          }
+        ],
+        "top": 262,
+        "height": 217
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D01 db/migrations/002_registry.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 479,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D02 db/migrations/003_telemetry.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 497,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D09 db/migrations/035_stock.sql:10（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 515,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D10 db/migrations/036_quality_trace.sql:1（固定提交 DDL）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 533,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N05 implementation/agri/db.py:24（本体库当前实现）"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 551,
+        "height": 18
+      },
+      {
+        "kind": "h1",
+        "lines": [
+          "附录 代码与结构证据索引"
+        ],
+        "size": 14,
+        "lead": 22,
+        "bold": true,
+        "before": 14,
+        "after": 8,
+        "top": 569,
+        "height": 44
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "db/migrations/000_platform.sql"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 613,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D00"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 646,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定提交 DDL 范围"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 664,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "db/migrations/000_platform.sql"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 682,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 700,
+        "height": 18
+      }
+    ],
+    [
+      {
+        "kind": "source",
+        "lines": [
+          "000—043 共 44 份；详细覆盖与文本来源见 schema_catalog.json、源码覆盖工作表。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 0,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/",
+          "migrations/000_platform.sql#L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 18,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "db/migrations/002_registry.sql"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 50,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D01"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 83,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定提交 DDL"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 101,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "db/migrations/002_registry.sql"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 119,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 137,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "对象、版本、生产批次、来源、设备、测点与时态绑定。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 155,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/",
+          "migrations/002_registry.sql#L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 173,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "db/migrations/003_telemetry.sql"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 205,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D02"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 238,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定提交 DDL"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 256,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "db/migrations/003_telemetry.sql"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 274,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 292,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "原回执、观测、冲突、隔离、当前值、游标和追加保护触发器。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 310,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/",
+          "migrations/003_telemetry.sql#L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 328,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "db/migrations/004_jobs.sql"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 360,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D03"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 393,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定提交 DDL"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 411,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "db/migrations/004_jobs.sql"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 429,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 447,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "任务、租约、尝试、领域事件、消费者去重。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 465,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/",
+          "migrations/004_jobs.sql#L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 483,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "db/migrations/009_ingest_contract_evidence.sql"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 515,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D04"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 548,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定提交 DDL"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 566,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "db/migrations/009_ingest_contract_evidence.sql"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 584,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 602,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "原报文契约证据字段。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 620,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/",
+          "migrations/009_ingest_contract_evidence.sql#L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 638,
+        "height": 32
+      }
+    ],
+    [
+      {
+        "kind": "h2",
+        "lines": [
+          "db/migrations/012_records.sql"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 0,
+        "after": 5,
+        "top": 0,
+        "height": 24
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D05"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 24,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定提交 DDL"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 42,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "db/migrations/012_records.sql"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 60,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 78,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "媒体、农事记录与附件关系。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 96,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/",
+          "migrations/012_records.sql#L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 114,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "db/migrations/021_weather_connections.sql"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 146,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D06"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 179,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定提交 DDL"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 197,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "db/migrations/021_weather_connections.sql"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 215,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 233,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "天气接入、版本与接收时间扩展。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 251,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/",
+          "migrations/021_weather_connections.sql#L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 269,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "db/migrations/016_knowledge.sql"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 301,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D07"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 334,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定提交 DDL"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 352,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "db/migrations/016_knowledge.sql"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 370,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 388,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "资料状态、分块和 512 维向量。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 406,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/",
+          "migrations/016_knowledge.sql#L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 424,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "db/migrations/034_phase2_terrain.sql"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 456,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D08"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 489,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定提交 DDL"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 507,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "db/migrations/034_phase2_terrain.sql"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 525,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 543,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "地形、测量基准、审核、水力关系。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 561,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/",
+          "migrations/034_phase2_terrain.sql#L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 579,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "db/migrations/035_stock.sql"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 611,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D09"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 644,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定提交 DDL"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 662,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "db/migrations/035_stock.sql"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 680,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "10"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 698,
+        "height": 18
+      }
+    ],
+    [
+      {
+        "kind": "source",
+        "lines": [
+          "库存批次、单据、台账、加工链、包装和交接。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 0,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/",
+          "migrations/035_stock.sql#L10"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 18,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "db/migrations/036_quality_trace.sql"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 50,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D10"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 83,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定提交 DDL"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 101,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "db/migrations/036_quality_trace.sql"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 119,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 137,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "样品、检验、证书、质量判断、追溯快照和公开卡片。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 155,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/",
+          "migrations/036_quality_trace.sql#L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 173,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "db/migrations/038_agronomy.sql"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 205,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D11"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 238,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定提交 DDL"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 256,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "db/migrations/038_agronomy.sql"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 274,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "59"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 292,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "控制请求强制 blocked 且 dispatched=false；农情候选与光谱产品。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 310,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/",
+          "migrations/038_agronomy.sql#L59"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 328,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "db/migrations/040_services_finance.sql"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 360,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D12"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 393,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定提交 DDL"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 411,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "db/migrations/040_services_finance.sql"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 429,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "38"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 447,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "费用多态引用、付款/冲销与补贴事件。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 465,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/",
+          "migrations/040_services_finance.sql#L38"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 483,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "db/migrations/043_subsidy_event_time.sql"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 515,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D13"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 548,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定提交 DDL"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 566,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "db/migrations/043_subsidy_event_time.sql"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 584,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 602,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "occurred_at、corrects_id、更正与退款区分。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 620,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/",
+          "migrations/043_subsidy_event_time.sql#L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 638,
+        "height": 32
+      }
+    ],
+    [
+      {
+        "kind": "h2",
+        "lines": [
+          "db/migrations/042_import_identity.sql"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 0,
+        "after": 5,
+        "top": 0,
+        "height": 24
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "D14"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 24,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定提交 DDL"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 42,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "db/migrations/042_import_identity.sql"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 60,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 78,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "植保来源导入身份与追加保护。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 96,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/9995fc20cd84093adcaa3fab954ffe9d08b9f45a/db/",
+          "migrations/042_import_identity.sql#L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 114,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "src/platform/api.ts"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 146,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B01"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 179,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本地 TypeScript 快照静态证据"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 197,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "src/platform/api.ts"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 215,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "7"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 233,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "readApi/writeApi 认证与事务调用点；未直接读取事务封装本体。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 251,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/src/platform/api.ts#L7"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 269,
+        "height": 18
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "src/app/api/v1/objects/route.ts"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 287,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B02"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 320,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本地 TypeScript 快照静态证据"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 338,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "src/app/api/v1/objects/route.ts"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 356,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 374,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "对象路由委托到业务服务。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 392,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/src/app/api/v1/objects/route.ts#L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 410,
+        "height": 18
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "src/modules/registry/objects.ts"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 428,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B03"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 461,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本地 TypeScript 快照静态证据"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 479,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "src/modules/registry/objects.ts"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 497,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "8"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 515,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "对象版本检查、类型禁止原地改变与历史快照。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 533,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/src/modules/registry/objects.ts#L8"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 551,
+        "height": 18
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "src/modules/registry/points.ts"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 569,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B04"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 602,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本地 TypeScript 快照静态证据"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 620,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "src/modules/registry/points.ts"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 638,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "21"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 656,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "时段重叠校验、历史保护与按采样时间解析。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 674,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/src/modules/registry/points.ts#L21"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 692,
+        "height": 18
+      }
+    ],
+    [
+      {
+        "kind": "h2",
+        "lines": [
+          "src/modules/telemetry/ingest.ts"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 0,
+        "after": 5,
+        "top": 0,
+        "height": 24
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B05"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 24,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本地 TypeScript 快照静态证据"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 42,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "src/modules/telemetry/ingest.ts"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 60,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "14"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 78,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "归档、隔离、幂等、冲突、当前值与批次游标。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 96,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/src/modules/telemetry/ingest.ts#L14"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 114,
+        "height": 18
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "src/modules/telemetry/identity.ts"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 132,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B06"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 165,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本地 TypeScript 快照静态证据"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 183,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "src/modules/telemetry/identity.ts"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 201,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "2"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 219,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "读数身份与内容摘要输入规则。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 237,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/src/modules/telemetry/identity.ts#L2"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 255,
+        "height": 18
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "src/modules/weather/service.ts"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 273,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B07"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 306,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本地 TypeScript 快照静态证据"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 324,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "src/modules/weather/service.ts"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 342,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "6"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 360,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "天气性质、幂等与可比较上下文；文件使用长行编码。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 378,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/src/modules/weather/service.ts#L6"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 396,
+        "height": 18
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "src/modules/telemetry/quality.ts"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 414,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B08"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 447,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本地 TypeScript 快照静态证据"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 465,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "src/modules/telemetry/quality.ts"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 483,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "2"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 501,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "当前读数可用性与新鲜度。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 519,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/src/modules/telemetry/quality.ts#L2"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 537,
+        "height": 18
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "src/modules/registry/import.ts"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 555,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B09"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 588,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本地 TypeScript 快照静态证据"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 606,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "src/modules/registry/import.ts"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 624,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "5"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 642,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "设备导入 1—50 行、逐行 SAVEPOINT。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 660,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/src/modules/registry/import.ts#L5"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 678,
+        "height": 18
+      }
+    ],
+    [
+      {
+        "kind": "h2",
+        "lines": [
+          "src/modules/identity/access.ts"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 0,
+        "after": 5,
+        "top": 0,
+        "height": 24
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B10"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 24,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本地 TypeScript 快照静态证据"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 42,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "src/modules/identity/access.ts"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 60,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "6"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 78,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "角色、对象授权、服务器时间和集成令牌。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 96,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/src/modules/identity/access.ts#L6"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 114,
+        "height": 18
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "src/modules/field/common.ts"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 132,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B11"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 165,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本地 TypeScript 快照静态证据"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 183,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "src/modules/field/common.ts"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 201,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "8"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 219,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "专家资源范围、对象版本、幂等锁和内容冲突。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 237,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/src/modules/field/common.ts#L8"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 255,
+        "height": 18
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "src/modules/knowledge/service.ts"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 273,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "B12"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 306,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本地 TypeScript 快照静态证据"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 324,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "src/modules/knowledge/service.ts"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 342,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "13"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 360,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "文档版本/审批、索引、权限内检索、引用失效；长行代码。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 378,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/src/modules/knowledge/service.ts#L13"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 396,
+        "height": 18
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "README.md"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 414,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "C01"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 447,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "项目说明自述"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 465,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "README.md"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 483,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "7"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 501,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本地工程验证版、架构与现场边界；未作为本轮验收结果。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 519,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/8jdkds7nzz-hub/liangzihu-farm-platform/blob/main/README.md#L7"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 537,
+        "height": 18
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "outputs/liangzihu-ontology-20261015/schema_catalog.json"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 555,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "L01"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 588,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本项目解析产物"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 606,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "outputs/liangzihu-ontology-20261015/schema_catalog.json"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 624,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 642,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "最终表/字段/FK/约束统计、覆盖与解析局限。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 660,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/lianggeming14/liangzihu-ontology-traceability/blob/main/outputs/liangzihu-ontology-20261",
+          "015/schema_catalog.json#L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 678,
+        "height": 32
+      }
+    ],
+    [
+      {
+        "kind": "h2",
+        "lines": [
+          "tools/ontology_export/domain_labels.json"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 0,
+        "after": 5,
+        "top": 0,
+        "height": 24
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "L02"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 24,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本项目分析分类"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 42,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "tools/ontology_export/domain_labels.json"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 60,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 78,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "16 领域、190 源表、业务/技术/安全分类；不是上游正式本体定义。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 96,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/lianggeming14/liangzihu-ontology-traceability/blob/main/tools/ontology_export/domain_lab",
+          "els.json#L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 114,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "implementation/agri/ontology_core.py"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 146,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N01"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 179,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本体库当前实现"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 197,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "implementation/agri/ontology_core.py"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 215,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "103"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 233,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "领域包、显示名称、属性适用性、观测、关系与证据包。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 251,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/lianggeming14/liangzihu-ontology-traceability/blob/main/implementation/agri/ontology_cor",
+          "e.py#L103"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 269,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "implementation/agri/core_intake.py"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 301,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N02"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 334,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本体库当前实现"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 352,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "implementation/agri/core_intake.py"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 370,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "66"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 388,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "输入分类、映射、处理回执、重试与预览。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 406,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/lianggeming14/liangzihu-ontology-traceability/blob/main/implementation/agri/core_intake.",
+          "py#L66"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 424,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "implementation/agri/exchange.py"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 456,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N03"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 489,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本体库当前实现"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 507,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "implementation/agri/exchange.py"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 525,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 543,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "固定 graph exchange profile；不是通用 RDF 导入或 OWL 引擎。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 561,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/lianggeming14/liangzihu-ontology-traceability/blob/main/implementation/agri/exchange.py#",
+          "L1"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 579,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "implementation/agri/service.py"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 611,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N04"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 644,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本体库当前实现"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 662,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "implementation/agri/service.py"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 680,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "964"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 698,
+        "height": 18
+      }
+    ],
+    [
+      {
+        "kind": "source",
+        "lines": [
+          "血缘、证据撤回、公开溯源、召回、对象集和图。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 0,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/lianggeming14/liangzihu-ontology-traceability/blob/main/implementation/agri/service.py#L",
+          "964"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 18,
+        "height": 32
+      },
+      {
+        "kind": "h2",
+        "lines": [
+          "implementation/agri/db.py"
+        ],
+        "size": 11.5,
+        "lead": 19,
+        "bold": true,
+        "before": 9,
+        "after": 5,
+        "top": 50,
+        "height": 33
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "N05"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 83,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "本体库当前实现"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 101,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "implementation/agri/db.py"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 119,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "24"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 137,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "PostgreSQL 事务与迁移；SQLite 适配器在 sqlite_db.py 明确不声称并发等价。"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 155,
+        "height": 18
+      },
+      {
+        "kind": "source",
+        "lines": [
+          "https://github.com/lianggeming14/liangzihu-ontology-traceability/blob/main/implementation/agri/db.py#L24"
+        ],
+        "size": 9,
+        "lead": 14,
+        "bold": false,
+        "before": 0,
+        "after": 4,
+        "top": 173,
+        "height": 18
+      }
+    ]
+  ]
+}

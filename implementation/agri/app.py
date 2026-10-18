@@ -1,6 +1,7 @@
 """HTTP boundary for the agriculture ontology and traceability services."""
 from __future__ import annotations
 import json
+import math
 import os
 import secrets
 import uuid
@@ -8,15 +9,57 @@ from functools import wraps
 from pathlib import Path
 from urllib.parse import urlsplit
 from flask import Flask, jsonify, request, session, send_from_directory, send_file
+from flask.json.provider import DefaultJSONProvider
 from werkzeug.exceptions import HTTPException
 from jsonschema import Draft202012Validator, FormatChecker
 
 BASE = Path(__file__).resolve().parent.parent
+
+
+class StrictJSONProvider(DefaultJSONProvider):
+    """Reject ambiguous input before source values or audit hashes are created.
+
+    Flask request.get_json(), including blueprint routes, uses this provider.
+    Legitimate JSON types and response serialization retain Flask's defaults.
+    """
+
+    @staticmethod
+    def _unique_object(pairs):
+        value = {}
+        for key, item in pairs:
+            if key in value:
+                raise ValueError('JSON 对象不能包含重复字段')
+            value[key] = item
+        return value
+
+    @staticmethod
+    def _finite_float(text):
+        value = float(text)
+        if not math.isfinite(value):
+            raise ValueError('JSON 数字必须为有限值')
+        return value
+
+    @staticmethod
+    def _reject_constant(_):
+        raise ValueError('JSON 数字必须为有限值')
+
+    def loads(self, value, **kwargs):
+        kwargs.update(object_pairs_hook=self._unique_object,
+                      parse_float=self._finite_float, parse_constant=self._reject_constant)
+        try:
+            return super().loads(value, **kwargs)
+        except RecursionError as exc:
+            raise ValueError('JSON 嵌套超过支持深度') from exc
+
+
 MUTATIONS = {
     '/ontology/packages': 'register_package',
     '/ontology/package-labels': 'update_package_labels',
     '/ingestion/mappings': 'register_mapping',
     '/ingestion/receipts': 'receive_intake',
+    '/integration/profiles': 'register_source_profile',
+    '/integration/batches': 'import_source_batch',
+    '/integration/bundles': 'install_source_bundle',
     '/ontology/entities': 'create_entity',
     '/ontology/type-assignments': 'assign_type',
     '/evidence': 'create_evidence',
@@ -40,6 +83,9 @@ QUERIES = {
     '/ontology/properties': 'properties',
     '/ingestion/mappings': 'mappings',
     '/ingestion/receipts': 'intake_receipts',
+    '/integration/profiles': 'source_profiles',
+    '/integration/bindings': 'source_bindings',
+    '/integration/batches': 'source_batches',
     '/ontology/entities': 'entities',
     '/ontology/relations': 'relations',
     '/ontology/graph': 'graph',
@@ -63,6 +109,7 @@ QUERIES = {
 
 def create_app(config=None):
     app = Flask(__name__, static_folder=None)
+    app.json = StrictJSONProvider(app)
     app.config.from_mapping(
         TESTING=False,
         ALLOWED_HOSTS=['localhost', '127.0.0.1', '::1'],
@@ -87,7 +134,7 @@ def create_app(config=None):
     service = app.config.get('SERVICE')
     if service is None:
         from .db import Database
-        from .core_intake import IntakeService
+        from .source_mapping import SourceMappingService
         database_url = app.config['DATABASE_URL']
         if database_url.startswith('sqlite:'):
             from .sqlite_db import SQLiteDatabase
@@ -96,11 +143,11 @@ def create_app(config=None):
             db = Database(database_url, app.config['DB_SCHEMA'])
         if app.config.get('AUTO_MIGRATE', True):
             db.migrate()
-        service = IntakeService(db)
+        service = SourceMappingService(db)
         app.extensions['agri_db'] = db
     if hasattr(service, 'db'):
-        from .core_intake import IntakeService
-        if not isinstance(service, IntakeService): service = IntakeService(service.db)
+        from .source_mapping import SourceMappingService
+        if not isinstance(service, SourceMappingService): service = SourceMappingService(service.db)
         service.asset_root = Path(app.config['ASSET_ROOT'])
     app.extensions['agri_service'] = service
     schema_path = BASE / 'contracts' / 'input-schemas.json'
@@ -111,6 +158,8 @@ def create_app(config=None):
     from .core_intake import INTAKE_SCHEMAS
     schema_map.update(CORE_SCHEMAS)
     schema_map.update(INTAKE_SCHEMAS)
+    from .source_mapping import SOURCE_SCHEMAS
+    schema_map.update(SOURCE_SCHEMAS)
     if hasattr(service,'db'): service.input_schemas = schema_map
     validators = {name: Draft202012Validator(s, format_checker=FormatChecker()) for name, s in schema_map.items()}
 
@@ -298,9 +347,21 @@ def create_app(config=None):
         result = service.preview_intake(request.tenant, request.actor, payload())
         return jsonify({'data':result,'request_id':request.request_id})
 
+    @app.post('/api/v1/integration/preview')
+    @protected
+    def preview_source_batch():
+        result = service.preview_source_batch(request.tenant, request.actor, payload())
+        return jsonify({'data':result,'request_id':request.request_id})
+
+    @app.post('/api/v1/integration/bundles/preview')
+    @protected
+    def preview_source_bundle():
+        result = service.preview_source_bundle(request.tenant, request.actor, payload())
+        return jsonify({'data':result,'request_id':request.request_id})
+
     @app.get('/api/v1/health')
     def health():
-        return jsonify({'status': 'ok', 'application': 'liangzihu-ontology', 'version': '0.3.0',
+        return jsonify({'status': 'ok', 'application': 'liangzihu-ontology', 'version': '0.4.0',
                         'mode': 'local-engineering', 'demo_mode': app.config['DEMO_MODE'],
                         'backend': 'sqlite' if app.config['DATABASE_URL'].startswith('sqlite:') else 'postgresql'})
 

@@ -1,0 +1,34 @@
+{
+  "format": "liangzihu-adapter-artifacts/1",
+  "source_commit": "9995fc20cd84093adcaa3fab954ffe9d08b9f45a",
+  "mapping_workbook": "outputs/liangzihu-ontology-20261015/梁子湖项目_本体与关系全量结构导出.xlsx",
+  "profile_id": "liangzihu-source-records",
+  "profile_version": "1.0.0",
+  "counts": {
+    "source_tables": 190,
+    "source_fields": 2114,
+    "source_relations": 555,
+    "mapped_tables": 122,
+    "mapped_properties": 979,
+    "mapped_relations": 409,
+    "field_statuses": {
+      "catalog_only": 591,
+      "mapped_attribute": 979,
+      "rejected": 49,
+      "mapped_relation_key": 409,
+      "deferred": 86
+    }
+  },
+  "files": {
+    "source-profile.json": "db9675d86e122b51fce7e0d1f5b823919550ef33580f362df56a872bb99585f7",
+    "coverage-manifest.json": "e4f2cde5b46214f33c178e08aa425055a9c3f25bfa6ac86c763fcc737b5b1029",
+    "package-bundle.json": "0a56d3b5ebf0965bb929f19c0b3e556b19d2e372aa4318daa36739490822f241",
+    "readonly-export.sql": "337a6a39c34f6b4f4bf3d88da4ac4a352b52f755284bea473fec5143deb0bc0d",
+    "readonly-export-core.sql": "37d19cb58e119bf604b56ba5db207424073cd4f1a2e52b8078133cdd35e8a602"
+  },
+  "inputs": {
+    "schema_catalog.json": "4222392e7e5465781caaba2724731169b1fb5bfaecc0f787f49af06516505cc2",
+    "workbook_data.json": "937b4abaddce7ac392a67a521eee23446409f1fd63628b1b8b418ba2965b40d7",
+    "packages/manifest.json": "140a13f2e6952dc7d17b7c039ed13fcb0e10e31e3190cecef2ec88cd3ba6ecc0"
+  }
+}

@@ -752,6 +752,84 @@
         ],
         "type": "object"
       },
+      "import_source_batch": {
+        "additionalProperties": false,
+        "properties": {
+          "batch_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "data_nature": {
+            "enum": [
+              "production",
+              "synthetic",
+              "test",
+              "unspecified"
+            ]
+          },
+          "observed_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "profile_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "records": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "expected_revision": {
+                  "maximum": 9223372036854775807,
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "table": {
+                  "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                  "type": "string"
+                },
+                "values": {
+                  "maxProperties": 500,
+                  "propertyNames": {
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                    "type": "string"
+                  },
+                  "type": "object"
+                }
+              },
+              "required": [
+                "table",
+                "values"
+              ],
+              "type": "object"
+            },
+            "maxItems": 100,
+            "minItems": 1,
+            "type": "array"
+          },
+          "source_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "version": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_id",
+          "profile_id",
+          "version",
+          "batch_id",
+          "observed_at",
+          "records"
+        ],
+        "type": "object"
+      },
       "ingest_device_record": {
         "additionalProperties": false,
         "allOf": [
@@ -949,6 +1027,367 @@
         ],
         "type": "object"
       },
+      "install_source_bundle": {
+        "additionalProperties": false,
+        "properties": {
+          "batch": {
+            "additionalProperties": false,
+            "properties": {
+              "batch_id": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "data_nature": {
+                "enum": [
+                  "production",
+                  "synthetic",
+                  "test",
+                  "unspecified"
+                ]
+              },
+              "observed_at": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "profile_id": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "records": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "expected_revision": {
+                      "maximum": 9223372036854775807,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "table": {
+                      "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                      "type": "string"
+                    },
+                    "values": {
+                      "maxProperties": 500,
+                      "propertyNames": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                        "type": "string"
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "table",
+                    "values"
+                  ],
+                  "type": "object"
+                },
+                "maxItems": 100,
+                "minItems": 1,
+                "type": "array"
+              },
+              "source_id": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "version": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "source_id",
+              "profile_id",
+              "version",
+              "batch_id",
+              "observed_at",
+              "records"
+            ],
+            "type": "object"
+          },
+          "packages": {
+            "items": {
+              "type": "object"
+            },
+            "maxItems": 30,
+            "minItems": 1,
+            "type": "array"
+          },
+          "profile": {
+            "additionalProperties": false,
+            "properties": {
+              "label": {
+                "maxLength": 500,
+                "minLength": 1,
+                "type": "string"
+              },
+              "profile_id": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "source_id": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "tables": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "deferred_fields": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "field": {
+                            "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                            "type": "string"
+                          },
+                          "reason": {
+                            "maxLength": 2000,
+                            "minLength": 1,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "field",
+                          "reason"
+                        ],
+                        "type": "object"
+                      },
+                      "maxItems": 500,
+                      "minItems": 0,
+                      "type": "array"
+                    },
+                    "fields": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "property_id": {
+                            "maxLength": 200,
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "source_field": {
+                            "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                            "type": "string"
+                          },
+                          "source_unit": {
+                            "maxLength": 100,
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "source_unit_field": {
+                            "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                            "type": "string"
+                          },
+                          "transform": {
+                            "enum": [
+                              "identity",
+                              "decimal",
+                              "integer",
+                              "datetime",
+                              "date",
+                              "uuid",
+                              "text_array"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "source_field",
+                          "property_id"
+                        ],
+                        "type": "object"
+                      },
+                      "maxItems": 500,
+                      "minItems": 0,
+                      "type": "array"
+                    },
+                    "key_types": {
+                      "additionalProperties": {
+                        "enum": [
+                          "string",
+                          "integer",
+                          "uuid"
+                        ]
+                      },
+                      "propertyNames": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                        "type": "string"
+                      },
+                      "type": "object"
+                    },
+                    "name_field": {
+                      "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                      "type": "string"
+                    },
+                    "name_prefix": {
+                      "maxLength": 100,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "primary_key": {
+                      "items": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                        "type": "string"
+                      },
+                      "maxItems": 10,
+                      "minItems": 1,
+                      "type": "array"
+                    },
+                    "rejected_fields": {
+                      "items": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                        "type": "string"
+                      },
+                      "maxItems": 500,
+                      "minItems": 0,
+                      "type": "array"
+                    },
+                    "relations": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "fields": {
+                            "items": {
+                              "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                              "type": "string"
+                            },
+                            "maxItems": 10,
+                            "minItems": 1,
+                            "type": "array"
+                          },
+                          "nullable": {
+                            "type": "boolean"
+                          },
+                          "predicate_ref": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "package_id": {
+                                "maxLength": 200,
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "predicate_id": {
+                                "maxLength": 200,
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "version": {
+                                "maxLength": 200,
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "package_id",
+                              "version",
+                              "predicate_id"
+                            ],
+                            "type": "object"
+                          },
+                          "relation_key": {
+                            "maxLength": 200,
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "target_fields": {
+                            "items": {
+                              "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                              "type": "string"
+                            },
+                            "maxItems": 10,
+                            "minItems": 1,
+                            "type": "array"
+                          },
+                          "target_table": {
+                            "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "relation_key",
+                          "fields",
+                          "target_table",
+                          "target_fields",
+                          "predicate_ref"
+                        ],
+                        "type": "object"
+                      },
+                      "maxItems": 500,
+                      "minItems": 0,
+                      "type": "array"
+                    },
+                    "table": {
+                      "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                      "type": "string"
+                    },
+                    "type_ref": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "package_id": {
+                          "maxLength": 200,
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "type_id": {
+                          "maxLength": 200,
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "version": {
+                          "maxLength": 200,
+                          "minLength": 1,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "package_id",
+                        "version",
+                        "type_id"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "table",
+                    "primary_key",
+                    "type_ref",
+                    "fields",
+                    "relations",
+                    "deferred_fields",
+                    "rejected_fields"
+                  ],
+                  "type": "object"
+                },
+                "maxItems": 200,
+                "minItems": 1,
+                "type": "array"
+              },
+              "version": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "source_id",
+              "profile_id",
+              "version",
+              "tables"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "packages",
+          "profile"
+        ],
+        "type": "object"
+      },
       "preview_intake": {
         "additionalProperties": false,
         "dependentRequired": {
@@ -1041,6 +1480,445 @@
           "content_type",
           "record_kind",
           "payload"
+        ],
+        "type": "object"
+      },
+      "preview_source_batch": {
+        "additionalProperties": false,
+        "properties": {
+          "batch_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "data_nature": {
+            "enum": [
+              "production",
+              "synthetic",
+              "test",
+              "unspecified"
+            ]
+          },
+          "observed_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "profile_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "records": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "expected_revision": {
+                  "maximum": 9223372036854775807,
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "table": {
+                  "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                  "type": "string"
+                },
+                "values": {
+                  "maxProperties": 500,
+                  "propertyNames": {
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                    "type": "string"
+                  },
+                  "type": "object"
+                }
+              },
+              "required": [
+                "table",
+                "values"
+              ],
+              "type": "object"
+            },
+            "maxItems": 100,
+            "minItems": 1,
+            "type": "array"
+          },
+          "source_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "version": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_id",
+          "profile_id",
+          "version",
+          "batch_id",
+          "observed_at",
+          "records"
+        ],
+        "type": "object"
+      },
+      "preview_source_bundle": {
+        "additionalProperties": false,
+        "properties": {
+          "batch": {
+            "additionalProperties": false,
+            "properties": {
+              "batch_id": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "data_nature": {
+                "enum": [
+                  "production",
+                  "synthetic",
+                  "test",
+                  "unspecified"
+                ]
+              },
+              "observed_at": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "profile_id": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "records": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "expected_revision": {
+                      "maximum": 9223372036854775807,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "table": {
+                      "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                      "type": "string"
+                    },
+                    "values": {
+                      "maxProperties": 500,
+                      "propertyNames": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                        "type": "string"
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "table",
+                    "values"
+                  ],
+                  "type": "object"
+                },
+                "maxItems": 100,
+                "minItems": 1,
+                "type": "array"
+              },
+              "source_id": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "version": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "source_id",
+              "profile_id",
+              "version",
+              "batch_id",
+              "observed_at",
+              "records"
+            ],
+            "type": "object"
+          },
+          "packages": {
+            "items": {
+              "type": "object"
+            },
+            "maxItems": 30,
+            "minItems": 1,
+            "type": "array"
+          },
+          "profile": {
+            "additionalProperties": false,
+            "properties": {
+              "label": {
+                "maxLength": 500,
+                "minLength": 1,
+                "type": "string"
+              },
+              "profile_id": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "source_id": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              "tables": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "deferred_fields": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "field": {
+                            "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                            "type": "string"
+                          },
+                          "reason": {
+                            "maxLength": 2000,
+                            "minLength": 1,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "field",
+                          "reason"
+                        ],
+                        "type": "object"
+                      },
+                      "maxItems": 500,
+                      "minItems": 0,
+                      "type": "array"
+                    },
+                    "fields": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "property_id": {
+                            "maxLength": 200,
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "source_field": {
+                            "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                            "type": "string"
+                          },
+                          "source_unit": {
+                            "maxLength": 100,
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "source_unit_field": {
+                            "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                            "type": "string"
+                          },
+                          "transform": {
+                            "enum": [
+                              "identity",
+                              "decimal",
+                              "integer",
+                              "datetime",
+                              "date",
+                              "uuid",
+                              "text_array"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "source_field",
+                          "property_id"
+                        ],
+                        "type": "object"
+                      },
+                      "maxItems": 500,
+                      "minItems": 0,
+                      "type": "array"
+                    },
+                    "key_types": {
+                      "additionalProperties": {
+                        "enum": [
+                          "string",
+                          "integer",
+                          "uuid"
+                        ]
+                      },
+                      "propertyNames": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                        "type": "string"
+                      },
+                      "type": "object"
+                    },
+                    "name_field": {
+                      "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                      "type": "string"
+                    },
+                    "name_prefix": {
+                      "maxLength": 100,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "primary_key": {
+                      "items": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                        "type": "string"
+                      },
+                      "maxItems": 10,
+                      "minItems": 1,
+                      "type": "array"
+                    },
+                    "rejected_fields": {
+                      "items": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                        "type": "string"
+                      },
+                      "maxItems": 500,
+                      "minItems": 0,
+                      "type": "array"
+                    },
+                    "relations": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "fields": {
+                            "items": {
+                              "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                              "type": "string"
+                            },
+                            "maxItems": 10,
+                            "minItems": 1,
+                            "type": "array"
+                          },
+                          "nullable": {
+                            "type": "boolean"
+                          },
+                          "predicate_ref": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "package_id": {
+                                "maxLength": 200,
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "predicate_id": {
+                                "maxLength": 200,
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "version": {
+                                "maxLength": 200,
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "package_id",
+                              "version",
+                              "predicate_id"
+                            ],
+                            "type": "object"
+                          },
+                          "relation_key": {
+                            "maxLength": 200,
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "target_fields": {
+                            "items": {
+                              "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                              "type": "string"
+                            },
+                            "maxItems": 10,
+                            "minItems": 1,
+                            "type": "array"
+                          },
+                          "target_table": {
+                            "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "relation_key",
+                          "fields",
+                          "target_table",
+                          "target_fields",
+                          "predicate_ref"
+                        ],
+                        "type": "object"
+                      },
+                      "maxItems": 500,
+                      "minItems": 0,
+                      "type": "array"
+                    },
+                    "table": {
+                      "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                      "type": "string"
+                    },
+                    "type_ref": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "package_id": {
+                          "maxLength": 200,
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "type_id": {
+                          "maxLength": 200,
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "version": {
+                          "maxLength": 200,
+                          "minLength": 1,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "package_id",
+                        "version",
+                        "type_id"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "table",
+                    "primary_key",
+                    "type_ref",
+                    "fields",
+                    "relations",
+                    "deferred_fields",
+                    "rejected_fields"
+                  ],
+                  "type": "object"
+                },
+                "maxItems": 200,
+                "minItems": 1,
+                "type": "array"
+              },
+              "version": {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "source_id",
+              "profile_id",
+              "version",
+              "tables"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "packages",
+          "profile"
         ],
         "type": "object"
       },
@@ -1667,6 +2545,271 @@
         ],
         "type": "object"
       },
+      "register_source_profile": {
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "profile_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "tables": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "deferred_fields": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "field": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                        "type": "string"
+                      },
+                      "reason": {
+                        "maxLength": 2000,
+                        "minLength": 1,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "field",
+                      "reason"
+                    ],
+                    "type": "object"
+                  },
+                  "maxItems": 500,
+                  "minItems": 0,
+                  "type": "array"
+                },
+                "fields": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "property_id": {
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "source_field": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                        "type": "string"
+                      },
+                      "source_unit": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "source_unit_field": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                        "type": "string"
+                      },
+                      "transform": {
+                        "enum": [
+                          "identity",
+                          "decimal",
+                          "integer",
+                          "datetime",
+                          "date",
+                          "uuid",
+                          "text_array"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "source_field",
+                      "property_id"
+                    ],
+                    "type": "object"
+                  },
+                  "maxItems": 500,
+                  "minItems": 0,
+                  "type": "array"
+                },
+                "key_types": {
+                  "additionalProperties": {
+                    "enum": [
+                      "string",
+                      "integer",
+                      "uuid"
+                    ]
+                  },
+                  "propertyNames": {
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "name_field": {
+                  "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                  "type": "string"
+                },
+                "name_prefix": {
+                  "maxLength": 100,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "primary_key": {
+                  "items": {
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                    "type": "string"
+                  },
+                  "maxItems": 10,
+                  "minItems": 1,
+                  "type": "array"
+                },
+                "rejected_fields": {
+                  "items": {
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                    "type": "string"
+                  },
+                  "maxItems": 500,
+                  "minItems": 0,
+                  "type": "array"
+                },
+                "relations": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fields": {
+                        "items": {
+                          "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                          "type": "string"
+                        },
+                        "maxItems": 10,
+                        "minItems": 1,
+                        "type": "array"
+                      },
+                      "nullable": {
+                        "type": "boolean"
+                      },
+                      "predicate_ref": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "package_id": {
+                            "maxLength": 200,
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "predicate_id": {
+                            "maxLength": 200,
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "version": {
+                            "maxLength": 200,
+                            "minLength": 1,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "package_id",
+                          "version",
+                          "predicate_id"
+                        ],
+                        "type": "object"
+                      },
+                      "relation_key": {
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "target_fields": {
+                        "items": {
+                          "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                          "type": "string"
+                        },
+                        "maxItems": 10,
+                        "minItems": 1,
+                        "type": "array"
+                      },
+                      "target_table": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "relation_key",
+                      "fields",
+                      "target_table",
+                      "target_fields",
+                      "predicate_ref"
+                    ],
+                    "type": "object"
+                  },
+                  "maxItems": 500,
+                  "minItems": 0,
+                  "type": "array"
+                },
+                "table": {
+                  "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$",
+                  "type": "string"
+                },
+                "type_ref": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "package_id": {
+                      "maxLength": 200,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "type_id": {
+                      "maxLength": 200,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "version": {
+                      "maxLength": 200,
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "package_id",
+                    "version",
+                    "type_id"
+                  ],
+                  "type": "object"
+                }
+              },
+              "required": [
+                "table",
+                "primary_key",
+                "type_ref",
+                "fields",
+                "relations",
+                "deferred_fields",
+                "rejected_fields"
+              ],
+              "type": "object"
+            },
+            "maxItems": 200,
+            "minItems": 1,
+            "type": "array"
+          },
+          "version": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_id",
+          "profile_id",
+          "version",
+          "tables"
+        ],
+        "type": "object"
+      },
       "retry_intake": {
         "additionalProperties": false,
         "properties": {
@@ -1822,9 +2965,9 @@
     }
   },
   "info": {
-    "description": "数据库职责收敛版：本体、显式映射、受约束存储、原件与血缘、数据输出；旧采集和产品溯源为兼容扩展。租户身份由访问令牌确定；演示界面另外支持仅限回环的 Cookie 会话。响应载荷仍以领域实现和示例为准，Envelope 不构成完整强类型 SDK。真实平台、PostgreSQL 和现场验收待完成。",
+    "description": "来源对象批量映射版：本体、来源身份绑定、显式映射、受约束存储、原件与血缘、数据输出；旧采集和产品溯源为兼容扩展。租户身份由访问令牌确定；演示界面另外支持仅限回环的 Cookie 会话。响应载荷仍以领域实现和示例为准，Envelope 不构成完整强类型 SDK。生产数据与现场验收状态见交付验证报告。",
     "title": "梁子湖农业本体数据库 API",
-    "version": "0.3.0"
+    "version": "0.4.0"
   },
   "openapi": "3.1.0",
   "paths": {
@@ -4135,7 +5278,7 @@
     },
     "/api/v1/inference/bundles/{entity_key}": {
       "get": {
-        "description": "",
+        "description": "区分观测、候选/采纳断言与source_snapshots来源快照；快照返回证据有效状态、数据性质和修订。来源快照默认usable_for_inference=false，不自动采纳为推理前提。",
         "operationId": "evidence_bundle",
         "parameters": [
           {
@@ -5505,6 +6648,1033 @@
         ]
       }
     },
+    "/api/v1/integration/batches": {
+      "get": {
+        "description": "当前集合的 offset/next_offset 分页；集合发生变化时不是冻结快照。需要可靠增量同步请用 trace/changes。",
+        "operationId": "source_batches",
+        "parameters": [
+          {
+            "description": "",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 100,
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "source_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "batch_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "profile_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "version",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      },
+      "post": {
+        "description": "最多100条及2MiB，整批事务。来源系统/表/主键绑定系统UUID；先对象后关系。同批次同内容重试返回原回执；修改对象需expected_revision。外键关系为候选，不自动认定业务事实。",
+        "operationId": "import_source_batch",
+        "parameters": [
+          {
+            "description": "同一业务请求重试复用；键相同但内容不同返回 409。租户从认证身份取得。",
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": true,
+            "schema": {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/import_source_batch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      }
+    },
+    "/api/v1/integration/bindings": {
+      "get": {
+        "description": "租户内来源身份到本体对象的映射；详情含来源修订及证据。来源ID与本体UUID分开。",
+        "operationId": "source_bindings",
+        "parameters": [
+          {
+            "description": "",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 100,
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "source_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "table",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "entity_key",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "binding_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "profile_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "version",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "identity仅返回规划所需的身份与修订，不能同时展开历史",
+            "in": "query",
+            "name": "projection",
+            "required": false,
+            "schema": {
+              "default": "full",
+              "enum": [
+                "full",
+                "identity"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "需同时指定binding_id或entity_key；按返回的next_offset继续查询",
+            "in": "query",
+            "name": "history_limit",
+            "required": false,
+            "schema": {
+              "default": 100,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "history_offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "需同时指定binding_id或entity_key；按返回的next_offset继续查询",
+            "in": "query",
+            "name": "relationship_limit",
+            "required": false,
+            "schema": {
+              "default": 100,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "relationship_offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      }
+    },
+    "/api/v1/integration/bundles": {
+      "post": {
+        "description": "同一事务安装依赖顺序排列的领域包与来源映射，任一错误全部回滚；重复安装已存在相同版本不会覆盖定义。",
+        "operationId": "install_source_bundle",
+        "parameters": [
+          {
+            "description": "同一业务请求重试复用；键相同但内容不同返回 409。租户从认证身份取得。",
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": true,
+            "schema": {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/install_source_bundle"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      }
+    },
+    "/api/v1/integration/bundles/preview": {
+      "post": {
+        "description": "在回滚事务中验证完整领域包与映射安装，无持久变更。",
+        "operationId": "preview_source_bundle",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/install_source_bundle"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      }
+    },
+    "/api/v1/integration/preview": {
+      "post": {
+        "description": "执行与导入相同的校验并完整回滚；不落对象、关系、证据、回执。返回的临时UUID不得作为正式对象身份使用。",
+        "operationId": "preview_source_batch",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/import_source_batch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      }
+    },
+    "/api/v1/integration/profiles": {
+      "get": {
+        "description": "当前集合的 offset/next_offset 分页；集合发生变化时不是冻结快照。需要可靠增量同步请用 trace/changes。",
+        "operationId": "source_profiles",
+        "parameters": [
+          {
+            "description": "",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 100,
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "source_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "profile_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "version",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      },
+      "post": {
+        "description": "登记不可变来源映射版本。精确引用本体版本、类、属性和关系；未知字段拒绝，延期字段保留并报告；来源主键不成为本体UUID。",
+        "operationId": "register_source_profile",
+        "parameters": [
+          {
+            "description": "同一业务请求重试复用；键相同但内容不同返回 409。租户从认证身份取得。",
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": true,
+            "schema": {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/register_source_profile"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            },
+            "description": "成功；data 载荷因资源不同而不同"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "未认证"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "无权限或主机/来源受限"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "不存在"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "幂等、证据或业务状态冲突"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "结构化请求超过2MiB或原件超过配置上限(默认32MiB)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "契约或业务约束不符"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "database-core"
+        ]
+      }
+    },
     "/api/v1/observations": {
       "get": {
         "description": "当前集合的 offset/next_offset 分页；集合发生变化时不是冻结快照。需要可靠增量同步请用 trace/changes。",
@@ -6316,7 +8486,7 @@
     },
     "/api/v1/ontology/graph": {
       "get": {
-        "description": "当前有界子图；必须处理 truncated/gaps。不支持 valid_at、known_at、revision 历史重建。候选断言不等同于已确认事实。",
+        "description": "当前存储的有界关系记录网络，包含候选和已结束区间。关系边 temporal_status/within_valid_interval 只说明时间有效性，采纳状态另见status。必须处理truncated/gaps；不支持valid_at、known_at、revision历史重建。",
         "operationId": "graph",
         "parameters": [
           {

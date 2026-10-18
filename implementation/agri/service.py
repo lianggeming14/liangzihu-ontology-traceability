@@ -164,7 +164,19 @@ class Service:
                 result = getattr(self, '_do_' + action)(tx,tenant,actor,payload)
                 result = _clean(result)
                 target = str(result.get('entity_key') or result.get('id') or result.get('package_id') or action)
-                tx.execute('INSERT INTO outbox(tenant_id,sequence,event_id,event_type,aggregate_key,revision,payload,created_at) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)',(tenant,sequence,_id(),action,target,int(result.get('revision',1)),_json(dict({'target_id':target,'action':action}, **({'invalidated_publications':result['invalidated_publications'],'invalidation_reason':'assertion_conflict'} if result.get('invalidated_publications') else {}))),_now()))
+                event_payload = {'target_id':target, 'action':action}
+                if result.get('invalidated_publications'):
+                    event_payload.update(invalidated_publications=result['invalidated_publications'], invalidation_reason='assertion_conflict')
+                # Downstream consumers can resolve a committed source batch or
+                # profile without putting its private raw records in the outbox.
+                if action in {'import_source_batch','register_source_profile','install_source_bundle'}:
+                    source_result = result.get('batch') or result.get('profile') or result
+                    for field in ('source_id','batch_id','profile_id','version'):
+                        if field in source_result:
+                            event_payload[field] = source_result[field]
+                    if source_result.get('id'):
+                        event_payload['source_ref'] = source_result['id']
+                tx.execute('INSERT INTO outbox(tenant_id,sequence,event_id,event_type,aggregate_key,revision,payload,created_at) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)',(tenant,sequence,_id(),action,target,int(result.get('revision',1)),_json(event_payload),_now()))
                 tx.execute('UPDATE outbox_counters SET next_sequence=%s WHERE tenant_id=%s',(sequence+1,tenant))
                 tx.execute('INSERT INTO audit_log(tenant_id,id,actor_id,action,target_id,details,created_at) VALUES (%s,%s,%s,%s,%s,%s,%s)',(tenant,_id(),actor_id,action,target,_json({'request_hash':digest}),_now()))
                 tx.execute('UPDATE idempotency SET response=%s WHERE tenant_id=%s AND idempotency_key=%s',(_json(result),tenant,idempotency_key))

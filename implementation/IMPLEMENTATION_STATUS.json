@@ -1,8 +1,8 @@
 {
-  "schema_version": "3.0",
-  "updated_at": "2026-10-14T15:17:00Z",
-  "application_version": "0.3.0",
-  "task": "数据库职责收敛、本体领域包完善、显式来源映射与统一入库校验",
+  "schema_version": "4.0",
+  "updated_at": "2026-10-18T16:41:01Z",
+  "application_version": "0.4.0",
+  "task": "依据已核对来源结构完成梁子湖记录与本体实体的确定映射、可恢复批量接入及后端说明文档",
   "implementation_status": "local_engineering_verified_production_pending",
   "implementation_model": "current_session_model",
   "kimi": {
@@ -16,13 +16,23 @@
       "001",
       "002",
       "003",
-      "004"
+      "004",
+      "005"
     ],
+    "application_started": "0.4.0",
     "postgresql_verified": false,
-    "startup": "启动系统.cmd",
+    "startup_without_new_demo_entities": "python -B -X utf8 run_server.py --no-seed --open-browser",
     "loopback_http_verified": true,
     "legacy_rows_preserved": true,
-    "verification_note": "本机HTTP与旧数据库逐行保留已验证；非生产服务、无TLS"
+    "entity_count_before": 17,
+    "entity_count_after": 17,
+    "installed_package_count": 23,
+    "newly_installed_package_count": 18,
+    "installed_source_profile_count": 1,
+    "mapped_source_table_count": 122,
+    "production_records_imported": false,
+    "synthetic_example_records_persisted_this_release": false,
+    "verification_note": "本地005升级与18包安装已完成，原17个实体完整保留；实际HTTP合成预检回滚无留存。不是生产服务，无TLS验收。"
   },
   "implemented": [
     "readable_versioned_packages_with_editable_display_labels_and_revision_audit",
@@ -40,7 +50,16 @@
     "withdrawn_original_download_denied",
     "bounded_multidimensional_graph_objects_sets_evidence_bundles_and_outbox",
     "typed_object_and_observation_forms_and_structured_package_details",
-    "legacy_demo_display_names_upgraded_without_overwriting_user_labels"
+    "legacy_demo_display_names_upgraded_without_overwriting_user_labels",
+    "tenant_source_table_canonical_key_to_generated_entity_uuid_binding",
+    "atomic_source_bundle_install_and_batch_import_with_full_preview_rollback",
+    "source_revision_preconditions_and_append_only_evidence_snapshots",
+    "explicit_foreign_key_candidate_relations_and_relationship_history",
+    "source_snapshot_provenance_in_evidence_bundles",
+    "safe_readonly_source_export_and_scc_dependency_batch_planning",
+    "protected_import_plan_hashes_sequential_apply_receipts_and_idempotent_replay",
+    "data_nature_separation_and_rejected_sensitive_source_fields",
+    "strict_http_json_rejects_duplicate_keys_and_nonfinite_numbers_before_mutation"
   ],
   "compatibility_extensions": [
     "device_gateway_and_capture_plans",
@@ -53,16 +72,23 @@
     "automatic_media_preview_generation"
   ],
   "tests": {
-    "passed": 213,
+    "total": 558,
+    "passed": 378,
     "failed": 0,
-    "skipped": 112,
-    "junit": "tests/latest-results.xml",
+    "errors": 0,
+    "skipped": 180,
+    "data_nature": "synthetic_isolated_tests",
+    "junit": "../outputs/backend-integration-20261019/final-tests.xml",
+    "summary": "../outputs/backend-integration-20261019/verification.json",
     "skip_breakdown": {
-      "postgresql": 111,
-      "legacy_real_video_decode": 1
+      "postgresql": 178,
+      "legacy_real_video_decode_ffmpeg": 1,
+      "windows_symlink_permission": 1
     },
     "browser": {
-      "passed": true,
+      "status": "historical_v0.3",
+      "rerun_this_release": false,
+      "historical_passed": true,
       "total_checks": 38,
       "core_checks": 12,
       "structured_compat_checks": 15,
@@ -72,38 +98,51 @@
         "tests/browser/structured-result.json",
         "tests/browser/result.json"
       ],
-      "page_errors": 0,
-      "failed_requests": 0,
-      "transport": "Playwright to real Flask test_client with isolated SQLite/assets; no mocked business results",
-      "tcp_or_tls_validated": false
+      "historical_transport": "Playwright to real Flask test_client with isolated SQLite/assets; no mocked business results",
+      "tcp_or_tls_validated_by_historical_checks": false
     },
     "contract": {
-      "operations": 65,
-      "json_schemas": 26,
-      "report": "runtime/api-contract-check.json"
+      "operations": 73,
+      "json_schemas": 31,
+      "definition": "contracts/openapi.json",
+      "evidence": "../outputs/backend-integration-20261019/final-tests.xml"
     },
     "http_upgrade": {
-      "report": "runtime/http-intake-check.json",
+      "report": "../outputs/backend-integration-20261019/http-release-check.json",
+      "upgrade_report": "../outputs/backend-integration-20261019/upgrade-applied.json",
+      "transport": "actual_loopback_HTTP",
       "loopback_http": true,
-      "existing_legacy_rows_preserved": true,
+      "existing_rows_preserved": true,
+      "synthetic_preview_entities": 11,
+      "synthetic_preview_relations": 22,
+      "preview_rolled_back": true,
+      "entity_count_before": 17,
+      "entity_count_after": 17,
       "migration_versions": [
         "001",
         "002",
         "003",
-        "004"
+        "004",
+        "005"
       ]
     },
-    "sqlite_backup": {
+    "sqlite_upgrade_backup": {
       "integrity_check": "ok",
-      "foreign_key_violations": 0,
-      "scope": "数据库单独备份；原件及配置需另行备份"
+      "scope": "升级前SQLite在线备份和升级后完整性检查；不是原件、配置及生产恢复的完整验收",
+      "report": "../outputs/backend-integration-20261019/upgrade-applied.json"
     },
-    "postgresql_integration": "not_run"
+    "postgresql_integration": "not_run",
+    "field_acceptance": "not_run",
+    "production_tls_capacity_recovery": "not_run"
   },
   "limitations": [
     "SQLite验证不代替PostgreSQL真实迁移、事务、并发、恢复与容量验收",
-    "未连接真实梁子湖生产平台、现场设备或外部溯源系统",
-    "source_id契约匹配不是来源认证；生产令牌到来源强绑定未实现",
+    "已实现基于来源结构的确定映射；尚未导入真实梁子湖生产数据或完成现场验收",
+    "数据库来源身份绑定已实现；认证主体或生产令牌到source_id的服务端强绑定尚未实现",
+    "来源记录类不自动等价于统一农业业务本体；候选FK关系和来源快照不是已采纳事实或因果证明",
+    "复杂JSON、空间、向量及标识数组按覆盖目录延期；不静默解释为普通属性",
+    "多批计划仅每批原子；失败时前面已提交批次保留，需按原请求重放或显式修订",
+    "源库CHECK、触发器及所有唯一约束并未全部复制，来源删除不自动级联删除本体实体",
     "无类继承、任意OWL/SHACL推理、完整双时态重建或自动实体合并",
     "required仅适用于对象属性；每实体/本体版本/类仅一个连续有效区间",
     "定义改动需新版本；尚无完整草稿审批或自动历史迁移",
@@ -113,16 +152,46 @@
   ],
   "artifacts": {
     "readme": "README.txt",
+    "liangzihu_adapter_guide": "integrations/liangzihu/README.txt",
+    "liangzihu_import_cli": "ops/import_liangzihu.py",
+    "source_mapping_contracts": "contracts/source-mapping-schemas.json",
+    "coverage_manifest": "integrations/liangzihu/coverage-manifest.json",
     "intake_guide": "DATA_INTAKE_GUIDE.txt",
-    "database_scope": "DATABASE_CORE_V0.3.txt",
+    "historical_database_scope": "DATABASE_CORE_V0.3.txt",
     "openapi": "contracts/openapi.json",
-    "source_archive": "../交付文档/梁子湖农业本体数据库_本地工程版_v0.3.zip",
-    "historical_design_doc": "../交付文档/梁子湖智慧农业本体库与溯源系统总体方案_v1.1.docx"
+    "backend_manual_word": "../交付文档/梁子湖本体数据库后端操作说明书_v0.4.docx",
+    "source_database_report_word": "../交付文档/原梁子湖项目数据库分析与本体库比较报告.docx",
+    "current_evidence_directory": "../outputs/backend-integration-20261019",
+    "historical_v03_source_archive": "../交付文档/梁子湖农业本体数据库_本地工程版_v0.3.zip",
+    "historical_design_doc": "../交付文档/梁子湖智慧农业本体库与溯源系统总体方案_v1.1.docx",
+    "word_native_render_verified": false,
+    "word_preview_note": "ReportLab测量布局预览已检查；缺LibreOffice且Word COM不可用，未完成Word原生渲染验收"
   },
   "next_steps": [
-    "按实际来源样本登记本体和字段映射",
-    "由认证集成绑定来源权限",
-    "进行PostgreSQL及现场只读接入验收",
-    "对接外部溯源/推理消费方的增量读取"
-  ]
+    "以授权只读源数据导出验证实际来源字段和值域，预检后按依赖计划导入",
+    "完成认证主体到source_id的强绑定与对象级授权",
+    "执行PostgreSQL、现场只读接入、TLS、容量和恢复验收",
+    "对接外部溯源与推理消费方，检查数据性质、候选状态及实际采用的证据前提"
+  ],
+  "source_integration": {
+    "source_id": "liangzihu-platform",
+    "profile_id": "liangzihu-source-records",
+    "profile_version": "1.0.0",
+    "source_commit": "9995fc20cd84093adcaa3fab954ffe9d08b9f45a",
+    "catalog_tables": 190,
+    "catalog_fields": 2114,
+    "catalog_foreign_keys": 555,
+    "mapped_tables": 122,
+    "mapped_properties": 979,
+    "mapped_foreign_keys": 409,
+    "source_identity_binding": "implemented_locally",
+    "source_identity_binding_scope": "授权租户内按source_id、来源表、规范主键绑定系统生成的本体UUID；不按显示名猜测合并",
+    "authentication_principal_to_source_id": "not_integrated",
+    "relation_status": "candidate",
+    "source_snapshot_is_adopted_fact": false,
+    "production_connection": "not_integrated",
+    "maximum_records_per_batch": 100,
+    "maximum_request_bytes": 2097152,
+    "atomicity": "each_batch_or_bundle_only_not_entire_multi_batch_plan"
+  }
 }
