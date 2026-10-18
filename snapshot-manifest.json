@@ -1,13 +1,39 @@
 {
   "format": "liangzihu-github-snapshot/1",
-  "created_at": "2026-10-15T10:36:17.315076+00:00",
+  "created_at": "2026-10-18T16:45:56.837816+00:00",
   "source": {
     "selection_mode": "reviewed-incremental",
     "scope": [
-      "tools/ontology_export",
-      "outputs/liangzihu-ontology-20261015",
-      ".gitignore"
-    ]
+      ".gitignore",
+      "README.md",
+      "implementation/agri/app.py",
+      "implementation/agri/openapi.py",
+      "implementation/agri/service.py",
+      "implementation/agri/network.py",
+      "implementation/agri/source_mapping.py",
+      "implementation/contracts/openapi.json",
+      "implementation/contracts/source-mapping-schemas.json",
+      "implementation/migrations/005_source_mapping.sql",
+      "implementation/migrations/005_source_mapping.sqlite.sql",
+      "implementation/tests/test_source_mapping.py",
+      "implementation/tests/test_liangzihu_adapter.py",
+      "implementation/tests/test_integration_api.py",
+      "implementation/tests/test_network.py",
+      "implementation/web/app.js",
+      "implementation/ops/import_liangzihu.py",
+      "implementation/IMPLEMENTATION_STATUS.json",
+      "implementation/database-gate.json",
+      "implementation/README.txt",
+      "implementation/验证结果.txt",
+      "implementation/runtime/api-contract-check.json",
+      "交付文档/梁子湖本体数据库后端操作说明书_v0.4.docx",
+      "交付文档/原梁子湖项目数据库分析与本体库比较报告.docx",
+      "tools/ontology_export/build_source_profile.py",
+      "implementation/integrations/liangzihu",
+      "tools/backend_release",
+      "outputs/backend-integration-20261019"
+    ],
+    "baseline_commit": "b27f730f271e8fa8f84bc7c53e30aaa1d9b911cf"
   },
   "limits": {
     "archive_bytes": 18874368,
@@ -17,427 +43,581 @@
   },
   "archives": [
     {
-      "name": "snapshot-101.zip",
-      "size": 2779197,
-      "sha256": "83a9a2f2ee79be2463162c99bf4c20e39aee9b0a2e197e81b0b31a3e79fc2f43",
-      "file_count": 68,
-      "uncompressed_size": 14884588
+      "name": "snapshot-201.zip",
+      "size": 11023802,
+      "sha256": "a1a528a93955aca70bb6a64273e8d6ab4b4d3430690ec16a40b587f8d94c2f14",
+      "file_count": 93,
+      "uncompressed_size": 16434742
     }
   ],
   "files": [
     {
       "path": ".gitignore",
-      "archive": "snapshot-101.zip",
-      "size": 831,
-      "sha256": "a55ff27db2d1f43d0f540b22b59f08a09503c439da45ddcacf90b1a2e07d2926"
+      "archive": "snapshot-201.zip",
+      "size": 953,
+      "sha256": "18a3e7de5edc005f477dd7fb5a342e0211b687d1366cffd3629ef98e61295efd"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/converter-test-results.xml",
-      "archive": "snapshot-101.zip",
-      "size": 3704,
-      "sha256": "31a8f26e743a2df31249158048b6e0cbc530117f7f54a2f0cf887d8d4b8c72bd"
+      "path": "README.md",
+      "archive": "snapshot-201.zip",
+      "size": 4325,
+      "sha256": "7f6039fe708ae5adf21735289755928a7e8afb7b1873cbe60501944ca3d4d015"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/export-tools-test-results.xml",
-      "archive": "snapshot-101.zip",
-      "size": 8278,
-      "sha256": "d9d4398ed81a5b7f8eac9c66e636c2165f93c797bf0b355b6aa391a7ef43677b"
+      "path": "implementation/IMPLEMENTATION_STATUS.json",
+      "archive": "snapshot-201.zip",
+      "size": 9750,
+      "sha256": "22451221493840238ec6d4c45eabceeeef307681971ad629163c0c3cdfaafd7a"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/extra_sheets.json",
-      "archive": "snapshot-101.zip",
-      "size": 215464,
-      "sha256": "7d72daa243dea978a73d27086604388a743e606a21bce9cb8647b1083717213b"
+      "path": "implementation/README.txt",
+      "archive": "snapshot-201.zip",
+      "size": 9131,
+      "sha256": "2fdd69ee19cbaffd1dabc38ef889deb76e4a62fe805c5bf3897595f08612e566"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/final-workbook-verification.json",
-      "archive": "snapshot-101.zip",
-      "size": 683,
-      "sha256": "cd816846daa52482d6f4749e0ac32baf46764fa88ce7e0f2c258be65f0c90a30"
+      "path": "implementation/agri/app.py",
+      "archive": "snapshot-201.zip",
+      "size": 19637,
+      "sha256": "b6e07c342eb657ee6ae119e0b9da050fd55d007f31eb9b0255203396e5072c04"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/001_lzhu.agronomy_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 23708,
-      "sha256": "23e1e3e99a321602a235080c4661e26da9a26387a99c4cf360b0871b9655465f"
+      "path": "implementation/agri/network.py",
+      "archive": "snapshot-201.zip",
+      "size": 22237,
+      "sha256": "b166d68ce75af44fcd2164649aced0b7f41bad6bd7487daf276afd7a72240ca2"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/002_lzhu.analysis_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 27070,
-      "sha256": "725cd8565543d2faee936336405c4a2aea86d642d5a3f5f2415d22fa1045bcef"
+      "path": "implementation/agri/openapi.py",
+      "archive": "snapshot-201.zip",
+      "size": 18491,
+      "sha256": "92f4bac9b3ca1d2e01f3e149fcef8fd698d38b83fdf74ab72c5ca18ebc4843cb"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/003_lzhu.finance_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 32429,
-      "sha256": "156dd021afbbe7cdaa651ba717d5accfb53c8088a13f668d06417720ae6b9c10"
+      "path": "implementation/agri/service.py",
+      "archive": "snapshot-201.zip",
+      "size": 83475,
+      "sha256": "79cd355f8cb977672371e83b85c880c9d52d2aba5c770b6606bbcdc74d29433d"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/004_lzhu.governance_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 26205,
-      "sha256": "e8b8ddc0acccbce35ac74364ba4bf3415e4dc83585288a28ffb1bfac10757765"
+      "path": "implementation/agri/source_mapping.py",
+      "archive": "snapshot-201.zip",
+      "size": 46405,
+      "sha256": "e93575d80958eb68f734ddfaba5a53a835eef222c919bfc43223a63b5b84f14e"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/005_lzhu.imagery_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 42193,
-      "sha256": "0ea289f8dbc153310abe19acc7e9ed668ab828d2d76614b296aa2afeab52b085"
+      "path": "implementation/contracts/openapi.json",
+      "archive": "snapshot-201.zip",
+      "size": 330678,
+      "sha256": "feb5eb64f24c88af8bcf653294d857b05b3f6b9c51dc0995f3c050688a841896"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/006_lzhu.knowledge_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 20765,
-      "sha256": "d1639fec8de597a2c9104d2e1622ecebab52702262852a7148f1bafbffa43b78"
+      "path": "implementation/contracts/source-mapping-schemas.json",
+      "archive": "snapshot-201.zip",
+      "size": 34955,
+      "sha256": "24d9769541bd9379b4234ab8e2f4c4219e4a2a85b0598a88d59e48cd4d7e486f"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/007_lzhu.machinery_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 22230,
-      "sha256": "c62d3debea5969e87fafd8cd60e948154663d2de25806430a87a6e4a0130bec5"
+      "path": "implementation/database-gate.json",
+      "archive": "snapshot-201.zip",
+      "size": 2657,
+      "sha256": "4fef40d5a43096851d15781466608dd854bba8d7f9a05032156a6db59bee30c0"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/008_lzhu.operations_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 55140,
-      "sha256": "acacc2deaf990702db2e4feb8d0f4fcf9e406f607fee43ca33ac026026be3e36"
+      "path": "implementation/integrations/liangzihu/README.txt",
+      "archive": "snapshot-201.zip",
+      "size": 12988,
+      "sha256": "e268dade096d50edf0b154a96256f48ccbe634579a081277e4ff98588a3499a6"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/009_lzhu.protection_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 24475,
-      "sha256": "37fe3e9599d7934024a0a34374acb2dbfd5ef619401efbbff4d7d152a0c68f28"
+      "path": "implementation/integrations/liangzihu/__init__.py",
+      "archive": "snapshot-201.zip",
+      "size": 15404,
+      "sha256": "fa770fe5b00a0a14130ae2180356d031a7d93e2b60341da0f3da7d116aaab0ff"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/010_lzhu.quality_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 23279,
-      "sha256": "63a1e961a91825e63f152dfe01f8e66a6a139b836f571d980c76799683097934"
+      "path": "implementation/integrations/liangzihu/artifact-manifest.json",
+      "archive": "snapshot-201.zip",
+      "size": 1491,
+      "sha256": "5362291f5f084a0ec339aeeb5e67b732c2997fafcd8555e31af02b89a0e04ae7"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/011_lzhu.registry_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 63612,
-      "sha256": "9784dd8f385099b762bb506039688101eece02a4fabbfa174bfc7216b4dd8e3d"
+      "path": "implementation/integrations/liangzihu/coverage-manifest.json",
+      "archive": "snapshot-201.zip",
+      "size": 2030602,
+      "sha256": "e4f2cde5b46214f33c178e08aa425055a9c3f25bfa6ac86c763fcc737b5b1029"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/012_lzhu.research_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 20026,
-      "sha256": "b57194d127de963c506e94b27454a5194fa3b70b86a41a481534caa2ff653a90"
+      "path": "implementation/integrations/liangzihu/input-template.json",
+      "archive": "snapshot-201.zip",
+      "size": 199,
+      "sha256": "b0ae6a5d404191985e60e83fa99e239338041e42bec255c12accf7fecd19798a"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/013_lzhu.resources_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 27178,
-      "sha256": "7fa69e8e1ef50feece8d5b7c18832dae4cfe52131d0382736de3c36d3df45b11"
+      "path": "implementation/integrations/liangzihu/package-bundle.json",
+      "archive": "snapshot-201.zip",
+      "size": 768139,
+      "sha256": "0a56d3b5ebf0965bb929f19c0b3e556b19d2e372aa4318daa36739490822f241"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/014_lzhu.stock_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 27005,
-      "sha256": "f356cafbcd91cd76769142f9851df9afd0f221d5631cc23f03ff11739e7a1a90"
+      "path": "implementation/integrations/liangzihu/readonly-export-core.sql",
+      "archive": "snapshot-201.zip",
+      "size": 4640,
+      "sha256": "37d19cb58e119bf604b56ba5db207424073cd4f1a2e52b8078133cdd35e8a602"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/015_lzhu.telemetry_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 11799,
-      "sha256": "880934c0c0a5edc3182f8acbbd64fec63848c0e1200457e0c7a0ab40415639a0"
+      "path": "implementation/integrations/liangzihu/readonly-export.sql",
+      "archive": "snapshot-201.zip",
+      "size": 86097,
+      "sha256": "337a6a39c34f6b4f4bf3d88da4ac4a352b52f755284bea473fec5143deb0bc0d"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/016_lzhu.weather_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 8332,
-      "sha256": "bbf2597dded5920ea1ddf4afd9f80de58415fe6b895fc84e2c5fd17f18f70e1e"
+      "path": "implementation/integrations/liangzihu/source-profile.json",
+      "archive": "snapshot-201.zip",
+      "size": 433156,
+      "sha256": "db9675d86e122b51fce7e0d1f5b823919550ef33580f362df56a872bb99585f7"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/017_lzhu.links1_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 191665,
-      "sha256": "2de8199a63fd9be190825542a94a70e259fcb80224d3e0c4d1996b04d0985f88"
+      "path": "implementation/integrations/liangzihu/synthetic-core-example.json",
+      "archive": "snapshot-201.zip",
+      "size": 3942,
+      "sha256": "34222d6c254c8337ca7212a6280ba7ad14c3075eb34728d1e1572d082d367b17"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/018_lzhu.links2_0.1.0.json",
-      "archive": "snapshot-101.zip",
-      "size": 25312,
-      "sha256": "a33e41ea97a71e376e6f37b53c2c7899fa3b7036db8df5a30d1a7984508b8903"
+      "path": "implementation/migrations/005_source_mapping.sql",
+      "archive": "snapshot-201.zip",
+      "size": 3964,
+      "sha256": "d6c3219a84533818e5ae34aeeb3a227308d896a72a31d811711fbc649e89b0da"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/manifest.json",
-      "archive": "snapshot-101.zip",
-      "size": 5449,
-      "sha256": "140a13f2e6952dc7d17b7c039ed13fcb0e10e31e3190cecef2ec88cd3ba6ecc0"
+      "path": "implementation/migrations/005_source_mapping.sqlite.sql",
+      "archive": "snapshot-201.zip",
+      "size": 3940,
+      "sha256": "2cfc391c2221b2614ed7ae0881faafc6290e3e2fe088a1fcbfb4cbd09137d249"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/packages/validation-report.json",
-      "archive": "snapshot-101.zip",
-      "size": 307351,
-      "sha256": "39f3e05c6d9b53a5d8f1873340ee332bff8eb5c87f0aa9a0c77e82a427c3de84"
+      "path": "implementation/ops/import_liangzihu.py",
+      "archive": "snapshot-201.zip",
+      "size": 15891,
+      "sha256": "8857718e451f1288b2e6b0f89f8b8643a25a6dde2f041e3c2ee0821ec0760421"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/DDL审计.png",
-      "archive": "snapshot-101.zip",
-      "size": 106940,
-      "sha256": "a80e81c42cb40df7c24e122d1f963427e8306fec6de302b90de23926b7ddaf8a"
+      "path": "implementation/runtime/api-contract-check.json",
+      "archive": "snapshot-201.zip",
+      "size": 364,
+      "sha256": "8c8456646801800649f0bb8f1dea346db4c64e84a2e6fdf5b1530c7114b4de66"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/使用说明.png",
-      "archive": "snapshot-101.zip",
-      "size": 118234,
-      "sha256": "9c6fe698e42b8278b8041cf2bb9c7f6127c61353f6a927ca835e55c24b902282"
+      "path": "implementation/tests/test_integration_api.py",
+      "archive": "snapshot-201.zip",
+      "size": 8220,
+      "sha256": "49e522f305570514b73493c21649539e0dfb2fc8a2a481dc2e210a26d131c30f"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/关系类型.png",
-      "archive": "snapshot-101.zip",
-      "size": 97509,
-      "sha256": "8dd835760583529b5b7e475aff2abbb5b3e9853a3e7369e2d2a503c068617207"
+      "path": "implementation/tests/test_liangzihu_adapter.py",
+      "archive": "snapshot-201.zip",
+      "size": 16846,
+      "sha256": "a18c872c1b231df26f90fa91babf9cc5a921d765c1bf475b8ca3b9f9cd2d8e12"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/包依赖.png",
-      "archive": "snapshot-101.zip",
-      "size": 77120,
-      "sha256": "2c4029e1accdfb7efcbeb4bc136c958e8ac83659c72ff7a27b8565bac75f088a"
+      "path": "implementation/tests/test_network.py",
+      "archive": "snapshot-201.zip",
+      "size": 10574,
+      "sha256": "7b890132de64e21942c044a6cfe47aa560d44d4c7197983ac853186a610d8945"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/填写字典.png",
-      "archive": "snapshot-101.zip",
-      "size": 98176,
-      "sha256": "d57598631dccdf36c872da921ea385c7e25278fb23af1267fdabc1defb30b4e4"
+      "path": "implementation/tests/test_source_mapping.py",
+      "archive": "snapshot-201.zip",
+      "size": 31963,
+      "sha256": "02cac1152a4ffc9ffaf78300000c82c6e3d348ebb8d8aa62195e55446b9f3c2a"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/多维关系路径.png",
-      "archive": "snapshot-101.zip",
-      "size": 68545,
-      "sha256": "49a02e09eff36700130bd9238b833806ebcdb9ac0cedca9cc343fedeaeb966d2"
+      "path": "implementation/web/app.js",
+      "archive": "snapshot-201.zip",
+      "size": 117661,
+      "sha256": "7146ad2c0ada48582cde58d55c680a789f00a5deb851f7e97d8ee3d5e307f865"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/对象类型.png",
-      "archive": "snapshot-101.zip",
-      "size": 57455,
-      "sha256": "12f9ca167ffd4ddc53b815ae1ffc8b2825dd45c60b433f37afb79b2f01edfdda"
+      "path": "implementation/验证结果.txt",
+      "archive": "snapshot-201.zip",
+      "size": 4481,
+      "sha256": "cee0532f27e9e24be2e89d5af3bdd31dff7d034e16bbaa1d316728e5a0cd73a5"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/属性定义.png",
-      "archive": "snapshot-101.zip",
-      "size": 60307,
-      "sha256": "2225c6adaec9a574fa7a772beb6cf6dd93f7713f586514d4bb478accc9b99d96"
+      "path": "outputs/backend-integration-20261019/backend_manual.json",
+      "archive": "snapshot-201.zip",
+      "size": 34888,
+      "sha256": "6e0e526cc5c072897da851d055145e931cf5e6d66d804f0dbd98c755d3f25ba8"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/待映射项.png",
-      "archive": "snapshot-101.zip",
-      "size": 55346,
-      "sha256": "33cc9411710c3c58a15caf9f8e46d567893226bb423c8235f610e2dfe0a54417"
+      "path": "outputs/backend-integration-20261019/baseline-tests.xml",
+      "archive": "snapshot-201.zip",
+      "size": 78133,
+      "sha256": "dad459ecf86619edd882bcfa2c508e8d295b1da65b452b7a29b6635e4f3c9979"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/接入字段说明.png",
-      "archive": "snapshot-101.zip",
-      "size": 128348,
-      "sha256": "694f84d72a6f2faf636952898e424269d5893686d6012939682f9b51d3ede2d3"
+      "path": "outputs/backend-integration-20261019/final-tests.xml",
+      "archive": "snapshot-201.zip",
+      "size": 132973,
+      "sha256": "30901e04fda6b226e1b69c6584bd4b9154d270b100404f4aa25a2ad1f02fb4c9"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/源码覆盖.png",
-      "archive": "snapshot-101.zip",
-      "size": 103733,
-      "sha256": "3c549d7e0e18bdbbc66b5baa2ca8c23613669f73b8561e03c196aead6d1cfd96"
+      "path": "outputs/backend-integration-20261019/http-release-check.json",
+      "archive": "snapshot-201.zip",
+      "size": 713,
+      "sha256": "e462841915d934522a4c613f4879ad2b50cf94e7edad990d6613c5e61f7c6b95"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/源表清单.png",
-      "archive": "snapshot-101.zip",
-      "size": 61659,
-      "sha256": "f15dd3d3dc10ef941ed7e2f61923383fde14810052ef4b39b7d77ea73dee1271"
+      "path": "outputs/backend-integration-20261019/integration-tests.xml",
+      "archive": "snapshot-201.zip",
+      "size": 29651,
+      "sha256": "fd8dcd785e363413d9ec56d5bfd53473c695621073319cd76b8cdd2667163aaf"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/类别与枚举.png",
-      "archive": "snapshot-101.zip",
-      "size": 153250,
-      "sha256": "670c34b3a35bcdeb1e624987c20e3d910d7859ff27700df7c9d3e096ac15c2a1"
+      "path": "outputs/backend-integration-20261019/layout-reflow-check.json",
+      "archive": "snapshot-201.zip",
+      "size": 1245,
+      "sha256": "957adb905e0fa5ebb7136d334e40d7cc46f97cb0d69d2ea5c91dc52d5a03b01e"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/约束枚举.png",
-      "archive": "snapshot-101.zip",
-      "size": 72174,
-      "sha256": "8061f018844320f0da86abb8d70036b398bf9f1ecb4f720be62496e2c808cd49"
+      "path": "outputs/backend-integration-20261019/manual-qa/final-visual-validation.json",
+      "archive": "snapshot-201.zip",
+      "size": 570,
+      "sha256": "c96554dffb4f79a5858b433804e1885ed2c28be427dc7910a4be4e083fd8b9ae"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/试录关系.png",
-      "archive": "snapshot-101.zip",
-      "size": 22542,
-      "sha256": "a1fc5bf19cab6ec094bc6d58e2a8d52bacdcce56b7efccc695f61f823cca9b91"
+      "path": "outputs/backend-integration-20261019/manual-qa/layout-preview.pdf",
+      "archive": "snapshot-201.zip",
+      "size": 263772,
+      "sha256": "dfd69c8643fa9eaf2d1dd9e7e3c81e3b46d34198d669f5bc0e617bd056da0e7c"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/试录对象.png",
-      "archive": "snapshot-101.zip",
-      "size": 22710,
-      "sha256": "6c5ed6b1d98505282bd9109cac27ff449efba76e0ad3d3759ffd13802a3e628f"
+      "path": "outputs/backend-integration-20261019/manual-qa/layout-report.json",
+      "archive": "snapshot-201.zip",
+      "size": 69460,
+      "sha256": "f58af5726d76a99a21fe918c773e3be44f4c1aa39ef11fe4c48fc9fd7227c957"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/试录属性.png",
-      "archive": "snapshot-101.zip",
-      "size": 23732,
-      "sha256": "5bf278d7a2be77fd45ccfadc7e6b9c7648835b541f4449ce8a3fcaea13485f57"
+      "path": "outputs/backend-integration-20261019/manual-qa/native-render.json",
+      "archive": "snapshot-201.zip",
+      "size": 1471,
+      "sha256": "dc7e1c2b4d77e9956fcb0f5e91ccde1e0bf0a829ab660beb02f049628743644b"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/previews/领域包.png",
-      "archive": "snapshot-101.zip",
-      "size": 194813,
-      "sha256": "bea1d59ab7c45b2287e96cb049043ca0754301ddaa96a934f3e4a7a476507f2b"
+      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-1.png",
+      "archive": "snapshot-201.zip",
+      "size": 473761,
+      "sha256": "67227ce0eccdfc14248e67d38cd88a8acbd1c1a33ec9fd7cca2362a2f09b638c"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/schema_catalog.json",
-      "archive": "snapshot-101.zip",
-      "size": 3284555,
-      "sha256": "4222392e7e5465781caaba2724731169b1fb5bfaecc0f787f49af06516505cc2"
+      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-10.png",
+      "archive": "snapshot-201.zip",
+      "size": 202588,
+      "sha256": "53a48a97395cc3e9991fc511082558db72c239f8fe872fdade9540c99a8586c8"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/schema_catalog_local_subset.json",
-      "archive": "snapshot-101.zip",
-      "size": 762859,
-      "sha256": "0244cfbbc36d1196f3782f722e1e19a4bde9c58ea414fc4bbd1f2ff8819de6dd"
+      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-2.png",
+      "archive": "snapshot-201.zip",
+      "size": 403758,
+      "sha256": "964227964062ee18819844b30b840818e97b6b30a31adaa018a2d06ba11f1b12"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/visual-qa-part1.txt",
-      "archive": "snapshot-101.zip",
-      "size": 342,
-      "sha256": "8fe491cd031a1b8e1a7c75ae47b2aa514b8f4fb12f12e1ae36277ec541770822"
+      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-3.png",
+      "archive": "snapshot-201.zip",
+      "size": 445614,
+      "sha256": "c63cca49d95249821f2f23fce5d9deb76e9795b14d9b0adbd8e6ae2b9e9680fb"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/visual-qa-part2.txt",
-      "archive": "snapshot-101.zip",
-      "size": 920,
-      "sha256": "5337a8348a9a80ba91758d3a9d4e0b07abb40d2d8ef2b544c0ef17419ccab209"
+      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-4.png",
+      "archive": "snapshot-201.zip",
+      "size": 475456,
+      "sha256": "1ca447183e08cbd5069fd1a33176458c6b41a2b7a3458b6a65ca76041fcab21e"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/workbook-build-report.json",
-      "archive": "snapshot-101.zip",
-      "size": 4395,
-      "sha256": "ef53600947dbe7f49f4ff20be091b03985d75bd91da1fec556d126b715dbf19c"
+      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-5.png",
+      "archive": "snapshot-201.zip",
+      "size": 554299,
+      "sha256": "e63dcc12725664f5215e99dcc06fbf974f496cfca7047ead1a95e77d33bf4cd6"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/workbook-error-scan.json",
-      "archive": "snapshot-101.zip",
-      "size": 384,
-      "sha256": "9aeda6a7d1013b5cc88f85c77eee3b78415364cd3dbd8b8622e99fba201b3144"
+      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-6.png",
+      "archive": "snapshot-201.zip",
+      "size": 443865,
+      "sha256": "2f410b7a47af488e6cc9f1502b9830381638aa378ff167e523066a98b96af8a7"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/workbook-inspection.ndjson",
-      "archive": "snapshot-101.zip",
-      "size": 21394,
-      "sha256": "b857b3174de69c79dccd65f4e970d3c46345ebd2c945c190397f2399fac33f32"
+      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-7.png",
+      "archive": "snapshot-201.zip",
+      "size": 515366,
+      "sha256": "abb24505338592e7ff66d92656faa16cb290fb2d55da084d2abd94111a8eae11"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/workbook_data.json",
-      "archive": "snapshot-101.zip",
-      "size": 6982110,
-      "sha256": "937b4abaddce7ac392a67a521eee23446409f1fd63628b1b8b418ba2965b40d7"
+      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-8.png",
+      "archive": "snapshot-201.zip",
+      "size": 468640,
+      "sha256": "5a9573d68fc7bfe3cce57e9a8b3de600107bed7db53c0a86e8c23999e87246cd"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/导入说明.txt",
-      "archive": "snapshot-101.zip",
-      "size": 3596,
-      "sha256": "e5d0cc3c471eb005144ed3382be1726c6908f9000c6ac0856d162c96e72817c6"
+      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-9.png",
+      "archive": "snapshot-201.zip",
+      "size": 349911,
+      "sha256": "764b931f96d31fd192fbc3ed747b3013cb8b395411af16726a34d9fef4c4e437"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/导出当前Excel为本体JSON.cmd",
-      "archive": "snapshot-101.zip",
-      "size": 272,
-      "sha256": "680af23f8c0df4efd7b04a3c65e98d9220dfb1296ac66d6fe02a5563e0ba1180"
+      "path": "outputs/backend-integration-20261019/manual-qa/visual-review-core.txt",
+      "archive": "snapshot-201.zip",
+      "size": 765,
+      "sha256": "5f80549c7cf2dc81b4c8fc86c7e89f31ff65a6fffe5f78e5b680dbf087903059"
     },
     {
-      "path": "outputs/liangzihu-ontology-20261015/梁子湖项目_本体与关系全量结构导出.xlsx",
-      "archive": "snapshot-101.zip",
-      "size": 774700,
-      "sha256": "cad6ce945ff9187e0cb4e036b248e43b14f9bae2a7b231bcc919c04961dcc98c"
+      "path": "outputs/backend-integration-20261019/manual-qa/visual-review-reflow.txt",
+      "archive": "snapshot-201.zip",
+      "size": 1673,
+      "sha256": "df78f319efc3a87e289cb770272461f47fa6093eec13091aa34bb542159f9554"
     },
     {
-      "path": "tools/ontology_export/README.txt",
-      "archive": "snapshot-101.zip",
-      "size": 7849,
-      "sha256": "4155077c4ecba89656a4cd93ac2b67cd2c1afb821ae0c0d949263d34c9cadc1e"
+      "path": "outputs/backend-integration-20261019/publication-preflight.json",
+      "archive": "snapshot-201.zip",
+      "size": 861,
+      "sha256": "6dea125bf0b1c604ef314c2f65498ff57ceed356740e2307de2fb0010005038b"
     },
     {
-      "path": "tools/ontology_export/build_catalog_tables.py",
-      "archive": "snapshot-101.zip",
-      "size": 22703,
-      "sha256": "c8ce9197a0b82ad1ffa5475ce16779317df2f8fe330126b8849f9d3675edb456"
+      "path": "outputs/backend-integration-20261019/report-qa/final-visual-validation.json",
+      "archive": "snapshot-201.zip",
+      "size": 570,
+      "sha256": "de38e4519f6fc8c8840edb40651141714b2a9eb355d0a04421ac527c9a8a789b"
     },
     {
-      "path": "tools/ontology_export/build_export_snapshot.py",
-      "archive": "snapshot-101.zip",
-      "size": 2419,
-      "sha256": "2383d1bc8b74f2a191f7851a3a9d20f7ce8735a6c187651d435ff2288f5d48bd"
+      "path": "outputs/backend-integration-20261019/report-qa/layout-preview.pdf",
+      "archive": "snapshot-201.zip",
+      "size": 322539,
+      "sha256": "ba5b6cb7587a02214a427134f2ff45096d2e2ec482c2bb59167e5b5c1a4b38e1"
     },
     {
-      "path": "tools/ontology_export/build_workbook.mjs",
-      "archive": "snapshot-101.zip",
-      "size": 13198,
-      "sha256": "ed48f79a507553df3db899f974b7f7d91edc310e7cc5f459a7a9b409ac358108"
+      "path": "outputs/backend-integration-20261019/report-qa/layout-report.json",
+      "archive": "snapshot-201.zip",
+      "size": 161095,
+      "sha256": "96bfba475a9453976b64ef81e09d373781f4b38763257d554547ae10b488917f"
     },
     {
-      "path": "tools/ontology_export/domain_labels.json",
-      "archive": "snapshot-101.zip",
-      "size": 132396,
-      "sha256": "91c46568f3d9a97ce9e0a42b99a3eda854ada0e4943211a7bb3199666f9ba31c"
+      "path": "outputs/backend-integration-20261019/report-qa/native-render.json",
+      "archive": "snapshot-201.zip",
+      "size": 1471,
+      "sha256": "dc7e1c2b4d77e9956fcb0f5e91ccde1e0bf0a829ab660beb02f049628743644b"
     },
     {
-      "path": "tools/ontology_export/extract_schema.py",
-      "archive": "snapshot-101.zip",
-      "size": 40032,
-      "sha256": "144064c06154d13085c9da47c102ead626e50eb02d06714ee9194424a78864d1"
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-1.png",
+      "archive": "snapshot-201.zip",
+      "size": 523141,
+      "sha256": "308c07adcdb8f64405d452a1747e734b46ebab5875dd0db837f2a6b2a5606f2b"
     },
     {
-      "path": "tools/ontology_export/test_build_catalog_tables.py",
-      "archive": "snapshot-101.zip",
-      "size": 6222,
-      "sha256": "ea8ed81945876381f39eabad2788f9159573b53f290d88a7c4e67ee028616003"
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-10.png",
+      "archive": "snapshot-201.zip",
+      "size": 474042,
+      "sha256": "65b67ce79922537f073554e446046ba0943754a0b4925a2b2aeaa030fbabe639"
     },
     {
-      "path": "tools/ontology_export/test_extract_schema.py",
-      "archive": "snapshot-101.zip",
-      "size": 7362,
-      "sha256": "024fbab53f8b1ebbe3306a198bb26b3923211619a7a38788efc03915fd3af8d2"
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-11.png",
+      "archive": "snapshot-201.zip",
+      "size": 422714,
+      "sha256": "9f10cd67cdc47c3175e81929042aa5b57aa5cd0fe9dce5bd1952fcb9f1b0da5c"
     },
     {
-      "path": "tools/ontology_export/test_workbook_to_packages.py",
-      "archive": "snapshot-101.zip",
-      "size": 8871,
-      "sha256": "8e0bdb932bc563c35c2a4315efe6a98e30a22412d759b46d17f3600f58ec929e"
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-12.png",
+      "archive": "snapshot-201.zip",
+      "size": 208080,
+      "sha256": "2ce3e1feb532cfdc41cb9fc133912b492ceee9743310e7b38813ba095b0c1989"
     },
     {
-      "path": "tools/ontology_export/traceability_paths.json",
-      "archive": "snapshot-101.zip",
-      "size": 46000,
-      "sha256": "a9a9dfe13bae0d554afd07133dc5c151630871289c4da304738c096e23348163"
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-13.png",
+      "archive": "snapshot-201.zip",
+      "size": 184193,
+      "sha256": "e2aee2b0f899980b251ff091663ceb90a8c0169cd87dc2290eb56156b167a10f"
     },
     {
-      "path": "tools/ontology_export/validate_packages.py",
-      "archive": "snapshot-101.zip",
-      "size": 6548,
-      "sha256": "35bca270b8a5a25ee302e92b7dd8a0afa0563236df85a58c1d1b7ee5d42f39be"
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-14.png",
+      "archive": "snapshot-201.zip",
+      "size": 207180,
+      "sha256": "4bc2fece11d3193613aa81a0d433abb4733a5a35a18ea47b5a12947a14665a10"
     },
     {
-      "path": "tools/ontology_export/verify_workbook.py",
-      "archive": "snapshot-101.zip",
-      "size": 2503,
-      "sha256": "29fd294b5d255440be2e5c2625df7e7c1b90f273f3dbdffa1473f32bc93d058f"
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-15.png",
+      "archive": "snapshot-201.zip",
+      "size": 197504,
+      "sha256": "7188c52ba7ba4033803622cb4df24133c834d9583463613fd8e4f9e9897199cc"
     },
     {
-      "path": "tools/ontology_export/workbook_to_packages.py",
-      "archive": "snapshot-101.zip",
-      "size": 15322,
-      "sha256": "d7dcc1ed0958def0f4cf32d9677cad8ff201b5fb69899f443470ed799585e24e"
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-16.png",
+      "archive": "snapshot-201.zip",
+      "size": 188032,
+      "sha256": "ea2539f7a85c9513d9e285a346e8418d6f1ef0a81aaa1fd5d6961b82379f41a5"
     },
     {
-      "path": "tools/ontology_export/导出本体JSON.cmd",
-      "archive": "snapshot-101.zip",
-      "size": 860,
-      "sha256": "77473f478c9b9ab4c318440ed43596a33b73c416f1d1f539c7336a3ce932f7d5"
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-17.png",
+      "archive": "snapshot-201.zip",
+      "size": 197979,
+      "sha256": "0f6255ad32d11b52f52569ccb9cbc0629b4e986925db5ad0bcba8b672b558065"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-18.png",
+      "archive": "snapshot-201.zip",
+      "size": 176590,
+      "sha256": "675de94c97a67786dcab577dedb7f5035fdb87ef945f125abc6d440b2ab6dbb0"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-19.png",
+      "archive": "snapshot-201.zip",
+      "size": 70218,
+      "sha256": "c536dd04438412df9a7b8482913f85aebc0ad8cd3dadff41ae73bd9b1f6132da"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-2.png",
+      "archive": "snapshot-201.zip",
+      "size": 414858,
+      "sha256": "016eeac959b256dac6473642f951d6433fbcc845d5033bd1d9857c5349fa5202"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-3.png",
+      "archive": "snapshot-201.zip",
+      "size": 356524,
+      "sha256": "8f278683f8529078114e04dc9a1956fa1ed76de8afc7e2817cc0d8dbd9cfcb36"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-4.png",
+      "archive": "snapshot-201.zip",
+      "size": 487272,
+      "sha256": "4515f4af6db1d0b25cc1fdb2df3217a093920e19121b5bf0da4b4425e1142107"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-5.png",
+      "archive": "snapshot-201.zip",
+      "size": 531131,
+      "sha256": "bb803c4f570a138589a52ce41527342cf9ba92a0d6b237d14413fc3ac7ce4b96"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-6.png",
+      "archive": "snapshot-201.zip",
+      "size": 556916,
+      "sha256": "296193652856bb53b177d74d6ba8a9479f108c0162c0e45b22ba6bef16938495"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-7.png",
+      "archive": "snapshot-201.zip",
+      "size": 465378,
+      "sha256": "682c699fea8134ffe60d0c215ad66123925601f1116670703e756d36a95b5ba6"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-8.png",
+      "archive": "snapshot-201.zip",
+      "size": 486622,
+      "sha256": "298c7f2d6e3e7565d117e5deb92d3b86e20d7a9b6de37da4e586860c6d17da50"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-9.png",
+      "archive": "snapshot-201.zip",
+      "size": 448976,
+      "sha256": "e7cc1398f780326622c296ff2e4746a5f12f5320d33ce7863f96e4c93a3ae1be"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/report-qa/visual-review-part1.txt",
+      "archive": "snapshot-201.zip",
+      "size": 1933,
+      "sha256": "b938cf1fb65ffdbc20bdbf2a742fa901ca3f0aee0de26b57799666dbc133971b"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/report-qa/visual-review-part2.txt",
+      "archive": "snapshot-201.zip",
+      "size": 2198,
+      "sha256": "64834201faa8e97b91fe46551dc20ca0fd7d979a39ca1b785edb5152160ed234"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/source_database_report.json",
+      "archive": "snapshot-201.zip",
+      "size": 69405,
+      "sha256": "20c163dba982d67beff970ee6d41aefe4be036d312d863c48cf4d926f32114ea"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/upgrade-applied.json",
+      "archive": "snapshot-201.zip",
+      "size": 951,
+      "sha256": "cc09989ab8a085fd39e17252fa304640a18a79793f731b01ac703fd0042876fc"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/upgrade-preflight.json",
+      "archive": "snapshot-201.zip",
+      "size": 443,
+      "sha256": "b02c9f099cdc1d2a8533fc75d4cf158315ae46e78f53af802eb4f7781e6df483"
+    },
+    {
+      "path": "outputs/backend-integration-20261019/verification.json",
+      "archive": "snapshot-201.zip",
+      "size": 672,
+      "sha256": "95c8ead52a040076841b312fae6ea78e8a8c617b8b155f851df3a745da6d1b97"
+    },
+    {
+      "path": "tools/backend_release/build_docs.py",
+      "archive": "snapshot-201.zip",
+      "size": 13244,
+      "sha256": "5980d56d0596fc14fdfb69f9633818ebbffcfd0d7ceda1bd7f2b7d57d2549618"
+    },
+    {
+      "path": "tools/backend_release/build_snapshot.py",
+      "archive": "snapshot-201.zip",
+      "size": 5060,
+      "sha256": "6e826264c73a3c4b2dc4cedd8106a6314b018a24973c70a11c5786b430764105"
+    },
+    {
+      "path": "tools/backend_release/check_http.py",
+      "archive": "snapshot-201.zip",
+      "size": 2390,
+      "sha256": "9fcc99db11f2b1105ebca82a08998418d790723092a665210090997f1ddeaf5f"
+    },
+    {
+      "path": "tools/backend_release/finalize_docs.py",
+      "archive": "snapshot-201.zip",
+      "size": 11660,
+      "sha256": "8ef184df172c4d354049e709f89b14ca797c9233dc4af75e556d26e3e3c8b70e"
+    },
+    {
+      "path": "tools/backend_release/render_qa.py",
+      "archive": "snapshot-201.zip",
+      "size": 1736,
+      "sha256": "eecd32496e74c0089470fba1206155709cabda8d581a2031b8f2f8d907d51554"
+    },
+    {
+      "path": "tools/backend_release/upgrade_local.py",
+      "archive": "snapshot-201.zip",
+      "size": 4333,
+      "sha256": "bfece9bbcea3b2d651147d4ab974bb6e7a2e4d0314aee35a81b00622219b321d"
+    },
+    {
+      "path": "tools/ontology_export/build_source_profile.py",
+      "archive": "snapshot-201.zip",
+      "size": 14798,
+      "sha256": "54f3afa95f1e8678ce9f288667c0f461cd5b46cd3952ccc5f32c0d6b10599629"
+    },
+    {
+      "path": "交付文档/原梁子湖项目数据库分析与本体库比较报告.docx",
+      "archive": "snapshot-201.zip",
+      "size": 64242,
+      "sha256": "29745169ef0bb694bb44bf0911790503f12813ca8c6d2b912071f90e19e474e2"
+    },
+    {
+      "path": "交付文档/梁子湖本体数据库后端操作说明书_v0.4.docx",
+      "archive": "snapshot-201.zip",
+      "size": 55963,
+      "sha256": "0489fcbc17024586995c8bb1de882ff0f58413500097e8ecf72612f180bc4c07"
     }
   ],
   "excluded": [
-    "source-cache",
     "live-database",
+    "database-backup",
+    "source-imports",
+    "raw-assets",
+    "source-cache",
     "credentials",
-    "node_modules"
+    "dependencies",
+    "private-runtime-logs"
   ]
 }
