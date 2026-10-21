@@ -1,0 +1,16 @@
+const listSources={
+ stats:{path:'/stats',label:'统计总数'},
+ entities:{path:'/ontology/entities',label:'对象目录',limit:200},
+ lots:{path:'/trace/lots',label:'物料批次',limit:200},
+ events:{path:'/trace/events',label:'业务事件',limit:100},
+ evidence:{path:'/evidence',label:'原始证据',limit:200},
+ assertions:{path:'/assertions',label:'断言审核',limit:200},
+ publications:{path:'/trace/publications',label:'公开版本',limit:100},
+ packages:{path:'/ontology/packages',label:'领域包',limit:100},
+ sets:{path:'/ontology/object-sets',label:'对象集',limit:100},
+ devices:{path:'/devices',label:'设备',limit:100},
+ policies:{path:'/device-policies',label:'采集计划',limit:100},
+ deviceRecords:{path:'/device-records',label:'设备记录',limit:100},
+ mappings:{path:'/ingestion/mappings',label:'来源映射',limit:100},
+ receipts:{path:'/ingestion/receipts',label:'接入回执',limit:100}
+};

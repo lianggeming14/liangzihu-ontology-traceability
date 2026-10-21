@@ -1,0 +1,76 @@
+<!doctype html><html lang="zh-CN"><meta charset="UTF-8"><title>JSON 输入与统一写入入口</title><style>
+*{box-sizing:border-box}body{margin:0;background:#eef2f7;font-family:'Microsoft YaHei',Arial,sans-serif}.capture{width:1400px;background:#fff;border:1px solid #cad5e4}.capture-head{background:#152b47;color:white;padding:22px 32px}.capture-head h1{font-size:25px;margin:0 0 10px;line-height:1.45}.capture-head .meta{font:16px/1.6 Consolas,'Microsoft YaHei',monospace;color:#d5e3f6;overflow-wrap:anywhere}.source{padding:18px 0;background:#fbfcfe}.line{display:grid;grid-template-columns:70px 1fr;min-height:28px;align-items:start}.line:nth-child(even){background:#f4f7fb}.ln{padding:0 13px;text-align:right;color:#7d8b9d;font:17px/1.6 Consolas,monospace;user-select:none}.code{font:18px/1.6 Consolas,'Microsoft YaHei',monospace;white-space:pre-wrap;overflow-wrap:anywhere;padding-right:28px;min-width:0;tab-size:4}.capture-foot{padding:18px 32px;font-size:16px;line-height:1.7;color:#284462;border-top:1px solid #dce4ef}.capture-foot small{display:block;font:12px/1.7 Consolas,'Microsoft YaHei',monospace;color:#78899e;margin-top:8px}
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.code .hll { background-color: #ffffcc }
+.code { background: #f0f0f0; }
+.code .c { color: #60a0b0; font-style: italic } /* Comment */
+.code .err { border: 1px solid #FF0000 } /* Error */
+.code .k { color: #007020; font-weight: bold } /* Keyword */
+.code .o { color: #666666 } /* Operator */
+.code .ch { color: #60a0b0; font-style: italic } /* Comment.Hashbang */
+.code .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+.code .cp { color: #007020 } /* Comment.Preproc */
+.code .cpf { color: #60a0b0; font-style: italic } /* Comment.PreprocFile */
+.code .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+.code .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+.code .gd { color: #A00000 } /* Generic.Deleted */
+.code .ge { font-style: italic } /* Generic.Emph */
+.code .gr { color: #FF0000 } /* Generic.Error */
+.code .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.code .gi { color: #00A000 } /* Generic.Inserted */
+.code .go { color: #888888 } /* Generic.Output */
+.code .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.code .gs { font-weight: bold } /* Generic.Strong */
+.code .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.code .gt { color: #0044DD } /* Generic.Traceback */
+.code .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.code .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.code .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.code .kp { color: #007020 } /* Keyword.Pseudo */
+.code .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.code .kt { color: #902000 } /* Keyword.Type */
+.code .m { color: #40a070 } /* Literal.Number */
+.code .s { color: #4070a0 } /* Literal.String */
+.code .na { color: #4070a0 } /* Name.Attribute */
+.code .nb { color: #007020 } /* Name.Builtin */
+.code .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+.code .no { color: #60add5 } /* Name.Constant */
+.code .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.code .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+.code .ne { color: #007020 } /* Name.Exception */
+.code .nf { color: #06287e } /* Name.Function */
+.code .nl { color: #002070; font-weight: bold } /* Name.Label */
+.code .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.code .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.code .nv { color: #bb60d5 } /* Name.Variable */
+.code .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.code .w { color: #bbbbbb } /* Text.Whitespace */
+.code .mb { color: #40a070 } /* Literal.Number.Bin */
+.code .mf { color: #40a070 } /* Literal.Number.Float */
+.code .mh { color: #40a070 } /* Literal.Number.Hex */
+.code .mi { color: #40a070 } /* Literal.Number.Integer */
+.code .mo { color: #40a070 } /* Literal.Number.Oct */
+.code .sa { color: #4070a0 } /* Literal.String.Affix */
+.code .sb { color: #4070a0 } /* Literal.String.Backtick */
+.code .sc { color: #4070a0 } /* Literal.String.Char */
+.code .dl { color: #4070a0 } /* Literal.String.Delimiter */
+.code .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+.code .s2 { color: #4070a0 } /* Literal.String.Double */
+.code .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+.code .sh { color: #4070a0 } /* Literal.String.Heredoc */
+.code .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+.code .sx { color: #c65d09 } /* Literal.String.Other */
+.code .sr { color: #235388 } /* Literal.String.Regex */
+.code .s1 { color: #4070a0 } /* Literal.String.Single */
+.code .ss { color: #517918 } /* Literal.String.Symbol */
+.code .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.code .fm { color: #06287e } /* Name.Function.Magic */
+.code .vc { color: #bb60d5 } /* Name.Variable.Class */
+.code .vg { color: #bb60d5 } /* Name.Variable.Global */
+.code .vi { color: #bb60d5 } /* Name.Variable.Instance */
+.code .vm { color: #bb60d5 } /* Name.Variable.Magic */
+.code .il { color: #40a070 } /* Literal.Number.Integer.Long */</style><div class="capture"><header class="capture-head"><h1>02  JSON 输入与统一写入入口</h1><div class="meta">implementation/agri/app.py  ·  L242–L258</div></header><div class="source"><div class="line"><span class="ln">242</span><span class="code">    <span class="k">def</span> <span class="nf">mutation</span><span class="p">(</span><span class="n">action</span><span class="p">):</span></span></div><div class="line"><span class="ln">243</span><span class="code">        <span class="nd">@protected</span></span></div><div class="line"><span class="ln">244</span><span class="code">        <span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="o">**</span><span class="n">path_params</span><span class="p">):</span></span></div><div class="line"><span class="ln">245</span><span class="code">            <span class="n">key</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Idempotency-Key&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span></span></div><div class="line"><span class="ln">246</span><span class="code">            <span class="k">if</span> <span class="ow">not</span> <span class="n">key</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">:</span></span></div><div class="line"><span class="ln">247</span><span class="code">                <span class="k">return</span> <span class="n">fail</span><span class="p">(</span><span class="mi">422</span><span class="p">,</span> <span class="s1">&#39;idempotency_key_required&#39;</span><span class="p">,</span> <span class="s1">&#39;写入需要长度不超过 200 的 Idempotency-Key&#39;</span><span class="p">)</span></span></div><div class="line"><span class="ln">248</span><span class="code">            <span class="n">body</span> <span class="o">=</span> <span class="n">payload</span><span class="p">()</span></span></div><div class="line"><span class="ln">249</span><span class="code">            <span class="k">if</span> <span class="n">path_params</span><span class="p">:</span></span></div><div class="line"><span class="ln">250</span><span class="code">                <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">body</span> <span class="ow">and</span> <span class="n">body</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">!=</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">path_params</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span></span></div><div class="line"><span class="ln">251</span><span class="code">                    <span class="k">return</span> <span class="n">fail</span><span class="p">(</span><span class="mi">422</span><span class="p">,</span> <span class="s1">&#39;path_payload_mismatch&#39;</span><span class="p">,</span> <span class="s1">&#39;路径与请求体标识不一致&#39;</span><span class="p">)</span></span></div><div class="line"><span class="ln">252</span><span class="code">                <span class="n">body</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">path_params</span><span class="p">)</span></span></div><div class="line"><span class="ln">253</span><span class="code">            <span class="k">if</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">validators</span><span class="p">:</span></span></div><div class="line"><span class="ln">254</span><span class="code">                <span class="n">issues</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">validators</span><span class="p">[</span><span class="n">action</span><span class="p">]</span><span class="o">.</span><span class="n">iter_errors</span><span class="p">(</span><span class="n">body</span><span class="p">))</span></span></div><div class="line"><span class="ln">255</span><span class="code">                <span class="k">if</span> <span class="n">issues</span><span class="p">:</span></span></div><div class="line"><span class="ln">256</span><span class="code">                    <span class="k">return</span> <span class="n">fail</span><span class="p">(</span><span class="mi">422</span><span class="p">,</span> <span class="s1">&#39;schema_validation_failed&#39;</span><span class="p">,</span> <span class="s1">&#39;输入不符合数据契约&#39;</span><span class="p">,</span> <span class="p">[{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">path</span><span class="p">),</span> <span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">}</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">issues</span><span class="p">[:</span><span class="mi">10</span><span class="p">]])</span></span></div><div class="line"><span class="ln">257</span><span class="code">            <span class="n">result</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">mutate</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">tenant</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">actor</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span></span></div><div class="line"><span class="ln">258</span><span class="code">            <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">result</span><span class="p">,</span> <span class="s1">&#39;request_id&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">request_id</span><span class="p">}),</span> <span class="mi">200</span></span></div></div><footer class="capture-foot">JSON 是接口载荷格式，网页表单和批量脚本都可以自动生成它。<small>当前源码节选 · 2026-10-21 · 原行号保留，长行仅视觉折行<br>source SHA256 b6e07c342eb657ee6ae119e0b9da050fd55d007f31eb9b0255203396e5072c04</small></footer></div></html>

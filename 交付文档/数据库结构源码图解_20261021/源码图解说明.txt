@@ -1,0 +1,588 @@
+梁子湖本体数据库结构与JSON源码图解
+
+2026-10-21
+
+你的两点诉求有实际价值：模块文件清楚，维护者容易定位代码；定义和映射可以按版本交付。但这首先要求清晰的代码模块、数据契约和发布流程，不必先把一个数据库拆成五套物理系统。
+
+当前不是纯JSON文件库。默认本地后端是SQLite，另有PostgreSQL实现；主结构由多张关系表组成，部分字段保存JSON内容。PostgreSQL脚本使用JSONB，SQLite对应脚本将这些内容保存在TEXT字段中，两者不能视为相同的数据库能力。
+
+本图解直接摘录当前工作区的公开项目源码，浏览器排版后截图。所有原始行号和文本均保留，长行只做视觉折行。代码未重写，也不是编辑器窗口截图。未读取活动数据库、真实生产记录或认证文件；本轮不修改业务代码。
+
+
+一 文件模块 数据表与物理数据库
+
+拆代码模块：按本体、接入、历史、资源、查询拆文件及清晰接口。最直接改善读代码与维护；当前建议优先做
+
+同库分表或schema：按职责组织数据、约束、命名与权限。保留同库事务和外键，降低身份与历史关联成本
+
+物理分库：各自连接、部署、扩容、备份和恢复。适合独立负载或隔离要求；需重新设计跨库一致性，不能靠拆SQL文件实现
+
+
+二 JSON的具体收益
+
+扩展领域属性：水稻、设备、文档可以具有不同属性；在既有通用模型允许范围内，新增属性不必每次ALTER TABLE。定义仍要版本化。
+
+表达嵌套结构：单位、枚举、多值属性、复合来源键、模型版本等可以用对象和数组表达，适合本体包和映射契约。
+
+跨系统交换：网页、脚本和外部系统都容易生成和读取JSON；人工表单可以隐藏JSON细节。
+
+保留来源差异：source_values及规范化回执保存已接收字段及上下文，方便审查映射结果；完整原件另行保存。
+
+
+三 JSON的边界
+
+JSON合法只说明格式可解析。身份、单位、适用类、时间和关系语义必须由契约、服务和数据库约束共同校验。
+
+JSON字段内部的引用不会自动成为SQL外键；频繁关联的身份和时间字段宜保留固定列或独立关联表。
+
+JSONB支持查询和索引，但性能取决于访问模式和索引设计；大JSON的频繁更新、统计和版本管理可能增加成本。
+
+JSONB不保留输入的原始空白和键顺序。本项目规范化回执的摘要与原文件字节摘要是不同证据，不能混称原始字节完全保真。
+
+当前没有五套独立存储。GIS、时序优化和完整RDF语义能力不能从文件后缀或JSON格式推断已经实现。
+
+
+数据库后端选择
+
+implementation/agri/app.py  ·  L135–L149
+
+同一个服务入口选择 SQLite 或 PostgreSQL，当前并没有五个独立数据库连接。
+
+database_url：读取配置中的数据库地址；默认本地地址在同文件第116行指向 data/agri.db。
+
+SQLiteDatabase / Database：sqlite: 地址进入本地开发适配器，其余地址进入 PostgreSQL 适配器。
+
+db.migrate 与 SourceMappingService：先执行数据库迁移，再把同一个数据库连接边界交给业务服务。
+
+为什么这样保存：后端适配和业务服务分开，便于按接口切换实现；切换配置不等于已经迁移数据。
+
+修改时要注意：改变数据库地址前，需要迁移、备份恢复验证和实际后端验收。PostgreSQL 已有代码分支，但未完成本项目的实库验收。
+
+源码原文：
+
+    if service is None:
+        from .db import Database
+        from .source_mapping import SourceMappingService
+        database_url = app.config['DATABASE_URL']
+        if database_url.startswith('sqlite:'):
+            from .sqlite_db import SQLiteDatabase
+            db = SQLiteDatabase(database_url)
+        else:
+            db = Database(database_url, app.config['DB_SCHEMA'])
+        if app.config.get('AUTO_MIGRATE', True):
+            db.migrate()
+        service = SourceMappingService(db)
+        app.extensions['agri_db'] = db
+    if hasattr(service, 'db'):
+        from .source_mapping import SourceMappingService
+
+
+
+JSON 输入与统一写入入口
+
+implementation/agri/app.py  ·  L242–L258
+
+JSON 是接口载荷格式，网页表单和批量脚本都可以自动生成它。
+
+@protected：请求先经过访问身份检查。
+
+Idempotency-Key：标识同一次业务请求的重试，配合服务层防止重复写入。
+
+payload / validators：解析请求体并检查字段结构；JSON 能解析不代表符合本体约束。
+
+service.mutate：进入统一的业务校验和数据库事务；jsonify 仅负责把响应编码为 JSON。
+
+为什么这样保存：便于不同语言、设备平台和网页以一致格式交互；无需让外部程序直接连接数据库写表。
+
+修改时要注意：改字段要同步修改契约、调用方和校验逻辑。替换 app.py 是更换程序，不是导入业务数据；鉴权和幂等边界不能省略。
+
+源码原文：
+
+    def mutation(action):
+        @protected
+        def handler(**path_params):
+            key = request.headers.get('Idempotency-Key', '')
+            if not key or len(key) > 200:
+                return fail(422, 'idempotency_key_required', '写入需要长度不超过 200 的 Idempotency-Key')
+            body = payload()
+            if path_params:
+                if any(k in body and body[k] != v for k,v in path_params.items()):
+                    return fail(422, 'path_payload_mismatch', '路径与请求体标识不一致')
+                body.update(path_params)
+            if action in validators:
+                issues = list(validators[action].iter_errors(body))
+                if issues:
+                    return fail(422, 'schema_validation_failed', '输入不符合数据契约', [{'path': list(e.path), 'message': e.message} for e in issues[:10]])
+            result = service.mutate(action, request.tenant, request.actor, body, key)
+            return jsonify({'data': result, 'request_id': request.request_id}), 200
+
+
+
+本体属性定义的 JSON 结构
+
+implementation/integrations/liangzihu/package-bundle.json  ·  L44–L67
+
+这是可版本化的定义文件节选，不是正在运行的数据库，也不是农场实际记录。
+
+property_id 与 label：前者是稳定属性标识，后者是显示名称，不能混用。
+
+applies_to：列出属性允许用于哪些类，例如农事日历版本类。
+
+value_type / usage：规定值类型和用途；这里是字符串型对象属性。
+
+required / cardinality：规定是否必填、单值还是多值。
+
+为什么这样保存：嵌套对象和数组适合表达类、属性、关系及约束；新增领域属性在既有通用结构范围内通常无需增加数据库列。
+
+修改时要注意：改磁盘文件不会自动改已注册定义。语义变化应生成新包版本、验证并通过注册接口安装；领域包显示名可使用包标签接口，属性定义的label变化仍需版本化。此文件为生成产物，还需同步生成源与清单。
+
+源码原文：
+
+        {
+          "property_id": "lzhu:calendar_versions.id",
+          "label": "农事日历版本 · 记录标识",
+          "description": "来源记录属性 calendar_versions.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+          "applies_to": [
+            "lzhu:calendar_versions"
+          ],
+          "value_type": "string",
+          "usage": "attribute",
+          "required": false,
+          "cardinality": "single"
+        },
+        {
+          "property_id": "lzhu:calendar_versions.name",
+          "label": "农事日历版本 · 名称",
+          "description": "来源记录属性 calendar_versions.name。",
+          "applies_to": [
+            "lzhu:calendar_versions"
+          ],
+          "value_type": "string",
+          "usage": "attribute",
+          "required": false,
+          "cardinality": "single"
+        },
+
+
+
+对象固定字段与 JSONB 扩展属性
+
+implementation/migrations/001_core.sql  ·  L26–L41
+
+固定列管理身份和版本，JSONB 管理种类不同、变化较多的属性。
+
+tenant_id / entity_key：组成主键；tenant_id 隔离租户，entity_key 是稳定对象身份。
+
+entity_type / name / revision：保存对象身份类型、名称和修订号。名称不是唯一身份。
+
+attributes jsonb：保存扩展属性内容；JSONB 合法不代表属性的农业语义正确，还需图05的校验。
+
+type_assignments：把对象关联到精确的领域包版本和语义类，并记录分类有效期；SQL 外键维护引用。
+
+为什么这样保存：不同类可具有不同属性，避免为每个领域建立大量稀疏列；身份、引用和版本仍由关系模型约束。
+
+修改时要注意：频繁过滤、关联或强约束的字段应评估固定列或独立子表。JSONB 并不自动更快，也不自动建立合适索引；不可绕过服务直接修改属性。
+
+源码原文：
+
+CREATE TABLE entities (
+ tenant_id text NOT NULL, entity_key uuid NOT NULL, entity_type text NOT NULL,
+ entity_id uuid NOT NULL, name text NOT NULL, attributes jsonb NOT NULL,
+ revision bigint NOT NULL DEFAULT 1, created_at timestamptz NOT NULL, created_by text NOT NULL,
+ PRIMARY KEY(tenant_id,entity_key), UNIQUE(tenant_id,entity_type,entity_id)
+);
+CREATE TABLE type_assignments (
+ tenant_id text NOT NULL, id uuid NOT NULL, entity_key uuid NOT NULL,
+ package_id text NOT NULL, package_version text NOT NULL, type_id text NOT NULL,
+ valid_from timestamptz NOT NULL, valid_to timestamptz,
+ created_at timestamptz NOT NULL,
+ PRIMARY KEY(tenant_id,id),
+ UNIQUE(tenant_id,entity_key,package_id,package_version,type_id),
+ FOREIGN KEY(tenant_id,entity_key) REFERENCES entities(tenant_id,entity_key),
+ FOREIGN KEY(tenant_id,package_id,package_version,type_id) REFERENCES ontology_types(tenant_id,package_id,package_version,type_id),
+ CHECK(valid_to IS NULL OR valid_to > valid_from)
+
+
+
+类 属性 时间和版本如何对应
+
+implementation/agri/ontology_core.py  ·  L158–L177
+
+后端根据对象在指定时点的分类，寻找唯一适用的属性定义。
+
+entity.semantic_types 与 _active：逐个检查对象的语义类，以及分类在查询时点是否有效。
+
+ontology_properties 查询：按租户、领域包和精确版本读取属性定义。
+
+applies_to / property_id / usage：进一步检查适用类、属性身份和用途。
+
+len(candidates) != 1：没有匹配或存在多个匹配都要求明确映射，不凭同名字段猜测。
+
+为什么这样保存：灵活的 JSON 内容仍受到版本化本体约束。值类型、单位、枚举和范围的校验见同文件第32–69行。
+
+修改时要注意：这属于确定性语义校验，不是 OWL 自动推理。新增属性必须先登记定义并分类对象；历史语义改变应发新版本。
+
+源码原文：
+
+    def _property_candidates(self,tx,tenant,entity,at,property_id=None,usage=None):
+        candidates={}
+        for assignment in entity['semantic_types']:
+            if not _active(assignment,at): continue
+            rows=tx.execute('SELECT * FROM ontology_properties WHERE tenant_id=%s AND package_id=%s AND package_version=%s',(tenant,assignment['package_id'],assignment['package_version'])).fetchall()
+            for row in rows:
+                definition=_decode(row['definition'])
+                if assignment['type_id'] not in definition['applies_to'] or property_id and row['property_id']!=property_id or usage and definition['usage']!=usage: continue
+                ref={'package_id':row['package_id'],'version':row['package_version'],'property_id':row['property_id']}
+                candidates[tuple(ref.values())]=(ref,definition)
+        return list(candidates.values())
+
+    def resolve_property(self,tx,tenant,entity,property_id,reference,at,usage):
+        candidates=self._property_candidates(tx,tenant,entity,at,property_id,usage)
+        if reference:
+            if reference.get('property_id')!=property_id: raise DomainError(422,'property_reference_mismatch','属性标识与版本引用不一致')
+            candidates=[x for x in candidates if x[0]==reference]
+        if len(candidates)!=1:
+            raise DomainError(422,'needs_mapping','属性未对应到对象在该时点有效的唯一类定义，请先完成对象分类与来源映射',{'property_id':property_id,'candidate_refs':[x[0] for x in candidates]})
+        return candidates[0]
+
+
+
+关系记录把对象 时间和证据放在一起
+
+implementation/migrations/001_core.sql  ·  L77–L94
+
+关系本身具有独立身份，时间没有被单独拆到一个时间库。
+
+subject_key / object_key：指明关系的两个对象端点，并以外键关联实体。
+
+package_id / package_version / predicate_id：明确使用哪个版本的关系语义。
+
+valid_from / valid_to：描述关系记录声明的有效区间；来源FK导入目前按来源快照时间开闭，不能据此认定业务关系真实发生或结束时间。CHECK 要求结束晚于开始。
+
+qualifiers / evidence_ids / status：保存限定条件、证据引用与待核实或已采纳状态。证据ID数组不是逐项SQL外键。
+
+relation_assessments：另表保存审核状态、理由、操作者和审核时间。
+
+为什么这样保存：JSONB 适合限定条件和可变证据列表，固定列负责主干关系、时间和引用。
+
+修改时要注意：当前主干时间是有效区间，加修订和创建时间；不能把它称为完整双时态重建。证据引用依赖服务检查与辅助关联表，需保持这些校验。
+
+源码原文：
+
+CREATE TABLE relations (
+ tenant_id text NOT NULL,id uuid NOT NULL,subject_key uuid NOT NULL,object_key uuid NOT NULL,
+ package_id text NOT NULL,package_version text NOT NULL,predicate_id text NOT NULL,
+ dimension text NOT NULL,valid_from timestamptz NOT NULL,valid_to timestamptz,
+ qualifiers jsonb NOT NULL,evidence_ids jsonb NOT NULL,
+ status text NOT NULL CHECK(status IN ('candidate','accepted','rejected','needs_review')),
+ revision bigint NOT NULL DEFAULT 1,created_at timestamptz NOT NULL,created_by text NOT NULL,
+ PRIMARY KEY(tenant_id,id),
+ FOREIGN KEY(tenant_id,subject_key) REFERENCES entities(tenant_id,entity_key),
+ FOREIGN KEY(tenant_id,object_key) REFERENCES entities(tenant_id,entity_key),
+ FOREIGN KEY(tenant_id,package_id,package_version,predicate_id) REFERENCES ontology_predicates(tenant_id,package_id,package_version,predicate_id),
+ CHECK(valid_to IS NULL OR valid_to > valid_from)
+);
+CREATE TABLE relation_assessments (
+ tenant_id text NOT NULL,id uuid NOT NULL,relation_id uuid NOT NULL,status text NOT NULL,
+ rationale text NOT NULL,actor_id text NOT NULL,assessed_at timestamptz NOT NULL,
+ PRIMARY KEY(tenant_id,id), FOREIGN KEY(tenant_id,relation_id) REFERENCES relations(tenant_id,id)
+);
+
+
+
+观测值与测量时间共同保存
+
+implementation/migrations/001_core.sql  ·  L51–L69
+
+观测和断言分别建表：读数与来源作出的说法具有不同身份和状态。
+
+observations.subject_key / property_id：标明观测哪个对象的哪个属性。
+
+value_json / observed_at / method：记录带单位等结构的结果、观测时间与方法。created_at 是系统创建时间。
+
+origin / evidence_ids：区分 measured、reported、estimated，并连接证据。
+
+assertions：表示来源提出的说法；用 value_json 或 object_key 表达值或对象，CHECK 要求两者恰有一个，状态默认通过服务管理。
+
+为什么这样保存：观测结果可以同时携带值、单位和情境，不需把读数拆成彼此没有关联的文件。
+
+修改时要注意：时间字段本身不需要独立时序库。高频读数的分区和索引应依据负载；当前断言缺完整顶层时态字段，不应宣称具备全库历史查询。
+
+源码原文：
+
+CREATE TABLE observations (
+ tenant_id text NOT NULL, id uuid NOT NULL, subject_key uuid NOT NULL,
+ property_id text NOT NULL, value_json jsonb NOT NULL, observed_at timestamptz NOT NULL,
+ method text NOT NULL, origin text NOT NULL, spatial_context jsonb NOT NULL,
+ evidence_ids jsonb NOT NULL, created_at timestamptz NOT NULL, created_by text NOT NULL,
+ PRIMARY KEY(tenant_id,id),
+ FOREIGN KEY(tenant_id,subject_key) REFERENCES entities(tenant_id,entity_key),
+ CHECK(origin IN ('measured','reported','estimated'))
+);
+CREATE TABLE assertions (
+ tenant_id text NOT NULL, id uuid NOT NULL, subject_key uuid NOT NULL,
+ predicate_id text NOT NULL, value_json jsonb, object_key uuid,
+ origin text NOT NULL, evidence_ids jsonb NOT NULL,
+ status text NOT NULL CHECK(status IN ('candidate','accepted','rejected','needs_review')),
+ revision bigint NOT NULL DEFAULT 1, created_at timestamptz NOT NULL, created_by text NOT NULL,
+ PRIMARY KEY(tenant_id,id),
+ FOREIGN KEY(tenant_id,subject_key) REFERENCES entities(tenant_id,entity_key),
+ FOREIGN KEY(tenant_id,object_key) REFERENCES entities(tenant_id,entity_key),
+ CHECK((value_json IS NOT NULL AND object_key IS NULL) OR (value_json IS NULL AND object_key IS NOT NULL))
+
+
+
+来源身份映射与修订快照
+
+implementation/migrations/005_source_mapping.sql  ·  L15–L41
+
+来源主键和本体主键分开，历史快照保留当时的来源内容与映射版本。
+
+source_id / source_table / source_key：共同定位来源系统中的记录；复合主键可用 JSON 对象表达。
+
+entity_key / type_ref / profile_version：绑定本体对象身份、类型引用和映射版本。
+
+data_nature / payload_hash / evidence_id：区分生产、合成和测试数据，并记录摘要与证据。
+
+source_binding_revisions：以绑定ID和修订号保存 source_values、entity_snapshot、observed_at 和 recorded_at。
+
+为什么这样保存：不同源表可有不同字段和复合键，JSONB 可以保留这些差异，同时用关系键把版本连接起来。
+
+修改时要注意：这里 observed_at 是来源快照时间，不自动等于生产事件发生时间。服务按修订追加历史，但本段DDL没有禁止历史行UPDATE/DELETE的触发器；不能称数据库强制不可篡改。
+
+源码原文：
+
+CREATE TABLE source_bindings (
+ tenant_id text NOT NULL, id uuid NOT NULL, source_id text NOT NULL, source_table text NOT NULL,
+ key_hash text NOT NULL, source_key jsonb NOT NULL, key_contract jsonb NOT NULL,
+ entity_key uuid NOT NULL, type_ref jsonb NOT NULL, revision bigint NOT NULL,
+ entity_revision bigint NOT NULL, profile_id text NOT NULL, profile_version text NOT NULL,
+ data_nature text NOT NULL CHECK(data_nature IN ('production','synthetic','test','unspecified')),
+ source_values jsonb NOT NULL, payload_hash text NOT NULL, evidence_id uuid NOT NULL,
+ managed_properties jsonb NOT NULL, observed_at timestamptz NOT NULL,
+ created_at timestamptz NOT NULL, updated_at timestamptz NOT NULL,
+ PRIMARY KEY(tenant_id,id), UNIQUE(tenant_id,source_id,source_table,key_hash),
+ UNIQUE(tenant_id,entity_key),
+ FOREIGN KEY(tenant_id,entity_key) REFERENCES entities(tenant_id,entity_key),
+ FOREIGN KEY(tenant_id,evidence_id) REFERENCES evidence(tenant_id,id),
+ FOREIGN KEY(tenant_id,source_id,profile_id,profile_version) REFERENCES source_profiles(tenant_id,source_id,profile_id,version),
+ CHECK(revision>0),CHECK(entity_revision>0)
+);
+CREATE TABLE source_binding_revisions (
+ tenant_id text NOT NULL, binding_id uuid NOT NULL, revision bigint NOT NULL,
+ batch_id text NOT NULL, source_id text NOT NULL, profile_id text NOT NULL, profile_version text NOT NULL,
+ source_values jsonb NOT NULL, entity_snapshot jsonb NOT NULL, evidence_id uuid NOT NULL,
+ payload_hash text NOT NULL, observed_at timestamptz NOT NULL, recorded_at timestamptz NOT NULL, created_by text NOT NULL,
+ PRIMARY KEY(tenant_id,binding_id,revision),
+ FOREIGN KEY(tenant_id,binding_id) REFERENCES source_bindings(tenant_id,id),
+ FOREIGN KEY(tenant_id,evidence_id) REFERENCES evidence(tenant_id,id),
+ FOREIGN KEY(tenant_id,source_id,profile_id,profile_version) REFERENCES source_profiles(tenant_id,source_id,profile_id,version),
+ CHECK(revision>0)
+);
+
+
+
+文件原件与结构化证据分开保存
+
+implementation/agri/ingestion.py  ·  L93–L119
+
+原文件写入私有目录，数据库只登记文件位置、摘要和证据元数据。
+
+digest / tenant_dir / path：内容哈希作为资源键，租户目录分开；同内容可复用原件。
+
+evidence 字典：组织 kind、uri、content_hash、source_id 和 metadata；这是 Python 字典，随后进入JSON编码与数据库写入。
+
+metadata：保留原文件名、媒体类型、字节数和资源键。
+
+path.open 与摘要核对：新文件以排他方式写入，已有文件先核对完整性；载体检查不等于图像识别。
+
+为什么这样保存：小型元数据适合 JSON，图片和视频字节保留为文件，避免把全部二进制塞进业务记录。
+
+修改时要注意：原件字节和数据库事务不是一个跨存储原子事务。替换哈希路径下文件会破坏完整性，应登记新资源版本；恢复也要同时考虑数据库与原件。
+
+源码原文：
+
+        digest = hashlib.sha256(content).hexdigest()
+        tenant_dir = hashlib.sha256(who['tenant_id'].encode()).hexdigest()
+        folder = Path(current_app.config.get('ASSET_ROOT', base / 'data' / 'assets')) / tenant_dir
+        folder.mkdir(parents=True, exist_ok=True)
+        path = folder / digest
+        original_name = Path(item.filename or 'asset').name[:200]
+        evidence = {'kind': kind, 'uri': 'asset://' + digest, 'content_hash': digest,
+                    'source_id': request.form.get('source_id', 'manual-upload'),
+                    'public_summary': request.form.get('public_summary', ''),
+                    'metadata': {'asset_key': digest, 'filename': original_name,
+                                 'media_type': item.mimetype, 'size_bytes': len(content)}}
+        checked('create_evidence', evidence)
+        try:
+            with path.open('xb') as stream:
+                stream.write(content)
+        except FileExistsError:
+            if hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+                raise DomainError(409, 'asset_integrity_failed', '已有原始资产哈希不一致')
+        from .asset_inspection import inspect_asset
+        evidence['metadata']['carrier'] = inspect_asset(content,kind,item.mimetype)
+        evidence['metadata']['processing'] = {'status':'not_requested','scope':'external_service','agricultural_inference':False}
+        evidence['metadata']['integrity'] = {'algorithm':'sha256','verified_at_receipt':True}
+        evidence['metadata']['record_kind'] = 'raw_evidence'
+        result = service.mutate('create_evidence', who['tenant_id'], who, evidence, key)
+        return jsonify({'data': result})
+
+    return bp
+
+
+
+当前 RDF 是有限的交换投影
+
+implementation/agri/exchange.py  ·  L16–L34
+
+查询结果被编码为 JSON-LD，当前没有因此自动获得 RDF 原生数据库。
+
+nodes / edges 与 identifier：读取有界实例图，为节点和关系生成标识。
+
+GraphNode / QualifiedRelationship：用本项目固定交换类型封装节点与有附加信息的关系。
+
+predicate_code / payload：业务关系代码作为字段保存，完整原图记录放在JSON载荷中。
+
+@context / @graph / manifest：组织交换语义、图内容以及截断和缺口等元数据。
+
+为什么这样保存：消费者可以保留并重建本项目图字典；JSON-LD 提供标识和引用的表达方式。
+
+修改时要注意：不是完整本体或全库导出，没有通用SPARQL/OWL能力。替换导出文件不会更新主库；变更格式需升级交换profile，不能只修改后缀。
+
+源码原文：
+
+def to_jsonld(graph):
+    nodes=graph.get('nodes',[]);edges=graph.get('edges',[])
+    ids={str(n.get('id') or n.get('entity_key')) for n in nodes}
+    items=[]
+    for n in nodes:
+        key=str(n.get('id') or n.get('entity_key'))
+        items.append({'@id':identifier('node',key),'@type':'agri:GraphNode',
+                      'label':n.get('label',n.get('name','')),'kind':n.get('kind',n.get('entity_type',n.get('type','unknown'))),
+                      'payload':copy.deepcopy(n)})
+    for index,e in enumerate(edges):
+        source=str(e.get('source') or e.get('subject_key'));target=str(e.get('target') or e.get('object_key'))
+        if source not in ids or target not in ids:raise ValueError('Graph edge references a missing node')
+        key=e.get('id',str(index))
+        items.append({'@id':identifier('edge',key),'@type':'agri:QualifiedRelationship',
+                      'source':identifier('node',source),'target':identifier('node',target),
+                      'predicate_code':e.get('predicate_id',e.get('predicate','')),
+                      'dimension':e.get('dimension',''),'status':e.get('status','unknown'),'payload':copy.deepcopy(e)})
+    return {'@context':CONTEXT,'@id':'urn:agri:export','@type':'agri:GraphExport','profile':PROFILE,
+            'manifest':{k:copy.deepcopy(v) for k,v in graph.items() if k not in ('nodes','edges')},'@graph':items}
+
+
+
+SQL迁移为什么不能随手替换
+
+implementation/agri/db.py  ·  L35–L60
+
+SQL 文件记录数据库结构的演进步骤，不是数据库当前数据本身。
+
+编号与迁移目录：读取三位编号的PostgreSQL迁移，排除SQLite专用脚本。
+
+schema_migrations：在数据库登记执行版本、内容摘要和执行时间。
+
+hashlib.sha256 / previous：计算迁移文件摘要，与已执行历史对比。
+
+checksum changed：若旧迁移被改写则停止，要求新增迁移文件，避免历史结构不一致。
+
+为什么这样保存：版本记录与校验摘要使结构升级可审查。便于替换的代码模块和必须保留历史的迁移文件，需要区别管理。
+
+修改时要注意：新增结构应新增编号迁移，并维护SQLite与PostgreSQL对应实现。修改旧SQL文件不会自动更新已有表，反而会触发校验失败。
+
+源码原文：
+
+    def migrate(self):
+        import psycopg
+        from psycopg import sql
+        folder = Path(__file__).resolve().parents[1] / 'migrations'
+        migrations = [p for p in sorted(folder.glob('[0-9][0-9][0-9]_*.sql')) if not p.name.endswith('.sqlite.sql')]
+        applied, versions = [], set()
+        with psycopg.connect(self.dsn) as conn:
+            conn.execute('SELECT pg_advisory_xact_lock(hashtext(%s))', ('agri-migration:' + self.schema,))
+            conn.execute(sql.SQL('CREATE SCHEMA IF NOT EXISTS {}').format(sql.Identifier(self.schema)))
+            conn.execute(sql.SQL('SET LOCAL search_path TO {}, pg_catalog').format(sql.Identifier(self.schema)))
+            conn.execute('CREATE TABLE IF NOT EXISTS schema_migrations (version text PRIMARY KEY, checksum text NOT NULL, applied_at timestamptz NOT NULL DEFAULT now())')
+            for migration in migrations:
+                version = migration.name.split('_',1)[0]
+                if version in versions: raise RuntimeError('Duplicate migration version: ' + version)
+                versions.add(version)
+                content = migration.read_text(encoding='utf-8')
+                digest = hashlib.sha256(content.encode('utf-8')).hexdigest()
+                previous = conn.execute('SELECT checksum FROM schema_migrations WHERE version=%s', (version,)).fetchone()
+                if previous:
+                    if previous[0] != digest:
+                        raise RuntimeError('Migration ' + version + ' checksum changed; use a new migration rather than rewriting history')
+                    continue
+                conn.execute(content, prepare=False)
+                conn.execute('INSERT INTO schema_migrations(version,checksum) VALUES (%s,%s)', (version,digest))
+                applied.append(version)
+        return {'backend':self.backend, 'schema':self.schema, 'migration':max(versions), 'applied':bool(applied), 'applied_versions':applied}
+
+
+
+前端模块与API目录不是物理分库
+
+implementation/web/app.js  ·  L29–L44
+
+多个页面从不同API读数据，不代表它们分别使用独立数据库。
+
+stats / entities / events / evidence：为总览、对象、事件和证据分别声明数据入口。
+
+path / label / limit：规定请求地址、可读名称和每次查询上限。
+
+packages / mappings：前端另行读取本体包和旧接入映射；新来源integration接口不在这段目录中。
+
+为什么这样保存：这是JavaScript对象配置，不是JSON数据库。统一JSON响应便于前端按模块读取，但每类内容仍有不同语义。
+
+修改时要注意：前端模块拆分可改善阅读和维护，不必先拆数据库。改页面文件不会创建缺少的后端能力，发布时还要检查接口版本和缓存。
+
+源码原文：
+
+const listSources={
+ stats:{path:'/stats',label:'统计总数'},
+ entities:{path:'/ontology/entities',label:'对象目录',limit:200},
+ lots:{path:'/trace/lots',label:'物料批次',limit:200},
+ events:{path:'/trace/events',label:'业务事件',limit:100},
+ evidence:{path:'/evidence',label:'原始证据',limit:200},
+ assertions:{path:'/assertions',label:'断言审核',limit:200},
+ publications:{path:'/trace/publications',label:'公开版本',limit:100},
+ packages:{path:'/ontology/packages',label:'领域包',limit:100},
+ sets:{path:'/ontology/object-sets',label:'对象集',limit:100},
+ devices:{path:'/devices',label:'设备',limit:100},
+ policies:{path:'/device-policies',label:'采集计划',limit:100},
+ deviceRecords:{path:'/device-records',label:'设备记录',limit:100},
+ mappings:{path:'/ingestion/mappings',label:'来源映射',limit:100},
+ receipts:{path:'/ingestion/receipts',label:'接入回执',limit:100}
+};
+
+
+
+哪些文件可以怎样更换
+
+Python / JavaScript 程序：可以按模块升级部署。遵守接口契约，检查调用方、服务重载、前端缓存及相关验证
+
+领域包和来源映射 JSON：作为版本化定义交付。验证后通过注册接口安装；领域包显示名可走包标签接口；来源映射内容（含label）变化需新profile版本
+
+已经执行的 SQL 迁移：保留原文件，新增迁移。旧摘要变化会被拒绝；同时维护PostgreSQL与SQLite版本
+
+JSONL / JSON 数据导入文件：通过预检和导入接口处理。保留来源主键、数据性质、快照时间和幂等回执，不是复制到目录就生效
+
+SQLite .db 数据文件：通过受控备份恢复流程更换。需一致备份、版本匹配、完整性验证及原件配套；不要在运行中直接覆盖
+
+PostgreSQL 数据：通过数据库迁移、备份恢复或导入工具管理。.sql脚本不是活动数据库文件，不能靠替换脚本替换存量数据
+
+原件和RDF导出文件：原件新建版本；导出可重新生成。不要改写哈希资源；导出是副本，不会自动反向写回主库
+
+
+依据
+
+PostgreSQL JSON与JSONB https://www.postgresql.org/docs/18/datatype-json.html
+
+SQLite CREATE TABLE https://www.sqlite.org/lang_createtable.html
+
+W3C关系数据到RDF映射 https://www.w3.org/TR/r2rml/
+
+本次未修改业务代码；未运行新的后端或PostgreSQL验收。截图来源与行号见sources.json。

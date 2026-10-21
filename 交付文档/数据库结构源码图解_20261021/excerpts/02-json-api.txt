@@ -1,0 +1,17 @@
+    def mutation(action):
+        @protected
+        def handler(**path_params):
+            key = request.headers.get('Idempotency-Key', '')
+            if not key or len(key) > 200:
+                return fail(422, 'idempotency_key_required', '写入需要长度不超过 200 的 Idempotency-Key')
+            body = payload()
+            if path_params:
+                if any(k in body and body[k] != v for k,v in path_params.items()):
+                    return fail(422, 'path_payload_mismatch', '路径与请求体标识不一致')
+                body.update(path_params)
+            if action in validators:
+                issues = list(validators[action].iter_errors(body))
+                if issues:
+                    return fail(422, 'schema_validation_failed', '输入不符合数据契约', [{'path': list(e.path), 'message': e.message} for e in issues[:10]])
+            result = service.mutate(action, request.tenant, request.actor, body, key)
+            return jsonify({'data': result, 'request_id': request.request_id}), 200

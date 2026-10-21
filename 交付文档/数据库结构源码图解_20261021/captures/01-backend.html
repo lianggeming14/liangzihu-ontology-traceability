@@ -1,0 +1,76 @@
+<!doctype html><html lang="zh-CN"><meta charset="UTF-8"><title>数据库后端选择</title><style>
+*{box-sizing:border-box}body{margin:0;background:#eef2f7;font-family:'Microsoft YaHei',Arial,sans-serif}.capture{width:1400px;background:#fff;border:1px solid #cad5e4}.capture-head{background:#152b47;color:white;padding:22px 32px}.capture-head h1{font-size:25px;margin:0 0 10px;line-height:1.45}.capture-head .meta{font:16px/1.6 Consolas,'Microsoft YaHei',monospace;color:#d5e3f6;overflow-wrap:anywhere}.source{padding:18px 0;background:#fbfcfe}.line{display:grid;grid-template-columns:70px 1fr;min-height:28px;align-items:start}.line:nth-child(even){background:#f4f7fb}.ln{padding:0 13px;text-align:right;color:#7d8b9d;font:17px/1.6 Consolas,monospace;user-select:none}.code{font:18px/1.6 Consolas,'Microsoft YaHei',monospace;white-space:pre-wrap;overflow-wrap:anywhere;padding-right:28px;min-width:0;tab-size:4}.capture-foot{padding:18px 32px;font-size:16px;line-height:1.7;color:#284462;border-top:1px solid #dce4ef}.capture-foot small{display:block;font:12px/1.7 Consolas,'Microsoft YaHei',monospace;color:#78899e;margin-top:8px}
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.code .hll { background-color: #ffffcc }
+.code { background: #f0f0f0; }
+.code .c { color: #60a0b0; font-style: italic } /* Comment */
+.code .err { border: 1px solid #FF0000 } /* Error */
+.code .k { color: #007020; font-weight: bold } /* Keyword */
+.code .o { color: #666666 } /* Operator */
+.code .ch { color: #60a0b0; font-style: italic } /* Comment.Hashbang */
+.code .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+.code .cp { color: #007020 } /* Comment.Preproc */
+.code .cpf { color: #60a0b0; font-style: italic } /* Comment.PreprocFile */
+.code .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+.code .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+.code .gd { color: #A00000 } /* Generic.Deleted */
+.code .ge { font-style: italic } /* Generic.Emph */
+.code .gr { color: #FF0000 } /* Generic.Error */
+.code .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.code .gi { color: #00A000 } /* Generic.Inserted */
+.code .go { color: #888888 } /* Generic.Output */
+.code .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.code .gs { font-weight: bold } /* Generic.Strong */
+.code .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.code .gt { color: #0044DD } /* Generic.Traceback */
+.code .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.code .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.code .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.code .kp { color: #007020 } /* Keyword.Pseudo */
+.code .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.code .kt { color: #902000 } /* Keyword.Type */
+.code .m { color: #40a070 } /* Literal.Number */
+.code .s { color: #4070a0 } /* Literal.String */
+.code .na { color: #4070a0 } /* Name.Attribute */
+.code .nb { color: #007020 } /* Name.Builtin */
+.code .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+.code .no { color: #60add5 } /* Name.Constant */
+.code .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.code .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+.code .ne { color: #007020 } /* Name.Exception */
+.code .nf { color: #06287e } /* Name.Function */
+.code .nl { color: #002070; font-weight: bold } /* Name.Label */
+.code .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.code .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.code .nv { color: #bb60d5 } /* Name.Variable */
+.code .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.code .w { color: #bbbbbb } /* Text.Whitespace */
+.code .mb { color: #40a070 } /* Literal.Number.Bin */
+.code .mf { color: #40a070 } /* Literal.Number.Float */
+.code .mh { color: #40a070 } /* Literal.Number.Hex */
+.code .mi { color: #40a070 } /* Literal.Number.Integer */
+.code .mo { color: #40a070 } /* Literal.Number.Oct */
+.code .sa { color: #4070a0 } /* Literal.String.Affix */
+.code .sb { color: #4070a0 } /* Literal.String.Backtick */
+.code .sc { color: #4070a0 } /* Literal.String.Char */
+.code .dl { color: #4070a0 } /* Literal.String.Delimiter */
+.code .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+.code .s2 { color: #4070a0 } /* Literal.String.Double */
+.code .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+.code .sh { color: #4070a0 } /* Literal.String.Heredoc */
+.code .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+.code .sx { color: #c65d09 } /* Literal.String.Other */
+.code .sr { color: #235388 } /* Literal.String.Regex */
+.code .s1 { color: #4070a0 } /* Literal.String.Single */
+.code .ss { color: #517918 } /* Literal.String.Symbol */
+.code .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.code .fm { color: #06287e } /* Name.Function.Magic */
+.code .vc { color: #bb60d5 } /* Name.Variable.Class */
+.code .vg { color: #bb60d5 } /* Name.Variable.Global */
+.code .vi { color: #bb60d5 } /* Name.Variable.Instance */
+.code .vm { color: #bb60d5 } /* Name.Variable.Magic */
+.code .il { color: #40a070 } /* Literal.Number.Integer.Long */</style><div class="capture"><header class="capture-head"><h1>01  数据库后端选择</h1><div class="meta">implementation/agri/app.py  ·  L135–L149</div></header><div class="source"><div class="line"><span class="ln">135</span><span class="code">    <span class="k">if</span> <span class="n">service</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span></span></div><div class="line"><span class="ln">136</span><span class="code">        <span class="kn">from</span> <span class="nn">.db</span> <span class="kn">import</span> <span class="n">Database</span></span></div><div class="line"><span class="ln">137</span><span class="code">        <span class="kn">from</span> <span class="nn">.source_mapping</span> <span class="kn">import</span> <span class="n">SourceMappingService</span></span></div><div class="line"><span class="ln">138</span><span class="code">        <span class="n">database_url</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;DATABASE_URL&#39;</span><span class="p">]</span></span></div><div class="line"><span class="ln">139</span><span class="code">        <span class="k">if</span> <span class="n">database_url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;sqlite:&#39;</span><span class="p">):</span></span></div><div class="line"><span class="ln">140</span><span class="code">            <span class="kn">from</span> <span class="nn">.sqlite_db</span> <span class="kn">import</span> <span class="n">SQLiteDatabase</span></span></div><div class="line"><span class="ln">141</span><span class="code">            <span class="n">db</span> <span class="o">=</span> <span class="n">SQLiteDatabase</span><span class="p">(</span><span class="n">database_url</span><span class="p">)</span></span></div><div class="line"><span class="ln">142</span><span class="code">        <span class="k">else</span><span class="p">:</span></span></div><div class="line"><span class="ln">143</span><span class="code">            <span class="n">db</span> <span class="o">=</span> <span class="n">Database</span><span class="p">(</span><span class="n">database_url</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;DB_SCHEMA&#39;</span><span class="p">])</span></span></div><div class="line"><span class="ln">144</span><span class="code">        <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;AUTO_MIGRATE&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span></span></div><div class="line"><span class="ln">145</span><span class="code">            <span class="n">db</span><span class="o">.</span><span class="n">migrate</span><span class="p">()</span></span></div><div class="line"><span class="ln">146</span><span class="code">        <span class="n">service</span> <span class="o">=</span> <span class="n">SourceMappingService</span><span class="p">(</span><span class="n">db</span><span class="p">)</span></span></div><div class="line"><span class="ln">147</span><span class="code">        <span class="n">app</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="s1">&#39;agri_db&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">db</span></span></div><div class="line"><span class="ln">148</span><span class="code">    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="s1">&#39;db&#39;</span><span class="p">):</span></span></div><div class="line"><span class="ln">149</span><span class="code">        <span class="kn">from</span> <span class="nn">.source_mapping</span> <span class="kn">import</span> <span class="n">SourceMappingService</span></span></div></div><footer class="capture-foot">同一个服务入口选择 SQLite 或 PostgreSQL，当前并没有五个独立数据库连接。<small>当前源码节选 · 2026-10-21 · 原行号保留，长行仅视觉折行<br>source SHA256 b6e07c342eb657ee6ae119e0b9da050fd55d007f31eb9b0255203396e5072c04</small></footer></div></html>

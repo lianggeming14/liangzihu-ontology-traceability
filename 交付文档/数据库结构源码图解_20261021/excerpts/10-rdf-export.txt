@@ -1,0 +1,19 @@
+def to_jsonld(graph):
+    nodes=graph.get('nodes',[]);edges=graph.get('edges',[])
+    ids={str(n.get('id') or n.get('entity_key')) for n in nodes}
+    items=[]
+    for n in nodes:
+        key=str(n.get('id') or n.get('entity_key'))
+        items.append({'@id':identifier('node',key),'@type':'agri:GraphNode',
+                      'label':n.get('label',n.get('name','')),'kind':n.get('kind',n.get('entity_type',n.get('type','unknown'))),
+                      'payload':copy.deepcopy(n)})
+    for index,e in enumerate(edges):
+        source=str(e.get('source') or e.get('subject_key'));target=str(e.get('target') or e.get('object_key'))
+        if source not in ids or target not in ids:raise ValueError('Graph edge references a missing node')
+        key=e.get('id',str(index))
+        items.append({'@id':identifier('edge',key),'@type':'agri:QualifiedRelationship',
+                      'source':identifier('node',source),'target':identifier('node',target),
+                      'predicate_code':e.get('predicate_id',e.get('predicate','')),
+                      'dimension':e.get('dimension',''),'status':e.get('status','unknown'),'payload':copy.deepcopy(e)})
+    return {'@context':CONTEXT,'@id':'urn:agri:export','@type':'agri:GraphExport','profile':PROFILE,
+            'manifest':{k:copy.deepcopy(v) for k,v in graph.items() if k not in ('nodes','edges')},'@graph':items}

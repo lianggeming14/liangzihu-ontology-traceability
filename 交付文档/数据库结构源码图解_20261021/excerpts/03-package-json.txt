@@ -1,0 +1,24 @@
+        {
+          "property_id": "lzhu:calendar_versions.id",
+          "label": "农事日历版本 · 记录标识",
+          "description": "来源记录属性 calendar_versions.id。源UUID只作为来源标识，本库主键独立生成，通过外部身份映射关联。",
+          "applies_to": [
+            "lzhu:calendar_versions"
+          ],
+          "value_type": "string",
+          "usage": "attribute",
+          "required": false,
+          "cardinality": "single"
+        },
+        {
+          "property_id": "lzhu:calendar_versions.name",
+          "label": "农事日历版本 · 名称",
+          "description": "来源记录属性 calendar_versions.name。",
+          "applies_to": [
+            "lzhu:calendar_versions"
+          ],
+          "value_type": "string",
+          "usage": "attribute",
+          "required": false,
+          "cardinality": "single"
+        },

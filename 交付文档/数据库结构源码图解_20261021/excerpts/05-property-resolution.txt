@@ -1,0 +1,20 @@
+    def _property_candidates(self,tx,tenant,entity,at,property_id=None,usage=None):
+        candidates={}
+        for assignment in entity['semantic_types']:
+            if not _active(assignment,at): continue
+            rows=tx.execute('SELECT * FROM ontology_properties WHERE tenant_id=%s AND package_id=%s AND package_version=%s',(tenant,assignment['package_id'],assignment['package_version'])).fetchall()
+            for row in rows:
+                definition=_decode(row['definition'])
+                if assignment['type_id'] not in definition['applies_to'] or property_id and row['property_id']!=property_id or usage and definition['usage']!=usage: continue
+                ref={'package_id':row['package_id'],'version':row['package_version'],'property_id':row['property_id']}
+                candidates[tuple(ref.values())]=(ref,definition)
+        return list(candidates.values())
+
+    def resolve_property(self,tx,tenant,entity,property_id,reference,at,usage):
+        candidates=self._property_candidates(tx,tenant,entity,at,property_id,usage)
+        if reference:
+            if reference.get('property_id')!=property_id: raise DomainError(422,'property_reference_mismatch','属性标识与版本引用不一致')
+            candidates=[x for x in candidates if x[0]==reference]
+        if len(candidates)!=1:
+            raise DomainError(422,'needs_mapping','属性未对应到对象在该时点有效的唯一类定义，请先完成对象分类与来源映射',{'property_id':property_id,'candidate_refs':[x[0] for x in candidates]})
+        return candidates[0]

@@ -1,0 +1,151 @@
+{
+  "date": "2026-10-21",
+  "browser": "153.0.8010.54",
+  "method": "verbatim source extraction + real browser screenshots",
+  "passed": 12,
+  "failed": 0,
+  "checks": [
+    {
+      "id": "01-backend",
+      "status": "passed",
+      "source_lines_exact": true,
+      "line_numbers_exact": true,
+      "no_horizontal_clipping": true,
+      "width": 1400,
+      "height": 698.765625,
+      "screenshot_sha256": "2b4a828f400edc3d26da809f9e0faf7b02559460527a74f74efec776490f9452"
+    },
+    {
+      "id": "02-json-api",
+      "status": "passed",
+      "source_lines_exact": true,
+      "line_numbers_exact": true,
+      "no_horizontal_clipping": true,
+      "width": 1400,
+      "height": 785.15625,
+      "screenshot_sha256": "91564708253565e14606b1e132828504567904686b978889b8d7912ca249f193"
+    },
+    {
+      "id": "03-package-json",
+      "status": "passed",
+      "source_lines_exact": true,
+      "line_numbers_exact": true,
+      "no_horizontal_clipping": true,
+      "width": 1400,
+      "height": 957.9375,
+      "screenshot_sha256": "1983eca0a784ca4167de282fce4ecbd1fabbe85151c2643823f3ab45f2bbdbd9"
+    },
+    {
+      "id": "04-entities",
+      "status": "passed",
+      "source_lines_exact": true,
+      "line_numbers_exact": true,
+      "no_horizontal_clipping": true,
+      "width": 1400,
+      "height": 727.5625,
+      "screenshot_sha256": "d22a6d0f39f66d9c9db21cc65a09714fd3dde98119454cf82f53b627fda91205"
+    },
+    {
+      "id": "05-property-resolution",
+      "status": "passed",
+      "source_lines_exact": true,
+      "line_numbers_exact": true,
+      "no_horizontal_clipping": true,
+      "width": 1400,
+      "height": 957.140625,
+      "screenshot_sha256": "526cb3cab7be9e7d46932c099780712def6ada68b48d376e5befffb2b269b920"
+    },
+    {
+      "id": "06-relations",
+      "status": "passed",
+      "source_lines_exact": true,
+      "line_numbers_exact": true,
+      "no_horizontal_clipping": true,
+      "width": 1400,
+      "height": 813.953125,
+      "screenshot_sha256": "90dee3159385cccca96ea2ae5197561255c04e44c8f60645f22acb09dab60a7a"
+    },
+    {
+      "id": "07-observations",
+      "status": "passed",
+      "source_lines_exact": true,
+      "line_numbers_exact": true,
+      "no_horizontal_clipping": true,
+      "width": 1400,
+      "height": 813.953125,
+      "screenshot_sha256": "5dbd6d6d2e3206990647f978474789ad555b5bbc1d04d8cd43d8c212f17d49a4"
+    },
+    {
+      "id": "08-source-history",
+      "status": "passed",
+      "source_lines_exact": true,
+      "line_numbers_exact": true,
+      "no_horizontal_clipping": true,
+      "width": 1400,
+      "height": 1044.328125,
+      "screenshot_sha256": "1ec726b69b992a0e1dc206b1af65b88639db0b0528046e4dd5545a41e8202025"
+    },
+    {
+      "id": "09-assets",
+      "status": "passed",
+      "source_lines_exact": true,
+      "line_numbers_exact": true,
+      "no_horizontal_clipping": true,
+      "width": 1400,
+      "height": 1043.53125,
+      "screenshot_sha256": "9f46343673a971b27c7ca5132ffab8f3c8ac569f831434de97177e0cf5b1c978"
+    },
+    {
+      "id": "10-rdf-export",
+      "status": "passed",
+      "source_lines_exact": true,
+      "line_numbers_exact": true,
+      "no_horizontal_clipping": true,
+      "width": 1400,
+      "height": 813.953125,
+      "screenshot_sha256": "b1a976895295fe00283268c8b5764566f7ed13d4263e26b784e7d35a4a6761d3"
+    },
+    {
+      "id": "11-migrations",
+      "status": "passed",
+      "source_lines_exact": true,
+      "line_numbers_exact": true,
+      "no_horizontal_clipping": true,
+      "width": 1400,
+      "height": 1101.921875,
+      "screenshot_sha256": "680608c0aef00a2160f7df405dac840975007fa142ddfabaf2ca39ef0cf594a6"
+    },
+    {
+      "id": "12-frontend-map",
+      "status": "passed",
+      "source_lines_exact": true,
+      "line_numbers_exact": true,
+      "no_horizontal_clipping": true,
+      "width": 1400,
+      "height": 727.5625,
+      "screenshot_sha256": "a8a4f81d741be2bbafcd2d67f28ea973bb1a9bf83f772a6c15ae5de6beadf632"
+    }
+  ],
+  "report_images_loaded": true,
+  "report_no_horizontal_overflow": true,
+  "application_changes": false,
+  "backend_tests": "not_run_documentation_only",
+  "postgresql_validation": "not_run",
+  "visual_review": "passed",
+  "visually_reviewed_images": [
+    "00-report-overview",
+    "01-backend",
+    "02-json-api",
+    "03-package-json",
+    "04-entities",
+    "05-property-resolution",
+    "06-relations",
+    "07-observations",
+    "08-source-history",
+    "09-assets",
+    "10-rdf-export",
+    "11-migrations",
+    "12-frontend-map"
+  ],
+  "visual_review_notes": "All 12 code images and report overview inspected: legible text, retained line numbers, no clipping or overlap."
+}

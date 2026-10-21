@@ -1,0 +1,27 @@
+        digest = hashlib.sha256(content).hexdigest()
+        tenant_dir = hashlib.sha256(who['tenant_id'].encode()).hexdigest()
+        folder = Path(current_app.config.get('ASSET_ROOT', base / 'data' / 'assets')) / tenant_dir
+        folder.mkdir(parents=True, exist_ok=True)
+        path = folder / digest
+        original_name = Path(item.filename or 'asset').name[:200]
+        evidence = {'kind': kind, 'uri': 'asset://' + digest, 'content_hash': digest,
+                    'source_id': request.form.get('source_id', 'manual-upload'),
+                    'public_summary': request.form.get('public_summary', ''),
+                    'metadata': {'asset_key': digest, 'filename': original_name,
+                                 'media_type': item.mimetype, 'size_bytes': len(content)}}
+        checked('create_evidence', evidence)
+        try:
+            with path.open('xb') as stream:
+                stream.write(content)
+        except FileExistsError:
+            if hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+                raise DomainError(409, 'asset_integrity_failed', '已有原始资产哈希不一致')
+        from .asset_inspection import inspect_asset
+        evidence['metadata']['carrier'] = inspect_asset(content,kind,item.mimetype)
+        evidence['metadata']['processing'] = {'status':'not_requested','scope':'external_service','agricultural_inference':False}
+        evidence['metadata']['integrity'] = {'algorithm':'sha256','verified_at_receipt':True}
+        evidence['metadata']['record_kind'] = 'raw_evidence'
+        result = service.mutate('create_evidence', who['tenant_id'], who, evidence, key)
+        return jsonify({'data': result})
+
+    return bp

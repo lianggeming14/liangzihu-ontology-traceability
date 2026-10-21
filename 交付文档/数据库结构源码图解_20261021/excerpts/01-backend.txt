@@ -1,0 +1,15 @@
+    if service is None:
+        from .db import Database
+        from .source_mapping import SourceMappingService
+        database_url = app.config['DATABASE_URL']
+        if database_url.startswith('sqlite:'):
+            from .sqlite_db import SQLiteDatabase
+            db = SQLiteDatabase(database_url)
+        else:
+            db = Database(database_url, app.config['DB_SCHEMA'])
+        if app.config.get('AUTO_MIGRATE', True):
+            db.migrate()
+        service = SourceMappingService(db)
+        app.extensions['agri_db'] = db
+    if hasattr(service, 'db'):
+        from .source_mapping import SourceMappingService

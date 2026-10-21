@@ -1,0 +1,18 @@
+CREATE TABLE relations (
+ tenant_id text NOT NULL,id uuid NOT NULL,subject_key uuid NOT NULL,object_key uuid NOT NULL,
+ package_id text NOT NULL,package_version text NOT NULL,predicate_id text NOT NULL,
+ dimension text NOT NULL,valid_from timestamptz NOT NULL,valid_to timestamptz,
+ qualifiers jsonb NOT NULL,evidence_ids jsonb NOT NULL,
+ status text NOT NULL CHECK(status IN ('candidate','accepted','rejected','needs_review')),
+ revision bigint NOT NULL DEFAULT 1,created_at timestamptz NOT NULL,created_by text NOT NULL,
+ PRIMARY KEY(tenant_id,id),
+ FOREIGN KEY(tenant_id,subject_key) REFERENCES entities(tenant_id,entity_key),
+ FOREIGN KEY(tenant_id,object_key) REFERENCES entities(tenant_id,entity_key),
+ FOREIGN KEY(tenant_id,package_id,package_version,predicate_id) REFERENCES ontology_predicates(tenant_id,package_id,package_version,predicate_id),
+ CHECK(valid_to IS NULL OR valid_to > valid_from)
+);
+CREATE TABLE relation_assessments (
+ tenant_id text NOT NULL,id uuid NOT NULL,relation_id uuid NOT NULL,status text NOT NULL,
+ rationale text NOT NULL,actor_id text NOT NULL,assessed_at timestamptz NOT NULL,
+ PRIMARY KEY(tenant_id,id), FOREIGN KEY(tenant_id,relation_id) REFERENCES relations(tenant_id,id)
+);
