@@ -1,39 +1,14 @@
 {
   "format": "liangzihu-github-snapshot/1",
-  "created_at": "2026-10-18T16:45:56.837816+00:00",
+  "created_at": "2026-10-21T08:55:24.946568+00:00",
   "source": {
     "selection_mode": "reviewed-incremental",
     "scope": [
-      ".gitignore",
-      "README.md",
-      "implementation/agri/app.py",
-      "implementation/agri/openapi.py",
-      "implementation/agri/service.py",
-      "implementation/agri/network.py",
-      "implementation/agri/source_mapping.py",
-      "implementation/contracts/openapi.json",
-      "implementation/contracts/source-mapping-schemas.json",
-      "implementation/migrations/005_source_mapping.sql",
-      "implementation/migrations/005_source_mapping.sqlite.sql",
-      "implementation/tests/test_source_mapping.py",
-      "implementation/tests/test_liangzihu_adapter.py",
-      "implementation/tests/test_integration_api.py",
-      "implementation/tests/test_network.py",
-      "implementation/web/app.js",
-      "implementation/ops/import_liangzihu.py",
-      "implementation/IMPLEMENTATION_STATUS.json",
-      "implementation/database-gate.json",
-      "implementation/README.txt",
-      "implementation/验证结果.txt",
-      "implementation/runtime/api-contract-check.json",
-      "交付文档/梁子湖本体数据库后端操作说明书_v0.4.docx",
-      "交付文档/原梁子湖项目数据库分析与本体库比较报告.docx",
-      "tools/ontology_export/build_source_profile.py",
-      "implementation/integrations/liangzihu",
-      "tools/backend_release",
-      "outputs/backend-integration-20261019"
+      "tools/storage_review",
+      "交付文档/数据库结构源码图解_20261021",
+      "交付文档/数据库结构源码图解_20261021.zip"
     ],
-    "baseline_commit": "b27f730f271e8fa8f84bc7c53e30aaa1d9b911cf"
+    "baseline_commit": "ccd825c9e8170a6712a9362a891d83a61dedcab5"
   },
   "limits": {
     "archive_bytes": 18874368,
@@ -43,581 +18,290 @@
   },
   "archives": [
     {
-      "name": "snapshot-201.zip",
-      "size": 11023802,
-      "sha256": "a1a528a93955aca70bb6a64273e8d6ab4b4d3430690ec16a40b587f8d94c2f14",
-      "file_count": 93,
-      "uncompressed_size": 16434742
+      "name": "snapshot-301.zip",
+      "size": 6578638,
+      "sha256": "6739c4e3cf5fece481cf5a839902899e83eaef1c9e177dcd1aa53725744ff22d",
+      "file_count": 45,
+      "uncompressed_size": 6992869
     }
   ],
   "files": [
     {
-      "path": ".gitignore",
-      "archive": "snapshot-201.zip",
-      "size": 953,
-      "sha256": "18a3e7de5edc005f477dd7fb5a342e0211b687d1366cffd3629ef98e61295efd"
+      "path": "tools/storage_review/build_review.py",
+      "archive": "snapshot-301.zip",
+      "size": 27206,
+      "sha256": "7db43844f242de78ca84e397d2ccbaf5420daa5f4000d891d7a9b84c860a78be"
     },
     {
-      "path": "README.md",
-      "archive": "snapshot-201.zip",
-      "size": 4325,
-      "sha256": "7f6039fe708ae5adf21735289755928a7e8afb7b1873cbe60501944ca3d4d015"
+      "path": "tools/storage_review/package_review.py",
+      "archive": "snapshot-301.zip",
+      "size": 5990,
+      "sha256": "6333b57cdb76db8c0dfcbe3163814f969a4eebd7de22d57961f97844e16821a1"
     },
     {
-      "path": "implementation/IMPLEMENTATION_STATUS.json",
-      "archive": "snapshot-201.zip",
-      "size": 9750,
-      "sha256": "22451221493840238ec6d4c45eabceeeef307681971ad629163c0c3cdfaafd7a"
+      "path": "tools/storage_review/render_source.cjs",
+      "archive": "snapshot-301.zip",
+      "size": 3835,
+      "sha256": "bcc8eeb021d2d3088713f2692bf838c5b717b7e96e50f4f4cd206e7daf1490d6"
     },
     {
-      "path": "implementation/README.txt",
-      "archive": "snapshot-201.zip",
-      "size": 9131,
-      "sha256": "2fdd69ee19cbaffd1dabc38ef889deb76e4a62fe805c5bf3897595f08612e566"
+      "path": "交付文档/数据库结构源码图解_20261021/captures/01-backend.html",
+      "archive": "snapshot-301.zip",
+      "size": 10180,
+      "sha256": "c1f95e19952f640c882458c34b8cc726657928d491cb7c8bbc77c0de4a2149b8"
     },
     {
-      "path": "implementation/agri/app.py",
-      "archive": "snapshot-201.zip",
-      "size": 19637,
-      "sha256": "b6e07c342eb657ee6ae119e0b9da050fd55d007f31eb9b0255203396e5072c04"
+      "path": "交付文档/数据库结构源码图解_20261021/captures/02-json-api.html",
+      "archive": "snapshot-301.zip",
+      "size": 12704,
+      "sha256": "ba21ce04ff40ebb5105234de2883f6874f39c241efd5d32e004bd09599804ebb"
     },
     {
-      "path": "implementation/agri/network.py",
-      "archive": "snapshot-201.zip",
-      "size": 22237,
-      "sha256": "b166d68ce75af44fcd2164649aced0b7f41bad6bd7487daf276afd7a72240ca2"
+      "path": "交付文档/数据库结构源码图解_20261021/captures/03-package-json.html",
+      "archive": "snapshot-301.zip",
+      "size": 11806,
+      "sha256": "7b286b7ec13526251ec7be4258e386a92656516ade9982b45c94b758775f6d56"
     },
     {
-      "path": "implementation/agri/openapi.py",
-      "archive": "snapshot-201.zip",
-      "size": 18491,
-      "sha256": "92f4bac9b3ca1d2e01f3e149fcef8fd698d38b83fdf74ab72c5ca18ebc4843cb"
+      "path": "交付文档/数据库结构源码图解_20261021/captures/04-entities.html",
+      "archive": "snapshot-301.zip",
+      "size": 14844,
+      "sha256": "65aff4ac21acabc940501f6f92c1eac978e5b7230be328302c2e0fef09b4f246"
     },
     {
-      "path": "implementation/agri/service.py",
-      "archive": "snapshot-201.zip",
-      "size": 83475,
-      "sha256": "79cd355f8cb977672371e83b85c880c9d52d2aba5c770b6606bbcdc74d29433d"
+      "path": "交付文档/数据库结构源码图解_20261021/captures/05-property-resolution.html",
+      "archive": "snapshot-301.zip",
+      "size": 15681,
+      "sha256": "d00c1062c42de22dd0407390f605719cf48738e5926f8e28846a4c2dea47b3e8"
     },
     {
-      "path": "implementation/agri/source_mapping.py",
-      "archive": "snapshot-201.zip",
-      "size": 46405,
-      "sha256": "e93575d80958eb68f734ddfaba5a53a835eef222c919bfc43223a63b5b84f14e"
+      "path": "交付文档/数据库结构源码图解_20261021/captures/06-relations.html",
+      "archive": "snapshot-301.zip",
+      "size": 16664,
+      "sha256": "50c33e3cf0b3f186fbb67216ffab4d409c320ad9d7a7a0dc6a0990581041c95d"
     },
     {
-      "path": "implementation/contracts/openapi.json",
-      "archive": "snapshot-201.zip",
-      "size": 330678,
-      "sha256": "feb5eb64f24c88af8bcf653294d857b05b3f6b9c51dc0995f3c050688a841896"
+      "path": "交付文档/数据库结构源码图解_20261021/captures/07-observations.html",
+      "archive": "snapshot-301.zip",
+      "size": 17408,
+      "sha256": "7340bc9411b3801123bcca601a3ea3f61dd8439d1958b5f1038bcc8e7040dacc"
     },
     {
-      "path": "implementation/contracts/source-mapping-schemas.json",
-      "archive": "snapshot-201.zip",
-      "size": 34955,
-      "sha256": "24d9769541bd9379b4234ab8e2f4c4219e4a2a85b0598a88d59e48cd4d7e486f"
+      "path": "交付文档/数据库结构源码图解_20261021/captures/08-source-history.html",
+      "archive": "snapshot-301.zip",
+      "size": 22415,
+      "sha256": "fe60668c76aa2700466682ba87a83dbbf330f3f12c4f23b47ef0dd5020c6cc74"
     },
     {
-      "path": "implementation/database-gate.json",
-      "archive": "snapshot-201.zip",
-      "size": 2657,
-      "sha256": "4fef40d5a43096851d15781466608dd854bba8d7f9a05032156a6db59bee30c0"
+      "path": "交付文档/数据库结构源码图解_20261021/captures/09-assets.html",
+      "archive": "snapshot-301.zip",
+      "size": 16998,
+      "sha256": "9ad7209fcb20486fc576be35d6758f5672d906cf056ddce541e04359ac50c985"
     },
     {
-      "path": "implementation/integrations/liangzihu/README.txt",
-      "archive": "snapshot-201.zip",
-      "size": 12988,
-      "sha256": "e268dade096d50edf0b154a96256f48ccbe634579a081277e4ff98588a3499a6"
+      "path": "交付文档/数据库结构源码图解_20261021/captures/10-rdf-export.html",
+      "archive": "snapshot-301.zip",
+      "size": 17114,
+      "sha256": "0a182878865aa283198a91925e9e3bf0f2fe23c6eeeec2585f9e4d9305d3e07e"
     },
     {
-      "path": "implementation/integrations/liangzihu/__init__.py",
-      "archive": "snapshot-201.zip",
-      "size": 15404,
-      "sha256": "fa770fe5b00a0a14130ae2180356d031a7d93e2b60341da0f3da7d116aaab0ff"
+      "path": "交付文档/数据库结构源码图解_20261021/captures/11-migrations.html",
+      "archive": "snapshot-301.zip",
+      "size": 17210,
+      "sha256": "d6b7f5d6a4455253903f1800bff62518db1e36f4d12fb81949667cc8c1b782e2"
     },
     {
-      "path": "implementation/integrations/liangzihu/artifact-manifest.json",
-      "archive": "snapshot-201.zip",
-      "size": 1491,
-      "sha256": "5362291f5f084a0ec339aeeb5e67b732c2997fafcd8555e31af02b89a0e04ae7"
+      "path": "交付文档/数据库结构源码图解_20261021/captures/12-frontend-map.html",
+      "archive": "snapshot-301.zip",
+      "size": 13895,
+      "sha256": "f728125e27c4b00ad660f22f2adb99a2479982c9a27af7aaea9b668ceaa30127"
     },
     {
-      "path": "implementation/integrations/liangzihu/coverage-manifest.json",
-      "archive": "snapshot-201.zip",
-      "size": 2030602,
-      "sha256": "e4f2cde5b46214f33c178e08aa425055a9c3f25bfa6ac86c763fcc737b5b1029"
+      "path": "交付文档/数据库结构源码图解_20261021/excerpts/01-backend.txt",
+      "archive": "snapshot-301.zip",
+      "size": 630,
+      "sha256": "39cf7b7805e4db9f3eddfa982e45a96656660240f948085b73db7a270d4d7cb8"
     },
     {
-      "path": "implementation/integrations/liangzihu/input-template.json",
-      "archive": "snapshot-201.zip",
-      "size": 199,
-      "sha256": "b0ae6a5d404191985e60e83fa99e239338041e42bec255c12accf7fecd19798a"
+      "path": "交付文档/数据库结构源码图解_20261021/excerpts/02-json-api.txt",
+      "archive": "snapshot-301.zip",
+      "size": 1047,
+      "sha256": "37ca4a80d75e48e14b68232ea3c24088b18570ee07529458a103af1659ac3a12"
     },
     {
-      "path": "implementation/integrations/liangzihu/package-bundle.json",
-      "archive": "snapshot-201.zip",
-      "size": 768139,
-      "sha256": "0a56d3b5ebf0965bb929f19c0b3e556b19d2e372aa4318daa36739490822f241"
+      "path": "交付文档/数据库结构源码图解_20261021/excerpts/03-package-json.txt",
+      "archive": "snapshot-301.zip",
+      "size": 905,
+      "sha256": "be92dac95eeae7bf708a33ea638f6be0abd498c13643d7800342d9638b03a1ec"
     },
     {
-      "path": "implementation/integrations/liangzihu/readonly-export-core.sql",
-      "archive": "snapshot-201.zip",
-      "size": 4640,
-      "sha256": "37d19cb58e119bf604b56ba5db207424073cd4f1a2e52b8078133cdd35e8a602"
+      "path": "交付文档/数据库结构源码图解_20261021/excerpts/04-entities.txt",
+      "archive": "snapshot-301.zip",
+      "size": 978,
+      "sha256": "d49df43091d147aa1d454f3faeb8f3b60cdb731f418012ba0ced1b10470d055b"
     },
     {
-      "path": "implementation/integrations/liangzihu/readonly-export.sql",
-      "archive": "snapshot-201.zip",
-      "size": 86097,
-      "sha256": "337a6a39c34f6b4f4bf3d88da4ac4a352b52f755284bea473fec5143deb0bc0d"
+      "path": "交付文档/数据库结构源码图解_20261021/excerpts/05-property-resolution.txt",
+      "archive": "snapshot-301.zip",
+      "size": 1583,
+      "sha256": "0edfb5b11f1f2e39b239462a534165798bd63cf921287633ced31e43517cc954"
     },
     {
-      "path": "implementation/integrations/liangzihu/source-profile.json",
-      "archive": "snapshot-201.zip",
-      "size": 433156,
-      "sha256": "db9675d86e122b51fce7e0d1f5b823919550ef33580f362df56a872bb99585f7"
+      "path": "交付文档/数据库结构源码图解_20261021/excerpts/06-relations.txt",
+      "archive": "snapshot-301.zip",
+      "size": 1217,
+      "sha256": "d259f7329c70adba1d99d6a36aaadaba04e67a32b6dd859d4c92ffdf2f2c09be"
     },
     {
-      "path": "implementation/integrations/liangzihu/synthetic-core-example.json",
-      "archive": "snapshot-201.zip",
-      "size": 3942,
-      "sha256": "34222d6c254c8337ca7212a6280ba7ad14c3075eb34728d1e1572d082d367b17"
+      "path": "交付文档/数据库结构源码图解_20261021/excerpts/07-observations.txt",
+      "archive": "snapshot-301.zip",
+      "size": 1210,
+      "sha256": "f664ea2926123a45b573a8f91bd3fda1bf89901ee7977f03e91830d60bc7d69f"
     },
     {
-      "path": "implementation/migrations/005_source_mapping.sql",
-      "archive": "snapshot-201.zip",
-      "size": 3964,
-      "sha256": "d6c3219a84533818e5ae34aeeb3a227308d896a72a31d811711fbc649e89b0da"
+      "path": "交付文档/数据库结构源码图解_20261021/excerpts/08-source-history.txt",
+      "archive": "snapshot-301.zip",
+      "size": 1916,
+      "sha256": "c0b7cb5abfae603b9db83799dc709d7ef28979e4d9d58f245e9742e4c5c2a31e"
     },
     {
-      "path": "implementation/migrations/005_source_mapping.sqlite.sql",
-      "archive": "snapshot-201.zip",
-      "size": 3940,
-      "sha256": "2cfc391c2221b2614ed7ae0881faafc6290e3e2fe088a1fcbfb4cbd09137d249"
+      "path": "交付文档/数据库结构源码图解_20261021/excerpts/09-assets.txt",
+      "archive": "snapshot-301.zip",
+      "size": 1703,
+      "sha256": "e09e95b3abe1374d96e8c93f18b5f010651a450b0c626abec16d6575a1c39640"
     },
     {
-      "path": "implementation/ops/import_liangzihu.py",
-      "archive": "snapshot-201.zip",
-      "size": 15891,
-      "sha256": "8857718e451f1288b2e6b0f89f8b8643a25a6dde2f041e3c2ee0821ec0760421"
+      "path": "交付文档/数据库结构源码图解_20261021/excerpts/10-rdf-export.txt",
+      "archive": "snapshot-301.zip",
+      "size": 1381,
+      "sha256": "21d6ba6fa2bd21eae288cd8546a86d20c2584702150331ca0ac6da2d05ad9d9f"
     },
     {
-      "path": "implementation/runtime/api-contract-check.json",
-      "archive": "snapshot-201.zip",
-      "size": 364,
-      "sha256": "8c8456646801800649f0bb8f1dea346db4c64e84a2e6fdf5b1530c7114b4de66"
+      "path": "交付文档/数据库结构源码图解_20261021/excerpts/11-migrations.txt",
+      "archive": "snapshot-301.zip",
+      "size": 1937,
+      "sha256": "234c72e6093f070e263b6733bda23ae0be6bcb842c05d03f47d7ff25f015c1a5"
     },
     {
-      "path": "implementation/tests/test_integration_api.py",
-      "archive": "snapshot-201.zip",
-      "size": 8220,
-      "sha256": "49e522f305570514b73493c21649539e0dfb2fc8a2a481dc2e210a26d131c30f"
+      "path": "交付文档/数据库结构源码图解_20261021/excerpts/12-frontend-map.txt",
+      "archive": "snapshot-301.zip",
+      "size": 928,
+      "sha256": "a52525688461a618914f83dd4bacef6420f561c64129cb1d6d7a8d4526d4bfba"
     },
     {
-      "path": "implementation/tests/test_liangzihu_adapter.py",
-      "archive": "snapshot-201.zip",
-      "size": 16846,
-      "sha256": "a18c872c1b231df26f90fa91babf9cc5a921d765c1bf475b8ca3b9f9cd2d8e12"
+      "path": "交付文档/数据库结构源码图解_20261021/index.html",
+      "archive": "snapshot-301.zip",
+      "size": 28820,
+      "sha256": "f751bdfe93d122f877d4b44b5849a27ef38d0c9cea6cd071fa7c86b150824f4a"
     },
     {
-      "path": "implementation/tests/test_network.py",
-      "archive": "snapshot-201.zip",
-      "size": 10574,
-      "sha256": "7b890132de64e21942c044a6cfe47aa560d44d4c7197983ac853186a610d8945"
+      "path": "交付文档/数据库结构源码图解_20261021/screenshots/00-report-overview.png",
+      "archive": "snapshot-301.zip",
+      "size": 389445,
+      "sha256": "af5741abc2e5ec42b7959385f9a8b45717072681143fbc71d2d4e6e3586a22b7"
     },
     {
-      "path": "implementation/tests/test_source_mapping.py",
-      "archive": "snapshot-201.zip",
-      "size": 31963,
-      "sha256": "02cac1152a4ffc9ffaf78300000c82c6e3d348ebb8d8aa62195e55446b9f3c2a"
+      "path": "交付文档/数据库结构源码图解_20261021/screenshots/01-backend.png",
+      "archive": "snapshot-301.zip",
+      "size": 155314,
+      "sha256": "2b4a828f400edc3d26da809f9e0faf7b02559460527a74f74efec776490f9452"
     },
     {
-      "path": "implementation/web/app.js",
-      "archive": "snapshot-201.zip",
-      "size": 117661,
-      "sha256": "7146ad2c0ada48582cde58d55c680a789f00a5deb851f7e97d8ee3d5e307f865"
+      "path": "交付文档/数据库结构源码图解_20261021/screenshots/02-json-api.png",
+      "archive": "snapshot-301.zip",
+      "size": 208655,
+      "sha256": "91564708253565e14606b1e132828504567904686b978889b8d7912ca249f193"
     },
     {
-      "path": "implementation/验证结果.txt",
-      "archive": "snapshot-201.zip",
-      "size": 4481,
-      "sha256": "cee0532f27e9e24be2e89d5af3bdd31dff7d034e16bbaa1d316728e5a0cd73a5"
+      "path": "交付文档/数据库结构源码图解_20261021/screenshots/03-package-json.png",
+      "archive": "snapshot-301.zip",
+      "size": 194867,
+      "sha256": "1983eca0a784ca4167de282fce4ecbd1fabbe85151c2643823f3ab45f2bbdbd9"
     },
     {
-      "path": "outputs/backend-integration-20261019/backend_manual.json",
-      "archive": "snapshot-201.zip",
-      "size": 34888,
-      "sha256": "6e0e526cc5c072897da851d055145e931cf5e6d66d804f0dbd98c755d3f25ba8"
+      "path": "交付文档/数据库结构源码图解_20261021/screenshots/04-entities.png",
+      "archive": "snapshot-301.zip",
+      "size": 189734,
+      "sha256": "d22a6d0f39f66d9c9db21cc65a09714fd3dde98119454cf82f53b627fda91205"
     },
     {
-      "path": "outputs/backend-integration-20261019/baseline-tests.xml",
-      "archive": "snapshot-201.zip",
-      "size": 78133,
-      "sha256": "dad459ecf86619edd882bcfa2c508e8d295b1da65b452b7a29b6635e4f3c9979"
+      "path": "交付文档/数据库结构源码图解_20261021/screenshots/05-property-resolution.png",
+      "archive": "snapshot-301.zip",
+      "size": 303425,
+      "sha256": "526cb3cab7be9e7d46932c099780712def6ada68b48d376e5befffb2b269b920"
     },
     {
-      "path": "outputs/backend-integration-20261019/final-tests.xml",
-      "archive": "snapshot-201.zip",
-      "size": 132973,
-      "sha256": "30901e04fda6b226e1b69c6584bd4b9154d270b100404f4aa25a2ad1f02fb4c9"
+      "path": "交付文档/数据库结构源码图解_20261021/screenshots/06-relations.png",
+      "archive": "snapshot-301.zip",
+      "size": 233483,
+      "sha256": "90dee3159385cccca96ea2ae5197561255c04e44c8f60645f22acb09dab60a7a"
     },
     {
-      "path": "outputs/backend-integration-20261019/http-release-check.json",
-      "archive": "snapshot-201.zip",
-      "size": 713,
-      "sha256": "e462841915d934522a4c613f4879ad2b50cf94e7edad990d6613c5e61f7c6b95"
+      "path": "交付文档/数据库结构源码图解_20261021/screenshots/07-observations.png",
+      "archive": "snapshot-301.zip",
+      "size": 230584,
+      "sha256": "5dbd6d6d2e3206990647f978474789ad555b5bbc1d04d8cd43d8c212f17d49a4"
     },
     {
-      "path": "outputs/backend-integration-20261019/integration-tests.xml",
-      "archive": "snapshot-201.zip",
-      "size": 29651,
-      "sha256": "fd8dcd785e363413d9ec56d5bfd53473c695621073319cd76b8cdd2667163aaf"
+      "path": "交付文档/数据库结构源码图解_20261021/screenshots/08-source-history.png",
+      "archive": "snapshot-301.zip",
+      "size": 323115,
+      "sha256": "1ec726b69b992a0e1dc206b1af65b88639db0b0528046e4dd5545a41e8202025"
     },
     {
-      "path": "outputs/backend-integration-20261019/layout-reflow-check.json",
-      "archive": "snapshot-201.zip",
-      "size": 1245,
-      "sha256": "957adb905e0fa5ebb7136d334e40d7cc46f97cb0d69d2ea5c91dc52d5a03b01e"
+      "path": "交付文档/数据库结构源码图解_20261021/screenshots/09-assets.png",
+      "archive": "snapshot-301.zip",
+      "size": 300485,
+      "sha256": "9f46343673a971b27c7ca5132ffab8f3c8ac569f831434de97177e0cf5b1c978"
     },
     {
-      "path": "outputs/backend-integration-20261019/manual-qa/final-visual-validation.json",
-      "archive": "snapshot-201.zip",
-      "size": 570,
-      "sha256": "c96554dffb4f79a5858b433804e1885ed2c28be427dc7910a4be4e083fd8b9ae"
+      "path": "交付文档/数据库结构源码图解_20261021/screenshots/10-rdf-export.png",
+      "archive": "snapshot-301.zip",
+      "size": 268330,
+      "sha256": "b1a976895295fe00283268c8b5764566f7ed13d4263e26b784e7d35a4a6761d3"
     },
     {
-      "path": "outputs/backend-integration-20261019/manual-qa/layout-preview.pdf",
-      "archive": "snapshot-201.zip",
-      "size": 263772,
-      "sha256": "dfd69c8643fa9eaf2d1dd9e7e3c81e3b46d34198d669f5bc0e617bd056da0e7c"
+      "path": "交付文档/数据库结构源码图解_20261021/screenshots/11-migrations.png",
+      "archive": "snapshot-301.zip",
+      "size": 342054,
+      "sha256": "680608c0aef00a2160f7df405dac840975007fa142ddfabaf2ca39ef0cf594a6"
     },
     {
-      "path": "outputs/backend-integration-20261019/manual-qa/layout-report.json",
-      "archive": "snapshot-201.zip",
-      "size": 69460,
-      "sha256": "f58af5726d76a99a21fe918c773e3be44f4c1aa39ef11fe4c48fc9fd7227c957"
+      "path": "交付文档/数据库结构源码图解_20261021/screenshots/12-frontend-map.png",
+      "archive": "snapshot-301.zip",
+      "size": 241883,
+      "sha256": "a8a4f81d741be2bbafcd2d67f28ea973bb1a9bf83f772a6c15ae5de6beadf632"
     },
     {
-      "path": "outputs/backend-integration-20261019/manual-qa/native-render.json",
-      "archive": "snapshot-201.zip",
-      "size": 1471,
-      "sha256": "dc7e1c2b4d77e9956fcb0f5e91ccde1e0bf0a829ab660beb02f049628743644b"
+      "path": "交付文档/数据库结构源码图解_20261021/sources.json",
+      "archive": "snapshot-301.zip",
+      "size": 24175,
+      "sha256": "2099fd4e3f0c4090a78e141de97ae1e12c0eefdf3e467ce5bffdc9211e2062ba"
     },
     {
-      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-1.png",
-      "archive": "snapshot-201.zip",
-      "size": 473761,
-      "sha256": "67227ce0eccdfc14248e67d38cd88a8acbd1c1a33ec9fd7cca2362a2f09b638c"
+      "path": "交付文档/数据库结构源码图解_20261021/verification.json",
+      "archive": "snapshot-301.zip",
+      "size": 4813,
+      "sha256": "715a36adae7dd8d5ef1c74169e47005920a9eb18f3a62bfabeea45a16c040150"
     },
     {
-      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-10.png",
-      "archive": "snapshot-201.zip",
-      "size": 202588,
-      "sha256": "53a48a97395cc3e9991fc511082558db72c239f8fe872fdade9540c99a8586c8"
+      "path": "交付文档/数据库结构源码图解_20261021/源码图解说明.txt",
+      "archive": "snapshot-301.zip",
+      "size": 31840,
+      "sha256": "d9b890316d58c5aaa0eb3f7f110f438b5d07d686aa7516e991682311d31bf80b"
     },
     {
-      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-2.png",
-      "archive": "snapshot-201.zip",
-      "size": 403758,
-      "sha256": "964227964062ee18819844b30b840818e97b6b30a31adaa018a2d06ba11f1b12"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-3.png",
-      "archive": "snapshot-201.zip",
-      "size": 445614,
-      "sha256": "c63cca49d95249821f2f23fce5d9deb76e9795b14d9b0adbd8e6ae2b9e9680fb"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-4.png",
-      "archive": "snapshot-201.zip",
-      "size": 475456,
-      "sha256": "1ca447183e08cbd5069fd1a33176458c6b41a2b7a3458b6a65ca76041fcab21e"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-5.png",
-      "archive": "snapshot-201.zip",
-      "size": 554299,
-      "sha256": "e63dcc12725664f5215e99dcc06fbf974f496cfca7047ead1a95e77d33bf4cd6"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-6.png",
-      "archive": "snapshot-201.zip",
-      "size": 443865,
-      "sha256": "2f410b7a47af488e6cc9f1502b9830381638aa378ff167e523066a98b96af8a7"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-7.png",
-      "archive": "snapshot-201.zip",
-      "size": 515366,
-      "sha256": "abb24505338592e7ff66d92656faa16cb290fb2d55da084d2abd94111a8eae11"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-8.png",
-      "archive": "snapshot-201.zip",
-      "size": 468640,
-      "sha256": "5a9573d68fc7bfe3cce57e9a8b3de600107bed7db53c0a86e8c23999e87246cd"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/manual-qa/preview-pages/page-9.png",
-      "archive": "snapshot-201.zip",
-      "size": 349911,
-      "sha256": "764b931f96d31fd192fbc3ed747b3013cb8b395411af16726a34d9fef4c4e437"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/manual-qa/visual-review-core.txt",
-      "archive": "snapshot-201.zip",
-      "size": 765,
-      "sha256": "5f80549c7cf2dc81b4c8fc86c7e89f31ff65a6fffe5f78e5b680dbf087903059"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/manual-qa/visual-review-reflow.txt",
-      "archive": "snapshot-201.zip",
-      "size": 1673,
-      "sha256": "df78f319efc3a87e289cb770272461f47fa6093eec13091aa34bb542159f9554"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/publication-preflight.json",
-      "archive": "snapshot-201.zip",
-      "size": 861,
-      "sha256": "6dea125bf0b1c604ef314c2f65498ff57ceed356740e2307de2fb0010005038b"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/final-visual-validation.json",
-      "archive": "snapshot-201.zip",
-      "size": 570,
-      "sha256": "de38e4519f6fc8c8840edb40651141714b2a9eb355d0a04421ac527c9a8a789b"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/layout-preview.pdf",
-      "archive": "snapshot-201.zip",
-      "size": 322539,
-      "sha256": "ba5b6cb7587a02214a427134f2ff45096d2e2ec482c2bb59167e5b5c1a4b38e1"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/layout-report.json",
-      "archive": "snapshot-201.zip",
-      "size": 161095,
-      "sha256": "96bfba475a9453976b64ef81e09d373781f4b38763257d554547ae10b488917f"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/native-render.json",
-      "archive": "snapshot-201.zip",
-      "size": 1471,
-      "sha256": "dc7e1c2b4d77e9956fcb0f5e91ccde1e0bf0a829ab660beb02f049628743644b"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-1.png",
-      "archive": "snapshot-201.zip",
-      "size": 523141,
-      "sha256": "308c07adcdb8f64405d452a1747e734b46ebab5875dd0db837f2a6b2a5606f2b"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-10.png",
-      "archive": "snapshot-201.zip",
-      "size": 474042,
-      "sha256": "65b67ce79922537f073554e446046ba0943754a0b4925a2b2aeaa030fbabe639"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-11.png",
-      "archive": "snapshot-201.zip",
-      "size": 422714,
-      "sha256": "9f10cd67cdc47c3175e81929042aa5b57aa5cd0fe9dce5bd1952fcb9f1b0da5c"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-12.png",
-      "archive": "snapshot-201.zip",
-      "size": 208080,
-      "sha256": "2ce3e1feb532cfdc41cb9fc133912b492ceee9743310e7b38813ba095b0c1989"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-13.png",
-      "archive": "snapshot-201.zip",
-      "size": 184193,
-      "sha256": "e2aee2b0f899980b251ff091663ceb90a8c0169cd87dc2290eb56156b167a10f"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-14.png",
-      "archive": "snapshot-201.zip",
-      "size": 207180,
-      "sha256": "4bc2fece11d3193613aa81a0d433abb4733a5a35a18ea47b5a12947a14665a10"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-15.png",
-      "archive": "snapshot-201.zip",
-      "size": 197504,
-      "sha256": "7188c52ba7ba4033803622cb4df24133c834d9583463613fd8e4f9e9897199cc"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-16.png",
-      "archive": "snapshot-201.zip",
-      "size": 188032,
-      "sha256": "ea2539f7a85c9513d9e285a346e8418d6f1ef0a81aaa1fd5d6961b82379f41a5"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-17.png",
-      "archive": "snapshot-201.zip",
-      "size": 197979,
-      "sha256": "0f6255ad32d11b52f52569ccb9cbc0629b4e986925db5ad0bcba8b672b558065"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-18.png",
-      "archive": "snapshot-201.zip",
-      "size": 176590,
-      "sha256": "675de94c97a67786dcab577dedb7f5035fdb87ef945f125abc6d440b2ab6dbb0"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-19.png",
-      "archive": "snapshot-201.zip",
-      "size": 70218,
-      "sha256": "c536dd04438412df9a7b8482913f85aebc0ad8cd3dadff41ae73bd9b1f6132da"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-2.png",
-      "archive": "snapshot-201.zip",
-      "size": 414858,
-      "sha256": "016eeac959b256dac6473642f951d6433fbcc845d5033bd1d9857c5349fa5202"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-3.png",
-      "archive": "snapshot-201.zip",
-      "size": 356524,
-      "sha256": "8f278683f8529078114e04dc9a1956fa1ed76de8afc7e2817cc0d8dbd9cfcb36"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-4.png",
-      "archive": "snapshot-201.zip",
-      "size": 487272,
-      "sha256": "4515f4af6db1d0b25cc1fdb2df3217a093920e19121b5bf0da4b4425e1142107"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-5.png",
-      "archive": "snapshot-201.zip",
-      "size": 531131,
-      "sha256": "bb803c4f570a138589a52ce41527342cf9ba92a0d6b237d14413fc3ac7ce4b96"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-6.png",
-      "archive": "snapshot-201.zip",
-      "size": 556916,
-      "sha256": "296193652856bb53b177d74d6ba8a9479f108c0162c0e45b22ba6bef16938495"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-7.png",
-      "archive": "snapshot-201.zip",
-      "size": 465378,
-      "sha256": "682c699fea8134ffe60d0c215ad66123925601f1116670703e756d36a95b5ba6"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-8.png",
-      "archive": "snapshot-201.zip",
-      "size": 486622,
-      "sha256": "298c7f2d6e3e7565d117e5deb92d3b86e20d7a9b6de37da4e586860c6d17da50"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/preview-pages/page-9.png",
-      "archive": "snapshot-201.zip",
-      "size": 448976,
-      "sha256": "e7cc1398f780326622c296ff2e4746a5f12f5320d33ce7863f96e4c93a3ae1be"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/visual-review-part1.txt",
-      "archive": "snapshot-201.zip",
-      "size": 1933,
-      "sha256": "b938cf1fb65ffdbc20bdbf2a742fa901ca3f0aee0de26b57799666dbc133971b"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/report-qa/visual-review-part2.txt",
-      "archive": "snapshot-201.zip",
-      "size": 2198,
-      "sha256": "64834201faa8e97b91fe46551dc20ca0fd7d979a39ca1b785edb5152160ed234"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/source_database_report.json",
-      "archive": "snapshot-201.zip",
-      "size": 69405,
-      "sha256": "20c163dba982d67beff970ee6d41aefe4be036d312d863c48cf4d926f32114ea"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/upgrade-applied.json",
-      "archive": "snapshot-201.zip",
-      "size": 951,
-      "sha256": "cc09989ab8a085fd39e17252fa304640a18a79793f731b01ac703fd0042876fc"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/upgrade-preflight.json",
-      "archive": "snapshot-201.zip",
-      "size": 443,
-      "sha256": "b02c9f099cdc1d2a8533fc75d4cf158315ae46e78f53af802eb4f7781e6df483"
-    },
-    {
-      "path": "outputs/backend-integration-20261019/verification.json",
-      "archive": "snapshot-201.zip",
-      "size": 672,
-      "sha256": "95c8ead52a040076841b312fae6ea78e8a8c617b8b155f851df3a745da6d1b97"
-    },
-    {
-      "path": "tools/backend_release/build_docs.py",
-      "archive": "snapshot-201.zip",
-      "size": 13244,
-      "sha256": "5980d56d0596fc14fdfb69f9633818ebbffcfd0d7ceda1bd7f2b7d57d2549618"
-    },
-    {
-      "path": "tools/backend_release/build_snapshot.py",
-      "archive": "snapshot-201.zip",
-      "size": 5060,
-      "sha256": "6e826264c73a3c4b2dc4cedd8106a6314b018a24973c70a11c5786b430764105"
-    },
-    {
-      "path": "tools/backend_release/check_http.py",
-      "archive": "snapshot-201.zip",
-      "size": 2390,
-      "sha256": "9fcc99db11f2b1105ebca82a08998418d790723092a665210090997f1ddeaf5f"
-    },
-    {
-      "path": "tools/backend_release/finalize_docs.py",
-      "archive": "snapshot-201.zip",
-      "size": 11660,
-      "sha256": "8ef184df172c4d354049e709f89b14ca797c9233dc4af75e556d26e3e3c8b70e"
-    },
-    {
-      "path": "tools/backend_release/render_qa.py",
-      "archive": "snapshot-201.zip",
-      "size": 1736,
-      "sha256": "eecd32496e74c0089470fba1206155709cabda8d581a2031b8f2f8d907d51554"
-    },
-    {
-      "path": "tools/backend_release/upgrade_local.py",
-      "archive": "snapshot-201.zip",
-      "size": 4333,
-      "sha256": "bfece9bbcea3b2d651147d4ab974bb6e7a2e4d0314aee35a81b00622219b321d"
-    },
-    {
-      "path": "tools/ontology_export/build_source_profile.py",
-      "archive": "snapshot-201.zip",
-      "size": 14798,
-      "sha256": "54f3afa95f1e8678ce9f288667c0f461cd5b46cd3952ccc5f32c0d6b10599629"
-    },
-    {
-      "path": "交付文档/原梁子湖项目数据库分析与本体库比较报告.docx",
-      "archive": "snapshot-201.zip",
-      "size": 64242,
-      "sha256": "29745169ef0bb694bb44bf0911790503f12813ca8c6d2b912071f90e19e474e2"
-    },
-    {
-      "path": "交付文档/梁子湖本体数据库后端操作说明书_v0.4.docx",
-      "archive": "snapshot-201.zip",
-      "size": 55963,
-      "sha256": "0489fcbc17024586995c8bb1de882ff0f58413500097e8ecf72612f180bc4c07"
+      "path": "交付文档/数据库结构源码图解_20261021.zip",
+      "archive": "snapshot-301.zip",
+      "size": 3282462,
+      "sha256": "56ab5cb3f0ffdecb51acd8d3107049e439c8d6b58127b80869de8baf1dfcd8d9"
     }
   ],
   "excluded": [
     "live-database",
-    "database-backup",
     "source-imports",
     "raw-assets",
-    "source-cache",
     "credentials",
-    "dependencies",
-    "private-runtime-logs"
+    "dependencies"
   ]
 }
