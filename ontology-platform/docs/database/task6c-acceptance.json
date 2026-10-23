@@ -1,0 +1,318 @@
+{
+  "format_version": 1,
+  "task": "6C",
+  "state": "completed_with_unqualified_performance",
+  "base_revision": "fefefc0ad11a7ef76255d98905c740991632b74e",
+  "scope": "Integrated multi-store acceptance; distinct batches are not additive whole-product certification",
+  "representative_matrix": {
+    "selection": "scripts/acceptance6c-matrix.json",
+    "state": "completed_with_failures",
+    "storage_mode": "split",
+    "blob_provider": "local",
+    "transport": "in-process ASGI with native SQL/Fuseki and live loopback IdP checks",
+    "pytest_basetemp": ".runtime/test6c-functional-matrix-01",
+    "additional_nodes": [
+      "backend/tests/integration/test_multistore_boundaries.py::test_catalog_reference_publication_waits_for_exact_acknowledged_version"
+    ],
+    "collected_tests": 53,
+    "collection_only_seconds": 0.9,
+    "passed": 50,
+    "failed": 3,
+    "seconds": 3435.08,
+    "failed_nodes": [
+      "test_shared_identity_and_dynamic_extension",
+      "test_current_time_expiry_without_projection_or_new_event",
+      "test_pre_adoption_publication_is_blocked_by_real_accepted_history"
+    ],
+    "follow_through": "Shared covering1 pass at240/300; real expiry and pre-adoption amendments covered separately in S3/offline batches; original50/3 retained"
+  },
+  "focused_s3_offline": {
+    "state": "covered_after_fixture_amendments",
+    "storage_mode": "split",
+    "blob_provider": "s3",
+    "selection": "scripts/acceptance6c-focused.json",
+    "python_socket_guard": "nonloopback DNS/connect denied in current process and Python children; no OS/native-service sandbox claim",
+    "basetemp": ".runtime/test6c-s3-offline-01",
+    "first_run": {
+      "passed": 9,
+      "failed": 2,
+      "setup_errors": 1,
+      "seconds": 690.47,
+      "classification": "unknown-head response was pending/empty before snapshot selection; two ingestion fixtures hardcoded local bytes under S3"
+    },
+    "affected_follow_through": {
+      "passed": 3,
+      "seconds": 223.36,
+      "basetemp": ".runtime/test6c-s3-amended-01",
+      "scope": "legacy repair/preflight/backfill/unknown refusal; geometry withdrawal; pre-adoption GIS delivery"
+    }
+  },
+  "native_public_deployment": {
+    "state": "passed",
+    "storage_mode": "split",
+    "blob_provider": "s3",
+    "pre_start_public_core_inventory": {
+      "checked_at": "2026-10-22T23:20:34.570149+00:00",
+      "database": "lzo",
+      "artifact_versions": 0,
+      "semantic_objects": 0
+    },
+    "evidence": "task6c-native.json",
+    "actual_daemon_restart": true,
+    "identity_persistence": "native Keycloak dev-file; not Compose identity PostgreSQL"
+  },
+  "schema_inventory": {
+    "path": "schema-inventory.json",
+    "core_version": "0406_storage_backups",
+    "gis_version": 4,
+    "timeseries_version": 3,
+    "catalog_version": 3,
+    "table_counts": {
+      "core": 104,
+      "gis": 9,
+      "timeseries": 20,
+      "catalog": 6
+    },
+    "count_scope": "DDL inventory includes retained test tables and twelve precreated 2026 telemetry partitions, not entity counts"
+  },
+  "gates": {
+    "openapi_snapshot": "passed",
+    "generated_client_check": "passed",
+    "typescript_no_emit": "passed",
+    "production_vite_build": "passed",
+    "compose_config": "passed; no container daemon execution",
+    "maintainer_member_role_selection": "passed; see task6c-maintenance.json",
+    "native_persistence_outages_restarts": "passed; task6c-native.json",
+    "focused_s3_process_offline": "first9passed2failed1setupError, amended3passed; distinct results retained",
+    "benchmark_runner": "completed; actual performance errors retained, not qualified"
+  },
+  "benchmark": {
+    "state": "measured_with_errors",
+    "requested_entities": 10000,
+    "requested_relations": 100000,
+    "requested_distinct_authorized_users": 10,
+    "source_nature": "synthetic",
+    "transport": "in-process ASGI; fixture users/sessions with real current authorization; native stores",
+    "smoke_evidence": "task6c-benchmark-smoke.json",
+    "smoke_seed_failure_evidence": "task6c-benchmark-smoke-red.json",
+    "smoke_attempts": 70,
+    "smoke_complete": 50,
+    "smoke_incomplete_200": 0,
+    "smoke_errors": 20,
+    "graph_sparql_capacity_qualified": false,
+    "warmup_repetitions_note": "No extra warmup pass; one repetition, ten samples per operation; caches not cleared",
+    "evidence": "task6c-benchmark.json",
+    "requested_size_seed_failure_evidence": "task6c-benchmark-size-red.json",
+    "measured_code": {
+      "revision": "717b07f4600ed9f490dc697033ff63a9aac37004",
+      "dirty": false,
+      "working_tree_content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "seed": {
+      "namespace_uuid": "78e987bd-cde0-5a3f-84ff-9869c97a8f52",
+      "first_entity_id": "ffe37073-b824-5f58-a28d-a9a66c3cd085",
+      "last_entity_id": "fd758481-8573-5553-b35f-7fcf00f656a9",
+      "requested_entities": 10000,
+      "requested_relations": 100000,
+      "persisted_entities": 10000,
+      "persisted_accepted_relations": 100000,
+      "projected_entities": 10000,
+      "real_gis_receipts": 10000,
+      "actual_gis_versions": 10000,
+      "actual_rdf_counts": {
+        "instances": 10000,
+        "relations": 100000
+      },
+      "projection_failure_or_limit": null,
+      "full_baseline_ready": true,
+      "rdf_verification": "first/last complete generation in each seeded chunk; all SQL projection head counts, actual RDF count below",
+      "setup_seconds": 237.86922100000083,
+      "observation_media_input": {
+        "requested_observations": 100,
+        "requested_media_bytes": 4096,
+        "sample_object_read_status": "current",
+        "sample_object_visible_records": 1,
+        "non_playable_synthetic_media": true,
+        "persisted_by_kind": {
+          "media": 1,
+          "observation": 100
+        },
+        "artifact": {
+          "version_id": "5b8da476-742c-4972-81c2-34de6e407c26",
+          "sha256": "a2e659dacb4691e887ac0139f8893d04764ee197d70fb73d3190d56113d18e3e",
+          "size_bytes": 4096
+        }
+      },
+      "observation_media_setup_seconds": 21.144711300265044
+    },
+    "distinct_authorized_users": 10,
+    "operation_seconds": 175.39425109978765,
+    "summary": {
+      "attempts": 70,
+      "complete": 50,
+      "incomplete": 0,
+      "http_or_transport_errors": 20,
+      "error_rate": 0.2857142857142857,
+      "incomplete_rate": 0.0,
+      "p50_seconds": 11.826284700073302,
+      "p95_seconds": 67.91260599996895,
+      "latency_by_outcome": {
+        "complete": {
+          "attempts": 50,
+          "p50_seconds": 6.961486400105059,
+          "p95_seconds": 69.16635159961879
+        },
+        "incomplete": {
+          "attempts": 0,
+          "p50_seconds": null,
+          "p95_seconds": null
+        },
+        "error": {
+          "attempts": 20,
+          "p50_seconds": 13.472050200216472,
+          "p95_seconds": 16.96084690000862
+        }
+      },
+      "attempt_throughput_per_second": 0.39910088022311896,
+      "complete_throughput_per_second": 0.28507205730222784
+    },
+    "query_budgets": {
+      "graph_server_ms": 15000,
+      "sparql_request_ms": 10000,
+      "sparql_server_cap_ms": 15000,
+      "timeout_phase": "SPARQL_TIMEOUT code only; cumulative acquisition, parse child and remote paths share it; no finer attribution"
+    },
+    "interpretation": "Full stored/projected seed counts are verified; graph and SPARQL ten-user workload is not qualified. Pytest passed means runner completed, not performance passed.",
+    "sample_note": "No extra warmup pass; one repetition, ten samples per operation. Caches and retained earlier domain/RDF fixtures were not cleared. First-page operations do not claim all rows returned.",
+    "resource_summary": {
+      "scope": "Individual PIDs, not process trees; client Python, PG postmaster parent, S3 server and Fuseki/IdP JVMs. PG backends and Python query children omitted from selected-PID CPU/RSS; host includes them plus unrelated activity. Native API/worker stopped.",
+      "samples": 334,
+      "host_cpu_mean_percent": 25.846107784431137,
+      "host_cpu_peak_percent": 89.1,
+      "host_used_memory_peak_gib": 27.789005279541016,
+      "selected_pid_rss_peak_mib": {
+        "43064": 609.7109375,
+        "66356": 27.60546875,
+        "64356": 188.7890625,
+        "87208": 1496.24609375,
+        "83376": 500.47265625
+      }
+    }
+  },
+  "unexecuted_dimensions": [
+    "Docker engine and disconnected container deployment",
+    "standard 8-core/32GB/SSD acceptance machine",
+    "real ONVIF/DJI/media/device/survey validation",
+    "production source-verification promotion",
+    "production HA and RPO/RTO certification"
+  ],
+  "remaining_implementation_limits": [
+    "S3 Range verifies whole object before serving",
+    "Upload part/orphan garbage collection remains unimplemented",
+    "Logical quota is not physical capacity",
+    "Catalog search and core-history scans have finite limits",
+    "Telemetry query budgets can return incomplete",
+    "Four domain databases share one PostgreSQL process in this native deployment"
+  ],
+  "intermediate_results": [
+    {
+      "batch": "valid attachment RED",
+      "provider": "local",
+      "failed": 1,
+      "seconds": 51.82,
+      "detail": "Public upload succeeded but semantic object revision remained 2 instead of 3"
+    },
+    {
+      "batch": "initial attachment GREEN",
+      "provider": "local",
+      "passed": 2,
+      "seconds": 123.46
+    },
+    {
+      "batch": "boundary RED",
+      "provider": "local",
+      "failed": 4,
+      "passed": 2,
+      "seconds": 54.77
+    },
+    {
+      "batch": "terminal catalog retry RED",
+      "provider": "local",
+      "failed": 1,
+      "deselected": 6,
+      "seconds": 8.66,
+      "detail": "Missing public retry route; actual refused target exhausted in three attempts"
+    },
+    {
+      "batch": "combined focused intermediate",
+      "provider": "local",
+      "passed": 8,
+      "failed": 2,
+      "seconds": 231.02,
+      "detail": "Both failures were fixture reuse of stale CSRF after login; fixed to use current CSRF with original idempotency key"
+    },
+    {
+      "batch": "three amended cases intermediate",
+      "provider": "local",
+      "passed": 2,
+      "failed": 1,
+      "deselected": 7,
+      "seconds": 104.7,
+      "detail": "Legacy repair and terminal retry passed; newer-version catalog reference revealed pending-before-terminal masking"
+    },
+    {
+      "batch": "catalog dependency follow-through",
+      "provider": "local",
+      "failed": 1,
+      "deselected": 6,
+      "seconds": 46.54,
+      "detail": "Local pending variable shadow corrected; covering check was pending at that checkpoint and later passed in focused S3 batch"
+    }
+  ],
+  "scenario_timeout_evidence": "task6c-timeout.json",
+  "declared_native_profile": {
+    "path": "infra/native/acceptance-workload.env.example",
+    "batch_seconds": 240,
+    "lease_seconds": 300,
+    "production_defaults": {
+      "batch_seconds": 30,
+      "lease_seconds": 60
+    },
+    "actual_startup": "verified API/worker environment and resolved Settings240/300; same values before and after actual restart"
+  },
+  "shared_scenario_follow_through": {
+    "provider": "local",
+    "original_schema_fixture": {
+      "batch_seconds": 120,
+      "lease_seconds": 180
+    },
+    "diagnostic": {
+      "failed": 1,
+      "seconds": 994.8,
+      "evidence": "task6c-timeout.json"
+    },
+    "covering": {
+      "passed": 1,
+      "seconds": 857.04,
+      "batch_seconds": 240,
+      "lease_seconds": 300,
+      "worker_errors": 0
+    },
+    "interpretation": "Functional correctness only under declared profile; production30/60 defaults not qualified"
+  },
+  "fix_round_1": {
+    "state": "accepted_after_independent_scoped_rereview",
+    "review_base": "741fa3ddc6fd690e337d35f55a358afa42729b9c",
+    "addressed": [
+      "I1",
+      "I2",
+      "M1"
+    ],
+    "evidence": "task6c-fix-round-1.json",
+    "retained23030_changed": false,
+    "original_benchmark_measured_code": "717b07f4600ed9f490dc697033ff63a9aac37004",
+    "accepted_head": "78f954d80e801995bd0994f8f2ba6c4375f675af",
+    "rereview_sha256": "fd77737f51afa42d0220cbfdd494fc4947b1f1292856be9c1a495b919a60f9d9",
+    "rereview_verdict": "I1 I2 M1 addressed; no new Critical/Important/Minor breakage identified"
+  }
+}

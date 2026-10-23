@@ -1,0 +1,17 @@
+{
+  "source_repository": "https://github.com/No1dry/Ontology-Farm",
+  "source_commit": "8ee79416073ce91d9eb5e724fefb04241e6187b5",
+  "destination_repository": "https://github.com/lianggeming14/liangzihu-ontology-traceability",
+  "destination_baseline_commit": "11686c54375af9bf4450c3e1cbc237cd003bdaf7",
+  "code_directory": "ontology-platform",
+  "source_bytes": "Exact committed Git blobs under the new code directory, except separately excluded CI workflow files; no line-ending rewrite.",
+  "original_runtime": "Existing implementation and historical files retained; no live migration, database changes, dependency install or business code execution.",
+  "excluded": [],
+  "word_report": {
+    "path": "交付文档/梁子湖多库架构与数据准备报告_20261023.docx",
+    "sha256": "561ccebdb4c57da8e403edd647fe6474dc577b91bcad85552b5bbeb40879c3f9",
+    "pages": 17
+  },
+  "scope": "Reviewed source, database migrations/configuration, frontend/backend, contracts, tests, plans, documents and evidence. No credentials, local runtime data, dependencies, temporary review artifacts or raw field assets.",
+  "ci_boundary": "Source CI workflows are not installed by this snapshot and remain at the pinned source repository. The target existing manual import workflow only validates and unpacks the reviewed files."
+}
