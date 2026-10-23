@@ -4,7 +4,7 @@
   "destination_repository": "https://github.com/lianggeming14/liangzihu-ontology-traceability",
   "destination_baseline_commit": "11686c54375af9bf4450c3e1cbc237cd003bdaf7",
   "code_directory": "ontology-platform",
-  "source_bytes": "Exact committed Git blobs under the new code directory, except separately excluded CI workflow files; no line-ending rewrite.",
+  "source_bytes": "Committed source content is preserved. The destination Git attributes normalize the two PowerShell files listed below from CRLF to LF; no other imported source content changed. Word binary and report-source JSON hashes are unchanged.",
   "original_runtime": "Existing implementation and historical files retained; no live migration, database changes, dependency install or business code execution.",
   "excluded": [],
   "word_report": {
@@ -13,5 +13,19 @@
     "pages": 17
   },
   "scope": "Reviewed source, database migrations/configuration, frontend/backend, contracts, tests, plans, documents and evidence. No credentials, local runtime data, dependencies, temporary review artifacts or raw field assets.",
-  "ci_boundary": "Source CI workflows are not installed by this snapshot and remain at the pinned source repository. The target existing manual import workflow only validates and unpacks the reviewed files."
+  "ci_boundary": "Source CI workflows are not installed by this snapshot and remain at the pinned source repository. The target existing manual import workflow only validates and unpacks the reviewed files.",
+  "line_ending_normalization": [
+    {
+      "path": "ontology-platform/scripts/build_multistore_report.ps1",
+      "change": "CRLF to LF only",
+      "source_sha256": "f173701b647902e68e76c9a46ea4fd508a6c87d7c310aa315d54424de7f3c8ae",
+      "destination_sha256": "6f843937802bdfa42e9e90188f9361e638dc13a2b5737281dc7d5b54a2b3d476"
+    },
+    {
+      "path": "ontology-platform/scripts/dev.ps1",
+      "change": "CRLF to LF only",
+      "source_sha256": "04dcae053e9157f95c8d09b26f509afd71cfec502d86c901104bddae9035d480",
+      "destination_sha256": "77076191a59a49279c2455edfcba22d39e639f0490439942638b55b708f6cec2"
+    }
+  ]
 }
