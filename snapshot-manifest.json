@@ -1,14 +1,15 @@
 {
   "format": "liangzihu-github-snapshot/1",
-  "created_at": "2026-10-21T08:55:24.946568+00:00",
+  "created_at": "2026-10-23T05:35:31.776242+00:00",
   "source": {
     "selection_mode": "reviewed-incremental",
     "scope": [
-      "tools/storage_review",
-      "交付文档/数据库结构源码图解_20261021",
-      "交付文档/数据库结构源码图解_20261021.zip"
+      "ontology-platform",
+      "交付文档/梁子湖多库架构与数据准备报告_20261023.docx",
+      "README.md"
     ],
-    "baseline_commit": "ccd825c9e8170a6712a9362a891d83a61dedcab5"
+    "baseline_commit": "11686c54375af9bf4450c3e1cbc237cd003bdaf7",
+    "upstream_commit": "8ee79416073ce91d9eb5e724fefb04241e6187b5"
   },
   "limits": {
     "archive_bytes": 18874368,
@@ -18,290 +19,3561 @@
   },
   "archives": [
     {
-      "name": "snapshot-301.zip",
-      "size": 6578638,
-      "sha256": "6739c4e3cf5fece481cf5a839902899e83eaef1c9e177dcd1aa53725744ff22d",
-      "file_count": 45,
-      "uncompressed_size": 6992869
+      "name": "snapshot-401.zip",
+      "size": 18809832,
+      "sha256": "1d92a538076903ac9897c074f3206141d4f6bffa1233867f42b6b33bf295d568",
+      "file_count": 513,
+      "uncompressed_size": 27967831
+    },
+    {
+      "name": "snapshot-402.zip",
+      "size": 7740392,
+      "sha256": "3c2c59efc98c0bba426307f03cc6528ea4e38e6f642573a0bc81979d5e823f0e",
+      "file_count": 77,
+      "uncompressed_size": 11969307
     }
   ],
   "files": [
     {
-      "path": "tools/storage_review/build_review.py",
-      "archive": "snapshot-301.zip",
-      "size": 27206,
-      "sha256": "7db43844f242de78ca84e397d2ccbaf5420daa5f4000d891d7a9b84c860a78be"
+      "path": "README.md",
+      "archive": "snapshot-401.zip",
+      "size": 6211,
+      "sha256": "7f8533e018533a6ef5fe5bde2ed59c38f2b9e869cc24c8686c931cba3d1ae25c"
     },
     {
-      "path": "tools/storage_review/package_review.py",
-      "archive": "snapshot-301.zip",
-      "size": 5990,
-      "sha256": "6333b57cdb76db8c0dfcbe3163814f969a4eebd7de22d57961f97844e16821a1"
+      "path": "ontology-platform/.dockerignore",
+      "archive": "snapshot-401.zip",
+      "size": 626,
+      "sha256": "415eea9e2bbf4247156da8e78b6cfec30f9a14cf6ef64a3cfd7cc86ef63aebf6"
     },
     {
-      "path": "tools/storage_review/render_source.cjs",
-      "archive": "snapshot-301.zip",
-      "size": 3835,
-      "sha256": "bcc8eeb021d2d3088713f2692bf838c5b717b7e96e50f4f4cd206e7daf1490d6"
+      "path": "ontology-platform/.gitattributes",
+      "archive": "snapshot-401.zip",
+      "size": 65,
+      "sha256": "1cf9154974c29c57c7ad4e4d6efc2b0e07b9b4317427a81a07973cc15d929ad7"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/captures/01-backend.html",
-      "archive": "snapshot-301.zip",
-      "size": 10180,
-      "sha256": "c1f95e19952f640c882458c34b8cc726657928d491cb7c8bbc77c0de4a2149b8"
+      "path": "ontology-platform/.gitignore",
+      "archive": "snapshot-401.zip",
+      "size": 782,
+      "sha256": "4211751adf1143fb7f279faaf9ffabd0969844e9e7bb07c979fdbfbcdb26ed64"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/captures/02-json-api.html",
-      "archive": "snapshot-301.zip",
-      "size": 12704,
-      "sha256": "ba21ce04ff40ebb5105234de2883f6874f39c241efd5d32e004bd09599804ebb"
+      "path": "ontology-platform/README.md",
+      "archive": "snapshot-401.zip",
+      "size": 4047,
+      "sha256": "c1a15d5578bb25ba8bd048886ed8c0a2da0d95b747c2872ee2cda407c9ddca75"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/captures/03-package-json.html",
-      "archive": "snapshot-301.zip",
-      "size": 11806,
-      "sha256": "7b286b7ec13526251ec7be4258e386a92656516ade9982b45c94b758775f6d56"
+      "path": "ontology-platform/SYNC_ORIGIN.json",
+      "archive": "snapshot-401.zip",
+      "size": 1322,
+      "sha256": "d380431787262f66c81773d564af3ef6b212098fb5cd79502a90a5e5e8e7511a"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/captures/04-entities.html",
-      "archive": "snapshot-301.zip",
-      "size": 14844,
-      "sha256": "65aff4ac21acabc940501f6f92c1eac978e5b7230be328302c2e0fef09b4f246"
+      "path": "ontology-platform/backend/Dockerfile",
+      "archive": "snapshot-401.zip",
+      "size": 1257,
+      "sha256": "edf498e2278f77e9f97a413c8ef2c2db2234a0cc7d0764e11eb992360fb55ab6"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/captures/05-property-resolution.html",
-      "archive": "snapshot-301.zip",
-      "size": 15681,
-      "sha256": "d00c1062c42de22dd0407390f605719cf48738e5926f8e28846a4c2dea47b3e8"
+      "path": "ontology-platform/backend/README.md",
+      "archive": "snapshot-401.zip",
+      "size": 2133,
+      "sha256": "5cbbdc5d04c5c872b59d7e31bf90412af1b7a5bff3a12c0ec7d11aa178e6f749"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/captures/06-relations.html",
-      "archive": "snapshot-301.zip",
-      "size": 16664,
-      "sha256": "50c33e3cf0b3f186fbb67216ffab4d409c320ad9d7a7a0dc6a0990581041c95d"
+      "path": "ontology-platform/backend/pyproject.toml",
+      "archive": "snapshot-401.zip",
+      "size": 671,
+      "sha256": "b37ac803c4eeb020470527d97b7e0c1317d007ca8ed07bed3475197ff39569d2"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/captures/07-observations.html",
-      "archive": "snapshot-301.zip",
-      "size": 17408,
-      "sha256": "7340bc9411b3801123bcca601a3ea3f61dd8439d1958b5f1038bcc8e7040dacc"
+      "path": "ontology-platform/backend/requirements.lock",
+      "archive": "snapshot-401.zip",
+      "size": 1881,
+      "sha256": "defc982bf81947167d12b12c439ef38ce4ec9248b19dda249f9b42468d31582f"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/captures/08-source-history.html",
-      "archive": "snapshot-301.zip",
-      "size": 22415,
-      "sha256": "fe60668c76aa2700466682ba87a83dbbf330f3f12c4f23b47ef0dd5020c6cc74"
+      "path": "ontology-platform/backend/src/lzo/__init__.py",
+      "archive": "snapshot-401.zip",
+      "size": 50,
+      "sha256": "6afabcd21e128f89c1a048966934cc705e7c1848a84529270d91748abaa7c1fb"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/captures/09-assets.html",
-      "archive": "snapshot-301.zip",
-      "size": 16998,
-      "sha256": "9ad7209fcb20486fc576be35d6758f5672d906cf056ddce541e04359ac50c985"
+      "path": "ontology-platform/backend/src/lzo/artifacts/__init__.py",
+      "archive": "snapshot-401.zip",
+      "size": 63,
+      "sha256": "131b67f753ebf1b486703884de1c01a0d72646664cd05b68ab4c064b0c006f5c"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/captures/10-rdf-export.html",
-      "archive": "snapshot-301.zip",
-      "size": 17114,
-      "sha256": "0a182878865aa283198a91925e9e3bf0f2fe23c6eeeec2585f9e4d9305d3e07e"
+      "path": "ontology-platform/backend/src/lzo/artifacts/models.py",
+      "archive": "snapshot-401.zip",
+      "size": 3118,
+      "sha256": "be16741d66135db6ef0ad1b69fbf2ad206ad392f9c2440ad9c9b255229ed3c5d"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/captures/11-migrations.html",
-      "archive": "snapshot-301.zip",
-      "size": 17210,
-      "sha256": "d6b7f5d6a4455253903f1800bff62518db1e36f4d12fb81949667cc8c1b782e2"
+      "path": "ontology-platform/backend/src/lzo/artifacts/router.py",
+      "archive": "snapshot-401.zip",
+      "size": 13727,
+      "sha256": "8706fca2451424049d2eedc19084f2f2c95583d527d41ef7600c3195ae00abd7"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/captures/12-frontend-map.html",
-      "archive": "snapshot-301.zip",
-      "size": 13895,
-      "sha256": "f728125e27c4b00ad660f22f2adb99a2479982c9a27af7aaea9b668ceaa30127"
+      "path": "ontology-platform/backend/src/lzo/artifacts/schemas.py",
+      "archive": "snapshot-401.zip",
+      "size": 1462,
+      "sha256": "9679236ea689de0280da79a1277cbb74ce227484455c68e12ca872522ee426e9"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/excerpts/01-backend.txt",
-      "archive": "snapshot-301.zip",
-      "size": 630,
-      "sha256": "39cf7b7805e4db9f3eddfa982e45a96656660240f948085b73db7a270d4d7cb8"
+      "path": "ontology-platform/backend/src/lzo/artifacts/service.py",
+      "archive": "snapshot-401.zip",
+      "size": 26561,
+      "sha256": "ff507a0f1407e959348a54e0c2be0aa1084db638279cc1e8d34a4c979bf41b9f"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/excerpts/02-json-api.txt",
-      "archive": "snapshot-301.zip",
-      "size": 1047,
-      "sha256": "37ca4a80d75e48e14b68232ea3c24088b18570ee07529458a103af1659ac3a12"
+      "path": "ontology-platform/backend/src/lzo/artifacts/store.py",
+      "archive": "snapshot-401.zip",
+      "size": 7568,
+      "sha256": "0b9b09f8273f81fd2671f5305a76447e50fb0ab81dc5f7a3b16ef0145424ea63"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/excerpts/03-package-json.txt",
-      "archive": "snapshot-301.zip",
-      "size": 905,
-      "sha256": "be92dac95eeae7bf708a33ea638f6be0abd498c13643d7800342d9638b03a1ec"
+      "path": "ontology-platform/backend/src/lzo/artifacts/uploads.py",
+      "archive": "snapshot-401.zip",
+      "size": 9779,
+      "sha256": "e10bdaf3cac80fe423f866d823e1b51a97f24d07aebe07b609e11b11c679b24d"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/excerpts/04-entities.txt",
-      "archive": "snapshot-301.zip",
-      "size": 978,
-      "sha256": "d49df43091d147aa1d454f3faeb8f3b60cdb731f418012ba0ced1b10470d055b"
+      "path": "ontology-platform/backend/src/lzo/auth/__init__.py",
+      "archive": "snapshot-401.zip",
+      "size": 64,
+      "sha256": "014b15e12edab2e1d352239e7413a7c4e317f0363566a94244c5eb61f05decb9"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/excerpts/05-property-resolution.txt",
-      "archive": "snapshot-301.zip",
-      "size": 1583,
-      "sha256": "0edfb5b11f1f2e39b239462a534165798bd63cf921287633ced31e43517cc954"
+      "path": "ontology-platform/backend/src/lzo/auth/approval_policy.py",
+      "archive": "snapshot-401.zip",
+      "size": 10186,
+      "sha256": "deb3a3396295250cae7dd6c74c577521c6fed38b39e9ddb38caf680cf2654dcd"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/excerpts/06-relations.txt",
-      "archive": "snapshot-301.zip",
+      "path": "ontology-platform/backend/src/lzo/auth/identity_admin.py",
+      "archive": "snapshot-401.zip",
+      "size": 10939,
+      "sha256": "91be5b05554d727611603be7f9228091aeff0e70aafa7224a43c04a0ecba72a7"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/auth/identity_operations.py",
+      "archive": "snapshot-401.zip",
+      "size": 9512,
+      "sha256": "dc5f85e968f78971e0821d5453421df03ecb1d7ee43a1c4e152988ea4dea57a2"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/auth/models.py",
+      "archive": "snapshot-401.zip",
+      "size": 4095,
+      "sha256": "45d64d1332e1b86d3e24839b642b7fc26f61421a3907cda5df61f704b89c6316"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/auth/oidc.py",
+      "archive": "snapshot-401.zip",
+      "size": 5654,
+      "sha256": "e866d6b39c88d64d43dc6591905277e27ba06033529cfbdfa9f760de1856c3c3"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/auth/permissions.py",
+      "archive": "snapshot-401.zip",
+      "size": 11539,
+      "sha256": "839ce2d231399c386fdaa93e48df75f20cae68923f18cc86b4db1897f0c746da"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/auth/router.py",
+      "archive": "snapshot-401.zip",
+      "size": 14886,
+      "sha256": "180d9b5f8fd4b6e0ccff7662c9f1d3d336ededc80cedfd9eb2e70ada0ca411ab"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/auth/schemas.py",
+      "archive": "snapshot-401.zip",
+      "size": 2884,
+      "sha256": "622ed90cff1c955dc907c5ccebb4e9860154cdb5c50be706f9e954ead8376554"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/auth/session.py",
+      "archive": "snapshot-401.zip",
+      "size": 8276,
+      "sha256": "fc37c5dbbe2ed7e8973eb0efd6909a0976de347956080f440f96e35986aef73c"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/catalog/__init__.py",
+      "archive": "snapshot-401.zip",
+      "size": 71,
+      "sha256": "325bb1cdc3958d78213883068b449a4dec2968b4c83c67eaa72380be678acd8a"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/catalog/recovery.py",
+      "archive": "snapshot-401.zip",
+      "size": 4036,
+      "sha256": "3d811f660179ebe9a5ef7a195cbe4b4aaea97f7359d55ef57fe4ec40f82cbd1e"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/catalog/repository.py",
+      "archive": "snapshot-401.zip",
+      "size": 3594,
+      "sha256": "9a220c86d46f54629f9f088e8f1ff764cb303645c8f83fe20d1be1fbf68c8859"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/catalog/router.py",
+      "archive": "snapshot-401.zip",
+      "size": 7960,
+      "sha256": "ff799da5f72d9ecf8f792e95d06c489a9e38de93c8de24cbc893d45f3aca714e"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/catalog/schemas.py",
+      "archive": "snapshot-401.zip",
+      "size": 4839,
+      "sha256": "faf14ceaba2f01f6a5677cc72cfe40c9cecde95c1c6875385e87dc0f3b493556"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/catalog/seed.py",
+      "archive": "snapshot-401.zip",
+      "size": 3284,
+      "sha256": "79d2e8f659df55a79f8ce7bbdc276283676eb90b5dae310f4512e18a2a230e01"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/catalog/service.py",
+      "archive": "snapshot-401.zip",
+      "size": 24529,
+      "sha256": "cb712757fe7f4b2d7f531b3b8c46695df0828cdcd0a922dc4bf814242f995f19"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/config.py",
+      "archive": "snapshot-401.zip",
+      "size": 6497,
+      "sha256": "ab182de68b92804c4e304d18dedc5f2039a8bb36b91483cace3c8fd55c5af5ef"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/contracts.py",
+      "archive": "snapshot-401.zip",
+      "size": 1529,
+      "sha256": "a0a741ba3c9c770fe65080381d96d871ea82b8741cd36e1cc455861647b0484f"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/db.py",
+      "archive": "snapshot-401.zip",
+      "size": 1008,
+      "sha256": "f2eb3663b4f0d93cf7a74b0e34829a9106a1e11dfcb9ebe3c0643f0bfbd63e3d"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/errors.py",
+      "archive": "snapshot-401.zip",
+      "size": 1369,
+      "sha256": "1b65e2293d2fd270677fdaae16c4eaab9b8723a8cb459b57e2246c0cc173ac14"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/gis/__init__.py",
+      "archive": "snapshot-401.zip",
+      "size": 82,
+      "sha256": "8df08fa590c4eeac62235a14561438d44d411e7adbada2e8cd6f6cc972cc1fc6"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/gis/repository.py",
+      "archive": "snapshot-401.zip",
+      "size": 8460,
+      "sha256": "70ebbfd2ee0c7429761422f137b1d2ca8f80dc8d2eb56afc445ea23d6e920095"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/gis/schemas.py",
+      "archive": "snapshot-401.zip",
+      "size": 2541,
+      "sha256": "30f391cefe3a33747863c0670b065012f0cab814f71a5e11c860e88ff1d0f0e5"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/gis/service.py",
+      "archive": "snapshot-401.zip",
+      "size": 16981,
+      "sha256": "fb96a15c5728ffca9956e7122d44ca191116010de0aa38eb6413df11c0892fd3"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/governance/__init__.py",
+      "archive": "snapshot-401.zip",
+      "size": 52,
+      "sha256": "f3b5be67ce09927e4e0eeffc9676b704fd74644127dd8f901ba77d58ec2f435c"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/governance/approval_router.py",
+      "archive": "snapshot-401.zip",
+      "size": 4106,
+      "sha256": "491a8d4680b58406abb555ac32844da781055eb4030f81e12f6cdbb156de2e96"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/governance/approval_schemas.py",
+      "archive": "snapshot-401.zip",
+      "size": 1345,
+      "sha256": "cf3034d4c488ffa9d4e6eb1e4c0a8857692272e17807811c2afe5bae7567aa89"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/governance/approvals.py",
+      "archive": "snapshot-401.zip",
+      "size": 13026,
+      "sha256": "885f4a3339c39bae0b6196b92f9a1652a073cccf1ce80309d3fd70e25c9fc169"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/governance/history.py",
+      "archive": "snapshot-401.zip",
+      "size": 7365,
+      "sha256": "efaee50bb65a15a513763ea220a86dde5cd1227c77c5c7d7d62d60371db97130"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/governance/history_router.py",
+      "archive": "snapshot-401.zip",
+      "size": 1711,
+      "sha256": "177569dfc776dc04b7d10084e58619fbefb1dcdb27b47908cebaebdd7c58a8ce"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/governance/history_snapshot.py",
+      "archive": "snapshot-401.zip",
+      "size": 654,
+      "sha256": "ed3f5f15e784bde4e8931d73f8fae2528551f43e30c368aaeb8f8d200f67786c"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/governance/idempotency.py",
+      "archive": "snapshot-401.zip",
+      "size": 1763,
+      "sha256": "c65a071b344461896fb62fdf09adffdb0377aabe62d2fc92efcf59c9b127305c"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/governance/models.py",
+      "archive": "snapshot-401.zip",
+      "size": 3172,
+      "sha256": "c49235c94ee4340f34c0626489464d718802a9f6bd0655ed21f6558b80d84cb7"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/governance/revisions.py",
+      "archive": "snapshot-401.zip",
+      "size": 4926,
+      "sha256": "2fcf06252870af802682fe8338827fececf53cc3875c0d34c566acd00ddd12ab"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/governance/risk.py",
+      "archive": "snapshot-401.zip",
+      "size": 6483,
+      "sha256": "5b5f369caa5f6859af2637ae32edf3a0e3b622616d0ea48dbea6aa6793f0de29"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/__init__.py",
+      "archive": "snapshot-401.zip",
+      "size": 82,
+      "sha256": "6a26750c9330e3fc4c1ef4e0be999b0bd88d4cc31a6cd56caa4f4765f6f0738e"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/admission.py",
+      "archive": "snapshot-401.zip",
+      "size": 10292,
+      "sha256": "adca8d7c8386bdf33defdedbe64a633ddbb3e6d0ae69b9fa467d9f05d709a6c6"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/completion.py",
+      "archive": "snapshot-401.zip",
+      "size": 2248,
+      "sha256": "f0649bf01c0df2055c8c79d8944deef66333eea6f2ae7c2c6d985d4877b96742"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/connectors/__init__.py",
+      "archive": "snapshot-401.zip",
+      "size": 51,
+      "sha256": "03305bc6ed7ec47b2ea10c33930d7bc8a1c1974f7be4985f221681a3e372ce53"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/connectors/base.py",
+      "archive": "snapshot-401.zip",
+      "size": 15344,
+      "sha256": "d36d0b101d11d7b4fdcca5b7d0cf261f842c676256d36e5fc916a75e0c188c17"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/connectors/mysql.py",
+      "archive": "snapshot-401.zip",
+      "size": 2612,
+      "sha256": "30be48de7d448b7e5d6bd938bb0baa2e0f7c745319a284b911f8b347e1e9e2c6"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/connectors/postgresql.py",
+      "archive": "snapshot-401.zip",
+      "size": 3792,
+      "sha256": "6da66391d290d0532cd757b3fea128dd7d7d8ee8eb964e59fc181292d3961a9c"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/credentials.py",
+      "archive": "snapshot-401.zip",
+      "size": 4066,
+      "sha256": "2866a603c3dcd165eb6b70b561b207546c95458a81c964d34434f7852c152273"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/datetimes.py",
+      "archive": "snapshot-401.zip",
+      "size": 1161,
+      "sha256": "28e153a343c35d29093ee446c9ad0062c5c2e37841229d52114e3f0656c8e5eb"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/draft_imports.py",
+      "archive": "snapshot-401.zip",
+      "size": 3970,
+      "sha256": "5d8ad45ffcf1b7b182d8f4e96a52f81f4d5e61bbf388e22cc3a712f3bde8324c"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/evidence.py",
+      "archive": "snapshot-401.zip",
+      "size": 7448,
+      "sha256": "d7db308a65f2427a7feb5c8bbee2651204eaa06bd7f8867723a4dd610d5b589c"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/extraction.py",
+      "archive": "snapshot-401.zip",
+      "size": 671,
+      "sha256": "5761f8fb11e4f06e84d0184a7994784ba2a4bdb4106a5ad54fcd31f24950b5f9"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/files.py",
+      "archive": "snapshot-401.zip",
+      "size": 24339,
+      "sha256": "e84d88a1500dca309c5e2d7f9e0d77bd77072a40b6b02f24113a55ada1a079e0"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/identity.py",
+      "archive": "snapshot-401.zip",
+      "size": 14794,
+      "sha256": "703673e22be4e23c8ec6999d04dd19c62b06b3898f27afde22a4b95edc795e2f"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/mapping.py",
+      "archive": "snapshot-401.zip",
+      "size": 17045,
+      "sha256": "6b9d41a3b362d2fc429ed1a521d691281148b49a1987a20717fd606d1163f154"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/models.py",
+      "archive": "snapshot-401.zip",
+      "size": 8493,
+      "sha256": "4d9ec17de9e904c84bc4444ba3ee9562a6cbf059cd646629f4d441fe5995855c"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/pipeline.py",
+      "archive": "snapshot-401.zip",
+      "size": 25330,
+      "sha256": "c4012caf283235ebacb429f4f7129acfec52ccff19910a94fb6fc43631b66858"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/planning.py",
+      "archive": "snapshot-401.zip",
+      "size": 9685,
+      "sha256": "a125f673183fd0c8f9d35cf34462c6d41690e486a0d879fd8243e2c2f37cb3a9"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/preview_jobs.py",
+      "archive": "snapshot-401.zip",
+      "size": 9738,
+      "sha256": "12d1530847de2674921b12a8d62b0dfd1c1f107408c60dec16854f519a886d4f"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/router.py",
+      "archive": "snapshot-401.zip",
+      "size": 30000,
+      "sha256": "37e7a2db1e59e7332a6918f57c1e91d811363fa11516e444bfaf10642a1e22b2"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/rules.py",
+      "archive": "snapshot-401.zip",
+      "size": 24025,
+      "sha256": "71db136c272ba3f06b205c83e0016d1fc7bdd30ed2d08e843e36626a36642b59"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/rulings.py",
+      "archive": "snapshot-401.zip",
+      "size": 63673,
+      "sha256": "3e03e44915b0ca723784eea43d1aff092e6630a812be37ff07de32b457dc8493"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/scheduler.py",
+      "archive": "snapshot-401.zip",
+      "size": 9111,
+      "sha256": "f46d515d0473ecf874d68607ff45405540f365e358041ce04276e3f95386a855"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/schemas.py",
+      "archive": "snapshot-401.zip",
+      "size": 20589,
+      "sha256": "5381ff2df7d3d14b70888e83cc5cfad296c1fd439f190045a82e4ffc6a3b6202"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/semantic_files.py",
+      "archive": "snapshot-401.zip",
+      "size": 5788,
+      "sha256": "924c72be17ae64daa81fab695dd274c8307cc2cfab50ce8f498cbbd2a583d95e"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/sources.py",
+      "archive": "snapshot-401.zip",
+      "size": 19777,
+      "sha256": "fcb9d776d83f255c37079b80bc16348e329596416b45bbd6a15158a27a324ec3"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/sync.py",
+      "archive": "snapshot-401.zip",
+      "size": 18930,
+      "sha256": "02b8522b1064d569f9af64e817c3b573f31a2b72d5ca5faa746c3fdcc0d4a344"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ingestion/worker.py",
+      "archive": "snapshot-401.zip",
+      "size": 4005,
+      "sha256": "a9d227f14a6fef886e37f79c6923f45f67777c04c43a70d072781462aec82210"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/main.py",
+      "archive": "snapshot-401.zip",
+      "size": 10338,
+      "sha256": "6139f21642a6ee9c38ba423ceca732629b429ec7c29777623af09432970e6cce"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/maps/__init__.py",
+      "archive": "snapshot-401.zip",
+      "size": 66,
+      "sha256": "b080952fe1eca90a11dd80b8f7b538d89aa8c103317d8d8a60773f9be6709671"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/maps/models.py",
+      "archive": "snapshot-401.zip",
+      "size": 712,
+      "sha256": "b91d1d98286548d3fe4fc77b22fe8de0b339d4f5db98a2f6d326bb51d8529b02"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/maps/online.py",
+      "archive": "snapshot-401.zip",
       "size": 1217,
-      "sha256": "d259f7329c70adba1d99d6a36aaadaba04e67a32b6dd859d4c92ffdf2f2c09be"
+      "sha256": "23e9f0329c24805ef516822ea0db3ea3071093ad54fd92b8f1d227c974b79cbc"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/excerpts/07-observations.txt",
-      "archive": "snapshot-301.zip",
-      "size": 1210,
-      "sha256": "f664ea2926123a45b573a8f91bd3fda1bf89901ee7977f03e91830d60bc7d69f"
+      "path": "ontology-platform/backend/src/lzo/maps/router.py",
+      "archive": "snapshot-401.zip",
+      "size": 11628,
+      "sha256": "f5b2e216ef962254b4ad1cc5f5cdea5435426f1e0397867f4047d6d07d3510e3"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/excerpts/08-source-history.txt",
-      "archive": "snapshot-301.zip",
-      "size": 1916,
-      "sha256": "c0b7cb5abfae603b9db83799dc709d7ef28979e4d9d58f245e9742e4c5c2a31e"
+      "path": "ontology-platform/backend/src/lzo/maps/schemas.py",
+      "archive": "snapshot-401.zip",
+      "size": 2738,
+      "sha256": "8b3c8d414c480b6904d68b4c9f2f46b72b2e25eb9a834be5aa6086d658c639f3"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/excerpts/09-assets.txt",
-      "archive": "snapshot-301.zip",
-      "size": 1703,
-      "sha256": "e09e95b3abe1374d96e8c93f18b5f010651a450b0c626abec16d6575a1c39640"
+      "path": "ontology-platform/backend/src/lzo/maps/service.py",
+      "archive": "snapshot-401.zip",
+      "size": 12208,
+      "sha256": "60cd1e540367e9ff0012572246da980fe19873cd22c7fe5b3b312a33c900b8c3"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/excerpts/10-rdf-export.txt",
-      "archive": "snapshot-301.zip",
+      "path": "ontology-platform/backend/src/lzo/maps/tiles.py",
+      "archive": "snapshot-401.zip",
+      "size": 24315,
+      "sha256": "cdd1a6cd855757d6f989cb5d6a0889b6e777b8609acb3f5d69295215cdc26bcf"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/migrate.py",
+      "archive": "snapshot-401.zip",
+      "size": 686,
+      "sha256": "29d0d3217d2fb92db0f86586017e1c8fcead999f86e78895b284f9e3a1f451d2"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ontology/__init__.py",
+      "archive": "snapshot-401.zip",
+      "size": 72,
+      "sha256": "76fcb47b591419a825093a673506a5e1ac433be3d981a3c01e243e77a65b01fd"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ontology/bootstrap.py",
+      "archive": "snapshot-401.zip",
+      "size": 16698,
+      "sha256": "533eb6465e9063c1125ae16232238d822b08bdcad41d33a43ffbfc77f72681b6"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ontology/drafts.py",
+      "archive": "snapshot-401.zip",
+      "size": 18856,
+      "sha256": "7feb69d25d886539d27f48fa6abb5f11b40f7d2a28e1a8ae47a43de907dd582e"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ontology/models.py",
+      "archive": "snapshot-401.zip",
+      "size": 2814,
+      "sha256": "5b8f94e1f38df2556037239987e1785502a954e10ea2156a2ab00d14e2b53e5a"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ontology/releases.py",
+      "archive": "snapshot-401.zip",
+      "size": 35749,
+      "sha256": "3bed33caabd47bb8136800a072d5c2b345819c9617bb18b06439f064249c1e13"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ontology/router.py",
+      "archive": "snapshot-401.zip",
+      "size": 7806,
+      "sha256": "24b5b8ce6a5b32b0df9fd6d0a7e57fd021a590a3ff38cdcc425bd46ffcae745d"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/ontology/schemas.py",
+      "archive": "snapshot-401.zip",
+      "size": 4087,
+      "sha256": "5727f9e90fd88eab056f0d009849497dd14f11331ddb03c871486c877b35c1ff"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/__init__.py",
+      "archive": "snapshot-401.zip",
+      "size": 208,
+      "sha256": "456e9b1b73f8282096795f81afc5a1061d2c33bf20ca2cd2661390c74ddd15dd"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/authorized_dataset.py",
+      "archive": "snapshot-401.zip",
+      "size": 15381,
+      "sha256": "b9da54a4942dce2ed784192da4ff02f6a0f8a7ef6888f0dc96ca7e90fbe96f63"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/evidence.py",
+      "archive": "snapshot-401.zip",
+      "size": 5239,
+      "sha256": "269081cf7fa62b9f53ca24fc4304f4be7de385a5e3aaec594fd908abc60a41cc"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/exports.py",
+      "archive": "snapshot-401.zip",
+      "size": 17008,
+      "sha256": "cea941fbe96ad325d035f659d77f35a8fa28929d6379afecba169cc7e7653541"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/fact_validation.py",
+      "archive": "snapshot-401.zip",
+      "size": 20093,
+      "sha256": "cbfdc2aa4e561e66f2abb7f56719bcaeebb7f980cc7a6b2493d810fe9fc145f5"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/facts.py",
+      "archive": "snapshot-401.zip",
+      "size": 55989,
+      "sha256": "c566b7d3d4a2a761e3ecfb36af99cfd5ece47213549e69c86c8933eec321ae80"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/files.py",
+      "archive": "snapshot-401.zip",
+      "size": 14719,
+      "sha256": "015a75a7b52263caa9659147857ad3692533e9b399a62c21ce23f52ffe20ef35"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/fuseki.py",
+      "archive": "snapshot-401.zip",
+      "size": 21354,
+      "sha256": "c0bd6acdb5a7d710fc5e87df0d8250bcaf5a484f4fcfe2bfc992f387abd28bb3"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/geometry.py",
+      "archive": "snapshot-401.zip",
+      "size": 11076,
+      "sha256": "402a3d13e558fc1525fcf7d9caf01177587df9feb4fd1ba3eeb733ba5e7b00db"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/inference.py",
+      "archive": "snapshot-401.zip",
+      "size": 17881,
+      "sha256": "ac6db2884133810db16179c96193abfdfe15fd7d8759f5169a7f26b81119b905"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/inference_jobs.py",
+      "archive": "snapshot-401.zip",
+      "size": 46324,
+      "sha256": "56b94bb2830ec60614fe3898ad6295f2155288bfdc3fd52e28b6eb924beb9d69"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/merge.py",
+      "archive": "snapshot-401.zip",
+      "size": 12467,
+      "sha256": "46a9308e6af3071f39d3eafa9565dff90c7a854f1c2f411429640c7e38ad03a8"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/models.py",
+      "archive": "snapshot-401.zip",
+      "size": 5958,
+      "sha256": "57479502633fd7e5d6c0208f43c368ede1d1588cbf94f3dacd8a88682815fa89"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/nt.py",
+      "archive": "snapshot-401.zip",
+      "size": 1580,
+      "sha256": "256c4683021cfb07c9fcb0f9371a01c8a17585e5460b00d35b07a36ba228105b"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/ownership.py",
+      "archive": "snapshot-401.zip",
+      "size": 1188,
+      "sha256": "f12ab296d4045bd1380d1488ffeea2b40a2817382325afb3aaad988433488ab2"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/projection.py",
+      "archive": "snapshot-401.zip",
+      "size": 17960,
+      "sha256": "f710bfe2330cbb42b3e76641a1ffa1b593e2fa38619e7cd69a9c1daa5854e685"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/proofs.py",
+      "archive": "snapshot-401.zip",
+      "size": 13300,
+      "sha256": "7c7368ea55ca17483a688364627fab0b333590b1cb3942c2304516dd8b0e11c4"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/prospective.py",
+      "archive": "snapshot-401.zip",
+      "size": 1870,
+      "sha256": "13572e23d7adc30d5c0bb1a855f927aaa7a7ef23fb0ab6385d57571453e41353"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/query.py",
+      "archive": "snapshot-401.zip",
+      "size": 10010,
+      "sha256": "de6149e14ad6cd3800c1c9534beb8fe43f6e36108750bec38b2a69a7d9ab8b07"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/query_child.py",
+      "archive": "snapshot-401.zip",
+      "size": 10446,
+      "sha256": "99089f1e0de21005fb24477987eeb1c706a7c72291584a6511cd8b3df6e5e6dc"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/query_process.py",
+      "archive": "snapshot-401.zip",
+      "size": 7998,
+      "sha256": "5370f565e02e0bc233dcd6a2ea9eef3db372f096515ebb1f64f3538fcde0cab4"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/query_read.py",
+      "archive": "snapshot-401.zip",
+      "size": 2895,
+      "sha256": "8cf640ce96859deee8bc756780a3bccb0cd8178ffcb2fb2bfb4ac54a0d1ffde0"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/rdf.py",
+      "archive": "snapshot-401.zip",
+      "size": 8007,
+      "sha256": "84adc2f0518dead260eb7d17e0fa70ed59d525e823ce785afc2141c40a012acd"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/router.py",
+      "archive": "snapshot-401.zip",
+      "size": 17589,
+      "sha256": "751a7937d94b88983b92d42785fbf083dfab684ce04eb568e6ccd9af54774c53"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/schemas.py",
+      "archive": "snapshot-401.zip",
+      "size": 8708,
+      "sha256": "e10fed0272c36215a668cdd131587923cdf08dfad48b96eda694e6d40562a191"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/semantic_profile.py",
+      "archive": "snapshot-401.zip",
+      "size": 12947,
+      "sha256": "ad73f9be528455bd41db046958f3fcc716de1b407bd9df745703c268fd2e2a21"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/semantica_adapter.py",
+      "archive": "snapshot-401.zip",
+      "size": 16090,
+      "sha256": "833d0ae3a2561f474300b1a4591ca31626cfac6fa38943b7022e185084ab5cbd"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/source_rows.py",
+      "archive": "snapshot-401.zip",
+      "size": 8689,
+      "sha256": "21b58bb4111670b24f42220e8f32b8020e88b2a3708c8a67f5af6c1aaace9673"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/semantic/validation.py",
+      "archive": "snapshot-401.zip",
+      "size": 934,
+      "sha256": "1f40df2b8a80e8213b86ac27be2bacc6addccd4361ba64b4777ac9c4f27c4050"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/storage/__init__.py",
+      "archive": "snapshot-401.zip",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/storage/backup.py",
+      "archive": "snapshot-401.zip",
+      "size": 14012,
+      "sha256": "77137a3f2a86256eca40d247007090126fa63bb7aba89b51c3ba9107a33c5dfb"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/storage/backup_format.py",
+      "archive": "snapshot-401.zip",
+      "size": 15688,
+      "sha256": "43b07b25845bd7b155ce0d5fd5ebf9eab6612a68047a94d4b58cf4de8d8b7cea"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/storage/blobs.py",
+      "archive": "snapshot-401.zip",
+      "size": 2426,
+      "sha256": "5aff443c6c685fe65d9cce95e16aebb6c3255723f58300462f78551437613320"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/storage/maintenance.py",
+      "archive": "snapshot-401.zip",
+      "size": 8497,
+      "sha256": "6150129cd5d0b4085320cf77c6cb633b6cc8c93b6f432d0255bcf40523a4bb1b"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/storage/migrate.py",
+      "archive": "snapshot-401.zip",
+      "size": 4810,
+      "sha256": "fb35f15f0afb1478136f10aaffc84887c5f7769c772c6980a2503af79ea01013"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/storage/migration.py",
+      "archive": "snapshot-401.zip",
+      "size": 36710,
+      "sha256": "6866475a1157613b387bfa3e8d56104d9a06769579060804c33c6bd0625f4b3f"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/storage/object_view.py",
+      "archive": "snapshot-401.zip",
+      "size": 5772,
+      "sha256": "b7a841968851d44f843ab86b9fef6698020a5b8a4673efb35ae04283c95d306e"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/storage/registry.py",
+      "archive": "snapshot-401.zip",
+      "size": 2446,
+      "sha256": "d81328f334b97b40935f6e211be9478c43f21809f3079a4e62aa3660d7e7d038"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/storage/restore.py",
+      "archive": "snapshot-401.zip",
+      "size": 16953,
+      "sha256": "669065b88d320f80ebd763055fd314dcd702de43cd0521015e5c533f6fb04786"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/storage/s3.py",
+      "archive": "snapshot-401.zip",
+      "size": 4734,
+      "sha256": "57bf5b74a8ddcee895812c3bb8b0399c247f20f6bb4f006b676bdd7705df009b"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/synchronization/__init__.py",
+      "archive": "snapshot-401.zip",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/synchronization/contracts.py",
+      "archive": "snapshot-401.zip",
+      "size": 3046,
+      "sha256": "eee232b0217bb722223dc0f19a1b1b4cf2b2086d034aac97f2be1453c114f263"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/synchronization/delivery.py",
+      "archive": "snapshot-401.zip",
+      "size": 7910,
+      "sha256": "2b178b5806e2bb65f6cf68f69ac172581bbc983a612ac968557daf7e60d587a5"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/synchronization/models.py",
+      "archive": "snapshot-401.zip",
+      "size": 896,
+      "sha256": "6d72c78c46d60f3f61e78b3029e730ae87300a64e6d1062b5b8183b66ddff569"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/telemetry/__init__.py",
+      "archive": "snapshot-401.zip",
+      "size": 61,
+      "sha256": "c89d1d6798fc16217a57123a465ddd6dc1cb93c581bb866b19caf200ce900632"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/telemetry/archive.py",
+      "archive": "snapshot-401.zip",
+      "size": 11610,
+      "sha256": "7e698035a40d42490ee331036556b0894865a3598ef82e3c2a8b546c93ddf19d"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/telemetry/maintenance.py",
+      "archive": "snapshot-401.zip",
+      "size": 1204,
+      "sha256": "7d316df0a2337beec1abaec684203bbcfe67b801cf527d84b5a676bfa5632ffe"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/telemetry/replay.py",
+      "archive": "snapshot-401.zip",
+      "size": 4392,
+      "sha256": "2f6a69a2ff62d86688457608f9e15f1f208aa0ac2b31dee870a517e23a6f76a0"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/telemetry/repository.py",
+      "archive": "snapshot-401.zip",
+      "size": 6592,
+      "sha256": "b2093daabb89bbdabe59681bbacbe7ae765247cd7222b7e47d0efd24a74ccf37"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/telemetry/router.py",
+      "archive": "snapshot-401.zip",
+      "size": 5375,
+      "sha256": "449288f0786d45e46838e850c49f6c98d24ea275b807ed2f1a9b3bb6760bd31b"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/telemetry/schemas.py",
+      "archive": "snapshot-401.zip",
+      "size": 8619,
+      "sha256": "0bcdf84b6617d19eaea2f02314dc8d04c3fb592f6e9d65f1df4b65814d8d7c85"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/telemetry/service.py",
+      "archive": "snapshot-401.zip",
+      "size": 30459,
+      "sha256": "443b1539debfaafdec6ef5b1d726b95d7602b2e194c8c710db6a81f06ff4c9f3"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/worker/__init__.py",
+      "archive": "snapshot-401.zip",
+      "size": 164,
+      "sha256": "9161939a783f5b6ce61a3a93268c62babadf92bf513df5ed8be03a99546e7078"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/worker/__main__.py",
+      "archive": "snapshot-401.zip",
+      "size": 43,
+      "sha256": "7ab5278bd3cb16256fcc2955258563df35785018a5f0c6be0bc7d2f2398a8579"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/worker/handlers.py",
+      "archive": "snapshot-401.zip",
+      "size": 4022,
+      "sha256": "c22e3dd2cf0db10bbb6ecbd44e2bb294d63a0a5e4400bccfa32158da2b5a023c"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/worker/health.py",
+      "archive": "snapshot-401.zip",
+      "size": 3217,
+      "sha256": "9f9fe0fa352fab04fcdd745e06ae2e3e1930e1128ae775b60e40ab3b9fd127a3"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/worker/leases.py",
+      "archive": "snapshot-401.zip",
+      "size": 634,
+      "sha256": "2a4d6a19c34d3fefb834e0c7fcd859206a1a2b882717888e0c4d0f4a1497c75c"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/worker/models.py",
+      "archive": "snapshot-401.zip",
+      "size": 2591,
+      "sha256": "ce035831aeccdd44c100003614e23f33a27c8c0aeb05e6abeb8994a3c2150988"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/worker/router.py",
+      "archive": "snapshot-401.zip",
+      "size": 3440,
+      "sha256": "84d53850637e75f65053388a9176c3e2597cba348a6af7be7004bab17c57da1c"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/worker/runner.py",
+      "archive": "snapshot-401.zip",
+      "size": 13963,
+      "sha256": "635fc428c63f3289976718c708ff4d6e836e804f4c715d9dbc833db82846e683"
+    },
+    {
+      "path": "ontology-platform/backend/src/lzo/worker/service.py",
+      "archive": "snapshot-401.zip",
+      "size": 16826,
+      "sha256": "3fbf38bb7871067635dfe024900df9cd7b742efe760eb8e7b08f54c686895ebd"
+    },
+    {
+      "path": "ontology-platform/backend/tests/conftest.py",
+      "archive": "snapshot-401.zip",
+      "size": 19849,
+      "sha256": "eb1dd5920ca3b1626283893c4cde7e36bafe760325eda7cc3985f78b73e1621f"
+    },
+    {
+      "path": "ontology-platform/backend/tests/fixtures/semantic/field.json",
+      "archive": "snapshot-401.zip",
+      "size": 7861,
+      "sha256": "cc4caa0d9526446cb93081e8e7fd8856c78ba95e2ffacad4d0df686e299c312f"
+    },
+    {
+      "path": "ontology-platform/backend/tests/fixtures/semantic/orchard.json",
+      "archive": "snapshot-401.zip",
+      "size": 7871,
+      "sha256": "ec7db1644db209e21d2323de6d559764ae995db93934750855cfc0c114535540"
+    },
+    {
+      "path": "ontology-platform/backend/tests/fixtures/semantic/pond.json",
+      "archive": "snapshot-401.zip",
+      "size": 7856,
+      "sha256": "3bb0a3bf2ce58a5283b652ee39c22c35d7717a80adb7d97aeb696084e2a2f2e2"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/benchmark_multistore_case.py",
+      "archive": "snapshot-401.zip",
+      "size": 206,
+      "sha256": "c48d4634b4585551906a5ae2d0dfbebc620a0a73d85472c1471e6604a79fb9a6"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/conftest.py",
+      "archive": "snapshot-401.zip",
+      "size": 16565,
+      "sha256": "eb2babb9c483a971ec50c7e2faa54f03978db45a5186e212f592652f4cfe443e"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/conftest_ingestion.py",
+      "archive": "snapshot-401.zip",
+      "size": 28638,
+      "sha256": "932faf298c8cc541ec5a23cdae0f992aee0e234c5660604ef350138858bacab8"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/ingestion_export_assertions.py",
+      "archive": "snapshot-401.zip",
+      "size": 1371,
+      "sha256": "2800b94c3db948ab4bfee3f6a9606247e29fb04278ed685eb5cd5e0ff9a57b11"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/owned_fuseki_fixture.py",
+      "archive": "snapshot-401.zip",
+      "size": 6224,
+      "sha256": "bc09c3b23b07d3640e005420caaad698ba9e9fab4cae7cb51066afbe72cbe1ff"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/professional_http.py",
+      "archive": "snapshot-401.zip",
+      "size": 1067,
+      "sha256": "7466b42f336f9217d049aca32fac25045a09d8e3abc9c60d305de32ecbd571d5"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_approval_gates.py",
+      "archive": "snapshot-401.zip",
+      "size": 27036,
+      "sha256": "34defb150d5d73040f6bd36749ffe21d0c42a9220c82a8b1bf7aceb737bebc3d"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_artifacts.py",
+      "archive": "snapshot-401.zip",
+      "size": 32535,
+      "sha256": "98f943dc635a80223bcb1f76320478d82afd9a36639b115e86669e74e01d3ffe"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_attachment_heads.py",
+      "archive": "snapshot-401.zip",
+      "size": 12502,
+      "sha256": "05090ce8209aeda9efb7cd5744573fe323d02c03723b9ff3707a8fe5266c481b"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_authorized_queries.py",
+      "archive": "snapshot-401.zip",
+      "size": 8169,
+      "sha256": "9f40074de54cd341dd63399b9454f2578f7e8d6b0939c70a000915af327b648f"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_benchmark_visibility.py",
+      "archive": "snapshot-401.zip",
+      "size": 2151,
+      "sha256": "f77b9e4cda306befdb5fefef10570f209a23868860f5097944fe682d07043969"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_bootstrap.py",
+      "archive": "snapshot-401.zip",
+      "size": 1523,
+      "sha256": "b70338f7d3b96d992b3d71329fa877fc26607e9319b1bed6351c31c54a1f77dd"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_catalog.py",
+      "archive": "snapshot-401.zip",
+      "size": 32184,
+      "sha256": "a7a066d609c928d87fb807f99aeba4e3892038dbeb8b47a74184563b6dc747a6"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_dynamic_objects.py",
+      "archive": "snapshot-401.zip",
+      "size": 32554,
+      "sha256": "7c144b3688a650c3ca90d99ded67170fc32e75ee2616ac085d9a27be5132fbe9"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_fact_supports.py",
+      "archive": "snapshot-401.zip",
+      "size": 14484,
+      "sha256": "7b2d94283b9410ca5c536297137b2a6c35bf8a62521986d140b221ed6bfde645"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_generated_export_policy.py",
+      "archive": "snapshot-401.zip",
+      "size": 7731,
+      "sha256": "12e1bf17753d73cce4f994395dbd355fb579e6cf4ba3c92492cb32b5b24c2651"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_geometry.py",
+      "archive": "snapshot-401.zip",
+      "size": 4054,
+      "sha256": "5a953a048dcdf63ddadb43e20130912a59fe74d508c6d8d8035c365580c7be06"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_gis_asset_pagination.py",
+      "archive": "snapshot-401.zip",
+      "size": 3723,
+      "sha256": "c8415761de128c3a71a2b8c2a321b14ee8bf65c1cd15c8969c56d98c8dd752e4"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_gis_survey_evidence.py",
+      "archive": "snapshot-401.zip",
+      "size": 8017,
+      "sha256": "5235997812bf23b99c1ad7c705309712fcb6d52078fca7138ccc528ab1320b50"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_history_access.py",
+      "archive": "snapshot-401.zip",
+      "size": 4400,
+      "sha256": "b7c3417d2a69b98a256912fdf62004a6d10ba97e80a4170d6bfb1504c7f44f01"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_identity_http.py",
+      "archive": "snapshot-401.zip",
+      "size": 6087,
+      "sha256": "3babef7ed1e5248a775dbb7497bcc637623ee5c93ac903ee1e41037177cff369"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_identity_recovery.py",
+      "archive": "snapshot-401.zip",
+      "size": 10485,
+      "sha256": "e71088a5015da6fd09c0f1c62b4ef26378b01350cdc8b60c95dd0b838bde2ca3"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_inference_retraction.py",
+      "archive": "snapshot-401.zip",
+      "size": 63164,
+      "sha256": "75601e8952c7d589f3eefe6cb5220f5b8ad651747113f87595ff0810061fdd66"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_alignment.py",
+      "archive": "snapshot-401.zip",
+      "size": 5091,
+      "sha256": "d592e27edd8dffd56ce9f031f713ef96ec348c0bab246bf5e4cdd730b017fc03"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_approval_requirements.py",
+      "archive": "snapshot-401.zip",
+      "size": 4431,
+      "sha256": "cd759db89d41e0ca758c004491b93b514176142c336189d90d5a01502370a1fc"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_async.py",
+      "archive": "snapshot-401.zip",
+      "size": 4132,
+      "sha256": "d880b4f354e5f5d92bc0fbfcef497676263e0debe35c90cf85c80b5544ba2891"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_atomic_rollback.py",
+      "archive": "snapshot-401.zip",
+      "size": 4327,
+      "sha256": "26a58f729e36ea766cce3f9cf0b685227f10ab9f27251c0dcd6271c31339de4c"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_completion.py",
+      "archive": "snapshot-401.zip",
+      "size": 5617,
+      "sha256": "e54afa17562ce8468ae9e2559bca285952d2082e27208e8ae1fc83111700cd81"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_currentness.py",
+      "archive": "snapshot-401.zip",
+      "size": 6325,
+      "sha256": "ec52a54a1efed6e258b097085779e9a3d7cc9220236fb8ac1bb9d7edc5a2d08c"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_database_sources.py",
+      "archive": "snapshot-401.zip",
+      "size": 12258,
+      "sha256": "abad59bb10b18328d6b19e305667941fe89d10bb64c3963f0b38f623d2a2503b"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_drafts.py",
+      "archive": "snapshot-401.zip",
+      "size": 3043,
+      "sha256": "73a6ef532781a823cf53acfded8392f699bc4036dc2d85e802026998d7dc721c"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_evidence.py",
+      "archive": "snapshot-401.zip",
+      "size": 22680,
+      "sha256": "4f5b04e2fdedac0a2f294c6d63671815d9bf4bb3240d898152ed2c91a551d11c"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_geometry_independent.py",
+      "archive": "snapshot-401.zip",
+      "size": 5876,
+      "sha256": "8517da598a320a9607a32669a9c53a02ff839d0063ee5214e32fba739c469a6e"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_geometry_quality.py",
+      "archive": "snapshot-401.zip",
+      "size": 10558,
+      "sha256": "5c8ac129f07fba012c7707e57eefb3112732fabf174ac519c6e5329449e20216"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_geometry_review.py",
+      "archive": "snapshot-401.zip",
+      "size": 6966,
+      "sha256": "64a1e84fae7bdd86360de3eff99d3514e93b1672edd4b962fcc1a3c4ffaea9d9"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_geometry_withdrawal.py",
+      "archive": "snapshot-401.zip",
+      "size": 7154,
+      "sha256": "51cd75b52647bef256bcb0780ed759a3c5330090ad900bb4c2ca942d9bd2c36a"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_identity_rulings.py",
+      "archive": "snapshot-401.zip",
+      "size": 2646,
+      "sha256": "d56c308200dc0372e00fe837e3a94ccc37bac8540faeca9f4c1902a8c54444b6"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_language.py",
+      "archive": "snapshot-401.zip",
+      "size": 6356,
+      "sha256": "5fc73e3852f9f89f1e1df36b02a87980f6d274b710d349cad1c9f49e781f4373"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_merge.py",
+      "archive": "snapshot-401.zip",
+      "size": 7669,
+      "sha256": "5d86004d8e398a9b0584cbc7bf7ea7720ddeb02b571575ed8333fa635da17cfc"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_migration_history.py",
+      "archive": "snapshot-401.zip",
+      "size": 1973,
+      "sha256": "f23737578bcc2e1cace7973cc12e5945cc038f900fceffdf455f3fc0da865781"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_mixed.py",
+      "archive": "snapshot-401.zip",
+      "size": 3759,
+      "sha256": "c37e045775119973eba5611003789f96e490c302fd556ef1fa1bbb80ede7917d"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_outage.py",
+      "archive": "snapshot-401.zip",
+      "size": 5912,
+      "sha256": "6bb1842f414d34d71a92256c522147c53ff9db574fa064dc5af7a4dd054c14c3"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_permissions.py",
+      "archive": "snapshot-401.zip",
+      "size": 1347,
+      "sha256": "9130738614386c89b95780857d469203789d908bd824ed8ca6f7e37576a00935"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_pipeline.py",
+      "archive": "snapshot-401.zip",
+      "size": 13375,
+      "sha256": "e12046038db9b6b63c5a3c07fc19403c3e5237926e2d33fe883da1cba4e1a1a0"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_projection.py",
+      "archive": "snapshot-401.zip",
+      "size": 15280,
+      "sha256": "4ec1eb2713300308e4ea1d7a323c83a44059f4a6f8f5d1a579a8b413685ed775"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_reference_boundaries.py",
+      "archive": "snapshot-401.zip",
+      "size": 4362,
+      "sha256": "d70c72b88780bbec6d0af5f6285be196029bad79c27bf63aa0d9f12e36be51e2"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_references.py",
+      "archive": "snapshot-401.zip",
+      "size": 10242,
+      "sha256": "f34555fa1bd90b25209f1c32e8001e6c3a8503e6ad9b3e66636aff98f5c381d4"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_review_boundaries.py",
+      "archive": "snapshot-401.zip",
+      "size": 15306,
+      "sha256": "94dde9da2bbd3194fde016f47ebc36b9f1728a57380b66859e1865a3a64f0ddf"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_reviewed_type.py",
+      "archive": "snapshot-401.zip",
+      "size": 1727,
+      "sha256": "2f30bb1ecf070213955e32b7bed72ea25257d5557ddf5e3d37b435ae4ce4ed7e"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_round_justification.py",
+      "archive": "snapshot-401.zip",
+      "size": 10360,
+      "sha256": "742d814cdc0da8ce60ef6253068c1a7016f492ad7d6793f7c24353a66639c24d"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_rule_versions.py",
+      "archive": "snapshot-401.zip",
+      "size": 13833,
+      "sha256": "6b8c7d33e4fa9dac56f5bbc593f74ae49fce6d4638dd9da57ba659b720e5d9eb"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_scan_deletes.py",
+      "archive": "snapshot-401.zip",
+      "size": 22144,
+      "sha256": "f35de9147794f6ed270afa092c13d90d9255e14841b0f35bd5a818d4d4c4030b"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_scan_pipeline.py",
+      "archive": "snapshot-401.zip",
+      "size": 8443,
+      "sha256": "ccd6dc478745d48119ca655e0c50428ae2b1002d3e4d17dd7ce1a148dfd3cab1"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_semantic_time.py",
+      "archive": "snapshot-401.zip",
+      "size": 4336,
+      "sha256": "0e721b8469e718ae96e14bf73b4a4a1deae4cef70d02261ed02196488c21eb38"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_support_currentness.py",
+      "archive": "snapshot-401.zip",
+      "size": 9030,
+      "sha256": "c54efd44d41da27d8813febaf2cddb06db4f33d9de0d8af63b751e517e493310"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_ingestion_version_bound.py",
+      "archive": "snapshot-401.zip",
+      "size": 3681,
+      "sha256": "6d7bb0dc31ea019b9201894894c1dfdde3422121d1abe345f22d7ec03f4fe2b2"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_job_recovery.py",
+      "archive": "snapshot-401.zip",
+      "size": 26185,
+      "sha256": "eec0fc2a90d2f070a2315ad7a733e3cb29625f656fbaa0bbc7bc865b7ef14a9d"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_map_resources.py",
+      "archive": "snapshot-401.zip",
+      "size": 24093,
+      "sha256": "768b06f756d49c8ff836b1c3a48e6fefafe3d4b77f34cf894aad6fda666aab73"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_map_tiles.py",
+      "archive": "snapshot-401.zip",
+      "size": 5106,
+      "sha256": "4f007eb9b17846567f9c127397d32466513c4f77f22a27ad54936a9f652880e2"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_multistore_boundaries.py",
+      "archive": "snapshot-401.zip",
+      "size": 12685,
+      "sha256": "976f0fd6b2c8cbf8b455eecd287d042168561d2c0e1c100be25bafb4c974c6ad"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_multistore_migration.py",
+      "archive": "snapshot-401.zip",
+      "size": 25090,
+      "sha256": "9b81d3f54db9993e0ab8fcc8997e842756f1f69ea61b46308e8f4291327d83eb"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_multistore_restore.py",
+      "archive": "snapshot-401.zip",
+      "size": 41247,
+      "sha256": "b52c13b93cff96a50075d05a2646fa9a3aa160e41d4176b45886f24091066328"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_neighborhood_cursor.py",
+      "archive": "snapshot-401.zip",
+      "size": 5327,
+      "sha256": "ac7fdcbbb424318b970e5f92c2f4bc7c1e4c95b1cc5902b576e66866f9141d90"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_object_data_view.py",
+      "archive": "snapshot-401.zip",
+      "size": 32594,
+      "sha256": "4ce0b150847d193100d300d119d6cd317d94a5d838423a75f98feabd18122caa"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_offline_process.py",
+      "archive": "snapshot-401.zip",
+      "size": 536,
+      "sha256": "f3688de55d708f6b865ccdf7d80358046faf4235835cd5fa5bf97d59b1b3a999"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_oidc_security.py",
+      "archive": "snapshot-401.zip",
+      "size": 5642,
+      "sha256": "b3d2e26c5b8d0cc0f67e64c03dde582c3c1c81fad60a6a0f065a7814ccb4596e"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_professional_metadata_roundtrip.py",
+      "archive": "snapshot-401.zip",
+      "size": 5165,
+      "sha256": "96c059c7449631eff0eea6efee73447ae50f0c48cc040d59c2fe607549b348aa"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_projection.py",
+      "archive": "snapshot-401.zip",
+      "size": 22153,
+      "sha256": "5f31ec4fc2eb7e8314d65adc44d808f99b3e04440d5d8f24b8817ffdaab27e89"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_revision_transactions.py",
+      "archive": "snapshot-401.zip",
+      "size": 18295,
+      "sha256": "cbc93aa68d4dc8e39cc3d0bc8d1abc763170d9227a8071f7918568ee5ac00241"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_s3_artifacts.py",
+      "archive": "snapshot-401.zip",
+      "size": 12009,
+      "sha256": "160d75eb7d592c9c80f7d75baceab4829580ff0ca0fae7815a17b372813a026a"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_schema_releases.py",
+      "archive": "snapshot-401.zip",
+      "size": 48164,
+      "sha256": "eabe188f50f4e5b4c1e5c72f0416cbfffae73e4d1c90604a4dfb82795b76b5f1"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_scoped_permissions.py",
+      "archive": "snapshot-401.zip",
+      "size": 4249,
+      "sha256": "3d6a00ad5e171b5fe33d984875451899f275bcaa57a369f8aa1f4cd3cbbdefcd"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_semantic_adapters.py",
+      "archive": "snapshot-401.zip",
+      "size": 32067,
+      "sha256": "24d4e694523883d46d6735c9026994d040e87a964984bd837bf33fb5dea75de1"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_semantic_dataset_boundaries.py",
+      "archive": "snapshot-401.zip",
+      "size": 5281,
+      "sha256": "82047b1668e9017af80abcea82769f1b6bf9a72e06bb8b2434b4feb69fc7821c"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_semantic_export.py",
+      "archive": "snapshot-401.zip",
+      "size": 20137,
+      "sha256": "839d3d114316120a883bd3c62ffb66d477957eb7344d1df6bfba5ceb82b850c6"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_semantic_kernel.py",
+      "archive": "snapshot-401.zip",
+      "size": 43598,
+      "sha256": "a5bfffb6edd3a659b047f3657b136488bccff725cc6d70281e9799bdfc8d6c3c"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_split_gis.py",
+      "archive": "snapshot-401.zip",
+      "size": 23731,
+      "sha256": "7063dec0a0cf8e8b39951be069119323c5dbc567156c057658036f4d3ce547bd"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_store_delivery.py",
+      "archive": "snapshot-401.zip",
+      "size": 14360,
+      "sha256": "f2691c2de937412a580755a324e2ec85632243f38084188d22bf5b5ef21b6753"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_telemetry_archive.py",
+      "archive": "snapshot-401.zip",
+      "size": 7117,
+      "sha256": "6b147e9e39c21693270b3e73ccb21aed0985ea1a50da51ef2beb5e8f9c8bc536"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_timeseries.py",
+      "archive": "snapshot-401.zip",
+      "size": 27362,
+      "sha256": "116585a1fdf1dd0428d9fd27af107c5c99c0c4044ffa21d8274f38acc89b986a"
+    },
+    {
+      "path": "ontology-platform/backend/tests/integration/test_u02_producers.py",
+      "archive": "snapshot-401.zip",
+      "size": 8679,
+      "sha256": "b2ed138f4b62e34eb40f0919ab50978781794a3b04b9fc4bcfb4080090656acd"
+    },
+    {
+      "path": "ontology-platform/backend/tests/test_environment_audit.py",
+      "archive": "snapshot-401.zip",
+      "size": 1967,
+      "sha256": "54d9809bad3f44b4bdef5863d2e7a1250875c6e092e3b29f67bc99d3560bfa8c"
+    },
+    {
+      "path": "ontology-platform/backend/tests/test_native_process_runner.py",
+      "archive": "snapshot-401.zip",
+      "size": 3230,
+      "sha256": "95d11fb0f660f2c2385fb454cbe1a0b14f3bc4edf61cec141bafb6231c2deadc"
+    },
+    {
+      "path": "ontology-platform/backend/tests/test_native_tools_prepare.py",
+      "archive": "snapshot-401.zip",
+      "size": 1898,
+      "sha256": "4199341da1ad7d6dfa2efcb3c41f48db6dae95756d38695208431d4a26bb0197"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_acceptance_ownership.py",
+      "archive": "snapshot-401.zip",
+      "size": 1301,
+      "sha256": "f266e0a0bf56382f55fd2c4c34bb602b00b9a7e0dc5e401e26da22b863597de7"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_activation_publication.py",
+      "archive": "snapshot-401.zip",
+      "size": 1284,
+      "sha256": "f92dea291588aab6936c6e8a3c90b75d633516adb1539c57eb289d6faeae5360"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_backup_rdf_digest.py",
+      "archive": "snapshot-401.zip",
+      "size": 2679,
+      "sha256": "f0fcfeac94e5aed1b9cdc589af9bc79843d55934d4444c73863661f6ef42ed46"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_backup_references.py",
+      "archive": "snapshot-401.zip",
+      "size": 6594,
+      "sha256": "4f13e2ba1a6a72ae15580ea18918a0b1b0f15a308550ed8f79804b86c97db23a"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_benchmark_metrics.py",
+      "archive": "snapshot-401.zip",
+      "size": 2475,
+      "sha256": "cbb52c8f90901ce4f99d00b56f07f9cf2a7a8862abf1ba5e14766a487cec30e3"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_blob_contract.py",
+      "archive": "snapshot-401.zip",
+      "size": 4166,
+      "sha256": "f03bf8812139ea87bd5438195db43167441794206f805dca65df628449b5cc84"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_browser_handoff.py",
+      "archive": "snapshot-401.zip",
+      "size": 2780,
+      "sha256": "c44305ebbd63dce9ddebcb6e77856cfa578df31c530cbd9ff1e9ef2ceb6e56d9"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_fuseki_transport.py",
+      "archive": "snapshot-401.zip",
+      "size": 441,
+      "sha256": "d138173d083acc044816dd1589f5e7bb0aee61f076cd49579b1dde2eec742883"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_gis_read_failures.py",
+      "archive": "snapshot-401.zip",
+      "size": 2018,
+      "sha256": "e72328574155bc299106534bf8873e59146a584b9c8bf4493e5b90a5f386d672"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_inference_closure.py",
+      "archive": "snapshot-401.zip",
+      "size": 16614,
+      "sha256": "51621fd4dea7ad020ca08e7a9830ef75c2cd1797944a5f614d27d76a20af4ba5"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_ingestion_admission.py",
+      "archive": "snapshot-401.zip",
+      "size": 2571,
+      "sha256": "c59de2e653eecfb13ff85938ddb838290c4df2fe677bd72452d6cc585f9a519b"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_ingestion_execution_context.py",
+      "archive": "snapshot-401.zip",
+      "size": 447,
+      "sha256": "5ee137d3f249b34fea9fcee9cfdc3e9e2d83b24d9d278f45d282fa49e4223788"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_ingestion_files.py",
+      "archive": "snapshot-401.zip",
+      "size": 12714,
+      "sha256": "7b02af22426da818fb4ed57490435d544f9bbc4fb5bf8fa1be06e0962e46a944"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_ingestion_geometry_presence.py",
+      "archive": "snapshot-401.zip",
+      "size": 1779,
+      "sha256": "0d5d73f983b988d2977a399622184c9236f2360920e03e6ae284581dd9d7ac26"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_ingestion_http_contract.py",
+      "archive": "snapshot-401.zip",
+      "size": 1692,
+      "sha256": "a2d99c9613ba2093f42c2c51801908b384718b228c90ce46d8e01d9cb47c45a1"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_ingestion_mapping.py",
+      "archive": "snapshot-401.zip",
+      "size": 3336,
+      "sha256": "c7d3b091f990500faa8a2a97caf0d58718c9e6c6c6b8cfc7f8c4805692359c0f"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_ingestion_semantic_dispositions.py",
+      "archive": "snapshot-401.zip",
+      "size": 1220,
+      "sha256": "fcbf2d767ab02219ea2e483752c24b941d7959557c09f0200df72976d6717098"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_ingestion_semantic_files.py",
+      "archive": "snapshot-401.zip",
+      "size": 2801,
+      "sha256": "80aca6bd459bf7134291c2d8b9e0ec7a68223cd98033a849b695073470cf4964"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_ingestion_semantic_time_terms.py",
+      "archive": "snapshot-401.zip",
+      "size": 1439,
+      "sha256": "608344beb8bcfec9f1351c8698113a67db3242c21c4186a5e957673d1cabed49"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_ingestion_temporal.py",
+      "archive": "snapshot-401.zip",
+      "size": 4053,
+      "sha256": "b9c84be37a4e7290d10dcde430f8011224e8666328ea2a4abc7eb49420183169"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_ingestion_typed_terms.py",
+      "archive": "snapshot-401.zip",
+      "size": 2337,
+      "sha256": "e0b11fc17e4ce21a2ab76729103505b70ee5862a8f898fd10189b72801ee668a"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_map_formats.py",
+      "archive": "snapshot-401.zip",
+      "size": 6684,
+      "sha256": "3acd4f8b1b22c6c9b28f0839c89bb69e5b65f97c3984d744a0d6aec7fc37c03d"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_map_review_fixes.py",
+      "archive": "snapshot-401.zip",
+      "size": 7220,
+      "sha256": "3790e9b1e26962923c8013d14c857d076a2f53342e2cfc3c514da89f67a9419b"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_ontology_impact_contract.py",
+      "archive": "snapshot-401.zip",
+      "size": 1052,
+      "sha256": "d699b05c7fabf94a75985b6b61628595000afc0f7fd1a1b126dc30f3e7d4ec17"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_ontology_reference_contract.py",
+      "archive": "snapshot-401.zip",
+      "size": 1498,
+      "sha256": "47e26e61955ac3298e897a1483ccf07fdbfb797938cf887bd0d4b1378b57053d"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_professional_metadata.py",
+      "archive": "snapshot-401.zip",
+      "size": 3861,
+      "sha256": "e5f1c825d6fcc4968b34c96f451f5c8c887c9c3c5871ca15610497a943ee0734"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_query_execution.py",
+      "archive": "snapshot-401.zip",
+      "size": 9126,
+      "sha256": "2b443c53f0a213ccc776f025e8837dd009659cebd949ac04f144d77f5de1cd95"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_restore_contract.py",
+      "archive": "snapshot-401.zip",
+      "size": 2496,
+      "sha256": "669133148de34be6c00b417661d765c316ad2c1cf2c77d708771542dffa8bfdb"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_semantic_export_format.py",
+      "archive": "snapshot-401.zip",
+      "size": 2080,
+      "sha256": "2859ef8335d752e59e7a67338da259a14d982f297e7518d17929d8212905e47b"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_semantic_nt.py",
+      "archive": "snapshot-401.zip",
+      "size": 8951,
+      "sha256": "68e60ff17e71ec294019e32f44af04e183a6c6f9ddf1b631832bf2163aba400a"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_semantic_profile.py",
+      "archive": "snapshot-401.zip",
+      "size": 7787,
+      "sha256": "ee58107ad6e6ea08d76e10a7d25ddf86a6367c9e8246e1f4ed9e15fdf44bd0eb"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_semantic_query_contract.py",
+      "archive": "snapshot-401.zip",
+      "size": 2144,
+      "sha256": "1fa20d92cda5ac8140f7960acc778388d4e8f854c11a0f0f13dd25db729ea32a"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_storage_namespace.py",
+      "archive": "snapshot-401.zip",
+      "size": 1374,
+      "sha256": "82bb0296918a80a5ec25470405c3f8387b95ae7c33c0485a6d732d3b1531975a"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_store_configuration.py",
+      "archive": "snapshot-401.zip",
+      "size": 3293,
+      "sha256": "cdb10f3b5118e2b01a85a6f0e072147d73e8fa672cb4d5d5e05bc1df78c0c5e5"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_workbench_contract.py",
+      "archive": "snapshot-401.zip",
+      "size": 441,
+      "sha256": "57093b643ecce475175a0e6b9e63f30cf902d56af0b5329a415a0b61a726bd1f"
+    },
+    {
+      "path": "ontology-platform/backend/tests/unit/test_workbench_seed.py",
+      "archive": "snapshot-401.zip",
+      "size": 736,
+      "sha256": "d8c4765439779729b025b66613b5a42123144b5333d327650c2a2a9c64229a1d"
+    },
+    {
+      "path": "ontology-platform/contracts/openapi.json",
+      "archive": "snapshot-401.zip",
+      "size": 512698,
+      "sha256": "08590048427407d44dc45dc98b602e0829d916902d997642e4b4efe9a92de9f7"
+    },
+    {
+      "path": "ontology-platform/database/README.md",
+      "archive": "snapshot-401.zip",
+      "size": 2367,
+      "sha256": "964552ff3067f11c90bc819d998ba0785e5ecab6f6a205c90b42f04826f736f0"
+    },
+    {
+      "path": "ontology-platform/database/alembic.ini",
+      "archive": "snapshot-401.zip",
+      "size": 111,
+      "sha256": "af89100de8b56c5853b12c4473acfa3ecf49e98239fcd003aeb864a40c452b9c"
+    },
+    {
+      "path": "ontology-platform/database/catalog/001_inbox.sql",
+      "archive": "snapshot-401.zip",
+      "size": 701,
+      "sha256": "ad495c0240dd91e4cd6c9b7337075e59da35a3b91d644d88c43aadb4e8e03089"
+    },
+    {
+      "path": "ontology-platform/database/catalog/002_aggregate_content.sql",
+      "archive": "snapshot-401.zip",
+      "size": 219,
+      "sha256": "451292bce8ff794ef3b3b0b61d717be8a5693272d694e10c8e27969c3908b465"
+    },
+    {
+      "path": "ontology-platform/database/catalog/003_catalog.sql",
+      "archive": "snapshot-401.zip",
+      "size": 678,
+      "sha256": "cd822a192b056c4e8ca30bf85a37d6349fceb4ec45217112ab0cc42ce2c1deea"
+    },
+    {
+      "path": "ontology-platform/database/fuseki/Dockerfile",
+      "archive": "snapshot-401.zip",
+      "size": 886,
+      "sha256": "2bcf3b9914cb99c3cea529aeac6894fec2c38dcf7249b4666ed32630bf36c7ff"
+    },
+    {
+      "path": "ontology-platform/database/fuseki/config.ttl",
+      "archive": "snapshot-401.zip",
+      "size": 864,
+      "sha256": "58d1f661f51910358ba68feb34ee36dadc3b8ee7bdfd17afbeba687d4717a152"
+    },
+    {
+      "path": "ontology-platform/database/gis/001_inbox.sql",
+      "archive": "snapshot-401.zip",
+      "size": 701,
+      "sha256": "ad495c0240dd91e4cd6c9b7337075e59da35a3b91d644d88c43aadb4e8e03089"
+    },
+    {
+      "path": "ontology-platform/database/gis/002_aggregate_content.sql",
+      "archive": "snapshot-401.zip",
+      "size": 219,
+      "sha256": "451292bce8ff794ef3b3b0b61d717be8a5693272d694e10c8e27969c3908b465"
+    },
+    {
+      "path": "ontology-platform/database/gis/003_geometry.sql",
+      "archive": "snapshot-401.zip",
+      "size": 924,
+      "sha256": "a0b0aeffb333878e1a362641df633f1f753a231e82c64a41ba88b6db642c447f"
+    },
+    {
+      "path": "ontology-platform/database/gis/004_assets_locations.sql",
+      "archive": "snapshot-401.zip",
       "size": 1381,
-      "sha256": "21d6ba6fa2bd21eae288cd8546a86d20c2584702150331ca0ac6da2d05ad9d9f"
+      "sha256": "e53f3dbbafa3bd367ecef69f6a1fbdbec80614dbff209a64701b8cd67745decc"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/excerpts/11-migrations.txt",
-      "archive": "snapshot-301.zip",
-      "size": 1937,
-      "sha256": "234c72e6093f070e263b6733bda23ae0be6bcb842c05d03f47d7ff25f015c1a5"
+      "path": "ontology-platform/database/migrations/env.py",
+      "archive": "snapshot-401.zip",
+      "size": 1118,
+      "sha256": "dc34cc2aba773a27debde7d4e9c4e08f16e24b11c96d3f5db0241e3d957f2e6b"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/excerpts/12-frontend-map.txt",
-      "archive": "snapshot-301.zip",
-      "size": 928,
-      "sha256": "a52525688461a618914f83dd4bacef6420f561c64129cb1d6d7a8d4526d4bfba"
+      "path": "ontology-platform/database/migrations/versions/0001_core_ledger.py",
+      "archive": "snapshot-401.zip",
+      "size": 3223,
+      "sha256": "1618af8e648b34f58ab344f897e313af1db9a8f89d1bc01343cbec99defd090a"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/index.html",
-      "archive": "snapshot-301.zip",
-      "size": 28820,
-      "sha256": "f751bdfe93d122f877d4b44b5849a27ef38d0c9cea6cd071fa7c86b150824f4a"
+      "path": "ontology-platform/database/migrations/versions/0002_identity_authorization.py",
+      "archive": "snapshot-401.zip",
+      "size": 4991,
+      "sha256": "c09a0b0073b0b1196551ee5245e957a03a30ecead3e9cb0edf14f963b39ae07b"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/screenshots/00-report-overview.png",
-      "archive": "snapshot-301.zip",
-      "size": 389445,
-      "sha256": "af5741abc2e5ec42b7959385f9a8b45717072681143fbc71d2d4e6e3586a22b7"
+      "path": "ontology-platform/database/migrations/versions/0002a_identity_operations.py",
+      "archive": "snapshot-401.zip",
+      "size": 970,
+      "sha256": "b62ba94e6a46427dc738734ab6992f4b2958b1dec71f440e170b8e5d15e4b9c5"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/screenshots/01-backend.png",
-      "archive": "snapshot-301.zip",
-      "size": 155314,
-      "sha256": "2b4a828f400edc3d26da809f9e0faf7b02559460527a74f74efec776490f9452"
+      "path": "ontology-platform/database/migrations/versions/0003_artifacts.py",
+      "archive": "snapshot-401.zip",
+      "size": 3243,
+      "sha256": "f1ee08efe88d780e1cb55dc538e2c44a4ff0f23300376e724cf6f37ca1597db0"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/screenshots/02-json-api.png",
-      "archive": "snapshot-301.zip",
-      "size": 208655,
-      "sha256": "91564708253565e14606b1e132828504567904686b978889b8d7912ca249f193"
+      "path": "ontology-platform/database/migrations/versions/0003a_artifact_visibility.py",
+      "archive": "snapshot-401.zip",
+      "size": 1034,
+      "sha256": "2fa32bdc03bc890e57a227d0961545a75563c1d420f92855727163c0a4123cbc"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/screenshots/03-package-json.png",
-      "archive": "snapshot-301.zip",
-      "size": 194867,
-      "sha256": "1983eca0a784ca4167de282fce4ecbd1fabbe85151c2643823f3ab45f2bbdbd9"
+      "path": "ontology-platform/database/migrations/versions/0004_jobs.py",
+      "archive": "snapshot-401.zip",
+      "size": 3946,
+      "sha256": "5811315ba5a62a9929f37c18a0dbc87f43353bf28fb7afc89dee69df0f921b78"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/screenshots/04-entities.png",
-      "archive": "snapshot-301.zip",
-      "size": 189734,
-      "sha256": "d22a6d0f39f66d9c9db21cc65a09714fd3dde98119454cf82f53b627fda91205"
+      "path": "ontology-platform/database/migrations/versions/0005_approvals.py",
+      "archive": "snapshot-401.zip",
+      "size": 3243,
+      "sha256": "ce3f32170b82b320c5c71c60abc1dd246adaa2e457732c56ccb576f76755bd03"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/screenshots/05-property-resolution.png",
-      "archive": "snapshot-301.zip",
-      "size": 303425,
-      "sha256": "526cb3cab7be9e7d46932c099780712def6ada68b48d376e5befffb2b269b920"
+      "path": "ontology-platform/database/migrations/versions/0005a_approval_footprint_seed.py",
+      "archive": "snapshot-401.zip",
+      "size": 744,
+      "sha256": "cebaea4890e137f5cb949bd7e2a0dc4c7d6d2e6d2a76982121a2e34733d60edd"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/screenshots/06-relations.png",
-      "archive": "snapshot-301.zip",
-      "size": 233483,
-      "sha256": "90dee3159385cccca96ea2ae5197561255c04e44c8f60645f22acb09dab60a7a"
+      "path": "ontology-platform/database/migrations/versions/0201_ingestion_sources.py",
+      "archive": "snapshot-401.zip",
+      "size": 1791,
+      "sha256": "9398e23383e3013aea53ff522a781143a7720ab829d9793a406821ad556a27f1"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/screenshots/07-observations.png",
-      "archive": "snapshot-301.zip",
-      "size": 230584,
-      "sha256": "5dbd6d6d2e3206990647f978474789ad555b5bbc1d04d8cd43d8c212f17d49a4"
+      "path": "ontology-platform/database/migrations/versions/0202_ingestion_mapping_rulings.py",
+      "archive": "snapshot-401.zip",
+      "size": 3693,
+      "sha256": "3072b6e66c14ebc489ed4b70f87c6713a50c58966da8e23352e032a42ba40f49"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/screenshots/08-source-history.png",
-      "archive": "snapshot-301.zip",
-      "size": 323115,
-      "sha256": "1ec726b69b992a0e1dc206b1af65b88639db0b0528046e4dd5545a41e8202025"
+      "path": "ontology-platform/database/migrations/versions/0203_ingestion_scans_schedules.py",
+      "archive": "snapshot-401.zip",
+      "size": 3639,
+      "sha256": "e65e506e03907a8e5854f81bd6f1696b29bd6aa2e38ef49db206581a976bbfd7"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/screenshots/09-assets.png",
-      "archive": "snapshot-301.zip",
-      "size": 300485,
-      "sha256": "9f46343673a971b27c7ca5132ffab8f3c8ac569f831434de97177e0cf5b1c978"
+      "path": "ontology-platform/database/migrations/versions/0204_ingestion_runs_rows.py",
+      "archive": "snapshot-401.zip",
+      "size": 3840,
+      "sha256": "36a847bec032d2d68629bccf83dbf19770d020dc087f8dc3f8c0cabc39085eae"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/screenshots/10-rdf-export.png",
-      "archive": "snapshot-301.zip",
-      "size": 268330,
-      "sha256": "b1a976895295fe00283268c8b5764566f7ed13d4263e26b784e7d35a4a6761d3"
+      "path": "ontology-platform/database/migrations/versions/0301_map_resources.py",
+      "archive": "snapshot-401.zip",
+      "size": 1167,
+      "sha256": "9bcf90dd7a7cc02b7a0df22034b4fc1721b49828d91eaea4927b8f6aa771ff98"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/screenshots/11-migrations.png",
-      "archive": "snapshot-301.zip",
-      "size": 342054,
-      "sha256": "680608c0aef00a2160f7df405dac840975007fa142ddfabaf2ca39ef0cf594a6"
+      "path": "ontology-platform/database/migrations/versions/0401_store_deliveries.py",
+      "archive": "snapshot-401.zip",
+      "size": 386,
+      "sha256": "9624e76cbb6356c9424099943297fb68b8e0a03375c19ccbf593ae80dcd7a096"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/screenshots/12-frontend-map.png",
-      "archive": "snapshot-301.zip",
-      "size": 241883,
-      "sha256": "a8a4f81d741be2bbafcd2d67f28ea973bb1a9bf83f772a6c15ae5de6beadf632"
+      "path": "ontology-platform/database/migrations/versions/0402_artifact_upload_sessions.py",
+      "archive": "snapshot-401.zip",
+      "size": 482,
+      "sha256": "18656884f2c523afd60590198b8f925b3174d4c7194164876b6d6673505dcce4"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/sources.json",
-      "archive": "snapshot-301.zip",
-      "size": 24175,
-      "sha256": "2099fd4e3f0c4090a78e141de97ae1e12c0eefdf3e467ce5bffdc9211e2062ba"
+      "path": "ontology-platform/database/migrations/versions/0403_catalog.py",
+      "archive": "snapshot-401.zip",
+      "size": 592,
+      "sha256": "4c50104de96def9ab8a8f8e7d42acf0fcfa4b67aec7fd1e7a88976576a010ff3"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/verification.json",
-      "archive": "snapshot-301.zip",
-      "size": 4813,
-      "sha256": "715a36adae7dd8d5ef1c74169e47005920a9eb18f3a62bfabeea45a16c040150"
+      "path": "ontology-platform/database/migrations/versions/0404_telemetry.py",
+      "archive": "snapshot-401.zip",
+      "size": 536,
+      "sha256": "adb7f5747aa9f69385e5748ae6809e042002f4dfd551030ba11d724afe8ae519"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021/源码图解说明.txt",
-      "archive": "snapshot-301.zip",
-      "size": 31840,
-      "sha256": "d9b890316d58c5aaa0eb3f7f110f438b5d07d686aa7516e991682311d31bf80b"
+      "path": "ontology-platform/database/migrations/versions/0405_storage_migration.py",
+      "archive": "snapshot-401.zip",
+      "size": 1151,
+      "sha256": "a5013962cbde8b33ed87eaa43260d46c6924487f1dc220d4783675e7e3675107"
     },
     {
-      "path": "交付文档/数据库结构源码图解_20261021.zip",
-      "archive": "snapshot-301.zip",
-      "size": 3282462,
-      "sha256": "56ab5cb3f0ffdecb51acd8d3107049e439c8d6b58127b80869de8baf1dfcd8d9"
+      "path": "ontology-platform/database/migrations/versions/0406_storage_backups.py",
+      "archive": "snapshot-401.zip",
+      "size": 999,
+      "sha256": "825531d770b65edee90c495815d42a1a98540335d969555cb55d440adc356558"
+    },
+    {
+      "path": "ontology-platform/database/migrations/versions/S0101_semantic_projection.py",
+      "archive": "snapshot-401.zip",
+      "size": 3690,
+      "sha256": "614536d1abf8be121e31c29b4c52de2a4e03a29834b38a710c593a9021962a3c"
+    },
+    {
+      "path": "ontology-platform/database/migrations/versions/S0102_ontology_releases.py",
+      "archive": "snapshot-401.zip",
+      "size": 4460,
+      "sha256": "b998381bda099da9f9c991b8a503115fcb7ff4ec81e0ba92c7f5e9c5365bbdb5"
+    },
+    {
+      "path": "ontology-platform/database/migrations/versions/S0103_objects_assertions_geometry.py",
+      "archive": "snapshot-401.zip",
+      "size": 3523,
+      "sha256": "ca9bc70df7cd0d878ad7675bf62a138aa8a384f5bc5c3fd5f8ad1eab94e27438"
+    },
+    {
+      "path": "ontology-platform/database/migrations/versions/S0104_inference_proofs.py",
+      "archive": "snapshot-401.zip",
+      "size": 3232,
+      "sha256": "07c6fa32cc55571e043dc28094ff2578809303598a8280ac9c891d8b41cf976f"
+    },
+    {
+      "path": "ontology-platform/database/migrations/versions/S0105_semantic_exports.py",
+      "archive": "snapshot-401.zip",
+      "size": 3901,
+      "sha256": "5ca8794daf42587afd947465494c6823ace71c9b098deba095c7cac36dcc525b"
+    },
+    {
+      "path": "ontology-platform/database/object-store/README.md",
+      "archive": "snapshot-401.zip",
+      "size": 4402,
+      "sha256": "4d7a6a35aa5a929fa908e6cf0e613e3c7701720ec82648931aca39fd7f66ee5f"
+    },
+    {
+      "path": "ontology-platform/database/object-store/bootstrap.py",
+      "archive": "snapshot-401.zip",
+      "size": 1426,
+      "sha256": "96ca7c12d125dce3c1e00256b025aee831bd53e7753d8bdff470589f9ee3e6e1"
+    },
+    {
+      "path": "ontology-platform/database/object-store/entrypoint.sh",
+      "archive": "snapshot-401.zip",
+      "size": 925,
+      "sha256": "960c6f6def2e67b64d75ed1f3186ac6f0be83c37dae27517724dd73eb9ad7aa6"
+    },
+    {
+      "path": "ontology-platform/database/object-store/filer.toml",
+      "archive": "snapshot-401.zip",
+      "size": 50,
+      "sha256": "0e2d61bce0f91e5fc5c7fa17c8289ae80b8c15ae923ed92f3b6b00f4f413693b"
+    },
+    {
+      "path": "ontology-platform/database/postgres/init-databases.sh",
+      "archive": "snapshot-401.zip",
+      "size": 2522,
+      "sha256": "8f189aca12f7c5fbf4bb547a88e93ddccc13949422b465419b5e94447146e4a6"
+    },
+    {
+      "path": "ontology-platform/database/timeseries/001_inbox.sql",
+      "archive": "snapshot-401.zip",
+      "size": 701,
+      "sha256": "ad495c0240dd91e4cd6c9b7337075e59da35a3b91d644d88c43aadb4e8e03089"
+    },
+    {
+      "path": "ontology-platform/database/timeseries/002_aggregate_content.sql",
+      "archive": "snapshot-401.zip",
+      "size": 219,
+      "sha256": "451292bce8ff794ef3b3b0b61d717be8a5693272d694e10c8e27969c3908b465"
+    },
+    {
+      "path": "ontology-platform/database/timeseries/003_telemetry.sql",
+      "archive": "snapshot-401.zip",
+      "size": 2778,
+      "sha256": "3f05e18719d6ae64b5b569cbbaae96244c7e8f09c58c74a2d56ae9bdfcb1ac23"
+    },
+    {
+      "path": "ontology-platform/docs/approvals.md",
+      "archive": "snapshot-401.zip",
+      "size": 9811,
+      "sha256": "2a76d147ab1196ce869c8b16bb9217fc879eeb1c9abfb4ee027b5a7d6d87c186"
+    },
+    {
+      "path": "ontology-platform/docs/database/acceptance.md",
+      "archive": "snapshot-401.zip",
+      "size": 23165,
+      "sha256": "52652f14461b4bc81af4320a94e61be39a5c6f344c3aafb5c24c142654f841ff"
+    },
+    {
+      "path": "ontology-platform/docs/database/implementation-record.json",
+      "archive": "snapshot-401.zip",
+      "size": 53274,
+      "sha256": "986fa757bd1273885935cd47c9e70bbca6ecd2a616fdb568823dcbc4899ec366"
+    },
+    {
+      "path": "ontology-platform/docs/database/migration-recovery.md",
+      "archive": "snapshot-401.zip",
+      "size": 13060,
+      "sha256": "2dd11012449e74dbedba8a22649e4e7a5b22bb40373c20394505409d4b379e08"
+    },
+    {
+      "path": "ontology-platform/docs/database/multi-store-architecture-report.docx",
+      "archive": "snapshot-401.zip",
+      "size": 204568,
+      "sha256": "561ccebdb4c57da8e403edd647fe6474dc577b91bcad85552b5bbeb40879c3f9"
+    },
+    {
+      "path": "ontology-platform/docs/database/multi-store-report.source.json",
+      "archive": "snapshot-401.zip",
+      "size": 53834,
+      "sha256": "67cb2ad98ed2e243784a2144b761664f07d2d4fd8a21231e3a121ce105980423"
+    },
+    {
+      "path": "ontology-platform/docs/database/real-data-questions.json",
+      "archive": "snapshot-401.zip",
+      "size": 8423,
+      "sha256": "53f3b8951ca3499e3ada97ecb3f294f3707a2d38dd5c5c0f551a8f0f636cc0fc"
+    },
+    {
+      "path": "ontology-platform/docs/database/report-assets/storage-architecture.svg",
+      "archive": "snapshot-401.zip",
+      "size": 2726,
+      "sha256": "4c5e57c92096c604017b3b224ef34d136f1e16e236b87355f3e3815c5d63d1af"
+    },
+    {
+      "path": "ontology-platform/docs/database/schema-guide.md",
+      "archive": "snapshot-401.zip",
+      "size": 8322,
+      "sha256": "520a06a3d012cf3584c1a998ab13aa87857e41939885f52a644e4b5fcee69159"
+    },
+    {
+      "path": "ontology-platform/docs/database/schema-inventory.json",
+      "archive": "snapshot-401.zip",
+      "size": 261099,
+      "sha256": "1d7a2750facc05b278c3f74fd3dad4bf97908fe83709b2364db9bfbfef7e4852"
+    },
+    {
+      "path": "ontology-platform/docs/database/sources.md",
+      "archive": "snapshot-401.zip",
+      "size": 2634,
+      "sha256": "c44bdd68d27a0354d96ad8054ffdee2103ca585e4009d6b17d7be665e09dd4f7"
+    },
+    {
+      "path": "ontology-platform/docs/database/task6ab-acceptance.json",
+      "archive": "snapshot-401.zip",
+      "size": 56747,
+      "sha256": "c7add78af7454db3b9fb1f3f19792df75a1eb9f418109fb180c217547a9f0453"
+    },
+    {
+      "path": "ontology-platform/docs/database/task6c-acceptance.json",
+      "archive": "snapshot-401.zip",
+      "size": 12314,
+      "sha256": "753e96c3ff90bad96347c5eb7293a5def531f0d8772758650f262920b9127c30"
+    },
+    {
+      "path": "ontology-platform/docs/database/task6c-benchmark-size-red.json",
+      "archive": "snapshot-401.zip",
+      "size": 3149,
+      "sha256": "6f152d8a305b250c0d7be0c48928b1d0266bcde4627a277690540677bfa22a67"
+    },
+    {
+      "path": "ontology-platform/docs/database/task6c-benchmark-smoke-red.json",
+      "archive": "snapshot-401.zip",
+      "size": 4894,
+      "sha256": "af2c9c6a259bbe6396456b6850556d7079acadcd756d98b292d26dd68464046b"
+    },
+    {
+      "path": "ontology-platform/docs/database/task6c-benchmark-smoke.json",
+      "archive": "snapshot-401.zip",
+      "size": 154108,
+      "sha256": "d7f53559cf6b0233ef8e093b48c9f9fa956284b4182d7ad785f27a01a71e4f66"
+    },
+    {
+      "path": "ontology-platform/docs/database/task6c-benchmark.json",
+      "archive": "snapshot-401.zip",
+      "size": 272664,
+      "sha256": "d89b75860a06a325f9898accb01407b279ddffd68284eb8d909429764c06a9e8"
+    },
+    {
+      "path": "ontology-platform/docs/database/task6c-fix-round-1.json",
+      "archive": "snapshot-401.zip",
+      "size": 7646,
+      "sha256": "98d48711a4c4ccb3aea5afff6dd8ff30d1ee4811bb2968317e3ec8cd424d389b"
+    },
+    {
+      "path": "ontology-platform/docs/database/task6c-maintenance.json",
+      "archive": "snapshot-401.zip",
+      "size": 496,
+      "sha256": "b2e0fb247a0e24305947d3c3c36ef80c3ddf9c418f2932ed10c928a1ce945edd"
+    },
+    {
+      "path": "ontology-platform/docs/database/task6c-native.json",
+      "archive": "snapshot-401.zip",
+      "size": 8024,
+      "sha256": "0f91ce1c780572ce6d9c1aa03f3e38497a86a7a9c436c5dec0d84d7555bb6615"
+    },
+    {
+      "path": "ontology-platform/docs/database/task6c-timeout.json",
+      "archive": "snapshot-401.zip",
+      "size": 9065,
+      "sha256": "2cad3b68f71d5d5fad65971f7347e762d893f5ce4967b5882b73ca74b96ef68c"
+    },
+    {
+      "path": "ontology-platform/docs/database/whole-branch-fix-acceptance.json",
+      "archive": "snapshot-401.zip",
+      "size": 4794,
+      "sha256": "f67511e6fc79c9fa39614b3872fb65a9dc86c2dda31512d429a827cd50e0d538"
+    },
+    {
+      "path": "ontology-platform/docs/identity-operations.md",
+      "archive": "snapshot-401.zip",
+      "size": 9106,
+      "sha256": "231c65138304e58ab9d0ba808e917075f7f1ca861d4d97597aaa700dbf926feb"
+    },
+    {
+      "path": "ontology-platform/docs/ingestion-contract.md",
+      "archive": "snapshot-401.zip",
+      "size": 5982,
+      "sha256": "084f1ca197c7e97e88fced0cc10247a464faa44e33539d52c376e0ba6a57bbd4"
+    },
+    {
+      "path": "ontology-platform/docs/jobs.md",
+      "archive": "snapshot-401.zip",
+      "size": 7602,
+      "sha256": "9d92d5d758044ace1575473d88c3e2a9f6af4d6224df321a47abf76eb896c085"
+    },
+    {
+      "path": "ontology-platform/docs/operations/environment.md",
+      "archive": "snapshot-401.zip",
+      "size": 5101,
+      "sha256": "7a044ab0aa750910538d5a3fffa71a169a2e505b6e8ef8834f386552dd73d9b0"
+    },
+    {
+      "path": "ontology-platform/docs/operations/offline-deployment.md",
+      "archive": "snapshot-401.zip",
+      "size": 4009,
+      "sha256": "090b054e3e339f51fee4cdcee0851862511985dfa810514ca04f8a380798384a"
+    },
+    {
+      "path": "ontology-platform/docs/status/2026-10-21-source-snapshot.md",
+      "archive": "snapshot-401.zip",
+      "size": 3787,
+      "sha256": "c0b019141a0a54306c3416825d593862752ddb12ff2ae73fb014eae9d948790c"
+    },
+    {
+      "path": "ontology-platform/docs/superpowers/plans/2026-10-20-lzo-01-foundation.md",
+      "archive": "snapshot-401.zip",
+      "size": 25078,
+      "sha256": "88e1c3645ab267d1f2f74ef29efc9fb0ef27869953ecd1236d504b161dd79e8c"
+    },
+    {
+      "path": "ontology-platform/docs/superpowers/plans/2026-10-20-lzo-02-semantics.md",
+      "archive": "snapshot-401.zip",
+      "size": 54796,
+      "sha256": "1416a17a1a42e005a32a0e5863acbd034b17091dd301896e622d337997780834"
+    },
+    {
+      "path": "ontology-platform/docs/superpowers/plans/2026-10-20-lzo-03-ingestion.md",
+      "archive": "snapshot-401.zip",
+      "size": 57611,
+      "sha256": "62c0f1af21d35ec6bf84a72d78a07d015697254a954805e6b889614b25c38287"
+    },
+    {
+      "path": "ontology-platform/docs/superpowers/plans/2026-10-20-lzo-04-workbench.md",
+      "archive": "snapshot-401.zip",
+      "size": 49639,
+      "sha256": "3e73f28ed7f1e80ac00d408d199165e2df4c5af5c60553ed5a4bffd2222b9436"
+    },
+    {
+      "path": "ontology-platform/docs/superpowers/plans/2026-10-20-lzo-05-delivery.md",
+      "archive": "snapshot-401.zip",
+      "size": 17836,
+      "sha256": "bd871728d45cfb5ee68584fc71eaa62a78b6d8ae3b4641e69371323e9d317237"
+    },
+    {
+      "path": "ontology-platform/docs/superpowers/plans/2026-10-20-lzo-p0-p1-implementation.md",
+      "archive": "snapshot-401.zip",
+      "size": 18065,
+      "sha256": "927dc6161d712199f81be7d1447f122ab66956a2695da0eeb84c2f472492bc1d"
+    },
+    {
+      "path": "ontology-platform/docs/superpowers/plans/2026-10-21-repository-snapshot.md",
+      "archive": "snapshot-401.zip",
+      "size": 5868,
+      "sha256": "c6b7f831a8eeda5831fc164bbbcf6aeb0ce1f683a4ade3d50e6f884f1cb858b5"
+    },
+    {
+      "path": "ontology-platform/docs/superpowers/plans/2026-10-22-multi-store-implementation.md",
+      "archive": "snapshot-401.zip",
+      "size": 24040,
+      "sha256": "428b134e198fc002e9cfdeb7a02196ef0be1b86df5ffed2ac696a3400b5c0ea0"
+    },
+    {
+      "path": "ontology-platform/docs/superpowers/specs/2026-10-20-lzo-platform-p0-p1-design.md",
+      "archive": "snapshot-401.zip",
+      "size": 49216,
+      "sha256": "b194a850ada71888e32966418a34f83e28408138929cfde3b355c39fa1977c9a"
+    },
+    {
+      "path": "ontology-platform/docs/superpowers/specs/2026-10-22-multi-store-architecture-design.md",
+      "archive": "snapshot-401.zip",
+      "size": 36697,
+      "sha256": "2e410e309f878743c3c6f256541b3b39364d173d169f453f17458491f666ad9c"
+    },
+    {
+      "path": "ontology-platform/docs/verification/dynamic-objects.md",
+      "archive": "snapshot-401.zip",
+      "size": 13436,
+      "sha256": "e601b8fb093f1cf4af3f3d1a5ed3ead75bd110c9f08ad2abec30f5c5251a378c"
+    },
+    {
+      "path": "ontology-platform/docs/verification/finite-inference.md",
+      "archive": "snapshot-401.zip",
+      "size": 11220,
+      "sha256": "20df7d9172b1d38941bdeef19d862ed1a8e4e40f5da71a1b591d1180cfbde871"
+    },
+    {
+      "path": "ontology-platform/docs/verification/semantic-capabilities.md",
+      "archive": "snapshot-401.zip",
+      "size": 23569,
+      "sha256": "63f56ad9e3bd8b836c8a9896d943e33dd9f5bb3c00d98b4848aa1b394f504e9f"
+    },
+    {
+      "path": "ontology-platform/docs/verification/semantic-kernel.md",
+      "archive": "snapshot-401.zip",
+      "size": 25471,
+      "sha256": "fedef0d1353d15f3b47a36e5037fc1a5f54bf61d6d3914ce6b41d5c8f314fe7f"
+    },
+    {
+      "path": "ontology-platform/docs/verification/semantic-profile.md",
+      "archive": "snapshot-401.zip",
+      "size": 14038,
+      "sha256": "4786f8da0a8d902ea44115d3faa16df78221452c667bc1455d077ca4bba5a0af"
+    },
+    {
+      "path": "ontology-platform/frontend/Dockerfile",
+      "archive": "snapshot-401.zip",
+      "size": 745,
+      "sha256": "b608522697ee075f4155ba718946bdd53897c631f144f666a2df09b4b6a88d30"
+    },
+    {
+      "path": "ontology-platform/frontend/README.md",
+      "archive": "snapshot-401.zip",
+      "size": 3785,
+      "sha256": "c9f639e72326c477ef12beb2f16ff3210449fab545ac2d92c9fc0ce6cab66b88"
+    },
+    {
+      "path": "ontology-platform/frontend/index.html",
+      "archive": "snapshot-401.zip",
+      "size": 372,
+      "sha256": "2aaa4dc3203b3e546459b77cdc73e74d55f7dba2c99b200d3c0e5842a2708425"
+    },
+    {
+      "path": "ontology-platform/frontend/package-lock.json",
+      "archive": "snapshot-401.zip",
+      "size": 135011,
+      "sha256": "a90250618c7d7a1263c463ccc6d0c0df58d7c472e5c45b838a21f4662243e538"
+    },
+    {
+      "path": "ontology-platform/frontend/package.json",
+      "archive": "snapshot-401.zip",
+      "size": 1118,
+      "sha256": "9aca0722cd1925e532d765ae2ae172d2febdf7cd808e48cb9be25b285e29db58"
+    },
+    {
+      "path": "ontology-platform/frontend/public/assets/fonts/LICENSES.md",
+      "archive": "snapshot-401.zip",
+      "size": 487,
+      "sha256": "21e4614b0aa7c5fa5f83f2a0a2651540b8f13bb07bc6d33a6b9299a52dae0472"
+    },
+    {
+      "path": "ontology-platform/frontend/public/assets/fonts/NotoSansCJKsc-Regular.otf",
+      "archive": "snapshot-401.zip",
+      "size": 16437364,
+      "sha256": "2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b"
+    },
+    {
+      "path": "ontology-platform/frontend/public/assets/fonts/OFL-LICENSE.txt",
+      "archive": "snapshot-401.zip",
+      "size": 4301,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+    },
+    {
+      "path": "ontology-platform/frontend/scripts/api.mjs",
+      "archive": "snapshot-401.zip",
+      "size": 900,
+      "sha256": "b67f667374c924d76fb3e60671e636244c127888f6c7626e87d02efaabbe93e8"
+    },
+    {
+      "path": "ontology-platform/frontend/src/api/client.test.ts",
+      "archive": "snapshot-401.zip",
+      "size": 9877,
+      "sha256": "8dc33d3907b2b398a7b3b6cd4db63e1296d1b8d90ba43c67be83ef2eeeb825b1"
+    },
+    {
+      "path": "ontology-platform/frontend/src/api/client.ts",
+      "archive": "snapshot-401.zip",
+      "size": 404,
+      "sha256": "f97b9a05dc9d6833d4cc736cab90b07e33a5e6d5c7938a047fd9f776d63bd549"
+    },
+    {
+      "path": "ontology-platform/frontend/src/api/generated.ts",
+      "archive": "snapshot-401.zip",
+      "size": 347918,
+      "sha256": "3e330c4d93d0fca5b1aab467a9266b16a56674258eb8f35aa918de5814c48dd7"
+    },
+    {
+      "path": "ontology-platform/frontend/src/api/session.ts",
+      "archive": "snapshot-401.zip",
+      "size": 9058,
+      "sha256": "4c1de64b471dc921e26877985fc45aa8cb5d01eaf834dc3ab5d0fe25740a62a1"
+    },
+    {
+      "path": "ontology-platform/frontend/src/app/SessionBoundary.test.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 4170,
+      "sha256": "9c7c0d4995712f703372bbeab2d435f5539510f39ca81cd10fd2b02d262c3c20"
+    },
+    {
+      "path": "ontology-platform/frontend/src/app/SessionBoundary.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 2709,
+      "sha256": "c930e2324a3bb94b8746713193a3f5f98990857fad0946807523a98d23b7199b"
+    },
+    {
+      "path": "ontology-platform/frontend/src/app/Shell.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 8450,
+      "sha256": "6a3d8306b21e5fa3bf29e8f0281cc451dcb437d872ed2bca98753af016c900fe"
+    },
+    {
+      "path": "ontology-platform/frontend/src/app/router.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 1301,
+      "sha256": "423193a8116940cbe409df899cad0bd43684eeba504c25cfb96471dbdb581a18"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/governance/ApprovalsPanel.test.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 5882,
+      "sha256": "df39935cebd7c4c1be1208c7e6d3234147283269a2e596eff05c062db7b0036b"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/governance/ApprovalsPanel.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 10759,
+      "sha256": "75f8ecf2de5a12a87580d197aff2411d2724e9d44310bb1aa09cdc3f3e0062fd"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/ClassTree.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 2180,
+      "sha256": "a91385936d0759cc081001d5b7ad068fea618e9c70e2bccad584bc646a47eaba"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/Documents.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 4133,
+      "sha256": "ef1b16583af1e277fcdfae4228a7786757d8cfb8e22cc907635914d4078de836"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/DraftCommands.test.ts",
+      "archive": "snapshot-401.zip",
+      "size": 4292,
+      "sha256": "bd8d34ecc0de5018faf7897a7757f0a263f5085e5976071034c2dfe832b4f309"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/DraftCommands.ts",
+      "archive": "snapshot-401.zip",
+      "size": 4572,
+      "sha256": "3c5be61dcff92b29cd65c123b2e2890f03f5755558809f48adf22a1e67f6ac02"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/ImportPanel.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 5530,
+      "sha256": "9c1606a4eb9f50cfd9681cb3bde3da60a6d5ce7bc16f3e67dd2e95604dd79cee"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/Inspector.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 12652,
+      "sha256": "e26fcf05fee0841ac22fcbc314ad5a0e08f1e234a0d7eddb97800472f430b4b4"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/JsonBuffers.ts",
+      "archive": "snapshot-401.zip",
+      "size": 652,
+      "sha256": "905d347d87f28686205337044d8224c18779a607dbba8f8e3fe223658fd4daff"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/PublishPanel.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 12489,
+      "sha256": "98655d0053df87a3715e157ea78358c6d6f9c27ec1e5b10d467e9b542ebf52dc"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/SchemaCanvas.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 2634,
+      "sha256": "dc4fbfb9f2eba8b9087481aee6e6110455693cad87835aa8d117fd782297eb29"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/ShapeEditor.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 4083,
+      "sha256": "b3ae5a12458477e5e09f513f11a56615cbf69cd8611c46225f2c790080c2c524"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/StudioPage.test.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 13964,
+      "sha256": "e08d714be5c374663084f8fd8ac0bf70ae4116c5233fb6a6bf73e3fc89d93303"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/StudioPage.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 19241,
+      "sha256": "555ca996b915543ad3c36a704023aa1d9030aa829307afd15fe2af92b5315f5f"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/api.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 4458,
+      "sha256": "630381c492614eb748f6d0c175a8ab29a387fc7813cd08fba5b9dac941819d28"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/fixtures/approval-documents.json",
+      "archive": "snapshot-401.zip",
+      "size": 943,
+      "sha256": "6316961ae5b46df915f997fe34aa9342d17e0b700d525737920d495f1556a863"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/publication.test.ts",
+      "archive": "snapshot-401.zip",
+      "size": 1443,
+      "sha256": "e917955cff85202dd9ddf4704dbd67fced0eae0e78068bfc0583212059fb1e68"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/publication.ts",
+      "archive": "snapshot-401.zip",
+      "size": 769,
+      "sha256": "a2e5dbd4fdb263684a6021322e337eda4d00f24f3bb3222d08c9fa9283e374f8"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/shapeRdf.test.ts",
+      "archive": "snapshot-401.zip",
+      "size": 2931,
+      "sha256": "292afc5192a5615d4746cf53123430e279757bca13c519c246af5bf59565e510"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/shapeRdf.ts",
+      "archive": "snapshot-401.zip",
+      "size": 3428,
+      "sha256": "f8b0a10c6fea0a0bd9a9cd07443eef823ea164ded10935fbc70dc7761b721b69"
+    },
+    {
+      "path": "ontology-platform/frontend/src/features/studio/studio.css",
+      "archive": "snapshot-401.zip",
+      "size": 5074,
+      "sha256": "bd43cb3a1b8278da7888eb673db758de62ad50f8396f24ebc28b83b6b269fcdb"
+    },
+    {
+      "path": "ontology-platform/frontend/src/main.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 428,
+      "sha256": "f025f0464d76f5aa189a8129364ffc879201df2f04594319225925617639ece8"
+    },
+    {
+      "path": "ontology-platform/frontend/src/shared/commands.test.ts",
+      "archive": "snapshot-401.zip",
+      "size": 4201,
+      "sha256": "7203912f057d1a2550f0f3fbd02866dd05fe4ac1fd4354f5988f2b16fd8c0e1e"
+    },
+    {
+      "path": "ontology-platform/frontend/src/shared/commands.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 1315,
+      "sha256": "d8df97010e8469bab882d06749400e95d145d80fb717180f3f64e454e2e773b2"
+    },
+    {
+      "path": "ontology-platform/frontend/src/shared/errors.tsx",
+      "archive": "snapshot-401.zip",
+      "size": 1511,
+      "sha256": "41a3e34183cef7ffcbf22a1527f920411b1f6c96ad8eae7eda19a8b6bcd1ce91"
+    },
+    {
+      "path": "ontology-platform/frontend/src/styles/layout.css",
+      "archive": "snapshot-401.zip",
+      "size": 10148,
+      "sha256": "5ee37090aab443e300d2d459d19a1d2f0a530de4e34cbf5af90af11effd51182"
+    },
+    {
+      "path": "ontology-platform/frontend/src/styles/tokens.css",
+      "archive": "snapshot-401.zip",
+      "size": 1540,
+      "sha256": "2e1c6a82463c78dd0ea3d6b58f8608540a3fb1c982ebf31c0730ad7bdfd794a3"
+    },
+    {
+      "path": "ontology-platform/frontend/tsconfig.json",
+      "archive": "snapshot-401.zip",
+      "size": 267,
+      "sha256": "5cb04b66ac9b754e1dd45bdcc8770051ed9ff92aa8ed83f3795053f2bacbff75"
+    },
+    {
+      "path": "ontology-platform/frontend/vite.config.ts",
+      "archive": "snapshot-401.zip",
+      "size": 222,
+      "sha256": "ff6fa9d5efede304cb5df3673a75edcfae33675925806dcccb727a241eddbb24"
+    },
+    {
+      "path": "ontology-platform/infra/README.md",
+      "archive": "snapshot-401.zip",
+      "size": 1493,
+      "sha256": "c81c87a5a6a8b5d39f71264114bd30d5eb4d6d752d56416570bbd0c59db80ea7"
+    },
+    {
+      "path": "ontology-platform/infra/compose/.env.example",
+      "archive": "snapshot-401.zip",
+      "size": 1545,
+      "sha256": "409cb76ccedd5af1fb9bc008e9b60be26f64c28f51b7c0141ebfefb71cced447"
+    },
+    {
+      "path": "ontology-platform/infra/compose/compose.yaml",
+      "archive": "snapshot-401.zip",
+      "size": 12876,
+      "sha256": "3638c64c151ef815b46569959a214d5e8eb1ca65e57c67d3ee77aabf0ff6d073"
+    },
+    {
+      "path": "ontology-platform/infra/keycloak/realm-template.json",
+      "archive": "snapshot-401.zip",
+      "size": 923,
+      "sha256": "0fa87d99d4b409be503c79b01b4514ddc992313bb98d21b0d8f15f7b0de90947"
+    },
+    {
+      "path": "ontology-platform/infra/native/acceptance-workload.env.example",
+      "archive": "snapshot-401.zip",
+      "size": 226,
+      "sha256": "660e096e1c21f96e0212ca2677aa30f4617f5faf0f946fca1f8f99c1f8fff152"
+    },
+    {
+      "path": "ontology-platform/infra/proxy/nginx.conf",
+      "archive": "snapshot-401.zip",
+      "size": 1473,
+      "sha256": "4bf0ca30cf6893adafb3158d9f551ded2c6724fc9d954a2f7d8045db5fd6c2c8"
+    },
+    {
+      "path": "ontology-platform/infra/testing/Dockerfile.e2e",
+      "archive": "snapshot-401.zip",
+      "size": 938,
+      "sha256": "3ab4994a4c1d2bb4822cd24a4e254be277f8d3c5b2edb72bb6e427ada3d03387"
+    },
+    {
+      "path": "ontology-platform/infra/versions.lock.json",
+      "archive": "snapshot-401.zip",
+      "size": 3407,
+      "sha256": "b479a673b61dde8b2d9ba53e74b0e184b0d7856100aa3e95c939ed7bb5264390"
+    },
+    {
+      "path": "ontology-platform/package-lock.json",
+      "archive": "snapshot-401.zip",
+      "size": 14755,
+      "sha256": "5ee8011b533c505d94e7314add981ed5ce6f03766d7ad528cb695056dd429b1c"
+    },
+    {
+      "path": "ontology-platform/package.json",
+      "archive": "snapshot-401.zip",
+      "size": 687,
+      "sha256": "ed97fe77a558f9257ed8d1c42a55b8afc1e5f12d861d56f7cd991045f6fbd8fc"
+    },
+    {
+      "path": "ontology-platform/packages/ontology/agriculture/agriculture.ttl",
+      "archive": "snapshot-401.zip",
+      "size": 813,
+      "sha256": "557768bbc94260e98740801df916197003f0b5f800109c4a781030af00e47217"
+    },
+    {
+      "path": "ontology-platform/packages/ontology/core/core.ttl",
+      "archive": "snapshot-401.zip",
+      "size": 955,
+      "sha256": "c46358b966b6785da70fd0b28a3727bbdd6826fcdb1325767bfd510b892a458f"
+    },
+    {
+      "path": "ontology-platform/packages/ontology/devices/devices.ttl",
+      "archive": "snapshot-401.zip",
+      "size": 1138,
+      "sha256": "4aad19890ade5aaed5bab9f4c0a0c0daa60a027155e82441d0eeb679975f5182"
+    },
+    {
+      "path": "ontology-platform/packages/ontology/releases/synthetic-v1.json",
+      "archive": "snapshot-401.zip",
+      "size": 1414,
+      "sha256": "2cd138246aa4f4542c3dec778b498e73074fce86c336c424881ca8470d3b0916"
+    },
+    {
+      "path": "ontology-platform/packages/ontology/rules/finite-profile.json",
+      "archive": "snapshot-401.zip",
+      "size": 181,
+      "sha256": "1c06e818778628b6902609eba01397c8ae7d2d1b275a3ce83913b561063fd2dc"
+    },
+    {
+      "path": "ontology-platform/packages/ontology/shapes/core.shacl.ttl",
+      "archive": "snapshot-401.zip",
+      "size": 250,
+      "sha256": "1c201bf7b485a383697bbc0f0b02da94a07fd437a02ee56dc384a87a5e58aaa1"
+    },
+    {
+      "path": "ontology-platform/playwright.config.ts",
+      "archive": "snapshot-401.zip",
+      "size": 863,
+      "sha256": "4f7a300428ee4122244df1e0d85a8bbd11dcbeb072b3d0269189821bee9b9f1b"
+    },
+    {
+      "path": "ontology-platform/scripts/acceptance6c-focused.json",
+      "archive": "snapshot-401.zip",
+      "size": 1137,
+      "sha256": "2269215e3bbdee7b815a6e37fda1792f865c1c555716e5e2f82872a917fb2fa5"
+    },
+    {
+      "path": "ontology-platform/scripts/acceptance6c-matrix.json",
+      "archive": "snapshot-401.zip",
+      "size": 1541,
+      "sha256": "f0513ba70cb994ea5ee1b53b352e4e2c493c282d3980a2561dee441cda5cfba5"
+    },
+    {
+      "path": "ontology-platform/scripts/benchmark_multistore.py",
+      "archive": "snapshot-401.zip",
+      "size": 25361,
+      "sha256": "704924a01cf2d8bd4bd32b411bb30c4d2557259f8df614196513d3543c9b8322"
+    },
+    {
+      "path": "ontology-platform/scripts/benchmark_multistore_seed.py",
+      "archive": "snapshot-401.zip",
+      "size": 17394,
+      "sha256": "6d1c17907642bf196452e05ff75c56db33c66648f048fe45b74f9cb21d137f84"
+    },
+    {
+      "path": "ontology-platform/scripts/bootstrap_authorization.py",
+      "archive": "snapshot-401.zip",
+      "size": 2946,
+      "sha256": "79b7302193d4a0fcb0cd0fa3d4970b6b4c2ebedf985d2639440017f8794b1101"
+    },
+    {
+      "path": "ontology-platform/scripts/build_multistore_report.ps1",
+      "archive": "snapshot-401.zip",
+      "size": 9858,
+      "sha256": "f173701b647902e68e76c9a46ea4fd508a6c87d7c310aa315d54424de7f3c8ae"
+    },
+    {
+      "path": "ontology-platform/scripts/check_environment.py",
+      "archive": "snapshot-401.zip",
+      "size": 3222,
+      "sha256": "108f25f81493289a08c388aba88a970abd43a6485275dff82d30a7658f8cae20"
+    },
+    {
+      "path": "ontology-platform/scripts/check_fuseki_lifecycle.py",
+      "archive": "snapshot-401.zip",
+      "size": 5866,
+      "sha256": "09a4c28f7d646cd25c4cb1ba9c7d25b399b6fa15c72a515bd4df15ee36802cc7"
+    },
+    {
+      "path": "ontology-platform/scripts/configure_identity.py",
+      "archive": "snapshot-401.zip",
+      "size": 3688,
+      "sha256": "de81f77df0802b84a4c7aa5b76256771f330311ab35eb0833adcfeab59096222"
+    },
+    {
+      "path": "ontology-platform/scripts/dev.ps1",
+      "archive": "snapshot-401.zip",
+      "size": 477,
+      "sha256": "04dcae053e9157f95c8d09b26f509afd71cfec502d86c901104bddae9035d480"
+    },
+    {
+      "path": "ontology-platform/scripts/dev.py",
+      "archive": "snapshot-401.zip",
+      "size": 5531,
+      "sha256": "10a95279ad8418785ae53927b87e94363a567a763ce6fb4c6f3a19c2f43a25e5"
+    },
+    {
+      "path": "ontology-platform/scripts/dev.sh",
+      "archive": "snapshot-401.zip",
+      "size": 139,
+      "sha256": "53af60a9ba38b62de48debb7286e6a5a1ebbaa4dc808ba864f5b0213bfdd8aee"
+    },
+    {
+      "path": "ontology-platform/scripts/export_openapi.py",
+      "archive": "snapshot-401.zip",
+      "size": 1363,
+      "sha256": "b0146c8ea54b1e5883763a9d0e2af87ff036179989fe6ca4797bc8d970d10bdc"
+    },
+    {
+      "path": "ontology-platform/scripts/generate_demo_map.py",
+      "archive": "snapshot-401.zip",
+      "size": 13118,
+      "sha256": "8961008f2da70363b93b0492fc8eea8dff2fc74b7a2377f2923c6ac9c7d23bd9"
+    },
+    {
+      "path": "ontology-platform/scripts/multistore_acceptance.py",
+      "archive": "snapshot-401.zip",
+      "size": 2678,
+      "sha256": "f61054d69c55998f3c930bcb95f8049e893c1627f21807db2499a0efd6e6a260"
+    },
+    {
+      "path": "ontology-platform/scripts/multistore_backup.py",
+      "archive": "snapshot-401.zip",
+      "size": 4332,
+      "sha256": "45e2adeeeb63e8588123b2bea187652f849b7fa5343090aadb8c1783666f0031"
+    },
+    {
+      "path": "ontology-platform/scripts/multistore_fuseki.py",
+      "archive": "snapshot-401.zip",
+      "size": 6195,
+      "sha256": "537124e7b39700ef9a7e730d94feab6223b3981c1d4fb42cc575d61d6ef49c36"
+    },
+    {
+      "path": "ontology-platform/scripts/multistore_inventory.py",
+      "archive": "snapshot-401.zip",
+      "size": 2475,
+      "sha256": "59a952f61bfae0aac90a3f641f01213446b6a29627f5fcf85d8a5e816c7f7c99"
+    },
+    {
+      "path": "ontology-platform/scripts/multistore_migrate.py",
+      "archive": "snapshot-401.zip",
+      "size": 5112,
+      "sha256": "910b862c106ac6f1190f1037ef87ffdfa4bcd04ed5f8d92d41c4f0ec85ebebd2"
+    },
+    {
+      "path": "ontology-platform/scripts/multistore_native.py",
+      "archive": "snapshot-401.zip",
+      "size": 7811,
+      "sha256": "f126794053ca5e0411ad5510c614d7ddb59872300a8e974614fe34f56f9e336b"
+    },
+    {
+      "path": "ontology-platform/scripts/multistore_persistence.py",
+      "archive": "snapshot-401.zip",
+      "size": 18119,
+      "sha256": "b0458057ce5b0ae263364fe21575377f2aaae6a0e2ae6d641c9ffbf47325e98a"
+    },
+    {
+      "path": "ontology-platform/scripts/multistore_prerequisites.py",
+      "archive": "snapshot-401.zip",
+      "size": 7960,
+      "sha256": "399fbbd26b82292eb9dbcd994126f2856512580ed78165ca3ed7f1d976129717"
+    },
+    {
+      "path": "ontology-platform/scripts/native_dev.py",
+      "archive": "snapshot-401.zip",
+      "size": 17500,
+      "sha256": "96897b836d10ae750f390ac8359c74cedc16bb184a9cb16135fe2be3661fdfa7"
+    },
+    {
+      "path": "ontology-platform/scripts/native_proxy.py",
+      "archive": "snapshot-401.zip",
+      "size": 3903,
+      "sha256": "6b8251750747738c07720bbf807f1bd74693f7e5437e38dc22a8bdb8bc85b167"
+    },
+    {
+      "path": "ontology-platform/scripts/object_store_native.py",
+      "archive": "snapshot-401.zip",
+      "size": 6539,
+      "sha256": "e74d0630885684c9f42498d5df3ff249ca33bd88ccefbf84eeeac9f4166f716a"
+    },
+    {
+      "path": "ontology-platform/scripts/offline_guard.py",
+      "archive": "snapshot-401.zip",
+      "size": 1317,
+      "sha256": "127ba389654b69e65ebd86e6cc8c99747ece3daf7aca46ec896c8b64ef80e4c7"
+    },
+    {
+      "path": "ontology-platform/scripts/offline_python/sitecustomize.py",
+      "archive": "snapshot-401.zip",
+      "size": 190,
+      "sha256": "2be40c9d16f0f86dd32be11b5190a885b55e76421d8cf5c2428a53a6d4d84335"
+    },
+    {
+      "path": "ontology-platform/scripts/reconcile_identity.py",
+      "archive": "snapshot-401.zip",
+      "size": 1340,
+      "sha256": "bcdd5b489cee399bc1cebdc6d2de73068d86f22f8a95caa821a2a568ffd76954"
+    },
+    {
+      "path": "ontology-platform/scripts/replay_telemetry.py",
+      "archive": "snapshot-401.zip",
+      "size": 3594,
+      "sha256": "dc6a4fe06587cdc05673dee07a59fa92daf39add4a2bed0505a1b74a8fe54d35"
+    },
+    {
+      "path": "ontology-platform/scripts/seed_studio.py",
+      "archive": "snapshot-401.zip",
+      "size": 9410,
+      "sha256": "79f1964a06f4327c62d995ecddd45dad135b2b8c9ce9722608eec5f273048797"
+    },
+    {
+      "path": "ontology-platform/scripts/seed_workbench.py",
+      "archive": "snapshot-401.zip",
+      "size": 3851,
+      "sha256": "71c4a8b0fb669cfe5dd1d4be7820b731d0a9ed20b51fef6788c4c1ab5d93446a"
+    },
+    {
+      "path": "ontology-platform/scripts/telemetry_partitions.py",
+      "archive": "snapshot-401.zip",
+      "size": 835,
+      "sha256": "c5c1b4e387e9efbac6f23439bee0b3a83e843abf0a89fc9d3fd2faf3a7e2b347"
+    },
+    {
+      "path": "ontology-platform/tests/e2e/approval-gates.spec.ts",
+      "archive": "snapshot-401.zip",
+      "size": 4529,
+      "sha256": "6b3e52073ddc3a9d7d61fddfb8109c90bf4ff7ca285c3cefa4707daddd0bf6b5"
+    },
+    {
+      "path": "ontology-platform/tests/e2e/bootstrap.spec.ts",
+      "archive": "snapshot-401.zip",
+      "size": 784,
+      "sha256": "d389c5a9026c3f9e7b24392cf3f9975d119ef38cca0d02dbdb7310e694a837c7"
+    },
+    {
+      "path": "ontology-platform/tests/e2e/oidc-session.spec.ts",
+      "archive": "snapshot-401.zip",
+      "size": 5716,
+      "sha256": "25401c162b4ceb0f9d4d470443786e2194b40e10168d03b2c25632c97333b21b"
+    },
+    {
+      "path": "ontology-platform/tests/e2e/support/approval_domain.py",
+      "archive": "snapshot-401.zip",
+      "size": 2420,
+      "sha256": "0dbec8f8e8f84333fbf3183040388e09677cfc2bf162641efdf1dfa7fc09fb59"
+    },
+    {
+      "path": "ontology-platform/tests/e2e/support/approval_fixture.py",
+      "archive": "snapshot-401.zip",
+      "size": 5522,
+      "sha256": "3d9587ba8f5b3c880823fd5fbdf0e61bfa163681d66f9610acad2fe18a8d6f3d"
+    },
+    {
+      "path": "ontology-platform/tests/e2e/support/mail_link.py",
+      "archive": "snapshot-401.zip",
+      "size": 818,
+      "sha256": "bf9e2b7b8729705738a895ee0603a209da7978a22c7544b425f3b99e4f1bcdfc"
+    },
+    {
+      "path": "ontology-platform/tests/e2e/support/provision.py",
+      "archive": "snapshot-401.zip",
+      "size": 2077,
+      "sha256": "32dfc70693108c9f5d28bbd489c734d33c99f5c8340110fc45d0e73b32386a0e"
+    },
+    {
+      "path": "ontology-platform/tests/e2e/support/smtp_capture.py",
+      "archive": "snapshot-401.zip",
+      "size": 1207,
+      "sha256": "2f6e16b6dc6440b4a4938f43d4aa7333e0e855f724ee645bec00d5cd8fd316ae"
+    },
+    {
+      "path": "ontology-platform/tests/e2e/support/workbench.ts",
+      "archive": "snapshot-401.zip",
+      "size": 2067,
+      "sha256": "67a98464e098a89b05cb86c0321fe020398ef7fafaaf2126a4b225799a40865e"
+    },
+    {
+      "path": "ontology-platform/tests/e2e/support/workbench_fixture.py",
+      "archive": "snapshot-401.zip",
+      "size": 4567,
+      "sha256": "0ab3613c16d6b196556b1a93036d16c35d9bfb977441bf58430bd7821e906d5e"
+    },
+    {
+      "path": "ontology-platform/tests/e2e/workbench/session-shell.spec.ts",
+      "archive": "snapshot-401.zip",
+      "size": 9505,
+      "sha256": "abbd8bd5d67cb0283e0f8c16587476011bc21f3050c4f0b4ab9910d0ed81c480"
+    },
+    {
+      "path": "ontology-platform/tests/e2e/workbench/studio-import.spec.ts",
+      "archive": "snapshot-401.zip",
+      "size": 2089,
+      "sha256": "be83cdea3e8eda2cdfe83c3f20dcd7d3b2b284eaef810d082adf088415f84b73"
+    },
+    {
+      "path": "ontology-platform/tests/e2e/workbench/studio-permissions.spec.ts",
+      "archive": "snapshot-401.zip",
+      "size": 2269,
+      "sha256": "973c5cf6b9df79cd1442bced7b2b68ab40d0b99922ebf78fbe13dbef3ce26ee9"
+    },
+    {
+      "path": "ontology-platform/tests/e2e/workbench/studio-recovery.spec.ts",
+      "archive": "snapshot-401.zip",
+      "size": 12393,
+      "sha256": "08fb92daccef49e45fae9cf37975b68b6caaa168b0dfaf0503af795b92018837"
+    },
+    {
+      "path": "ontology-platform/tests/e2e/workbench/studio.spec.ts",
+      "archive": "snapshot-401.zip",
+      "size": 4687,
+      "sha256": "b9725d069f896e3653be864b16af25c2a06ba55282d149aced35979cd9740780"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/.gitattributes",
+      "archive": "snapshot-401.zip",
+      "size": 96,
+      "sha256": "3f742516cbb9a738e5381ed2d92ca40009a65bb4470b6e8fb5ccf31fb0ce12e8"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/LICENSE-PMTILES.txt",
+      "archive": "snapshot-401.zip",
+      "size": 1713,
+      "sha256": "0371c38f338835f7fc13ed71176f3d92144e22c8b736a31cced57adbbeb647b3"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/LICENSES.md",
+      "archive": "snapshot-401.zip",
+      "size": 3439,
+      "sha256": "d45f6d73f172ab4d7fe59c3e32945ac6d5a3c8247b51c8582f782098ecf24204"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/0-255.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 76580,
+      "sha256": "ef1f38a3f1978591e846e9eaddf8a54f7047f546fc6aaed7872cc53151a5de78"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/12288-12543.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 147462,
+      "sha256": "6bbe541b57b43364b5b707686bd992898469e5d6f66e7be31828b2d2e6f5c4f7"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/19968-20223.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 192358,
+      "sha256": "e1c87b549df7bb07b0bb19b52e379b10054872dcec5a86d824440371534060a4"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/20224-20479.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 206424,
+      "sha256": "af4b2222a8e7e63866df86782833f5a51315258dff00090b04d4f213ae1ac8ac"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/20480-20735.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 206396,
+      "sha256": "3374ab23080bc94a8675f423df7f32ccc93ce7de765e1417e46726b87cd9590b"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/20736-20991.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 200017,
+      "sha256": "72e118b13767b513b4038fc9cc3844acfc77bc18f4e6581a5f03c447ddd68522"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/20992-21247.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 198855,
+      "sha256": "8dc93d4b7a35972427fc641e847f2b4522b6b1eaa58b909e6f2bd5d8fd867163"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/21248-21503.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 194787,
+      "sha256": "a98e1d6ea9b7e92ba58baea665ce1972d3c88f46f79510ca0f628ce79c73f303"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/21504-21759.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 195477,
+      "sha256": "8554c2a16e8f4253a0df81a3a5044ff9d409e883a59b18e9369cc5f817ee30ba"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/21760-22015.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 196748,
+      "sha256": "b48f04f782e4d6f55c21bd633a404f6af3324dbe1906eadd3049d4ea1611d006"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/22016-22271.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 195372,
+      "sha256": "4fc5010bffb70bc72782b12f1255332c35ed339866adc6a7219a4963f9deb9b9"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/22272-22527.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 200783,
+      "sha256": "ab6358c7b33eb550d8a8a455f13599e4b8f0df3ef61da41bbb3e506941d9f8a5"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/22528-22783.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 202932,
+      "sha256": "69acec4d8aa09e94e2eb45fdfbf3d893977e94a1f43a6c1d477d2c0de1fe9eb4"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/22784-23039.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 204970,
+      "sha256": "d360c6ab260caeb374b38bead3b0235390f39d1900648c288803a568789b873f"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/23040-23295.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 205585,
+      "sha256": "3373149a2e4520c4f715be94aca3f1b76bfc8ac1758256adf21d9a6b2def896a"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/23296-23551.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 202279,
+      "sha256": "ee40e22db97c98e6608d66601e24bcd831a5dcbc13a1ad6f093279c0bd3b3e46"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/23552-23807.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 198190,
+      "sha256": "2e9cdf17173ba2b75230ce4d3e1b3f44d6d30c7dd0a8719e976346213e2a91af"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/23808-24063.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 199146,
+      "sha256": "768c26aded33a823118ec7e98bc6932d8f938711a8cbc7b1937b7f6579310a2e"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/24064-24319.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 202650,
+      "sha256": "248e52d8771a7075952d57206157cd637599e3985344ce47c8a9f1a87ba8b9be"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/24320-24575.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 202735,
+      "sha256": "990aa9e98d4f650378ff0e7ac920796019cd1d09882a9842ec3baaa69bd2b34f"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/24576-24831.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 203858,
+      "sha256": "bc4948387e5e6f7b3b932c2288b34876b564b80a192cef3356463b25d0199e56"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/24832-25087.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 204114,
+      "sha256": "b1fd7a8f4a3137dda88a83bf514f3e8900bb25b5c57fac5a0a3a8a83e047e673"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/25088-25343.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 204412,
+      "sha256": "aacebabcf4a04fdea8135a0dbbabbf1bc406202527778c16082a4e40c32c72e1"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/25344-25599.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 205528,
+      "sha256": "429e3909d67275b4152c256e4a9331a2b3c0421ed0200392453ad34fbe51767a"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/25600-25855.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 205948,
+      "sha256": "6af02c7443d06da67f438a63652b00b1346ddbdb91bd6e4079be4c187add4ca1"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/25856-26111.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 203968,
+      "sha256": "7b765282e0cf4705fc416da6b7178495cd0e32a86f9dc81480beb7ab628a19b3"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/26112-26367.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 195892,
+      "sha256": "33bfd9858fdcb9c7eb64a5706bdc8b843cca489d86680fd23e4e9e20a0cad364"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/26368-26623.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 204360,
+      "sha256": "17fac159b78addf7b62f7e8bf516f861a1d44d017d0da69c2b11260226902320"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/26624-26879.pbf",
+      "archive": "snapshot-401.zip",
+      "size": 205500,
+      "sha256": "7c96e8dcd08c9bdb5d5959a5e84630b1e5f1d29800a0ba9b062c77e2b9bbb12c"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/26880-27135.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 205752,
+      "sha256": "75bdba64066816c368241a82a72a66003813997bc36750323b84c665b2afe570"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/27136-27391.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 205920,
+      "sha256": "5a0cb996db7af1cbace0e3de360f50315afd16914d6db350a3ad61b6d292a9aa"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/27392-27647.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203890,
+      "sha256": "d91184161f6145935e75050d0b3c54d243bee03946c7761a2939daad309a790b"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/27648-27903.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203879,
+      "sha256": "7e85534f046e97a2781a8964d65642270267a075f6697cfb12a37dee45b66ebf"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/27904-28159.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204717,
+      "sha256": "b11207478fa1f485491988b6a3f8d4365cdc10bd47a681a946b4b0647d2a6317"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/28160-28415.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204996,
+      "sha256": "59a3e78873654bff6e7f5745549c82af33cf1f1e694fa0f1d50c7257745ce45c"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/28416-28671.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 205277,
+      "sha256": "16d68eb0b0d938e32511e7025441f711dd996fd4bb45910b60bfb593c058557c"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/28672-28927.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204968,
+      "sha256": "c4f72eb186dd35bfd0fbe2c11d16d2ad8751b7129d8a30f17135df51f481333b"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/28928-29183.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204944,
+      "sha256": "eed2063394e26dd51b37ea4245e34ba14cf1d5713d76518e4c6ebb8d9c646ae3"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/29184-29439.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203954,
+      "sha256": "8234d9cccbc016a35d4c9a4c5dd24091cd7de7f12da9ced531cf3590030400fe"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/29440-29695.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203438,
+      "sha256": "884b6776c23f8c9b9a21e0e0105287a9ea25890dd0b1e110d27c76f54d7d091f"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/29696-29951.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203246,
+      "sha256": "cd5b0a1a1762028ef76e74ca8798b806950f3e91d0a672de2c33b89d2f8cb352"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/29952-30207.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 201492,
+      "sha256": "c3a38be840ae1e801c9216c5c8df3d962a8409c866763613e5ba833afbef61c1"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/30208-30463.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 201913,
+      "sha256": "6b16f48d78a48b6cbe7a8076be489797f9860e346d017b979897be878dff3e32"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/30464-30719.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 197227,
+      "sha256": "2adf8c9db14a55921db1469d8c043675048614ba8542a3f94c0155adf9e82c26"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/30720-30975.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 202966,
+      "sha256": "811d3af54f808fb5e0270ec298bfca0727e0e76f75366a9606e87d0764efeb5d"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/30976-31231.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204526,
+      "sha256": "bab42360ea766f871913dd2f9c6bf9e31eb55610b6c9ff043f17a45f8e7da408"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/31232-31487.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203882,
+      "sha256": "4dd2c5ae63ac532c74d948c5a98d124b81168d44dde01cba416e82fd79312cad"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/31488-31743.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 205472,
+      "sha256": "1c79013fbad52a0e4dcfbdcd9a3369a2b1a68336921ab98b743a208a4f168af4"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/31744-31999.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 205370,
+      "sha256": "d358a3a73944e134fdffe8cc2ccfb6acd11cd566321bab8832ec8933894d2064"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/32000-32255.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204467,
+      "sha256": "16bf10af0696f7c7ba613a7a9356b3adc8a013923ccfd5b5b2e3274b0910ea38"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/32256-32511.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204619,
+      "sha256": "412d3e5772ff1005c159ae612cc5bceab6f3cc83c233b36e7e5f3604fe4288e4"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/32512-32767.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 200304,
+      "sha256": "142a45e278bd1a9d2adfb0b79ffdcfe04d40ad30db99ff0446003222f6869d6f"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/32768-33023.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203055,
+      "sha256": "905a016e83e007cc3d44a1bfc02f06dd3205da666151dc90647234d7ee37eed0"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/33024-33279.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203558,
+      "sha256": "5c4d5e8ba4587e3cae4e9de98c649f175b0618769e5c3cdfe2e4089f56bd28f9"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/33280-33535.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203147,
+      "sha256": "cc8060d81eac6e83737f6581aac5fc8f2f0f3fe13443b93b3a14d5ddbf5755a1"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/33536-33791.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203913,
+      "sha256": "7ec80465647b88df0ca474db81052c561354bfcebe437f6462c529dc896c9f91"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/33792-34047.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204215,
+      "sha256": "b5253526d052665953110bb0af3ef00255b5a43f1355fcdebc56d3c849749987"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/34048-34303.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204968,
+      "sha256": "4ebff7e72001313169cfe019b341dd4d733f3c3e2ebf3b62d81d32ff6a31e497"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/34304-34559.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204130,
+      "sha256": "211cb09a6d079615129ad4eded30a77677ec27d7b6d220f3e951b3ace686cb3d"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/34560-34815.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204665,
+      "sha256": "4303f04eea2e69dcf7b0a70d820c9fd198888ab6596ecc06e49cc888ca784946"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/34816-35071.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 205444,
+      "sha256": "339915b6ff8e3230c8c16bdf527d7277260a6ca4aed64a8e32f710cbd4e8c08c"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/35072-35327.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204325,
+      "sha256": "dedcbc2904f5c053646b8374ae9dd7e505cad575240a650b95b3bb49f63ff5b7"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/35328-35583.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204971,
+      "sha256": "bef9e756ccb91485f01bab5c91b254bca8c853ab8662c202f47176706fac7dbb"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/35584-35839.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204506,
+      "sha256": "d30ea6aff32a6b029042d595b819e22f26623d517163df48e6529aaad705612d"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/35840-36095.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203741,
+      "sha256": "8308df86f919ab94280c2995a9d6e562a50ce363e1914a26de3401bdd433120d"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/36096-36351.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203997,
+      "sha256": "144da779372afa0b0c792e39afbcf96a0063fcaaf22652fc221948806229ea7f"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/36352-36607.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204250,
+      "sha256": "e4bacbac9f8f3f0f6a073e8f202d508dd37af5f5a9bdc1c641fa970214125457"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/36608-36863.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 205641,
+      "sha256": "7804586daeeefc80bdb85cf020ce5e69a9ae2ebc06906f5133f1f1366d767384"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/36864-37119.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204671,
+      "sha256": "082e801cbac4b23a9afd5440022ef3cea7c5f4dbd003d6b2151b196e9f9d1605"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/37120-37375.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203528,
+      "sha256": "71fa8b6daa99993c57f3827f343100b1bd23fd4163186801ab866e2995ecf148"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/37376-37631.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204128,
+      "sha256": "5c02f04c51cec4b568186db0e410c1986c5a2c6b6155a4335af95b60d6a417bf"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/37632-37887.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204912,
+      "sha256": "cfbc91378946d24a4e0dfee343f1ac0dd3f6dbfafbaa39238d6282585fed0c9b"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/37888-38143.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204782,
+      "sha256": "e9e478fb2ce718f67b550d763ec34f8237c7990a115b19619a2857abd7c545d6"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/38144-38399.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 196049,
+      "sha256": "f3a3b70e3136702faef0f38920763d9add8ae4044a2ebb1aa044cc956b4df83a"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/38400-38655.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 197643,
+      "sha256": "f04454545b95ecfddb2d7e9f03e14f933d04305b5902837f94b7c959354086c6"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/38656-38911.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 202212,
+      "sha256": "e96e97e3e363bcbfb7c5942675abee2c3d6b68868838df30dbc5bf9b524897ed"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/38912-39167.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203187,
+      "sha256": "44e06bb22bb8108d7fc29bedd9d43324233076dbc4393f6a48d2c9ee74d70cfb"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/39168-39423.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204345,
+      "sha256": "d8ba91d7cccfeb27042186eada0567ce39d9a03d6197c28e5977b7d700c8a77c"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/39424-39679.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203472,
+      "sha256": "b9274c7f5af594be626ee086e0699560b6f7c250e7e68438092cd0f0824cc9ee"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/39680-39935.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204745,
+      "sha256": "0453bc6d0c9db6b97b6c793c07abe6fa54abbe2aaf3f9c4b81c27e8c77ff5191"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/39936-40191.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 204860,
+      "sha256": "ee9ff2750cd9d1807d6259003b055088d94c409e786697ca015d32d3788c5850"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/40192-40447.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 205475,
+      "sha256": "7f21626cc7e395fbae16e5fdbee33a3be13bd3f4275a989f24af1bf4ab729641"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/40448-40703.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 203860,
+      "sha256": "53bb75f1bf3bf6ed6a4fcfd067e15593f9be53d32a56fc75cb167b379c4eebfd"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/40704-40959.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 164356,
+      "sha256": "5b0c42f5db6e9e6f4f02c8e648966dd9222f032a5590a7bbbd46e40d35d93d67"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/65280-65535.pbf",
+      "archive": "snapshot-402.zip",
+      "size": 88109,
+      "sha256": "e39025c183136637d2ad76494ab682df1aa7c0a0c9a18d3ebb4843157dd2e2e9"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/glyphs/Noto Sans Regular/LICENSE.md",
+      "archive": "snapshot-402.zip",
+      "size": 4300,
+      "sha256": "9f6ffa4d4ceb839c1d12b830273c1d9f01cb0f5e2535f6143b8f7befdd5650d5"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/sprite/sprite.json",
+      "archive": "snapshot-402.zip",
+      "size": 60,
+      "sha256": "1d4ca34d7f67c4110f161f495d6dac927de6958eb419b8565dafe5fa2d705b40"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/sprite/sprite.png",
+      "archive": "snapshot-402.zip",
+      "size": 84,
+      "sha256": "b251a16a414ebf81dd1c67f6daa8ba266348b236c2125cd667421aa8ed59fc3f"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/sprite/sprite@2x.json",
+      "archive": "snapshot-402.zip",
+      "size": 60,
+      "sha256": "0401df08d94ec16f8e890279a57aec9193e4c860d4617666e35f43e5068d292e"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/assets/sprite/sprite@2x.png",
+      "archive": "snapshot-402.zip",
+      "size": 108,
+      "sha256": "aeef7e59b0acf8b93dc4aafb65c15e793833a583db9209b0794bce4e03972783"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/glyph-coverage.json",
+      "archive": "snapshot-402.zip",
+      "size": 129381,
+      "sha256": "cf6418f8ef444233d2280f9ddbaa5d27f3ee7d97d1b1665ed356c8cc20d34255"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/manifest.json",
+      "archive": "snapshot-402.zip",
+      "size": 18825,
+      "sha256": "a3ce70b4536212f33a9f393cc072bac33fd37e41baaf9599d0b4d5d80705dedb"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/style-mvt.json",
+      "archive": "snapshot-402.zip",
+      "size": 1081,
+      "sha256": "790d54e84f8c4e79786fa9d78f06630d6a2f58685df54b1bd2aa057155deec88"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/style-raster.json",
+      "archive": "snapshot-402.zip",
+      "size": 526,
+      "sha256": "a4979c3030745321d1a480927b91534681ada588894796d8af529bb5fb9e603a"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/style.json",
+      "archive": "snapshot-402.zip",
+      "size": 1081,
+      "sha256": "790d54e84f8c4e79786fa9d78f06630d6a2f58685df54b1bd2aa057155deec88"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/synthetic-mvt.mbtiles",
+      "archive": "snapshot-402.zip",
+      "size": 24576,
+      "sha256": "b8715c398b78b23aca2dbbbfbf8ed993c12620ef5521805b30efca1f544f57cf"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/synthetic-mvt.pmtiles",
+      "archive": "snapshot-402.zip",
+      "size": 5985,
+      "sha256": "bdc885d5767033762aaa1bfa16a864c0481c1e0b3825ce2c7e2699cfac2e695e"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/synthetic-raster.mbtiles",
+      "archive": "snapshot-402.zip",
+      "size": 110592,
+      "sha256": "10423018429770a59747186e8a1e1608b8f8e0dc983817552e8cbd609db1e94d"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/maps/synthetic-raster.pmtiles",
+      "archive": "snapshot-402.zip",
+      "size": 82068,
+      "sha256": "018d53fdfe3890d0a7da14bdf2a9206f7d6ca179b0b3e8acac23a8c41e599285"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/telemetry/README.md",
+      "archive": "snapshot-402.zip",
+      "size": 5024,
+      "sha256": "0ff458842bb694595c3ec217f166f072f579de9e389c1719cf65c7b53f60b2ae"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/telemetry/field.csv",
+      "archive": "snapshot-402.zip",
+      "size": 305,
+      "sha256": "5406709f4da1baa0f092d81b3811cc24bc8fbc3018c7e8501c96a1f4400d6970"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/telemetry/legacy-professional-contract.json",
+      "archive": "snapshot-402.zip",
+      "size": 4019,
+      "sha256": "d32a862d8968bfd7dd81b6b75ab7369a64b7bcf9f6abf5f98890cbe50f6a4567"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/telemetry/orchard.geojson",
+      "archive": "snapshot-402.zip",
+      "size": 570,
+      "sha256": "c964a5c55dc228f0abd3d81172c15f5d14b6fd8b707d3489970b890b29a27d20"
+    },
+    {
+      "path": "ontology-platform/tests/fixtures/telemetry/pond.json",
+      "archive": "snapshot-402.zip",
+      "size": 496,
+      "sha256": "740c6d0166de5975aa1199bfabcf150148da7702d0e8144b4c47866653b153cb"
+    },
+    {
+      "path": "ontology-platform/梁子湖农业+Operational+Ontology+Platform.md",
+      "archive": "snapshot-402.zip",
+      "size": 119519,
+      "sha256": "f26e93fdad6192f7e086409401d1c16853d5c9a8b95c3e85ac650bb15a8efee4"
+    },
+    {
+      "path": "交付文档/梁子湖多库架构与数据准备报告_20261023.docx",
+      "archive": "snapshot-402.zip",
+      "size": 204568,
+      "sha256": "561ccebdb4c57da8e403edd647fe6474dc577b91bcad85552b5bbeb40879c3f9"
     }
   ],
-  "excluded": [
-    "live-database",
-    "source-imports",
-    "raw-assets",
-    "credentials",
-    "dependencies"
-  ]
+  "excluded": []
 }
