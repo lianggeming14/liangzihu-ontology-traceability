@@ -82,6 +82,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     from lzo.maps.router import router as maps_router
     from lzo.catalog.router import router as catalog_router
     from lzo.telemetry.router import router as telemetry_router
+    from lzo.gis.drawing_router import router as drawing_router
     from lzo.auth import approval_policy  # register trusted F03 command policies
     from lzo.worker.runner import load_handlers
     load_handlers(config)
@@ -96,6 +97,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(maps_router)
     app.include_router(catalog_router)
     app.include_router(telemetry_router)
+    app.include_router(drawing_router)
 
     # Multipart bytes are parsed under explicit bounds, so the typed metadata
     # command is registered in OpenAPI without eager framework body parsing.

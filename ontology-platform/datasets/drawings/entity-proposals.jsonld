@@ -1,0 +1,1476 @@
+{
+  "@context": {
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "draw": "urn:lzo:drawing-vocab:"
+  },
+  "@id": "urn:lzo:drawing-proposals:efd51c2ae1fb354befa710dbbe854f153e64e359700dfd1458e93351b45083cf",
+  "@graph": [
+    {
+      "@id": "urn:lzo:object:61717561-20df-4c0b-aca8-675fb488dfe6",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L1",
+      "draw:representationId": "DRAW-pdf-01-L1",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:c8e523f1-ed37-41b6-bc15-f13a149cb741",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L2",
+      "draw:representationId": "DRAW-pdf-01-L2",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:15516f26-b3cf-4dda-ad54-c2efdc37d7d5",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L3",
+      "draw:representationId": "DRAW-pdf-01-L3",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:a95d772c-6a4d-42e5-ada6-1ab501f401e7",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L4",
+      "draw:representationId": "DRAW-pdf-01-L4",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:f9e2761a-d4d1-4c49-8030-52a527da0fb0",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L5",
+      "draw:representationId": "DRAW-pdf-01-L5",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:a3ff7130-922a-4c9d-ac59-572cbf6a4496",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L6",
+      "draw:representationId": "DRAW-pdf-01-L6",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:f19fd8ab-6270-43cd-9069-c2d3438164b6",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L7",
+      "draw:representationId": "DRAW-pdf-01-L7",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:1795e4b2-2913-474d-8eb5-619e0737a34d",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L8",
+      "draw:representationId": "DRAW-pdf-01-L8",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:16919c77-d1cf-4d04-8aab-65e11c25d8a0",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L9",
+      "draw:representationId": "DRAW-pdf-01-L9",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:40233198-1b61-4a57-9e8b-55ea0eb2cd87",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L10",
+      "draw:representationId": "DRAW-pdf-01-L10",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:9d06d9f9-1db9-41ac-993a-376a8eba20db",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L10-1",
+      "draw:representationId": "DRAW-pdf-01-L10-1",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:59ed6e5c-0b36-4081-8970-ff1484deeaab",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L10-2",
+      "draw:representationId": "DRAW-pdf-01-L10-2",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:9207b4c4-9b0f-4864-9264-4d2da12a0867",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L11",
+      "draw:representationId": "DRAW-pdf-01-L11",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:5234828f-ebb6-4163-adb5-d0f1a5f43590",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L12",
+      "draw:representationId": "DRAW-pdf-01-L12",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:f18e7944-d3f1-4605-b58d-00b8ce2cb821",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L13",
+      "draw:representationId": "DRAW-pdf-01-L13",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:e1ea6c30-0f75-4705-a653-ab852632218c",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L14",
+      "draw:representationId": "DRAW-pdf-01-L14",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:781ce9cc-23c4-4860-9466-32c652758be9",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L15",
+      "draw:representationId": "DRAW-pdf-01-L15",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:0e1e1d69-4c7c-4b12-a46b-c0cedef1a425",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L16",
+      "draw:representationId": "DRAW-pdf-01-L16",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:9f852648-ae76-4d29-bfbf-1a5ecf3c2fee",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L17",
+      "draw:representationId": "DRAW-pdf-01-L17",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:33fb14ec-c917-4967-869d-0519448f1b6e",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L18",
+      "draw:representationId": "DETAIL-L18",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:f3772b20-d8ba-444e-a5e8-8c8c8e160d86",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L19",
+      "draw:representationId": "DETAIL-L19",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:585da306-5db4-4d20-805a-be3e33f6b63c",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L20",
+      "draw:representationId": "DETAIL-L20",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:f16c8d9c-f104-492c-91de-767f6852fddd",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L21",
+      "draw:representationId": "DRAW-pdf-01-L21",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:9a4758fc-8585-4cd6-a9c4-8a8f7ac28707",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L22",
+      "draw:representationId": "DRAW-pdf-01-L22",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:0fa40846-c102-40d9-81eb-668ab3392775",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "L23",
+      "draw:representationId": "DRAW-pdf-01-L23",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:4abf328a-d68d-4965-ae34-5f2dcd805dae",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "X1",
+      "draw:representationId": "DRAW-pdf-02-X1",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:8e930be6-39db-45fd-93f6-6c70f58284e0",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "X2",
+      "draw:representationId": "DRAW-pdf-02-X2",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:59f93bc9-dc81-4c88-bc18-81b9b58461fe",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "X3",
+      "draw:representationId": "DRAW-pdf-02-X3",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:90ba6234-a2c4-4116-8188-b083c4cf9291",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "X3-1",
+      "draw:representationId": "DRAW-pdf-02-X3-1",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:0726a885-773d-4ed1-adcc-ec4908cbfc16",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "X4",
+      "draw:representationId": "DRAW-pdf-02-X4",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:0aac3d72-c3ba-4505-a66f-2f9c43dfee91",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "D2",
+      "draw:representationId": "DRAW-pdf-02-D2",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:147d99bb-3120-426c-97c0-c7b471965553",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "D3",
+      "draw:representationId": "DRAW-pdf-02-D3",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:5a2fa819-9da8-4684-a0ad-80056de7ef60",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "E3",
+      "draw:representationId": "DRAW-pdf-02-E3",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:100e5c13-d999-4bb9-8dc9-be0e51f8d6ba",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "M1",
+      "draw:representationId": "DRAW-pdf-02-M1",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:08f48cb5-059c-4fcd-9918-69241fcbf966",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "M2",
+      "draw:representationId": "DRAW-pdf-02-M2",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:6a95d930-cc8f-44f5-abb3-7ca5f06aea39",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "M3",
+      "draw:representationId": "DRAW-pdf-02-M3",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:2dec1019-2d9d-41be-8787-7d5c4f2d1fb9",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "M4",
+      "draw:representationId": "DRAW-pdf-02-M4",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:ffdd7793-2918-4ce9-9f81-21cff6612ca5",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "M5",
+      "draw:representationId": "DRAW-pdf-02-M5",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:e1c9bb0b-6c60-4197-8fb5-8cdee92f826c",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "M6",
+      "draw:representationId": "DRAW-pdf-02-M6",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:9cfe8893-fce8-48db-9c31-7ed9ec621fcc",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "M7",
+      "draw:representationId": "DRAW-pdf-02-M7",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:63f01e26-abff-4d18-9244-1641d7f05cd4",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "M8",
+      "draw:representationId": "DRAW-pdf-02-M8",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:f5c1d3de-ad05-40cf-b656-c77973277141",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "M9",
+      "draw:representationId": "DRAW-pdf-02-M9",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:461e8f52-28c1-4b36-abd0-25c90ed500ec",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "M10",
+      "draw:representationId": "DRAW-pdf-02-M10",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:3c1bb12f-4bca-4ac9-ae74-bbfd05d4a1b7",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "M11",
+      "draw:representationId": "DRAW-pdf-02-M11",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:9122acbb-33a9-4216-812b-0846d906151b",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "M12",
+      "draw:representationId": "DRAW-pdf-02-M12",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:5b2181e4-32a4-4660-9f1c-057649924014",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "M13",
+      "draw:representationId": "DRAW-pdf-02-M13",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:008b7f33-7213-41ae-a621-72545c1f00f1",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "M14",
+      "draw:representationId": "DRAW-pdf-02-M14",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:135eca90-f52e-48bf-af7b-77644240fda2",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "M15",
+      "draw:representationId": "DRAW-pdf-02-M15",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:082b6dc8-f07c-490e-b047-5ccaee8cd525",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "旱地-M16",
+      "draw:representationId": "DRAW-pdf-02-旱地-M16",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:1cc42581-72a2-4b28-b0f5-8467a5bbce23",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "旱地-M17",
+      "draw:representationId": "DRAW-pdf-02-旱地-M17",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:2a0a1276-1686-4ce3-bcec-db3acd5a2a45",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "旱地-M18",
+      "draw:representationId": "DRAW-pdf-02-旱地-M18",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:75af760f-d82c-4825-a169-e58074c37ff1",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "旱地-M19",
+      "draw:representationId": "DRAW-pdf-02-旱地-M19",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:09ad2787-bb09-45c7-8414-8dbebb075db6",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "Z1",
+      "draw:representationId": "DRAW-pdf-03-Z1",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:86e9cd8b-53d4-437d-8e59-52347732a7a1",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "Z2",
+      "draw:representationId": "DRAW-pdf-03-Z2",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:6e4ce6ad-69bc-45fc-8009-4319cc2c06e9",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "Z3",
+      "draw:representationId": "DRAW-pdf-03-Z3",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:01ec7728-b97a-40d5-b827-93041f6320ad",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "Z4",
+      "draw:representationId": "DRAW-pdf-03-Z4",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:cce06c8c-e47e-4986-9778-eb89f3ea0d3e",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "Z5",
+      "draw:representationId": "DRAW-pdf-03-Z5",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:4dc4608c-1061-44d7-a970-ac38f04dbf5b",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "Z6",
+      "draw:representationId": "DRAW-pdf-03-Z6",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:fdefb8dc-353f-4c55-8479-5568cf511a91",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "Z7",
+      "draw:representationId": "DRAW-pdf-03-Z7",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:27459f61-2e19-45c4-ad1a-8a9347d109cd",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "Z8",
+      "draw:representationId": "DRAW-pdf-03-Z8",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:afe87c98-f117-4876-bbf9-35ccda97562b",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "T1",
+      "draw:representationId": "DRAW-pdf-04-T1",
+      "draw:drawingId": "pdf-04",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:55882316-895d-430c-87b7-98140f50f0be",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "T2",
+      "draw:representationId": "DRAW-pdf-04-T2",
+      "draw:drawingId": "pdf-04",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:1037fd2e-a174-4bb7-bcc7-4c055f14a259",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "T3",
+      "draw:representationId": "DRAW-pdf-04-T3",
+      "draw:drawingId": "pdf-04",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:c9c74ad8-94c9-4747-b9dc-5ab36abd102a",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "T4",
+      "draw:representationId": "DRAW-pdf-04-T4",
+      "draw:drawingId": "pdf-04",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:b79bbd17-8255-443e-b100-b3c17d150fc5",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "T5",
+      "draw:representationId": "DRAW-pdf-04-T5",
+      "draw:drawingId": "pdf-04",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:53adde13-a1ed-41df-8a6c-fdad0ac68a8f",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "A1",
+      "draw:representationId": "DRAW-pdf-05-A1",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:963864d7-c7d9-4d7b-9090-b97aed84dc23",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "A2",
+      "draw:representationId": "DRAW-pdf-05-A2",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:87bc6197-a17a-4d82-8ed6-dfb2ab130690",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "A3",
+      "draw:representationId": "DRAW-pdf-05-A3",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:6eac591c-4a53-4f3e-aaa9-2a39c6fb95cc",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "A4",
+      "draw:representationId": "DRAW-pdf-05-A4",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:489507a0-f549-4772-9b5e-690b8d024ed4",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "B1",
+      "draw:representationId": "DRAW-pdf-05-B1",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:c6ebf4f3-3346-4f72-8573-a684771842a1",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "B2",
+      "draw:representationId": "DRAW-pdf-05-B2",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:402ef942-3006-4f9c-b340-769a775b60be",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "B3",
+      "draw:representationId": "DRAW-pdf-05-B3",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:39751dc9-5d27-44ea-95c5-9dff16c0c050",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "B4",
+      "draw:representationId": "DRAW-pdf-05-B4",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:48889f9b-2794-427e-861d-0ecc884ba675",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "B5",
+      "draw:representationId": "DRAW-pdf-05-B5",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:4cff7a9f-0829-41f4-8cde-9432d7836c44",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "C1",
+      "draw:representationId": "DRAW-pdf-05-C1",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:e5738512-1307-4dc6-a425-33b0f09e4409",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "C2",
+      "draw:representationId": "DRAW-pdf-05-C2",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:8894ae3d-a5c3-438e-a668-d020d083737b",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "C3",
+      "draw:representationId": "DRAW-pdf-05-C3",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:e87cf165-ba02-4215-8bb0-80ce886ba943",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "C4",
+      "draw:representationId": "DRAW-pdf-05-C4",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:908b80cc-4c5d-4abc-aadf-3f727b7f2d05",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "C5",
+      "draw:representationId": "DRAW-pdf-05-C5",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:76777119-b2d5-4d11-80cb-f7652f8882b4",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "C6",
+      "draw:representationId": "DRAW-pdf-05-C6",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:72d26e86-e06b-43e5-aea1-fd34566b5154",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "C7",
+      "draw:representationId": "DRAW-pdf-05-C7",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:d4314984-79e9-4b8c-b532-34e8a10f0c0e",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "C8",
+      "draw:representationId": "DRAW-pdf-05-C8",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:fe1c2ca9-df55-48f2-bdb5-fe86fda23909",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "C9",
+      "draw:representationId": "DRAW-pdf-05-C9",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:6eeff6d2-f46b-42ad-9c97-fb9bf865719b",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "C10",
+      "draw:representationId": "DRAW-pdf-05-C10",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:5d24d295-ec3b-4185-a078-d218a55cdf51",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "C11",
+      "draw:representationId": "DRAW-pdf-05-C11",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:7c7e42bc-e02f-4b21-909a-c9ce28167e37",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "D1",
+      "draw:representationId": "DRAW-pdf-05-D1",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:868b83da-76d4-44f3-a299-1677fdf484bd",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "E1",
+      "draw:representationId": "DRAW-pdf-05-E1",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:9ffdce9d-298f-4856-80d6-fe44aac89c90",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "E2",
+      "draw:representationId": "DRAW-pdf-05-E2",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:76b962a0-479e-4f01-b4ff-c4efc8948625",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "E3",
+      "draw:representationId": "DRAW-pdf-05-E3",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:44b63b5b-0fb1-47f5-bda6-5e1ac872497d",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "F1",
+      "draw:representationId": "DRAW-pdf-05-F1",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:4f6cf973-305b-404e-944d-185f64d51056",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "F2",
+      "draw:representationId": "DRAW-pdf-05-F2",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:21a588d1-6dc7-4cf1-81c2-0dfb0dd4d864",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "F3",
+      "draw:representationId": "DRAW-pdf-05-F3",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:25872c53-7eb9-4630-87de-b2ae2fa79109",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "F4",
+      "draw:representationId": "DRAW-pdf-05-F4",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:5bdbcb1a-bdff-4a9e-a9db-1f0172f518df",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "F5",
+      "draw:representationId": "DRAW-pdf-05-F5",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:a00d5a5b-6d89-474c-8bb0-7a77657bd849",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "F5-1",
+      "draw:representationId": "DRAW-pdf-05-F5-1",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:77f51a11-7d03-4721-944f-26c76e420469",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "F6",
+      "draw:representationId": "DRAW-pdf-05-F6",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:6d4456f5-414c-4665-be6e-59a2272093c9",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "F7",
+      "draw:representationId": "DRAW-pdf-05-F7",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:f1b65988-75c3-4d91-adfe-a9da4dd96a2b",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "F8",
+      "draw:representationId": "DRAW-pdf-05-F8",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:9df627fb-6723-46d1-a6e4-b9a870db71a0",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "F9",
+      "draw:representationId": "DRAW-pdf-05-F9",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:369185f9-e688-41eb-81e4-3cd968bafcba",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "F9-1",
+      "draw:representationId": "DRAW-pdf-05-F9-1",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:023e105a-db78-4b01-83df-7bf85baebf8c",
+      "@type": "https://w3id.org/lzo/ontology/Field",
+      "rdfs:label": "F10",
+      "draw:representationId": "DRAW-pdf-05-F10",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:42bddc65-71a1-4d2d-8781-271436aeacf7",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-15",
+      "draw:representationId": "DRAW-pdf-01-QING15",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:9d416506-31d2-42c4-b614-ad2cde0f5251",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-16",
+      "draw:representationId": "DRAW-pdf-01-QING16",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:7cce3a4c-9fba-4674-8b8f-b84eaff78ebf",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-17",
+      "draw:representationId": "DETAIL-QING17",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:dc75235c-eb3b-446c-bec6-b03669224cd8",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "庙下流东侧生产路走向",
+      "draw:representationId": "DRAW-pdf-01-ROAD-EAST",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:859634cc-76b4-48e1-b93d-d6b58e9dce81",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "新建生产路Ⅱ型-2",
+      "draw:representationId": "DRAW-pdf-01-ROAD-NORTH",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:8ce32a6c-0181-459f-8d2c-799077d31ff2",
+      "@type": "urn:lzo:drawing-vocab:Channel",
+      "rdfs:label": "庙下流西侧南段沿田沟渠",
+      "draw:representationId": "DRAW-pdf-01-CHANNEL-WEST",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:047f5091-6455-414d-a187-8c7b5f3f7426",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-5",
+      "draw:representationId": "DRAW-pdf-02-QING5",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:700afa61-e7d3-4f1e-a583-619e0b641317",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-6",
+      "draw:representationId": "DRAW-pdf-02-QING6",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:877b7559-e2fe-4367-8cb3-db105e2a1a19",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-7",
+      "draw:representationId": "DRAW-pdf-02-QING7",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:c79600ac-d6d0-4285-a26b-ab9230e5fe92",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-8",
+      "draw:representationId": "DRAW-pdf-02-QING8",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:10efb9e8-aa03-4de6-bc30-d523ed2023b5",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-9",
+      "draw:representationId": "DRAW-pdf-02-QING9",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:8fe15d1e-8cdb-435a-abbf-749d25be54c8",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-10",
+      "draw:representationId": "DRAW-pdf-02-QING10",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:b58c6902-2fa2-4ca5-9627-4d26defd26c3",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-11",
+      "draw:representationId": "DRAW-pdf-02-QING11",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:a826061b-1e60-450b-886e-88dd0bdc8106",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-12",
+      "draw:representationId": "DRAW-pdf-02-QING12",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:204aaa3e-b0fc-4395-b223-5753588c267d",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-13",
+      "draw:representationId": "DRAW-pdf-02-QING13",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:e4968010-0700-4cd5-8f89-74569b5a8ae8",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-14",
+      "draw:representationId": "DRAW-pdf-02-QING14",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:944afdb6-0dc1-449e-b010-bd459b0669c4",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "毛家湾中部生产路走向",
+      "draw:representationId": "DRAW-pdf-02-ROAD-MAIN-M",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:ea425ea9-a74b-429c-b58c-e53047ea1442",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "毛家湾北侧生产路走向",
+      "draw:representationId": "DRAW-pdf-02-ROAD-M-NORTH",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:90197881-933b-441e-a171-f241bdce555c",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "新屋湾D2/D3至X3生产路走向",
+      "draw:representationId": "DRAW-pdf-02-ROAD-X-MAIN",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:446a15c5-41b6-4cbf-9ee0-0726f4e7f98e",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "新屋湾X2/X3之间生产路走向",
+      "draw:representationId": "DRAW-pdf-02-ROAD-X-CROSS",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:32d4df3b-7717-4994-9dfd-017365249d18",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "新建生产路Ⅱ型-9",
+      "draw:representationId": "DRAW-pdf-03-ROAD-II9",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:42c8c955-c590-43cc-ade0-c1a134d3e0a9",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "新建生产路Ⅱ型-10",
+      "draw:representationId": "DRAW-pdf-03-ROAD-II10",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:e6373589-f527-4304-b9de-64c7436c7c0a",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "张家湾中部生产路走向",
+      "draw:representationId": "DRAW-pdf-03-ROAD-III-CENTRE",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:f9ced62b-2bd2-4561-9098-54531600da9d",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "张家湾东侧及Z6南侧生产路走向",
+      "draw:representationId": "DRAW-pdf-03-ROAD-III-EAST",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:d435df02-82b7-49d6-ada7-066bdd93316d",
+      "@type": "urn:lzo:drawing-vocab:Channel",
+      "rdfs:label": "张家湾东侧排水沟走向",
+      "draw:representationId": "DRAW-pdf-03-CHANNEL-EAST",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:44d988e6-70e0-43b5-ac27-73c98c40eda7",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "新建生产路Ⅱ型-11",
+      "draw:representationId": "DRAW-pdf-04-ROAD-II11",
+      "draw:drawingId": "pdf-04",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:e4804674-fae5-4fa2-8679-5301a97890cb",
+      "@type": "urn:lzo:drawing-vocab:Channel",
+      "rdfs:label": "新建农渠Ⅲ型-1",
+      "draw:representationId": "DRAW-pdf-04-CHANNEL-III1",
+      "draw:drawingId": "pdf-04",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:cfa56f2e-8b83-4b53-985d-47192e007bbd",
+      "@type": "urn:lzo:drawing-vocab:Channel",
+      "rdfs:label": "PE管走向",
+      "draw:representationId": "DRAW-pdf-04-PIPE-PE",
+      "draw:drawingId": "pdf-04",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:e719b8c2-018b-4d18-88c5-d182067ddf0c",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-1（F1东侧）",
+      "draw:representationId": "DRAW-pdf-05-QING1-WEST",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:e855ca34-e56c-4c76-985b-18af48d3724d",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "未编号塘（F9-1东侧）",
+      "draw:representationId": "DRAW-pdf-05-POND-WEST2",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:0c77b201-0a1d-4dbe-bb1b-031c2416efd9",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-1（A2/A3之间）",
+      "draw:representationId": "DRAW-pdf-05-QING1-INNER",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:6eb55f46-ef11-4da0-bcc0-1b7f27a4d879",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-2",
+      "draw:representationId": "DRAW-pdf-05-QING2",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:764c1063-96da-4016-968b-264bf2613ac1",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-3",
+      "draw:representationId": "DRAW-pdf-05-QING3",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:eabf1178-483b-4a89-ab48-4fd0ec2e4275",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-4",
+      "draw:representationId": "DRAW-pdf-05-QING4",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:bb52f8ba-06b7-4b99-b3e8-1ac28b8ed1eb",
+      "@type": "https://w3id.org/lzo/ontology/Pond",
+      "rdfs:label": "清-5",
+      "draw:representationId": "DRAW-pdf-05-QING5",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:2469d9c9-56e8-45bf-8017-a788afb0590c",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "A区东北侧田间道路走向",
+      "draw:representationId": "DRAW-pdf-05-ROAD-A-EAST",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:cb98d6fb-0741-4f09-9843-016f356faba4",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "A2/A3之间田间道路走向",
+      "draw:representationId": "DRAW-pdf-05-ROAD-A-CROSS",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:d2ab1f9f-2b20-4710-b1a6-80e4b30d5959",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "B区田间道路主走向",
+      "draw:representationId": "DRAW-pdf-05-ROAD-B-MAIN",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:608ff3fd-6503-4d1d-957f-0b890ad13de2",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "C区中部田间道路走向",
+      "draw:representationId": "DRAW-pdf-05-ROAD-C-CENTRE",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:927cd651-5b92-4278-8671-68839f578770",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "C区北侧田间道路走向",
+      "draw:representationId": "DRAW-pdf-05-ROAD-C-NORTH",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:5fa5ed45-bdc3-44fc-beba-9c4d5342b5ae",
+      "@type": "urn:lzo:drawing-vocab:Road",
+      "rdfs:label": "E区东侧田间道路走向",
+      "draw:representationId": "DRAW-pdf-05-ROAD-E-EAST",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:6c80fea8-d4fd-4b4e-829d-06c65f52a679",
+      "@type": "urn:lzo:drawing-vocab:Channel",
+      "rdfs:label": "C/D/E区西侧主沟渠走向",
+      "draw:representationId": "DRAW-pdf-05-CHANNEL-MAIN",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:b2f577b1-f3f8-4cce-9238-a7d17a89c666",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "太阳能智能闸（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-01-162",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:dabd0750-2ad1-47b1-a6c0-a220e61f660b",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "太阳能智能闸（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-01-163",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:fed8aa9d-34b4-4856-9aac-0baa9409bd9d",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "太阳能智能闸（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-01-164",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:0f7cecfb-a747-4cd1-bcc2-c1d84b66dcb8",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "太阳能智能闸（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-01-165",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:b4db0f16-1297-434d-84d0-02de91360f23",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "太阳能智能闸（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-01-167",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:26a5f18c-3cba-4db3-8da4-7aa8ab71c13d",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "太阳能智能闸（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-01-168",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:ed0f4305-b3ca-401d-a9f3-2cbae30514eb",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "太阳能智能闸（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-02-154",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:1e611149-094d-4d07-b59a-d51e0bb22ac4",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "太阳能智能闸（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-02-155",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:dca31e76-d6b5-4306-b899-36753b5f7556",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "太阳能智能闸（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-02-156",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:c9b08f4e-78f3-4650-b24c-45b45d813725",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "太阳能智能闸（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-02-157",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:c27dfca9-99c2-4da4-9a0c-571f7fd6e2b7",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "太阳能智能闸（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-02-158",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:705374aa-0efd-48ac-834c-b1ca05349eb6",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "太阳能智能闸（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-02-159",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:ad723dfa-92cf-4eda-a6c5-e1df86a89714",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "太阳能智能闸（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-02-160",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:2b74806a-5d13-46c6-b53f-fed10a7bb24f",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "太阳能智能闸（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-02-161",
+      "draw:drawingId": "pdf-02",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:3f309425-72e9-4805-ae3c-5927633792c3",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "250PE管（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-03-003",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:06a3fae9-c729-4b05-b955-4bff2ef067f7",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "一体化泵（15kw）（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-03-004",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:6d275298-238c-44e1-b7c0-e00c880cfa3f",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "PE管（376m）（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-03-071",
+      "draw:drawingId": "pdf-03",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:3ff0c92a-dc18-4dfa-be53-61df969d88fa",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "PE管（242m）（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-04-131",
+      "draw:drawingId": "pdf-04",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:d717c465-97eb-409b-ae66-30e04aac43d5",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "新建污水池1（图纸标注位置）",
+      "draw:representationId": "DRAW-LABEL-pdf-05-016",
+      "draw:drawingId": "pdf-05",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    },
+    {
+      "@id": "urn:lzo:object:323120ff-70c0-4fee-9176-3bf35816e28c",
+      "@type": "urn:lzo:drawing-vocab:DrawingAnnotation",
+      "rdfs:label": "新建泵站-1（37kW，图纸标注位置）",
+      "draw:representationId": "DRAW-pdf-01-PUMP37-LABEL",
+      "draw:drawingId": "pdf-01",
+      "draw:registrationStatus": "not_imported_by_this_package",
+      "draw:dataNature": "imported_unverified"
+    }
+  ]
+}

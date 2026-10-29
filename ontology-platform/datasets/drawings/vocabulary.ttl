@@ -1,0 +1,9 @@
+@prefix draw: <urn:lzo:drawing-vocab:> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+draw: a owl:Ontology ; rdfs:comment "Drawing evidence vocabulary; not a deployed governed ontology release." .
+draw:Road a owl:Class ; rdfs:subClassOf prov:Entity ; rdfs:label "Road represented on a drawing" .
+draw:Channel a owl:Class ; rdfs:subClassOf prov:Entity ; rdfs:label "Channel represented on a drawing" .
+draw:DrawingAnnotation a owl:Class ; rdfs:subClassOf prov:Entity ; rdfs:comment "An annotation, not proof of a unique physical facility." .

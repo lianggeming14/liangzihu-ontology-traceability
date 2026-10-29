@@ -1,0 +1,36 @@
+{
+  "database": "PostgreSQL + PostGIS; isolated owned loopback runtime",
+  "data_nature": "actual drawing-derived imported_unverified",
+  "package_sha256": "efd51c2ae1fb354befa710dbbe854f153e64e359700dfd1458e93351b45083cf",
+  "import": {
+    "status": "imported",
+    "version": 3,
+    "content_sha256": "efd51c2ae1fb354befa710dbbe854f153e64e359700dfd1458e93351b45083cf",
+    "features": 163,
+    "annotations": 6713
+  },
+  "replay": {
+    "status": "unchanged",
+    "version": 3,
+    "content_sha256": "efd51c2ae1fb354befa710dbbe854f153e64e359700dfd1458e93351b45083cf"
+  },
+  "geometry": {
+    "total": 163,
+    "local_srid_zero": 163,
+    "valid": 163,
+    "empty": 0
+  },
+  "invalid_source_geometry_preserved": [],
+  "app_role_privileges": {
+    "SELECT": true,
+    "INSERT": false,
+    "UPDATE": false,
+    "DELETE": false
+  },
+  "pagination_distinct_features": 163,
+  "pagination_distinct_annotations": 6713,
+  "uuid_lookup_verified": 163,
+  "georeferencing": "not available",
+  "field_acceptance": "not performed",
+  "governed_core_registration": "not performed"
+}

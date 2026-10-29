@@ -59,6 +59,10 @@ def migrate_domain(domain, url, core_url=None):
             if domain == "gis" and version == 3:
                 sql = Path(__file__).resolve().parents[4] / "database/gis/004_assets_locations.sql"
                 c.execute(text(sql.read_text()))
+                version = 4
+            if domain == "gis" and version == 4:
+                sql = Path(__file__).resolve().parents[4] / "database/gis/005_drawings.sql"
+                c.execute(text(sql.read_text()))
             if domain == "catalog" and version == 2:
                 sql = Path(__file__).resolve().parents[4] / "database/catalog/003_catalog.sql"
                 c.execute(text(sql.read_text()))

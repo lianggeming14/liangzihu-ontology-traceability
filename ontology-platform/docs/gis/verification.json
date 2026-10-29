@@ -1,0 +1,59 @@
+{
+  "package_version": 3,
+  "content_sha256": "efd51c2ae1fb354befa710dbbe854f153e64e359700dfd1458e93351b45083cf",
+  "backend_unit": {
+    "tests": 422,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "real_postgis_integration": {
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "frontend_adapter": {
+    "passed": 4,
+    "failed": 0
+  },
+  "typescript": "passed",
+  "openapi_and_generated_types": "passed",
+  "browser": {
+    "status": "passed",
+    "source": "offline SQLite mirror; not production auth acceptance",
+    "drawings": [
+      {
+        "drawing_id": "pdf-01",
+        "features": 38
+      },
+      {
+        "drawing_id": "pdf-02",
+        "features": 49
+      },
+      {
+        "drawing_id": "pdf-03",
+        "features": 16
+      },
+      {
+        "drawing_id": "pdf-04",
+        "features": 9
+      },
+      {
+        "drawing_id": "pdf-05",
+        "features": 51
+      }
+    ],
+    "browser_errors": []
+  },
+  "source_geometry": "163 valid local paper geometries, 0 empty, SRID=0",
+  "not_performed": [
+    "Production deployment and full login chain",
+    "Core/Jena governed adoption",
+    "Field acceptance",
+    "Survey georeferencing",
+    "Exhaustive semantic extraction"
+  ],
+  "source_scope": "Five farm construction PDFs; requested upload location not found",
+  "data_nature": "actual drawing-derived imported_unverified; not synthetic"
+}

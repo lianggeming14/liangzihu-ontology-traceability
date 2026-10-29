@@ -1,0 +1,4064 @@
+{
+  "drawings": [
+    {
+      "legend": [
+        {
+          "label": "项目区界",
+          "kind": "land_cover"
+        },
+        {
+          "label": "村界",
+          "kind": "land_cover"
+        },
+        {
+          "label": "镇界",
+          "kind": "land_cover"
+        },
+        {
+          "label": "已实施项目范围",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "水田",
+          "kind": "land_cover"
+        },
+        {
+          "label": "旱地",
+          "kind": "land_cover"
+        },
+        {
+          "label": "林地",
+          "kind": "land_cover"
+        },
+        {
+          "label": "荒草地",
+          "kind": "land_cover"
+        },
+        {
+          "label": "果园",
+          "kind": "land_cover"
+        },
+        {
+          "label": "乡村路",
+          "kind": "land_cover"
+        },
+        {
+          "label": "大车路",
+          "kind": "land_cover"
+        },
+        {
+          "label": "机耕桥",
+          "kind": "land_cover"
+        },
+        {
+          "label": "涵洞",
+          "kind": "land_cover"
+        },
+        {
+          "label": "河流水面",
+          "kind": "land_cover"
+        },
+        {
+          "label": "灌木林地",
+          "kind": "land_cover"
+        },
+        {
+          "label": "居民点",
+          "kind": "land_cover"
+        },
+        {
+          "label": "水库水面",
+          "kind": "land_cover"
+        },
+        {
+          "label": "泵站",
+          "kind": "land_cover"
+        },
+        {
+          "label": "田坎",
+          "kind": "land_cover"
+        },
+        {
+          "label": "地类界",
+          "kind": "land_cover"
+        },
+        {
+          "label": "小路",
+          "kind": "land_cover"
+        },
+        {
+          "label": "通信线",
+          "kind": "land_cover"
+        },
+        {
+          "label": "坟地",
+          "kind": "land_cover"
+        },
+        {
+          "label": "单线沟渠",
+          "kind": "land_cover"
+        },
+        {
+          "label": "电力线",
+          "kind": "land_cover"
+        },
+        {
+          "label": "抽水平台",
+          "kind": "land_cover"
+        },
+        {
+          "label": "清淤沟渠",
+          "kind": "land_cover"
+        },
+        {
+          "label": "水流方向",
+          "kind": "land_cover"
+        },
+        {
+          "label": "坑塘",
+          "kind": "land_cover"
+        },
+        {
+          "label": "双线沟渠",
+          "kind": "land_cover"
+        },
+        {
+          "label": "等高线、高程点",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "注记坐标",
+          "kind": "land_cover"
+        },
+        {
+          "label": "生态渠I型",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "生态渠II型",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "生态渠III型",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "新建暗管",
+          "kind": "land_cover"
+        },
+        {
+          "label": "田块编号",
+          "kind": "land_cover"
+        },
+        {
+          "label": "碎石路",
+          "kind": "land_cover"
+        },
+        {
+          "label": "生产路",
+          "kind": "land_cover"
+        },
+        {
+          "label": "新建排水沟",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "新建2m田埂",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "新建1.5m田埂",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "新建检查井",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "新建砖砌池",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "太阳能智能闸",
+          "kind": "cartographic_or_facility"
+        }
+      ],
+      "measurements": [
+        {
+          "label": "施工面积",
+          "text_original": "施工面积262.79亩",
+          "value": "262.79",
+          "unit": "亩",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              100,
+              2250,
+              850,
+              2400
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "平整田块面积",
+          "text_original": "其中平整田块面积151.45亩",
+          "value": "151.45",
+          "unit": "亩",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              100,
+              2250,
+              850,
+              2400
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "新建400波纹管-1",
+          "text_original": "新建400波纹管-1（42m）",
+          "value": "42",
+          "unit": "m",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              1350,
+              1880,
+              1600,
+              2000
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "新建400波纹管-2",
+          "text_original": "新建400波纹管-2（42m）",
+          "value": "42",
+          "unit": "m",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              1020,
+              2070,
+              1250,
+              2180
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "新建排水沟I型-11",
+          "text_original": "新建排水沟I型-11 土沟（411m）",
+          "value": "411",
+          "unit": "m",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              950,
+              2210,
+              1250,
+              2350
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "新建排水沟I型-12",
+          "text_original": "新建排水沟I型-12 土沟（392m）",
+          "value": "392",
+          "unit": "m",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              2450,
+              1940,
+              2680,
+              2070
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "生态渠-2",
+          "text_original": "生态渠-2（294.73m）",
+          "value": "294.73",
+          "unit": "m",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              920,
+              2430,
+              1170,
+              2520
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "生态渠-3",
+          "text_original": "生态渠-3（375.10m）",
+          "value": "375.10",
+          "unit": "m",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              1850,
+              2280,
+              2150,
+              2380
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "新建农渠II型-2",
+          "text_original": "新建农渠II型-2 浆砌石（230m）",
+          "value": "230",
+          "unit": "m",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              1250,
+              2370,
+              1550,
+              2490
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "新建农渠II型-1",
+          "text_original": "新建农渠II型-1 浆砌石（407m）",
+          "value": "407",
+          "unit": "m",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              1500,
+              2170,
+              1850,
+              2320
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "预留用地西",
+          "text_original": "预留用地（17.12亩）",
+          "value": "17.12",
+          "unit": "亩",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              1070,
+              1670,
+              1430,
+              1760
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "预留用地中",
+          "text_original": "预留用地（9.81亩）",
+          "value": "9.81",
+          "unit": "亩",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              1740,
+              1680,
+              2040,
+              1760
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "预留用地东北",
+          "text_original": "预留用地（8.61亩）",
+          "value": "8.61",
+          "unit": "亩",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              2070,
+              1490,
+              2320,
+              1580
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "预留用地东南",
+          "text_original": "预留用地（9.81亩）",
+          "value": "9.81",
+          "unit": "亩",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              2320,
+              2670,
+              2680,
+              2800
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        }
+      ],
+      "tables": [
+        {
+          "title": "2022年度梁子湖区梁子镇沙湾村提质改造旱改水项目（分割二）工程量汇总表",
+          "columns": [
+            "分项",
+            "序号",
+            "名称",
+            "单位",
+            "验收工程量",
+            "备注"
+          ],
+          "rows": [
+            {
+              "section": "土地平整工程",
+              "row_number": 1,
+              "name": "施工范围面积",
+              "unit": "亩",
+              "value_original": "667.000",
+              "value": 667,
+              "remark": "总施工面积",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 2,
+              "name": "其中田块平整面积",
+              "unit": "亩",
+              "value_original": "386.825",
+              "value": 386.825,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 3,
+              "name": "其中坑塘水面面积",
+              "unit": "亩",
+              "value_original": "115.78",
+              "value": 115.78,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 4,
+              "name": "路、渠、沟、坟地、点状供地",
+              "unit": "亩",
+              "value_original": "164.391",
+              "value": 164.391,
+              "remark": "清障",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 5,
+              "name": "挖方量",
+              "unit": "m3",
+              "value_original": "230218.400",
+              "value": 230218.4,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 6,
+              "name": "填方量",
+              "unit": "m3",
+              "value_original": "75576.800",
+              "value": 75576.8,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 7,
+              "name": "表土剥离方量",
+              "unit": "m3",
+              "value_original": "77105.829",
+              "value": 77105.829,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 8,
+              "name": "表土回填方量",
+              "unit": "m3",
+              "value_original": "77105.829",
+              "value": 77105.829,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 9,
+              "name": "推土机推土",
+              "unit": "m3",
+              "value_original": "75576.800",
+              "value": 75576.8,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 10,
+              "name": "土方内转",
+              "unit": "m3",
+              "value_original": "42696.400",
+              "value": 42696.4,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 11,
+              "name": "犁底层压实保水",
+              "unit": "m3",
+              "value_original": "42739.139",
+              "value": 42739.139,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 12,
+              "name": "土方外运转",
+              "unit": "m3",
+              "value_original": "154641.600",
+              "value": 154641.6,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 13,
+              "name": "土地翻耕",
+              "unit": "公顷",
+              "value_original": "25.788",
+              "value": 25.788,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 14,
+              "name": "土壤培肥",
+              "unit": "吨",
+              "value_original": "2146.752",
+              "value": 2146.752,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 15,
+              "name": "田埂修筑",
+              "unit": "m3",
+              "value_original": "78529.368",
+              "value": 78529.368,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 1,
+              "name": "沥水沟（0.5m*0.5m）",
+              "unit": "m",
+              "value_original": "18201.77",
+              "value": 18201.77,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 2,
+              "name": "清淤沟渠-1",
+              "unit": "m",
+              "value_original": "220",
+              "value": 220,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 3,
+              "name": "清淤沟渠-2",
+              "unit": "m",
+              "value_original": "66",
+              "value": 66,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 4,
+              "name": "新建农渠I型-1（浆砌石、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "39.00",
+              "value": 39,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 5,
+              "name": "新建农渠I型-2（浆砌石、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "170.00",
+              "value": 170,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 6,
+              "name": "新建农渠II型-1（浆砌石、宽0.5m、高0.5m）",
+              "unit": "m",
+              "value_original": "407.00",
+              "value": 407,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 7,
+              "name": "新建农渠II型-2（浆砌石、宽0.5m、高0.5m）",
+              "unit": "m",
+              "value_original": "230.00",
+              "value": 230,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 8,
+              "name": "新建农渠II型-3（浆砌石、宽0.5m、高0.5m）",
+              "unit": "m",
+              "value_original": "95.35",
+              "value": 95.35,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 9,
+              "name": "新建农渠III型-3（浆砌石、宽0.5m、高0.8m）",
+              "unit": "m",
+              "value_original": "205.00",
+              "value": 205,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 10,
+              "name": "新建灌排渠-1（浆砌石、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "272.00",
+              "value": 272,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 11,
+              "name": "新建灌排渠-2（浆砌石、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "40.00",
+              "value": 40,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 12,
+              "name": "新建灌排渠-3（浆砌石、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "266.00",
+              "value": 266,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 13,
+              "name": "新建排水沟I型-1（土沟、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "94.32",
+              "value": 94.32,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 14,
+              "name": "新建排水沟I型-2（土沟、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "112.51",
+              "value": 112.51,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 15,
+              "name": "新建排水沟I型-3（土沟、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "106.47",
+              "value": 106.47,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 16,
+              "name": "新建排水沟I型-4（土沟、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "175.90",
+              "value": 175.9,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 17,
+              "name": "新建排水沟I型-5（土沟、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "411.50",
+              "value": 411.5,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 18,
+              "name": "新建排水沟I型-6（土沟、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "392.45",
+              "value": 392.45,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 19,
+              "name": "新建排水沟II型-1（浆砌石、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "123.46",
+              "value": 123.46,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 20,
+              "name": "新建排水沟III型-1（浆砌石、宽0.5m、高0.5m）",
+              "unit": "m",
+              "value_original": "99.71",
+              "value": 99.71,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 21,
+              "name": "新建排水沟III型-1（浆砌石、宽0.5m、高0.6m）",
+              "unit": "m",
+              "value_original": "234.00",
+              "value": 234,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 22,
+              "name": "生态渠-1（卵石渠、宽1.5m、深1.1m）",
+              "unit": "m",
+              "value_original": "225.00",
+              "value": 225,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 23,
+              "name": "生态渠-2（卵石渠、宽1.5m、深1.1m）",
+              "unit": "m",
+              "value_original": "294.73",
+              "value": 294.73,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 24,
+              "name": "生态渠-3（卵石渠、宽1.5m、深1.1m）",
+              "unit": "m",
+              "value_original": "375.10",
+              "value": 375.1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 25,
+              "name": "2m环形沟-1（土沟、宽2m、深0.8m）",
+              "unit": "m",
+              "value_original": "93.69",
+              "value": 93.69,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 26,
+              "name": "2m环形沟-2（土沟、宽2m、深0.8m）",
+              "unit": "m",
+              "value_original": "84.39",
+              "value": 84.39,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 27,
+              "name": "2m环形沟-3（土沟、宽2m、深0.8m）",
+              "unit": "m",
+              "value_original": "32.08",
+              "value": 32.08,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 28,
+              "name": "2m环形沟-4（土沟、宽2m、深0.8m）",
+              "unit": "m",
+              "value_original": "90.14",
+              "value": 90.14,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 29,
+              "name": "2m环形沟-5（土沟、宽2m、深0.8m）",
+              "unit": "m",
+              "value_original": "95.17",
+              "value": 95.17,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 30,
+              "name": "2m环形沟-6（土沟、宽2m、深0.8m）",
+              "unit": "m",
+              "value_original": "124.48",
+              "value": 124.48,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 31,
+              "name": "坑塘清淤面积（坑塘5-17）",
+              "unit": "m²",
+              "value_original": "86300.15",
+              "value": 86300.15,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 32,
+              "name": "清淤量",
+              "unit": "m3",
+              "value_original": "86300.15",
+              "value": 86300.15,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 33,
+              "name": "晒干推平",
+              "unit": "m3",
+              "value_original": "60410.11",
+              "value": 60410.11,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 34,
+              "name": "清淤土方外运",
+              "unit": "m3",
+              "value_original": "60410.11",
+              "value": 60410.11,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 35,
+              "name": "新建800波纹管-1（800）",
+              "unit": "m",
+              "value_original": "25.80",
+              "value": 25.8,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 36,
+              "name": "新建800波纹管-2（800）",
+              "unit": "m",
+              "value_original": "41.30",
+              "value": 41.3,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 37,
+              "name": "新建400波纹管-1（400）",
+              "unit": "m",
+              "value_original": "133.00",
+              "value": 133,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 38,
+              "name": "新建400波纹管-2（400）",
+              "unit": "m",
+              "value_original": "98.20",
+              "value": 98.2,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 39,
+              "name": "DN400涵管（4m）",
+              "unit": "座",
+              "value_original": "60.00",
+              "value": 60,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 40,
+              "name": "DN600涵管（4m）",
+              "unit": "座",
+              "value_original": "3.00",
+              "value": 3,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 41,
+              "name": "DN800涵管（5.6m）",
+              "unit": "座",
+              "value_original": "1.00",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 42,
+              "name": "DN1000涵管（7.8m）",
+              "unit": "座",
+              "value_original": "1.00",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 43,
+              "name": "放水口I型",
+              "unit": "座",
+              "value_original": "61.00",
+              "value": 61,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 44,
+              "name": "放水口II型（DN300pvc管）",
+              "unit": "座",
+              "value_original": "36.00",
+              "value": 36,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 45,
+              "name": "PE管道-1（DN250、SDR17）",
+              "unit": "m",
+              "value_original": "236.00",
+              "value": 236,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 46,
+              "name": "PE管道-2（DN250、SDR17）",
+              "unit": "m",
+              "value_original": "650.00",
+              "value": 650,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 47,
+              "name": "PE管道-2（DN250、SDR18）",
+              "unit": "m",
+              "value_original": "618.00",
+              "value": 618,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 48,
+              "name": "坑塘浆砌石-1（宽1.5m、高1.5m）",
+              "unit": "m",
+              "value_original": "146.00",
+              "value": 146,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 49,
+              "name": "漫水坝-1（宽0.5m、高0.5m）",
+              "unit": "座",
+              "value_original": "2",
+              "value": 2,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 50,
+              "name": "沉沙池I型（1.5*1.5*3m）",
+              "unit": "座",
+              "value_original": "7",
+              "value": 7,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 51,
+              "name": "沉沙池II型（0.6*0.6*0.8m）",
+              "unit": "座",
+              "value_original": "6",
+              "value": 6,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 52,
+              "name": "沉沙池III型（1.0*1.0*1.5m）",
+              "unit": "座",
+              "value_original": "6",
+              "value": 6,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 53,
+              "name": "出水池I-1（2.5*2.5*1.5）",
+              "unit": "座",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 54,
+              "name": "出水池II-1（1.5*1.5*1.2）",
+              "unit": "座",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 55,
+              "name": "砖砌排水沟",
+              "unit": "m",
+              "value_original": "44.00",
+              "value": 44,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 56,
+              "name": "浆砌石护坡I型",
+              "unit": "座",
+              "value_original": "12",
+              "value": 12,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 57,
+              "name": "DN400手动塑料闸板",
+              "unit": "套",
+              "value_original": "87.00",
+              "value": 87,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 58,
+              "name": "DN400铁闸板",
+              "unit": "套",
+              "value_original": "11.00",
+              "value": 11,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 59,
+              "name": "木栈道拆除",
+              "unit": "m",
+              "value_original": "110",
+              "value": 110,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 60,
+              "name": "跌水I型",
+              "unit": "座",
+              "value_original": "4",
+              "value": 4,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 61,
+              "name": "跌水II型",
+              "unit": "座",
+              "value_original": "11",
+              "value": 11,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 62,
+              "name": "台阶",
+              "unit": "座",
+              "value_original": "3",
+              "value": 3,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 63,
+              "name": "新建泵站-1",
+              "unit": "座",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 64,
+              "name": "景观石",
+              "unit": "吨",
+              "value_original": "56.25",
+              "value": 56.25,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 65,
+              "name": "农田监测系统",
+              "unit": "项",
+              "value_original": "1.00",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 66,
+              "name": "果树（橙子树、柚子树、桃子树、桂花树、垂柳等）",
+              "unit": "棵",
+              "value_original": "1928",
+              "value": 1928,
+              "remark": "橙子树205棵、柚子树47棵、桃子树686棵、梨子树455棵、桂花树509棵、垂柳26棵",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 67,
+              "name": "泵房取水口灌木",
+              "unit": "m²",
+              "value_original": "205",
+              "value": 205,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 68,
+              "name": "灌木",
+              "unit": "m²",
+              "value_original": "1160",
+              "value": 1160,
+              "remark": "（1160*36）株",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 69,
+              "name": "边坡植草（黑麦草）",
+              "unit": "m²",
+              "value_original": "33178",
+              "value": 33178,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 70,
+              "name": "护栏网片",
+              "unit": "m",
+              "value_original": "7732",
+              "value": 7732,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 71,
+              "name": "田埂防渗膜",
+              "unit": "m²",
+              "value_original": "2296",
+              "value": 2296,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 72,
+              "name": "进水池（1.5*1.5*2m）",
+              "unit": "座",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 73,
+              "name": "启动柜基础（1.5*1.5*0.2m）",
+              "unit": "套",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 74,
+              "name": "浆砌石护坡II型",
+              "unit": "座",
+              "value_original": "4",
+              "value": 4,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 1,
+              "name": "新建生产路I型-1（3.0m宽）",
+              "unit": "m",
+              "value_original": "282.27",
+              "value": 282.27,
+              "remark": "50cm厚毛渣",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 2,
+              "name": "新建生产路I型-2（3.0m宽）",
+              "unit": "m",
+              "value_original": "107.67",
+              "value": 107.67,
+              "remark": "50cm厚毛渣",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 3,
+              "name": "新建生产路I型-3（3.0m宽）",
+              "unit": "m",
+              "value_original": "260.97",
+              "value": 260.97,
+              "remark": "50cm厚毛渣",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 4,
+              "name": "新建生产路II型-1（3.0m宽）",
+              "unit": "m",
+              "value_original": "562",
+              "value": 562,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 5,
+              "name": "新建生产路II型-2（3.0m宽）",
+              "unit": "m",
+              "value_original": "105.86",
+              "value": 105.86,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 6,
+              "name": "新建生产路II型-3（3.0m宽）",
+              "unit": "m",
+              "value_original": "671.12",
+              "value": 671.12,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 7,
+              "name": "新建生产路II型-4（3.0m宽）",
+              "unit": "m",
+              "value_original": "223.18",
+              "value": 223.18,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 8,
+              "name": "新建生产路II型-5（3.0m宽）",
+              "unit": "m",
+              "value_original": "64",
+              "value": 64,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 9,
+              "name": "新建生产路II型-6（3.0m宽）",
+              "unit": "m",
+              "value_original": "152",
+              "value": 152,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 10,
+              "name": "新建生产路II型-7（3.0m宽）",
+              "unit": "m",
+              "value_original": "317",
+              "value": 317,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 11,
+              "name": "新建生产路II型-8（3.0m宽）",
+              "unit": "m",
+              "value_original": "250",
+              "value": 250,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 12,
+              "name": "新建生产路II型-9（3.0m宽）",
+              "unit": "m",
+              "value_original": "267",
+              "value": 267,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 13,
+              "name": "新建生产路II型-10（3.0m宽）",
+              "unit": "m",
+              "value_original": "64",
+              "value": 64,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 14,
+              "name": "新建生产路II型-11（3.0m宽）",
+              "unit": "m",
+              "value_original": "393",
+              "value": 393,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 15,
+              "name": "新建生产路III型-1（2m宽）",
+              "unit": "m",
+              "value_original": "285",
+              "value": 285,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 16,
+              "name": "新建生产路III型-2（2m宽）",
+              "unit": "m",
+              "value_original": "164",
+              "value": 164,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 17,
+              "name": "下田坡II型（浆砌石、长5.0m、宽4.0m）",
+              "unit": "座",
+              "value_original": "67",
+              "value": 67,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 18,
+              "name": "新建栏杆",
+              "unit": "m",
+              "value_original": "46",
+              "value": 46,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 19,
+              "name": "修复栏杆",
+              "unit": "m",
+              "value_original": "166",
+              "value": 166,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 20,
+              "name": "新建电线杆",
+              "unit": "根",
+              "value_original": "4",
+              "value": 4,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 21,
+              "name": "拆除电线杆",
+              "unit": "根",
+              "value_original": "10",
+              "value": 10,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 22,
+              "name": "田块标识牌",
+              "unit": "个",
+              "value_original": "100.000",
+              "value": 100,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 23,
+              "name": "农田展示牌",
+              "unit": "个",
+              "value_original": "50",
+              "value": 50,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 1,
+              "name": "配电线-1",
+              "unit": "m",
+              "value_original": "50.00",
+              "value": 50,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 2,
+              "name": "配电线-2",
+              "unit": "m",
+              "value_original": "200.00",
+              "value": 200,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 3,
+              "name": "配电线-3",
+              "unit": "m",
+              "value_original": "141.00",
+              "value": 141,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 4,
+              "name": "水泵设备-1",
+              "unit": "套",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 5,
+              "name": "水泵设备-2",
+              "unit": "套",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 6,
+              "name": "水泵设备-3",
+              "unit": "套",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 7,
+              "name": "水泵设备-4",
+              "unit": "套",
+              "value_original": "2",
+              "value": 2,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 8,
+              "name": "变压器-1",
+              "unit": "套",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 9,
+              "name": "变压器-2",
+              "unit": "套",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            }
+          ],
+          "locator": {
+            "bboxes_px": [
+              [
+                0,
+                0,
+                800,
+                1850
+              ],
+              [
+                950,
+                100,
+                1650,
+                900
+              ]
+            ]
+          },
+          "association_status": "project_aggregate",
+          "duplicate_evidence_group": "printed-summary-pdf01-pdf02",
+          "do_not_sum_across_drawings": true
+        },
+        {
+          "title": "（分割二）验收明细表",
+          "unit": "公顷",
+          "columns": [
+            "地块号",
+            "乡镇名称",
+            "村名",
+            "所在图幅号",
+            "图斑号",
+            "整理前旱地0103",
+            "整理后水田0101",
+            "整理后旱地0103",
+            "合计",
+            "新增水田面积",
+            "备注"
+          ],
+          "rows": [
+            {
+              "地块号": "地块13",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042011",
+              "图斑号": "305",
+              "整理前旱地0103": "0.1421",
+              "整理后水田0101": null,
+              "整理后旱地0103": "0.1421",
+              "合计": "0.1421",
+              "新增水田面积": "0.0000",
+              "备注": ""
+            },
+            {
+              "地块号": "地块16",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010、H50G043010",
+              "图斑号": "574",
+              "整理前旱地0103": "5.6330",
+              "整理后水田0101": "2.7938",
+              "整理后旱地0103": "2.8392",
+              "合计": "5.6330",
+              "新增水田面积": "2.7938",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块17",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010、H50G043010",
+              "图斑号": "296",
+              "整理前旱地0103": "3.7892",
+              "整理后水田0101": "1.7271",
+              "整理后旱地0103": "2.0621",
+              "合计": "3.7892",
+              "新增水田面积": "1.7271",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块19",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042011",
+              "图斑号": "318",
+              "整理前旱地0103": "3.0437",
+              "整理后水田0101": "1.6157",
+              "整理后旱地0103": "1.4280",
+              "合计": "3.0437",
+              "新增水田面积": "1.6157",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块25",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "211",
+              "整理前旱地0103": "0.9808",
+              "整理后水田0101": "0.8885",
+              "整理后旱地0103": "0.0923",
+              "合计": "0.9808",
+              "新增水田面积": "0.8885",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块31",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042011",
+              "图斑号": "568",
+              "整理前旱地0103": "9.1439",
+              "整理后水田0101": "3.2412",
+              "整理后旱地0103": "5.9027",
+              "合计": "9.1439",
+              "新增水田面积": "3.2412",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块34",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "98",
+              "整理前旱地0103": "1.0432",
+              "整理后水田0101": "0.2827",
+              "整理后旱地0103": "0.7605",
+              "合计": "1.0432",
+              "新增水田面积": "0.2827",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块35",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042011",
+              "图斑号": "96",
+              "整理前旱地0103": "2.2036",
+              "整理后水田0101": "0.9823",
+              "整理后旱地0103": "1.2213",
+              "合计": "2.2036",
+              "新增水田面积": "0.9823",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块36",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "673",
+              "整理前旱地0103": "0.3466",
+              "整理后水田0101": null,
+              "整理后旱地0103": "0.3466",
+              "合计": "0.3466",
+              "新增水田面积": "0.0000",
+              "备注": ""
+            },
+            {
+              "地块号": "地块40",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042011",
+              "图斑号": "67",
+              "整理前旱地0103": "1.0896",
+              "整理后水田0101": "0.5659",
+              "整理后旱地0103": "0.5237",
+              "合计": "1.0896",
+              "新增水田面积": "0.5659",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块41",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "63、673",
+              "整理前旱地0103": "2.9287",
+              "整理后水田0101": "1.0993",
+              "整理后旱地0103": "1.8294",
+              "合计": "2.9287",
+              "新增水田面积": "1.0993",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块42",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "690",
+              "整理前旱地0103": "0.7118",
+              "整理后水田0101": "0.5275",
+              "整理后旱地0103": "0.1843",
+              "合计": "0.7118",
+              "新增水田面积": "0.5275",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块43",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "57",
+              "整理前旱地0103": "1.2734",
+              "整理后水田0101": "0.7112",
+              "整理后旱地0103": "0.5622",
+              "合计": "1.2734",
+              "新增水田面积": "0.7112",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块44",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "692",
+              "整理前旱地0103": "1.7328",
+              "整理后水田0101": "0.9386",
+              "整理后旱地0103": "0.7942",
+              "合计": "1.7328",
+              "新增水田面积": "0.9386",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块45",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "704",
+              "整理前旱地0103": "1.7692",
+              "整理后水田0101": "1.4892",
+              "整理后旱地0103": "0.2800",
+              "合计": "1.7692",
+              "新增水田面积": "1.4892",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块46",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "28",
+              "整理前旱地0103": "0.2248",
+              "整理后水田0101": "0.1662",
+              "整理后旱地0103": "0.0586",
+              "合计": "0.2248",
+              "新增水田面积": "0.1662",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块47",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "28",
+              "整理前旱地0103": "1.1742",
+              "整理后水田0101": "0.9300",
+              "整理后旱地0103": "0.2442",
+              "合计": "1.1742",
+              "新增水田面积": "0.9300",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块48",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "22",
+              "整理前旱地0103": "2.2593",
+              "整理后水田0101": "1.8001",
+              "整理后旱地0103": "0.4592",
+              "合计": "2.2593",
+              "新增水田面积": "1.8001",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块49",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "10",
+              "整理前旱地0103": "2.9865",
+              "整理后水田0101": "2.5905",
+              "整理后旱地0103": "0.3960",
+              "合计": "2.9865",
+              "新增水田面积": "2.5905",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块52",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "202",
+              "整理前旱地0103": "0.6567",
+              "整理后水田0101": null,
+              "整理后旱地0103": "0.6567",
+              "合计": "0.6567",
+              "新增水田面积": "0.0000",
+              "备注": ""
+            },
+            {
+              "地块号": "地块53",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "202",
+              "整理前旱地0103": "0.9862",
+              "整理后水田0101": "0.8060",
+              "整理后旱地0103": "0.1802",
+              "合计": "0.9862",
+              "新增水田面积": "0.8060",
+              "备注": "分割二"
+            }
+          ],
+          "merged_cells": {
+            "建设规模": "90.2228",
+            "建设规模（分割一）": "45.7153",
+            "建设规模（分割二）": "44.5075"
+          },
+          "totals_original": {
+            "整理前旱地": "44.1193",
+            "整理后水田": "23.1558",
+            "整理后旱地": "20.96349",
+            "合计": "44.1193",
+            "新增水田面积": "23.15581"
+          },
+          "locator": {
+            "bbox_px": [
+              2400,
+              250,
+              3650,
+              1050
+            ]
+          },
+          "association_status": "cadastral_table_not_linked_to_L_M_X_map_ids",
+          "do_not_sum_across_drawings": true
+        }
+      ],
+      "coverage": {
+        "reviewed_regions": [
+          {
+            "name": "工程数量表主表",
+            "bbox_px": [
+              0,
+              0,
+              800,
+              1850
+            ]
+          },
+          {
+            "name": "工程数量表续表",
+            "bbox_px": [
+              950,
+              100,
+              1650,
+              900
+            ]
+          },
+          {
+            "name": "面积表",
+            "bbox_px": [
+              2400,
+              250,
+              3650,
+              1050
+            ]
+          },
+          {
+            "name": "图例",
+            "bbox_px": [
+              0,
+              3170,
+              1050,
+              3536
+            ]
+          },
+          {
+            "name": "L区主图",
+            "bbox_px": [
+              750,
+              1350,
+              2900,
+              3170
+            ]
+          },
+          {
+            "name": "清17水面及连接线路",
+            "bbox_px": [
+              2750,
+              1450,
+              3520,
+              2800
+            ]
+          },
+          {
+            "name": "图签",
+            "bbox_px": [
+              2660,
+              3200,
+              3720,
+              3536
+            ]
+          }
+        ],
+        "unresolved": [
+          {
+            "category": "密集设施点位",
+            "reason": "太阳能智能闸、进排PVC涵、波纹管、水泥过路涵、下田步、检查井、沉沙池等未逐个圈定与计数；同名重复出现须各自保留。"
+          },
+          {
+            "category": "尺寸与口径",
+            "reason": "黑色标注300-/400-/500-/600-/800-没有在每个引线中明确单位，未补猜毫米；完整引线终点与对象归属待矢量核查。"
+          },
+          {
+            "category": "田块编号及粉色数字框",
+            "reason": "已有地图编号可见，但数字框含平-编号与小数，量纲未明，不当面积或高程自动采纳；未逐框补录。"
+          },
+          {
+            "category": "几何与地类",
+            "reason": "图例已录类别，未逐边界矢量化、未统计各地类面积；像素不是CRS。"
+          },
+          {
+            "category": "表格字符",
+            "reason": "人工转录工程量行完整保留121行；个别工程名称字形仍应对原PDF高倍率复核。面积表总计20.96349/23.15581按可见原文保留，未强行舍入或使和数一致。"
+          }
+        ]
+      },
+      "notes": [
+        "人工视觉转录；不是完成全部OCR。像素定位是5000×3536 landscape图上的审阅框，不是地理坐标。",
+        "图例是符号类别目录，不能证明图面每类均存在。",
+        "表格总量保持原文及小数，不关联单一设施；重复名称不合并。",
+        "native-annotations.json存在实际乱码，无法作为完整中文文字证据。",
+        "图签可见测图比例尺1:1000、打印比例尺1:4000、制图日期2025.11；不以图签比例直接建立地理坐标。",
+        "measurement的bbox为人工近似注记检索范围，需在原图复核，不作为精确对象包围盒。",
+        "400波纹管图面42m与同名表格133.00m/98.20m冲突；不覆盖。排水沟I型图号11/12与表号5/6不一致，不自动关联。",
+        "同一幅图两块预留用地均标9.81亩，保留两个空间实例。",
+        "清15、清16、清17为水面标识；图中不动工区和预留用地区也必须保留。"
+      ],
+      "id": "pdf-01"
+    },
+    {
+      "legend": [
+        {
+          "label": "项目区界",
+          "kind": "land_cover"
+        },
+        {
+          "label": "村界",
+          "kind": "land_cover"
+        },
+        {
+          "label": "镇界",
+          "kind": "land_cover"
+        },
+        {
+          "label": "已实施项目范围",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "水田",
+          "kind": "land_cover"
+        },
+        {
+          "label": "旱地",
+          "kind": "land_cover"
+        },
+        {
+          "label": "林地",
+          "kind": "land_cover"
+        },
+        {
+          "label": "荒草地",
+          "kind": "land_cover"
+        },
+        {
+          "label": "果园",
+          "kind": "land_cover"
+        },
+        {
+          "label": "乡村路",
+          "kind": "land_cover"
+        },
+        {
+          "label": "大车路",
+          "kind": "land_cover"
+        },
+        {
+          "label": "机耕桥",
+          "kind": "land_cover"
+        },
+        {
+          "label": "涵洞",
+          "kind": "land_cover"
+        },
+        {
+          "label": "河流水面",
+          "kind": "land_cover"
+        },
+        {
+          "label": "灌木林地",
+          "kind": "land_cover"
+        },
+        {
+          "label": "居民点",
+          "kind": "land_cover"
+        },
+        {
+          "label": "水库水面",
+          "kind": "land_cover"
+        },
+        {
+          "label": "泵站",
+          "kind": "land_cover"
+        },
+        {
+          "label": "田坎",
+          "kind": "land_cover"
+        },
+        {
+          "label": "地类界",
+          "kind": "land_cover"
+        },
+        {
+          "label": "小路",
+          "kind": "land_cover"
+        },
+        {
+          "label": "通信线",
+          "kind": "land_cover"
+        },
+        {
+          "label": "坟地",
+          "kind": "land_cover"
+        },
+        {
+          "label": "单线沟渠",
+          "kind": "land_cover"
+        },
+        {
+          "label": "电力线",
+          "kind": "land_cover"
+        },
+        {
+          "label": "抽水平台",
+          "kind": "land_cover"
+        },
+        {
+          "label": "清淤沟渠",
+          "kind": "land_cover"
+        },
+        {
+          "label": "水流方向",
+          "kind": "land_cover"
+        },
+        {
+          "label": "坑塘",
+          "kind": "land_cover"
+        },
+        {
+          "label": "双线沟渠",
+          "kind": "land_cover"
+        },
+        {
+          "label": "等高线、高程点",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "注记坐标",
+          "kind": "land_cover"
+        },
+        {
+          "label": "生态渠I型",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "生态渠II型",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "生态渠III型",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "新建暗管",
+          "kind": "land_cover"
+        },
+        {
+          "label": "田块编号",
+          "kind": "land_cover"
+        },
+        {
+          "label": "碎石路",
+          "kind": "land_cover"
+        },
+        {
+          "label": "生产路",
+          "kind": "land_cover"
+        },
+        {
+          "label": "新建排水沟",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "新建2m田埂",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "新建1.5m田埂",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "新建检查井",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "新建砖砌池",
+          "kind": "cartographic_or_facility"
+        },
+        {
+          "label": "太阳能智能闸",
+          "kind": "cartographic_or_facility"
+        }
+      ],
+      "measurements": [
+        {
+          "label": "新屋湾施工面积",
+          "text_original": "施工面积122.90亩",
+          "value": "122.90",
+          "unit": "亩",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              3100,
+              700,
+              3540,
+              780
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "新屋湾平整田块面积",
+          "text_original": "其中平整田块面积69.92亩",
+          "value": "69.92",
+          "unit": "亩",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              3100,
+              700,
+              3540,
+              780
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "M区施工面积",
+          "text_original": "施工面积144.17亩",
+          "value": "144.17",
+          "unit": "亩",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              1920,
+              2180,
+              2370,
+              2270
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "M区平整田块面积",
+          "text_original": "其中平整田块面积74.13亩",
+          "value": "74.13",
+          "unit": "亩",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              1920,
+              2180,
+              2370,
+              2270
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "独立小区施工面积",
+          "text_original": "施工面积1.29亩",
+          "value": "1.29",
+          "unit": "亩",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              2090,
+              1350,
+              2290,
+              1420
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "新建生产路I型-1",
+          "text_original": "新建生产路I型-1（3.0宽，L=282.27m）",
+          "value": "282.27",
+          "unit": "m",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              1100,
+              2010,
+              1410,
+              2070
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "新建生产路I型-2",
+          "text_original": "新建生产路I型-2（3.0宽，L=107.67m）",
+          "value": "107.67",
+          "unit": "m",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              1500,
+              1780,
+              1790,
+              1840
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        },
+        {
+          "label": "新建生产路I型-3",
+          "text_original": "新建生产路I型-3（3.0宽，L=260.97m）",
+          "value": "260.97",
+          "unit": "m",
+          "quantity": null,
+          "locator": {
+            "bbox_px": [
+              1450,
+              1900,
+              1770,
+              1960
+            ]
+          },
+          "association_status": "label_only_geometry_unresolved"
+        }
+      ],
+      "tables": [
+        {
+          "title": "2022年度梁子湖区梁子镇沙湾村提质改造旱改水项目（分割二）工程量汇总表",
+          "columns": [
+            "分项",
+            "序号",
+            "名称",
+            "单位",
+            "验收工程量",
+            "备注"
+          ],
+          "rows": [
+            {
+              "section": "土地平整工程",
+              "row_number": 1,
+              "name": "施工范围面积",
+              "unit": "亩",
+              "value_original": "667.000",
+              "value": 667,
+              "remark": "总施工面积",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 2,
+              "name": "其中田块平整面积",
+              "unit": "亩",
+              "value_original": "386.825",
+              "value": 386.825,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 3,
+              "name": "其中坑塘水面面积",
+              "unit": "亩",
+              "value_original": "115.78",
+              "value": 115.78,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 4,
+              "name": "路、渠、沟、坟地、点状供地",
+              "unit": "亩",
+              "value_original": "164.391",
+              "value": 164.391,
+              "remark": "清障",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 5,
+              "name": "挖方量",
+              "unit": "m3",
+              "value_original": "230218.400",
+              "value": 230218.4,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 6,
+              "name": "填方量",
+              "unit": "m3",
+              "value_original": "75576.800",
+              "value": 75576.8,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 7,
+              "name": "表土剥离方量",
+              "unit": "m3",
+              "value_original": "77105.829",
+              "value": 77105.829,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 8,
+              "name": "表土回填方量",
+              "unit": "m3",
+              "value_original": "77105.829",
+              "value": 77105.829,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 9,
+              "name": "推土机推土",
+              "unit": "m3",
+              "value_original": "75576.800",
+              "value": 75576.8,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 10,
+              "name": "土方内转",
+              "unit": "m3",
+              "value_original": "42696.400",
+              "value": 42696.4,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 11,
+              "name": "犁底层压实保水",
+              "unit": "m3",
+              "value_original": "42739.139",
+              "value": 42739.139,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 12,
+              "name": "土方外运转",
+              "unit": "m3",
+              "value_original": "154641.600",
+              "value": 154641.6,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 13,
+              "name": "土地翻耕",
+              "unit": "公顷",
+              "value_original": "25.788",
+              "value": 25.788,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 14,
+              "name": "土壤培肥",
+              "unit": "吨",
+              "value_original": "2146.752",
+              "value": 2146.752,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "土地平整工程",
+              "row_number": 15,
+              "name": "田埂修筑",
+              "unit": "m3",
+              "value_original": "78529.368",
+              "value": 78529.368,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 1,
+              "name": "沥水沟（0.5m*0.5m）",
+              "unit": "m",
+              "value_original": "18201.77",
+              "value": 18201.77,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 2,
+              "name": "清淤沟渠-1",
+              "unit": "m",
+              "value_original": "220",
+              "value": 220,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 3,
+              "name": "清淤沟渠-2",
+              "unit": "m",
+              "value_original": "66",
+              "value": 66,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 4,
+              "name": "新建农渠I型-1（浆砌石、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "39.00",
+              "value": 39,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 5,
+              "name": "新建农渠I型-2（浆砌石、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "170.00",
+              "value": 170,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 6,
+              "name": "新建农渠II型-1（浆砌石、宽0.5m、高0.5m）",
+              "unit": "m",
+              "value_original": "407.00",
+              "value": 407,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 7,
+              "name": "新建农渠II型-2（浆砌石、宽0.5m、高0.5m）",
+              "unit": "m",
+              "value_original": "230.00",
+              "value": 230,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 8,
+              "name": "新建农渠II型-3（浆砌石、宽0.5m、高0.5m）",
+              "unit": "m",
+              "value_original": "95.35",
+              "value": 95.35,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 9,
+              "name": "新建农渠III型-3（浆砌石、宽0.5m、高0.8m）",
+              "unit": "m",
+              "value_original": "205.00",
+              "value": 205,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 10,
+              "name": "新建灌排渠-1（浆砌石、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "272.00",
+              "value": 272,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 11,
+              "name": "新建灌排渠-2（浆砌石、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "40.00",
+              "value": 40,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 12,
+              "name": "新建灌排渠-3（浆砌石、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "266.00",
+              "value": 266,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 13,
+              "name": "新建排水沟I型-1（土沟、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "94.32",
+              "value": 94.32,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 14,
+              "name": "新建排水沟I型-2（土沟、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "112.51",
+              "value": 112.51,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 15,
+              "name": "新建排水沟I型-3（土沟、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "106.47",
+              "value": 106.47,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 16,
+              "name": "新建排水沟I型-4（土沟、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "175.90",
+              "value": 175.9,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 17,
+              "name": "新建排水沟I型-5（土沟、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "411.50",
+              "value": 411.5,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 18,
+              "name": "新建排水沟I型-6（土沟、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "392.45",
+              "value": 392.45,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 19,
+              "name": "新建排水沟II型-1（浆砌石、宽0.8m、高0.8m）",
+              "unit": "m",
+              "value_original": "123.46",
+              "value": 123.46,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 20,
+              "name": "新建排水沟III型-1（浆砌石、宽0.5m、高0.5m）",
+              "unit": "m",
+              "value_original": "99.71",
+              "value": 99.71,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 21,
+              "name": "新建排水沟III型-1（浆砌石、宽0.5m、高0.6m）",
+              "unit": "m",
+              "value_original": "234.00",
+              "value": 234,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 22,
+              "name": "生态渠-1（卵石渠、宽1.5m、深1.1m）",
+              "unit": "m",
+              "value_original": "225.00",
+              "value": 225,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 23,
+              "name": "生态渠-2（卵石渠、宽1.5m、深1.1m）",
+              "unit": "m",
+              "value_original": "294.73",
+              "value": 294.73,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 24,
+              "name": "生态渠-3（卵石渠、宽1.5m、深1.1m）",
+              "unit": "m",
+              "value_original": "375.10",
+              "value": 375.1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 25,
+              "name": "2m环形沟-1（土沟、宽2m、深0.8m）",
+              "unit": "m",
+              "value_original": "93.69",
+              "value": 93.69,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 26,
+              "name": "2m环形沟-2（土沟、宽2m、深0.8m）",
+              "unit": "m",
+              "value_original": "84.39",
+              "value": 84.39,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 27,
+              "name": "2m环形沟-3（土沟、宽2m、深0.8m）",
+              "unit": "m",
+              "value_original": "32.08",
+              "value": 32.08,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 28,
+              "name": "2m环形沟-4（土沟、宽2m、深0.8m）",
+              "unit": "m",
+              "value_original": "90.14",
+              "value": 90.14,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 29,
+              "name": "2m环形沟-5（土沟、宽2m、深0.8m）",
+              "unit": "m",
+              "value_original": "95.17",
+              "value": 95.17,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 30,
+              "name": "2m环形沟-6（土沟、宽2m、深0.8m）",
+              "unit": "m",
+              "value_original": "124.48",
+              "value": 124.48,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 31,
+              "name": "坑塘清淤面积（坑塘5-17）",
+              "unit": "m²",
+              "value_original": "86300.15",
+              "value": 86300.15,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 32,
+              "name": "清淤量",
+              "unit": "m3",
+              "value_original": "86300.15",
+              "value": 86300.15,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 33,
+              "name": "晒干推平",
+              "unit": "m3",
+              "value_original": "60410.11",
+              "value": 60410.11,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 34,
+              "name": "清淤土方外运",
+              "unit": "m3",
+              "value_original": "60410.11",
+              "value": 60410.11,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 35,
+              "name": "新建800波纹管-1（800）",
+              "unit": "m",
+              "value_original": "25.80",
+              "value": 25.8,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 36,
+              "name": "新建800波纹管-2（800）",
+              "unit": "m",
+              "value_original": "41.30",
+              "value": 41.3,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 37,
+              "name": "新建400波纹管-1（400）",
+              "unit": "m",
+              "value_original": "133.00",
+              "value": 133,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 38,
+              "name": "新建400波纹管-2（400）",
+              "unit": "m",
+              "value_original": "98.20",
+              "value": 98.2,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 39,
+              "name": "DN400涵管（4m）",
+              "unit": "座",
+              "value_original": "60.00",
+              "value": 60,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 40,
+              "name": "DN600涵管（4m）",
+              "unit": "座",
+              "value_original": "3.00",
+              "value": 3,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 41,
+              "name": "DN800涵管（5.6m）",
+              "unit": "座",
+              "value_original": "1.00",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 42,
+              "name": "DN1000涵管（7.8m）",
+              "unit": "座",
+              "value_original": "1.00",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 43,
+              "name": "放水口I型",
+              "unit": "座",
+              "value_original": "61.00",
+              "value": 61,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 44,
+              "name": "放水口II型（DN300pvc管）",
+              "unit": "座",
+              "value_original": "36.00",
+              "value": 36,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 45,
+              "name": "PE管道-1（DN250、SDR17）",
+              "unit": "m",
+              "value_original": "236.00",
+              "value": 236,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 46,
+              "name": "PE管道-2（DN250、SDR17）",
+              "unit": "m",
+              "value_original": "650.00",
+              "value": 650,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 47,
+              "name": "PE管道-2（DN250、SDR18）",
+              "unit": "m",
+              "value_original": "618.00",
+              "value": 618,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 48,
+              "name": "坑塘浆砌石-1（宽1.5m、高1.5m）",
+              "unit": "m",
+              "value_original": "146.00",
+              "value": 146,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 49,
+              "name": "漫水坝-1（宽0.5m、高0.5m）",
+              "unit": "座",
+              "value_original": "2",
+              "value": 2,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 50,
+              "name": "沉沙池I型（1.5*1.5*3m）",
+              "unit": "座",
+              "value_original": "7",
+              "value": 7,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 51,
+              "name": "沉沙池II型（0.6*0.6*0.8m）",
+              "unit": "座",
+              "value_original": "6",
+              "value": 6,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 52,
+              "name": "沉沙池III型（1.0*1.0*1.5m）",
+              "unit": "座",
+              "value_original": "6",
+              "value": 6,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 53,
+              "name": "出水池I-1（2.5*2.5*1.5）",
+              "unit": "座",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 54,
+              "name": "出水池II-1（1.5*1.5*1.2）",
+              "unit": "座",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 55,
+              "name": "砖砌排水沟",
+              "unit": "m",
+              "value_original": "44.00",
+              "value": 44,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 56,
+              "name": "浆砌石护坡I型",
+              "unit": "座",
+              "value_original": "12",
+              "value": 12,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 57,
+              "name": "DN400手动塑料闸板",
+              "unit": "套",
+              "value_original": "87.00",
+              "value": 87,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 58,
+              "name": "DN400铁闸板",
+              "unit": "套",
+              "value_original": "11.00",
+              "value": 11,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 59,
+              "name": "木栈道拆除",
+              "unit": "m",
+              "value_original": "110",
+              "value": 110,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 60,
+              "name": "跌水I型",
+              "unit": "座",
+              "value_original": "4",
+              "value": 4,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 61,
+              "name": "跌水II型",
+              "unit": "座",
+              "value_original": "11",
+              "value": 11,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 62,
+              "name": "台阶",
+              "unit": "座",
+              "value_original": "3",
+              "value": 3,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 63,
+              "name": "新建泵站-1",
+              "unit": "座",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 64,
+              "name": "景观石",
+              "unit": "吨",
+              "value_original": "56.25",
+              "value": 56.25,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 65,
+              "name": "农田监测系统",
+              "unit": "项",
+              "value_original": "1.00",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 66,
+              "name": "果树（橙子树、柚子树、桃子树、桂花树、垂柳等）",
+              "unit": "棵",
+              "value_original": "1928",
+              "value": 1928,
+              "remark": "橙子树205棵、柚子树47棵、桃子树686棵、梨子树455棵、桂花树509棵、垂柳26棵",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 67,
+              "name": "泵房取水口灌木",
+              "unit": "m²",
+              "value_original": "205",
+              "value": 205,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 68,
+              "name": "灌木",
+              "unit": "m²",
+              "value_original": "1160",
+              "value": 1160,
+              "remark": "（1160*36）株",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 69,
+              "name": "边坡植草（黑麦草）",
+              "unit": "m²",
+              "value_original": "33178",
+              "value": 33178,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 70,
+              "name": "护栏网片",
+              "unit": "m",
+              "value_original": "7732",
+              "value": 7732,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 71,
+              "name": "田埂防渗膜",
+              "unit": "m²",
+              "value_original": "2296",
+              "value": 2296,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 72,
+              "name": "进水池（1.5*1.5*2m）",
+              "unit": "座",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 73,
+              "name": "启动柜基础（1.5*1.5*0.2m）",
+              "unit": "套",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "灌溉与排水工程",
+              "row_number": 74,
+              "name": "浆砌石护坡II型",
+              "unit": "座",
+              "value_original": "4",
+              "value": 4,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 1,
+              "name": "新建生产路I型-1（3.0m宽）",
+              "unit": "m",
+              "value_original": "282.27",
+              "value": 282.27,
+              "remark": "50cm厚毛渣",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 2,
+              "name": "新建生产路I型-2（3.0m宽）",
+              "unit": "m",
+              "value_original": "107.67",
+              "value": 107.67,
+              "remark": "50cm厚毛渣",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 3,
+              "name": "新建生产路I型-3（3.0m宽）",
+              "unit": "m",
+              "value_original": "260.97",
+              "value": 260.97,
+              "remark": "50cm厚毛渣",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 4,
+              "name": "新建生产路II型-1（3.0m宽）",
+              "unit": "m",
+              "value_original": "562",
+              "value": 562,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 5,
+              "name": "新建生产路II型-2（3.0m宽）",
+              "unit": "m",
+              "value_original": "105.86",
+              "value": 105.86,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 6,
+              "name": "新建生产路II型-3（3.0m宽）",
+              "unit": "m",
+              "value_original": "671.12",
+              "value": 671.12,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 7,
+              "name": "新建生产路II型-4（3.0m宽）",
+              "unit": "m",
+              "value_original": "223.18",
+              "value": 223.18,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 8,
+              "name": "新建生产路II型-5（3.0m宽）",
+              "unit": "m",
+              "value_original": "64",
+              "value": 64,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 9,
+              "name": "新建生产路II型-6（3.0m宽）",
+              "unit": "m",
+              "value_original": "152",
+              "value": 152,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 10,
+              "name": "新建生产路II型-7（3.0m宽）",
+              "unit": "m",
+              "value_original": "317",
+              "value": 317,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 11,
+              "name": "新建生产路II型-8（3.0m宽）",
+              "unit": "m",
+              "value_original": "250",
+              "value": 250,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 12,
+              "name": "新建生产路II型-9（3.0m宽）",
+              "unit": "m",
+              "value_original": "267",
+              "value": 267,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 13,
+              "name": "新建生产路II型-10（3.0m宽）",
+              "unit": "m",
+              "value_original": "64",
+              "value": 64,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 14,
+              "name": "新建生产路II型-11（3.0m宽）",
+              "unit": "m",
+              "value_original": "393",
+              "value": 393,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 15,
+              "name": "新建生产路III型-1（2m宽）",
+              "unit": "m",
+              "value_original": "285",
+              "value": 285,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 16,
+              "name": "新建生产路III型-2（2m宽）",
+              "unit": "m",
+              "value_original": "164",
+              "value": 164,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 17,
+              "name": "下田坡II型（浆砌石、长5.0m、宽4.0m）",
+              "unit": "座",
+              "value_original": "67",
+              "value": 67,
+              "remark": "20cm厚碎石",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 18,
+              "name": "新建栏杆",
+              "unit": "m",
+              "value_original": "46",
+              "value": 46,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 19,
+              "name": "修复栏杆",
+              "unit": "m",
+              "value_original": "166",
+              "value": 166,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 20,
+              "name": "新建电线杆",
+              "unit": "根",
+              "value_original": "4",
+              "value": 4,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 21,
+              "name": "拆除电线杆",
+              "unit": "根",
+              "value_original": "10",
+              "value": 10,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 22,
+              "name": "田块标识牌",
+              "unit": "个",
+              "value_original": "100.000",
+              "value": 100,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "田间道路工程",
+              "row_number": 23,
+              "name": "农田展示牌",
+              "unit": "个",
+              "value_original": "50",
+              "value": 50,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 1,
+              "name": "配电线-1",
+              "unit": "m",
+              "value_original": "50.00",
+              "value": 50,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 2,
+              "name": "配电线-2",
+              "unit": "m",
+              "value_original": "200.00",
+              "value": 200,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 3,
+              "name": "配电线-3",
+              "unit": "m",
+              "value_original": "141.00",
+              "value": 141,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 4,
+              "name": "水泵设备-1",
+              "unit": "套",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 5,
+              "name": "水泵设备-2",
+              "unit": "套",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 6,
+              "name": "水泵设备-3",
+              "unit": "套",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 7,
+              "name": "水泵设备-4",
+              "unit": "套",
+              "value_original": "2",
+              "value": 2,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 8,
+              "name": "变压器-1",
+              "unit": "套",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            },
+            {
+              "section": "机电安装工程",
+              "row_number": 9,
+              "name": "变压器-2",
+              "unit": "套",
+              "value_original": "1",
+              "value": 1,
+              "remark": "",
+              "scope": "table_aggregate_not_single_map_object"
+            }
+          ],
+          "locator": {
+            "bboxes_px": [
+              [
+                2480,
+                1860,
+                3200,
+                3480
+              ],
+              [
+                3430,
+                1700,
+                4250,
+                2690
+              ]
+            ]
+          },
+          "association_status": "project_aggregate",
+          "duplicate_evidence_group": "printed-summary-pdf01-pdf02",
+          "do_not_sum_across_drawings": true
+        },
+        {
+          "title": "（分割二）验收明细表",
+          "unit": "公顷",
+          "columns": [
+            "地块号",
+            "乡镇名称",
+            "村名",
+            "所在图幅号",
+            "图斑号",
+            "整理前旱地0103",
+            "整理后水田0101",
+            "整理后旱地0103",
+            "合计",
+            "新增水田面积",
+            "备注"
+          ],
+          "rows": [
+            {
+              "地块号": "地块13",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042011",
+              "图斑号": "305",
+              "整理前旱地0103": "0.1421",
+              "整理后水田0101": null,
+              "整理后旱地0103": "0.1421",
+              "合计": "0.1421",
+              "新增水田面积": "0.0000",
+              "备注": ""
+            },
+            {
+              "地块号": "地块16",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010、H50G043010",
+              "图斑号": "574",
+              "整理前旱地0103": "5.6330",
+              "整理后水田0101": "2.7938",
+              "整理后旱地0103": "2.8392",
+              "合计": "5.6330",
+              "新增水田面积": "2.7938",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块17",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010、H50G043010",
+              "图斑号": "296",
+              "整理前旱地0103": "3.7892",
+              "整理后水田0101": "1.7271",
+              "整理后旱地0103": "2.0621",
+              "合计": "3.7892",
+              "新增水田面积": "1.7271",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块19",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042011",
+              "图斑号": "318",
+              "整理前旱地0103": "3.0437",
+              "整理后水田0101": "1.6157",
+              "整理后旱地0103": "1.4280",
+              "合计": "3.0437",
+              "新增水田面积": "1.6157",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块25",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "211",
+              "整理前旱地0103": "0.9808",
+              "整理后水田0101": "0.8885",
+              "整理后旱地0103": "0.0923",
+              "合计": "0.9808",
+              "新增水田面积": "0.8885",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块31",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042011",
+              "图斑号": "568",
+              "整理前旱地0103": "9.1439",
+              "整理后水田0101": "3.2412",
+              "整理后旱地0103": "5.9027",
+              "合计": "9.1439",
+              "新增水田面积": "3.2412",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块34",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "98",
+              "整理前旱地0103": "1.0432",
+              "整理后水田0101": "0.2827",
+              "整理后旱地0103": "0.7605",
+              "合计": "1.0432",
+              "新增水田面积": "0.2827",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块35",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042011",
+              "图斑号": "96",
+              "整理前旱地0103": "2.2036",
+              "整理后水田0101": "0.9823",
+              "整理后旱地0103": "1.2213",
+              "合计": "2.2036",
+              "新增水田面积": "0.9823",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块36",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "673",
+              "整理前旱地0103": "0.3466",
+              "整理后水田0101": null,
+              "整理后旱地0103": "0.3466",
+              "合计": "0.3466",
+              "新增水田面积": "0.0000",
+              "备注": ""
+            },
+            {
+              "地块号": "地块40",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042011",
+              "图斑号": "67",
+              "整理前旱地0103": "1.0896",
+              "整理后水田0101": "0.5659",
+              "整理后旱地0103": "0.5237",
+              "合计": "1.0896",
+              "新增水田面积": "0.5659",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块41",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "63、673",
+              "整理前旱地0103": "2.9287",
+              "整理后水田0101": "1.0993",
+              "整理后旱地0103": "1.8294",
+              "合计": "2.9287",
+              "新增水田面积": "1.0993",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块42",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "690",
+              "整理前旱地0103": "0.7118",
+              "整理后水田0101": "0.5275",
+              "整理后旱地0103": "0.1843",
+              "合计": "0.7118",
+              "新增水田面积": "0.5275",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块43",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "57",
+              "整理前旱地0103": "1.2734",
+              "整理后水田0101": "0.7112",
+              "整理后旱地0103": "0.5622",
+              "合计": "1.2734",
+              "新增水田面积": "0.7112",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块44",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "692",
+              "整理前旱地0103": "1.7328",
+              "整理后水田0101": "0.9386",
+              "整理后旱地0103": "0.7942",
+              "合计": "1.7328",
+              "新增水田面积": "0.9386",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块45",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "704",
+              "整理前旱地0103": "1.7692",
+              "整理后水田0101": "1.4892",
+              "整理后旱地0103": "0.2800",
+              "合计": "1.7692",
+              "新增水田面积": "1.4892",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块46",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "28",
+              "整理前旱地0103": "0.2248",
+              "整理后水田0101": "0.1662",
+              "整理后旱地0103": "0.0586",
+              "合计": "0.2248",
+              "新增水田面积": "0.1662",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块47",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "28",
+              "整理前旱地0103": "1.1742",
+              "整理后水田0101": "0.9300",
+              "整理后旱地0103": "0.2442",
+              "合计": "1.1742",
+              "新增水田面积": "0.9300",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块48",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "22",
+              "整理前旱地0103": "2.2593",
+              "整理后水田0101": "1.8001",
+              "整理后旱地0103": "0.4592",
+              "合计": "2.2593",
+              "新增水田面积": "1.8001",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块49",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "10",
+              "整理前旱地0103": "2.9865",
+              "整理后水田0101": "2.5905",
+              "整理后旱地0103": "0.3960",
+              "合计": "2.9865",
+              "新增水田面积": "2.5905",
+              "备注": "分割二"
+            },
+            {
+              "地块号": "地块52",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "202",
+              "整理前旱地0103": "0.6567",
+              "整理后水田0101": null,
+              "整理后旱地0103": "0.6567",
+              "合计": "0.6567",
+              "新增水田面积": "0.0000",
+              "备注": ""
+            },
+            {
+              "地块号": "地块53",
+              "乡镇名称": "梁子镇",
+              "村名": "沙湾村",
+              "所在图幅号": "H50G042010",
+              "图斑号": "202",
+              "整理前旱地0103": "0.9862",
+              "整理后水田0101": "0.8060",
+              "整理后旱地0103": "0.1802",
+              "合计": "0.9862",
+              "新增水田面积": "0.8060",
+              "备注": "分割二"
+            }
+          ],
+          "merged_cells": {
+            "建设规模": "90.2228",
+            "建设规模（分割一）": "45.7153",
+            "建设规模（分割二）": "44.5075"
+          },
+          "totals_original": {
+            "整理前旱地": "44.1193",
+            "整理后水田": "23.1558",
+            "整理后旱地": "20.96349",
+            "合计": "44.1193",
+            "新增水田面积": "23.15581"
+          },
+          "locator": {
+            "bbox_px": [
+              3650,
+              2800,
+              4400,
+              3240
+            ]
+          },
+          "association_status": "cadastral_table_not_linked_to_L_M_X_map_ids",
+          "do_not_sum_across_drawings": true
+        }
+      ],
+      "coverage": {
+        "reviewed_regions": [
+          {
+            "name": "工程数量表主表",
+            "bbox_px": [
+              2480,
+              1860,
+              3200,
+              3480
+            ]
+          },
+          {
+            "name": "工程数量表续表",
+            "bbox_px": [
+              3430,
+              1700,
+              4250,
+              2690
+            ]
+          },
+          {
+            "name": "验收面积表",
+            "bbox_px": [
+              3650,
+              2800,
+              4400,
+              3240
+            ]
+          },
+          {
+            "name": "新屋湾D/X区域",
+            "bbox_px": [
+              2700,
+              690,
+              3940,
+              1680
+            ]
+          },
+          {
+            "name": "M区域",
+            "bbox_px": [
+              650,
+              1580,
+              2380,
+              2800
+            ]
+          },
+          {
+            "name": "图例",
+            "bbox_px": [
+              0,
+              3240,
+              860,
+              3536
+            ]
+          },
+          {
+            "name": "西北清11至清14水面",
+            "bbox_px": [
+              350,
+              1050,
+              820,
+              1690
+            ]
+          },
+          {
+            "name": "北部孤立树木地块",
+            "bbox_px": [
+              1850,
+              0,
+              2350,
+              330
+            ]
+          },
+          {
+            "name": "停车场独立地块",
+            "bbox_px": [
+              1830,
+              1510,
+              1990,
+              1680
+            ]
+          }
+        ],
+        "unresolved": [
+          {
+            "category": "密集设施点位",
+            "reason": "太阳能智能闸、进排PVC涵、波纹管、水泥过路涵、下田步、检查井、沉沙池等未逐个圈定与计数；同名重复出现须各自保留。"
+          },
+          {
+            "category": "尺寸与口径",
+            "reason": "黑色标注300-/400-/500-/600-/800-没有在每个引线中明确单位，未补猜毫米；完整引线终点与对象归属待矢量核查。"
+          },
+          {
+            "category": "田块编号及粉色数字框",
+            "reason": "已有地图编号可见，但数字框含平-编号与小数，量纲未明，不当面积或高程自动采纳；未逐框补录。"
+          },
+          {
+            "category": "几何与地类",
+            "reason": "图例已录类别，未逐边界矢量化、未统计各地类面积；像素不是CRS。"
+          },
+          {
+            "category": "表格字符",
+            "reason": "人工转录工程量行完整保留121行；个别工程名称字形仍应对原PDF高倍率复核。面积表总计20.96349/23.15581按可见原文保留，未强行舍入或使和数一致。"
+          }
+        ]
+      },
+      "notes": [
+        "人工视觉转录；不是完成全部OCR。像素定位是5000×3536 landscape图上的审阅框，不是地理坐标。",
+        "图例是符号类别目录，不能证明图面每类均存在。",
+        "表格总量保持原文及小数，不关联单一设施；重复名称不合并。",
+        "native-annotations.json存在实际乱码，无法作为完整中文文字证据。",
+        "图签可见测图比例尺1:1000、打印比例尺1:4000、制图日期2025.11；不以图签比例直接建立地理坐标。",
+        "measurement的bbox为人工近似注记检索范围，需在原图复核，不作为精确对象包围盒。",
+        "北部孤立地块树木说明可见“楠树地径（10-15cm）”字形需复核，不把范围值转为单值。",
+        "M区域包含湿地驿站、不动工区、旱地M16—M19、停车场等；西北清11—清14与主种植区空间分离。",
+        "重复印刷工程汇总和验收明细表仅是证据重复，不相加。"
+      ],
+      "id": "pdf-02"
+    }
+  ]
+}

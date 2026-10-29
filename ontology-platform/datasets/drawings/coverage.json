@@ -1,0 +1,725 @@
+{
+  "source_drawings": 5,
+  "features": 163,
+  "features_by_kind": {
+    "field": 100,
+    "unresolved_label": 1,
+    "pond": 20,
+    "road": 17,
+    "channel": 5,
+    "facility_annotation": 20
+  },
+  "annotations": 6713,
+  "annotation_types": {
+    "native_text": 714,
+    "legend": 222,
+    "measurements": 65,
+    "table": 9,
+    "table_row": 632,
+    "background_categories": 23,
+    "region_labels": 56,
+    "ocr_candidate": 4992
+  },
+  "semantic_complete": false,
+  "georeferencing_complete": false,
+  "source_location": "farm originals; upload location not independently confirmed",
+  "reviews": [
+    {
+      "drawing_id": "pdf-01",
+      "coverage": {
+        "reviewed_regions": [
+          {
+            "name": "工程数量表主表",
+            "bbox_px": [
+              0,
+              0,
+              800,
+              1850
+            ]
+          },
+          {
+            "name": "工程数量表续表",
+            "bbox_px": [
+              950,
+              100,
+              1650,
+              900
+            ]
+          },
+          {
+            "name": "面积表",
+            "bbox_px": [
+              2400,
+              250,
+              3650,
+              1050
+            ]
+          },
+          {
+            "name": "图例",
+            "bbox_px": [
+              0,
+              3170,
+              1050,
+              3536
+            ]
+          },
+          {
+            "name": "L区主图",
+            "bbox_px": [
+              750,
+              1350,
+              2900,
+              3170
+            ]
+          },
+          {
+            "name": "清17水面及连接线路",
+            "bbox_px": [
+              2750,
+              1450,
+              3520,
+              2800
+            ]
+          },
+          {
+            "name": "图签",
+            "bbox_px": [
+              2660,
+              3200,
+              3720,
+              3536
+            ]
+          }
+        ],
+        "unresolved": [
+          {
+            "category": "密集设施点位",
+            "reason": "太阳能智能闸、进排PVC涵、波纹管、水泥过路涵、下田步、检查井、沉沙池等未逐个圈定与计数；同名重复出现须各自保留。"
+          },
+          {
+            "category": "尺寸与口径",
+            "reason": "黑色标注300-/400-/500-/600-/800-没有在每个引线中明确单位，未补猜毫米；完整引线终点与对象归属待矢量核查。"
+          },
+          {
+            "category": "田块编号及粉色数字框",
+            "reason": "已有地图编号可见，但数字框含平-编号与小数，量纲未明，不当面积或高程自动采纳；未逐框补录。"
+          },
+          {
+            "category": "几何与地类",
+            "reason": "图例已录类别，未逐边界矢量化、未统计各地类面积；像素不是CRS。"
+          },
+          {
+            "category": "表格字符",
+            "reason": "人工转录工程量行完整保留121行；个别工程名称字形仍应对原PDF高倍率复核。面积表总计20.96349/23.15581按可见原文保留，未强行舍入或使和数一致。"
+          }
+        ]
+      },
+      "notes": [
+        "人工视觉转录；不是完成全部OCR。像素定位是5000×3536 landscape图上的审阅框，不是地理坐标。",
+        "图例是符号类别目录，不能证明图面每类均存在。",
+        "表格总量保持原文及小数，不关联单一设施；重复名称不合并。",
+        "native-annotations.json存在实际乱码，无法作为完整中文文字证据。",
+        "图签可见测图比例尺1:1000、打印比例尺1:4000、制图日期2025.11；不以图签比例直接建立地理坐标。",
+        "measurement的bbox为人工近似注记检索范围，需在原图复核，不作为精确对象包围盒。",
+        "400波纹管图面42m与同名表格133.00m/98.20m冲突；不覆盖。排水沟I型图号11/12与表号5/6不一致，不自动关联。",
+        "同一幅图两块预留用地均标9.81亩，保留两个空间实例。",
+        "清15、清16、清17为水面标识；图中不动工区和预留用地区也必须保留。"
+      ],
+      "review_limitations": []
+    },
+    {
+      "drawing_id": "pdf-02",
+      "coverage": {
+        "reviewed_regions": [
+          {
+            "name": "工程数量表主表",
+            "bbox_px": [
+              2480,
+              1860,
+              3200,
+              3480
+            ]
+          },
+          {
+            "name": "工程数量表续表",
+            "bbox_px": [
+              3430,
+              1700,
+              4250,
+              2690
+            ]
+          },
+          {
+            "name": "验收面积表",
+            "bbox_px": [
+              3650,
+              2800,
+              4400,
+              3240
+            ]
+          },
+          {
+            "name": "新屋湾D/X区域",
+            "bbox_px": [
+              2700,
+              690,
+              3940,
+              1680
+            ]
+          },
+          {
+            "name": "M区域",
+            "bbox_px": [
+              650,
+              1580,
+              2380,
+              2800
+            ]
+          },
+          {
+            "name": "图例",
+            "bbox_px": [
+              0,
+              3240,
+              860,
+              3536
+            ]
+          },
+          {
+            "name": "西北清11至清14水面",
+            "bbox_px": [
+              350,
+              1050,
+              820,
+              1690
+            ]
+          },
+          {
+            "name": "北部孤立树木地块",
+            "bbox_px": [
+              1850,
+              0,
+              2350,
+              330
+            ]
+          },
+          {
+            "name": "停车场独立地块",
+            "bbox_px": [
+              1830,
+              1510,
+              1990,
+              1680
+            ]
+          }
+        ],
+        "unresolved": [
+          {
+            "category": "密集设施点位",
+            "reason": "太阳能智能闸、进排PVC涵、波纹管、水泥过路涵、下田步、检查井、沉沙池等未逐个圈定与计数；同名重复出现须各自保留。"
+          },
+          {
+            "category": "尺寸与口径",
+            "reason": "黑色标注300-/400-/500-/600-/800-没有在每个引线中明确单位，未补猜毫米；完整引线终点与对象归属待矢量核查。"
+          },
+          {
+            "category": "田块编号及粉色数字框",
+            "reason": "已有地图编号可见，但数字框含平-编号与小数，量纲未明，不当面积或高程自动采纳；未逐框补录。"
+          },
+          {
+            "category": "几何与地类",
+            "reason": "图例已录类别，未逐边界矢量化、未统计各地类面积；像素不是CRS。"
+          },
+          {
+            "category": "表格字符",
+            "reason": "人工转录工程量行完整保留121行；个别工程名称字形仍应对原PDF高倍率复核。面积表总计20.96349/23.15581按可见原文保留，未强行舍入或使和数一致。"
+          }
+        ]
+      },
+      "notes": [
+        "人工视觉转录；不是完成全部OCR。像素定位是5000×3536 landscape图上的审阅框，不是地理坐标。",
+        "图例是符号类别目录，不能证明图面每类均存在。",
+        "表格总量保持原文及小数，不关联单一设施；重复名称不合并。",
+        "native-annotations.json存在实际乱码，无法作为完整中文文字证据。",
+        "图签可见测图比例尺1:1000、打印比例尺1:4000、制图日期2025.11；不以图签比例直接建立地理坐标。",
+        "measurement的bbox为人工近似注记检索范围，需在原图复核，不作为精确对象包围盒。",
+        "北部孤立地块树木说明可见“楠树地径（10-15cm）”字形需复核，不把范围值转为单值。",
+        "M区域包含湿地驿站、不动工区、旱地M16—M19、停车场等；西北清11—清14与主种植区空间分离。",
+        "重复印刷工程汇总和验收明细表仅是证据重复，不相加。"
+      ],
+      "review_limitations": []
+    },
+    {
+      "drawing_id": "pdf-03",
+      "coverage": {
+        "reviewed_regions": [
+          {
+            "name": "西侧工程表",
+            "bbox_px": [
+              0,
+              0,
+              595,
+              2070
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "北侧村落田地高程",
+            "bbox_px": [
+              595,
+              0,
+              3080,
+              730
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "Z1-Z8施工区及西侧泵塘",
+            "bbox_px": [
+              590,
+              730,
+              2370,
+              2160
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "东南背景塘藕地高程",
+            "bbox_px": [
+              1800,
+              730,
+              3080,
+              3070
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "面积表",
+            "bbox_px": [
+              2150,
+              470,
+              2990,
+              950
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "图例图签",
+            "bbox_px": [
+              0,
+              3070,
+              3080,
+              3536
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          }
+        ],
+        "unresolved": [
+          {
+            "category": "工程表文字",
+            "detail": "可辨工程表已转录；个别名称备注及数字需原PDF二审，不能称无遗漏。",
+            "bbox_px": [
+              0,
+              0,
+              595,
+              2070
+            ]
+          },
+          {
+            "category": "设施与尺寸",
+            "detail": "尚未逐线逐点关联全部标注；重叠文字、引线及管线尺寸需继续核对。",
+            "bbox_px": [
+              0,
+              0,
+              5000,
+              3536
+            ]
+          },
+          {
+            "category": "矢量几何",
+            "detail": "未提取完整点线面几何，像素截图不能替代实测坐标。",
+            "bbox_px": [
+              0,
+              0,
+              5000,
+              3536
+            ]
+          },
+          {
+            "category": "面积表",
+            "detail": "21个地块行、合计行和合并规模单元格已录入。完整项目标题小字尚未逐字确认；表中地块/图斑与实际图面田块未建立可验证关联，不能据同名合并。",
+            "bbox_px": [
+              2150,
+              470,
+              2990,
+              950
+            ]
+          },
+          {
+            "category": "背景高程及地物",
+            "detail": "灰色高程点、建筑、坟地、塘、藕地、边界未逐个编号与数字化；彩色田块不是全部对象。",
+            "bbox_px": [
+              0,
+              0,
+              3080,
+              3070
+            ]
+          }
+        ],
+        "complete": false
+      },
+      "notes": [
+        "像素以5000×3536横置PNG左上为原点；bbox用于证据定位，不是地理坐标。",
+        "真实竣工图视觉复核，非现场验收。图例存在不证明有相应设施实例。",
+        "未验证CRS和高程基准；不转换经纬度。",
+        "不按同名合并，不将工程表总量当单图实例数。",
+        "DN/φ未标单位不自动补毫米；田块括号值不自动当面积或高程。",
+        "pdf-03和pdf-04表为同项目汇总，不能累加。",
+        "面积明细表于本次逐图放大复核补录；保留公顷单位、空白和跨行合并格，未据其他图补写模糊单元格。"
+      ],
+      "review_limitations": [
+        "bbox为人工粗定位，需根据原始PNG复核；不能作为对象精确边界。",
+        "304行是三张表的证据记录数，包含重复项目表；不代表304个设施。",
+        "表格单位按可辨原文录入；图中φ/DN无明示单位的值保持null。"
+      ]
+    },
+    {
+      "drawing_id": "pdf-04",
+      "coverage": {
+        "reviewed_regions": [
+          {
+            "name": "西侧工程表上下续表",
+            "bbox_px": [
+              0,
+              0,
+              725,
+              2600
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "T1-T3村落背景",
+            "bbox_px": [
+              725,
+              0,
+              3750,
+              2050
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "T4-T5道路沉沙池",
+            "bbox_px": [
+              650,
+              1950,
+              2300,
+              3070
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "东侧藕鱼塘地形",
+            "bbox_px": [
+              2000,
+              1000,
+              3750,
+              3030
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "面积表",
+            "bbox_px": [
+              2750,
+              1200,
+              3530,
+              1660
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "图例图签",
+            "bbox_px": [
+              0,
+              3020,
+              3750,
+              3536
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          }
+        ],
+        "unresolved": [
+          {
+            "category": "工程表文字",
+            "detail": "可辨工程表已转录；个别名称备注及数字需原PDF二审，不能称无遗漏。",
+            "bbox_px": [
+              0,
+              0,
+              725,
+              2600
+            ]
+          },
+          {
+            "category": "设施与尺寸",
+            "detail": "尚未逐线逐点关联全部标注；重叠文字、引线及管线尺寸需继续核对。",
+            "bbox_px": [
+              0,
+              0,
+              5000,
+              3536
+            ]
+          },
+          {
+            "category": "矢量几何",
+            "detail": "未提取完整点线面几何，像素截图不能替代实测坐标。",
+            "bbox_px": [
+              0,
+              0,
+              5000,
+              3536
+            ]
+          },
+          {
+            "category": "面积表",
+            "detail": "21个地块行、合计行和合并规模单元格已录入。完整项目标题小字尚未逐字确认；表中地块/图斑与实际图面田块未建立可验证关联，不能据同名合并。",
+            "bbox_px": [
+              2750,
+              1200,
+              3530,
+              1660
+            ]
+          },
+          {
+            "category": "背景高程及地物",
+            "detail": "灰色高程点、建筑、坟地、塘、藕地、边界未逐个编号与数字化；彩色田块不是全部对象。",
+            "bbox_px": [
+              0,
+              0,
+              3750,
+              3070
+            ]
+          }
+        ],
+        "complete": false
+      },
+      "notes": [
+        "像素以5000×3536横置PNG左上为原点；bbox用于证据定位，不是地理坐标。",
+        "真实竣工图视觉复核，非现场验收。图例存在不证明有相应设施实例。",
+        "未验证CRS和高程基准；不转换经纬度。",
+        "不按同名合并，不将工程表总量当单图实例数。",
+        "DN/φ未标单位不自动补毫米；田块括号值不自动当面积或高程。",
+        "pdf-03和pdf-04表为同项目汇总，不能累加。",
+        "面积明细表于本次逐图放大复核补录；保留公顷单位、空白和跨行合并格，未据其他图补写模糊单元格。"
+      ],
+      "review_limitations": [
+        "bbox为人工粗定位，需根据原始PNG复核；不能作为对象精确边界。",
+        "304行是三张表的证据记录数，包含重复项目表；不代表304个设施。",
+        "表格单位按可辨原文录入；图中φ/DN无明示单位的值保持null。"
+      ]
+    },
+    {
+      "drawing_id": "pdf-05",
+      "coverage": {
+        "reviewed_regions": [
+          {
+            "name": "工程汇总表",
+            "bbox_px": [
+              0,
+              350,
+              650,
+              1790
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "F区占补已验收地块",
+            "bbox_px": [
+              350,
+              450,
+              2150,
+              2650
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "A区及清1清2塘",
+            "bbox_px": [
+              1900,
+              700,
+              3000,
+              1850
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "B区及清3至清5塘",
+            "bbox_px": [
+              2200,
+              1750,
+              3200,
+              2820
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "C区占补区域",
+            "bbox_px": [
+              2850,
+              1200,
+              4340,
+              2350
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "D1及E区南端",
+            "bbox_px": [
+              3350,
+              1990,
+              4900,
+              3200
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          },
+          {
+            "name": "图例图签比例文字",
+            "bbox_px": [
+              0,
+              3200,
+              5000,
+              3536
+            ],
+            "review_depth": "visual_category_and_selected_text_review_not_exhaustive_digitization"
+          }
+        ],
+        "unresolved": [
+          {
+            "category": "工程表文字",
+            "detail": "可辨工程表已转录；个别名称备注及数字需原PDF二审，不能称无遗漏。",
+            "bbox_px": [
+              0,
+              350,
+              650,
+              1790
+            ]
+          },
+          {
+            "category": "设施与尺寸",
+            "detail": "尚未逐线逐点关联全部标注；重叠文字、引线及管线尺寸需继续核对。",
+            "bbox_px": [
+              0,
+              0,
+              5000,
+              3536
+            ]
+          },
+          {
+            "category": "矢量几何",
+            "detail": "未提取完整点线面几何，像素截图不能替代实测坐标。",
+            "bbox_px": [
+              0,
+              0,
+              5000,
+              3536
+            ]
+          },
+          {
+            "category": "占补与工程区边界",
+            "detail": "F区与C/B/E区占补已验收地块需逐面界定；F5-1和F9-1不得按同名合并。",
+            "bbox_px": [
+              350,
+              450,
+              4900,
+              3200
+            ]
+          }
+        ],
+        "complete": false
+      },
+      "notes": [
+        "像素以5000×3536横置PNG左上为原点；bbox用于证据定位，不是地理坐标。",
+        "真实竣工图视觉复核，非现场验收。图例存在不证明有相应设施实例。",
+        "未验证CRS和高程基准；不转换经纬度。",
+        "不按同名合并，不将工程表总量当单图实例数。",
+        "DN/φ未标单位不自动补毫米；田块括号值不自动当面积或高程。",
+        "pdf-03和pdf-04表为同项目汇总，不能累加。",
+        "图中比例文字1:2000与图签测图1:1000、打印1:4000并存，未据比例反算GIS坐标。",
+        "图签日期pdf-03为2025.11、pdf-04为2026.6、pdf-05为2024.12。"
+      ],
+      "review_limitations": [
+        "bbox为人工粗定位，需根据原始PNG复核；不能作为对象精确边界。",
+        "304行是三张表的证据记录数，包含重复项目表；不代表304个设施。",
+        "表格单位按可辨原文录入；图中φ/DN无明示单位的值保持null。"
+      ]
+    }
+  ],
+  "ocr": {
+    "status": "all_tiles_processed_unverified",
+    "source_sha256": "17ed94dc8510e85ca4af9e22219265306ad7822453c08f4380504a36abb28295",
+    "drawings": [
+      {
+        "drawing_id": "pdf-01",
+        "coverage": {
+          "all_tiles_succeeded": true,
+          "planned_tiles": 12,
+          "attempted_tiles": 12,
+          "semantic_complete": false,
+          "note": "Tile coverage is not proof of complete text recognition."
+        },
+        "candidates": 1046
+      },
+      {
+        "drawing_id": "pdf-02",
+        "coverage": {
+          "all_tiles_succeeded": true,
+          "planned_tiles": 12,
+          "attempted_tiles": 12,
+          "semantic_complete": false,
+          "note": "Tile coverage is not proof of complete text recognition."
+        },
+        "candidates": 955
+      },
+      {
+        "drawing_id": "pdf-03",
+        "coverage": {
+          "all_tiles_succeeded": true,
+          "planned_tiles": 12,
+          "attempted_tiles": 12,
+          "semantic_complete": false,
+          "note": "Tile coverage is not proof of complete text recognition."
+        },
+        "candidates": 1269
+      },
+      {
+        "drawing_id": "pdf-04",
+        "coverage": {
+          "all_tiles_succeeded": true,
+          "planned_tiles": 12,
+          "attempted_tiles": 12,
+          "semantic_complete": false,
+          "note": "Tile coverage is not proof of complete text recognition."
+        },
+        "candidates": 1011
+      },
+      {
+        "drawing_id": "pdf-05",
+        "coverage": {
+          "all_tiles_succeeded": true,
+          "planned_tiles": 12,
+          "attempted_tiles": 12,
+          "semantic_complete": false,
+          "note": "Tile coverage is not proof of complete text recognition."
+        },
+        "candidates": 711
+      }
+    ]
+  },
+  "unresolved": [
+    "Not all background buildings, ponds, land cover and elevation points have individual vector features.",
+    "CAD outlined text and OCR candidates require per-label human verification and explicit feature association.",
+    "No common surveyed control points, horizontal CRS or vertical datum; five sheets must not be stitched as surveyed geography.",
+    "Engineering table totals and drawing labels can differ; preserve conflicts rather than average or overwrite.",
+    "Ledger planting area has no stated unit; no conversion to mu or square metres."
+  ]
+}

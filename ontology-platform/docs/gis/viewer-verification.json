@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "source": "offline SQLite mirror; not production auth acceptance",
+  "drawings": [
+    {
+      "drawing_id": "pdf-01",
+      "features": 38
+    },
+    {
+      "drawing_id": "pdf-02",
+      "features": 49
+    },
+    {
+      "drawing_id": "pdf-03",
+      "features": 16
+    },
+    {
+      "drawing_id": "pdf-04",
+      "features": 9
+    },
+    {
+      "drawing_id": "pdf-05",
+      "features": 51
+    }
+  ],
+  "browser_errors": []
+}

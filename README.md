@@ -1,5 +1,7 @@
 # 梁子湖农业本体数据库
 
+2026-10-29 更新：已增加[五份竣工图 GIS 数据与地图接口](ontology-platform/docs/gis/drawings.md)，保存田块、塘面、路渠、标注及工程表证据，提供版本化读取API和核对预览。当前仍有OCR逐条校验、背景矢量化和地理配准缺口，不构成无遗漏提取或现场验收。
+
 ## 2026-10-23 多库本体平台交付
 
 本次已审查成果同步在 [ontology-platform](ontology-platform/README.md)。数据库、后端和前端分别位于该目录下的 [database](ontology-platform/database/README.md)、[backend](ontology-platform/backend/README.md) 和 [frontend](ontology-platform/frontend/README.md)；原有 implementation 工程和历史资料继续保留。本次同步不执行旧系统迁移，不改变其运行数据。

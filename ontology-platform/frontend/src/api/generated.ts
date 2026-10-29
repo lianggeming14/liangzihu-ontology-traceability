@@ -568,6 +568,91 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/drawing-gis/annotations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Annotations */
+        get: operations["listDrawingAnnotations"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/drawing-gis/coverage": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Coverage */
+        get: operations["getDrawingCoverage"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/drawing-gis/drawings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Drawings */
+        get: operations["listDrawingSheets"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/drawing-gis/features": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Features */
+        get: operations["listDrawingFeatures"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/drawing-gis/features/{identifier}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Feature */
+        get: operations["getDrawingFeature"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/geometry": {
         parameters: {
             query?: never;
@@ -3489,6 +3574,101 @@ export interface components {
             term_iris: string[];
             /** Title */
             title: string;
+        };
+        /** DrawingAnnotationPage */
+        DrawingAnnotationPage: {
+            /** Content Sha256 */
+            content_sha256: string;
+            /** Dataset Id */
+            dataset_id: string;
+            /** Items */
+            items: {
+                [key: string]: unknown;
+            }[];
+            /** Next Cursor */
+            next_cursor: string | null;
+            /** Version */
+            version: number;
+        };
+        /** DrawingDirectory */
+        DrawingDirectory: {
+            /** Content Sha256 */
+            content_sha256: string;
+            /** Dataset Id */
+            dataset_id: string;
+            /** Items */
+            items: {
+                [key: string]: unknown;
+            }[];
+            /** Version */
+            version: number;
+        };
+        /** DrawingFeature */
+        DrawingFeature: {
+            /** Area M2 */
+            area_m2?: null;
+            /**
+             * Data Nature
+             * @constant
+             */
+            data_nature: "imported_unverified";
+            /** Drawing Id */
+            drawing_id: string;
+            /** Entity Id */
+            entity_id: string | null;
+            /** Feature Id */
+            feature_id: string;
+            /** Geometry */
+            geometry: {
+                [key: string]: unknown;
+            };
+            /** Kind */
+            kind: string;
+            /** Label */
+            label: string;
+            /** Length M */
+            length_m?: null;
+        } & {
+            [key: string]: unknown;
+        };
+        /** DrawingFeaturePage */
+        DrawingFeaturePage: {
+            /** Bbox Filter */
+            bbox_filter: string;
+            /** Content Sha256 */
+            content_sha256: string;
+            /**
+             * Coordinate System
+             * @default PDF_LANDSCAPE_LOCAL
+             * @constant
+             */
+            coordinate_system: "PDF_LANDSCAPE_LOCAL";
+            /**
+             * Coordinate Units
+             * @default pt
+             * @constant
+             */
+            coordinate_units: "pt";
+            /** Dataset Id */
+            dataset_id: string;
+            /** Features */
+            features: components["schemas"]["DrawingFeature"][];
+            /**
+             * Georeferenced
+             * @default false
+             * @constant
+             */
+            georeferenced: false;
+            /** Next Cursor */
+            next_cursor: string | null;
+            /**
+             * Type
+             * @default DrawingFeaturePage
+             * @constant
+             */
+            type: "DrawingFeaturePage";
+            /** Version */
+            version: number;
         };
         /** EvidenceCreate */
         EvidenceCreate: {
@@ -8325,6 +8505,145 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["RulingView"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    listDrawingAnnotations: {
+        parameters: {
+            query?: {
+                drawing_id?: string | null;
+                limit?: number;
+                cursor?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DrawingAnnotationPage"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    getDrawingCoverage: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    listDrawingSheets: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DrawingDirectory"];
+                };
+            };
+        };
+    };
+    listDrawingFeatures: {
+        parameters: {
+            query?: {
+                drawing_id?: string | null;
+                kind?: string | null;
+                bbox?: string | null;
+                limit?: number;
+                cursor?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DrawingFeaturePage"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    getDrawingFeature: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                identifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DrawingFeature"];
                 };
             };
             /** @description Validation Error */

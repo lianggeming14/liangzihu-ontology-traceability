@@ -1,0 +1,51 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>梁子湖 · 图纸 GIS 核对</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#edf2ef;color:#18362d;font:15px system-ui,"Microsoft YaHei",sans-serif}header{padding:20px 28px;background:#163c32;color:#fff;display:flex;align-items:center;justify-content:space-between}h1{font-size:22px;margin:0 0 6px}header p{margin:0;color:#bcd3c8;font-size:13px}select,button,input{font:inherit;border:1px solid #b8c9c0;border-radius:5px;padding:9px;background:white;color:#173a2e}nav{display:flex;gap:12px;padding:14px 28px;align-items:center;flex-wrap:wrap}main{display:grid;grid-template-columns:1fr 360px;height:calc(100vh - 164px);gap:16px;padding:0 24px 20px}#map{width:100%;height:100%;background:#fff;border:1px solid #c7d5cc;touch-action:none}aside{background:#fff;padding:18px;overflow:auto;border:1px solid #c7d5cc}aside h2{font-size:18px}#status{font-size:13px;color:#557064}.feature{cursor:pointer;vector-effect:non-scaling-stroke;stroke-width:1.2}.feature:hover,.selected{stroke:#e04422!important;stroke-width:3}.label{font:7px system-ui;pointer-events:none;fill:#214233}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.5 system-ui;color:#405c50}#evidence-list{max-height:320px;overflow:auto}#evidence-list button{display:block;width:100%;text-align:left;margin:4px 0;font-size:12px}small{color:#678376}@media(max-width:900px){main{grid-template-columns:1fr;height:auto}#map{height:65vh}aside{max-height:65vh}}
+</style>
+<header><div><h1>梁子湖 · 图纸 GIS 核对</h1><p>原图轮廓与本体身份 · 五份独立图纸 · 数据来源可追查</p></div><small style="color:#d0e4d8">图纸空间 / pt<br>尚未完成地理配准</small></header>
+<nav><select id="sheet" aria-label="选择图纸"></select><select id="kind" aria-label="要素类别"><option value="">全部要素</option><option value="field">田块</option><option value="pond">塘面</option><option value="road">道路</option><option value="channel">沟渠</option><option value="facility_annotation">设施标注</option><option value="unresolved_label">待核对标签</option></select><button id="fit">恢复全图</button><span id="status">正在读取 GIS 数据…</span></nav>
+<main><svg id="map" aria-label="竣工图空间要素" role="img"></svg><aside><h2 id="selection">选择要素查看档案</h2><p id="summary">滚轮缩放，拖动平移。长度、面积和高程以带单位的原文证据为准。</p><pre id="details"></pre><h2>图纸证据</h2><input id="search" placeholder="筛选标注、工程量或尺寸" aria-label="筛选证据"><div id="evidence-list"></div><pre id="evidence"></pre><h2>完整性与待核验项</h2><pre id="coverage"></pre></aside></main>
+<script type="module">
+import{fetchAll}from './adapter.mjs';
+const $=id=>document.getElementById(id),base='/api/v1/drawing-gis',svg=$('map'),ns='http://www.w3.org/2000/svg';
+let sheets=[],features=[],annotations=[],generation=0,box=[0,0,1700,1200],drag=null,snapshot=null,evidencePage=0;
+const colors={field:'#d9e8a4',pond:'#89d6e4',road:'#d57d56',channel:'#42b7bf',facility_annotation:'#bc5c96',unresolved_label:'#edb94a'};
+function view(){svg.setAttribute('viewBox',box.join(' '));}
+function fit(){const s=sheets.find(d=>d.drawing_id===$('sheet').value);box=[0,0,...s.page_size_pt];view();}
+function node(name,attrs){const n=document.createElementNS(ns,name);for(const[k,v]of Object.entries(attrs))n.setAttribute(k,v);return n;}
+function draw(){svg.replaceChildren();for(const f of features){const g=f.geometry;let n,points=g.type==='Point'?[g.coordinates]:g.type==='Polygon'?g.coordinates[0]:g.coordinates;
+ if(g.type==='Polygon')n=node('path',{d:g.coordinates.map(r=>'M'+r.map(p=>p.join(',')).join(' L')+' Z').join(' '),'fill-rule':'evenodd'});
+ else if(g.type==='LineString')n=node('polyline',{points:points.map(p=>p.join(',')).join(' ')});
+ else n=node('circle',{cx:points[0][0],cy:points[0][1],r:3});
+ n.setAttribute('class','feature');n.setAttribute('fill',g.type==='LineString'?'none':colors[f.kind]||'#c5cbd2');n.setAttribute('stroke',colors[f.kind]||'#596e62');
+ n.addEventListener('click',()=>{svg.querySelector('.selected')?.classList.remove('selected');n.classList.add('selected');$('selection').textContent=f.label;$('details').textContent=JSON.stringify({entity_id:f.entity_id,representation_id:f.feature_id,class_iri:f.class_iri,ledger_area:f.ledger_area,ground_area_m2:f.area_m2,source:f.source,identity_evidence:f.identity_evidence},null,2);});svg.append(n);
+ if(f.kind==='field'||f.kind==='pond'){const x=points.reduce((a,p)=>a+p[0],0)/points.length,y=points.reduce((a,p)=>a+p[1],0)/points.length,t=node('text',{x,y,'text-anchor':'middle',class:'label'});t.textContent=f.label;svg.append(t);}}
+}
+function evidenceList(){
+ const q=$('search').value.trim().toLowerCase(),rows=annotations.filter(a=>JSON.stringify(a).toLowerCase().includes(q)),pages=Math.max(1,Math.ceil(rows.length/100));
+ evidencePage=Math.min(evidencePage,pages-1);$('evidence-list').replaceChildren();
+ const controls=document.createElement('div'),previous=document.createElement('button'),next=document.createElement('button'),count=document.createElement('p');
+ count.textContent=`共 ${rows.length} 条证据 · 第 ${evidencePage+1}/${pages} 页`;
+ previous.textContent='上一页';previous.disabled=evidencePage===0;previous.onclick=()=>{evidencePage--;evidenceList();};
+ next.textContent='下一页';next.disabled=evidencePage===pages-1;next.onclick=()=>{evidencePage++;evidenceList();};
+ controls.append(count,previous,next);$('evidence-list').append(controls);
+ for(const a of rows.slice(evidencePage*100,(evidencePage+1)*100)){const b=document.createElement('button');b.textContent=a.text_original||a.evidence?.text_original||a.evidence?.label||a.evidence?.text||a.annotation_id;b.onclick=()=>{$('evidence').textContent=JSON.stringify(a,null,2);};$('evidence-list').append(b);}
+}
+async function load(){const token=++generation;try{
+ $('status').textContent='读取中…';const drawing_id=$('sheet').value,[fs,as]=await Promise.all([
+ fetchAll(base+'/features',{drawing_id,...($('kind').value?{kind:$('kind').value}:{})},fetch,{expectedDigest:snapshot}),
+ fetchAll(base+'/annotations',{drawing_id},fetch,{collection:'items',expectedDigest:snapshot})]);
+ if(token!==generation)return;features=fs;annotations=as;evidencePage=0;draw();fit();evidenceList();$('selection').textContent='选择要素查看档案';$('details').textContent='';$('evidence').textContent='';
+ $('status').textContent=`${features.length} 个空间表示 · ${annotations.length} 条证据 · 原图资料，非现场测绘验收`;
+ }catch(e){if(token!==generation)return;features=[];annotations=[];svg.replaceChildren();$('evidence-list').replaceChildren();$('details').textContent='';$('evidence').textContent='';$('status').textContent=e.message+'；请刷新重新读取同一版本。';}}
+$('sheet').onchange=load;$('kind').onchange=load;$('fit').onclick=fit;$('search').oninput=()=>{evidencePage=0;evidenceList();};
+svg.onwheel=e=>{e.preventDefault();const factor=e.deltaY>0?1.12:1/1.12;if(box[2]*factor<10||box[2]*factor>10000)return;const rect=svg.getBoundingClientRect(),x=(e.clientX-rect.left)/rect.width,y=(e.clientY-rect.top)/rect.height;box=[box[0]+box[2]*x*(1-factor),box[1]+box[3]*y*(1-factor),box[2]*factor,box[3]*factor];view();};
+svg.onpointerdown=e=>{drag={x:e.clientX,y:e.clientY,box:[...box]};e.target.setPointerCapture(e.pointerId);};svg.onpointermove=e=>{if(!drag)return;const rect=svg.getBoundingClientRect();box=[drag.box[0]-(e.clientX-drag.x)*box[2]/rect.width,drag.box[1]-(e.clientY-drag.y)*box[3]/rect.height,box[2],box[3]];view();};svg.onpointerup=()=>drag=null;
+try{const [r,c]=await Promise.all([fetch(base+'/drawings'),fetch(base+'/coverage')]);
+ if(!r.ok||!c.ok)throw Error('GIS服务不可用或没有查看权限');
+ const directory=await r.json(),coverage=await c.json();snapshot=directory.content_sha256;
+ if(!snapshot||snapshot!==coverage.content_sha256)throw Error('数据版本已变化，请刷新');
+ sheets=directory.items;$('coverage').textContent=JSON.stringify(coverage,null,2);
+ for(const s of sheets){const o=document.createElement('option');o.value=s.drawing_id;o.textContent=s.label||s.drawing_id;$('sheet').append(o);}await load();
+ }catch(e){$('status').textContent=e.message;}
+</script></html>
