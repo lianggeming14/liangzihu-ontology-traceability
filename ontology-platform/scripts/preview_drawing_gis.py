@@ -14,12 +14,14 @@ def main():
     from sqlalchemy import create_engine
     from lzo.gis.drawing_store import DrawingStore
     from lzo.gis.drawing_router import router,authorized_store
+    from lzo.gis.drawing_semantics_router import router as semantics_router
     import uvicorn
     import sqlite3
     engine=create_engine('sqlite://',creator=lambda:sqlite3.connect(a.offline.resolve().as_uri()+'?mode=ro',uri=True,check_same_thread=False))
     store=DrawingStore(engine);store.drawings()
     app=FastAPI(title='Reviewed drawing evidence - LOCAL OFFLINE PREVIEW')
     app.include_router(router)
+    app.include_router(semantics_router)
     # Only this explicit offline app serves the user-reviewed public evidence.
     # Production lzo.main always retains real current-session authorization.
     app.dependency_overrides[authorized_store]=lambda:store

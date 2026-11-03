@@ -4,11 +4,12 @@
 </style>
 <header><div><h1>梁子湖 · 图纸 GIS 核对</h1><p>原图轮廓与本体身份 · 五份独立图纸 · 数据来源可追查</p></div><small style="color:#d0e4d8">图纸空间 / pt<br>尚未完成地理配准</small></header>
 <nav><select id="sheet" aria-label="选择图纸"></select><select id="kind" aria-label="要素类别"><option value="">全部要素</option><option value="field">田块</option><option value="pond">塘面</option><option value="road">道路</option><option value="channel">沟渠</option><option value="facility_annotation">设施标注</option><option value="unresolved_label">待核对标签</option></select><button id="fit">恢复全图</button><span id="status">正在读取 GIS 数据…</span></nav>
-<main><svg id="map" aria-label="竣工图空间要素" role="img"></svg><aside><h2 id="selection">选择要素查看档案</h2><p id="summary">滚轮缩放，拖动平移。长度、面积和高程以带单位的原文证据为准。</p><pre id="details"></pre><h2>图纸证据</h2><input id="search" placeholder="筛选标注、工程量或尺寸" aria-label="筛选证据"><div id="evidence-list"></div><pre id="evidence"></pre><h2>完整性与待核验项</h2><pre id="coverage"></pre></aside></main>
+<main><svg id="map" aria-label="竣工图空间要素" role="img"></svg><aside><h2 id="selection">选择要素查看档案</h2><p id="summary">滚轮缩放，拖动平移。点击田块或鱼塘查看周长、面积、尺度依据及关联数据。</p><pre id="metrics-summary"></pre><div id="measurements"></div><details><summary>对象关系和原始依据</summary><pre id="details"></pre></details><h2>图纸证据</h2><input id="search" placeholder="筛选标注、工程量或尺寸" aria-label="筛选证据"><div id="evidence-list"></div><pre id="evidence"></pre><h2>完整性与待核验项</h2><pre id="coverage"></pre></aside></main>
 <script type="module">
 import{fetchAll}from './adapter.mjs';
+import{profileSummary,measurementLabel,measurementValue}from './metrics.mjs';
 const $=id=>document.getElementById(id),base='/api/v1/drawing-gis',svg=$('map'),ns='http://www.w3.org/2000/svg';
-let sheets=[],features=[],annotations=[],generation=0,box=[0,0,1700,1200],drag=null,snapshot=null,evidencePage=0;
+let sheets=[],features=[],annotations=[],generation=0,selectionGeneration=0,box=[0,0,1700,1200],drag=null,snapshot=null,evidencePage=0;
 const colors={field:'#d9e8a4',pond:'#89d6e4',road:'#d57d56',channel:'#42b7bf',facility_annotation:'#bc5c96',unresolved_label:'#edb94a'};
 function view(){svg.setAttribute('viewBox',box.join(' '));}
 function fit(){const s=sheets.find(d=>d.drawing_id===$('sheet').value);box=[0,0,...s.page_size_pt];view();}
@@ -18,9 +19,17 @@ function draw(){svg.replaceChildren();for(const f of features){const g=f.geometr
  else if(g.type==='LineString')n=node('polyline',{points:points.map(p=>p.join(',')).join(' ')});
  else n=node('circle',{cx:points[0][0],cy:points[0][1],r:3});
  n.setAttribute('class','feature');n.setAttribute('fill',g.type==='LineString'?'none':colors[f.kind]||'#c5cbd2');n.setAttribute('stroke',colors[f.kind]||'#596e62');
- n.addEventListener('click',()=>{svg.querySelector('.selected')?.classList.remove('selected');n.classList.add('selected');$('selection').textContent=f.label;$('details').textContent=JSON.stringify({entity_id:f.entity_id,representation_id:f.feature_id,class_iri:f.class_iri,ledger_area:f.ledger_area,ground_area_m2:f.area_m2,source:f.source,identity_evidence:f.identity_evidence},null,2);});svg.append(n);
+ n.addEventListener('click',()=>{svg.querySelector('.selected')?.classList.remove('selected');n.classList.add('selected');showProfile(f);});svg.append(n);
  if(f.kind==='field'||f.kind==='pond'){const x=points.reduce((a,p)=>a+p[0],0)/points.length,y=points.reduce((a,p)=>a+p[1],0)/points.length,t=node('text',{x,y,'text-anchor':'middle',class:'label'});t.textContent=f.label;svg.append(t);}}
 }
+async function showProfile(f){const token=++selectionGeneration,loadToken=generation;$('selection').textContent=f.label;$('metrics-summary').textContent='读取对象属性…';$('measurements').replaceChildren();$('details').textContent='';try{
+ const response=await fetch(base+'/profiles/'+encodeURIComponent(f.entity_id));if(!response.ok)throw Error('对象属性未安装或来源版本不匹配');const result=await response.json();
+ if(result.source_package_sha256!==snapshot)throw Error('对象属性与地图来源版本不匹配');
+ const rows=await fetchAll(base+'/measurements',{subject_id:f.entity_id},fetch,{collection:'items',expectedDigest:result.content_sha256});
+ if(token!==selectionGeneration||loadToken!==generation)return;
+ $('metrics-summary').textContent=profileSummary(result.item);$('details').textContent=JSON.stringify({profile:result.item,source:f.source,identity_evidence:f.identity_evidence},null,2);
+ for(const m of rows){const b=document.createElement('button');b.style.cssText='display:block;width:100%;text-align:left;margin:6px 0;font-size:12px';b.textContent=measurementLabel(m)+'：'+measurementValue(m);b.onclick=()=>{$('evidence').textContent=JSON.stringify(m,null,2);};$('measurements').append(b);}
+ }catch(e){if(token===selectionGeneration&&loadToken===generation)$('metrics-summary').textContent=e.message;}}
 function evidenceList(){
  const q=$('search').value.trim().toLowerCase(),rows=annotations.filter(a=>JSON.stringify(a).toLowerCase().includes(q)),pages=Math.max(1,Math.ceil(rows.length/100));
  evidencePage=Math.min(evidencePage,pages-1);$('evidence-list').replaceChildren();
@@ -35,7 +44,7 @@ async function load(){const token=++generation;try{
  $('status').textContent='读取中…';const drawing_id=$('sheet').value,[fs,as]=await Promise.all([
  fetchAll(base+'/features',{drawing_id,...($('kind').value?{kind:$('kind').value}:{})},fetch,{expectedDigest:snapshot}),
  fetchAll(base+'/annotations',{drawing_id},fetch,{collection:'items',expectedDigest:snapshot})]);
- if(token!==generation)return;features=fs;annotations=as;evidencePage=0;draw();fit();evidenceList();$('selection').textContent='选择要素查看档案';$('details').textContent='';$('evidence').textContent='';
+ if(token!==generation)return;features=fs;annotations=as;evidencePage=0;draw();fit();evidenceList();selectionGeneration++;$('selection').textContent='选择要素查看档案';$('details').textContent='';$('metrics-summary').textContent='';$('measurements').replaceChildren();$('evidence').textContent='';
  $('status').textContent=`${features.length} 个空间表示 · ${annotations.length} 条证据 · 原图资料，非现场测绘验收`;
  }catch(e){if(token!==generation)return;features=[];annotations=[];svg.replaceChildren();$('evidence-list').replaceChildren();$('details').textContent='';$('evidence').textContent='';$('status').textContent=e.message+'；请刷新重新读取同一版本。';}}
 $('sheet').onchange=load;$('kind').onchange=load;$('fit').onclick=fit;$('search').oninput=()=>{evidencePage=0;evidenceList();};

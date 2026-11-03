@@ -1,0 +1,111 @@
+{
+  "status": "passed",
+  "database": "actual PostgreSQL + PostGIS, owned local runtime",
+  "semantic_bundle_sha256": "0b9186834e81677a9b147634888df96e30a7a12a88625ecf4b9ea4e5abb63661",
+  "source_package_sha256": "b71ace716c109231cd1154034068333ebf1d295c9e505c93577dd26b099a45b2",
+  "counts": {
+    "nodes": 6297,
+    "edges": 10279,
+    "profiles": 163,
+    "measurements": 3202
+  },
+  "measurements_by_kind": {
+    "width": 386,
+    "cadastral_table_numeric_cell": 440,
+    "scenario_area": 240,
+    "thickness": 68,
+    "cadastral_area": 204,
+    "unresolved_field_annotation_number": 81,
+    "paper_perimeter": 120,
+    "linear_work_quantity": 276,
+    "scenario_perimeter": 240,
+    "dimension_tuple_unassigned_axes": 49,
+    "channel_depth": 72,
+    "paper_area": 120,
+    "labelled_length": 37,
+    "count": 16,
+    "height": 81,
+    "dimension_unspecified": 101,
+    "scenario_length": 44,
+    "survey_scale_text": 3,
+    "road_layer_thickness": 68,
+    "specified_height": 81,
+    "paper_length": 22,
+    "item_count": 96,
+    "ledger_area_unit_unconfirmed": 100,
+    "work_area": 45,
+    "area": 17,
+    "earthwork_volume": 57,
+    "estimated_length": 8,
+    "length": 18,
+    "estimated_area": 13,
+    "map_scale_text": 1,
+    "count_from_expression": 4,
+    "design_value_semantics_unknown": 13,
+    "labelled_area": 14,
+    "spot_elevation": 4,
+    "culvert_unit_length": 8,
+    "nominal_diameter_designation": 22,
+    "estimated_perimeter": 13,
+    "project_mean_dredging_thickness": 4,
+    "material_mass": 4,
+    "print_scale_text": 3,
+    "volume": 1,
+    "bottom_elevation": 3,
+    "dimension_semantics_unknown": 1,
+    "tree_basal_diameter_range": 1,
+    "specified_length": 2,
+    "rated_power": 1
+  },
+  "pagination_distinct_measurements": 3202,
+  "profile_lookup_by_uuid_and_representation": 163,
+  "profile_relationships_verified": 1437,
+  "replay": {
+    "status": "unchanged",
+    "dataset_id": "liangzihu-asbuilt-2026",
+    "version": "2",
+    "content_sha256": "0b9186834e81677a9b147634888df96e30a7a12a88625ecf4b9ea4e5abb63661"
+  },
+  "app_role_privileges": {
+    "gis_drawing_semantics_datasets": {
+      "SELECT": true,
+      "INSERT": false,
+      "UPDATE": false,
+      "DELETE": false
+    },
+    "gis_drawing_semantics_heads": {
+      "SELECT": true,
+      "INSERT": false,
+      "UPDATE": false,
+      "DELETE": false
+    },
+    "gis_drawing_semantics_nodes": {
+      "SELECT": true,
+      "INSERT": false,
+      "UPDATE": false,
+      "DELETE": false
+    },
+    "gis_drawing_semantics_edges": {
+      "SELECT": true,
+      "INSERT": false,
+      "UPDATE": false,
+      "DELETE": false
+    },
+    "gis_drawing_semantics_profiles": {
+      "SELECT": true,
+      "INSERT": false,
+      "UPDATE": false,
+      "DELETE": false
+    },
+    "gis_drawing_semantics_measurements": {
+      "SELECT": true,
+      "INSERT": false,
+      "UPDATE": false,
+      "DELETE": false
+    }
+  },
+  "data_nature": "imported_unverified",
+  "formal_core_ontology": "not_imported; verified operator and schema approval required",
+  "field_acceptance": "not_performed",
+  "georeferencing": "not_performed"
+}

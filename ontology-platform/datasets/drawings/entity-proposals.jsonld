@@ -3,7 +3,7 @@
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "draw": "urn:lzo:drawing-vocab:"
   },
-  "@id": "urn:lzo:drawing-proposals:efd51c2ae1fb354befa710dbbe854f153e64e359700dfd1458e93351b45083cf",
+  "@id": "urn:lzo:drawing-proposals:b71ace716c109231cd1154034068333ebf1d295c9e505c93577dd26b099a45b2",
   "@graph": [
     {
       "@id": "urn:lzo:object:61717561-20df-4c0b-aca8-675fb488dfe6",

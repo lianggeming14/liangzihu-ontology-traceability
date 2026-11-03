@@ -1,0 +1,371 @@
+{
+  "classes": [
+    {
+      "iri": "urn:lzo:drawing-ontology:Measurement",
+      "label": "Measurement",
+      "description": "Drawing-derived record classification; imported_unverified. No survey, construction or unique real-asset verification is implied.",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:DocumentStatement",
+      "label": "DocumentStatement",
+      "description": "Drawing-derived record classification; imported_unverified. No survey, construction or unique real-asset verification is implied.",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:EngineeringItem",
+      "label": "EngineeringItem",
+      "description": "Drawing-derived record classification; imported_unverified. No survey, construction or unique real-asset verification is implied.",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Field",
+      "label": "Field",
+      "description": "Drawing-derived record classification; imported_unverified. No survey, construction or unique real-asset verification is implied.",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Pond",
+      "label": "Pond",
+      "description": "Drawing-derived record classification; imported_unverified. No survey, construction or unique real-asset verification is implied.",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:Region",
+      "label": "Region",
+      "description": "Drawing-derived record classification; imported_unverified. No survey, construction or unique real-asset verification is implied.",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:EngineeringAsset",
+      "label": "EngineeringAsset",
+      "description": "Drawing-derived record classification; imported_unverified. No survey, construction or unique real-asset verification is implied.",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:SourceDrawing",
+      "label": "SourceDrawing",
+      "description": "Drawing-derived record classification; imported_unverified. No survey, construction or unique real-asset verification is implied.",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:Project",
+      "label": "Project",
+      "description": "Drawing-derived record classification; imported_unverified. No survey, construction or unique real-asset verification is implied.",
+      "parents": [],
+      "deprecated": false
+    }
+  ],
+  "properties": [
+    {
+      "iri": "urn:lzo:drawing-ontology:aggregationPolicy",
+      "label": "aggregationPolicy",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:numericValue",
+      "label": "numericValue",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:quantityKind",
+      "label": "quantityKind",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:reviewStatus",
+      "label": "reviewStatus",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:siUnit",
+      "label": "siUnit",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:siValue",
+      "label": "siValue",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:sourceQuantityKind",
+      "label": "sourceQuantityKind",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:sourceRecord",
+      "label": "sourceRecord",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:unitText",
+      "label": "unitText",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:valueText",
+      "label": "valueText",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:importDataset",
+      "label": "importDataset",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:importVersion",
+      "label": "importVersion",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:importBundleSha256",
+      "label": "importBundleSha256",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:sourceText",
+      "label": "sourceText",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:statementCategory",
+      "label": "statementCategory",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:identityScope",
+      "label": "identityScope",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:componentLabel",
+      "label": "componentLabel",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:objectKind",
+      "label": "objectKind",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:representationId",
+      "label": "representationId",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:componentsSi",
+      "label": "componentsSi",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:coordinateSystem",
+      "label": "coordinateSystem",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:sourcePath",
+      "label": "sourcePath",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:sourceSha256",
+      "label": "sourceSha256",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:ontology_owned",
+      "enum_values": [],
+      "superproperties": []
+    }
+  ],
+  "relations": [
+    {
+      "iri": "urn:lzo:drawing-ontology:hasMeasurement",
+      "label": "hasMeasurement",
+      "domain_iris": [],
+      "range_iris": [],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:depictedIn",
+      "label": "depictedIn",
+      "domain_iris": [],
+      "range_iris": [],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:partOfProject",
+      "label": "partOfProject",
+      "domain_iris": [],
+      "range_iris": [],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:repeatsReportedQuantity",
+      "label": "repeatsReportedQuantity",
+      "domain_iris": [],
+      "range_iris": [],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:memberOfReportedWorksGroup",
+      "label": "memberOfReportedWorksGroup",
+      "domain_iris": [],
+      "range_iris": [],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:partOfTable",
+      "label": "partOfTable",
+      "domain_iris": [],
+      "range_iris": [],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:locatedIn",
+      "label": "locatedIn",
+      "domain_iris": [],
+      "range_iris": [],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:derivedFromStatement",
+      "label": "derivedFromStatement",
+      "domain_iris": [],
+      "range_iris": [],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:drawing-ontology:containsDrawingAnnotation",
+      "label": "containsDrawingAnnotation",
+      "domain_iris": [],
+      "range_iris": [],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    }
+  ],
+  "shapes": "",
+  "ui_metadata": {},
+  "dependencies": []
+}

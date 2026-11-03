@@ -45,7 +45,7 @@ class StorageRegistry:
                         connection.execute(text("SELECT 1 FROM store_deliveries LIMIT 1"))
                         ready = bool(version)
                     else:
-                        ready = connection.execute(text("SELECT version FROM store_schema_version")).scalar_one() >= {'gis': 5, 'catalog': 3, 'timeseries': 3}[domain]
+                        ready = connection.execute(text("SELECT version FROM store_schema_version")).scalar_one() >= {'gis': 6, 'catalog': 3, 'timeseries': 3}[domain]
                         connection.execute(text("SELECT 1 FROM store_inbox LIMIT 1"))
                 result[domain] = "ready" if ready else "migration_required"
             except Exception:

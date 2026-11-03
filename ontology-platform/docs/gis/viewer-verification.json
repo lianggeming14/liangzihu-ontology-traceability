@@ -4,24 +4,30 @@
   "drawings": [
     {
       "drawing_id": "pdf-01",
-      "features": 38
+      "features": 38,
+      "profile_metrics_verified": true
     },
     {
       "drawing_id": "pdf-02",
-      "features": 49
+      "features": 49,
+      "profile_metrics_verified": true
     },
     {
       "drawing_id": "pdf-03",
-      "features": 16
+      "features": 16,
+      "profile_metrics_verified": true
     },
     {
       "drawing_id": "pdf-04",
-      "features": 9
+      "features": 9,
+      "profile_metrics_verified": true
     },
     {
       "drawing_id": "pdf-05",
-      "features": 51
+      "features": 51,
+      "profile_metrics_verified": true
     }
   ],
+  "metric_profile_queries": "verified all five drawings",
   "browser_errors": []
 }

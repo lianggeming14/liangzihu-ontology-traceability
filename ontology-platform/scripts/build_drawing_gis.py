@@ -87,6 +87,16 @@ def build(farm,output,version):
         identity=identities.get(record['representation_id']) or identities.get(record.get('source_representation_id'))
         if identity is None:raise ValueError('Missing persistent farm identity: '+record['representation_id'])
         features.append(feature_record(record,drawing_ids[record['asset_id']],identity))
+    if version>=4:
+        # Preserve the superseded reading as an erratum, rather than silently
+        # rewriting the external farm derivative or accepting a table conflict.
+        road=next(f for f in features if f['feature_id']=='DRAW-pdf-01-ROAD-NORTH')
+        road['source']['transcription_errata']=[{'superseded':'100.36m','corrected':'100.56m',
+            'evidence':'metric-review-12.json#pdf01-road-north','conflicting_table_length_m':105.86,
+            'status':'visual_source_reading_not_survey_verified'}]
+        road['source']['documented_dimensions']=[{'source_text':'图上标注100.56m',
+            'status':'visually_reviewed_not_survey_verified','quantity_kind':'labelled_length','value':100.56,'unit':'m',
+            'evidence':'metric-review-12.json#pdf01-road-north'}]
     if sum(f['kind']=='field' for f in features)!=100:raise ValueError('Expected exactly 100 source ledger field representations')
     annotations=[]
     for drawing in native:
@@ -107,6 +117,21 @@ def build(farm,output,version):
                         'review_status':'manual_transcription_not_survey','evidence':item,'review_file':filename})
             for i,table in enumerate(d.get('tables',[])):
                 annotations.extend(table_annotations(sid,i,table,filename))
+    if version>=4:
+        for filename in ('metric-review-12.json','metric-review-345.json'):
+            for drawing in load(output/filename)['drawings']:
+                sid=drawing.get('id',drawing.get('drawing_id'))
+                for category in ('metrics','assertions','field_annotation_links','calibration_checks','perimeter_scenarios',
+                                 'derived_planar_metrics','contained_pink_numeric_candidates','conflicts','unresolved'):
+                    for i,record in enumerate(drawing.get(category,[])):
+                        annotations.append({'annotation_id':f'{sid}:metric-review:{category}:{i:04}',
+                            'drawing_id':sid,'record_type':'metric_review_'+category,'evidence':record,
+                            'review_status':'document_claim_or_qualified_derivation_not_survey','review_file':filename})
+                for category in ('calibration','scale_evidence'):
+                    if category in drawing:
+                        annotations.append({'annotation_id':f'{sid}:metric-review:{category}', 'drawing_id':sid,
+                            'record_type':'metric_review_'+category,'evidence':drawing[category],
+                            'review_status':'scale_evidence_not_uniform_scale_acceptance','review_file':filename})
     ocr_path=output/'ocr-candidates.json'
     ocr_summary={'status':'not_run'}
     if ocr_path.exists():
@@ -121,7 +146,8 @@ def build(farm,output,version):
                     'review_status':'unverified','evidence':row})
     for relative in ('data/spatial/drawing-entities.json','data/spatial/native-annotations.json','data/audit/entity-mapping.json'):
         path=farm/relative;inputs.append({'path':relative,'sha256':sha(path),'bytes':path.stat().st_size,'role':'reviewed_derivative_input'})
-    for filename in ('review-12.json','review-345.json','ocr-candidates.json','vocabulary.ttl'):
+    for filename in ('review-12.json','review-345.json','ocr-candidates.json','vocabulary.ttl',
+                     *(('metric-review-12.json','metric-review-345.json') if version>=4 else ())):
         path=output/filename
         if path.exists():inputs.append({'path':'datasets/drawings/'+filename,'sha256':sha(path),'bytes':path.stat().st_size,'role':'extraction_evidence'})
     coverage={'source_drawings':len(sheets),'features':len(features),'features_by_kind':dict(Counter(f['kind'] for f in features)),

@@ -17,20 +17,23 @@ try{
   const features=await page.locator('.feature').count();assert.ok(features>0);
   counts.push({drawing_id:id,features});
   // A source point has a guaranteed clickable centre; polygon centres may lie outside.
-  const point=page.locator('circle.feature').first();
-  if(await point.count())await point.click({force:true});
-  else await page.locator('.feature').first().dispatchEvent('click');
+  await page.locator('path.feature').first().dispatchEvent('click');
   await page.waitForFunction(()=>document.getElementById('details').textContent.includes('entity_id'));
+  await page.waitForFunction(()=>document.getElementById('metrics-summary').textContent.includes('纸面周长'));
+  assert.ok(await page.locator('#measurements button').count()>0);
+  counts[counts.length-1].profile_metrics_verified=true;
   const next=page.getByRole('button',{name:'下一页',exact:true});
   if(await next.isEnabled()){await next.click();await page.waitForFunction(()=>document.getElementById('evidence-list').textContent.includes('第 2/'));}
  }
- await page.locator('#sheet').selectOption('pdf-01');
+ await page.locator('#sheet').selectOption('pdf-03');
  await page.waitForFunction(()=>document.getElementById('status').textContent.includes('空间表示'));
+ await page.locator('path.feature').first().dispatchEvent('click');
+ await page.waitForFunction(()=>document.getElementById('metrics-summary').textContent.includes('参考长度推算周长'));
  await page.locator('aside').evaluate(el=>el.scrollTop=0);
  await mkdir('../docs/gis',{recursive:true});
  await page.screenshot({path:'../docs/gis/drawing-viewer.png',fullPage:true});
  assert.deepEqual(errors,[]);
- await writeFile('../docs/gis/viewer-verification.json',JSON.stringify({status:'passed',source:'offline SQLite mirror; not production auth acceptance',drawings:counts,browser_errors:errors},null,2)+'\n');
+ await writeFile('../docs/gis/viewer-verification.json',JSON.stringify({status:'passed',source:'offline SQLite mirror; not production auth acceptance',drawings:counts,metric_profile_queries:'verified all five drawings',browser_errors:errors},null,2)+'\n');
  console.log(JSON.stringify({status:'passed',drawings:counts}));
 }catch(error){await page.screenshot({path:'../.runtime/drawing-viewer-failure.png',fullPage:true});console.error({status:await page.locator('#status').textContent(),errors});throw error;}
 finally{await browser.close();}

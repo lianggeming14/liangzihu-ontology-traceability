@@ -9,7 +9,7 @@
     "channel": 5,
     "facility_annotation": 20
   },
-  "annotations": 6713,
+  "annotations": 8160,
   "annotation_types": {
     "native_text": 714,
     "legend": 222,
@@ -18,6 +18,17 @@
     "table_row": 632,
     "background_categories": 23,
     "region_labels": 56,
+    "metric_review_metrics": 699,
+    "metric_review_field_annotation_links": 51,
+    "metric_review_calibration_checks": 5,
+    "metric_review_perimeter_scenarios": 64,
+    "metric_review_unresolved": 32,
+    "metric_review_scale_evidence": 2,
+    "metric_review_assertions": 519,
+    "metric_review_derived_planar_metrics": 56,
+    "metric_review_calibration": 3,
+    "metric_review_contained_pink_numeric_candidates": 13,
+    "metric_review_conflicts": 3,
     "ocr_candidate": 4992
   },
   "semantic_complete": false,

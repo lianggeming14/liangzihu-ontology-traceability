@@ -1,8 +1,17 @@
 {
-  "package_version": 3,
-  "content_sha256": "efd51c2ae1fb354befa710dbbe854f153e64e359700dfd1458e93351b45083cf",
+  "date": "2026-11-03",
+  "source_package_version": 4,
+  "source_package_sha256": "b71ace716c109231cd1154034068333ebf1d295c9e505c93577dd26b099a45b2",
+  "semantic_bundle_version": "2",
+  "semantic_bundle_sha256": "0b9186834e81677a9b147634888df96e30a7a12a88625ecf4b9ea4e5abb63661",
   "backend_unit": {
-    "tests": 422,
+    "tests": 469,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "importer_revalidation_after_worker_budget_fix": {
+    "tests": 20,
     "failures": 0,
     "errors": 0,
     "skipped": 0
@@ -12,6 +21,12 @@
     "failures": 0,
     "errors": 0,
     "skipped": 0
+  },
+  "typed_postgis": {
+    "nodes": 6297,
+    "edges": 10279,
+    "profiles": 163,
+    "measurements": 3202
   },
   "frontend_adapter": {
     "passed": 4,
@@ -25,35 +40,52 @@
     "drawings": [
       {
         "drawing_id": "pdf-01",
-        "features": 38
+        "features": 38,
+        "profile_metrics_verified": true
       },
       {
         "drawing_id": "pdf-02",
-        "features": 49
+        "features": 49,
+        "profile_metrics_verified": true
       },
       {
         "drawing_id": "pdf-03",
-        "features": 16
+        "features": 16,
+        "profile_metrics_verified": true
       },
       {
         "drawing_id": "pdf-04",
-        "features": 9
+        "features": 9,
+        "profile_metrics_verified": true
       },
       {
         "drawing_id": "pdf-05",
-        "features": 51
+        "features": 51,
+        "profile_metrics_verified": true
       }
     ],
+    "metric_profile_queries": "verified all five drawings",
     "browser_errors": []
   },
-  "source_geometry": "163 valid local paper geometries, 0 empty, SRID=0",
+  "data_nature": "actual drawing-derived imported_unverified",
+  "formal_core_import": {
+    "status": "not_imported",
+    "reason": "no verified operator, owner scope or published schema; independent schema approval required",
+    "entities_written": 0,
+    "rdf_claims_written": 0,
+    "input_entities": 6297,
+    "input_relationships": 10279
+  },
   "not_performed": [
-    "Production deployment and full login chain",
-    "Core/Jena governed adoption",
-    "Field acceptance",
-    "Survey georeferencing",
-    "Exhaustive semantic extraction"
+    "formal core/Jena import pending real identity and schema approval",
+    "production deployment and full login chain",
+    "field acceptance",
+    "survey georeferencing",
+    "exhaustive OCR verification and background vectorization"
   ],
-  "source_scope": "Five farm construction PDFs; requested upload location not found",
-  "data_nature": "actual drawing-derived imported_unverified; not synthetic"
+  "earlier_failure": {
+    "test": "test_import_openapi_marks_server_results_readonly",
+    "cause": "contract generated during concurrent test execution",
+    "resolution": "regenerated contract and types, targeted rerun and final full unit suite passed"
+  }
 }

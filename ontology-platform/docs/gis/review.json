@@ -1,23 +1,20 @@
 {
-  "date": "2026-10-29",
-  "status": "material_code_findings_corrected; source_extraction_still_partial",
-  "corrections": [
-    "Pinned frontend streams to the directory digest; reject mixed versions",
-    "Fixed drawing IDs mapped to reviewed PDF hashes rather than list order",
-    "Preserved table context even for empty or not-transcribed tables",
-    "Aligned import validation with API-required fields and canonical UUID format",
-    "Paginated all evidence in the viewer",
-    "Recovered Chinese transcription and collided area-table keys; rechecked 8 original statements",
-    "Restricted OCR grouping to cross-tile spatial agreement; retained every raw observation and prior grouping audit",
-    "Corrected pointer capture so actual feature clicks work; readonly SQLite preview"
+  "date": "2026-11-03",
+  "independent_review": "completed; no remaining blocking implementation findings",
+  "resolved": [
+    "preserve separate sheet identities for same-name D/E regions",
+    "numeric RDF values for paper pt/pt2 independent of SI conversion",
+    "range hyphen not negative dimension; dimension tuples keep unassigned axes",
+    "typed count formula 1160*36 plants and component labels",
+    "exact source package binding for semantic query model",
+    "formal core status never inferred from GIS query-table presence"
   ],
-  "unresolved_requirements": [
-    "Not all background objects vectorized",
-    "OCR and native text not fully verified or linked to physical assets",
-    "Unknown ledger area units",
-    "No surveyed CRS/control points",
-    "Upload source location not confirmed",
-    "Core/Jena adoption and field acceptance not performed"
+  "known_gaps": [
+    "formal core/Jena import pending real identity and schema approval",
+    "production deployment and full login chain",
+    "field acceptance",
+    "survey georeferencing",
+    "exhaustive OCR verification and background vectorization"
   ],
-  "release_scope": "GIS evidence package, APIs, adapter and audited local preview; not an exhaustive georeferenced production farm map"
+  "data_quality": "candidate document evidence; no fabricated water depth or reviewer"
 }

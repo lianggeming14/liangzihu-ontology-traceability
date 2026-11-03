@@ -1,0 +1,85 @@
+{
+  "observed_at": "2026-11-03T08:29:24.973313+00:00",
+  "environment": "owned local PostgreSQL runtime; no field verification",
+  "credentials_included": false,
+  "core_migration_action": "official lzo.migrate; GIS intentionally not migrated concurrently",
+  "domains": {
+    "core": {
+      "database_engine": "PostgreSQL",
+      "table_count": 103,
+      "alembic_revision": "0406_storage_backups"
+    },
+    "gis": {
+      "database_engine": "PostgreSQL",
+      "table_count": 18,
+      "schema_version": 6
+    },
+    "timeseries": {
+      "database_engine": "PostgreSQL",
+      "table_count": 7,
+      "schema_version": 3
+    },
+    "catalog": {
+      "database_engine": "PostgreSQL",
+      "table_count": 5,
+      "schema_version": 3
+    }
+  },
+  "identity": {
+    "platform_users": 0,
+    "active_permission_grants": 0,
+    "owned_discovery_is_network_url": true,
+    "verified_operator_subject_available": false,
+    "existing_worktree_checks": {
+      "configured_issuer": "http://127.0.0.1:28080/realms/lzo",
+      "discovery": "connection_failed",
+      "database": "connection_failed",
+      "identities_copied": false
+    }
+  },
+  "semantic_import": {
+    "ontology_releases": 0,
+    "approvals": 0,
+    "semantic_objects": 0,
+    "semantic_assertions": 0,
+    "semantic_supports": 0,
+    "semantic_type_declarations": 0
+  },
+  "independent_review": "required by existing schema.publish policy; not fabricated",
+  "rdf": {
+    "configured": true,
+    "reachable": true,
+    "http_status": 200,
+    "loopback_port": 23039,
+    "namespace": "lzo_drawings",
+    "owned_state": ".runtime/drawing-fuseki",
+    "current_quads": 0,
+    "data_written": false,
+    "startup": "official owned lifecycle; elevated after sandbox TDB2 file-lock denial",
+    "private_configuration_updated": true
+  },
+  "status": "awaiting_verified_operator_and_independent_schema_review",
+  "offline_review": {
+    "schema_document": "docs/gis/proposed-drawing-schema.json",
+    "validation": "docs/gis/ontology-import-validation.json",
+    "not_published": true,
+    "live_impact_not_executed": true,
+    "document_sha256": "5726da823ed7db91632cecbaded90bdd95dfba91eac5b8fc8f6cd45a166f4dc9"
+  },
+  "next_steps": [
+    "Provision an explicit real operator through the normal authorization workflow.",
+    "Use --apply to prepare the exact schema draft and real impact/approval record.",
+    "An independently authorized reviewer approves that exact schema request.",
+    "Use --resume with the same operator/scope to publish and import candidate assertions, then verify PostgreSQL and Fuseki receipts."
+  ],
+  "previous_identity_probe_at": "2026-11-03T05:56:00.918831+00:00",
+  "input": {
+    "dataset_id": "liangzihu-asbuilt-2026",
+    "version": "2",
+    "content_sha256": "0b9186834e81677a9b147634888df96e30a7a12a88625ecf4b9ea4e5abb63661",
+    "entities": 6297,
+    "edges": 10279
+  },
+  "gis_validation_report": "docs/gis/semantics-postgis-verification.json",
+  "formal_ontology_data_written": false
+}
