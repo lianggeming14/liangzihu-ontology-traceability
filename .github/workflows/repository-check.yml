@@ -1,0 +1,19 @@
+name: Check ontology database repository
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  review-entry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Check sample entries, field coverage and repository layout
+        run: python3 ontology-platform/scripts/check_repository_layout.py

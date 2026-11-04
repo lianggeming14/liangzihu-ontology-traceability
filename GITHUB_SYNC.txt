@@ -1,28 +1,26 @@
-GitHub 项目同步约定
+GitHub 项目同步约定（2026-11-04 更新）
 
-仓库：https://github.com/lianggeming14/liangzihu-ontology-traceability
-所有者：lianggeming14；分支：main；可见性：Public。
-用户于 2026-10-13 明确确认“保持公开上传”，取代先前的私有可见性约定；后续在该公开仓库同步经过排除规则检查的项目成果。
+唯一目标仓库：https://github.com/lianggeming14/liangzihu-ontology-traceability
+账号：lianggeming14；分支：main；可见性：Public。
+当前维护工程：ontology-platform/。仓库首页 README.md 提供样本库、SQL、运行配置和验收入口。
 
-用户已授权：本项目现有及后续生成的成果都上传一份。每次交付前同步，无需重复询问同一仓库的正常文件上传。
-同步包括方案、原始项目文档、源码、迁移、契约、测试、图片、预览、交付压缩包和构建程序。
-排除本机凭据、认证缓存、运行数据库/资产、依赖及系统临时文件，规则见 .gitignore。
+用户已授权本项目成果每次交付前同步，正常上传和更新无需重复询问可见性。
+代码、结构、配置模板、测试、生成脚本和正式交付文件属于同步范围；凭据、认证缓存、依赖、活动数据库和原始运行资产不得上传。
 
-正常 Git 网络环境：
-  python tools/sync_to_github.py --message "说明本次新增或修改"
-或双击“同步到GitHub.cmd”。脚本先拉取远端状态；出现冲突或远端分歧会停止，不强制覆盖。
-首次网页导入之后，本地仓库尚无提交时，会先取远端 main 为基线，保留工作区文件，再检查并提交本地变化。
-需要本机 Git 已具备该仓库正常访问身份；不要将访问令牌写入脚本或仓库。
+正常网络环境使用已登录的 Git 身份：
+  python tools/sync_to_github.py --message "说明本次更新"
+也可运行“同步到GitHub.cmd”。同步前检查新增文件与敏感信息，先处理远端新提交；禁止强制覆盖或 force push。推送后核对 main 的提交和更新文件。
+采用受控稀疏工作副本时，只提交本轮已审查的精确文件列表与清理列表，不把其他尚未完成的本地改动一起上传。
 
-本次环境中 git 无法直连 github.com:443，且项目 .git 元数据只读；网页已登录正确账号。采用以下可复核导入流程：
-1. 运行 python tools/build_github_snapshot.py --working-tree，仅读取 Git 的忽略规则和工作区文件，不修改 .git。正常可写环境也支持 git add -A 后运行默认索引模式。
-2. .github-upload 中产生分卷 ZIP 和 snapshot-manifest.json；清单记录每个文件与归档的 SHA-256 和大小。
-3. 通过该仓库网页，把所有分卷、manifest 和 tools/restore_github_snapshot.py（首次以根目录文件上传）放到仓库根目录。
-4. 首次通过网页建立 .github/workflows/import-snapshot.yml。以后该工作流保留，只有手动触发才会运行。
-5. 在 Actions 中手动运行 Import reviewed project snapshot。它只在本仓库校验和还原指定清单，保留原目录，不执行快照中的业务代码，不删除未列出的文件。
-6. 验证还原文件数/摘要和远端提交后，才能报告同步完成。临时上传分卷仍保留在远端，作为此次备份副本。
+网络不可用时的备用快照流程：
+1. 使用 tools/build_github_snapshot.py 生成经过 SHA-256 清单核验的 ZIP 分卷。
+2. 通过正常 GitHub 登录方式把本次分卷和 snapshot-manifest.json 放在 incoming/。该目录被本机 Git 忽略；使用 Git 上传时只对已经审查的确切文件显式添加。
+3. 手动运行 Actions → Import reviewed project snapshot，在 manifest 输入填写 incoming/snapshot-manifest.json，或本次清单的仓库相对路径。
+4. 工作流使用 tools/restore_github_snapshot.py 校验全部成员后还原项目，不执行快照中的业务代码，不删除未列出的项目文件。缺清单或摘要不匹配会失败。
+5. 核对提交和还原结果后，清理本次已消费的确切传输分卷与清单。不要把旧 ZIP 永久堆在仓库根目录。恢复工具保留一份在 tools/，无需根目录重复副本。
 
-GitHub Actions 使用官方 checkout 及仓库范围的临时 GITHUB_TOKEN，不创建新的长期令牌、不修改成员权限、不开放公网服务。工作流没有定时触发器。
-来源参考：https://github.com/actions/checkout ；https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow
+2026-11-04 的清理删除当前树中 8 个旧传输 ZIP、旧清单、重复恢复脚本，以及可重建的文档联系表、逐页渲染、排版预览 PDF 和分页中间 JSON。
+生成脚本、文档内容输入、正式 Word、图示和小型 QA 证据保留。完整逐文件清单：ontology-platform/docs/operations/repository-cleanup.json。
+此次操作不重写 Git 历史；旧文件仍可在历史提交中追溯。
 
-这个约定记录的是每次项目工作的同步流程，不是系统后台监听。用户在其他程序手动修改文件时，不会凭空自动上传；可运行同步脚本或在下次项目工作时同步。
+本约定表示每次项目交付时同步，不代表后台监听、定时任务或自动上传服务。

@@ -2,6 +2,12 @@ name: Import reviewed project snapshot
 
 on:
   workflow_dispatch:
+    inputs:
+      manifest:
+        description: Reviewed manifest uploaded with its ZIP volumes (repository-relative)
+        required: true
+        default: incoming/snapshot-manifest.json
+        type: string
 
 permissions:
   contents: write
@@ -16,17 +22,31 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Checkout current private repository
-        uses: actions/checkout@v7
+      - name: Checkout current public repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: main
       - name: Verify and restore reviewed snapshot
-        run: python restore_github_snapshot.py --manifest snapshot-manifest.json --destination .
+        env:
+          REVIEWED_MANIFEST: ${{ inputs.manifest }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          from tools.restore_github_snapshot import checked_path, no_symlink_chain, restore
+          name = checked_path(os.environ['REVIEWED_MANIFEST'])
+          root = Path.cwd().resolve()
+          manifest = root.joinpath(name)
+          no_symlink_chain(root, manifest)
+          if not manifest.resolve(strict=True).is_relative_to(root):
+              raise ValueError('Manifest must be inside the repository')
+          print(json.dumps(restore(manifest, root)))
+          PY
       - name: Commit imported project files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
+          git add -A -- . ':!incoming' ':!snapshot-*.zip' ':!snapshot-manifest.json'
           if git diff --cached --quiet; then
             echo "Snapshot files already match the repository."
           else

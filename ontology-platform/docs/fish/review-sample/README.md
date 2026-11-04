@@ -32,4 +32,44 @@ ZIP 中是合成养殖场数据；ERA5 天气维持 imported_unverified。塘口
 - [preview.png](preview.png)：交互页面截图。
 - 生成：`scripts/build_fish_review_sample.py`；独立核验：`scripts/verify_fish_review_sample.py`。
 
-生成器要求经过 SHA-256 / Git blob / 557 成员验证的本地来源包和已明确归属的 fish 隔离环境。重复创建已有预览 schema 会拒绝覆盖。活动数据库、凭据和完整原始样本不上传 GitHub；通过固定来源与脚本重建。
+生成器要求经过 SHA-256 / Git blob / 557 成员验证的本地来源包。重复创建已有预览 schema 会拒绝覆盖。活动数据库、凭据和完整原始样本不上传 GitHub；通过固定来源与脚本重建。
+
+## 配置与运行入口（2026-11-04）
+
+从仓库根目录进入 `ontology-platform`，所有配置内的相对路径都以该工程目录为基准，和命令行当前目录无关。无凭据模板在 [config/fish-review.example.json](../../../config/fish-review.example.json)。
+
+1. 下载[固定版本的来源 ZIP](https://github.com/lianggeming14/upload-files/blob/1eb0bab8f86fab00d6ebf62b18e609446957fc9d/%E6%AD%A6%E6%98%8C%E9%B1%BCL1_2025_01_%E6%95%B0%E6%8D%AE%E5%8F%8A%E7%94%9F%E6%88%90%E5%99%A8.zip)，保存为模板 `source_archive` 指定的 `.runtime/source-imports/wuchangfish-l1-2025-01/1eb0bab8f86f/source.zip`。如需改路径，复制模板为 `config/fish-review.local.json` 后修改，该本机配置被 Git 忽略。
+2. 执行来源准备命令。它先校验 ZIP 摘要、大小及全部成员，再在 `.runtime` 安全解包并准备清单；不会执行包内生成器，已有不一致文件会拒绝覆盖。
+3. 安装已锁定的平台依赖，再离线预检抽样。预检不要求环境文件、数据库、Keycloak、Fuseki 或 worker。
+
+```sh
+cd ontology-platform
+python scripts/prepare_fish_review_source.py --config config/fish-review.example.json
+python -m pip install -r scripts/requirements-fish-review.txt
+python scripts/check_fish_review_config.py
+python scripts/build_fish_review_sample.py --config config/fish-review.example.json --plan
+```
+
+真正建库或回读时，使用已经准备好的本地 PostgreSQL 16+ / PostGIS。数据库名为 `lzo_gis`，owner 为 `lzo_gis_owner`，连接必须是 `127.0.0.1` 上显式端口。把下面两个键写入模板指定的私有 `env_file`；连接 URL 中的密码需正确 URL 编码，不提交该文件。
+
+```text
+APP_ENV=test
+LZO_GIS_MIGRATION_DATABASE_URL=postgresql+psycopg://lzo_gis_owner:<URL编码的本机密码>@127.0.0.1:25449/lzo_gis
+```
+
+```sh
+# 仅创建新的固定样本 schema，存在时会拒绝；不会自动删除或重建
+python scripts/build_fish_review_sample.py --config config/fish-review.example.json
+# 对已经建好的样本只读回验，更新本地审查报告
+python scripts/build_fish_review_sample.py --config config/fish-review.example.json --verify
+```
+
+上述命令不自动启动数据库服务，不执行平台正式迁移、不启动原来的全量导入。`--verify` 不能使用 Python `-O`，防止跳过核验断言。建库与只读核验共用同一份配置，不再依赖另一台机器的 ownership 文件或未上传的 GIS 身份清单。
+
+仅查看本次已经生成的页面，无需安装数据库或 Python 依赖：
+
+```sh
+python -m http.server 8765 --bind 127.0.0.1 --directory docs/fish/review-sample
+```
+
+浏览器打开 `http://127.0.0.1:8765/`。需要数据库写入的操作仍限于结构样本；全量导入等待本次审查。

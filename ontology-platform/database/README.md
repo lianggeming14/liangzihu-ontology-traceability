@@ -1,5 +1,7 @@
 # 数据库与语义存储
 
+当前数据结构审查见 [fish_review_10pct_v1 样本库](../docs/fish/review-sample/README.md)及[完整 SQL](../docs/fish/review-sample/schema.sql)。它是独立 PostgreSQL/PostGIS schema，包含 64 张业务表及 6 张来源/模型/关系/空间支撑表。使用[无密码配置模板](../config/fish-review.example.json)建新样本或只读核验；不会替代下面的平台迁移链或写入正式本体事实。
+
 这里保存可复现的数据库定义和服务配置，不保存运行数据或密码。
 
 | 路径 | 内容 |

@@ -1,0 +1,1369 @@
+{
+  "format": "repository-cleanup-review-v1",
+  "status": "applied_to_current_tree",
+  "repository": "https://github.com/lianggeming14/liangzihu-ontology-traceability",
+  "reviewed_commit": "76d83b06c1eecf3976e04599487c78779f4f38e6",
+  "reviewed_on": "2026-11-04",
+  "scope": [
+    ".document-build/",
+    ".document-build-v1.1/",
+    "snapshot-*.zip",
+    "snapshot-manifest.json",
+    "restore_github_snapshot.py",
+    ".github/workflows/import-snapshot.yml"
+  ],
+  "metadata_sources": {
+    "local_git_blob": "Original paths and object IDs from git ls-tree at reviewed_commit; available blob sizes read using git cat-file without lazy fetching.",
+    "published_git_tree_at_reviewed_commit": "https://api.github.com/repos/lianggeming14/liangzihu-ontology-traceability/git/trees/76d83b06c1eecf3976e04599487c78779f4f38e6"
+  },
+  "summary": {
+    "removal_files": 122,
+    "removal_blob_bytes": 126655740,
+    "groups": {
+      ".document-build": {
+        "files": 52,
+        "bytes": 15184443
+      },
+      ".document-build-v1.1": {
+        "files": 60,
+        "bytes": 20084565
+      },
+      "root_snapshot_transport": {
+        "files": 10,
+        "bytes": 91386732
+      }
+    },
+    "retained_document_build_files": 21,
+    "retained_document_build_blob_bytes": 1127238
+  },
+  "remove": [
+    {
+      "path": ".document-build-v1.1/contact-1.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "cd4ab9376af1ffe1ff68857d3568476ccd458f59",
+      "bytes": 863516,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_contact_sheet",
+      "reason": "Derived contact sheet; retain QA scripts and compact QA evidence."
+    },
+    {
+      "path": ".document-build-v1.1/contact-2.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "fc4a4909bd4c6c2986d9fed1dd9db4f513fc06db",
+      "bytes": 981783,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_contact_sheet",
+      "reason": "Derived contact sheet; retain QA scripts and compact QA evidence."
+    },
+    {
+      "path": ".document-build-v1.1/contact-3.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "0f85507ff73e11f70d5080810e1e9a7b0e7a72c7",
+      "bytes": 1062720,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_contact_sheet",
+      "reason": "Derived contact sheet; retain QA scripts and compact QA evidence."
+    },
+    {
+      "path": ".document-build-v1.1/contact-4.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "996b0bde3da4037dd16df5da772d15d6ad55b363",
+      "bytes": 1005140,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_contact_sheet",
+      "reason": "Derived contact sheet; retain QA scripts and compact QA evidence."
+    },
+    {
+      "path": ".document-build-v1.1/contact-5.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "d6a920912c8c09392bad0ff8b50295e58b2963a0",
+      "bytes": 1032174,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_contact_sheet",
+      "reason": "Derived contact sheet; retain QA scripts and compact QA evidence."
+    },
+    {
+      "path": ".document-build-v1.1/contact-6.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "6f7021987c7146c71106f12784d6f399dba74599",
+      "bytes": 563610,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_contact_sheet",
+      "reason": "Derived contact sheet; retain QA scripts and compact QA evidence."
+    },
+    {
+      "path": ".document-build-v1.1/fixed-layout-preview.pdf",
+      "git_mode": "100644",
+      "original_blob_sha1": "ed52f30642f17b80c91be01adf78d6904bd3788f",
+      "bytes": 1058723,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_layout_preview",
+      "reason": "Derived fixed-layout preview PDF; retain document content, diagrams, layout generator and delivered DOCX."
+    },
+    {
+      "path": ".document-build-v1.1/pagination.json",
+      "git_mode": "100644",
+      "original_blob_sha1": "74c59aaa84bc145c677819e4e60dca1e03bcdbf9",
+      "bytes": 514808,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_pagination",
+      "reason": "Derived layout/pagination intermediate; retain content and layout generator."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-1.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "b3916580d043c7d3a86efc9c4a21507c7af73e29",
+      "bytes": 129357,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-10.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "b15379b8b9c057045a61c0454f3170fe99a191ab",
+      "bytes": 249568,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-11.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "e4bfb3061963654da723731381fd3b7135abc101",
+      "bytes": 294245,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-12.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "f19cb19fb3a24a89000b33ac071f24a664b072c9",
+      "bytes": 195584,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-13.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "3d76141ce14c63f771efb98d29aa341a682a8720",
+      "bytes": 209737,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-14.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "0074cef655a58739777a508cba2e64a348bd1fe7",
+      "bytes": 253227,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-15.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "f82ba30e53443fbf7ae51bfa896fbba225b8bb3d",
+      "bytes": 285286,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-16.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "ad9c4548c09b37704be0a3b13487348724019a1b",
+      "bytes": 234355,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-17.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "d23b215cff43b347ccadbbce32cd9d9ea5b74f4b",
+      "bytes": 282727,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-18.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "0d56077ae4a61d1419d0aed1c2d3a2634150d322",
+      "bytes": 276172,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-19.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "31724995b3ba32311f959b044284c71831cc7290",
+      "bytes": 362037,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-2.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "9bbff154292fe16084f8aabe1f89ced92f79b5c4",
+      "bytes": 112135,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-20.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "52f61a52a76d6a4fe464ae1449ede29a5ccd9cfb",
+      "bytes": 381138,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-21.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "17925147297aa3a8a79be9e945a47854120d4acc",
+      "bytes": 289211,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-22.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "731cc9f88a32abdf97991c1277cb95f7b6221f95",
+      "bytes": 257583,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-23.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "66427f0e445e8e76070fbc2854263eabd9b313f6",
+      "bytes": 194406,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-24.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "14c24df624facef2a5a2947f8b4083e1b11f48e1",
+      "bytes": 292355,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-25.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "c9684beaacb0459f05009767ae9e732d942f8eb6",
+      "bytes": 252371,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-26.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "6b7902bcd625565ace0f78169178db0b0dc99d98",
+      "bytes": 265226,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-27.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "05be08b65f58e1ef367db54af7c71e9efb9e9dab",
+      "bytes": 276297,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-28.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "0960dd2a20c94b4002027612ea190d3a9fb5817e",
+      "bytes": 192811,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-29.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "f9a19a5d1d88e4dcf50216bf3ba38f7750327ece",
+      "bytes": 305469,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-3.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "63149f84d834f9a02f51961535e0efdf6eda5a43",
+      "bytes": 269767,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-30.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "4e2f7fe961f9c80a37e50ae3b064023a8004aa04",
+      "bytes": 284252,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-31.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "b1295981dc5bf7e704bc6ccf961fb391efa819e9",
+      "bytes": 330390,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-32.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "e2bfd6eef9340c61498ba32d4233ec1e1ad71c35",
+      "bytes": 311918,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-33.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "0ed9842742dba96c0a58f1e6250229ac58ec14e0",
+      "bytes": 304139,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-34.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "70246932e05e276c7b9da1d93636b20329bd4c9e",
+      "bytes": 229855,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-35.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "30a478de73fa08a70901aad57096431cfb0059eb",
+      "bytes": 259411,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-36.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "dab738c7c9f39144fead468cf555889a331b5102",
+      "bytes": 231219,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-37.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "a44248f0405e73353ea2f778916fe05dec14b740",
+      "bytes": 284730,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-38.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "f4a2cba83b839f06a759bce4e99245d076459fcf",
+      "bytes": 251212,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-39.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "4ee8fb18ce6039ba41f8e1a84acb5a2d52ea38ec",
+      "bytes": 263699,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-4.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "3975b131c728f242dc00e97592f338d4af5254e3",
+      "bytes": 257295,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-40.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "0dfb29fad36208ad393c82aa66bcebcb332b3d34",
+      "bytes": 225745,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-41.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "7830ee5aa308ce8577017ed8b7793cbabd4318db",
+      "bytes": 270749,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-42.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "629d678113e014d89a86eec2f6a72b72052cde63",
+      "bytes": 294737,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-43.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "744fcff8b9328a5047adff2d3aceed8a01a80466",
+      "bytes": 293860,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-44.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "d3b4516314e8bd57c5e2d965cfa95851f0af157c",
+      "bytes": 259068,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-45.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "50d6307ace4c57ac63d9138d9bf867338ebac07d",
+      "bytes": 272844,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-46.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "f1c72d6a947ef662ad5d34b0fbcdca162ad7998d",
+      "bytes": 160307,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-47.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "65491ecb361aae48d78b477218c6938086c7d07c",
+      "bytes": 163307,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-48.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "0c2d609f3ce78167fb029b8d65a6f371113413c1",
+      "bytes": 176966,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-49.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "6410d40a323987c64b36a68b5a840757b788c87d",
+      "bytes": 191118,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-5.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "5bd4dcaf3adb1824bc336c45462aee9d995300f5",
+      "bytes": 215350,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-50.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "4c9a13e6b5aa3d2b2b5f056dcaa7de7846086bee",
+      "bytes": 242657,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-51.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "f3e0fee8666e6acf7f20fa0d4b9e5478fb64b5d2",
+      "bytes": 227390,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-52.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "e8774300b76a2fa3904a87adc143d588537a4740",
+      "bytes": 102915,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-6.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "03c8313aa165b8fe05396fb36def178f68ec4a2b",
+      "bytes": 236371,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-7.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "9054c48cfc1a436ab28eefe7e80e31fec074a0b6",
+      "bytes": 251371,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-8.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "bb1bb12b457c55f13d00dcb4d7b1148fa0e13757",
+      "bytes": 298049,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build-v1.1/preview-pages/page-9.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "46a0c90853f289fe27c49b3d46ec2cf61553f353",
+      "bytes": 250103,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/contact-1.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "08703805f5ac3316aeaca54fe77f1d99b997ce0e",
+      "bytes": 806009,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_contact_sheet",
+      "reason": "Derived contact sheet; retain QA scripts and compact QA evidence."
+    },
+    {
+      "path": ".document-build/contact-2.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "5219a71cc05516aad908f3bf5cb2e1feca9a4c94",
+      "bytes": 1031559,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_contact_sheet",
+      "reason": "Derived contact sheet; retain QA scripts and compact QA evidence."
+    },
+    {
+      "path": ".document-build/contact-3.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "bfb6c10524d2085600e41761d19f0f76804336cf",
+      "bytes": 963932,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_contact_sheet",
+      "reason": "Derived contact sheet; retain QA scripts and compact QA evidence."
+    },
+    {
+      "path": ".document-build/contact-4.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "e5e4aaa0d211f50e1f0fa875f78a9d7838d1c189",
+      "bytes": 887677,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_contact_sheet",
+      "reason": "Derived contact sheet; retain QA scripts and compact QA evidence."
+    },
+    {
+      "path": ".document-build/contact-5.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "d83fae480b53f36e34f0f36e1a0deb3ed4059810",
+      "bytes": 204902,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_contact_sheet",
+      "reason": "Derived contact sheet; retain QA scripts and compact QA evidence."
+    },
+    {
+      "path": ".document-build/fixed-layout-preview.pdf",
+      "git_mode": "100644",
+      "original_blob_sha1": "f311eab3eee1ab8aa29255cb655087d6e0b5b3c9",
+      "bytes": 777582,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_layout_preview",
+      "reason": "Derived fixed-layout preview PDF; retain document content, diagrams, layout generator and delivered DOCX."
+    },
+    {
+      "path": ".document-build/pagination.json",
+      "git_mode": "100644",
+      "original_blob_sha1": "dc5543e23d32138d09348377551b075d7cd8bf26",
+      "bytes": 386188,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_pagination",
+      "reason": "Derived layout/pagination intermediate; retain content and layout generator."
+    },
+    {
+      "path": ".document-build/preview-pages/page-1.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "89102fc44725760a75b77869c847ba2b4006db1a",
+      "bytes": 124724,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-10.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "70c411acf96b770c5fe03374627812f917036078",
+      "bytes": 274658,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-11.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "e30d8920e53c0ed9dad1d2ded9208b23d17e6d4b",
+      "bytes": 191774,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-12.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "8d1ecf29212f6ab2ae24e553084b880d516fde6a",
+      "bytes": 209174,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-13.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "842866d673ee9082803787019cb8d41b16d2de29",
+      "bytes": 244405,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-14.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "50efb266155737bb34d568a3aba5eed47a138de3",
+      "bytes": 273244,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-15.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "b29315ff755bff011a063392bce2c5ce727080fb",
+      "bytes": 282722,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-16.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "3f626b9f8b7f14f2d45e85829bb49f70aac14558",
+      "bytes": 276180,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-17.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "286c640e8cee77728866dd7876cfe0e3b3f1fe78",
+      "bytes": 362001,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-18.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "49aa7170ad948c7b399e6738f314bb03471a91b8",
+      "bytes": 381069,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-19.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "e19ce03afa2174feb75f7003092e7b625255cc69",
+      "bytes": 289235,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-2.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "de3ad4866b6c236979b59d2991657f72fcf9b414",
+      "bytes": 94193,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-20.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "b3cc9a0ccc11ccd63bb0c03969d1c92cb025867d",
+      "bytes": 257608,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-21.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "c73e3572baa8252eacdcfde7ac976889900ca64f",
+      "bytes": 194366,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-22.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "587238f4c52ae898f162878c068fdfd0a2a9db66",
+      "bytes": 292392,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-23.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "63fe28bd6888d4ae57c950aaef6883e18a2c5604",
+      "bytes": 235100,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-24.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "6837b164aa75b3952717647842c1b30c346a627f",
+      "bytes": 282735,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-25.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "b23626bdbf4cae0c5a0d6d192ffddea6d969f827",
+      "bytes": 216291,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-26.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "547593b870d11fe82b04049baed48cd0c547668f",
+      "bytes": 244728,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-27.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "18d6dab1e9174f69884f7ce4831d7a26895de972",
+      "bytes": 277091,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-28.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "ece981ef80b9e58bc379911533f540df5aa9dbdc",
+      "bytes": 328050,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-29.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "9ec96acd2426fb50e122710120bc305d5f84f4b9",
+      "bytes": 345481,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-3.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "00a68d1d1402825ca366e9e19ff50575ab3743c3",
+      "bytes": 246473,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-30.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "08f8a2cc481fae0bd16c76ccbc67a34265200419",
+      "bytes": 295437,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-31.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "c882b62c41c4f88eb2202bac0130d15d9ff10931",
+      "bytes": 252500,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-32.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "7c51caf5fa9476d343bc758260bfa95100c185e9",
+      "bytes": 200820,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-33.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "587ca94bb358ec065d4ed4bdd30fcb796e15611e",
+      "bytes": 160333,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-34.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "76e6d48e964a22d9cb00008354fdc18c8072a354",
+      "bytes": 163308,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-35.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "0eb72aaf480ec8410e5d1a65f412c18d3f504cdb",
+      "bytes": 176970,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-36.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "ddd932cc2601ef1370ec2836f09385333bf0d337",
+      "bytes": 191128,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-37.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "707854b713ff12293f6256aa8079929b4d0297c2",
+      "bytes": 244795,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-38.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "278211ea99483438f13c596264d009710026915c",
+      "bytes": 210570,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-39.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "b38f62798b360ee8c4fcfa4cfb6a6b1a9c8962dd",
+      "bytes": 52329,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-4.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "d2de8ed24a4818f5595b0e1c5423d4bad6bd705c",
+      "bytes": 221514,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-40.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "9c7e3e0c7fe41203c5062e9ac079168db7e29595",
+      "bytes": 43441,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-41.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "fbaa0af15657e65f8c611305d8922b580f322d3d",
+      "bytes": 186345,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-42.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "34538c53e4d7e2f65c2e0527d5a28383467b7135",
+      "bytes": 148061,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-43.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "4568576fc516a84ece42b219a4d763fe612c6e4d",
+      "bytes": 244770,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-44.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "1afbf42b5923e0292f8f0307308592b92a6a77fb",
+      "bytes": 176764,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-45.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "d40527b8e4a74da1154503cfa37852481e4f4737",
+      "bytes": 44025,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-5.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "55dd32ce0abc26d513e981dda85cae4a987112e3",
+      "bytes": 159879,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-6.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "48fcb2daa91327ff52264bc7ff7467cbdc1f8f72",
+      "bytes": 236356,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-7.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "dee1bc142a94ca8e0326c584ad7028a354e87f2f",
+      "bytes": 247490,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-8.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "1a477bbda592537a7c37d80e21c5738a3e9ff283",
+      "bytes": 282361,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": ".document-build/preview-pages/page-9.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "118ee69b6c841e30519018668fdd685eb061b4d0",
+      "bytes": 263704,
+      "size_evidence": "local_git_blob",
+      "reason_code": "document_page_preview",
+      "reason": "Derived per-page raster preview; retain document content, diagrams and render scripts."
+    },
+    {
+      "path": "restore_github_snapshot.py",
+      "git_mode": "100644",
+      "original_blob_sha1": "21117053dc5ac5cfed90109eb2b317f7b4681412",
+      "bytes": 15130,
+      "size_evidence": "local_git_blob",
+      "reason_code": "duplicate_snapshot_restorer",
+      "reason": "Byte-identical duplicate of tools/restore_github_snapshot.py; update the workflow to the canonical tools path before removal."
+    },
+    {
+      "path": "snapshot-001.zip",
+      "git_mode": "100644",
+      "original_blob_sha1": "b183f8e5ce284ae9b97663c373556e7e2749d736",
+      "bytes": 18799062,
+      "size_evidence": "published_git_tree_at_reviewed_commit",
+      "reason_code": "snapshot_transport_archive",
+      "reason": "Historical snapshot transport archive; remove from the current tree while retaining Git history and the supported import tools."
+    },
+    {
+      "path": "snapshot-002.zip",
+      "git_mode": "100644",
+      "original_blob_sha1": "e7d789a3b057c057329ff8ceced73f3015dcf283",
+      "bytes": 18614811,
+      "size_evidence": "published_git_tree_at_reviewed_commit",
+      "reason_code": "snapshot_transport_archive",
+      "reason": "Historical snapshot transport archive; remove from the current tree while retaining Git history and the supported import tools."
+    },
+    {
+      "path": "snapshot-003.zip",
+      "git_mode": "100644",
+      "original_blob_sha1": "739159a357044d90cd8206793440127b231427fa",
+      "bytes": 6883866,
+      "size_evidence": "published_git_tree_at_reviewed_commit",
+      "reason_code": "snapshot_transport_archive",
+      "reason": "Historical snapshot transport archive; remove from the current tree while retaining Git history and the supported import tools."
+    },
+    {
+      "path": "snapshot-101.zip",
+      "git_mode": "100644",
+      "original_blob_sha1": "a257cf18bdaf0febd68d271925360f4992d204ad",
+      "bytes": 2779197,
+      "size_evidence": "published_git_tree_at_reviewed_commit",
+      "reason_code": "snapshot_transport_archive",
+      "reason": "Historical snapshot transport archive; remove from the current tree while retaining Git history and the supported import tools."
+    },
+    {
+      "path": "snapshot-201.zip",
+      "git_mode": "100644",
+      "original_blob_sha1": "fc795b0a76562a173ec0b149305f3b2c16de8d1d",
+      "bytes": 11023802,
+      "size_evidence": "published_git_tree_at_reviewed_commit",
+      "reason_code": "snapshot_transport_archive",
+      "reason": "Historical snapshot transport archive; remove from the current tree while retaining Git history and the supported import tools."
+    },
+    {
+      "path": "snapshot-301.zip",
+      "git_mode": "100644",
+      "original_blob_sha1": "9f8a2e960ecfc1707ac9d98d28868f13a3463a4b",
+      "bytes": 6578638,
+      "size_evidence": "published_git_tree_at_reviewed_commit",
+      "reason_code": "snapshot_transport_archive",
+      "reason": "Historical snapshot transport archive; remove from the current tree while retaining Git history and the supported import tools."
+    },
+    {
+      "path": "snapshot-401.zip",
+      "git_mode": "100644",
+      "original_blob_sha1": "8f54e99e383b8a13e12ef07093783feae2bd09c8",
+      "bytes": 18809832,
+      "size_evidence": "published_git_tree_at_reviewed_commit",
+      "reason_code": "snapshot_transport_archive",
+      "reason": "Historical snapshot transport archive; remove from the current tree while retaining Git history and the supported import tools."
+    },
+    {
+      "path": "snapshot-402.zip",
+      "git_mode": "100644",
+      "original_blob_sha1": "35ff423fae911a03e0f43a2b34d626f872ac690b",
+      "bytes": 7740392,
+      "size_evidence": "published_git_tree_at_reviewed_commit",
+      "reason_code": "snapshot_transport_archive",
+      "reason": "Historical snapshot transport archive; remove from the current tree while retaining Git history and the supported import tools."
+    },
+    {
+      "path": "snapshot-manifest.json",
+      "git_mode": "100644",
+      "original_blob_sha1": "6e97b546cdb7f5a9956c95f102a06d2b76ccfc78",
+      "bytes": 142002,
+      "size_evidence": "published_git_tree_at_reviewed_commit",
+      "reason_code": "snapshot_transport_manifest",
+      "reason": "Historical root snapshot transport manifest; future explicit imports use an incoming manifest."
+    }
+  ],
+  "must_retain_in_reviewed_scope": [
+    {
+      "path": ".document-build-v1.1/architecture.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "386a907f185deec6fd95712a998f8a0428b54c92",
+      "bytes": 181345,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build-v1.1/draw_diagrams.py",
+      "git_mode": "100644",
+      "original_blob_sha1": "dce7949fe5c011763f43916854d463ad2001c66e",
+      "bytes": 3477,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build-v1.1/final-qa.json",
+      "git_mode": "100644",
+      "original_blob_sha1": "fa4a56a9c573679d2437cba22117ff88ee958c24",
+      "bytes": 1139,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build-v1.1/fixed_layout.py",
+      "git_mode": "100644",
+      "original_blob_sha1": "aa7820ea0a030bc99ed9403e90fa8673d69a39a4",
+      "bytes": 16833,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build-v1.1/native-render-attempt.json",
+      "git_mode": "100644",
+      "original_blob_sha1": "21d45ec2f7540df5c96a987331c967bb001e9323",
+      "bytes": 3049,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build-v1.1/plan-content.json",
+      "git_mode": "100644",
+      "original_blob_sha1": "32a14123db3c7987d4d93a3996d1adea7da20c23",
+      "bytes": 186361,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build-v1.1/preview_pages.py",
+      "git_mode": "100644",
+      "original_blob_sha1": "f8602bcf96989536e96d728d222404d9f0ff3909",
+      "bytes": 901,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build-v1.1/provenance.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "fa35bed3592afe6fc33ed2caeeb748c9119f5b11",
+      "bytes": 125140,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build-v1.1/qa_document.py",
+      "git_mode": "100644",
+      "original_blob_sha1": "39305372a347669c05f213eb7a2bd0d8f475e0f2",
+      "bytes": 2486,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build-v1.1/traceability.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "3e07bb9dfd3ff9fbb2e0e8a98a6c34ac5d0bede7",
+      "bytes": 161925,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build/architecture.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "12bc73dadd4f9838a89b9d7be32de143a342a074",
+      "bytes": 147254,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build/build_document.py",
+      "git_mode": "100644",
+      "original_blob_sha1": "70ce9a6ab6362bcd09b4fdbc60fb6fd9664550b0",
+      "bytes": 13914,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build/content-checks.json",
+      "git_mode": "100644",
+      "original_blob_sha1": "cc402120ff542d5d60732391016a90236579da08",
+      "bytes": 161,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build/draw_provenance.py",
+      "git_mode": "100644",
+      "original_blob_sha1": "5faaac9846951849125f342fff1ffd874a0e8791",
+      "bytes": 1827,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build/final-qa.json",
+      "git_mode": "100644",
+      "original_blob_sha1": "7bf422889d89836cfbf707ced2c038d6ba261726",
+      "bytes": 901,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build/fixed_layout.py",
+      "git_mode": "100644",
+      "original_blob_sha1": "ee0be9e41daef926c92c37851b2ea3bbde860c35",
+      "bytes": 16793,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build/plan-content.json",
+      "git_mode": "100644",
+      "original_blob_sha1": "f1cdef90fda3dba44e05c214cec1da5277564546",
+      "bytes": 134296,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build/preview_pages.py",
+      "git_mode": "100644",
+      "original_blob_sha1": "0c82391b12f40083cbddea51ca2070df6f0925b9",
+      "bytes": 896,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build/provenance.png",
+      "git_mode": "100644",
+      "original_blob_sha1": "fa35bed3592afe6fc33ed2caeeb748c9119f5b11",
+      "bytes": 125140,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build/qa_document.py",
+      "git_mode": "100644",
+      "original_blob_sha1": "a9bf147b51541d266e88b88e580d6e5d254af352",
+      "bytes": 2481,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": ".document-build/render_word.ps1",
+      "git_mode": "100644",
+      "original_blob_sha1": "4b79335fb9731b9812c1df7e64a493abd1e5810e",
+      "bytes": 919,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain source script, content input, figure or compact QA evidence."
+    },
+    {
+      "path": "tools/restore_github_snapshot.py",
+      "git_mode": "100644",
+      "original_blob_sha1": "21117053dc5ac5cfed90109eb2b317f7b4681412",
+      "bytes": 15130,
+      "size_evidence": "local_git_blob",
+      "reason": "Canonical verified restorer used by build/package scripts, snapshot tests and the retained manual workflow."
+    },
+    {
+      "path": ".github/workflows/import-snapshot.yml",
+      "git_mode": "100644",
+      "original_blob_sha1": "c9c56cfa338605bf6aa7519991c3dea764b39e07",
+      "bytes": 1179,
+      "size_evidence": "local_git_blob",
+      "reason": "Retain the owner-triggered fallback import workflow; update its manifest input and canonical restorer path."
+    }
+  ],
+  "additional_must_retain": [
+    "Delivered documents under 交付文档/; document source/QA scripts and content JSON remain available.",
+    "tools/build_github_snapshot.py, tools/backend_release/build_snapshot.py, tools/ontology_export/build_export_snapshot.py, tools/storage_review/package_review.py, tools/test_snapshot.py and the normal Git synchronization tools."
+  ],
+  "required_followup_changes": [
+    {
+      "path": ".github/workflows/import-snapshot.yml",
+      "change": "Retain workflow_dispatch and add a manifest input defaulting to incoming/snapshot-manifest.json. Invoke python tools/restore_github_snapshot.py with the validated input and --destination .; retain repository/owner restriction, contents permission, concurrency and non-force push."
+    },
+    {
+      "path": ".github/workflows/import-snapshot.yml",
+      "change": "Pass workflow input via an environment variable, not direct interpolation into shell code; validate the repository-relative manifest path, containment and existing file. Missing incoming data must produce an explicit failure or skipped-import result, never a successful import claim."
+    },
+    {
+      "path": ".github/workflows/import-snapshot.yml",
+      "change": "After successful full manifest/archive verification and restoration, clean or exclude only the explicitly verified incoming transport manifest and archive paths before git add -A, so transport is not retained again. Never remove arbitrary matching files from restored project content."
+    },
+    {
+      "path": ".github/workflows/import-snapshot.yml",
+      "change": "Rename the stale Checkout current private repository step to match the public repository."
+    },
+    {
+      "path": "GITHUB_SYNC.txt",
+      "change": "Replace root-directory upload/bootstrap instructions and the claim that old transport volumes remain in the current tree. Document incoming/, the workflow manifest input and the retained tools/ restorer."
+    },
+    {
+      "path": ".gitignore",
+      "change": "Prevent regenerated preview-pages/*.png, contact-*.png, fixed-layout-preview.pdf and pagination.json in these two document-build directories, plus local incoming/root snapshot transports, from normal re-addition; do not ignore the retained source/content/figure/QA files."
+    }
+  ],
+  "limitations": [
+    "All quantities are original uncompressed Git blob bytes, not repository pack size or guaranteed disk-space savings.",
+    "This is a current-tree cleanup plan, not a history rewrite. Existing commits and their historical objects remain.",
+    "Nine root transport blobs were unavailable locally; their sizes and SHA-1 identities were checked against the public GitHub tree for the exact reviewed commit. No archive was fetched or unpacked for this audit.",
+    "Document generators, inputs, figures and compact QA evidence are retained. Regeneration was not executed; installed document libraries/fonts and tool-path adjustments may still be required.",
+    "No deletion, workflow edit, database write, worker restart, commit or push was performed by this audit. Paused fish-import work and runtime assets are outside this cleanup scope."
+  ],
+  "execution": {
+    "removed_from_index": 122,
+    "matching_local_files_removed": 112,
+    "differing_local_files_preserved": [],
+    "recursive_deletion_used": false,
+    "historical_commits_rewritten": false
+  }
+}

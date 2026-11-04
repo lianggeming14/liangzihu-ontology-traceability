@@ -1,0 +1,21 @@
+# Python 3.12. Reuse the full platform lock: fish_gis currently imports the API
+# router/auth dependency chain even when using only its pure planning functions.
+# Installing these libraries does not start a worker, IdP, Jena or PostgreSQL.
+# Install from the ontology-platform root:
+#   python -m pip install -r scripts/requirements-fish-review.txt
+# Prepare the downloaded pinned source ZIP (stdlib only):
+#   python scripts/prepare_fish_review_source.py --config config/fish-review.example.json
+# Offline plan (source ZIP + verified extraction required, no env/DB required):
+#   python scripts/build_fish_review_sample.py --config config/fish-review.example.json --plan
+# New isolated sample only (existing schema is always refused):
+#   python scripts/build_fish_review_sample.py --config config/fish-review.example.json
+# Read-only DB verification of the existing sample (writes local report only):
+#   python scripts/build_fish_review_sample.py --config config/fish-review.example.json --verify
+# Equivalent verifier entry and no-DB safety checks:
+#   python scripts/verify_fish_review_sample.py --config config/fish-review.example.json
+#   python scripts/check_fish_review_config.py
+# Server prerequisite for build/verify: PostgreSQL 16+ with PostGIS installed in
+# lzo_gis; the explicit private .runtime env file has APP_ENV=test and
+# LZO_GIS_MIGRATION_DATABASE_URL. Only 127.0.0.1/lzo_gis_owner/lzo_gis is accepted.
+# No service is started and no migration/bootstrap is run by these commands.
+-r ../backend/requirements.lock

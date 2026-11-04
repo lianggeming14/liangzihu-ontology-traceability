@@ -37,3 +37,18 @@
 
 # 渲染库自动逐单元格调试缓存（正式检查报告另存）
 /outputs/**/*.xlsx.inspect.ndjson
+
+# Reviewed import transports and regenerable document rendering intermediates
+/snapshot-*.zip
+/snapshot-manifest.json
+/restore_github_snapshot.py
+/incoming/
+/.document-build/contact-*.png
+/.document-build/preview-pages/
+/.document-build/fixed-layout-preview.pdf
+/.document-build/pagination.json
+/.document-build-v1.1/contact-*.png
+/.document-build-v1.1/preview-pages/
+/.document-build-v1.1/fixed-layout-preview.pdf
+/.document-build-v1.1/pagination.json
+/ontology-platform/config/*.local.json

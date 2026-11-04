@@ -1,5 +1,7 @@
 # 本体农场 · 当前源码快照
 
+2026-11-04：当前先审查[十分之一数据样本结构](docs/fish/review-sample/README.md)。配置入口为 [config/fish-review.example.json](config/fish-review.example.json)，运行步骤、依赖与只读核验见样本说明。建库 SQL、逐表字段、关联示例和 126 个 GIS 要素均有实际回读结果；基础 10% 外另计依赖补充。原平台全量正式导入保持暂停，等待结构审查。
+
 2026-10-29 更新：已增加[五份竣工图 GIS 数据与地图接口](docs/gis/drawings.md)，保存田块、塘面、路渠、标注及工程表证据，提供版本化读取API和核对预览。当前仍有OCR逐条校验、背景矢量化和地理配准缺口，不构成无遗漏提取或现场验收。
 
 本仓库保存农业 Operational Ontology Platform 的当前源码，包含语义后端、React Studio 原型、数据库迁移和部署工具。已按确认方案实施语义主库与专业存储拆分；前端视觉重做仍暂停。工程证据与现场验收分别记录。

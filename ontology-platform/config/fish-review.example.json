@@ -1,0 +1,9 @@
+{
+  "contract": "fish-review-config/1",
+  "source_archive": ".runtime/source-imports/wuchangfish-l1-2025-01/1eb0bab8f86f/source.zip",
+  "extracted_root": ".runtime/source-imports/wuchangfish-l1-2025-01/1eb0bab8f86f/extracted/output",
+  "source_manifest": ".runtime/source-imports/wuchangfish-l1-2025-01/1eb0bab8f86f/source-manifest.json",
+  "env_file": ".runtime/fish-l1-acceptance/services.env",
+  "review_schema": "fish_review_10pct_v1",
+  "output_dir": "docs/fish/review-sample"
+}
