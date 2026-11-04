@@ -1,0 +1,2493 @@
+{
+  "classes": [
+    {
+      "iri": "urn:lzo:fish-l1:class:attachment_links",
+      "label": "attachment_links",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:attachments",
+      "label": "attachments",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:case_observations",
+      "label": "case_observations",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:cash_allocations",
+      "label": "cash_allocations",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:cash_transactions",
+      "label": "cash_transactions",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:cohorts",
+      "label": "cohorts",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:control_commands",
+      "label": "control_commands",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:cost_allocations",
+      "label": "cost_allocations",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:cost_entries",
+      "label": "cost_entries",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:device_calibrations",
+      "label": "device_calibrations",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:device_installations",
+      "label": "device_installations",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:device_maintenance",
+      "label": "device_maintenance",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:device_operations",
+      "label": "device_operations",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:devices",
+      "label": "devices",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:diagnostic_tests",
+      "label": "diagnostic_tests",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:dictionaries",
+      "label": "dictionaries",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:disposal_events",
+      "label": "disposal_events",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:document_versions",
+      "label": "document_versions",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:documents",
+      "label": "documents",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:farms",
+      "label": "farms",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:feeding_events",
+      "label": "feeding_events",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:growth_grade_items",
+      "label": "growth_grade_items",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:growth_samples",
+      "label": "growth_samples",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:harvest_grade_items",
+      "label": "harvest_grade_items",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:harvest_sale_allocations",
+      "label": "harvest_sale_allocations",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:harvests",
+      "label": "harvests",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:health_cases",
+      "label": "health_cases",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:inventory_lot_status",
+      "label": "inventory_lot_status",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:inventory_movements",
+      "label": "inventory_movements",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:logical_providers",
+      "label": "logical_providers",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:media_annotations",
+      "label": "media_annotations",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:mortality_events",
+      "label": "mortality_events",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:opening_balances",
+      "label": "opening_balances",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:partners",
+      "label": "partners",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:patrol_events",
+      "label": "patrol_events",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:persons",
+      "label": "persons",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:pond_cohort_occupancy",
+      "label": "pond_cohort_occupancy",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:pond_maintenance",
+      "label": "pond_maintenance",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:pond_preparations",
+      "label": "pond_preparations",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:ponds",
+      "label": "ponds",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:production_plans",
+      "label": "production_plans",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:products",
+      "label": "products",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:purchase_items",
+      "label": "purchase_items",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:purchases",
+      "label": "purchases",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:sale_items",
+      "label": "sale_items",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:sales",
+      "label": "sales",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:settlement_deductions",
+      "label": "settlement_deductions",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:settlements",
+      "label": "settlements",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:sources",
+      "label": "sources",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:spatial_layer_registry",
+      "label": "spatial_layer_registry",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:species",
+      "label": "species",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:stocking_events",
+      "label": "stocking_events",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:transfer_allocations",
+      "label": "transfer_allocations",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:transfer_events",
+      "label": "transfer_events",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:treatment_events",
+      "label": "treatment_events",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:water_operations",
+      "label": "water_operations",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:class:water_samples",
+      "label": "water_samples",
+      "description": "Fish L1 source table; scenario data, not verified field evidence",
+      "parents": [],
+      "deprecated": false
+    }
+  ],
+  "properties": [
+    {
+      "iri": "urn:lzo:fish-l1:field:actual_net_unit_price_cny_per_kg",
+      "label": "实际到手单价（元每公斤）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:affected_count",
+      "label": "涉及鱼尾数",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:allocation_basis",
+      "label": "分摊或分配基数",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:allocation_method",
+      "label": "费用分摊方法",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:allocation_ratio",
+      "label": "费用分摊比例（0至1）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:amount_cny",
+      "label": "本记录金额（人民币）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:amount_delta_cny",
+      "label": "带正负号的库存价值变动",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:area_m2",
+      "label": "塘口面积（平方米）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:area_mu",
+      "label": "塘口面积（亩）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:assumed_unit_price_cny",
+      "label": "每个产品unit单位的假设单价（人民币）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:available_quantity",
+      "label": "在所列适用条件下可用库存数量",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:beneficiary_type",
+      "label": "费用受益对象类型",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:bottom_type",
+      "label": "池塘底质",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:channel",
+      "label": "销售渠道",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:closing_quantity",
+      "label": "变动后库存数量",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:closing_value_cny",
+      "label": "变动后库存价值",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:command",
+      "label": "控制指令内容",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:commissioned_on",
+      "label": "塘口启用日期",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#date",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:cost_cny",
+      "label": "本次成本（人民币）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:cost_yuan",
+      "label": "费用金额（人民币）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:count",
+      "label": "鱼尾数",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:currency",
+      "label": "币种",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:current_status",
+      "label": "塘口当前状态",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:death_count",
+      "label": "相关死亡尾数",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:deductions_amount_cny",
+      "label": "结算扣款合计",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:depth_m",
+      "label": "采样深度",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:device_type",
+      "label": "设备类型",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:diagnosis_status",
+      "label": "疑似、已确诊或已排除诊断状态",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:discount_cny",
+      "label": "优惠折价金额",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:discovered_at",
+      "label": "健康异常发现时间",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:dose_kg",
+      "label": "投入品用量（公斤）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:duration_h",
+      "label": "运行时长",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:effective_end_exclusive",
+      "label": "有效期终点是否不含该时刻",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:effective_volume_m3",
+      "label": "有效养殖水体积",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:end_date",
+      "label": "结束日期",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#date",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:ended_at",
+      "label": "操作或有效期结束时间",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:energy_kwh",
+      "label": "设备耗电量",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:entered_at",
+      "label": "进入塘口的有效时间",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:estimated_biomass_kg",
+      "label": "估算存塘生物量",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:estimated_count",
+      "label": "估算存塘尾数",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:estimated_saleable_kg",
+      "label": "估算可售生物量",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:execution_status",
+      "label": "实际施用或非药物操作状态",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:generation_run_id",
+      "label": "本次可复现生成运行标识",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:grade",
+      "label": "规格等级",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:gross_amount_cny",
+      "label": "毛金额",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:gross_revenue_cny",
+      "label": "销售毛收入",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:gross_sales_amount_cny",
+      "label": "结算对应销售毛金额",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:gross_weight_kg",
+      "label": "毛重量",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:id",
+      "label": "id",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:identity_status",
+      "label": "identity_status",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:incidence_rate",
+      "label": "涉及尾数占存塘尾数比例（0至1）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:inflow_m3",
+      "label": "进水体积",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:initial_count",
+      "label": "初始投放尾数",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:initial_mean_weight_g",
+      "label": "初始投放平均个体重量",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:initial_weight_kg",
+      "label": "初始投放总重量",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:installed_at",
+      "label": "设备安装有效起始时间",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:is_estimated",
+      "label": "是否属于估算值或估算记录",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:is_synthetic",
+      "label": "is_synthetic",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:left_at",
+      "label": "离开塘口的有效时间",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:lot_closing_value_cny",
+      "label": "本投入品批次变动后库存价值",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:lot_opening_value_cny",
+      "label": "本投入品批次变动前库存价值",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:manufacturer",
+      "label": "生产企业",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:max_weight_g",
+      "label": "样本最大个体重量",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:maximum_depth_m",
+      "label": "最大水深",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:mean_depth_m",
+      "label": "平均水深",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:mean_weight_g",
+      "label": "平均每尾重量",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:min_weight_g",
+      "label": "样本最小个体重量",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:model",
+      "label": "虚构设备型号",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:name",
+      "label": "name",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:net_amount_cny",
+      "label": "结算净额",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:net_weight_kg",
+      "label": "净重量",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:observed_at",
+      "label": "观测时间",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:occurred_at",
+      "label": "实际发生时间",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:opening_quantity",
+      "label": "变动前库存数量",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:opening_value_cny",
+      "label": "变动前库存价值",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:operation",
+      "label": "操作类型或组合操作说明",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:origin_kind",
+      "label": "origin_kind",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:outflow_m3",
+      "label": "排水体积",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:outstanding_amount_cny",
+      "label": "未收款金额",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:payment_status",
+      "label": "付款状态",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:period_end",
+      "label": "费用归属期间结束日期",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#date",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:period_start",
+      "label": "费用归属期间开始日期",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#date",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:product_parameter_status",
+      "label": "产品参数核实状态",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:production_mode",
+      "label": "养殖模式",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:purchase_cost_yuan",
+      "label": "产品采购成本（人民币）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:quality_flag",
+      "label": "质量标记",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:quality_grade",
+      "label": "品质等级",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:quantity",
+      "label": "数量（单位由unit给定）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:quantity_kg",
+      "label": "本次投入或投喂重量",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:rated_power_kw",
+      "label": "额定功率",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:received_amount_cny",
+      "label": "已收款金额",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:recorded_at",
+      "label": "人工或源系统记录时间",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:removed_at",
+      "label": "设备拆除或有效期截止时间",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:repair_cost_yuan",
+      "label": "维修费用（人民币）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:reported_at",
+      "label": "报告出具时间",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:result",
+      "label": "本表操作执行或检测结果",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:review_status",
+      "label": "审核状态",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:role",
+      "label": "人员职责（记录员或审核员）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:rule_version",
+      "label": "生成规则版本",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:sample_size",
+      "label": "样本尾数",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:sampled_at",
+      "label": "采样时间",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:scenario_id",
+      "label": "场景标识",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:scientific_name",
+      "label": "物种学名",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:seed",
+      "label": "随机种子",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:shape",
+      "label": "塘口形状",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:source_timezone",
+      "label": "来源时区",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:species_code",
+      "label": "规范鱼种代码",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:standard_name",
+      "label": "规范中文物种名称",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:start_date",
+      "label": "养殖批次开始日期",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#date",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:started_at",
+      "label": "操作或有效期开始时间",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:status",
+      "label": "该业务对象的状态（枚举见本表实际值）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:std_weight_g",
+      "label": "样本个体重量标准差",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:stopped_at",
+      "label": "停止日期时间",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:time_precision",
+      "label": "来源时间精度",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:total_cost_cny",
+      "label": "该业务总成本",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:unit",
+      "label": "数量或测量单位",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:unit_price_cny",
+      "label": "每个所列单位的单价（人民币）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:unit_price_cny_per_kg",
+      "label": "成交单价（元每公斤）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:uploaded_at",
+      "label": "上传时间",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:weight_kg",
+      "label": "总重量",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:weight_ratio",
+      "label": "该规格占总重量比例（0至1）",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:withdrawal_days",
+      "label": "休药期天数",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:withdrawal_status",
+      "label": "休药期适用及证据状态",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:raw_payload",
+      "label": "raw_payload",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:source_table",
+      "label": "source_table",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:source_key",
+      "label": "source_key",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:source_row",
+      "label": "source_row",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#integer",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:source_locator",
+      "label": "source_locator",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:package_sha256",
+      "label": "package_sha256",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:audit_status",
+      "label": "audit_status",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:audit_issues",
+      "label": "audit_issues",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    },
+    {
+      "iri": "urn:lzo:fish-l1:field:relation_locators",
+      "label": "relation_locators",
+      "datatype_iri": "http://www.w3.org/2001/XMLSchema#string",
+      "unit": null,
+      "owner_policy_iri": "urn:lzo:authority:source_backed",
+      "enum_values": [],
+      "superproperties": []
+    }
+  ],
+  "relations": [
+    {
+      "iri": "urn:lzo:fish-l1:relation:advisor_id:persons",
+      "label": "advisor_id → persons",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:treatment_events"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:persons"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:attachment_id:attachments",
+      "label": "attachment_id → attachments",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:attachments"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:case_id:health_cases",
+      "label": "case_id → health_cases",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:health_cases"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:cash_transaction_id:cash_transactions",
+      "label": "cash_transaction_id → cash_transactions",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:cash_allocations"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:cash_transactions"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:cohort_id:cohorts",
+      "label": "cohort_id → cohorts",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:cohorts"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:command_id:control_commands",
+      "label": "command_id → control_commands",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:device_operations"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:control_commands"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:cost_entry_id:cost_entries",
+      "label": "cost_entry_id → cost_entries",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:cost_entries"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:counterparty_id:partners",
+      "label": "counterparty_id → partners",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:cash_transactions"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:partners"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:current_version_id:document_versions",
+      "label": "current_version_id → document_versions",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:documents"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:document_versions"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:customer_id:partners",
+      "label": "customer_id → partners",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:partners"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:device_id:devices",
+      "label": "device_id → devices",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:devices"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:document_id:documents",
+      "label": "document_id → documents",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:document_versions"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:documents"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:entity_id:cost_entries",
+      "label": "entity_id → cost_entries",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:attachment_links"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:cost_entries"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:entity_id:diagnostic_tests",
+      "label": "entity_id → diagnostic_tests",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:attachment_links"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:diagnostic_tests"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:entity_id:disposal_events",
+      "label": "entity_id → disposal_events",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:attachment_links"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:disposal_events"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:entity_id:farms",
+      "label": "entity_id → farms",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:attachment_links"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:farms"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:entity_id:feeding_events",
+      "label": "entity_id → feeding_events",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:attachment_links"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:feeding_events"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:entity_id:growth_samples",
+      "label": "entity_id → growth_samples",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:attachment_links"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:growth_samples"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:entity_id:harvests",
+      "label": "entity_id → harvests",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:attachment_links"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:harvests"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:entity_id:health_cases",
+      "label": "entity_id → health_cases",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:attachment_links"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:health_cases"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:entity_id:patrol_events",
+      "label": "entity_id → patrol_events",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:attachment_links"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:patrol_events"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:entity_id:pond_preparations",
+      "label": "entity_id → pond_preparations",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:attachment_links"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:pond_preparations"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:entity_id:sales",
+      "label": "entity_id → sales",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:attachment_links"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:sales"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:entity_id:stocking_events",
+      "label": "entity_id → stocking_events",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:attachment_links"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:stocking_events"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:entity_id:transfer_events",
+      "label": "entity_id → transfer_events",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:attachment_links"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:transfer_events"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:entity_id:treatment_events",
+      "label": "entity_id → treatment_events",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:attachment_links"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:treatment_events"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:entity_id:water_samples",
+      "label": "entity_id → water_samples",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:attachment_links"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:water_samples"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:farm_id:farms",
+      "label": "farm_id → farms",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:farms"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:harvest_grade_item_id:harvest_grade_items",
+      "label": "harvest_grade_item_id → harvest_grade_items",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:harvest_sale_allocations"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:harvest_grade_items"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:harvest_id:harvests",
+      "label": "harvest_id → harvests",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:harvests"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:mortality_event_id:mortality_events",
+      "label": "mortality_event_id → mortality_events",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:disposal_events"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:mortality_events"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:mortality_event_ids:mortality_events",
+      "label": "mortality_event_ids → mortality_events",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:patrol_events"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:mortality_events"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:operation_person_id:persons",
+      "label": "operation_person_id → persons",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:transfer_events"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:persons"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:operator_id:persons",
+      "label": "operator_id → persons",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:persons"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:parent_cohort_id:cohorts",
+      "label": "parent_cohort_id → cohorts",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:cohorts"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:cohorts"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:pond_id:ponds",
+      "label": "pond_id → ponds",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:ponds"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:product_id:products",
+      "label": "product_id → products",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:products"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:purchase_id:purchases",
+      "label": "purchase_id → purchases",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:purchases"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:purchase_item_id:purchase_items",
+      "label": "purchase_item_id → purchase_items",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:stocking_events"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:purchase_items"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:recorder_id:persons",
+      "label": "recorder_id → persons",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:persons"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:related_health_case_id:health_cases",
+      "label": "related_health_case_id → health_cases",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:mortality_events"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:health_cases"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:replaces_version_id:document_versions",
+      "label": "replaces_version_id → document_versions",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:document_versions"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:document_versions"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:responsible_person_id:persons",
+      "label": "responsible_person_id → persons",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:persons"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:reviewer_id:persons",
+      "label": "reviewer_id → persons",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:persons"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:sale_id:sales",
+      "label": "sale_id → sales",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:sales"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:sale_item_id:sale_items",
+      "label": "sale_item_id → sale_items",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:harvest_sale_allocations"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:sale_items"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:sample_id:growth_samples",
+      "label": "sample_id → growth_samples",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:growth_grade_items"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:growth_samples"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:sampler_id:persons",
+      "label": "sampler_id → persons",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:water_samples"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:persons"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:service_partner_id:partners",
+      "label": "service_partner_id → partners",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:disposal_events"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:partners"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:settlement_deduction_id:settlement_deductions",
+      "label": "settlement_deduction_id → settlement_deductions",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:cost_entries"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:settlement_deductions"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:settlement_id:settlements",
+      "label": "settlement_id → settlements",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:settlements"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:source_cohort_id:cohorts",
+      "label": "source_cohort_id → cohorts",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:cohorts"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:source_id:feeding_events",
+      "label": "source_id → feeding_events",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:feeding_events"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:source_id:mortality_events",
+      "label": "source_id → mortality_events",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:cost_entries"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:mortality_events"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:source_id:opening_balances",
+      "label": "source_id → opening_balances",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:inventory_movements"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:opening_balances"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:source_id:purchase_items",
+      "label": "source_id → purchase_items",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:inventory_movements"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:purchase_items"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:source_id:stocking_events",
+      "label": "source_id → stocking_events",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:stocking_events"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:source_id:transfer_events",
+      "label": "source_id → transfer_events",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:cost_entries"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:transfer_events"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:source_inventory_movement_id:inventory_movements",
+      "label": "source_inventory_movement_id → inventory_movements",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:inventory_lot_status"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:inventory_movements"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:source_pond_id:ponds",
+      "label": "source_pond_id → ponds",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:ponds"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:species_id:species",
+      "label": "species_id → species",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:species"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:supplier_id:partners",
+      "label": "supplier_id → partners",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:partners"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:target_cohort_id:cohorts",
+      "label": "target_cohort_id → cohorts",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:transfer_allocations"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:cohorts"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:target_pond_id:ponds",
+      "label": "target_pond_id → ponds",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:transfer_allocations"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:ponds"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:technical_plan_id:production_plans",
+      "label": "technical_plan_id → production_plans",
+      "domain_iris": [
+        "urn:lzo:fish-l1:class:cohorts"
+      ],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:production_plans"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    },
+    {
+      "iri": "urn:lzo:fish-l1:relation:transfer_event_id:transfer_events",
+      "label": "transfer_event_id → transfer_events",
+      "domain_iris": [],
+      "range_iris": [
+        "urn:lzo:fish-l1:class:transfer_events"
+      ],
+      "superproperties": [],
+      "inverse_iri": null,
+      "symmetric": false,
+      "transitive": false
+    }
+  ],
+  "shapes": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n<urn:lzo:fish-l1:shape:relation-domain:7955f90928ee22dbf40da8188246bda386a1af44319b67b8c33d426a86dec80d> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:attachment_id:attachments>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:7955f90928ee22dbf40da8188246bda386a1af44319b67b8c33d426a86dec80d:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:7955f90928ee22dbf40da8188246bda386a1af44319b67b8c33d426a86dec80d:0> rdf:first <urn:lzo:fish-l1:shape:owner:attachment_links>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:7955f90928ee22dbf40da8188246bda386a1af44319b67b8c33d426a86dec80d:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:7955f90928ee22dbf40da8188246bda386a1af44319b67b8c33d426a86dec80d:1> rdf:first <urn:lzo:fish-l1:shape:owner:document_versions>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:7955f90928ee22dbf40da8188246bda386a1af44319b67b8c33d426a86dec80d:2> .\n<urn:lzo:fish-l1:shape:relation-domain-list:7955f90928ee22dbf40da8188246bda386a1af44319b67b8c33d426a86dec80d:2> rdf:first <urn:lzo:fish-l1:shape:owner:documents>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:7955f90928ee22dbf40da8188246bda386a1af44319b67b8c33d426a86dec80d:3> .\n<urn:lzo:fish-l1:shape:relation-domain-list:7955f90928ee22dbf40da8188246bda386a1af44319b67b8c33d426a86dec80d:3> rdf:first <urn:lzo:fish-l1:shape:owner:media_annotations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:7955f90928ee22dbf40da8188246bda386a1af44319b67b8c33d426a86dec80d:4> .\n<urn:lzo:fish-l1:shape:relation-domain-list:7955f90928ee22dbf40da8188246bda386a1af44319b67b8c33d426a86dec80d:4> rdf:first <urn:lzo:fish-l1:shape:owner:spatial_layer_registry>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:5ffab8c53b74b5fa37c7db980ea000baf4654f0c7ab2ef65c4d8bf774dd77e75> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:case_id:health_cases>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:5ffab8c53b74b5fa37c7db980ea000baf4654f0c7ab2ef65c4d8bf774dd77e75:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:5ffab8c53b74b5fa37c7db980ea000baf4654f0c7ab2ef65c4d8bf774dd77e75:0> rdf:first <urn:lzo:fish-l1:shape:owner:case_observations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:5ffab8c53b74b5fa37c7db980ea000baf4654f0c7ab2ef65c4d8bf774dd77e75:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:5ffab8c53b74b5fa37c7db980ea000baf4654f0c7ab2ef65c4d8bf774dd77e75:1> rdf:first <urn:lzo:fish-l1:shape:owner:diagnostic_tests>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:5ffab8c53b74b5fa37c7db980ea000baf4654f0c7ab2ef65c4d8bf774dd77e75:2> .\n<urn:lzo:fish-l1:shape:relation-domain-list:5ffab8c53b74b5fa37c7db980ea000baf4654f0c7ab2ef65c4d8bf774dd77e75:2> rdf:first <urn:lzo:fish-l1:shape:owner:treatment_events>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:cohort_id:cohorts>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:0> rdf:first <urn:lzo:fish-l1:shape:owner:attachments>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:1> rdf:first <urn:lzo:fish-l1:shape:owner:cost_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:2> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:2> rdf:first <urn:lzo:fish-l1:shape:owner:cost_entries>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:3> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:3> rdf:first <urn:lzo:fish-l1:shape:owner:disposal_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:4> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:4> rdf:first <urn:lzo:fish-l1:shape:owner:feeding_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:5> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:5> rdf:first <urn:lzo:fish-l1:shape:owner:growth_samples>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:6> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:6> rdf:first <urn:lzo:fish-l1:shape:owner:harvest_grade_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:7> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:7> rdf:first <urn:lzo:fish-l1:shape:owner:harvest_sale_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:8> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:8> rdf:first <urn:lzo:fish-l1:shape:owner:harvests>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:9> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:9> rdf:first <urn:lzo:fish-l1:shape:owner:health_cases>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:10> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:10> rdf:first <urn:lzo:fish-l1:shape:owner:inventory_movements>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:11> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:11> rdf:first <urn:lzo:fish-l1:shape:owner:mortality_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:12> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:12> rdf:first <urn:lzo:fish-l1:shape:owner:opening_balances>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:13> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:13> rdf:first <urn:lzo:fish-l1:shape:owner:pond_cohort_occupancy>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:14> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:14> rdf:first <urn:lzo:fish-l1:shape:owner:stocking_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:15> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:15> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:16> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:16> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:17> .\n<urn:lzo:fish-l1:shape:relation-domain-list:2c865d763c4f07441d478a400b1c712a3ccbf8fffb301f80daeb98a49c0df1fe:17> rdf:first <urn:lzo:fish-l1:shape:owner:treatment_events>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:a26489c04cddb13f6f20b349fe3211612f2389a5340e41c2cf25703c1be9fde5> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:cost_entry_id:cost_entries>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:a26489c04cddb13f6f20b349fe3211612f2389a5340e41c2cf25703c1be9fde5:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:a26489c04cddb13f6f20b349fe3211612f2389a5340e41c2cf25703c1be9fde5:0> rdf:first <urn:lzo:fish-l1:shape:owner:cash_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:a26489c04cddb13f6f20b349fe3211612f2389a5340e41c2cf25703c1be9fde5:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:a26489c04cddb13f6f20b349fe3211612f2389a5340e41c2cf25703c1be9fde5:1> rdf:first <urn:lzo:fish-l1:shape:owner:cost_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:a26489c04cddb13f6f20b349fe3211612f2389a5340e41c2cf25703c1be9fde5:2> .\n<urn:lzo:fish-l1:shape:relation-domain-list:a26489c04cddb13f6f20b349fe3211612f2389a5340e41c2cf25703c1be9fde5:2> rdf:first <urn:lzo:fish-l1:shape:owner:settlement_deductions>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:c6f9e882e1b47a5351d2f7e97486f72c1eb7b25473ed997165a98c95fabb5f52> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:customer_id:partners>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:c6f9e882e1b47a5351d2f7e97486f72c1eb7b25473ed997165a98c95fabb5f52:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:c6f9e882e1b47a5351d2f7e97486f72c1eb7b25473ed997165a98c95fabb5f52:0> rdf:first <urn:lzo:fish-l1:shape:owner:sales>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:c6f9e882e1b47a5351d2f7e97486f72c1eb7b25473ed997165a98c95fabb5f52:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:c6f9e882e1b47a5351d2f7e97486f72c1eb7b25473ed997165a98c95fabb5f52:1> rdf:first <urn:lzo:fish-l1:shape:owner:settlements>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:baed822ced9f345b9fdbda95ee1053628fe97bcbc4163751f6d2b5c275a0fa33> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:device_id:devices>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:baed822ced9f345b9fdbda95ee1053628fe97bcbc4163751f6d2b5c275a0fa33:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:baed822ced9f345b9fdbda95ee1053628fe97bcbc4163751f6d2b5c275a0fa33:0> rdf:first <urn:lzo:fish-l1:shape:owner:control_commands>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:baed822ced9f345b9fdbda95ee1053628fe97bcbc4163751f6d2b5c275a0fa33:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:baed822ced9f345b9fdbda95ee1053628fe97bcbc4163751f6d2b5c275a0fa33:1> rdf:first <urn:lzo:fish-l1:shape:owner:device_calibrations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:baed822ced9f345b9fdbda95ee1053628fe97bcbc4163751f6d2b5c275a0fa33:2> .\n<urn:lzo:fish-l1:shape:relation-domain-list:baed822ced9f345b9fdbda95ee1053628fe97bcbc4163751f6d2b5c275a0fa33:2> rdf:first <urn:lzo:fish-l1:shape:owner:device_installations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:baed822ced9f345b9fdbda95ee1053628fe97bcbc4163751f6d2b5c275a0fa33:3> .\n<urn:lzo:fish-l1:shape:relation-domain-list:baed822ced9f345b9fdbda95ee1053628fe97bcbc4163751f6d2b5c275a0fa33:3> rdf:first <urn:lzo:fish-l1:shape:owner:device_maintenance>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:baed822ced9f345b9fdbda95ee1053628fe97bcbc4163751f6d2b5c275a0fa33:4> .\n<urn:lzo:fish-l1:shape:relation-domain-list:baed822ced9f345b9fdbda95ee1053628fe97bcbc4163751f6d2b5c275a0fa33:4> rdf:first <urn:lzo:fish-l1:shape:owner:device_operations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:baed822ced9f345b9fdbda95ee1053628fe97bcbc4163751f6d2b5c275a0fa33:5> .\n<urn:lzo:fish-l1:shape:relation-domain-list:baed822ced9f345b9fdbda95ee1053628fe97bcbc4163751f6d2b5c275a0fa33:5> rdf:first <urn:lzo:fish-l1:shape:owner:feeding_events>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:farm_id:farms>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:0> rdf:first <urn:lzo:fish-l1:shape:owner:attachments>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:1> rdf:first <urn:lzo:fish-l1:shape:owner:cash_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:2> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:2> rdf:first <urn:lzo:fish-l1:shape:owner:cash_transactions>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:3> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:3> rdf:first <urn:lzo:fish-l1:shape:owner:cohorts>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:4> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:4> rdf:first <urn:lzo:fish-l1:shape:owner:cost_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:5> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:5> rdf:first <urn:lzo:fish-l1:shape:owner:cost_entries>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:6> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:6> rdf:first <urn:lzo:fish-l1:shape:owner:disposal_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:7> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:7> rdf:first <urn:lzo:fish-l1:shape:owner:farms>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:8> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:8> rdf:first <urn:lzo:fish-l1:shape:owner:feeding_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:9> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:9> rdf:first <urn:lzo:fish-l1:shape:owner:harvest_grade_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:10> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:10> rdf:first <urn:lzo:fish-l1:shape:owner:harvest_sale_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:11> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:11> rdf:first <urn:lzo:fish-l1:shape:owner:harvests>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:12> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:12> rdf:first <urn:lzo:fish-l1:shape:owner:inventory_lot_status>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:13> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:13> rdf:first <urn:lzo:fish-l1:shape:owner:inventory_movements>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:14> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:14> rdf:first <urn:lzo:fish-l1:shape:owner:mortality_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:15> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:15> rdf:first <urn:lzo:fish-l1:shape:owner:opening_balances>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:16> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:16> rdf:first <urn:lzo:fish-l1:shape:owner:partners>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:17> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:17> rdf:first <urn:lzo:fish-l1:shape:owner:pond_cohort_occupancy>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:18> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:18> rdf:first <urn:lzo:fish-l1:shape:owner:ponds>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:19> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:19> rdf:first <urn:lzo:fish-l1:shape:owner:production_plans>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:20> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:20> rdf:first <urn:lzo:fish-l1:shape:owner:products>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:21> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:21> rdf:first <urn:lzo:fish-l1:shape:owner:purchase_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:22> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:22> rdf:first <urn:lzo:fish-l1:shape:owner:purchases>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:23> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:23> rdf:first <urn:lzo:fish-l1:shape:owner:sale_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:24> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:24> rdf:first <urn:lzo:fish-l1:shape:owner:sales>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:25> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:25> rdf:first <urn:lzo:fish-l1:shape:owner:settlement_deductions>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:26> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:26> rdf:first <urn:lzo:fish-l1:shape:owner:settlements>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:27> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:27> rdf:first <urn:lzo:fish-l1:shape:owner:species>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:28> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:28> rdf:first <urn:lzo:fish-l1:shape:owner:stocking_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:29> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:29> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:30> .\n<urn:lzo:fish-l1:shape:relation-domain-list:9ba292269a0a041c60cb52e624e6fd24d85d438bdeaaddca98f27bc6081db640:30> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_events>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:d2eb65c91eea4446eff0cd339080738f96871114df975fc9ba788388d200c39d> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:harvest_id:harvests>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:d2eb65c91eea4446eff0cd339080738f96871114df975fc9ba788388d200c39d:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:d2eb65c91eea4446eff0cd339080738f96871114df975fc9ba788388d200c39d:0> rdf:first <urn:lzo:fish-l1:shape:owner:harvest_grade_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:d2eb65c91eea4446eff0cd339080738f96871114df975fc9ba788388d200c39d:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:d2eb65c91eea4446eff0cd339080738f96871114df975fc9ba788388d200c39d:1> rdf:first <urn:lzo:fish-l1:shape:owner:harvest_sale_allocations>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:b16576133106e1545e21b7bd9a18e8b1b154dfc0a4614cad3db7207fdc28ee98> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:operator_id:persons>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:b16576133106e1545e21b7bd9a18e8b1b154dfc0a4614cad3db7207fdc28ee98:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:b16576133106e1545e21b7bd9a18e8b1b154dfc0a4614cad3db7207fdc28ee98:0> rdf:first <urn:lzo:fish-l1:shape:owner:device_calibrations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:b16576133106e1545e21b7bd9a18e8b1b154dfc0a4614cad3db7207fdc28ee98:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:b16576133106e1545e21b7bd9a18e8b1b154dfc0a4614cad3db7207fdc28ee98:1> rdf:first <urn:lzo:fish-l1:shape:owner:growth_samples>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:b16576133106e1545e21b7bd9a18e8b1b154dfc0a4614cad3db7207fdc28ee98:2> .\n<urn:lzo:fish-l1:shape:relation-domain-list:b16576133106e1545e21b7bd9a18e8b1b154dfc0a4614cad3db7207fdc28ee98:2> rdf:first <urn:lzo:fish-l1:shape:owner:patrol_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:b16576133106e1545e21b7bd9a18e8b1b154dfc0a4614cad3db7207fdc28ee98:3> .\n<urn:lzo:fish-l1:shape:relation-domain-list:b16576133106e1545e21b7bd9a18e8b1b154dfc0a4614cad3db7207fdc28ee98:3> rdf:first <urn:lzo:fish-l1:shape:owner:pond_maintenance>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:b16576133106e1545e21b7bd9a18e8b1b154dfc0a4614cad3db7207fdc28ee98:4> .\n<urn:lzo:fish-l1:shape:relation-domain-list:b16576133106e1545e21b7bd9a18e8b1b154dfc0a4614cad3db7207fdc28ee98:4> rdf:first <urn:lzo:fish-l1:shape:owner:pond_preparations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:b16576133106e1545e21b7bd9a18e8b1b154dfc0a4614cad3db7207fdc28ee98:5> .\n<urn:lzo:fish-l1:shape:relation-domain-list:b16576133106e1545e21b7bd9a18e8b1b154dfc0a4614cad3db7207fdc28ee98:5> rdf:first <urn:lzo:fish-l1:shape:owner:treatment_events>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:pond_id:ponds>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:0> rdf:first <urn:lzo:fish-l1:shape:owner:attachments>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:1> rdf:first <urn:lzo:fish-l1:shape:owner:cohorts>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:2> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:2> rdf:first <urn:lzo:fish-l1:shape:owner:cost_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:3> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:3> rdf:first <urn:lzo:fish-l1:shape:owner:cost_entries>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:4> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:4> rdf:first <urn:lzo:fish-l1:shape:owner:device_installations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:5> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:5> rdf:first <urn:lzo:fish-l1:shape:owner:device_maintenance>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:6> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:6> rdf:first <urn:lzo:fish-l1:shape:owner:device_operations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:7> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:7> rdf:first <urn:lzo:fish-l1:shape:owner:devices>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:8> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:8> rdf:first <urn:lzo:fish-l1:shape:owner:disposal_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:9> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:9> rdf:first <urn:lzo:fish-l1:shape:owner:feeding_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:10> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:10> rdf:first <urn:lzo:fish-l1:shape:owner:growth_samples>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:11> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:11> rdf:first <urn:lzo:fish-l1:shape:owner:harvest_grade_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:12> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:12> rdf:first <urn:lzo:fish-l1:shape:owner:harvest_sale_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:13> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:13> rdf:first <urn:lzo:fish-l1:shape:owner:harvests>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:14> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:14> rdf:first <urn:lzo:fish-l1:shape:owner:health_cases>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:15> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:15> rdf:first <urn:lzo:fish-l1:shape:owner:inventory_movements>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:16> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:16> rdf:first <urn:lzo:fish-l1:shape:owner:mortality_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:17> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:17> rdf:first <urn:lzo:fish-l1:shape:owner:opening_balances>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:18> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:18> rdf:first <urn:lzo:fish-l1:shape:owner:patrol_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:19> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:19> rdf:first <urn:lzo:fish-l1:shape:owner:pond_cohort_occupancy>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:20> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:20> rdf:first <urn:lzo:fish-l1:shape:owner:pond_maintenance>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:21> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:21> rdf:first <urn:lzo:fish-l1:shape:owner:pond_preparations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:22> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:22> rdf:first <urn:lzo:fish-l1:shape:owner:stocking_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:23> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:23> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:24> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:24> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:25> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:25> rdf:first <urn:lzo:fish-l1:shape:owner:treatment_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:26> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:26> rdf:first <urn:lzo:fish-l1:shape:owner:water_operations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:27> .\n<urn:lzo:fish-l1:shape:relation-domain-list:408b20faeb62cb568cf799ce866a6b48f99ed9d605fcb7e8f65b768e34d5d84f:27> rdf:first <urn:lzo:fish-l1:shape:owner:water_samples>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:product_id:products>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:0> rdf:first <urn:lzo:fish-l1:shape:owner:feeding_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:1> rdf:first <urn:lzo:fish-l1:shape:owner:inventory_lot_status>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:2> .\n<urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:2> rdf:first <urn:lzo:fish-l1:shape:owner:inventory_movements>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:3> .\n<urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:3> rdf:first <urn:lzo:fish-l1:shape:owner:opening_balances>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:4> .\n<urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:4> rdf:first <urn:lzo:fish-l1:shape:owner:purchase_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:5> .\n<urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:5> rdf:first <urn:lzo:fish-l1:shape:owner:stocking_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:6> .\n<urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:6> rdf:first <urn:lzo:fish-l1:shape:owner:treatment_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:7> .\n<urn:lzo:fish-l1:shape:relation-domain-list:eaacafb8bd196424266441260b6dd29b0768be5b0b1e690bf33e71e94c2c8f2a:7> rdf:first <urn:lzo:fish-l1:shape:owner:water_operations>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:b94000a0be700d0789e0aa71c843fd4a7d1d08b8ae7bc9f7951df03257b9eabf> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:purchase_id:purchases>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:b94000a0be700d0789e0aa71c843fd4a7d1d08b8ae7bc9f7951df03257b9eabf:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:b94000a0be700d0789e0aa71c843fd4a7d1d08b8ae7bc9f7951df03257b9eabf:0> rdf:first <urn:lzo:fish-l1:shape:owner:cash_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:b94000a0be700d0789e0aa71c843fd4a7d1d08b8ae7bc9f7951df03257b9eabf:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:b94000a0be700d0789e0aa71c843fd4a7d1d08b8ae7bc9f7951df03257b9eabf:1> rdf:first <urn:lzo:fish-l1:shape:owner:purchase_items>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:recorder_id:persons>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:0> rdf:first <urn:lzo:fish-l1:shape:owner:cash_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:1> rdf:first <urn:lzo:fish-l1:shape:owner:cash_transactions>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:2> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:2> rdf:first <urn:lzo:fish-l1:shape:owner:cost_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:3> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:3> rdf:first <urn:lzo:fish-l1:shape:owner:cost_entries>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:4> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:4> rdf:first <urn:lzo:fish-l1:shape:owner:disposal_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:5> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:5> rdf:first <urn:lzo:fish-l1:shape:owner:feeding_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:6> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:6> rdf:first <urn:lzo:fish-l1:shape:owner:harvest_grade_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:7> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:7> rdf:first <urn:lzo:fish-l1:shape:owner:harvest_sale_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:8> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:8> rdf:first <urn:lzo:fish-l1:shape:owner:harvests>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:9> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:9> rdf:first <urn:lzo:fish-l1:shape:owner:inventory_lot_status>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:10> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:10> rdf:first <urn:lzo:fish-l1:shape:owner:inventory_movements>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:11> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:11> rdf:first <urn:lzo:fish-l1:shape:owner:mortality_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:12> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:12> rdf:first <urn:lzo:fish-l1:shape:owner:opening_balances>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:13> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:13> rdf:first <urn:lzo:fish-l1:shape:owner:pond_cohort_occupancy>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:14> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:14> rdf:first <urn:lzo:fish-l1:shape:owner:purchase_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:15> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:15> rdf:first <urn:lzo:fish-l1:shape:owner:purchases>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:16> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:16> rdf:first <urn:lzo:fish-l1:shape:owner:sale_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:17> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:17> rdf:first <urn:lzo:fish-l1:shape:owner:sales>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:18> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:18> rdf:first <urn:lzo:fish-l1:shape:owner:settlement_deductions>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:19> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:19> rdf:first <urn:lzo:fish-l1:shape:owner:settlements>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:20> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:20> rdf:first <urn:lzo:fish-l1:shape:owner:stocking_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:21> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:21> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:22> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1ebb62094337d46bd1a93d2b2b87d58acf277e13f357100fb1218044a47ceb15:22> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_events>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:b6f70ce949a28339f47839abe7ca7fb665d74ccfaedf335123984b5b50ae2965> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:responsible_person_id:persons>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:b6f70ce949a28339f47839abe7ca7fb665d74ccfaedf335123984b5b50ae2965:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:b6f70ce949a28339f47839abe7ca7fb665d74ccfaedf335123984b5b50ae2965:0> rdf:first <urn:lzo:fish-l1:shape:owner:cohorts>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:b6f70ce949a28339f47839abe7ca7fb665d74ccfaedf335123984b5b50ae2965:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:b6f70ce949a28339f47839abe7ca7fb665d74ccfaedf335123984b5b50ae2965:1> rdf:first <urn:lzo:fish-l1:shape:owner:production_plans>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:reviewer_id:persons>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:0> rdf:first <urn:lzo:fish-l1:shape:owner:cash_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:1> rdf:first <urn:lzo:fish-l1:shape:owner:cash_transactions>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:2> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:2> rdf:first <urn:lzo:fish-l1:shape:owner:cost_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:3> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:3> rdf:first <urn:lzo:fish-l1:shape:owner:cost_entries>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:4> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:4> rdf:first <urn:lzo:fish-l1:shape:owner:disposal_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:5> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:5> rdf:first <urn:lzo:fish-l1:shape:owner:feeding_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:6> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:6> rdf:first <urn:lzo:fish-l1:shape:owner:harvest_grade_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:7> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:7> rdf:first <urn:lzo:fish-l1:shape:owner:harvest_sale_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:8> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:8> rdf:first <urn:lzo:fish-l1:shape:owner:harvests>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:9> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:9> rdf:first <urn:lzo:fish-l1:shape:owner:inventory_lot_status>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:10> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:10> rdf:first <urn:lzo:fish-l1:shape:owner:inventory_movements>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:11> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:11> rdf:first <urn:lzo:fish-l1:shape:owner:mortality_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:12> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:12> rdf:first <urn:lzo:fish-l1:shape:owner:opening_balances>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:13> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:13> rdf:first <urn:lzo:fish-l1:shape:owner:pond_cohort_occupancy>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:14> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:14> rdf:first <urn:lzo:fish-l1:shape:owner:pond_preparations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:15> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:15> rdf:first <urn:lzo:fish-l1:shape:owner:purchase_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:16> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:16> rdf:first <urn:lzo:fish-l1:shape:owner:purchases>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:17> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:17> rdf:first <urn:lzo:fish-l1:shape:owner:sale_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:18> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:18> rdf:first <urn:lzo:fish-l1:shape:owner:sales>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:19> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:19> rdf:first <urn:lzo:fish-l1:shape:owner:settlement_deductions>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:20> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:20> rdf:first <urn:lzo:fish-l1:shape:owner:settlements>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:21> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:21> rdf:first <urn:lzo:fish-l1:shape:owner:stocking_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:22> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:22> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:23> .\n<urn:lzo:fish-l1:shape:relation-domain-list:1d82c68b3e439d681120fdfe008bb8431460f959b354a25198757951cfa5cfc0:23> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_events>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:f58b77d1002ce6794a401acabbaf759787699d2e4a46d2cee7ff51b98a0399b2> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:sale_id:sales>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:f58b77d1002ce6794a401acabbaf759787699d2e4a46d2cee7ff51b98a0399b2:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:f58b77d1002ce6794a401acabbaf759787699d2e4a46d2cee7ff51b98a0399b2:0> rdf:first <urn:lzo:fish-l1:shape:owner:harvest_sale_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:f58b77d1002ce6794a401acabbaf759787699d2e4a46d2cee7ff51b98a0399b2:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:f58b77d1002ce6794a401acabbaf759787699d2e4a46d2cee7ff51b98a0399b2:1> rdf:first <urn:lzo:fish-l1:shape:owner:sale_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:f58b77d1002ce6794a401acabbaf759787699d2e4a46d2cee7ff51b98a0399b2:2> .\n<urn:lzo:fish-l1:shape:relation-domain-list:f58b77d1002ce6794a401acabbaf759787699d2e4a46d2cee7ff51b98a0399b2:2> rdf:first <urn:lzo:fish-l1:shape:owner:settlement_deductions>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:f58b77d1002ce6794a401acabbaf759787699d2e4a46d2cee7ff51b98a0399b2:3> .\n<urn:lzo:fish-l1:shape:relation-domain-list:f58b77d1002ce6794a401acabbaf759787699d2e4a46d2cee7ff51b98a0399b2:3> rdf:first <urn:lzo:fish-l1:shape:owner:settlements>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:f30af754527def3eb3809ecd26ba9dc53241de187cbf5ae4923a8f73a259c6b6> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:settlement_id:settlements>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:f30af754527def3eb3809ecd26ba9dc53241de187cbf5ae4923a8f73a259c6b6:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:f30af754527def3eb3809ecd26ba9dc53241de187cbf5ae4923a8f73a259c6b6:0> rdf:first <urn:lzo:fish-l1:shape:owner:cash_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:f30af754527def3eb3809ecd26ba9dc53241de187cbf5ae4923a8f73a259c6b6:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:f30af754527def3eb3809ecd26ba9dc53241de187cbf5ae4923a8f73a259c6b6:1> rdf:first <urn:lzo:fish-l1:shape:owner:settlement_deductions>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:d5a17ff36625216bf3f728b1b25b33e1cf1701de7503c21eba232e564ea034bf> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:source_cohort_id:cohorts>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:d5a17ff36625216bf3f728b1b25b33e1cf1701de7503c21eba232e564ea034bf:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:d5a17ff36625216bf3f728b1b25b33e1cf1701de7503c21eba232e564ea034bf:0> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:d5a17ff36625216bf3f728b1b25b33e1cf1701de7503c21eba232e564ea034bf:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:d5a17ff36625216bf3f728b1b25b33e1cf1701de7503c21eba232e564ea034bf:1> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_events>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:99837c08c906bdfe5582aee165b56479385ccb0a2301987e95925322eecfb424> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:source_id:feeding_events>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:99837c08c906bdfe5582aee165b56479385ccb0a2301987e95925322eecfb424:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:99837c08c906bdfe5582aee165b56479385ccb0a2301987e95925322eecfb424:0> rdf:first <urn:lzo:fish-l1:shape:owner:cost_entries>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:99837c08c906bdfe5582aee165b56479385ccb0a2301987e95925322eecfb424:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:99837c08c906bdfe5582aee165b56479385ccb0a2301987e95925322eecfb424:1> rdf:first <urn:lzo:fish-l1:shape:owner:inventory_movements>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:dad66b180075c4028c2f81736a5d106be5986ecdbfc6e3f2fbba1eea82fd8796> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:source_id:stocking_events>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:dad66b180075c4028c2f81736a5d106be5986ecdbfc6e3f2fbba1eea82fd8796:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:dad66b180075c4028c2f81736a5d106be5986ecdbfc6e3f2fbba1eea82fd8796:0> rdf:first <urn:lzo:fish-l1:shape:owner:cost_entries>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:dad66b180075c4028c2f81736a5d106be5986ecdbfc6e3f2fbba1eea82fd8796:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:dad66b180075c4028c2f81736a5d106be5986ecdbfc6e3f2fbba1eea82fd8796:1> rdf:first <urn:lzo:fish-l1:shape:owner:inventory_movements>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:63339608dead2e5a69de1b0365dd62327bb41b9f7c9328a09417153ace6fc132> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:source_pond_id:ponds>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:63339608dead2e5a69de1b0365dd62327bb41b9f7c9328a09417153ace6fc132:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:63339608dead2e5a69de1b0365dd62327bb41b9f7c9328a09417153ace6fc132:0> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:63339608dead2e5a69de1b0365dd62327bb41b9f7c9328a09417153ace6fc132:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:63339608dead2e5a69de1b0365dd62327bb41b9f7c9328a09417153ace6fc132:1> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_events>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:species_id:species>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:0> rdf:first <urn:lzo:fish-l1:shape:owner:cohorts>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:1> rdf:first <urn:lzo:fish-l1:shape:owner:feeding_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:2> .\n<urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:2> rdf:first <urn:lzo:fish-l1:shape:owner:harvest_grade_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:3> .\n<urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:3> rdf:first <urn:lzo:fish-l1:shape:owner:harvest_sale_allocations>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:4> .\n<urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:4> rdf:first <urn:lzo:fish-l1:shape:owner:harvests>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:5> .\n<urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:5> rdf:first <urn:lzo:fish-l1:shape:owner:mortality_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:6> .\n<urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:6> rdf:first <urn:lzo:fish-l1:shape:owner:products>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:7> .\n<urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:7> rdf:first <urn:lzo:fish-l1:shape:owner:sale_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:8> .\n<urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:8> rdf:first <urn:lzo:fish-l1:shape:owner:sales>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:9> .\n<urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:9> rdf:first <urn:lzo:fish-l1:shape:owner:stocking_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:10> .\n<urn:lzo:fish-l1:shape:relation-domain-list:859eae161c31ee392be099d8ef7492ec46bda1072d77c774309657f9bf0441e9:10> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_events>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:968b6ee71871c24015c440bb121618b07adbdf128979a48c270268807f561dbc> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:supplier_id:partners>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:968b6ee71871c24015c440bb121618b07adbdf128979a48c270268807f561dbc:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:968b6ee71871c24015c440bb121618b07adbdf128979a48c270268807f561dbc:0> rdf:first <urn:lzo:fish-l1:shape:owner:cost_entries>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:968b6ee71871c24015c440bb121618b07adbdf128979a48c270268807f561dbc:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:968b6ee71871c24015c440bb121618b07adbdf128979a48c270268807f561dbc:1> rdf:first <urn:lzo:fish-l1:shape:owner:purchase_items>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:968b6ee71871c24015c440bb121618b07adbdf128979a48c270268807f561dbc:2> .\n<urn:lzo:fish-l1:shape:relation-domain-list:968b6ee71871c24015c440bb121618b07adbdf128979a48c270268807f561dbc:2> rdf:first <urn:lzo:fish-l1:shape:owner:purchases>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:968b6ee71871c24015c440bb121618b07adbdf128979a48c270268807f561dbc:3> .\n<urn:lzo:fish-l1:shape:relation-domain-list:968b6ee71871c24015c440bb121618b07adbdf128979a48c270268807f561dbc:3> rdf:first <urn:lzo:fish-l1:shape:owner:stocking_events>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:relation-domain:aea8b8a2716ee0e8c9f508e4cd7ba378406a44d2ca50638bbe2ba96bc9a0cf07> a sh:NodeShape; sh:targetSubjectsOf <urn:lzo:fish-l1:relation:transfer_event_id:transfer_events>; sh:or <urn:lzo:fish-l1:shape:relation-domain-list:aea8b8a2716ee0e8c9f508e4cd7ba378406a44d2ca50638bbe2ba96bc9a0cf07:0> .\n<urn:lzo:fish-l1:shape:relation-domain-list:aea8b8a2716ee0e8c9f508e4cd7ba378406a44d2ca50638bbe2ba96bc9a0cf07:0> rdf:first <urn:lzo:fish-l1:shape:owner:disposal_events>; rdf:rest <urn:lzo:fish-l1:shape:relation-domain-list:aea8b8a2716ee0e8c9f508e4cd7ba378406a44d2ca50638bbe2ba96bc9a0cf07:1> .\n<urn:lzo:fish-l1:shape:relation-domain-list:aea8b8a2716ee0e8c9f508e4cd7ba378406a44d2ca50638bbe2ba96bc9a0cf07:1> rdf:first <urn:lzo:fish-l1:shape:owner:transfer_allocations>; rdf:rest rdf:nil .\n<urn:lzo:fish-l1:shape:owner:attachment_links> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:attachment_links> .\n<urn:lzo:fish-l1:shape:owner:attachments> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:attachments> .\n<urn:lzo:fish-l1:shape:owner:case_observations> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:case_observations> .\n<urn:lzo:fish-l1:shape:owner:cash_allocations> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:cash_allocations> .\n<urn:lzo:fish-l1:shape:owner:cash_transactions> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:cash_transactions> .\n<urn:lzo:fish-l1:shape:owner:cohorts> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:cohorts> .\n<urn:lzo:fish-l1:shape:owner:control_commands> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:control_commands> .\n<urn:lzo:fish-l1:shape:owner:cost_allocations> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:cost_allocations> .\n<urn:lzo:fish-l1:shape:owner:cost_entries> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:cost_entries> .\n<urn:lzo:fish-l1:shape:owner:device_calibrations> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:device_calibrations> .\n<urn:lzo:fish-l1:shape:owner:device_installations> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:device_installations> .\n<urn:lzo:fish-l1:shape:owner:device_maintenance> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:device_maintenance> .\n<urn:lzo:fish-l1:shape:owner:device_operations> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:device_operations> .\n<urn:lzo:fish-l1:shape:owner:devices> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:devices> .\n<urn:lzo:fish-l1:shape:owner:diagnostic_tests> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:diagnostic_tests> .\n<urn:lzo:fish-l1:shape:owner:disposal_events> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:disposal_events> .\n<urn:lzo:fish-l1:shape:owner:document_versions> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:document_versions> .\n<urn:lzo:fish-l1:shape:owner:documents> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:documents> .\n<urn:lzo:fish-l1:shape:owner:farms> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:farms> .\n<urn:lzo:fish-l1:shape:owner:feeding_events> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:feeding_events> .\n<urn:lzo:fish-l1:shape:owner:growth_samples> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:growth_samples> .\n<urn:lzo:fish-l1:shape:owner:harvest_grade_items> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:harvest_grade_items> .\n<urn:lzo:fish-l1:shape:owner:harvest_sale_allocations> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:harvest_sale_allocations> .\n<urn:lzo:fish-l1:shape:owner:harvests> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:harvests> .\n<urn:lzo:fish-l1:shape:owner:health_cases> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:health_cases> .\n<urn:lzo:fish-l1:shape:owner:inventory_lot_status> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:inventory_lot_status> .\n<urn:lzo:fish-l1:shape:owner:inventory_movements> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:inventory_movements> .\n<urn:lzo:fish-l1:shape:owner:media_annotations> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:media_annotations> .\n<urn:lzo:fish-l1:shape:owner:mortality_events> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:mortality_events> .\n<urn:lzo:fish-l1:shape:owner:opening_balances> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:opening_balances> .\n<urn:lzo:fish-l1:shape:owner:partners> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:partners> .\n<urn:lzo:fish-l1:shape:owner:patrol_events> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:patrol_events> .\n<urn:lzo:fish-l1:shape:owner:pond_cohort_occupancy> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:pond_cohort_occupancy> .\n<urn:lzo:fish-l1:shape:owner:pond_maintenance> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:pond_maintenance> .\n<urn:lzo:fish-l1:shape:owner:pond_preparations> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:pond_preparations> .\n<urn:lzo:fish-l1:shape:owner:ponds> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:ponds> .\n<urn:lzo:fish-l1:shape:owner:production_plans> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:production_plans> .\n<urn:lzo:fish-l1:shape:owner:products> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:products> .\n<urn:lzo:fish-l1:shape:owner:purchase_items> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:purchase_items> .\n<urn:lzo:fish-l1:shape:owner:purchases> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:purchases> .\n<urn:lzo:fish-l1:shape:owner:sale_items> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:sale_items> .\n<urn:lzo:fish-l1:shape:owner:sales> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:sales> .\n<urn:lzo:fish-l1:shape:owner:settlement_deductions> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:settlement_deductions> .\n<urn:lzo:fish-l1:shape:owner:settlements> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:settlements> .\n<urn:lzo:fish-l1:shape:owner:spatial_layer_registry> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:spatial_layer_registry> .\n<urn:lzo:fish-l1:shape:owner:species> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:species> .\n<urn:lzo:fish-l1:shape:owner:stocking_events> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:stocking_events> .\n<urn:lzo:fish-l1:shape:owner:transfer_allocations> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:transfer_allocations> .\n<urn:lzo:fish-l1:shape:owner:transfer_events> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:transfer_events> .\n<urn:lzo:fish-l1:shape:owner:treatment_events> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:treatment_events> .\n<urn:lzo:fish-l1:shape:owner:water_operations> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:water_operations> .\n<urn:lzo:fish-l1:shape:owner:water_samples> a sh:NodeShape; sh:class <urn:lzo:fish-l1:class:water_samples> .",
+  "ui_metadata": {
+    "dataset_family": "fish-l1",
+    "acceptance_only": true,
+    "all_fields": "raw_payload plus immutable source evidence",
+    "reference_inputs_excluded": true,
+    "telemetry_tables": [
+      "fish_daily_balance",
+      "growth_individuals",
+      "price_observations",
+      "water_observations",
+      "water_test_results",
+      "weather_observations"
+    ],
+    "relation_domain_contract": "alternative-source-owners-shacl-union-v1",
+    "migration_plan": {
+      "description": "Express shared relation source-table domains as an explicit SHACL union and declare the audited semicolon mortality_event_ids relation on patrol events; retain exact target ranges and all entity UUIDs, values, timestamps and historical evidence. New patrol mapping requires its separate governed unused-source extension.",
+      "validation": "Exercise every declared owner and reject a nonowner; publish only after ordinary full schema impact reports no current-data violations. Reapprove affected source facts through independent synthetic review when conservative shape currentness requires it.",
+      "rollback": "Retain the prior immutable release and all source evidence; restore only through a separately reviewed normal schema/configuration publication. Never delete or overwrite adopted history."
+    }
+  },
+  "dependencies": []
+}

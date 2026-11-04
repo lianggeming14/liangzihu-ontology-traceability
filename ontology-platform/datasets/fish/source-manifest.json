@@ -1,0 +1,2796 @@
+{
+  "repository": "https://github.com/lianggeming14/upload-files",
+  "commit": "1eb0bab8f86fab00d6ebf62b18e609446957fc9d",
+  "archive_path": "武昌鱼L1_2025_01_数据及生成器.zip",
+  "archive_git_blob": "85e513fdb8e388b251a990608436b2de24020993",
+  "archive_sha256": "04891aab2039607015d41575e292a0add57065af3a2037270893cc0f3cd7c4b7",
+  "archive_bytes": 23006801,
+  "members": [
+    {
+      "path": "output/README.md",
+      "bytes": 2798,
+      "sha256": "c080b6eb25e04a4929a33bbd113bec7ad176d37a57c1f05f6788333b231d156b"
+    },
+    {
+      "path": "output/requirements.txt",
+      "bytes": 159,
+      "sha256": "5b29b8d29a37d433715e6d3e14da14241562ccf33593d97b9b2f88194a6ec23b"
+    },
+    {
+      "path": "output/assets/audio/PAIR01_patrol_synthetic.wav",
+      "bytes": 630286,
+      "sha256": "606117433b7817f8aec916114f2f0bdcb39f698d8a7b0df4624e83a9106e50e7"
+    },
+    {
+      "path": "output/assets/audio/PAIR02_expert_narration_synthetic.wav",
+      "bytes": 653006,
+      "sha256": "78c09842ae4cbcd18882a6af90ec0b1c650abf4dfb9202805709282574cb6f37"
+    },
+    {
+      "path": "output/assets/audio/PAIR03_patrol_synthetic.wav",
+      "bytes": 634926,
+      "sha256": "f28d0896cb7ffabac0350001c6721d732477de7cd0e5f04e55bcdb6b828f2007"
+    },
+    {
+      "path": "output/assets/audio/PAIR04_expert_narration_synthetic.wav",
+      "bytes": 656846,
+      "sha256": "d360547bfe8ab9ccb8ad22d3ccc2877814ebb6fcac853b177b9bcbfcc1fdf11c"
+    },
+    {
+      "path": "output/assets/audio/PAIR05_patrol_synthetic.wav",
+      "bytes": 632846,
+      "sha256": "d7bddcbb2725f4eb60f4f693712fa3452fb31436e0991cb0405849a3e9767485"
+    },
+    {
+      "path": "output/assets/audio/PAIR06_expert_narration_synthetic.wav",
+      "bytes": 653326,
+      "sha256": "2767e3ebda4dd9760a6eaa510c52fc33f5f909822975b63961a4a88fc3f736b0"
+    },
+    {
+      "path": "output/assets/documents/DOC001_v1.0.pdf",
+      "bytes": 73998,
+      "sha256": "a2513f8efc52b6ba7fde1bd3df01b0e5b88055f60c24bdb1345e691e19d2d95d"
+    },
+    {
+      "path": "output/assets/documents/DOC001_v1.1.pdf",
+      "bytes": 75375,
+      "sha256": "2db1aa79c7859a25b26b51aea8d53f252c4e61250a62088d595fb5e07fe608d6"
+    },
+    {
+      "path": "output/assets/documents/DOC002_v1.0.pdf",
+      "bytes": 76279,
+      "sha256": "197d9e089031b7b68bc751ab781cd9297c6c19febfa9b99962af4e9f15de0cd4"
+    },
+    {
+      "path": "output/assets/documents/DOC002_v1.1.pdf",
+      "bytes": 78094,
+      "sha256": "39d4ec8ff6d281569a843ce3cc7c876ead01388a03afcc36874b37436ba03ff0"
+    },
+    {
+      "path": "output/assets/documents/DOC003_v1.0.pdf",
+      "bytes": 76809,
+      "sha256": "a6fe6fc39a26cf4b35085b61a9f8b9b1e03f015af6fb36264093db5d3455d1ef"
+    },
+    {
+      "path": "output/assets/documents/DOC003_v1.1.pdf",
+      "bytes": 78043,
+      "sha256": "fc023c2abd85a1348b635c58b23e054a79180dbb212a97ceb4865822d1aa2358"
+    },
+    {
+      "path": "output/assets/documents/DOC004_v1.0.pdf",
+      "bytes": 75317,
+      "sha256": "1d63036d8a53df7ce29a5e6cdf5419dd596828604d1f411d2ded35890d7bf9ab"
+    },
+    {
+      "path": "output/assets/documents/DOC004_v1.1.pdf",
+      "bytes": 77005,
+      "sha256": "9f36b65c8876d6bfce3c2a332c36107c9dc55d00ab72f5d224bb5270f5691c6f"
+    },
+    {
+      "path": "output/assets/documents/DOC005_v1.0.pdf",
+      "bytes": 75207,
+      "sha256": "64fa021dc29dbfe5ce7d2889ac953149c5d2f8f14f4418b54a04d9f0e5f2807a"
+    },
+    {
+      "path": "output/assets/documents/DOC006_v1.0.pdf",
+      "bytes": 76307,
+      "sha256": "5c85fbc31a3469edaf8008d76b877863cbbb9e4138b65138a2f36c5a36b3c3c3"
+    },
+    {
+      "path": "output/assets/documents/DOC007_v1.0.pdf",
+      "bytes": 74381,
+      "sha256": "1c143be5643b11fbb26d1e2180c25653fe6cea9e1e02a84098ff8d80a49e54fa"
+    },
+    {
+      "path": "output/assets/documents/DOC008_v1.0.pdf",
+      "bytes": 74999,
+      "sha256": "9d05020a30687834051adfe966435b48d68c59035c7328f460fcafdd9fcf8720"
+    },
+    {
+      "path": "output/assets/documents/DOC009_v1.0.pdf",
+      "bytes": 75703,
+      "sha256": "a0aee89961f10cd80485b3619d0ce386d05e153eba3a8111a59eede2ca8e9960"
+    },
+    {
+      "path": "output/assets/documents/DOC010_v1.0.pdf",
+      "bytes": 76130,
+      "sha256": "a49a31357d9444b6d69ee654d85ff3f394f7a3ccb378f82662d223fc6252af55"
+    },
+    {
+      "path": "output/assets/documents/DOC011_v1.0.pdf",
+      "bytes": 74987,
+      "sha256": "ebae8ce3521e39a0e435cb9617c8ea0be3bd928aa97cee956028d65f8ad2b04e"
+    },
+    {
+      "path": "output/assets/documents/DOC012_v1.0.pdf",
+      "bytes": 75234,
+      "sha256": "6673793f55cfd9bb331eba0cc955e1159a17c112b0374252b62958cc965b84a3"
+    },
+    {
+      "path": "output/assets/documents/DOC013_v1.0.pdf",
+      "bytes": 75836,
+      "sha256": "e2e6a15e2dd56ac7c721786994cc3298ad9731b98f6e3fc7362ed5d687ed2a57"
+    },
+    {
+      "path": "output/assets/documents/DOC014_v1.0.pdf",
+      "bytes": 75432,
+      "sha256": "758dd9efb7e54b7c3a257d6c8da9b804bc567844bf55a0a1437e83ce82bd8d42"
+    },
+    {
+      "path": "output/assets/documents/DOC015_v1.0.pdf",
+      "bytes": 75401,
+      "sha256": "8ed4c28b969459f101e69849b2e392e9fdd923e29e3b071c0db138423ddc2a39"
+    },
+    {
+      "path": "output/assets/documents/DOC016_v1.0.pdf",
+      "bytes": 75215,
+      "sha256": "75975c91d54751ba2bb4ee17d64d2a5fc92f433d76739b2ca5ff02aa47e09429"
+    },
+    {
+      "path": "output/assets/documents/DOC017_v1.0.pdf",
+      "bytes": 75910,
+      "sha256": "1e1856d1b72c974104f540063a81559e18fa1d29c375b50f569fdadbf76c4677"
+    },
+    {
+      "path": "output/assets/documents/DOC018_v1.0.pdf",
+      "bytes": 75956,
+      "sha256": "ffb183fb26c85146a2eb75219a861abbbe2eeb32c1bb7dd9f6726ab0c4f547d4"
+    },
+    {
+      "path": "output/assets/documents/DOC019_v1.0.pdf",
+      "bytes": 75607,
+      "sha256": "21fb25fbe9c9dc2c10812b7777d91587d91a3e3d5f1d5392f4223002db946e9e"
+    },
+    {
+      "path": "output/assets/documents/DOC020_v1.0.pdf",
+      "bytes": 75520,
+      "sha256": "7e571e96d09400b7e270f80ad417a7bebfb02c770d9b8dd42f9526ba3194c19e"
+    },
+    {
+      "path": "output/assets/gis/administrative_layout.geojson",
+      "bytes": 1457,
+      "sha256": "43bbc69ba83cf53f6f304ed3c94c7a26b0d1681c83643c36695050a5c67b6d6e"
+    },
+    {
+      "path": "output/assets/gis/devices.geojson",
+      "bytes": 12584,
+      "sha256": "3e7ff3a3cbf1790527a51ea3119dced46c17ebd7b5f0405eb55137d69a85e580"
+    },
+    {
+      "path": "output/assets/gis/discovery_points.geojson",
+      "bytes": 8816,
+      "sha256": "260f9f56ca8f5343bf36a7954ea3413b553b93e750e154f2e885f71f99910217"
+    },
+    {
+      "path": "output/assets/gis/farm_boundary.geojson",
+      "bytes": 1337,
+      "sha256": "d793d34d4d133e6ecc89382837181e8ae5525d9b5f3f60c3fb1b6afcd65c18a3"
+    },
+    {
+      "path": "output/assets/gis/intakes_outlets_sampling.geojson",
+      "bytes": 15269,
+      "sha256": "f0c5e1358ef9701d9c23d4b434f24b27b20ed76e0a5ad47bd30ea50a844a97a2"
+    },
+    {
+      "path": "output/assets/gis/land_use.geojson",
+      "bytes": 3856,
+      "sha256": "e42ef97be40d20c3af9a4dca4e55fabad034d1bf140d014498a45f956dfa9434"
+    },
+    {
+      "path": "output/assets/gis/orthomosaic.tif",
+      "bytes": 123328,
+      "sha256": "d2775a4041f8d7e6383a7917a7039253b5ce1742cb4d88a6f853072779140824"
+    },
+    {
+      "path": "output/assets/gis/ponds.geojson",
+      "bytes": 6735,
+      "sha256": "57227579944a2c6057ee3217c963a4f5f74fafb764c20d7d60c06378946dc9d6"
+    },
+    {
+      "path": "output/assets/gis/risk_zones.geojson",
+      "bytes": 3121,
+      "sha256": "d9b0a22e967f35ae58408500c0fab739e7295ac7a29a0f104c1efb3fbf21fba0"
+    },
+    {
+      "path": "output/assets/gis/suppliers_customers_labs_markets.geojson",
+      "bytes": 6379,
+      "sha256": "e8967af3eae1eeca35ced501fdb373949f281ef5266e7eb26ec6324fb3032ebe"
+    },
+    {
+      "path": "output/assets/gis/transport_routes.geojson",
+      "bytes": 10354,
+      "sha256": "3bed780da2f47bef49809336354439966d958f37e37a408ba259f61be4a06c66"
+    },
+    {
+      "path": "output/assets/gis/water_network.geojson",
+      "bytes": 2004,
+      "sha256": "de75a54840b7d0dfce6cdca59ed6ba11e5fd18283fa12d87319735f3df734fee"
+    },
+    {
+      "path": "output/assets/gis/water_surface_june.tif",
+      "bytes": 123328,
+      "sha256": "f0dfe57f15204f41deaa146680c35b1be3d048604707cb8dc7c024e34cc37f9a"
+    },
+    {
+      "path": "output/assets/gis/water_surface_september.tif",
+      "bytes": 123328,
+      "sha256": "0e1707f21f38fba7507d9f6cb0c2bdb57ea7cb8bb10b760888031d39ee75689c"
+    },
+    {
+      "path": "output/assets/gis/water_surface_states.geojson",
+      "bytes": 16901,
+      "sha256": "d9cabf7377d3952ba75a5176bb4da7037a522403dc767aef7713c43edfffe3b7"
+    },
+    {
+      "path": "output/assets/gis/weather_grid.geojson",
+      "bytes": 7238,
+      "sha256": "5a38ddd61a8c05f7a808eacd4860ae74de5b7f588c655381e9957f9467e8573b"
+    },
+    {
+      "path": "output/assets/images/001_fish_body.png",
+      "bytes": 18087,
+      "sha256": "aaddbbdd5984eb62b869619d5a342b61fbb6526cd581e0a38e39a8f49aa1d28a"
+    },
+    {
+      "path": "output/assets/images/002_gill.jpg",
+      "bytes": 31267,
+      "sha256": "02c15cb27932f0a50b7329ab940059369aa3fede42f16bf5783db252b80a24e4"
+    },
+    {
+      "path": "output/assets/images/003_viscera.png",
+      "bytes": 20119,
+      "sha256": "b6684acebb804245a0dd8b0ed229e6ba088911a6d7755fc7d93624a31ce453e5"
+    },
+    {
+      "path": "output/assets/images/004_microscopy.png",
+      "bytes": 22060,
+      "sha256": "2f44569af30a2eb738f699f898ca0ad87ec3ed06a791afe93fab7cc962cd0590"
+    },
+    {
+      "path": "output/assets/images/005_histology.jpg",
+      "bytes": 35034,
+      "sha256": "02f2378301909c8832460a2d4235050e7d5c07d012adc0a66b1f1bc8a2541aee"
+    },
+    {
+      "path": "output/assets/images/006_water_color.png",
+      "bytes": 17448,
+      "sha256": "a863f8e5e3441fc3db875c28bde5031da2728d5ee38820b3e2d40333631bc403"
+    },
+    {
+      "path": "output/assets/images/007_curve.png",
+      "bytes": 20613,
+      "sha256": "c19291d1a281332381d1e50a1bcef8c54f09f9cd61176ac82838b2b3593e53e7"
+    },
+    {
+      "path": "output/assets/images/008_production_chart.jpg",
+      "bytes": 29769,
+      "sha256": "2b533474860b15d008ec1aac25c77547f02dc9fb4323cf4a325dc3d646eeb13f"
+    },
+    {
+      "path": "output/assets/images/009_pond_preparation.png",
+      "bytes": 23057,
+      "sha256": "6239d6d43cd00c4cb66c431b94753c51aedec5a41e3d964828c01b3237cbb6a3"
+    },
+    {
+      "path": "output/assets/images/010_seed_arrival.png",
+      "bytes": 23732,
+      "sha256": "6509adf27add4b965cb33875f9fef9b91b83f1542d47a02e9e9baa2d6c912f07"
+    },
+    {
+      "path": "output/assets/images/011_seed_unpacking.jpg",
+      "bytes": 32933,
+      "sha256": "6486ee11196ba236115de436d21b6840a374f47751e08654d37e4fcac15c68b9"
+    },
+    {
+      "path": "output/assets/images/012_seed_stocking.png",
+      "bytes": 23891,
+      "sha256": "af6614dfca221ee9001de16731413d606151505687d25e0fea31ba1149c63b43"
+    },
+    {
+      "path": "output/assets/images/013_growth_sample.png",
+      "bytes": 24074,
+      "sha256": "db15f9391aa514e6372636d44571a8267ddb8eac710e546350fb4104e1684261"
+    },
+    {
+      "path": "output/assets/images/014_mortality_disposal.jpg",
+      "bytes": 33318,
+      "sha256": "c6ac2eb6eedd119cde97c2e00bdf3182daed885be0956f1c42bd12e1e4f64ac9"
+    },
+    {
+      "path": "output/assets/images/015_fish_transfer.png",
+      "bytes": 23495,
+      "sha256": "572ffe7a5212b4481bc5e68f95357417b2f06cafd5585a95fdd660bbe9c7e43a"
+    },
+    {
+      "path": "output/assets/images/016_harvest.png",
+      "bytes": 23593,
+      "sha256": "f381748ca4b67f0b5b7c90b7db1197b4619ea5889f240315d694c75b49b5854a"
+    },
+    {
+      "path": "output/assets/images/017_sorting.jpg",
+      "bytes": 32346,
+      "sha256": "dbb5036280cfb3b71b04cbf85495f3c0977f5e5201e99d7a655e3d8a552df07f"
+    },
+    {
+      "path": "output/assets/images/018_weighing.png",
+      "bytes": 23406,
+      "sha256": "2c182536f8a27e1288a90e6e8dbecf22410a1d6ac63ebd67dcf0c785a206a6ac"
+    },
+    {
+      "path": "output/assets/images/019_loading.png",
+      "bytes": 23702,
+      "sha256": "b720119c6ee92444255a9e8879cc33b41462da8acc3b34375c23ec3f48e4a42b"
+    },
+    {
+      "path": "output/assets/images/020_fish_body.jpg",
+      "bytes": 26099,
+      "sha256": "0f8f5556f69c8ecbaafca7391340f132a535587b0ab6e3913b5159687981c7e9"
+    },
+    {
+      "path": "output/assets/images/021_gill.png",
+      "bytes": 19702,
+      "sha256": "be3db8a282d9e135a3542da2d05c610a3c7de4621056ae9d7b275bf0bd18473c"
+    },
+    {
+      "path": "output/assets/images/022_viscera.png",
+      "bytes": 20129,
+      "sha256": "9820b6a877327abdfc5d40c00f521037be50fd0b1c5d1971ad9858d08193782b"
+    },
+    {
+      "path": "output/assets/images/023_microscopy.jpg",
+      "bytes": 30774,
+      "sha256": "8d17c1f8006b9890859619a815fe30f338a27242f579cb46cd9c440382e97aa4"
+    },
+    {
+      "path": "output/assets/images/024_histology.png",
+      "bytes": 23258,
+      "sha256": "157c20cee988ced54042b3e28b5e0e1c799546c095c30ce8711ccad15ec3a3ba"
+    },
+    {
+      "path": "output/assets/images/025_water_color.png",
+      "bytes": 17793,
+      "sha256": "7cba9161598977ea55e6ccb16034376e580457b5c35d611a2a71b086baba09cf"
+    },
+    {
+      "path": "output/assets/images/026_curve.jpg",
+      "bytes": 28858,
+      "sha256": "bf049ca24624ede40fc8cf096bc5a116419af73dcdc33d2a5ca9f3eb9964dbf9"
+    },
+    {
+      "path": "output/assets/images/027_production_chart.png",
+      "bytes": 21421,
+      "sha256": "c63d7605175123856aa475c9c0697b374d467a4cfcc0e1b29446124ea8eb2a4b"
+    },
+    {
+      "path": "output/assets/images/028_pond_preparation.png",
+      "bytes": 23228,
+      "sha256": "3c289fcc1d73ef5a701635e478994d4bfd81b7180de99c4edc80e175079f5f2e"
+    },
+    {
+      "path": "output/assets/images/029_seed_arrival.jpg",
+      "bytes": 32883,
+      "sha256": "0db20d09358cb8bdcfd88aa11e9f3f5a4259f5b5397e829a956f855af7ba0e54"
+    },
+    {
+      "path": "output/assets/images/030_seed_unpacking.png",
+      "bytes": 23864,
+      "sha256": "bcb96d11c492f9a1e87868edce6c44492bb761c8168839d0fc607457d08da374"
+    },
+    {
+      "path": "output/assets/images/031_seed_stocking.png",
+      "bytes": 23903,
+      "sha256": "9f588ea3899fadd48d3c180cb5fd4d3b0b9399ed50567a2263d62fb611f7a611"
+    },
+    {
+      "path": "output/assets/images/032_growth_sample.jpg",
+      "bytes": 33177,
+      "sha256": "9d8c19620325c1c6814b6bbc17cff890c03e94c95166103b3032ae45f9a88088"
+    },
+    {
+      "path": "output/assets/images/033_mortality_disposal.png",
+      "bytes": 23934,
+      "sha256": "2dd491118fd3a427c78ed941a7196d46aef016d3e8fff1f5d782ddc8a0ab8951"
+    },
+    {
+      "path": "output/assets/images/034_fish_transfer.png",
+      "bytes": 23571,
+      "sha256": "2088359a72178eafbc80911f43228c83da8049526b5ffbdf2f8c886a3a835413"
+    },
+    {
+      "path": "output/assets/images/035_harvest.jpg",
+      "bytes": 32350,
+      "sha256": "ea7392daa1a92411d81c3858ab1b049d6e8ea4e62063732fb9050d820ccd40af"
+    },
+    {
+      "path": "output/assets/images/036_sorting.png",
+      "bytes": 23446,
+      "sha256": "dd362debe318e0f0d67a2e934e4c890b70aff9403aa9eef3fef7d6c150dfd225"
+    },
+    {
+      "path": "output/assets/images/037_weighing.png",
+      "bytes": 23453,
+      "sha256": "65f0fbe1962b18b5ccc1165fe540477a85ee9ca0ff6a62b0254a26a846eb8499"
+    },
+    {
+      "path": "output/assets/images/038_loading.jpg",
+      "bytes": 32608,
+      "sha256": "5bf02c57c3da9e29d8cb2f402a0e318f83500def1ac9f2a91a728e1e9ad931fd"
+    },
+    {
+      "path": "output/assets/images/039_fish_body.png",
+      "bytes": 18443,
+      "sha256": "c22b4ab1855a1efe230552916cf3d5a3624c5024a9fb18c11159bc322498b855"
+    },
+    {
+      "path": "output/assets/images/040_gill.png",
+      "bytes": 19615,
+      "sha256": "69fd170b78f0c434e50f48881e007b41437ca5715f8e8cbec0f2605ca9a3d8e4"
+    },
+    {
+      "path": "output/assets/images/041_viscera.jpg",
+      "bytes": 27533,
+      "sha256": "9930890ea93c35f3f56c5fa67885d617005c4ae5ba08ca3ee470b8b89f1c6129"
+    },
+    {
+      "path": "output/assets/images/042_microscopy.png",
+      "bytes": 22035,
+      "sha256": "9f7e40b2e42cd6c3f009cba233fdb84753e468e844d08412fce8cd1f89ccd67b"
+    },
+    {
+      "path": "output/assets/images/043_histology.png",
+      "bytes": 23031,
+      "sha256": "4bbf8b114b9eb35a168442b5619f854a7885f1e3d9542d0735429beb7fc27668"
+    },
+    {
+      "path": "output/assets/images/044_water_color.jpg",
+      "bytes": 27317,
+      "sha256": "fcd4755c35a5fdbf1bb58ad3d4073c10aee159e18eed8e004b6bd6a16cc9570b"
+    },
+    {
+      "path": "output/assets/images/045_curve.png",
+      "bytes": 20765,
+      "sha256": "09dec1815153bdd20f535dcb043c24a66ce70207709c539d6904b22872075bd6"
+    },
+    {
+      "path": "output/assets/images/046_production_chart.png",
+      "bytes": 21426,
+      "sha256": "edce1eecb40bc2a18ace73615c5c00631736198081d0f79e6634f1624a2a1e33"
+    },
+    {
+      "path": "output/assets/images/047_pond_preparation.jpg",
+      "bytes": 32434,
+      "sha256": "4524551436bf549c90662b8f2535b142a532b2a524d0ca6f8421ab63a90f2101"
+    },
+    {
+      "path": "output/assets/images/048_seed_arrival.png",
+      "bytes": 23975,
+      "sha256": "77ca6e94ac49fbb540d01d69496e17d3e832bfd56125d1ca34814335e769af99"
+    },
+    {
+      "path": "output/assets/images/049_seed_unpacking.png",
+      "bytes": 23989,
+      "sha256": "932d69a44e3b522cf2d9c5d109fe984d7feb129953058fe0ab98ba727d29e070"
+    },
+    {
+      "path": "output/assets/images/050_seed_stocking.jpg",
+      "bytes": 33045,
+      "sha256": "f20a795d7658b95f177fa67482f476f142d6866550ba1519600437573d4e0152"
+    },
+    {
+      "path": "output/assets/images/051_growth_sample.png",
+      "bytes": 24059,
+      "sha256": "0215b9f47aa598d6f99f5a8aad08722af80e8be4f2ce5adc55a51d837eb92977"
+    },
+    {
+      "path": "output/assets/images/052_mortality_disposal.png",
+      "bytes": 24046,
+      "sha256": "9efd211128c8995a73f707ec3c07cfc186d768f936958dd4f41d53cb54564112"
+    },
+    {
+      "path": "output/assets/images/053_fish_transfer.jpg",
+      "bytes": 32844,
+      "sha256": "a08174b14f44ea9294faf0e86bb3916951057aae0b9fd1f40f9319ef32622ed2"
+    },
+    {
+      "path": "output/assets/images/054_harvest.png",
+      "bytes": 23624,
+      "sha256": "aedc21a8ca752d6a21fed73b7248e99272b3fecde3c1a7f6aadc8dafb57931cc"
+    },
+    {
+      "path": "output/assets/images/055_sorting.png",
+      "bytes": 23262,
+      "sha256": "73d3afa811b289bfc4f1cb6d2d7e81cfc656c33ce3f4d6aedd56e95a01818c40"
+    },
+    {
+      "path": "output/assets/images/056_weighing.jpg",
+      "bytes": 32133,
+      "sha256": "3e8cfa86019ff308b6f73c39e6ab36c8ce06546999474ce7e2677df89c6b92b4"
+    },
+    {
+      "path": "output/assets/images/057_loading.png",
+      "bytes": 23740,
+      "sha256": "cd22c29fe9d3adcb49f589c6296e9bb4f93f23aa380518f6f7ae4fe4c60cff92"
+    },
+    {
+      "path": "output/assets/images/058_fish_body.png",
+      "bytes": 18403,
+      "sha256": "39477beaa0b7f0a19ceae8e8f15b1e550c038f088dec58cfeb6ff6e39f914828"
+    },
+    {
+      "path": "output/assets/images/059_gill.jpg",
+      "bytes": 31250,
+      "sha256": "25b5186c2e05a768431bbd0be8fa71211da324a29911d45b4edb60843901430b"
+    },
+    {
+      "path": "output/assets/images/060_viscera.png",
+      "bytes": 20142,
+      "sha256": "9cd9a3474b2c46baab954405cfb0602e9109a49f9e5454da8bc18929540923bb"
+    },
+    {
+      "path": "output/assets/images/061_microscopy.png",
+      "bytes": 22078,
+      "sha256": "a7b01819291dfdaddc6793f1ee31cb821a5675fa9d725efbcf71f4bb99ea937c"
+    },
+    {
+      "path": "output/assets/images/062_histology.jpg",
+      "bytes": 34398,
+      "sha256": "fa8f433131a578d46533639441683a942f32b2d2af1453c4b2be979ceb121b98"
+    },
+    {
+      "path": "output/assets/images/063_water_color.png",
+      "bytes": 17622,
+      "sha256": "2a7cfbe0c00a9264c053ff06dabcf10f8da0bf4b8647f6f8d49e2ac82676d27e"
+    },
+    {
+      "path": "output/assets/images/064_curve.png",
+      "bytes": 20806,
+      "sha256": "25db7cdd796283757fea569944e139a414b927b67e555914d5ff8c787554bd4f"
+    },
+    {
+      "path": "output/assets/images/065_production_chart.jpg",
+      "bytes": 30022,
+      "sha256": "e7d2df7dc0446043b0bdb1776d67f6e5448ee1c3298d33be0517a8c42248ffd0"
+    },
+    {
+      "path": "output/assets/images/066_pond_preparation.png",
+      "bytes": 23087,
+      "sha256": "19622064383eea720749ad60607cb7117bdf29b3d9d03915ea1352fcc3c2dc89"
+    },
+    {
+      "path": "output/assets/images/067_seed_arrival.png",
+      "bytes": 23971,
+      "sha256": "b424936ea22d1a87257ee5140fb7329d5cd20a53ee84ece0e939ac86542f3d10"
+    },
+    {
+      "path": "output/assets/images/068_seed_unpacking.jpg",
+      "bytes": 32956,
+      "sha256": "a70f12774b1c4b63dc3d0aa0a152b6678fe0675a112410268a427e83e3e00e34"
+    },
+    {
+      "path": "output/assets/images/069_seed_stocking.png",
+      "bytes": 24055,
+      "sha256": "3f4972caccfed7d36e5d646355dc8f39b1add5fe0ac093a9a37b11abddeb4db8"
+    },
+    {
+      "path": "output/assets/images/070_growth_sample.png",
+      "bytes": 23970,
+      "sha256": "14ac577ed11eebfcb3ca3f6170c2d0e6ad0f893d556572bc5c39a3c5eb54c773"
+    },
+    {
+      "path": "output/assets/images/071_water_test_strip.jpg",
+      "bytes": 26219,
+      "sha256": "891a353937fe495250c66bef8ca488ab10e65045d1ca43d54086074f1b02374b"
+    },
+    {
+      "path": "output/assets/pdf/contract_02.pdf",
+      "bytes": 46085,
+      "sha256": "e3b4487096400495fdc59a66e0941ff4252863396b879af27601636375534759"
+    },
+    {
+      "path": "output/assets/pdf/contract_06.pdf",
+      "bytes": 46087,
+      "sha256": "633aaacb066e42d280ca8626241d62e53883454558321d170f4623908132b943"
+    },
+    {
+      "path": "output/assets/pdf/invoice_03.pdf",
+      "bytes": 44917,
+      "sha256": "916e1e33f3f0a7868e366a6cffbfbddb1aea9b3bfe14eafa8fd802caf3aebdaf"
+    },
+    {
+      "path": "output/assets/pdf/invoice_07.pdf",
+      "bytes": 44917,
+      "sha256": "f834d75d301a20b602a9b28a3e31d437cd58c117ff0cd1817164fc9e54f81a40"
+    },
+    {
+      "path": "output/assets/pdf/lab_report_01.pdf",
+      "bytes": 45724,
+      "sha256": "180784a690cb1740a8587c68745e20e5d0ec2ec5c32776a38f6d84982cfc8b30"
+    },
+    {
+      "path": "output/assets/pdf/lab_report_05.pdf",
+      "bytes": 45725,
+      "sha256": "0a9eca6ce983f3b0fd94f2d5161e876981902b9b0c40ed8ec6d25235a0aab456"
+    },
+    {
+      "path": "output/assets/pdf/pond_preparation_voucher_01.pdf",
+      "bytes": 47696,
+      "sha256": "4daa4ce197aec8fba7d4a60d9769089533ea094e90ec9523cb7836afbe1a20b0"
+    },
+    {
+      "path": "output/assets/pdf/prescription_placeholder_04.pdf",
+      "bytes": 47107,
+      "sha256": "0ca0d7427fefc7fdfecbadc828798b19ae84c3f230dd88c0ebab21a1a08de868"
+    },
+    {
+      "path": "output/assets/pdf/prescription_placeholder_08.pdf",
+      "bytes": 47109,
+      "sha256": "5cc4bc9b0b6f50b4a45c72d8739834b6b3cea3818e471712a16ccb828e29fbc9"
+    },
+    {
+      "path": "output/assets/transcripts/PAIR01_authored_test_script.txt",
+      "bytes": 674,
+      "sha256": "9ce506fd83f35c52857522d953ae832a415107eca2ba2822f0045c401bed0b2f"
+    },
+    {
+      "path": "output/assets/transcripts/PAIR02_authored_test_script.txt",
+      "bytes": 702,
+      "sha256": "01c70a5abceb23a0c54e9e724704d0e1dfec83e2003c35940ba6059a11da6cb2"
+    },
+    {
+      "path": "output/assets/transcripts/PAIR03_authored_test_script.txt",
+      "bytes": 674,
+      "sha256": "0905780de0e86f8bfb80e766f8ef7581d0aef6eb14c6cff895caf15554667eba"
+    },
+    {
+      "path": "output/assets/transcripts/PAIR04_authored_test_script.txt",
+      "bytes": 702,
+      "sha256": "2fbb3cae25f9b993d45571a937cac89458f61f7eed1b250cad97ad8894a24b2f"
+    },
+    {
+      "path": "output/assets/transcripts/PAIR05_authored_test_script.txt",
+      "bytes": 674,
+      "sha256": "f25061710f9d74492296f918f11c9df4e2f4c33fde35bbb10671befe1bd20555"
+    },
+    {
+      "path": "output/assets/transcripts/PAIR06_authored_test_script.txt",
+      "bytes": 702,
+      "sha256": "b136c0160085c1200c607edf77758ce071ca937d6742f27858832303a48070c6"
+    },
+    {
+      "path": "output/assets/video/001_underwater.mp4",
+      "bytes": 16927,
+      "sha256": "e3ea152f63fe3d7ef0dd95ed32c283b92d89aeabec3e759600d9686db5b4edc4"
+    },
+    {
+      "path": "output/assets/video/002_feeding.mp4",
+      "bytes": 18184,
+      "sha256": "48acce38add77c54595b0c9eaf0de96e8930410614a80c1c5ef6de467338d1f9"
+    },
+    {
+      "path": "output/assets/video/003_surfacing.mp4",
+      "bytes": 16996,
+      "sha256": "82a85867d4f22498dc683a8d207e0f330542f397e076d760160657f49b130025"
+    },
+    {
+      "path": "output/assets/video/004_surveillance.mp4",
+      "bytes": 16681,
+      "sha256": "d331f7596d4bc22ba14ce285164a6654b99f9fa47bdc8c96a998fecd18cf5e75"
+    },
+    {
+      "path": "output/assets/video/005_drone.mp4",
+      "bytes": 18162,
+      "sha256": "96d871e6ad6a1c22245743c10baa8900a7ba44a59552f4b52caba901788e0f69"
+    },
+    {
+      "path": "output/assets/video/006_swimming.mp4",
+      "bytes": 16727,
+      "sha256": "8c8470d2a0396a8ff35f3a62c025cab38799b9e2402d899f8c1eef2e5d9def9d"
+    },
+    {
+      "path": "output/assets/video/007_underwater.mp4",
+      "bytes": 16670,
+      "sha256": "5250c59263523afaade9ee5eca0dabd8494b445f2e33e943e63065ee3862389f"
+    },
+    {
+      "path": "output/assets/video/008_feeding.mp4",
+      "bytes": 17713,
+      "sha256": "fcbbffe6c8e831964f3f368d1b11045731b068a1b79791d4ec56346529dbf2c8"
+    },
+    {
+      "path": "output/assets/video/009_surfacing.mp4",
+      "bytes": 17005,
+      "sha256": "f202c9869ee69762e1d17f168b42420c911e12a9cea1e518d5f889912d18c832"
+    },
+    {
+      "path": "output/assets/video/010_surveillance.mp4",
+      "bytes": 16825,
+      "sha256": "667ae847743ecb61948c3e317117f62b7ce813fe149bfa0c94a16eac4cd20205"
+    },
+    {
+      "path": "output/assets/video/011_drone.mp4",
+      "bytes": 18089,
+      "sha256": "fea6fd9bdb1e0424211a7c4aba59ea7922645901837e2b7830e095b5f01f2ec5"
+    },
+    {
+      "path": "output/assets/video/012_swimming.mp4",
+      "bytes": 16358,
+      "sha256": "1965bfc8d601bd89e46e5041e233829e9b4fafe78ba451fdde4ad90710eac1ea"
+    },
+    {
+      "path": "output/generator/assets.py",
+      "bytes": 55064,
+      "sha256": "921e7541dc77ca50f95dcf6ecc71c61bdfefdb62b4333f94d33cc5fa686289c2"
+    },
+    {
+      "path": "output/generator/business.py",
+      "bytes": 58476,
+      "sha256": "df1b8be49120847cb36f10a68b7bcf240e8ab3c127a9a3fc504c7e358b712efc"
+    },
+    {
+      "path": "output/generator/catalog.py",
+      "bytes": 110386,
+      "sha256": "76bf5a1f6d48a41f5465ec1148b0f2013d4167f498e3d1c7b70409a4e945082a"
+    },
+    {
+      "path": "output/generator/catalog_review.mjs",
+      "bytes": 5872,
+      "sha256": "11418915dd5ac10af64d341bb2e1642e3568eb82d7f482bd93c36b5cb84f3c7b"
+    },
+    {
+      "path": "output/generator/environment.py",
+      "bytes": 20629,
+      "sha256": "4b1f4e2e0e18c6d58094d3bffba1dbd171bc1bc8b865eddbde37f9f2604494e1"
+    },
+    {
+      "path": "output/generator/finalize.py",
+      "bytes": 11629,
+      "sha256": "54343944a97a341fa8f31982518e317c5ffa8fd7d4f555c85888821d127b864a"
+    },
+    {
+      "path": "output/generator/run.py",
+      "bytes": 17762,
+      "sha256": "00600ed11e5569b0f9d5b6ad5cb55d3054e4f84af73d599c9403c31569bc70f7"
+    },
+    {
+      "path": "output/generator/test_assets.py",
+      "bytes": 2994,
+      "sha256": "03d4d490bfe6db0982458bbfe008a3c4d45a29d789bea0bbe801d821b61bcf57"
+    },
+    {
+      "path": "output/generator/test_business.py",
+      "bytes": 6695,
+      "sha256": "7cb38d5e297ce50c856a10b09fc8ac4864ca1f5b2f60a616e7ff5b164bf31ad5"
+    },
+    {
+      "path": "output/generator/test_environment.py",
+      "bytes": 1100,
+      "sha256": "61518950f5c91d7270a9ef9725602ca57bc30b8f2395d61bf88e87f3ed4dcc41"
+    },
+    {
+      "path": "output/generator/verify.py",
+      "bytes": 14726,
+      "sha256": "282aadcf5a0421c1571102783b4f67115acdca1d7efa5055f9f9cb3d82e524bc"
+    },
+    {
+      "path": "output/public_sources/era5_2025.json",
+      "bytes": 358637,
+      "sha256": "a039f30304100e5d41c37445f71022f0e866552e5ca648c90ac9af37da9c389b"
+    },
+    {
+      "path": "output/public_sources/weather_download.json",
+      "bytes": 520,
+      "sha256": "c25585c8a995067c77a8c8f9dca43f64ca3d744d919865bcfc4fd35fa3db4438"
+    },
+    {
+      "path": "output/public_sources/attachment/L1数据清单审阅与模拟数据建议.md",
+      "bytes": 19794,
+      "sha256": "e5d6060a9f208439af973a5779dc6e8f10175a3ab133cf64c5735501b02f3896"
+    },
+    {
+      "path": "output/public_sources/attachment/prompt.txt",
+      "bytes": 794,
+      "sha256": "af1646865865a6945c7bea2c49ed589935310d0ac84890d76cba564b6ccc4584"
+    },
+    {
+      "path": "output/public_sources/attachment/sample_inspection.json",
+      "bytes": 3606,
+      "sha256": "b795e3951a175b4de5a7ee3694a1b9e5a6ebe1cd38993832cb9ca869fd9275a9"
+    },
+    {
+      "path": "output/public_sources/attachment/sample_manifest.json",
+      "bytes": 10125,
+      "sha256": "b12e9d5e5ab2f735d770390059bd38e41f016c95b89f472e19ac85e71e444dd5"
+    },
+    {
+      "path": "output/public_sources/attachment/武昌鱼养殖知识库数据源与字段清单.md",
+      "bytes": 12330,
+      "sha256": "b3d215d205235c6e1580bfb9207acff7703f8a7a0250fb3099662ebf80d1463b"
+    },
+    {
+      "path": "output/public_sources/attachment/生成任务说明.md",
+      "bytes": 4544,
+      "sha256": "d89d972c17bbe7e02c2a4d034e9b2834db3af6449198cccd846346a3b7198b55"
+    },
+    {
+      "path": "output/public_sources/attachment/public_samples/guidance/hubei_2026_aquaculture.html",
+      "bytes": 129217,
+      "sha256": "ba7e0873fa05b40d169348b3dae24f39476550f220e4254ba812f03af5e3a19a"
+    },
+    {
+      "path": "output/public_sources/attachment/public_samples/market/whbsz_aquatic_quotes.html",
+      "bytes": 65601,
+      "sha256": "d5c12f892b83c2b8c6446c496fa9e09d25ea05c332d300a998eab98a3c2d1019"
+    },
+    {
+      "path": "output/public_sources/attachment/public_samples/pond/Monteria_Aquaculture_Data.xlsx",
+      "bytes": 364345,
+      "sha256": "c7504451fe0d2d19a7796d3901cdec16b3789c1952820ba0e4685b3a21db61b3"
+    },
+    {
+      "path": "output/public_sources/attachment/public_samples/ras/CITATION.cff",
+      "bytes": 2013,
+      "sha256": "1bf928de0f2ce1e74208acb81f4ca94adad06f36755b295e83f2598f9479bebd"
+    },
+    {
+      "path": "output/public_sources/attachment/public_samples/ras/data_dictionary.csv",
+      "bytes": 2792,
+      "sha256": "ce775b1829d798fad1d07eb5ac06e22d7fed1057fd18e82f4f175536b4746751"
+    },
+    {
+      "path": "output/public_sources/attachment/public_samples/ras/LICENSE.txt",
+      "bytes": 1180,
+      "sha256": "5b5d3b44d156b30ced1156c66736dad2a96fa35e31bf4d0b54ee25185ff698e1"
+    },
+    {
+      "path": "output/public_sources/attachment/public_samples/ras/ras_incidents.csv",
+      "bytes": 1711,
+      "sha256": "8e94f402abfe0c073be24b69a6eacc8417f3d5c2b26e9dfaf1463a4d9589b727"
+    },
+    {
+      "path": "output/public_sources/attachment/public_samples/ras/ras_manual_measurements.csv",
+      "bytes": 1324,
+      "sha256": "b7b886c6830890567da90f88df26a41d8b35068a388e267c4aec0fa09e4d47ed"
+    },
+    {
+      "path": "output/public_sources/attachment/public_samples/ras/ras_timeseries.csv",
+      "bytes": 602474,
+      "sha256": "9f6f9ce471cf42a915b6397f0508e42082767b6f32d8a619e99c4e9e2320f0e6"
+    },
+    {
+      "path": "output/public_sources/attachment/public_samples/ras/README.md",
+      "bytes": 1780,
+      "sha256": "ce8cee405165ae3d9303f913ddf094d57a11bd49b6162bdde2281468d67e7d77"
+    },
+    {
+      "path": "output/public_sources/attachment/public_samples/standard/DB42_T_2505_2026.pdf",
+      "bytes": 447302,
+      "sha256": "6f51376557b74aeb78af42237619695971c5e4920bcc160e9020596d83ac5a16"
+    },
+    {
+      "path": "output/public_sources/attachment/public_samples/weather/era5_2025_07_01_02.csv",
+      "bytes": 2127,
+      "sha256": "b565fd062da92348cde5bd928e4352d15b1268841f840ce52de2739ad941235d"
+    },
+    {
+      "path": "output/public_sources/attachment/public_samples/weather/era5_2025_07_01_02.json",
+      "bytes": 2442,
+      "sha256": "305d352322cd0147045afca958b35dc3bce5ac618277a176a66b44bc79232f68"
+    },
+    {
+      "path": "output/reference/answers/anomaly_ledger.csv",
+      "bytes": 441772,
+      "sha256": "20f802cfc160a6979617924c9b523f6c0c132da10c83b9d4eed82aa0ecd234eb"
+    },
+    {
+      "path": "output/reference/baseline/attachments.csv",
+      "bytes": 93266,
+      "sha256": "f448eb209e492eeebb257ea963842379dd5aeeabb70caf7d805749efb357a740"
+    },
+    {
+      "path": "output/reference/baseline/attachment_links.csv",
+      "bytes": 11867,
+      "sha256": "588e1163637cb75999c9601c097f59e7cb2774dac47e0a6a49c3ffe910d36ec3"
+    },
+    {
+      "path": "output/reference/baseline/case_observations.csv",
+      "bytes": 476,
+      "sha256": "f9b9fb948e63859d37cd477d9a33d148d526eb83907fa18980329bd3525ac66b"
+    },
+    {
+      "path": "output/reference/baseline/cash_allocations.csv",
+      "bytes": 100765,
+      "sha256": "2d14106981b1b54798cd84154ed0a5ace5929b6e6e434c285949bc6fbeb6b62d"
+    },
+    {
+      "path": "output/reference/baseline/cash_transactions.csv",
+      "bytes": 108274,
+      "sha256": "fb347fa8ebaff61bc24e32067568c83e8070062137b05dee42a10a8144fd61ea"
+    },
+    {
+      "path": "output/reference/baseline/cohorts.csv",
+      "bytes": 3222,
+      "sha256": "e4e6330bc824548899f3e89e2d49c3174fb7fcf3abfc13d98a55eb6e4fa930c0"
+    },
+    {
+      "path": "output/reference/baseline/control_commands.csv",
+      "bytes": 231553,
+      "sha256": "c6c72277321e53e83afe2b4c13635f7fbc8a946650834fa38a0ab65b649a94d1"
+    },
+    {
+      "path": "output/reference/baseline/cost_allocations.csv",
+      "bytes": 1577207,
+      "sha256": "2d4547ba2c3aaf55513d359fa89a0237c4fd41182d38bc2f576905e801627095"
+    },
+    {
+      "path": "output/reference/baseline/cost_entries.csv",
+      "bytes": 1801262,
+      "sha256": "889a1ee05736bd1949213af242d2d86160b164e5705ba012b554ee72fb97dfde"
+    },
+    {
+      "path": "output/reference/baseline/devices.csv",
+      "bytes": 1480,
+      "sha256": "fff0740617c65ae4215a59cf492ac6b75dc8c859aa5263ed08a4239a70a54860"
+    },
+    {
+      "path": "output/reference/baseline/device_calibrations.csv",
+      "bytes": 8164,
+      "sha256": "961c6dc2bda0e119dfb060c58cf46f3d7bd87ddc2e7ef2f7d90ed307496cb712"
+    },
+    {
+      "path": "output/reference/baseline/device_installations.csv",
+      "bytes": 2358,
+      "sha256": "63620f92cd2e71b229c42aa711bdb30827356014adcb7f9196be51e75749d375"
+    },
+    {
+      "path": "output/reference/baseline/device_maintenance.csv",
+      "bytes": 1080,
+      "sha256": "30b8280b27ab56bae740e9f0b528e1348d0437ae4a6b85eafe9aee6b99194432"
+    },
+    {
+      "path": "output/reference/baseline/device_operations.csv",
+      "bytes": 351374,
+      "sha256": "bcbaff5ddffa2b61c4b1407943e4bb8a4e9512bf4a2aea99eb70eca22a45d675"
+    },
+    {
+      "path": "output/reference/baseline/diagnostic_tests.csv",
+      "bytes": 536,
+      "sha256": "f0d52879d4197b2caebaac7a6b07f2b1c4a95290600dbdc0a69ec47f20959ef8"
+    },
+    {
+      "path": "output/reference/baseline/dictionaries.csv",
+      "bytes": 2044,
+      "sha256": "9c8ed6df0a94552d56ec7c4a5b1d51a5ffa7e24af97484c186c840ed92a105a0"
+    },
+    {
+      "path": "output/reference/baseline/disposal_events.csv",
+      "bytes": 95974,
+      "sha256": "c7c15b3af2221188ad0e437965d890a5cd8bab4795fdc692f37d801235a4f1e9"
+    },
+    {
+      "path": "output/reference/baseline/documents.csv",
+      "bytes": 12473,
+      "sha256": "f51a852409d174896d57bde0d9a97babfc855fe1213bbff1e9911e56d5b2db45"
+    },
+    {
+      "path": "output/reference/baseline/document_versions.csv",
+      "bytes": 7166,
+      "sha256": "5e3db6f3c0b26af9a164a0e6118a2b6991062b258c0a1ba90811525c9a040a6e"
+    },
+    {
+      "path": "output/reference/baseline/event_registry.csv",
+      "bytes": 970889,
+      "sha256": "2ab16745b2ea227324c71ed4913a5b49af289931b444727d2d50fc2eb984ca91"
+    },
+    {
+      "path": "output/reference/baseline/farms.csv",
+      "bytes": 364,
+      "sha256": "93cda7ce9406ec5828c6623e699a64b94a3033563d89540467c0df036b779cce"
+    },
+    {
+      "path": "output/reference/baseline/feeding_events.csv",
+      "bytes": 2560037,
+      "sha256": "4e1538d6fecb7c8e81eb9589f88274f2f60ae835635a8f2445217125caca6397"
+    },
+    {
+      "path": "output/reference/baseline/fish_daily_balance.csv",
+      "bytes": 1961146,
+      "sha256": "c3fabd915fdf743e0107f374971ce904553b3cf5a80cdb25d717bce780f20f63"
+    },
+    {
+      "path": "output/reference/baseline/growth_grade_items.csv",
+      "bytes": 6263,
+      "sha256": "696a122346fde18e9c4662478a06285b8c3b7771227d5accb9d500ed50afdb26"
+    },
+    {
+      "path": "output/reference/baseline/growth_individuals.csv",
+      "bytes": 147910,
+      "sha256": "5910227cb09a28dac86665fa16c48f03ea64e1b6bcb2bcf79beecb1aebb9a81c"
+    },
+    {
+      "path": "output/reference/baseline/growth_samples.csv",
+      "bytes": 14714,
+      "sha256": "a51fb4c6428828f02087e9dbcad60cd14c8a2669898176e05fd81091d6070652"
+    },
+    {
+      "path": "output/reference/baseline/harvests.csv",
+      "bytes": 13055,
+      "sha256": "0590d8cc746e208f447f8c3074458acdb86d30c6d6813549b73e7d6eb66ff10c"
+    },
+    {
+      "path": "output/reference/baseline/harvest_grade_items.csv",
+      "bytes": 19815,
+      "sha256": "3cf6c730a9b45208b31829691b55f6a0322473740cb6a914baf58ce2ace60d43"
+    },
+    {
+      "path": "output/reference/baseline/harvest_sale_allocations.csv",
+      "bytes": 40141,
+      "sha256": "1f455c68ff11cd422443f037fd1e7eb737871fe5a9379173c5f12e79bc3c66df"
+    },
+    {
+      "path": "output/reference/baseline/health_cases.csv",
+      "bytes": 895,
+      "sha256": "c6108b7511b47c02b17d74babe4059316424392019bdc8fc19b595e70cf32584"
+    },
+    {
+      "path": "output/reference/baseline/inventory_lot_status.csv",
+      "bytes": 13258,
+      "sha256": "f89991e4d3a12078842366936ef261f0e613cfd37c40667b9c31ab2a531f6998"
+    },
+    {
+      "path": "output/reference/baseline/inventory_movements.csv",
+      "bytes": 1938341,
+      "sha256": "95a22890725e9c0bd3a549a58d75c5e2e0f90e4296a5d60efbdcbc8e423c7a16"
+    },
+    {
+      "path": "output/reference/baseline/media_annotations.csv",
+      "bytes": 31726,
+      "sha256": "9e6fbace570b7f4679b5eda5ed27c13c7d2107010193135b5423cf9bbdf50948"
+    },
+    {
+      "path": "output/reference/baseline/mortality_events.csv",
+      "bytes": 87433,
+      "sha256": "6e89b7e1aa43a87783edeab7d9271dbd5f9dbc4ba7af4a99390c4a030b7df67a"
+    },
+    {
+      "path": "output/reference/baseline/opening_balances.csv",
+      "bytes": 1696,
+      "sha256": "0b7a47a8898e5ff0baa656ba2e002b274cfd5978dbf1fd541e8077e337efdb40"
+    },
+    {
+      "path": "output/reference/baseline/partners.csv",
+      "bytes": 1173,
+      "sha256": "dece55da7acc763a1abd2acb044e1b0a32e930919aee6a945aaf398de00cdc8e"
+    },
+    {
+      "path": "output/reference/baseline/patrol_events.csv",
+      "bytes": 758877,
+      "sha256": "b7a4d55cbdf11620c0ac705a17b0e1b15e5758ce398406883a49a199b9bccf06"
+    },
+    {
+      "path": "output/reference/baseline/persons.csv",
+      "bytes": 104,
+      "sha256": "620aaad10f63f9f918206e8bfdc2bf1081db9793ca5f3f37ce9f0cc5012b1755"
+    },
+    {
+      "path": "output/reference/baseline/ponds.csv",
+      "bytes": 2238,
+      "sha256": "cf7a8e7f166c36e9c5e9e43c2b1929efa5482e098ec2c004633f88ba78b01bc4"
+    },
+    {
+      "path": "output/reference/baseline/pond_cohort_occupancy.csv",
+      "bytes": 5312,
+      "sha256": "c012be6a1b3b6325aed3769710bfebca538be867466a9c2ef59eaa20358b7eb6"
+    },
+    {
+      "path": "output/reference/baseline/pond_maintenance.csv",
+      "bytes": 906,
+      "sha256": "7148abe4e9a471b554dd54e4cd71148c82c1b0e58e2e028c914450b464d0188d"
+    },
+    {
+      "path": "output/reference/baseline/pond_preparations.csv",
+      "bytes": 1830,
+      "sha256": "c475cd5a00bfd7e3f56465c198ab50a5b7e87b216689017d15e6beddab781157"
+    },
+    {
+      "path": "output/reference/baseline/price_observations.csv",
+      "bytes": 1824442,
+      "sha256": "1600a6bac209ee6e303e6eda63b4509225b553779406a3e715532f22499035e5"
+    },
+    {
+      "path": "output/reference/baseline/production_plans.csv",
+      "bytes": 225,
+      "sha256": "793e609598bd510d8dc449bf5147710d7425158fce25b322e7fa81ec82e2128b"
+    },
+    {
+      "path": "output/reference/baseline/products.csv",
+      "bytes": 962,
+      "sha256": "fb4d5d7ac1322aaf9c50855425c025e98d5e2f803fb9ab68ec823d27e28d6b79"
+    },
+    {
+      "path": "output/reference/baseline/purchases.csv",
+      "bytes": 10834,
+      "sha256": "e3acd8f3533580f69e40b31a23a3f6ae01915b53613fd580b9566d4331aa1606"
+    },
+    {
+      "path": "output/reference/baseline/purchase_items.csv",
+      "bytes": 10290,
+      "sha256": "bcfdc6d799b209d7424a279de9dc983ec4e83d51d250c8505c5afc1b7fdd6f9f"
+    },
+    {
+      "path": "output/reference/baseline/record_provenance.csv",
+      "bytes": 51464055,
+      "sha256": "a883b7637a2a28b1ae8c34f5434c152114422cc4fa5bc924e3e88686811ae52d"
+    },
+    {
+      "path": "output/reference/baseline/sales.csv",
+      "bytes": 4393,
+      "sha256": "3aa744a0fe020f59b45a5fb12bda34ad7f46dba2c0174897257ad8010df5f0d2"
+    },
+    {
+      "path": "output/reference/baseline/sale_items.csv",
+      "bytes": 6632,
+      "sha256": "3aa0666c86a9ea92d499b8fea6220a94f06549a1d6ff881c0d2d0a25f5f91e94"
+    },
+    {
+      "path": "output/reference/baseline/settlements.csv",
+      "bytes": 3887,
+      "sha256": "1e742318c7cfbfbd21530124b084e51283dc370b8c0f448848fcc8074f4e7dce"
+    },
+    {
+      "path": "output/reference/baseline/settlement_deductions.csv",
+      "bytes": 6437,
+      "sha256": "8dae78116619a421c5de6e0b5a1107d38fda4c85e9a90aba7151af8f3545f67c"
+    },
+    {
+      "path": "output/reference/baseline/sources.csv",
+      "bytes": 3571,
+      "sha256": "fd81b9e07714b11a05d5b03779b555478dd04831e7885312c3c7996a281d084d"
+    },
+    {
+      "path": "output/reference/baseline/spatial_layer_registry.csv",
+      "bytes": 8143,
+      "sha256": "b767d94ba904c3484daa29c7720510193f75c210fed8529864816205db6f92e9"
+    },
+    {
+      "path": "output/reference/baseline/species.csv",
+      "bytes": 695,
+      "sha256": "ac56040683ba4469690165790a3e88c5faefebb8a3a22453ddd976ebb6c5ee36"
+    },
+    {
+      "path": "output/reference/baseline/stocking_events.csv",
+      "bytes": 6897,
+      "sha256": "97ddea33726916643e76950dd0a844b94cb98bea5d01ac45f0410aa9682c55ca"
+    },
+    {
+      "path": "output/reference/baseline/transfer_allocations.csv",
+      "bytes": 947,
+      "sha256": "61cf52eabf68a3167beb32ebfd9492a472dc2bbc204db297c8b42b7c82f8e9b6"
+    },
+    {
+      "path": "output/reference/baseline/transfer_events.csv",
+      "bytes": 876,
+      "sha256": "c91599607830f182b43c23edc4fcfbf43775b70401cbbaeb803f9b0884ff8c22"
+    },
+    {
+      "path": "output/reference/baseline/treatment_events.csv",
+      "bytes": 1584,
+      "sha256": "d6463707aec9a99faa52dfed3f19938a3fa0c76ee250e096dd4881fe3f5233dd"
+    },
+    {
+      "path": "output/reference/baseline/water_observations.csv",
+      "bytes": 9504803,
+      "sha256": "2267b8c25a4198e3edc31cc8ceba5a24f714025e4552c6c6cc5c404881e011d8"
+    },
+    {
+      "path": "output/reference/baseline/water_operations.csv",
+      "bytes": 11828,
+      "sha256": "0fe05d59136a72991a5dca202d8ddb2578aeb869347e8d2ef88d2fe64be6f28c"
+    },
+    {
+      "path": "output/reference/baseline/water_samples.csv",
+      "bytes": 35608,
+      "sha256": "223cce4da848a0c391c8e88a353ec3a9879437a069389727ad30ff9d0156e615"
+    },
+    {
+      "path": "output/reference/baseline/water_test_results.csv",
+      "bytes": 337900,
+      "sha256": "61a250f1054135957be8a558e5aa372fb27b8bfa5d0eb1af40297ed0ecb1bfda"
+    },
+    {
+      "path": "output/reference/baseline/weather_observations.csv",
+      "bytes": 1348321,
+      "sha256": "95e043822b4f0c1a23aab92413026b852ea7b31753af7a3cb219761b417c59a1"
+    },
+    {
+      "path": "output/reports/checks.json",
+      "bytes": 24860,
+      "sha256": "e0b2fed4c6b6a68246d40fa7f2680955a8a1833bac464c1c8f029326d5e625f0"
+    },
+    {
+      "path": "output/reports/coverage_audit.json",
+      "bytes": 170033,
+      "sha256": "1af5d9feb7c1fe81cb2dbbaf6da7db82882ab3dfc526d7eb57d7619689b9986f"
+    },
+    {
+      "path": "output/reports/independent_verification.json",
+      "bytes": 30385,
+      "sha256": "09fe37ede345329bed896ef0e9f7d7f2ce3cc01ee1d0ec9b9e5970075153e44f"
+    },
+    {
+      "path": "output/reports/reproducibility.json",
+      "bytes": 1767,
+      "sha256": "b2bde116fa86baa627983eab2c1a2f506cd56efe1af1d380dad3c511d7388b06"
+    },
+    {
+      "path": "output/reports/row_counts.json",
+      "bytes": 1665,
+      "sha256": "e1e21f957bb6694de54947738a40d4a442fb9dd8dd5aaa3264f0043d97fa915f"
+    },
+    {
+      "path": "output/reports/run_summary.json",
+      "bytes": 2224,
+      "sha256": "099f570931ce888710251ac222a5e2aa76216f638432edaff939081a91882d65"
+    },
+    {
+      "path": "output/reports/serialization_types.json",
+      "bytes": 39586,
+      "sha256": "4a2af15b1e3c075a4f4bbb36aa15471c5c52e388a815357f20605891afe27af8"
+    },
+    {
+      "path": "output/reports/source_checks.json",
+      "bytes": 961,
+      "sha256": "b1f46bfe0b3e66691774bef989b6f1c2e39d1eaf0e96cc874ea2b32517cf9122"
+    },
+    {
+      "path": "output/reports/unit_tests.json",
+      "bytes": 242,
+      "sha256": "bc7fd2bdb491a56d64ceb1aef34adf6b411b27e7d52b046501e7081cfb87809f"
+    },
+    {
+      "path": "output/reports/xlsx_build.log",
+      "bytes": 154,
+      "sha256": "9d9d410e4779c2cb1f8b3d96b14810e66645c09402ddbeb483fd3a4c09e30be0"
+    },
+    {
+      "path": "output/reports/xlsx_export_repairs.json",
+      "bytes": 1728200,
+      "sha256": "be6ad539c0dfd173e23cec26a3c2db858b1f6f19e82a9481aef74388a38d377a"
+    },
+    {
+      "path": "output/reports/xlsx_validation.json",
+      "bytes": 1380,
+      "sha256": "b09571acf9ca0a7829cef04ea76a0ed07fb8f620b0c5765e7ddfebb8f8fa7bf3"
+    },
+    {
+      "path": "output/reports/验收报告.md",
+      "bytes": 5664,
+      "sha256": "e222e9807085c7ceb20b1723c5bcc81414a4d123310bcbe7ff1c1085fc195b23"
+    },
+    {
+      "path": "output/review/catalog_inspection.ndjson",
+      "bytes": 680,
+      "sha256": "2b762c345e6a31ad0ad286e975b1fa05066ef59615cd1965203a72689a23fb62"
+    },
+    {
+      "path": "output/review/L1_review.xlsx",
+      "bytes": 5997004,
+      "sha256": "63210291ec66136be0a3a546d53df613948cb73e9a7f5d7efae3b003e00b335a"
+    },
+    {
+      "path": "output/review/xlsx_authoring_audit.json",
+      "bytes": 8437,
+      "sha256": "5778466285ad8968d37bc8443c70ef9ea3ed6fc4527286448d672b9d6680ccc5"
+    },
+    {
+      "path": "output/sample/assets/audio/PAIR01_patrol_synthetic.wav",
+      "bytes": 630286,
+      "sha256": "606117433b7817f8aec916114f2f0bdcb39f698d8a7b0df4624e83a9106e50e7"
+    },
+    {
+      "path": "output/sample/assets/audio/PAIR02_expert_narration_synthetic.wav",
+      "bytes": 653006,
+      "sha256": "78c09842ae4cbcd18882a6af90ec0b1c650abf4dfb9202805709282574cb6f37"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC001_v1.0.pdf",
+      "bytes": 73998,
+      "sha256": "a2513f8efc52b6ba7fde1bd3df01b0e5b88055f60c24bdb1345e691e19d2d95d"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC001_v1.1.pdf",
+      "bytes": 75375,
+      "sha256": "2db1aa79c7859a25b26b51aea8d53f252c4e61250a62088d595fb5e07fe608d6"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC002_v1.0.pdf",
+      "bytes": 76279,
+      "sha256": "197d9e089031b7b68bc751ab781cd9297c6c19febfa9b99962af4e9f15de0cd4"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC003_v1.0.pdf",
+      "bytes": 76809,
+      "sha256": "a6fe6fc39a26cf4b35085b61a9f8b9b1e03f015af6fb36264093db5d3455d1ef"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC004_v1.0.pdf",
+      "bytes": 75317,
+      "sha256": "1d63036d8a53df7ce29a5e6cdf5419dd596828604d1f411d2ded35890d7bf9ab"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC005_v1.0.pdf",
+      "bytes": 75207,
+      "sha256": "64fa021dc29dbfe5ce7d2889ac953149c5d2f8f14f4418b54a04d9f0e5f2807a"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC006_v1.0.pdf",
+      "bytes": 76307,
+      "sha256": "5c85fbc31a3469edaf8008d76b877863cbbb9e4138b65138a2f36c5a36b3c3c3"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC007_v1.0.pdf",
+      "bytes": 74381,
+      "sha256": "1c143be5643b11fbb26d1e2180c25653fe6cea9e1e02a84098ff8d80a49e54fa"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC008_v1.0.pdf",
+      "bytes": 74999,
+      "sha256": "9d05020a30687834051adfe966435b48d68c59035c7328f460fcafdd9fcf8720"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC009_v1.0.pdf",
+      "bytes": 75703,
+      "sha256": "a0aee89961f10cd80485b3619d0ce386d05e153eba3a8111a59eede2ca8e9960"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC010_v1.0.pdf",
+      "bytes": 76130,
+      "sha256": "a49a31357d9444b6d69ee654d85ff3f394f7a3ccb378f82662d223fc6252af55"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC011_v1.0.pdf",
+      "bytes": 74987,
+      "sha256": "ebae8ce3521e39a0e435cb9617c8ea0be3bd928aa97cee956028d65f8ad2b04e"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC012_v1.0.pdf",
+      "bytes": 75234,
+      "sha256": "6673793f55cfd9bb331eba0cc955e1159a17c112b0374252b62958cc965b84a3"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC013_v1.0.pdf",
+      "bytes": 75836,
+      "sha256": "e2e6a15e2dd56ac7c721786994cc3298ad9731b98f6e3fc7362ed5d687ed2a57"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC014_v1.0.pdf",
+      "bytes": 75432,
+      "sha256": "758dd9efb7e54b7c3a257d6c8da9b804bc567844bf55a0a1437e83ce82bd8d42"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC015_v1.0.pdf",
+      "bytes": 75401,
+      "sha256": "8ed4c28b969459f101e69849b2e392e9fdd923e29e3b071c0db138423ddc2a39"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC016_v1.0.pdf",
+      "bytes": 75215,
+      "sha256": "75975c91d54751ba2bb4ee17d64d2a5fc92f433d76739b2ca5ff02aa47e09429"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC017_v1.0.pdf",
+      "bytes": 75910,
+      "sha256": "1e1856d1b72c974104f540063a81559e18fa1d29c375b50f569fdadbf76c4677"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC018_v1.0.pdf",
+      "bytes": 75956,
+      "sha256": "ffb183fb26c85146a2eb75219a861abbbe2eeb32c1bb7dd9f6726ab0c4f547d4"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC019_v1.0.pdf",
+      "bytes": 75607,
+      "sha256": "21fb25fbe9c9dc2c10812b7777d91587d91a3e3d5f1d5392f4223002db946e9e"
+    },
+    {
+      "path": "output/sample/assets/documents/DOC020_v1.0.pdf",
+      "bytes": 75520,
+      "sha256": "7e571e96d09400b7e270f80ad417a7bebfb02c770d9b8dd42f9526ba3194c19e"
+    },
+    {
+      "path": "output/sample/assets/gis/administrative_layout.geojson",
+      "bytes": 1457,
+      "sha256": "43bbc69ba83cf53f6f304ed3c94c7a26b0d1681c83643c36695050a5c67b6d6e"
+    },
+    {
+      "path": "output/sample/assets/gis/devices.geojson",
+      "bytes": 12584,
+      "sha256": "3e7ff3a3cbf1790527a51ea3119dced46c17ebd7b5f0405eb55137d69a85e580"
+    },
+    {
+      "path": "output/sample/assets/gis/discovery_points.geojson",
+      "bytes": 8820,
+      "sha256": "458036455f65d54db860034fd6bd4f254217233455425830b05ef4dd4bb54869"
+    },
+    {
+      "path": "output/sample/assets/gis/farm_boundary.geojson",
+      "bytes": 1337,
+      "sha256": "d793d34d4d133e6ecc89382837181e8ae5525d9b5f3f60c3fb1b6afcd65c18a3"
+    },
+    {
+      "path": "output/sample/assets/gis/intakes_outlets_sampling.geojson",
+      "bytes": 15269,
+      "sha256": "f0c5e1358ef9701d9c23d4b434f24b27b20ed76e0a5ad47bd30ea50a844a97a2"
+    },
+    {
+      "path": "output/sample/assets/gis/land_use.geojson",
+      "bytes": 3856,
+      "sha256": "e42ef97be40d20c3af9a4dca4e55fabad034d1bf140d014498a45f956dfa9434"
+    },
+    {
+      "path": "output/sample/assets/gis/orthomosaic.tif",
+      "bytes": 123328,
+      "sha256": "d2775a4041f8d7e6383a7917a7039253b5ce1742cb4d88a6f853072779140824"
+    },
+    {
+      "path": "output/sample/assets/gis/ponds.geojson",
+      "bytes": 6735,
+      "sha256": "57227579944a2c6057ee3217c963a4f5f74fafb764c20d7d60c06378946dc9d6"
+    },
+    {
+      "path": "output/sample/assets/gis/risk_zones.geojson",
+      "bytes": 3121,
+      "sha256": "d9b0a22e967f35ae58408500c0fab739e7295ac7a29a0f104c1efb3fbf21fba0"
+    },
+    {
+      "path": "output/sample/assets/gis/suppliers_customers_labs_markets.geojson",
+      "bytes": 6379,
+      "sha256": "e8967af3eae1eeca35ced501fdb373949f281ef5266e7eb26ec6324fb3032ebe"
+    },
+    {
+      "path": "output/sample/assets/gis/transport_routes.geojson",
+      "bytes": 10354,
+      "sha256": "3bed780da2f47bef49809336354439966d958f37e37a408ba259f61be4a06c66"
+    },
+    {
+      "path": "output/sample/assets/gis/water_network.geojson",
+      "bytes": 2004,
+      "sha256": "de75a54840b7d0dfce6cdca59ed6ba11e5fd18283fa12d87319735f3df734fee"
+    },
+    {
+      "path": "output/sample/assets/gis/water_surface_june.tif",
+      "bytes": 123328,
+      "sha256": "f0dfe57f15204f41deaa146680c35b1be3d048604707cb8dc7c024e34cc37f9a"
+    },
+    {
+      "path": "output/sample/assets/gis/water_surface_states.geojson",
+      "bytes": 16901,
+      "sha256": "d9cabf7377d3952ba75a5176bb4da7037a522403dc767aef7713c43edfffe3b7"
+    },
+    {
+      "path": "output/sample/assets/gis/weather_grid.geojson",
+      "bytes": 7238,
+      "sha256": "5a38ddd61a8c05f7a808eacd4860ae74de5b7f588c655381e9957f9467e8573b"
+    },
+    {
+      "path": "output/sample/assets/images/001_fish_body.png",
+      "bytes": 18087,
+      "sha256": "aaddbbdd5984eb62b869619d5a342b61fbb6526cd581e0a38e39a8f49aa1d28a"
+    },
+    {
+      "path": "output/sample/assets/images/002_gill.jpg",
+      "bytes": 31267,
+      "sha256": "02c15cb27932f0a50b7329ab940059369aa3fede42f16bf5783db252b80a24e4"
+    },
+    {
+      "path": "output/sample/assets/images/003_viscera.png",
+      "bytes": 20119,
+      "sha256": "b6684acebb804245a0dd8b0ed229e6ba088911a6d7755fc7d93624a31ce453e5"
+    },
+    {
+      "path": "output/sample/assets/images/004_microscopy.png",
+      "bytes": 22060,
+      "sha256": "2f44569af30a2eb738f699f898ca0ad87ec3ed06a791afe93fab7cc962cd0590"
+    },
+    {
+      "path": "output/sample/assets/images/005_histology.jpg",
+      "bytes": 35034,
+      "sha256": "02f2378301909c8832460a2d4235050e7d5c07d012adc0a66b1f1bc8a2541aee"
+    },
+    {
+      "path": "output/sample/assets/images/006_water_color.png",
+      "bytes": 17448,
+      "sha256": "a863f8e5e3441fc3db875c28bde5031da2728d5ee38820b3e2d40333631bc403"
+    },
+    {
+      "path": "output/sample/assets/images/007_curve.png",
+      "bytes": 20613,
+      "sha256": "c19291d1a281332381d1e50a1bcef8c54f09f9cd61176ac82838b2b3593e53e7"
+    },
+    {
+      "path": "output/sample/assets/images/008_production_chart.jpg",
+      "bytes": 29769,
+      "sha256": "2b533474860b15d008ec1aac25c77547f02dc9fb4323cf4a325dc3d646eeb13f"
+    },
+    {
+      "path": "output/sample/assets/images/009_water_test_strip.png",
+      "bytes": 18292,
+      "sha256": "0c685a77512492f7649e2b8ddfca2e3bd1ae2f10785473d05caa6177b290c623"
+    },
+    {
+      "path": "output/sample/assets/pdf/contract_02.pdf",
+      "bytes": 46085,
+      "sha256": "e3b4487096400495fdc59a66e0941ff4252863396b879af27601636375534759"
+    },
+    {
+      "path": "output/sample/assets/pdf/invoice_03.pdf",
+      "bytes": 44917,
+      "sha256": "916e1e33f3f0a7868e366a6cffbfbddb1aea9b3bfe14eafa8fd802caf3aebdaf"
+    },
+    {
+      "path": "output/sample/assets/pdf/lab_report_01.pdf",
+      "bytes": 45724,
+      "sha256": "180784a690cb1740a8587c68745e20e5d0ec2ec5c32776a38f6d84982cfc8b30"
+    },
+    {
+      "path": "output/sample/assets/pdf/prescription_placeholder_04.pdf",
+      "bytes": 47107,
+      "sha256": "0ca0d7427fefc7fdfecbadc828798b19ae84c3f230dd88c0ebab21a1a08de868"
+    },
+    {
+      "path": "output/sample/assets/transcripts/PAIR01_authored_test_script.txt",
+      "bytes": 674,
+      "sha256": "9ce506fd83f35c52857522d953ae832a415107eca2ba2822f0045c401bed0b2f"
+    },
+    {
+      "path": "output/sample/assets/transcripts/PAIR02_authored_test_script.txt",
+      "bytes": 702,
+      "sha256": "01c70a5abceb23a0c54e9e724704d0e1dfec83e2003c35940ba6059a11da6cb2"
+    },
+    {
+      "path": "output/sample/assets/video/001_underwater.mp4",
+      "bytes": 16927,
+      "sha256": "e3ea152f63fe3d7ef0dd95ed32c283b92d89aeabec3e759600d9686db5b4edc4"
+    },
+    {
+      "path": "output/sample/assets/video/002_feeding.mp4",
+      "bytes": 18184,
+      "sha256": "48acce38add77c54595b0c9eaf0de96e8930410614a80c1c5ef6de467338d1f9"
+    },
+    {
+      "path": "output/sample/assets/video/003_surfacing.mp4",
+      "bytes": 16996,
+      "sha256": "82a85867d4f22498dc683a8d207e0f330542f397e076d760160657f49b130025"
+    },
+    {
+      "path": "output/sample/assets/video/004_surveillance.mp4",
+      "bytes": 16681,
+      "sha256": "d331f7596d4bc22ba14ce285164a6654b99f9fa47bdc8c96a998fecd18cf5e75"
+    },
+    {
+      "path": "output/sample/assets/video/005_drone.mp4",
+      "bytes": 18162,
+      "sha256": "96d871e6ad6a1c22245743c10baa8900a7ba44a59552f4b52caba901788e0f69"
+    },
+    {
+      "path": "output/sample/assets/video/006_swimming.mp4",
+      "bytes": 16727,
+      "sha256": "8c8470d2a0396a8ff35f3a62c025cab38799b9e2402d899f8c1eef2e5d9def9d"
+    },
+    {
+      "path": "output/sample/public_sources/era5_2025.json",
+      "bytes": 358637,
+      "sha256": "a039f30304100e5d41c37445f71022f0e866552e5ca648c90ac9af37da9c389b"
+    },
+    {
+      "path": "output/sample/public_sources/weather_download.json",
+      "bytes": 520,
+      "sha256": "c25585c8a995067c77a8c8f9dca43f64ca3d744d919865bcfc4fd35fa3db4438"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/L1数据清单审阅与模拟数据建议.md",
+      "bytes": 19794,
+      "sha256": "e5d6060a9f208439af973a5779dc6e8f10175a3ab133cf64c5735501b02f3896"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/prompt.txt",
+      "bytes": 794,
+      "sha256": "af1646865865a6945c7bea2c49ed589935310d0ac84890d76cba564b6ccc4584"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/sample_inspection.json",
+      "bytes": 3606,
+      "sha256": "b795e3951a175b4de5a7ee3694a1b9e5a6ebe1cd38993832cb9ca869fd9275a9"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/sample_manifest.json",
+      "bytes": 10125,
+      "sha256": "b12e9d5e5ab2f735d770390059bd38e41f016c95b89f472e19ac85e71e444dd5"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/武昌鱼养殖知识库数据源与字段清单.md",
+      "bytes": 12330,
+      "sha256": "b3d215d205235c6e1580bfb9207acff7703f8a7a0250fb3099662ebf80d1463b"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/生成任务说明.md",
+      "bytes": 4544,
+      "sha256": "d89d972c17bbe7e02c2a4d034e9b2834db3af6449198cccd846346a3b7198b55"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/public_samples/guidance/hubei_2026_aquaculture.html",
+      "bytes": 129217,
+      "sha256": "ba7e0873fa05b40d169348b3dae24f39476550f220e4254ba812f03af5e3a19a"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/public_samples/market/whbsz_aquatic_quotes.html",
+      "bytes": 65601,
+      "sha256": "d5c12f892b83c2b8c6446c496fa9e09d25ea05c332d300a998eab98a3c2d1019"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/public_samples/pond/Monteria_Aquaculture_Data.xlsx",
+      "bytes": 364345,
+      "sha256": "c7504451fe0d2d19a7796d3901cdec16b3789c1952820ba0e4685b3a21db61b3"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/public_samples/ras/CITATION.cff",
+      "bytes": 2013,
+      "sha256": "1bf928de0f2ce1e74208acb81f4ca94adad06f36755b295e83f2598f9479bebd"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/public_samples/ras/data_dictionary.csv",
+      "bytes": 2792,
+      "sha256": "ce775b1829d798fad1d07eb5ac06e22d7fed1057fd18e82f4f175536b4746751"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/public_samples/ras/LICENSE.txt",
+      "bytes": 1180,
+      "sha256": "5b5d3b44d156b30ced1156c66736dad2a96fa35e31bf4d0b54ee25185ff698e1"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/public_samples/ras/ras_incidents.csv",
+      "bytes": 1711,
+      "sha256": "8e94f402abfe0c073be24b69a6eacc8417f3d5c2b26e9dfaf1463a4d9589b727"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/public_samples/ras/ras_manual_measurements.csv",
+      "bytes": 1324,
+      "sha256": "b7b886c6830890567da90f88df26a41d8b35068a388e267c4aec0fa09e4d47ed"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/public_samples/ras/ras_timeseries.csv",
+      "bytes": 602474,
+      "sha256": "9f6f9ce471cf42a915b6397f0508e42082767b6f32d8a619e99c4e9e2320f0e6"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/public_samples/ras/README.md",
+      "bytes": 1780,
+      "sha256": "ce8cee405165ae3d9303f913ddf094d57a11bd49b6162bdde2281468d67e7d77"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/public_samples/standard/DB42_T_2505_2026.pdf",
+      "bytes": 447302,
+      "sha256": "6f51376557b74aeb78af42237619695971c5e4920bcc160e9020596d83ac5a16"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/public_samples/weather/era5_2025_07_01_02.csv",
+      "bytes": 2127,
+      "sha256": "b565fd062da92348cde5bd928e4352d15b1268841f840ce52de2739ad941235d"
+    },
+    {
+      "path": "output/sample/public_sources/attachment/public_samples/weather/era5_2025_07_01_02.json",
+      "bytes": 2442,
+      "sha256": "305d352322cd0147045afca958b35dc3bce5ac618277a176a66b44bc79232f68"
+    },
+    {
+      "path": "output/sample/reference/answers/anomaly_ledger.csv",
+      "bytes": 21281,
+      "sha256": "cd2e1283da1da2bd5a6f54af2e4747fcc7d1364c7d0468ee1c667b112d6833f3"
+    },
+    {
+      "path": "output/sample/reference/baseline/attachments.csv",
+      "bytes": 38542,
+      "sha256": "c86d336e1e5a43b9827531b17a2490a2d618ee0a930725421bf2c5d505e45614"
+    },
+    {
+      "path": "output/sample/reference/baseline/attachment_links.csv",
+      "bytes": 4652,
+      "sha256": "6957625b69b852899670edc9d75331cc692cf331ca87681e91afc65f670a0d5f"
+    },
+    {
+      "path": "output/sample/reference/baseline/case_observations.csv",
+      "bytes": 476,
+      "sha256": "f9b9fb948e63859d37cd477d9a33d148d526eb83907fa18980329bd3525ac66b"
+    },
+    {
+      "path": "output/sample/reference/baseline/cash_allocations.csv",
+      "bytes": 100410,
+      "sha256": "4f83d71ddc8f6222bce00bfd40a7bd13302f914030fc0a8407b234894299ebc4"
+    },
+    {
+      "path": "output/sample/reference/baseline/cash_transactions.csv",
+      "bytes": 107878,
+      "sha256": "97468f4a222873ffc6405746d48f458e52cc095edc92dde102ef437231902b3c"
+    },
+    {
+      "path": "output/sample/reference/baseline/cohorts.csv",
+      "bytes": 3178,
+      "sha256": "2d3cc1262861aa641429ecdd1dadab3b2657eb6ba92a2ad1e472eecd97494505"
+    },
+    {
+      "path": "output/sample/reference/baseline/control_commands.csv",
+      "bytes": 9583,
+      "sha256": "0641500dcfe1b3d8e7317edeca17cd51d71da677fb1e27296787ea4e31fe3698"
+    },
+    {
+      "path": "output/sample/reference/baseline/cost_allocations.csv",
+      "bytes": 202896,
+      "sha256": "bd3b62ef9094c55904d55d270ea1587436974f01d5d4f69911e027c1f62bd69f"
+    },
+    {
+      "path": "output/sample/reference/baseline/cost_entries.csv",
+      "bytes": 162299,
+      "sha256": "e5512e9122ab6404c33580ba4b42df46840eefd7a357cc5f238dd24800d91e12"
+    },
+    {
+      "path": "output/sample/reference/baseline/devices.csv",
+      "bytes": 1480,
+      "sha256": "fff0740617c65ae4215a59cf492ac6b75dc8c859aa5263ed08a4239a70a54860"
+    },
+    {
+      "path": "output/sample/reference/baseline/device_calibrations.csv",
+      "bytes": 8164,
+      "sha256": "961c6dc2bda0e119dfb060c58cf46f3d7bd87ddc2e7ef2f7d90ed307496cb712"
+    },
+    {
+      "path": "output/sample/reference/baseline/device_installations.csv",
+      "bytes": 2358,
+      "sha256": "63620f92cd2e71b229c42aa711bdb30827356014adcb7f9196be51e75749d375"
+    },
+    {
+      "path": "output/sample/reference/baseline/device_maintenance.csv",
+      "bytes": 1080,
+      "sha256": "30b8280b27ab56bae740e9f0b528e1348d0437ae4a6b85eafe9aee6b99194432"
+    },
+    {
+      "path": "output/sample/reference/baseline/device_operations.csv",
+      "bytes": 14534,
+      "sha256": "610906931169130459c5ba71c6a42e4083e028c3a1e17efc10f6332038519384"
+    },
+    {
+      "path": "output/sample/reference/baseline/diagnostic_tests.csv",
+      "bytes": 536,
+      "sha256": "f0d52879d4197b2caebaac7a6b07f2b1c4a95290600dbdc0a69ec47f20959ef8"
+    },
+    {
+      "path": "output/sample/reference/baseline/dictionaries.csv",
+      "bytes": 2044,
+      "sha256": "9c8ed6df0a94552d56ec7c4a5b1d51a5ffa7e24af97484c186c840ed92a105a0"
+    },
+    {
+      "path": "output/sample/reference/baseline/disposal_events.csv",
+      "bytes": 95993,
+      "sha256": "2ebda83a2d87f7a03567ae50eabc173a81f8601bb7337741fb734d9689d1c160"
+    },
+    {
+      "path": "output/sample/reference/baseline/documents.csv",
+      "bytes": 12473,
+      "sha256": "0b9484b4594155f8bbdba4ccf8a9928dc932f10a089b53fae58e767d9716c525"
+    },
+    {
+      "path": "output/sample/reference/baseline/document_versions.csv",
+      "bytes": 6245,
+      "sha256": "f2800081689e4ca572ece709937a0e18ba5a4f5c36ed7cf2227bc8ea5118e2a9"
+    },
+    {
+      "path": "output/sample/reference/baseline/event_registry.csv",
+      "bytes": 89803,
+      "sha256": "195b4535dbb6dc2f08db3d42cb8d1ea43aa2f8fc3167a957393c1dba8bba07ee"
+    },
+    {
+      "path": "output/sample/reference/baseline/farms.csv",
+      "bytes": 364,
+      "sha256": "93cda7ce9406ec5828c6623e699a64b94a3033563d89540467c0df036b779cce"
+    },
+    {
+      "path": "output/sample/reference/baseline/feeding_events.csv",
+      "bytes": 70105,
+      "sha256": "e18535101b7ffd8262a78c22c80bde5fae4af3ea654c6d9b16254e72efdb1bfd"
+    },
+    {
+      "path": "output/sample/reference/baseline/fish_daily_balance.csv",
+      "bytes": 1942260,
+      "sha256": "468d4f9857cddb6b516745994ef55909a338c3f466344b2672c526fa9a6d9aac"
+    },
+    {
+      "path": "output/sample/reference/baseline/growth_grade_items.csv",
+      "bytes": 6112,
+      "sha256": "e7467cb4d9abd70b73cadbf3efaed8203a6b3e11c3c39dfc55db1b85ae016129"
+    },
+    {
+      "path": "output/sample/reference/baseline/growth_individuals.csv",
+      "bytes": 147862,
+      "sha256": "de16eeab9ac0f8373657530978e4127d7243af6727d00f073f9394a5d49db968"
+    },
+    {
+      "path": "output/sample/reference/baseline/growth_samples.csv",
+      "bytes": 14502,
+      "sha256": "81911f1f465e6f143ff9cb55a3212b678e25b803feb5f4f52771a8149fe08f0f"
+    },
+    {
+      "path": "output/sample/reference/baseline/harvests.csv",
+      "bytes": 12924,
+      "sha256": "5313f27116ac656e92be27787618349aab2544a3ebd217eb85cce334813f717e"
+    },
+    {
+      "path": "output/sample/reference/baseline/harvest_grade_items.csv",
+      "bytes": 19550,
+      "sha256": "5c4bd5fa086fb3ca53a8cac6f834f002c115cc2e28642862d5162d3e1e1264a0"
+    },
+    {
+      "path": "output/sample/reference/baseline/harvest_sale_allocations.csv",
+      "bytes": 40030,
+      "sha256": "604d7c39d0ce3c86c78108e5f8dab1d23ee11e2883effb4ae020757d4f7db42c"
+    },
+    {
+      "path": "output/sample/reference/baseline/health_cases.csv",
+      "bytes": 892,
+      "sha256": "557cf3be8153802b8b5da83bdf5afe352ce5fd37dcb86616f6f2e914f6c3de57"
+    },
+    {
+      "path": "output/sample/reference/baseline/inventory_lot_status.csv",
+      "bytes": 12726,
+      "sha256": "c100cd751e2ba202f4ad638803047a718265cdda980cc838a571f8c85adeb6c0"
+    },
+    {
+      "path": "output/sample/reference/baseline/inventory_movements.csv",
+      "bytes": 67981,
+      "sha256": "e11a6775c628e5e6bba968dfa133050042904b55c774bf32a0793d6bf3f62398"
+    },
+    {
+      "path": "output/sample/reference/baseline/media_annotations.csv",
+      "bytes": 7173,
+      "sha256": "749bd80d85239d5c2796f4bb0fa0d1c201be729c4e0302ba1b6fbfbe2d0fadd8"
+    },
+    {
+      "path": "output/sample/reference/baseline/mortality_events.csv",
+      "bytes": 87349,
+      "sha256": "9a0743ab57e684dd88e52291f2c78e38568606a3033440dc0bf4d988bafb032c"
+    },
+    {
+      "path": "output/sample/reference/baseline/opening_balances.csv",
+      "bytes": 1694,
+      "sha256": "ce2882940acd7f5013ff6787144bd05a285b97a2cb9d59772e78776daf733f09"
+    },
+    {
+      "path": "output/sample/reference/baseline/partners.csv",
+      "bytes": 1173,
+      "sha256": "dece55da7acc763a1abd2acb044e1b0a32e930919aee6a945aaf398de00cdc8e"
+    },
+    {
+      "path": "output/sample/reference/baseline/patrol_events.csv",
+      "bytes": 31850,
+      "sha256": "60b34153a70abc4a7addbdf0c0e4b3a69df0f7eb01012386cdf8e0a2e48570c6"
+    },
+    {
+      "path": "output/sample/reference/baseline/persons.csv",
+      "bytes": 104,
+      "sha256": "620aaad10f63f9f918206e8bfdc2bf1081db9793ca5f3f37ce9f0cc5012b1755"
+    },
+    {
+      "path": "output/sample/reference/baseline/ponds.csv",
+      "bytes": 2238,
+      "sha256": "cf7a8e7f166c36e9c5e9e43c2b1929efa5482e098ec2c004633f88ba78b01bc4"
+    },
+    {
+      "path": "output/sample/reference/baseline/pond_cohort_occupancy.csv",
+      "bytes": 5312,
+      "sha256": "c012be6a1b3b6325aed3769710bfebca538be867466a9c2ef59eaa20358b7eb6"
+    },
+    {
+      "path": "output/sample/reference/baseline/pond_maintenance.csv",
+      "bytes": 906,
+      "sha256": "7148abe4e9a471b554dd54e4cd71148c82c1b0e58e2e028c914450b464d0188d"
+    },
+    {
+      "path": "output/sample/reference/baseline/pond_preparations.csv",
+      "bytes": 1830,
+      "sha256": "c475cd5a00bfd7e3f56465c198ab50a5b7e87b216689017d15e6beddab781157"
+    },
+    {
+      "path": "output/sample/reference/baseline/price_observations.csv",
+      "bytes": 75299,
+      "sha256": "75f02e120024810355507fffd1c84275404fead6316b46243bfa20d95cbd24ca"
+    },
+    {
+      "path": "output/sample/reference/baseline/production_plans.csv",
+      "bytes": 225,
+      "sha256": "793e609598bd510d8dc449bf5147710d7425158fce25b322e7fa81ec82e2128b"
+    },
+    {
+      "path": "output/sample/reference/baseline/products.csv",
+      "bytes": 962,
+      "sha256": "fb4d5d7ac1322aaf9c50855425c025e98d5e2f803fb9ab68ec823d27e28d6b79"
+    },
+    {
+      "path": "output/sample/reference/baseline/purchases.csv",
+      "bytes": 10342,
+      "sha256": "5828347648bd7b0d4079dfa93b4c4d9fe54f683a17c6189abc75599edc504411"
+    },
+    {
+      "path": "output/sample/reference/baseline/purchase_items.csv",
+      "bytes": 9801,
+      "sha256": "859e67e19d801397773fc7c47a2af4f1de826cf16479b22a6cca032658084609"
+    },
+    {
+      "path": "output/sample/reference/baseline/record_provenance.csv",
+      "bytes": 6144865,
+      "sha256": "688874b4059f4cf9298f822b7352242111cf3f63c43e5aa1d94f35a3ce6afc6f"
+    },
+    {
+      "path": "output/sample/reference/baseline/sales.csv",
+      "bytes": 4362,
+      "sha256": "6481e0f3a9ee0d4387ff9a1956082d785dfbe87971d9d5aac320668ddf57a926"
+    },
+    {
+      "path": "output/sample/reference/baseline/sale_items.csv",
+      "bytes": 6602,
+      "sha256": "89a3f66f5bb3014f4e72b6d981dfdb10f0c4ded3fc6227c3d7e6c2ff3e00568c"
+    },
+    {
+      "path": "output/sample/reference/baseline/settlements.csv",
+      "bytes": 3853,
+      "sha256": "714ecfb9152d432fcb74df98eaba1c151b88cd70b53a6574c3cc84a91fdb6c14"
+    },
+    {
+      "path": "output/sample/reference/baseline/settlement_deductions.csv",
+      "bytes": 6421,
+      "sha256": "0ad313a554c02c4178f9b84bc657cbf106c1a7c776fddd6bdc2fc8fc15091798"
+    },
+    {
+      "path": "output/sample/reference/baseline/sources.csv",
+      "bytes": 3571,
+      "sha256": "fd81b9e07714b11a05d5b03779b555478dd04831e7885312c3c7996a281d084d"
+    },
+    {
+      "path": "output/sample/reference/baseline/spatial_layer_registry.csv",
+      "bytes": 7610,
+      "sha256": "ec6a762b8807c56690ee9f9ed047716374339824d0a3228597fe3521abf875ce"
+    },
+    {
+      "path": "output/sample/reference/baseline/species.csv",
+      "bytes": 695,
+      "sha256": "ac56040683ba4469690165790a3e88c5faefebb8a3a22453ddd976ebb6c5ee36"
+    },
+    {
+      "path": "output/sample/reference/baseline/stocking_events.csv",
+      "bytes": 6850,
+      "sha256": "49138c96d261880fe91145da91976a823f1a877bbc27bc59d74761d6ba86278f"
+    },
+    {
+      "path": "output/sample/reference/baseline/transfer_allocations.csv",
+      "bytes": 943,
+      "sha256": "7927557cc5773cb4511d056af3f12261f025714c57ada969121d904fcb142591"
+    },
+    {
+      "path": "output/sample/reference/baseline/transfer_events.csv",
+      "bytes": 871,
+      "sha256": "03077fa53f40eb07c706199f381d67545c2c11a6151c2767a960ab2bfa6070ab"
+    },
+    {
+      "path": "output/sample/reference/baseline/treatment_events.csv",
+      "bytes": 1584,
+      "sha256": "d6463707aec9a99faa52dfed3f19938a3fa0c76ee250e096dd4881fe3f5233dd"
+    },
+    {
+      "path": "output/sample/reference/baseline/water_observations.csv",
+      "bytes": 392251,
+      "sha256": "ab7e401258c373614374eed8a3c178756690b03c0205e3e847f764f376274d9d"
+    },
+    {
+      "path": "output/sample/reference/baseline/water_operations.csv",
+      "bytes": 3740,
+      "sha256": "8736c339a4fcb59d2da2235b009ef5e172e35daab18d969dd236f6029e5a4e76"
+    },
+    {
+      "path": "output/sample/reference/baseline/water_samples.csv",
+      "bytes": 10144,
+      "sha256": "1508488a7c06595dbc176218cf8e0fb36f9579ff3620fd813905714a52eb9db8"
+    },
+    {
+      "path": "output/sample/reference/baseline/water_test_results.csv",
+      "bytes": 95564,
+      "sha256": "60fbb9580797bf471e57c9d196df72a66f6dc8d030d38335446ee0659356fa01"
+    },
+    {
+      "path": "output/sample/reference/baseline/weather_observations.csv",
+      "bytes": 55656,
+      "sha256": "a4b0bf623cdd34b8b9374c39fd0be177ffa19f073164da59c4119d2f78c4f3b7"
+    },
+    {
+      "path": "output/sample/reports/checks.json",
+      "bytes": 24821,
+      "sha256": "e1e9a5d80bb4f4c2f9281ac4f79fe3ec6bdd45a813456d6ae307cb9d35264fcd"
+    },
+    {
+      "path": "output/sample/reports/coverage_audit.json",
+      "bytes": 163616,
+      "sha256": "734559a081b6e5c6ee72426c3c05bcc59b6bd5f74ae63f972a5a89de9bd3d58d"
+    },
+    {
+      "path": "output/sample/reports/independent_verification.json",
+      "bytes": 30351,
+      "sha256": "94da299da37a7ee102ab204ef4190695012194812bcf935f552c9953dde7a154"
+    },
+    {
+      "path": "output/sample/reports/row_counts.json",
+      "bytes": 1646,
+      "sha256": "81904b498ab3eb7b28c417661cb0baec377312828d45951af5b5750041f555f8"
+    },
+    {
+      "path": "output/sample/reports/run_summary.json",
+      "bytes": 2187,
+      "sha256": "61a533d47d3f76110fbfaf9dee448b673513d3023ae1fdb9bfca5e43e4142e20"
+    },
+    {
+      "path": "output/sample/reports/serialization_types.json",
+      "bytes": 39586,
+      "sha256": "4a2af15b1e3c075a4f4bbb36aa15471c5c52e388a815357f20605891afe27af8"
+    },
+    {
+      "path": "output/sample/scenario/assumptions.json",
+      "bytes": 3097,
+      "sha256": "bef0d4653b778dc6f928e2e39ad46d23f7245372c9c00f0b87052fb1bee2e1e6"
+    },
+    {
+      "path": "output/sample/scenario/config.json",
+      "bytes": 140,
+      "sha256": "5aa7d2df716a254aa2725d81eebbe1a8b0313dbec2d5f2952cd17418081b8dab"
+    },
+    {
+      "path": "output/sample/schemas/coverage_matrix.csv",
+      "bytes": 373399,
+      "sha256": "ca1a8f8876e5f8c9337f0a09d47fea95dce96fe89d4c962ae76bf4608b81e4f3"
+    },
+    {
+      "path": "output/sample/schemas/coverage_requirements.json",
+      "bytes": 229979,
+      "sha256": "774cedfb343965695e5ac5ca9f27433db87e13e5bac7691fbc06563df3ea22e6"
+    },
+    {
+      "path": "output/sample/schemas/field_dictionary.csv",
+      "bytes": 559068,
+      "sha256": "feb981b0a775bcbc210b5afd5faf0de5888337e950d6668017704a5547ecf44a"
+    },
+    {
+      "path": "output/sample/schemas/schema.json",
+      "bytes": 799933,
+      "sha256": "6fd678b1c9bb6817fa11835b544c7b9239a9a539865a2914a8d2f65e53ede04b"
+    },
+    {
+      "path": "output/sample/schemas/source_column_mapping.csv",
+      "bytes": 402,
+      "sha256": "aa7ac648b9e9be52c5db3d5942e2b15704227d26ddc41779d644d361a071f326"
+    },
+    {
+      "path": "output/sample/synthetic_raw/attachments.csv",
+      "bytes": 38542,
+      "sha256": "c86d336e1e5a43b9827531b17a2490a2d618ee0a930725421bf2c5d505e45614"
+    },
+    {
+      "path": "output/sample/synthetic_raw/attachment_links.csv",
+      "bytes": 4652,
+      "sha256": "6957625b69b852899670edc9d75331cc692cf331ca87681e91afc65f670a0d5f"
+    },
+    {
+      "path": "output/sample/synthetic_raw/case_observations.csv",
+      "bytes": 476,
+      "sha256": "f9b9fb948e63859d37cd477d9a33d148d526eb83907fa18980329bd3525ac66b"
+    },
+    {
+      "path": "output/sample/synthetic_raw/cash_allocations.csv",
+      "bytes": 100410,
+      "sha256": "4f83d71ddc8f6222bce00bfd40a7bd13302f914030fc0a8407b234894299ebc4"
+    },
+    {
+      "path": "output/sample/synthetic_raw/cash_transactions.csv",
+      "bytes": 107878,
+      "sha256": "97468f4a222873ffc6405746d48f458e52cc095edc92dde102ef437231902b3c"
+    },
+    {
+      "path": "output/sample/synthetic_raw/cohorts.csv",
+      "bytes": 3178,
+      "sha256": "2d3cc1262861aa641429ecdd1dadab3b2657eb6ba92a2ad1e472eecd97494505"
+    },
+    {
+      "path": "output/sample/synthetic_raw/control_commands.csv",
+      "bytes": 9583,
+      "sha256": "0641500dcfe1b3d8e7317edeca17cd51d71da677fb1e27296787ea4e31fe3698"
+    },
+    {
+      "path": "output/sample/synthetic_raw/cost_allocations.csv",
+      "bytes": 202896,
+      "sha256": "bd3b62ef9094c55904d55d270ea1587436974f01d5d4f69911e027c1f62bd69f"
+    },
+    {
+      "path": "output/sample/synthetic_raw/cost_entries.csv",
+      "bytes": 162299,
+      "sha256": "e5512e9122ab6404c33580ba4b42df46840eefd7a357cc5f238dd24800d91e12"
+    },
+    {
+      "path": "output/sample/synthetic_raw/devices.csv",
+      "bytes": 1480,
+      "sha256": "fff0740617c65ae4215a59cf492ac6b75dc8c859aa5263ed08a4239a70a54860"
+    },
+    {
+      "path": "output/sample/synthetic_raw/device_calibrations.csv",
+      "bytes": 8164,
+      "sha256": "961c6dc2bda0e119dfb060c58cf46f3d7bd87ddc2e7ef2f7d90ed307496cb712"
+    },
+    {
+      "path": "output/sample/synthetic_raw/device_installations.csv",
+      "bytes": 2358,
+      "sha256": "63620f92cd2e71b229c42aa711bdb30827356014adcb7f9196be51e75749d375"
+    },
+    {
+      "path": "output/sample/synthetic_raw/device_maintenance.csv",
+      "bytes": 1080,
+      "sha256": "30b8280b27ab56bae740e9f0b528e1348d0437ae4a6b85eafe9aee6b99194432"
+    },
+    {
+      "path": "output/sample/synthetic_raw/device_operations.csv",
+      "bytes": 14534,
+      "sha256": "610906931169130459c5ba71c6a42e4083e028c3a1e17efc10f6332038519384"
+    },
+    {
+      "path": "output/sample/synthetic_raw/diagnostic_tests.csv",
+      "bytes": 536,
+      "sha256": "f0d52879d4197b2caebaac7a6b07f2b1c4a95290600dbdc0a69ec47f20959ef8"
+    },
+    {
+      "path": "output/sample/synthetic_raw/dictionaries.csv",
+      "bytes": 2044,
+      "sha256": "9c8ed6df0a94552d56ec7c4a5b1d51a5ffa7e24af97484c186c840ed92a105a0"
+    },
+    {
+      "path": "output/sample/synthetic_raw/disposal_events.csv",
+      "bytes": 95993,
+      "sha256": "2ebda83a2d87f7a03567ae50eabc173a81f8601bb7337741fb734d9689d1c160"
+    },
+    {
+      "path": "output/sample/synthetic_raw/documents.csv",
+      "bytes": 12473,
+      "sha256": "0b9484b4594155f8bbdba4ccf8a9928dc932f10a089b53fae58e767d9716c525"
+    },
+    {
+      "path": "output/sample/synthetic_raw/document_versions.csv",
+      "bytes": 6245,
+      "sha256": "f2800081689e4ca572ece709937a0e18ba5a4f5c36ed7cf2227bc8ea5118e2a9"
+    },
+    {
+      "path": "output/sample/synthetic_raw/event_registry.csv",
+      "bytes": 89803,
+      "sha256": "195b4535dbb6dc2f08db3d42cb8d1ea43aa2f8fc3167a957393c1dba8bba07ee"
+    },
+    {
+      "path": "output/sample/synthetic_raw/farms.csv",
+      "bytes": 364,
+      "sha256": "93cda7ce9406ec5828c6623e699a64b94a3033563d89540467c0df036b779cce"
+    },
+    {
+      "path": "output/sample/synthetic_raw/feeding_events.csv",
+      "bytes": 70237,
+      "sha256": "f4c267d05d6b87f316812597b86072cc9e18baf314ff4b3d9ed322201589cb5b"
+    },
+    {
+      "path": "output/sample/synthetic_raw/fish_daily_balance.csv",
+      "bytes": 1942260,
+      "sha256": "468d4f9857cddb6b516745994ef55909a338c3f466344b2672c526fa9a6d9aac"
+    },
+    {
+      "path": "output/sample/synthetic_raw/growth_grade_items.csv",
+      "bytes": 6112,
+      "sha256": "e7467cb4d9abd70b73cadbf3efaed8203a6b3e11c3c39dfc55db1b85ae016129"
+    },
+    {
+      "path": "output/sample/synthetic_raw/growth_individuals.csv",
+      "bytes": 147862,
+      "sha256": "de16eeab9ac0f8373657530978e4127d7243af6727d00f073f9394a5d49db968"
+    },
+    {
+      "path": "output/sample/synthetic_raw/growth_samples.csv",
+      "bytes": 14502,
+      "sha256": "81911f1f465e6f143ff9cb55a3212b678e25b803feb5f4f52771a8149fe08f0f"
+    },
+    {
+      "path": "output/sample/synthetic_raw/harvests.csv",
+      "bytes": 12924,
+      "sha256": "5313f27116ac656e92be27787618349aab2544a3ebd217eb85cce334813f717e"
+    },
+    {
+      "path": "output/sample/synthetic_raw/harvest_grade_items.csv",
+      "bytes": 19550,
+      "sha256": "5c4bd5fa086fb3ca53a8cac6f834f002c115cc2e28642862d5162d3e1e1264a0"
+    },
+    {
+      "path": "output/sample/synthetic_raw/harvest_sale_allocations.csv",
+      "bytes": 40030,
+      "sha256": "604d7c39d0ce3c86c78108e5f8dab1d23ee11e2883effb4ae020757d4f7db42c"
+    },
+    {
+      "path": "output/sample/synthetic_raw/health_cases.csv",
+      "bytes": 892,
+      "sha256": "557cf3be8153802b8b5da83bdf5afe352ce5fd37dcb86616f6f2e914f6c3de57"
+    },
+    {
+      "path": "output/sample/synthetic_raw/inventory_lot_status.csv",
+      "bytes": 12726,
+      "sha256": "c100cd751e2ba202f4ad638803047a718265cdda980cc838a571f8c85adeb6c0"
+    },
+    {
+      "path": "output/sample/synthetic_raw/inventory_movements.csv",
+      "bytes": 67981,
+      "sha256": "e11a6775c628e5e6bba968dfa133050042904b55c774bf32a0793d6bf3f62398"
+    },
+    {
+      "path": "output/sample/synthetic_raw/media_annotations.csv",
+      "bytes": 7173,
+      "sha256": "749bd80d85239d5c2796f4bb0fa0d1c201be729c4e0302ba1b6fbfbe2d0fadd8"
+    },
+    {
+      "path": "output/sample/synthetic_raw/mortality_events.csv",
+      "bytes": 87349,
+      "sha256": "9a0743ab57e684dd88e52291f2c78e38568606a3033440dc0bf4d988bafb032c"
+    },
+    {
+      "path": "output/sample/synthetic_raw/opening_balances.csv",
+      "bytes": 1694,
+      "sha256": "ce2882940acd7f5013ff6787144bd05a285b97a2cb9d59772e78776daf733f09"
+    },
+    {
+      "path": "output/sample/synthetic_raw/partners.csv",
+      "bytes": 1173,
+      "sha256": "dece55da7acc763a1abd2acb044e1b0a32e930919aee6a945aaf398de00cdc8e"
+    },
+    {
+      "path": "output/sample/synthetic_raw/patrol_events.csv",
+      "bytes": 32046,
+      "sha256": "de404171e53bd9128c00c50a02ccd44c8acb589eee6f7a6d01dc91a2a08315f5"
+    },
+    {
+      "path": "output/sample/synthetic_raw/persons.csv",
+      "bytes": 104,
+      "sha256": "620aaad10f63f9f918206e8bfdc2bf1081db9793ca5f3f37ce9f0cc5012b1755"
+    },
+    {
+      "path": "output/sample/synthetic_raw/ponds.csv",
+      "bytes": 2238,
+      "sha256": "cf7a8e7f166c36e9c5e9e43c2b1929efa5482e098ec2c004633f88ba78b01bc4"
+    },
+    {
+      "path": "output/sample/synthetic_raw/pond_cohort_occupancy.csv",
+      "bytes": 5312,
+      "sha256": "c012be6a1b3b6325aed3769710bfebca538be867466a9c2ef59eaa20358b7eb6"
+    },
+    {
+      "path": "output/sample/synthetic_raw/pond_maintenance.csv",
+      "bytes": 906,
+      "sha256": "7148abe4e9a471b554dd54e4cd71148c82c1b0e58e2e028c914450b464d0188d"
+    },
+    {
+      "path": "output/sample/synthetic_raw/pond_preparations.csv",
+      "bytes": 1830,
+      "sha256": "c475cd5a00bfd7e3f56465c198ab50a5b7e87b216689017d15e6beddab781157"
+    },
+    {
+      "path": "output/sample/synthetic_raw/price_observations.csv",
+      "bytes": 76173,
+      "sha256": "1fab3faecb72baf35228fc63dcdfb1d0ee8f5c0b0ce911a758ffb90f9e701e2f"
+    },
+    {
+      "path": "output/sample/synthetic_raw/production_plans.csv",
+      "bytes": 225,
+      "sha256": "793e609598bd510d8dc449bf5147710d7425158fce25b322e7fa81ec82e2128b"
+    },
+    {
+      "path": "output/sample/synthetic_raw/products.csv",
+      "bytes": 962,
+      "sha256": "fb4d5d7ac1322aaf9c50855425c025e98d5e2f803fb9ab68ec823d27e28d6b79"
+    },
+    {
+      "path": "output/sample/synthetic_raw/purchases.csv",
+      "bytes": 10342,
+      "sha256": "5828347648bd7b0d4079dfa93b4c4d9fe54f683a17c6189abc75599edc504411"
+    },
+    {
+      "path": "output/sample/synthetic_raw/purchase_items.csv",
+      "bytes": 9801,
+      "sha256": "859e67e19d801397773fc7c47a2af4f1de826cf16479b22a6cca032658084609"
+    },
+    {
+      "path": "output/sample/synthetic_raw/sales.csv",
+      "bytes": 4362,
+      "sha256": "6481e0f3a9ee0d4387ff9a1956082d785dfbe87971d9d5aac320668ddf57a926"
+    },
+    {
+      "path": "output/sample/synthetic_raw/sale_items.csv",
+      "bytes": 6651,
+      "sha256": "934b75bcb5bbcfdcfd9c7e8871622d34848887e20fce1609a526fd7d794fc004"
+    },
+    {
+      "path": "output/sample/synthetic_raw/settlements.csv",
+      "bytes": 3853,
+      "sha256": "714ecfb9152d432fcb74df98eaba1c151b88cd70b53a6574c3cc84a91fdb6c14"
+    },
+    {
+      "path": "output/sample/synthetic_raw/settlement_deductions.csv",
+      "bytes": 6421,
+      "sha256": "0ad313a554c02c4178f9b84bc657cbf106c1a7c776fddd6bdc2fc8fc15091798"
+    },
+    {
+      "path": "output/sample/synthetic_raw/sources.csv",
+      "bytes": 3571,
+      "sha256": "fd81b9e07714b11a05d5b03779b555478dd04831e7885312c3c7996a281d084d"
+    },
+    {
+      "path": "output/sample/synthetic_raw/source_registry.csv",
+      "bytes": 6626,
+      "sha256": "8e42305349eabcc41299999d42b6609486f72675aeba5792dec64562ab16eb74"
+    },
+    {
+      "path": "output/sample/synthetic_raw/spatial_layer_registry.csv",
+      "bytes": 7610,
+      "sha256": "ec6a762b8807c56690ee9f9ed047716374339824d0a3228597fe3521abf875ce"
+    },
+    {
+      "path": "output/sample/synthetic_raw/species.csv",
+      "bytes": 695,
+      "sha256": "ac56040683ba4469690165790a3e88c5faefebb8a3a22453ddd976ebb6c5ee36"
+    },
+    {
+      "path": "output/sample/synthetic_raw/stocking_events.csv",
+      "bytes": 6850,
+      "sha256": "49138c96d261880fe91145da91976a823f1a877bbc27bc59d74761d6ba86278f"
+    },
+    {
+      "path": "output/sample/synthetic_raw/transfer_allocations.csv",
+      "bytes": 943,
+      "sha256": "7927557cc5773cb4511d056af3f12261f025714c57ada969121d904fcb142591"
+    },
+    {
+      "path": "output/sample/synthetic_raw/transfer_events.csv",
+      "bytes": 871,
+      "sha256": "03077fa53f40eb07c706199f381d67545c2c11a6151c2767a960ab2bfa6070ab"
+    },
+    {
+      "path": "output/sample/synthetic_raw/treatment_events.csv",
+      "bytes": 1584,
+      "sha256": "d6463707aec9a99faa52dfed3f19938a3fa0c76ee250e096dd4881fe3f5233dd"
+    },
+    {
+      "path": "output/sample/synthetic_raw/water_observations.csv",
+      "bytes": 398229,
+      "sha256": "cdd9bc26db4df49bb7008cc21311f640d382609f3b5d03bbf5755df68396aebf"
+    },
+    {
+      "path": "output/sample/synthetic_raw/water_operations.csv",
+      "bytes": 3740,
+      "sha256": "8736c339a4fcb59d2da2235b009ef5e172e35daab18d969dd236f6029e5a4e76"
+    },
+    {
+      "path": "output/sample/synthetic_raw/water_samples.csv",
+      "bytes": 10144,
+      "sha256": "1508488a7c06595dbc176218cf8e0fb36f9579ff3620fd813905714a52eb9db8"
+    },
+    {
+      "path": "output/sample/synthetic_raw/water_test_results.csv",
+      "bytes": 97828,
+      "sha256": "e355fe2f6245e710f3fbb49c5c8e65ed753496c40459661a50f094a508a8b5ec"
+    },
+    {
+      "path": "output/sample/synthetic_raw/weather_observations.csv",
+      "bytes": 55656,
+      "sha256": "a4b0bf623cdd34b8b9374c39fd0be177ffa19f073164da59c4119d2f78c4f3b7"
+    },
+    {
+      "path": "output/sample/synthetic_raw/source_views/feeding_legacy.csv",
+      "bytes": 1660,
+      "sha256": "eb43cf13ef34c91e7e79410bd588ac8bbe7c23fae76cc8cda5f6c8397b455911"
+    },
+    {
+      "path": "output/scenario/assumptions.json",
+      "bytes": 3097,
+      "sha256": "bef0d4653b778dc6f928e2e39ad46d23f7245372c9c00f0b87052fb1bee2e1e6"
+    },
+    {
+      "path": "output/scenario/config.json",
+      "bytes": 136,
+      "sha256": "e9f98993d7433b47c8f1a1e9d9a092867dbccd5a8d3469cf66694c126d3093b0"
+    },
+    {
+      "path": "output/scenario/implementation_plan.md",
+      "bytes": 1631,
+      "sha256": "25a192a422e907d758a5b97a210ea9f95e2514adfd51ac9a20c68be19a0ec7b3"
+    },
+    {
+      "path": "output/schemas/coverage_matrix.csv",
+      "bytes": 378325,
+      "sha256": "a916755923bef04bc9b9e94b4d02475e790f8e6a6cf7bf0998c2e7e9bfb29958"
+    },
+    {
+      "path": "output/schemas/coverage_requirements.json",
+      "bytes": 229979,
+      "sha256": "774cedfb343965695e5ac5ca9f27433db87e13e5bac7691fbc06563df3ea22e6"
+    },
+    {
+      "path": "output/schemas/field_dictionary.csv",
+      "bytes": 559777,
+      "sha256": "1a34c959a172505e8c9c24933bbe076330c47995588d4a19ef4b81d25df06521"
+    },
+    {
+      "path": "output/schemas/schema.json",
+      "bytes": 800366,
+      "sha256": "75c5040dbe30f87030e4f54d3da67274423187144ddf592afec344581b1c6519"
+    },
+    {
+      "path": "output/schemas/source_column_mapping.csv",
+      "bytes": 402,
+      "sha256": "aa7ac648b9e9be52c5db3d5942e2b15704227d26ddc41779d644d361a071f326"
+    },
+    {
+      "path": "output/synthetic_raw/attachments.csv",
+      "bytes": 93266,
+      "sha256": "f448eb209e492eeebb257ea963842379dd5aeeabb70caf7d805749efb357a740"
+    },
+    {
+      "path": "output/synthetic_raw/attachment_links.csv",
+      "bytes": 11867,
+      "sha256": "588e1163637cb75999c9601c097f59e7cb2774dac47e0a6a49c3ffe910d36ec3"
+    },
+    {
+      "path": "output/synthetic_raw/case_observations.csv",
+      "bytes": 476,
+      "sha256": "f9b9fb948e63859d37cd477d9a33d148d526eb83907fa18980329bd3525ac66b"
+    },
+    {
+      "path": "output/synthetic_raw/cash_allocations.csv",
+      "bytes": 100765,
+      "sha256": "2d14106981b1b54798cd84154ed0a5ace5929b6e6e434c285949bc6fbeb6b62d"
+    },
+    {
+      "path": "output/synthetic_raw/cash_transactions.csv",
+      "bytes": 108274,
+      "sha256": "fb347fa8ebaff61bc24e32067568c83e8070062137b05dee42a10a8144fd61ea"
+    },
+    {
+      "path": "output/synthetic_raw/cohorts.csv",
+      "bytes": 3222,
+      "sha256": "e4e6330bc824548899f3e89e2d49c3174fb7fcf3abfc13d98a55eb6e4fa930c0"
+    },
+    {
+      "path": "output/synthetic_raw/control_commands.csv",
+      "bytes": 231553,
+      "sha256": "c6c72277321e53e83afe2b4c13635f7fbc8a946650834fa38a0ab65b649a94d1"
+    },
+    {
+      "path": "output/synthetic_raw/cost_allocations.csv",
+      "bytes": 1577207,
+      "sha256": "2d4547ba2c3aaf55513d359fa89a0237c4fd41182d38bc2f576905e801627095"
+    },
+    {
+      "path": "output/synthetic_raw/cost_entries.csv",
+      "bytes": 1801262,
+      "sha256": "889a1ee05736bd1949213af242d2d86160b164e5705ba012b554ee72fb97dfde"
+    },
+    {
+      "path": "output/synthetic_raw/devices.csv",
+      "bytes": 1480,
+      "sha256": "fff0740617c65ae4215a59cf492ac6b75dc8c859aa5263ed08a4239a70a54860"
+    },
+    {
+      "path": "output/synthetic_raw/device_calibrations.csv",
+      "bytes": 8164,
+      "sha256": "961c6dc2bda0e119dfb060c58cf46f3d7bd87ddc2e7ef2f7d90ed307496cb712"
+    },
+    {
+      "path": "output/synthetic_raw/device_installations.csv",
+      "bytes": 2358,
+      "sha256": "63620f92cd2e71b229c42aa711bdb30827356014adcb7f9196be51e75749d375"
+    },
+    {
+      "path": "output/synthetic_raw/device_maintenance.csv",
+      "bytes": 1080,
+      "sha256": "30b8280b27ab56bae740e9f0b528e1348d0437ae4a6b85eafe9aee6b99194432"
+    },
+    {
+      "path": "output/synthetic_raw/device_operations.csv",
+      "bytes": 351374,
+      "sha256": "bcbaff5ddffa2b61c4b1407943e4bb8a4e9512bf4a2aea99eb70eca22a45d675"
+    },
+    {
+      "path": "output/synthetic_raw/diagnostic_tests.csv",
+      "bytes": 536,
+      "sha256": "f0d52879d4197b2caebaac7a6b07f2b1c4a95290600dbdc0a69ec47f20959ef8"
+    },
+    {
+      "path": "output/synthetic_raw/dictionaries.csv",
+      "bytes": 2044,
+      "sha256": "9c8ed6df0a94552d56ec7c4a5b1d51a5ffa7e24af97484c186c840ed92a105a0"
+    },
+    {
+      "path": "output/synthetic_raw/disposal_events.csv",
+      "bytes": 95974,
+      "sha256": "c7c15b3af2221188ad0e437965d890a5cd8bab4795fdc692f37d801235a4f1e9"
+    },
+    {
+      "path": "output/synthetic_raw/documents.csv",
+      "bytes": 12473,
+      "sha256": "f51a852409d174896d57bde0d9a97babfc855fe1213bbff1e9911e56d5b2db45"
+    },
+    {
+      "path": "output/synthetic_raw/document_versions.csv",
+      "bytes": 7166,
+      "sha256": "5e3db6f3c0b26af9a164a0e6118a2b6991062b258c0a1ba90811525c9a040a6e"
+    },
+    {
+      "path": "output/synthetic_raw/event_registry.csv",
+      "bytes": 970889,
+      "sha256": "2ab16745b2ea227324c71ed4913a5b49af289931b444727d2d50fc2eb984ca91"
+    },
+    {
+      "path": "output/synthetic_raw/farms.csv",
+      "bytes": 364,
+      "sha256": "93cda7ce9406ec5828c6623e699a64b94a3033563d89540467c0df036b779cce"
+    },
+    {
+      "path": "output/synthetic_raw/feeding_events.csv",
+      "bytes": 2577354,
+      "sha256": "de9e0bc6bf05d823e40c96c33f607075643d7da0ebaefc263ba729dc0ccd129c"
+    },
+    {
+      "path": "output/synthetic_raw/fish_daily_balance.csv",
+      "bytes": 1961146,
+      "sha256": "c3fabd915fdf743e0107f374971ce904553b3cf5a80cdb25d717bce780f20f63"
+    },
+    {
+      "path": "output/synthetic_raw/growth_grade_items.csv",
+      "bytes": 6263,
+      "sha256": "696a122346fde18e9c4662478a06285b8c3b7771227d5accb9d500ed50afdb26"
+    },
+    {
+      "path": "output/synthetic_raw/growth_individuals.csv",
+      "bytes": 147910,
+      "sha256": "5910227cb09a28dac86665fa16c48f03ea64e1b6bcb2bcf79beecb1aebb9a81c"
+    },
+    {
+      "path": "output/synthetic_raw/growth_samples.csv",
+      "bytes": 14714,
+      "sha256": "a51fb4c6428828f02087e9dbcad60cd14c8a2669898176e05fd81091d6070652"
+    },
+    {
+      "path": "output/synthetic_raw/harvests.csv",
+      "bytes": 13055,
+      "sha256": "0590d8cc746e208f447f8c3074458acdb86d30c6d6813549b73e7d6eb66ff10c"
+    },
+    {
+      "path": "output/synthetic_raw/harvest_grade_items.csv",
+      "bytes": 19815,
+      "sha256": "3cf6c730a9b45208b31829691b55f6a0322473740cb6a914baf58ce2ace60d43"
+    },
+    {
+      "path": "output/synthetic_raw/harvest_sale_allocations.csv",
+      "bytes": 40141,
+      "sha256": "1f455c68ff11cd422443f037fd1e7eb737871fe5a9379173c5f12e79bc3c66df"
+    },
+    {
+      "path": "output/synthetic_raw/health_cases.csv",
+      "bytes": 895,
+      "sha256": "c6108b7511b47c02b17d74babe4059316424392019bdc8fc19b595e70cf32584"
+    },
+    {
+      "path": "output/synthetic_raw/inventory_lot_status.csv",
+      "bytes": 13258,
+      "sha256": "f89991e4d3a12078842366936ef261f0e613cfd37c40667b9c31ab2a531f6998"
+    },
+    {
+      "path": "output/synthetic_raw/inventory_movements.csv",
+      "bytes": 1938341,
+      "sha256": "95a22890725e9c0bd3a549a58d75c5e2e0f90e4296a5d60efbdcbc8e423c7a16"
+    },
+    {
+      "path": "output/synthetic_raw/media_annotations.csv",
+      "bytes": 31726,
+      "sha256": "9e6fbace570b7f4679b5eda5ed27c13c7d2107010193135b5423cf9bbdf50948"
+    },
+    {
+      "path": "output/synthetic_raw/mortality_events.csv",
+      "bytes": 87433,
+      "sha256": "6e89b7e1aa43a87783edeab7d9271dbd5f9dbc4ba7af4a99390c4a030b7df67a"
+    },
+    {
+      "path": "output/synthetic_raw/opening_balances.csv",
+      "bytes": 1696,
+      "sha256": "0b7a47a8898e5ff0baa656ba2e002b274cfd5978dbf1fd541e8077e337efdb40"
+    },
+    {
+      "path": "output/synthetic_raw/partners.csv",
+      "bytes": 1173,
+      "sha256": "dece55da7acc763a1abd2acb044e1b0a32e930919aee6a945aaf398de00cdc8e"
+    },
+    {
+      "path": "output/synthetic_raw/patrol_events.csv",
+      "bytes": 764961,
+      "sha256": "7320feba30bc9470a5c313f162fadf637f82714a442cff82d09ee48f808ab9ab"
+    },
+    {
+      "path": "output/synthetic_raw/persons.csv",
+      "bytes": 104,
+      "sha256": "620aaad10f63f9f918206e8bfdc2bf1081db9793ca5f3f37ce9f0cc5012b1755"
+    },
+    {
+      "path": "output/synthetic_raw/ponds.csv",
+      "bytes": 2238,
+      "sha256": "cf7a8e7f166c36e9c5e9e43c2b1929efa5482e098ec2c004633f88ba78b01bc4"
+    },
+    {
+      "path": "output/synthetic_raw/pond_cohort_occupancy.csv",
+      "bytes": 5312,
+      "sha256": "c012be6a1b3b6325aed3769710bfebca538be867466a9c2ef59eaa20358b7eb6"
+    },
+    {
+      "path": "output/synthetic_raw/pond_maintenance.csv",
+      "bytes": 906,
+      "sha256": "7148abe4e9a471b554dd54e4cd71148c82c1b0e58e2e028c914450b464d0188d"
+    },
+    {
+      "path": "output/synthetic_raw/pond_preparations.csv",
+      "bytes": 1830,
+      "sha256": "c475cd5a00bfd7e3f56465c198ab50a5b7e87b216689017d15e6beddab781157"
+    },
+    {
+      "path": "output/synthetic_raw/price_observations.csv",
+      "bytes": 1847663,
+      "sha256": "cacd8192f2cb6dcb5d7e90e047447db9d827904e19fabf8f47bdec65a182b220"
+    },
+    {
+      "path": "output/synthetic_raw/production_plans.csv",
+      "bytes": 225,
+      "sha256": "793e609598bd510d8dc449bf5147710d7425158fce25b322e7fa81ec82e2128b"
+    },
+    {
+      "path": "output/synthetic_raw/products.csv",
+      "bytes": 962,
+      "sha256": "fb4d5d7ac1322aaf9c50855425c025e98d5e2f803fb9ab68ec823d27e28d6b79"
+    },
+    {
+      "path": "output/synthetic_raw/purchases.csv",
+      "bytes": 10834,
+      "sha256": "e3acd8f3533580f69e40b31a23a3f6ae01915b53613fd580b9566d4331aa1606"
+    },
+    {
+      "path": "output/synthetic_raw/purchase_items.csv",
+      "bytes": 10290,
+      "sha256": "bcfdc6d799b209d7424a279de9dc983ec4e83d51d250c8505c5afc1b7fdd6f9f"
+    },
+    {
+      "path": "output/synthetic_raw/sales.csv",
+      "bytes": 4393,
+      "sha256": "3aa744a0fe020f59b45a5fb12bda34ad7f46dba2c0174897257ad8010df5f0d2"
+    },
+    {
+      "path": "output/synthetic_raw/sale_items.csv",
+      "bytes": 6624,
+      "sha256": "3dafa756de4e6062aad86b6581efef740c1a9ab2519ac116e7436b97cfc48212"
+    },
+    {
+      "path": "output/synthetic_raw/settlements.csv",
+      "bytes": 3887,
+      "sha256": "1e742318c7cfbfbd21530124b084e51283dc370b8c0f448848fcc8074f4e7dce"
+    },
+    {
+      "path": "output/synthetic_raw/settlement_deductions.csv",
+      "bytes": 6437,
+      "sha256": "8dae78116619a421c5de6e0b5a1107d38fda4c85e9a90aba7151af8f3545f67c"
+    },
+    {
+      "path": "output/synthetic_raw/sources.csv",
+      "bytes": 3571,
+      "sha256": "fd81b9e07714b11a05d5b03779b555478dd04831e7885312c3c7996a281d084d"
+    },
+    {
+      "path": "output/synthetic_raw/source_registry.csv",
+      "bytes": 6500,
+      "sha256": "be683747a60f4b5c72b6ae946c3b9d828dc57dd8a1056273199727c1f4881222"
+    },
+    {
+      "path": "output/synthetic_raw/spatial_layer_registry.csv",
+      "bytes": 8143,
+      "sha256": "b767d94ba904c3484daa29c7720510193f75c210fed8529864816205db6f92e9"
+    },
+    {
+      "path": "output/synthetic_raw/species.csv",
+      "bytes": 695,
+      "sha256": "ac56040683ba4469690165790a3e88c5faefebb8a3a22453ddd976ebb6c5ee36"
+    },
+    {
+      "path": "output/synthetic_raw/stocking_events.csv",
+      "bytes": 6897,
+      "sha256": "97ddea33726916643e76950dd0a844b94cb98bea5d01ac45f0410aa9682c55ca"
+    },
+    {
+      "path": "output/synthetic_raw/transfer_allocations.csv",
+      "bytes": 947,
+      "sha256": "61cf52eabf68a3167beb32ebfd9492a472dc2bbc204db297c8b42b7c82f8e9b6"
+    },
+    {
+      "path": "output/synthetic_raw/transfer_events.csv",
+      "bytes": 876,
+      "sha256": "c91599607830f182b43c23edc4fcfbf43775b70401cbbaeb803f9b0884ff8c22"
+    },
+    {
+      "path": "output/synthetic_raw/treatment_events.csv",
+      "bytes": 1584,
+      "sha256": "d6463707aec9a99faa52dfed3f19938a3fa0c76ee250e096dd4881fe3f5233dd"
+    },
+    {
+      "path": "output/synthetic_raw/water_observations.csv",
+      "bytes": 9662984,
+      "sha256": "c4f83e98174f1a86a11587fceaf36bfdefc099cf648e7b068be8bd0d7e368a76"
+    },
+    {
+      "path": "output/synthetic_raw/water_operations.csv",
+      "bytes": 11828,
+      "sha256": "0fe05d59136a72991a5dca202d8ddb2578aeb869347e8d2ef88d2fe64be6f28c"
+    },
+    {
+      "path": "output/synthetic_raw/water_samples.csv",
+      "bytes": 35608,
+      "sha256": "223cce4da848a0c391c8e88a353ec3a9879437a069389727ad30ff9d0156e615"
+    },
+    {
+      "path": "output/synthetic_raw/water_test_results.csv",
+      "bytes": 345284,
+      "sha256": "a7d3a0828ef2407198fb4bf81bad3b1ab4d9172d02434f420670282222b70216"
+    },
+    {
+      "path": "output/synthetic_raw/weather_observations.csv",
+      "bytes": 1348321,
+      "sha256": "95e043822b4f0c1a23aab92413026b852ea7b31753af7a3cb219761b417c59a1"
+    },
+    {
+      "path": "output/synthetic_raw/source_views/feeding_legacy.csv",
+      "bytes": 1624,
+      "sha256": "bce6f75cf12a12d320b20ba208c588d50beb76db5e85e087a63a337566bc9544"
+    },
+    {
+      "path": "output/reports/file_manifest.csv",
+      "bytes": 77563,
+      "sha256": "18fe2a416decfb441a79f9405fdb56329d0e8738a2a74b2532cf02e2cad08178"
+    },
+    {
+      "path": "output/reports/delivery_manifest.json",
+      "bytes": 1108,
+      "sha256": "a57c1817815eaa50f7f77e3aebb99af7f7ead3ce9c5ab40862213211b04f7a3f"
+    }
+  ],
+  "generator_executed": false
+}
