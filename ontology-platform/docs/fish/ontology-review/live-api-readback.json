@@ -1,0 +1,32 @@
+{
+  "contract": "ontology-live-api-readback/1",
+  "status": "passed",
+  "checked_at": "2026-11-04T11:49:33.995202+00:00",
+  "mode": "actual_fuseki_sparql",
+  "database_mutations": 0,
+  "sql_connections": 0,
+  "graphs": [
+    "urn:lzo:fish-review:sample:v1:graph:04891aab2039607015d41575e292a0add57065af3a2037270893cc0f3cd7c4b7:e291446443a45ec8f50220b1cf3c5121d87ba16cf7f85a8e38266d9a92b4a49c",
+    "urn:lzo:fish-review:map:v1:graph:a485fe9015e4460ea0ccffc4f7bb467a53aa903139fd188e042649286bff469a",
+    "urn:lzo:fish-review:demo:v1:graph:ac4039ae72b527fed28703d11a4f9c895aa1882e2f4b6d9929385fba77027322",
+    "urn:lzo:fish-review:drawing:v1:graph:de36daf408f9c7f9d0238705366e827053543393d344a8ca74517c1d49e2d5a1"
+  ],
+  "triple_count": 2720969,
+  "checks": {
+    "root_children": 4,
+    "class_scoped_pagination": "passed",
+    "typed_source_pond_depth": "passed",
+    "source_pond_farm_relation": "passed",
+    "actual_map_to_drawing_evidence": "passed",
+    "drawing_to_typed_measurement": "passed",
+    "measurement_inverse": "passed",
+    "demo_profile_separated": "passed",
+    "post_write_rejected": "passed"
+  },
+  "examples": {
+    "source_pond": "urn:lzo:fish-review:sample:v1:instance:04138b9b-f86d-54bc-ade3-4c872e3c0d92",
+    "map_pond": "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15",
+    "drawing_evidence": "urn:lzo:fish-review:drawing:v1:instance:42bddc65-71a1-4d2d-8781-271436aeacf7",
+    "measurement": "urn:lzo:fish-review:drawing:v1:instance:16a5184c-06ef-5534-87a1-c59f3e03b072"
+  }
+}

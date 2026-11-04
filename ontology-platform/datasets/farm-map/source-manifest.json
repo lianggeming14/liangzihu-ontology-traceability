@@ -1,0 +1,144 @@
+{
+  "schema_version": "farm-map-source-manifest/1",
+  "repository": "https://github.com/No1dry/farm",
+  "commit": "e08e80ce4c80ce65051ef93f1247e8797d8781f1",
+  "upstream_release": "v0.6.0",
+  "verification": "Git blob SHA-1 from the pinned public commit, plus locally computed SHA-256 for every consumed input",
+  "inputs": [
+    {
+      "path": "README.md",
+      "git_blob_sha1": "2c6cb8bd031e3bd0b7299856f1bb9ba82f901336",
+      "sha256": "b55fe2d12e774fb6950da82bac5ef7c82b01cc303cc57c93f5b82305a6e90461",
+      "bytes": 8067,
+      "source_url": "https://github.com/No1dry/farm/blob/e08e80ce4c80ce65051ef93f1247e8797d8781f1/README.md",
+      "byte_identity_verified": true
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "git_blob_sha1": "3b82a556f55f0caba23338d82f9601cc7fbb8ffd",
+      "sha256": "fd81c05d7c0bc8eca1e390c080c5cc0e0ad3390c5366af3150facdda01b455a3",
+      "bytes": 1386,
+      "source_url": "https://github.com/No1dry/farm/blob/e08e80ce4c80ce65051ef93f1247e8797d8781f1/THIRD_PARTY_NOTICES.md",
+      "byte_identity_verified": true
+    },
+    {
+      "path": "data/audit/entity-mapping.json",
+      "git_blob_sha1": "db2713b411d07e53971c9dd758bd13d23610d60f",
+      "sha256": "a5f10c30ef3cc1c44834042dbe477cc972fc79fcaf01097550fe2c74b7ec8120",
+      "bytes": 474430,
+      "source_url": "https://github.com/No1dry/farm/blob/e08e80ce4c80ce65051ef93f1247e8797d8781f1/data/audit/entity-mapping.json",
+      "byte_identity_verified": true
+    },
+    {
+      "path": "data/spatial/drawing-entities.json",
+      "git_blob_sha1": "fc6c193e45a26a2ee9820920f921e8feb5f9da67",
+      "sha256": "8353749c4105c8fadf2944e1140e06e91a7f9843d76e877a159eaea5de8cfaff",
+      "bytes": 893300,
+      "source_url": "https://github.com/No1dry/farm/blob/e08e80ce4c80ce65051ef93f1247e8797d8781f1/data/spatial/drawing-entities.json",
+      "byte_identity_verified": true
+    },
+    {
+      "path": "data/spatial/full-region-enrichment.json",
+      "git_blob_sha1": "e3d8be5ecfc4aaf23d726aaa4f82702142a8abc0",
+      "sha256": "941f7ddd74709ef88082588473f5f6667dd19ee5e07ee591f949bc41554dc1db",
+      "bytes": 1949520,
+      "source_url": "https://github.com/No1dry/farm/blob/e08e80ce4c80ce65051ef93f1247e8797d8781f1/data/spatial/full-region-enrichment.json",
+      "byte_identity_verified": true
+    },
+    {
+      "path": "docs/data-gaps.md",
+      "git_blob_sha1": "f7e224a8c19f1b642609d20d969d41163f3e6dbc",
+      "sha256": "2e1bc7463fb7948489f0ce56cf52420bf9a94a620d3ff3c18a2b32dfecb389b2",
+      "bytes": 3220,
+      "source_url": "https://github.com/No1dry/farm/blob/e08e80ce4c80ce65051ef93f1247e8797d8781f1/docs/data-gaps.md",
+      "byte_identity_verified": true
+    },
+    {
+      "path": "docs/model-methodology.md",
+      "git_blob_sha1": "41ffbf191009d78534c89e19940e8cc3a9e2c835",
+      "sha256": "d236b5bab379fafe86d963e9e67830a7a2753ee0ef0d4d4f4dc3057db1f0797c",
+      "bytes": 9736,
+      "source_url": "https://github.com/No1dry/farm/blob/e08e80ce4c80ce65051ef93f1247e8797d8781f1/docs/model-methodology.md",
+      "byte_identity_verified": true
+    },
+    {
+      "path": "public/models/manifest.json",
+      "git_blob_sha1": "848a6961f54c5a960b9e768133b261fe3e695d45",
+      "sha256": "2fc32f4cba5ef33e68eefa16e3d9ec41f8374f29ecfbdbd8f2ce68227d39c673",
+      "bytes": 2003609,
+      "source_url": "https://github.com/No1dry/farm/blob/e08e80ce4c80ce65051ef93f1247e8797d8781f1/public/models/manifest.json",
+      "byte_identity_verified": true
+    }
+  ],
+  "outputs": {
+    "datasets/farm-map/map-objects.json": {
+      "sha256": "787c3df014ac7f4841f17f64b3dca05d26e8e512a7db5a31ae3805730a147a06",
+      "bytes": 1419149
+    },
+    "datasets/farm-map/map-features.json": {
+      "sha256": "b36837fde1bd2dfc03d09bc37e07f0eb2edffafec6be6fe624eaf95d8e115a94",
+      "bytes": 1448403
+    },
+    "docs/fish/ontology-review/data/map-features.json": {
+      "sha256": "b36837fde1bd2dfc03d09bc37e07f0eb2edffafec6be6fe624eaf95d8e115a94",
+      "bytes": 1448403
+    },
+    "datasets/farm-map/full.svg": {
+      "sha256": "04e4c51145c16edf44c1fc400bb3149631ef1c3769abac0fc1d22a82db9180e2",
+      "bytes": 127266
+    },
+    "datasets/farm-map/detail-miaoxia.svg": {
+      "sha256": "77c26bb552a4d1421bee35341e6324622a6be390f8ecb3bbbe6f0f245744609c",
+      "bytes": 39513
+    },
+    "datasets/farm-map/detail-xinwumao.svg": {
+      "sha256": "9d639e1947d44392483c0b6c395a7f9de3e3c688687b8c09565bcbe84c65ed3b",
+      "bytes": 52660
+    },
+    "datasets/farm-map/detail-zhangjia.svg": {
+      "sha256": "e2727294cd81180f358a9195ba62704bff20ca745d5361fc1f874317030d8737",
+      "bytes": 9305
+    },
+    "datasets/farm-map/detail-tanshen.svg": {
+      "sha256": "ad48b41971142c7939feebd5e51d307dbff249e85759f305babc4e793c8b02b5",
+      "bytes": 8681
+    },
+    "datasets/farm-map/detail-abcdef.svg": {
+      "sha256": "0730a2a539b631e47755d996089321e76c324df80e887fb22a1916f95cb9d6c9",
+      "bytes": 98694
+    },
+    "datasets/farm-map/THIRD_PARTY_NOTICES.upstream.md": {
+      "sha256": "fd81c05d7c0bc8eca1e390c080c5cc0e0ad3390c5366af3150facdda01b455a3",
+      "bytes": 1386
+    }
+  },
+  "license": {
+    "project_license": null,
+    "status": "no_unified_license_declared",
+    "notice_file": "THIRD_PARTY_NOTICES.upstream.md",
+    "reuse_basis": "User explicitly requested reuse of project GIS contours; retain original source terms and attribution.",
+    "raster_republished": false,
+    "new_license_assigned": false
+  },
+  "counts": {
+    "full_region_objects": 121,
+    "drawing_representations": 163,
+    "drawing_field_polygons": 100,
+    "drawing_pond_polygons": 20,
+    "drawing_unknown_boundary_anchors": 21,
+    "layers": 6,
+    "review_objects": 284,
+    "redline_overlays": 1,
+    "observed_refined_geometries": 46
+  },
+  "limitations": [
+    "Full-region outlines are approximate satellite-image interpretations, not surveyed cadastral or operating boundaries.",
+    "No CRS, control points, DEM or verified longitude/latitude transform is supplied.",
+    "The five PDF layers have independent paper-point coordinate spaces and are not stitched to the full-region image.",
+    "No synthetic device positions, generated buildings, crop state, depths, elevations or terrain relief are imported.",
+    "Upstream object identities are source references. Review-graph IRIs are not production platform identity registrations.",
+    "Satellite and drawing rasters are not republished. Source notices are preserved without assigning a new open-source license."
+  ],
+  "database_writes": 0,
+  "upstream_files_modified": 0
+}

@@ -1,0 +1,1408 @@
+{
+  "contract": "fish-rdf-review/1",
+  "namespace": "urn:lzo:fish-review:sample:v1:",
+  "root_iri": "https://w3id.org/lzo/ontology/DomainEntity",
+  "package_sha256": "04891aab2039607015d41575e292a0add57065af3a2037270893cc0f3cd7c4b7",
+  "formal_adoption": false,
+  "jena_verified": true,
+  "counts": {
+    "instances": 27135,
+    "relations": 79069,
+    "resolved_relations": 79002,
+    "classes": 112,
+    "source_classes": 84,
+    "triples": 2720969,
+    "map_objects": 284,
+    "map_layers": 6,
+    "demo_assignments": 10495,
+    "demo_activity_links": 10475,
+    "demo_profile_links": 20,
+    "drawing_instances": 6297,
+    "drawing_measurements": 3202,
+    "drawing_relations": 10279,
+    "drawing_map_bridges": 163
+  },
+  "concepts": [
+    {
+      "iri": "https://w3id.org/lzo/ontology/Aquaculture",
+      "label": "养殖本体",
+      "parent_iri": "https://w3id.org/lzo/ontology/BusinessEntity",
+      "children": [
+        "https://w3id.org/lzo/ontology/Cohort",
+        "https://w3id.org/lzo/ontology/Farm",
+        "https://w3id.org/lzo/ontology/Pond",
+        "https://w3id.org/lzo/ontology/Species",
+        "urn:lzo:fish-review:sample:v1:class:pond_cohort_occupancy",
+        "urn:lzo:fish-review:sample:v1:class:production_plans"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 94,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Bare",
+      "label": "裸地",
+      "parent_iri": "https://w3id.org/lzo/ontology/SpatialLayer",
+      "children": [
+        "urn:lzo:fish-review:map:v1:class:Bare"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 3,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/BusinessEntity",
+      "label": "业务对象",
+      "parent_iri": "https://w3id.org/lzo/ontology/DomainEntity",
+      "children": [
+        "https://w3id.org/lzo/ontology/Aquaculture",
+        "https://w3id.org/lzo/ontology/Document",
+        "https://w3id.org/lzo/ontology/Equipment",
+        "https://w3id.org/lzo/ontology/Field",
+        "https://w3id.org/lzo/ontology/FinancialRecord",
+        "https://w3id.org/lzo/ontology/HealthRecord",
+        "https://w3id.org/lzo/ontology/InventoryRecord",
+        "https://w3id.org/lzo/ontology/Organization",
+        "https://w3id.org/lzo/ontology/Person",
+        "https://w3id.org/lzo/ontology/ProductionEvent",
+        "https://w3id.org/lzo/ontology/SpatialLayer"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 9395,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Channel",
+      "label": "沟渠",
+      "parent_iri": "https://w3id.org/lzo/ontology/SpatialLayer",
+      "children": [
+        "urn:lzo:fish-review:map:v1:class:Channel"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 10,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Cohort",
+      "label": "养殖批次",
+      "parent_iri": "https://w3id.org/lzo/ontology/Aquaculture",
+      "children": [
+        "urn:lzo:fish-review:sample:v1:class:cohorts"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 14,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Document",
+      "label": "文档与证据",
+      "parent_iri": "https://w3id.org/lzo/ontology/BusinessEntity",
+      "children": [
+        "urn:lzo:fish-review:drawing:v1:class:DocumentStatement",
+        "urn:lzo:fish-review:drawing:v1:class:EngineeringAsset",
+        "urn:lzo:fish-review:drawing:v1:class:EngineeringItem",
+        "urn:lzo:fish-review:drawing:v1:class:Field",
+        "urn:lzo:fish-review:drawing:v1:class:Pond",
+        "urn:lzo:fish-review:drawing:v1:class:Project",
+        "urn:lzo:fish-review:drawing:v1:class:Region",
+        "urn:lzo:fish-review:drawing:v1:class:SourceDrawing",
+        "urn:lzo:fish-review:sample:v1:class:attachment_links",
+        "urn:lzo:fish-review:sample:v1:class:attachments",
+        "urn:lzo:fish-review:sample:v1:class:document_versions",
+        "urn:lzo:fish-review:sample:v1:class:documents",
+        "urn:lzo:fish-review:sample:v1:class:media_annotations",
+        "urn:lzo:fish-review:sample:v1:class:sources"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 3241,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/DomainEntity",
+      "label": "领域本体",
+      "parent_iri": null,
+      "children": [
+        "https://w3id.org/lzo/ontology/BusinessEntity",
+        "https://w3id.org/lzo/ontology/EventIndex",
+        "https://w3id.org/lzo/ontology/Observation",
+        "https://w3id.org/lzo/ontology/ReferenceRecord"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 27135,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Equipment",
+      "label": "设备与设施",
+      "parent_iri": "https://w3id.org/lzo/ontology/BusinessEntity",
+      "children": [
+        "urn:lzo:fish-review:sample:v1:class:control_commands",
+        "urn:lzo:fish-review:sample:v1:class:device_calibrations",
+        "urn:lzo:fish-review:sample:v1:class:device_installations",
+        "urn:lzo:fish-review:sample:v1:class:device_maintenance",
+        "urn:lzo:fish-review:sample:v1:class:devices"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 623,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/EventIndex",
+      "label": "事件索引",
+      "parent_iri": "https://w3id.org/lzo/ontology/DomainEntity",
+      "children": [
+        "urn:lzo:fish-review:sample:v1:class:event_registry"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 1167,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Facility",
+      "label": "设施来源",
+      "parent_iri": "https://w3id.org/lzo/ontology/SpatialLayer",
+      "children": [
+        "urn:lzo:fish-review:map:v1:class:Facility"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 20,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Farm",
+      "label": "养殖场",
+      "parent_iri": "https://w3id.org/lzo/ontology/Aquaculture",
+      "children": [
+        "urn:lzo:fish-review:sample:v1:class:farms"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 1,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Field",
+      "label": "田块",
+      "parent_iri": "https://w3id.org/lzo/ontology/BusinessEntity",
+      "children": [
+        "urn:lzo:fish-review:map:v1:class:Field"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 138,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/FinancialRecord",
+      "label": "经营与财务",
+      "parent_iri": "https://w3id.org/lzo/ontology/BusinessEntity",
+      "children": [
+        "urn:lzo:fish-review:sample:v1:class:cash_allocations",
+        "urn:lzo:fish-review:sample:v1:class:cash_transactions",
+        "urn:lzo:fish-review:sample:v1:class:cost_allocations",
+        "urn:lzo:fish-review:sample:v1:class:cost_entries",
+        "urn:lzo:fish-review:sample:v1:class:harvest_sale_allocations",
+        "urn:lzo:fish-review:sample:v1:class:purchase_items",
+        "urn:lzo:fish-review:sample:v1:class:purchases",
+        "urn:lzo:fish-review:sample:v1:class:sale_items",
+        "urn:lzo:fish-review:sample:v1:class:sales",
+        "urn:lzo:fish-review:sample:v1:class:settlement_deductions",
+        "urn:lzo:fish-review:sample:v1:class:settlements"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 1532,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/HealthRecord",
+      "label": "健康与防治",
+      "parent_iri": "https://w3id.org/lzo/ontology/BusinessEntity",
+      "children": [
+        "urn:lzo:fish-review:sample:v1:class:case_observations",
+        "urn:lzo:fish-review:sample:v1:class:diagnostic_tests",
+        "urn:lzo:fish-review:sample:v1:class:health_cases",
+        "urn:lzo:fish-review:sample:v1:class:treatment_events"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 12,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/InventoryRecord",
+      "label": "产品与库存",
+      "parent_iri": "https://w3id.org/lzo/ontology/BusinessEntity",
+      "children": [
+        "urn:lzo:fish-review:sample:v1:class:inventory_lot_status",
+        "urn:lzo:fish-review:sample:v1:class:inventory_movements",
+        "urn:lzo:fish-review:sample:v1:class:opening_balances",
+        "urn:lzo:fish-review:sample:v1:class:products"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 472,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Lake",
+      "label": "湖泊",
+      "parent_iri": "https://w3id.org/lzo/ontology/SpatialLayer",
+      "children": [
+        "urn:lzo:fish-review:map:v1:class:Lake"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 1,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Observation",
+      "label": "观测与测量",
+      "parent_iri": "https://w3id.org/lzo/ontology/DomainEntity",
+      "children": [
+        "urn:lzo:fish-review:drawing:v1:class:Measurement",
+        "urn:lzo:fish-review:sample:v1:class:fish_daily_balance",
+        "urn:lzo:fish-review:sample:v1:class:growth_grade_items",
+        "urn:lzo:fish-review:sample:v1:class:growth_individuals",
+        "urn:lzo:fish-review:sample:v1:class:growth_samples",
+        "urn:lzo:fish-review:sample:v1:class:price_observations",
+        "urn:lzo:fish-review:sample:v1:class:water_observations",
+        "urn:lzo:fish-review:sample:v1:class:water_samples",
+        "urn:lzo:fish-review:sample:v1:class:water_test_results",
+        "urn:lzo:fish-review:sample:v1:class:weather_observations"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 16537,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Organization",
+      "label": "组织与合作方",
+      "parent_iri": "https://w3id.org/lzo/ontology/BusinessEntity",
+      "children": [
+        "urn:lzo:fish-review:sample:v1:class:partners"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 10,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Person",
+      "label": "人员",
+      "parent_iri": "https://w3id.org/lzo/ontology/BusinessEntity",
+      "children": [
+        "urn:lzo:fish-review:sample:v1:class:persons"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 2,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Pond",
+      "label": "鱼塘",
+      "parent_iri": "https://w3id.org/lzo/ontology/Aquaculture",
+      "children": [
+        "urn:lzo:fish-review:map:v1:class:Pond",
+        "urn:lzo:fish-review:sample:v1:class:ponds"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 62,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/ProductionEvent",
+      "label": "生产事件",
+      "parent_iri": "https://w3id.org/lzo/ontology/BusinessEntity",
+      "children": [
+        "urn:lzo:fish-review:sample:v1:class:device_operations",
+        "urn:lzo:fish-review:sample:v1:class:disposal_events",
+        "urn:lzo:fish-review:sample:v1:class:feeding_events",
+        "urn:lzo:fish-review:sample:v1:class:harvest_grade_items",
+        "urn:lzo:fish-review:sample:v1:class:harvests",
+        "urn:lzo:fish-review:sample:v1:class:mortality_events",
+        "urn:lzo:fish-review:sample:v1:class:patrol_events",
+        "urn:lzo:fish-review:sample:v1:class:pond_maintenance",
+        "urn:lzo:fish-review:sample:v1:class:pond_preparations",
+        "urn:lzo:fish-review:sample:v1:class:stocking_events",
+        "urn:lzo:fish-review:sample:v1:class:transfer_allocations",
+        "urn:lzo:fish-review:sample:v1:class:transfer_events",
+        "urn:lzo:fish-review:sample:v1:class:water_operations"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 3159,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/ReferenceRecord",
+      "label": "参考结构",
+      "parent_iri": "https://w3id.org/lzo/ontology/DomainEntity",
+      "children": [
+        "urn:lzo:fish-review:sample:v1:class:dictionaries",
+        "urn:lzo:fish-review:sample:v1:class:record_provenance"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 36,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Road",
+      "label": "道路",
+      "parent_iri": "https://w3id.org/lzo/ontology/SpatialLayer",
+      "children": [
+        "urn:lzo:fish-review:map:v1:class:Road"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 37,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Settlement",
+      "label": "聚落",
+      "parent_iri": "https://w3id.org/lzo/ontology/SpatialLayer",
+      "children": [
+        "urn:lzo:fish-review:map:v1:class:Settlement"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 9,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/SpatialLayer",
+      "label": "空间资料",
+      "parent_iri": "https://w3id.org/lzo/ontology/BusinessEntity",
+      "children": [
+        "https://w3id.org/lzo/ontology/Bare",
+        "https://w3id.org/lzo/ontology/Channel",
+        "https://w3id.org/lzo/ontology/Facility",
+        "https://w3id.org/lzo/ontology/Lake",
+        "https://w3id.org/lzo/ontology/Road",
+        "https://w3id.org/lzo/ontology/Settlement",
+        "https://w3id.org/lzo/ontology/UnresolvedLabel",
+        "https://w3id.org/lzo/ontology/Woodland",
+        "urn:lzo:fish-review:map:v1:class:Layer",
+        "urn:lzo:fish-review:sample:v1:class:spatial_layer_registry"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 112,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Species",
+      "label": "物种",
+      "parent_iri": "https://w3id.org/lzo/ontology/Aquaculture",
+      "children": [
+        "urn:lzo:fish-review:sample:v1:class:species"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 2,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/UnresolvedLabel",
+      "label": "未决标签",
+      "parent_iri": "https://w3id.org/lzo/ontology/SpatialLayer",
+      "children": [
+        "urn:lzo:fish-review:map:v1:class:UnresolvedLabel"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 1,
+      "instances_path": null
+    },
+    {
+      "iri": "https://w3id.org/lzo/ontology/Woodland",
+      "label": "林地",
+      "parent_iri": "https://w3id.org/lzo/ontology/SpatialLayer",
+      "children": [
+        "urn:lzo:fish-review:map:v1:class:Woodland"
+      ],
+      "table": null,
+      "role": "domain",
+      "instance_count": 0,
+      "total_instance_count": 9,
+      "instances_path": null
+    },
+    {
+      "iri": "urn:lzo:fish-review:drawing:v1:class:DocumentStatement",
+      "label": "图纸原文陈述",
+      "parent_iri": "https://w3id.org/lzo/ontology/Document",
+      "children": [],
+      "table": "drawing_documentstatement",
+      "role": "drawing_evidence",
+      "instance_count": 2350,
+      "total_instance_count": 2350,
+      "instances_path": "classes/drawing_documentstatement.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:drawing:v1:class:EngineeringAsset",
+      "label": "工程设施档案",
+      "parent_iri": "https://w3id.org/lzo/ontology/Document",
+      "children": [],
+      "table": "drawing_engineeringasset",
+      "role": "drawing_evidence",
+      "instance_count": 79,
+      "total_instance_count": 79,
+      "instances_path": "classes/drawing_engineeringasset.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:drawing:v1:class:EngineeringItem",
+      "label": "工程量条目",
+      "parent_iri": "https://w3id.org/lzo/ontology/Document",
+      "children": [],
+      "table": "drawing_engineeringitem",
+      "role": "drawing_evidence",
+      "instance_count": 521,
+      "total_instance_count": 521,
+      "instances_path": "classes/drawing_engineeringitem.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:drawing:v1:class:Field",
+      "label": "田块图纸档案",
+      "parent_iri": "https://w3id.org/lzo/ontology/Document",
+      "children": [],
+      "table": "drawing_field",
+      "role": "drawing_evidence",
+      "instance_count": 100,
+      "total_instance_count": 100,
+      "instances_path": "classes/drawing_field.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:drawing:v1:class:Measurement",
+      "label": "图纸测量与尺寸",
+      "parent_iri": "https://w3id.org/lzo/ontology/Observation",
+      "children": [],
+      "table": "drawing_measurement",
+      "role": "drawing_evidence",
+      "instance_count": 3202,
+      "total_instance_count": 3202,
+      "instances_path": "classes/drawing_measurement.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:drawing:v1:class:Pond",
+      "label": "塘口图纸档案",
+      "parent_iri": "https://w3id.org/lzo/ontology/Document",
+      "children": [],
+      "table": "drawing_pond",
+      "role": "drawing_evidence",
+      "instance_count": 20,
+      "total_instance_count": 20,
+      "instances_path": "classes/drawing_pond.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:drawing:v1:class:Project",
+      "label": "工程项目档案",
+      "parent_iri": "https://w3id.org/lzo/ontology/Document",
+      "children": [],
+      "table": "drawing_project",
+      "role": "drawing_evidence",
+      "instance_count": 1,
+      "total_instance_count": 1,
+      "instances_path": "classes/drawing_project.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:drawing:v1:class:Region",
+      "label": "图纸分区档案",
+      "parent_iri": "https://w3id.org/lzo/ontology/Document",
+      "children": [],
+      "table": "drawing_region",
+      "role": "drawing_evidence",
+      "instance_count": 19,
+      "total_instance_count": 19,
+      "instances_path": "classes/drawing_region.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:drawing:v1:class:SourceDrawing",
+      "label": "竣工图来源",
+      "parent_iri": "https://w3id.org/lzo/ontology/Document",
+      "children": [],
+      "table": "drawing_sourcedrawing",
+      "role": "drawing_evidence",
+      "instance_count": 5,
+      "total_instance_count": 5,
+      "instances_path": "classes/drawing_sourcedrawing.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:map:v1:class:Bare",
+      "label": "裸地来源表示",
+      "parent_iri": "https://w3id.org/lzo/ontology/Bare",
+      "children": [],
+      "table": "map_bare",
+      "role": "spatial",
+      "instance_count": 3,
+      "total_instance_count": 3,
+      "instances_path": "classes/map_bare.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:map:v1:class:Channel",
+      "label": "沟渠来源表示",
+      "parent_iri": "https://w3id.org/lzo/ontology/Channel",
+      "children": [],
+      "table": "map_channel",
+      "role": "spatial",
+      "instance_count": 10,
+      "total_instance_count": 10,
+      "instances_path": "classes/map_channel.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:map:v1:class:Facility",
+      "label": "设施文字锚点",
+      "parent_iri": "https://w3id.org/lzo/ontology/Facility",
+      "children": [],
+      "table": "map_facility",
+      "role": "spatial",
+      "instance_count": 20,
+      "total_instance_count": 20,
+      "instances_path": "classes/map_facility.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:map:v1:class:Field",
+      "label": "田块来源表示",
+      "parent_iri": "https://w3id.org/lzo/ontology/Field",
+      "children": [],
+      "table": "map_field",
+      "role": "spatial",
+      "instance_count": 138,
+      "total_instance_count": 138,
+      "instances_path": "classes/map_field.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:map:v1:class:Lake",
+      "label": "湖泊来源表示",
+      "parent_iri": "https://w3id.org/lzo/ontology/Lake",
+      "children": [],
+      "table": "map_lake",
+      "role": "spatial",
+      "instance_count": 1,
+      "total_instance_count": 1,
+      "instances_path": "classes/map_lake.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:map:v1:class:Layer",
+      "label": "独立来源图层",
+      "parent_iri": "https://w3id.org/lzo/ontology/SpatialLayer",
+      "children": [],
+      "table": "map_layer",
+      "role": "spatial",
+      "instance_count": 6,
+      "total_instance_count": 6,
+      "instances_path": "classes/map_layer.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:map:v1:class:Pond",
+      "label": "塘面来源表示",
+      "parent_iri": "https://w3id.org/lzo/ontology/Pond",
+      "children": [],
+      "table": "map_pond",
+      "role": "spatial",
+      "instance_count": 56,
+      "total_instance_count": 56,
+      "instances_path": "classes/map_pond.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:map:v1:class:Road",
+      "label": "道路来源表示",
+      "parent_iri": "https://w3id.org/lzo/ontology/Road",
+      "children": [],
+      "table": "map_road",
+      "role": "spatial",
+      "instance_count": 37,
+      "total_instance_count": 37,
+      "instances_path": "classes/map_road.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:map:v1:class:Settlement",
+      "label": "聚落来源表示",
+      "parent_iri": "https://w3id.org/lzo/ontology/Settlement",
+      "children": [],
+      "table": "map_settlement",
+      "role": "spatial",
+      "instance_count": 9,
+      "total_instance_count": 9,
+      "instances_path": "classes/map_settlement.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:map:v1:class:UnresolvedLabel",
+      "label": "未决图纸标签",
+      "parent_iri": "https://w3id.org/lzo/ontology/UnresolvedLabel",
+      "children": [],
+      "table": "map_unresolved_label",
+      "role": "spatial",
+      "instance_count": 1,
+      "total_instance_count": 1,
+      "instances_path": "classes/map_unresolved_label.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:map:v1:class:Woodland",
+      "label": "林地来源表示",
+      "parent_iri": "https://w3id.org/lzo/ontology/Woodland",
+      "children": [],
+      "table": "map_woodland",
+      "role": "spatial",
+      "instance_count": 9,
+      "total_instance_count": 9,
+      "instances_path": "classes/map_woodland.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:attachment_links",
+      "label": "附件关联",
+      "parent_iri": "https://w3id.org/lzo/ontology/Document",
+      "children": [],
+      "table": "attachment_links",
+      "role": "entity",
+      "instance_count": 15,
+      "total_instance_count": 15,
+      "instances_path": "classes/attachment_links.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:attachments",
+      "label": "附件",
+      "parent_iri": "https://w3id.org/lzo/ontology/Document",
+      "children": [],
+      "table": "attachments",
+      "role": "entity",
+      "instance_count": 68,
+      "total_instance_count": 68,
+      "instances_path": "classes/attachments.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:case_observations",
+      "label": "病例观察",
+      "parent_iri": "https://w3id.org/lzo/ontology/HealthRecord",
+      "children": [],
+      "table": "case_observations",
+      "role": "entity",
+      "instance_count": 3,
+      "total_instance_count": 3,
+      "instances_path": "classes/case_observations.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:cash_allocations",
+      "label": "现金分配",
+      "parent_iri": "https://w3id.org/lzo/ontology/FinancialRecord",
+      "children": [],
+      "table": "cash_allocations",
+      "role": "entity",
+      "instance_count": 31,
+      "total_instance_count": 31,
+      "instances_path": "classes/cash_allocations.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:cash_transactions",
+      "label": "现金流水",
+      "parent_iri": "https://w3id.org/lzo/ontology/FinancialRecord",
+      "children": [],
+      "table": "cash_transactions",
+      "role": "entity",
+      "instance_count": 56,
+      "total_instance_count": 56,
+      "instances_path": "classes/cash_transactions.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:cohorts",
+      "label": "养殖批次",
+      "parent_iri": "https://w3id.org/lzo/ontology/Cohort",
+      "children": [],
+      "table": "cohorts",
+      "role": "entity",
+      "instance_count": 14,
+      "total_instance_count": 14,
+      "instances_path": "classes/cohorts.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:control_commands",
+      "label": "控制指令",
+      "parent_iri": "https://w3id.org/lzo/ontology/Equipment",
+      "children": [],
+      "table": "control_commands",
+      "role": "entity",
+      "instance_count": 561,
+      "total_instance_count": 561,
+      "instances_path": "classes/control_commands.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:cost_allocations",
+      "label": "成本分摊",
+      "parent_iri": "https://w3id.org/lzo/ontology/FinancialRecord",
+      "children": [],
+      "table": "cost_allocations",
+      "role": "entity",
+      "instance_count": 460,
+      "total_instance_count": 460,
+      "instances_path": "classes/cost_allocations.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:cost_entries",
+      "label": "成本条目",
+      "parent_iri": "https://w3id.org/lzo/ontology/FinancialRecord",
+      "children": [],
+      "table": "cost_entries",
+      "role": "entity",
+      "instance_count": 879,
+      "total_instance_count": 879,
+      "instances_path": "classes/cost_entries.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:device_calibrations",
+      "label": "设备校准",
+      "parent_iri": "https://w3id.org/lzo/ontology/Equipment",
+      "children": [],
+      "table": "device_calibrations",
+      "role": "entity",
+      "instance_count": 8,
+      "total_instance_count": 8,
+      "instances_path": "classes/device_calibrations.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:device_installations",
+      "label": "设备安装",
+      "parent_iri": "https://w3id.org/lzo/ontology/Equipment",
+      "children": [],
+      "table": "device_installations",
+      "role": "entity",
+      "instance_count": 24,
+      "total_instance_count": 24,
+      "instances_path": "classes/device_installations.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:device_maintenance",
+      "label": "设备维护",
+      "parent_iri": "https://w3id.org/lzo/ontology/Equipment",
+      "children": [],
+      "table": "device_maintenance",
+      "role": "entity",
+      "instance_count": 6,
+      "total_instance_count": 6,
+      "instances_path": "classes/device_maintenance.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:device_operations",
+      "label": "设备运行",
+      "parent_iri": "https://w3id.org/lzo/ontology/ProductionEvent",
+      "children": [],
+      "table": "device_operations",
+      "role": "entity",
+      "instance_count": 389,
+      "total_instance_count": 389,
+      "instances_path": "classes/device_operations.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:devices",
+      "label": "设备",
+      "parent_iri": "https://w3id.org/lzo/ontology/Equipment",
+      "children": [],
+      "table": "devices",
+      "role": "entity",
+      "instance_count": 24,
+      "total_instance_count": 24,
+      "instances_path": "classes/devices.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:diagnostic_tests",
+      "label": "诊断检测",
+      "parent_iri": "https://w3id.org/lzo/ontology/HealthRecord",
+      "children": [],
+      "table": "diagnostic_tests",
+      "role": "entity",
+      "instance_count": 3,
+      "total_instance_count": 3,
+      "instances_path": "classes/diagnostic_tests.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:dictionaries",
+      "label": "字典",
+      "parent_iri": "https://w3id.org/lzo/ontology/ReferenceRecord",
+      "children": [],
+      "table": "dictionaries",
+      "role": "entity",
+      "instance_count": 36,
+      "total_instance_count": 36,
+      "instances_path": "classes/dictionaries.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:disposal_events",
+      "label": "无害化处理",
+      "parent_iri": "https://w3id.org/lzo/ontology/ProductionEvent",
+      "children": [],
+      "table": "disposal_events",
+      "role": "entity",
+      "instance_count": 46,
+      "total_instance_count": 46,
+      "instances_path": "classes/disposal_events.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:document_versions",
+      "label": "文档版本",
+      "parent_iri": "https://w3id.org/lzo/ontology/Document",
+      "children": [],
+      "table": "document_versions",
+      "role": "entity",
+      "instance_count": 24,
+      "total_instance_count": 24,
+      "instances_path": "classes/document_versions.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:documents",
+      "label": "文档",
+      "parent_iri": "https://w3id.org/lzo/ontology/Document",
+      "children": [],
+      "table": "documents",
+      "role": "entity",
+      "instance_count": 20,
+      "total_instance_count": 20,
+      "instances_path": "classes/documents.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:event_registry",
+      "label": "事件索引",
+      "parent_iri": "https://w3id.org/lzo/ontology/EventIndex",
+      "children": [],
+      "table": "event_registry",
+      "role": "index",
+      "instance_count": 1167,
+      "total_instance_count": 1167,
+      "instances_path": "classes/event_registry.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:farms",
+      "label": "养殖场",
+      "parent_iri": "https://w3id.org/lzo/ontology/Farm",
+      "children": [],
+      "table": "farms",
+      "role": "entity",
+      "instance_count": 1,
+      "total_instance_count": 1,
+      "instances_path": "classes/farms.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:feeding_events",
+      "label": "投喂事件",
+      "parent_iri": "https://w3id.org/lzo/ontology/ProductionEvent",
+      "children": [],
+      "table": "feeding_events",
+      "role": "entity",
+      "instance_count": 1649,
+      "total_instance_count": 1649,
+      "instances_path": "classes/feeding_events.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:fish_daily_balance",
+      "label": "鱼群日结",
+      "parent_iri": "https://w3id.org/lzo/ontology/Observation",
+      "children": [],
+      "table": "fish_daily_balance",
+      "role": "telemetry",
+      "instance_count": 410,
+      "total_instance_count": 410,
+      "instances_path": "classes/fish_daily_balance.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:growth_grade_items",
+      "label": "生长分级",
+      "parent_iri": "https://w3id.org/lzo/ontology/Observation",
+      "children": [],
+      "table": "growth_grade_items",
+      "role": "entity",
+      "instance_count": 14,
+      "total_instance_count": 14,
+      "instances_path": "classes/growth_grade_items.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:growth_individuals",
+      "label": "生长个体测量",
+      "parent_iri": "https://w3id.org/lzo/ontology/Observation",
+      "children": [],
+      "table": "growth_individuals",
+      "role": "telemetry",
+      "instance_count": 198,
+      "total_instance_count": 198,
+      "instances_path": "classes/growth_individuals.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:growth_samples",
+      "label": "生长采样",
+      "parent_iri": "https://w3id.org/lzo/ontology/Observation",
+      "children": [],
+      "table": "growth_samples",
+      "role": "entity",
+      "instance_count": 65,
+      "total_instance_count": 65,
+      "instances_path": "classes/growth_samples.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:harvest_grade_items",
+      "label": "起捕分级",
+      "parent_iri": "https://w3id.org/lzo/ontology/ProductionEvent",
+      "children": [],
+      "table": "harvest_grade_items",
+      "role": "entity",
+      "instance_count": 16,
+      "total_instance_count": 16,
+      "instances_path": "classes/harvest_grade_items.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:harvest_sale_allocations",
+      "label": "起捕销售分配",
+      "parent_iri": "https://w3id.org/lzo/ontology/FinancialRecord",
+      "children": [],
+      "table": "harvest_sale_allocations",
+      "role": "entity",
+      "instance_count": 12,
+      "total_instance_count": 12,
+      "instances_path": "classes/harvest_sale_allocations.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:harvests",
+      "label": "起捕事件",
+      "parent_iri": "https://w3id.org/lzo/ontology/ProductionEvent",
+      "children": [],
+      "table": "harvests",
+      "role": "entity",
+      "instance_count": 28,
+      "total_instance_count": 28,
+      "instances_path": "classes/harvests.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:health_cases",
+      "label": "健康病例",
+      "parent_iri": "https://w3id.org/lzo/ontology/HealthRecord",
+      "children": [],
+      "table": "health_cases",
+      "role": "entity",
+      "instance_count": 3,
+      "total_instance_count": 3,
+      "instances_path": "classes/health_cases.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:inventory_lot_status",
+      "label": "库存批次状态",
+      "parent_iri": "https://w3id.org/lzo/ontology/InventoryRecord",
+      "children": [],
+      "table": "inventory_lot_status",
+      "role": "entity",
+      "instance_count": 25,
+      "total_instance_count": 25,
+      "instances_path": "classes/inventory_lot_status.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:inventory_movements",
+      "label": "库存流水",
+      "parent_iri": "https://w3id.org/lzo/ontology/InventoryRecord",
+      "children": [],
+      "table": "inventory_movements",
+      "role": "entity",
+      "instance_count": 439,
+      "total_instance_count": 439,
+      "instances_path": "classes/inventory_movements.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:media_annotations",
+      "label": "媒体标注",
+      "parent_iri": "https://w3id.org/lzo/ontology/Document",
+      "children": [],
+      "table": "media_annotations",
+      "role": "entity",
+      "instance_count": 11,
+      "total_instance_count": 11,
+      "instances_path": "classes/media_annotations.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:mortality_events",
+      "label": "死亡事件",
+      "parent_iri": "https://w3id.org/lzo/ontology/ProductionEvent",
+      "children": [],
+      "table": "mortality_events",
+      "role": "entity",
+      "instance_count": 142,
+      "total_instance_count": 142,
+      "instances_path": "classes/mortality_events.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:opening_balances",
+      "label": "期初库存",
+      "parent_iri": "https://w3id.org/lzo/ontology/InventoryRecord",
+      "children": [],
+      "table": "opening_balances",
+      "role": "entity",
+      "instance_count": 4,
+      "total_instance_count": 4,
+      "instances_path": "classes/opening_balances.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:partners",
+      "label": "合作方",
+      "parent_iri": "https://w3id.org/lzo/ontology/Organization",
+      "children": [],
+      "table": "partners",
+      "role": "entity",
+      "instance_count": 10,
+      "total_instance_count": 10,
+      "instances_path": "classes/partners.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:patrol_events",
+      "label": "巡塘事件",
+      "parent_iri": "https://w3id.org/lzo/ontology/ProductionEvent",
+      "children": [],
+      "table": "patrol_events",
+      "role": "entity",
+      "instance_count": 851,
+      "total_instance_count": 851,
+      "instances_path": "classes/patrol_events.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:persons",
+      "label": "人员",
+      "parent_iri": "https://w3id.org/lzo/ontology/Person",
+      "children": [],
+      "table": "persons",
+      "role": "entity",
+      "instance_count": 2,
+      "total_instance_count": 2,
+      "instances_path": "classes/persons.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:pond_cohort_occupancy",
+      "label": "塘口批次占用",
+      "parent_iri": "https://w3id.org/lzo/ontology/Aquaculture",
+      "children": [],
+      "table": "pond_cohort_occupancy",
+      "role": "entity",
+      "instance_count": 14,
+      "total_instance_count": 14,
+      "instances_path": "classes/pond_cohort_occupancy.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:pond_maintenance",
+      "label": "塘口维护",
+      "parent_iri": "https://w3id.org/lzo/ontology/ProductionEvent",
+      "children": [],
+      "table": "pond_maintenance",
+      "role": "entity",
+      "instance_count": 6,
+      "total_instance_count": 6,
+      "instances_path": "classes/pond_maintenance.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:pond_preparations",
+      "label": "清塘准备",
+      "parent_iri": "https://w3id.org/lzo/ontology/ProductionEvent",
+      "children": [],
+      "table": "pond_preparations",
+      "role": "entity",
+      "instance_count": 6,
+      "total_instance_count": 6,
+      "instances_path": "classes/pond_preparations.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:ponds",
+      "label": "塘口",
+      "parent_iri": "https://w3id.org/lzo/ontology/Pond",
+      "children": [],
+      "table": "ponds",
+      "role": "entity",
+      "instance_count": 6,
+      "total_instance_count": 6,
+      "instances_path": "classes/ponds.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:price_observations",
+      "label": "价格观测",
+      "parent_iri": "https://w3id.org/lzo/ontology/Observation",
+      "children": [],
+      "table": "price_observations",
+      "role": "telemetry",
+      "instance_count": 585,
+      "total_instance_count": 585,
+      "instances_path": "classes/price_observations.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:production_plans",
+      "label": "生产计划",
+      "parent_iri": "https://w3id.org/lzo/ontology/Aquaculture",
+      "children": [],
+      "table": "production_plans",
+      "role": "entity",
+      "instance_count": 1,
+      "total_instance_count": 1,
+      "instances_path": "classes/production_plans.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:products",
+      "label": "产品",
+      "parent_iri": "https://w3id.org/lzo/ontology/InventoryRecord",
+      "children": [],
+      "table": "products",
+      "role": "entity",
+      "instance_count": 4,
+      "total_instance_count": 4,
+      "instances_path": "classes/products.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:purchase_items",
+      "label": "采购明细",
+      "parent_iri": "https://w3id.org/lzo/ontology/FinancialRecord",
+      "children": [],
+      "table": "purchase_items",
+      "role": "entity",
+      "instance_count": 23,
+      "total_instance_count": 23,
+      "instances_path": "classes/purchase_items.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:purchases",
+      "label": "采购单",
+      "parent_iri": "https://w3id.org/lzo/ontology/FinancialRecord",
+      "children": [],
+      "table": "purchases",
+      "role": "entity",
+      "instance_count": 23,
+      "total_instance_count": 23,
+      "instances_path": "classes/purchases.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:record_provenance",
+      "label": "参考来源侧车",
+      "parent_iri": "https://w3id.org/lzo/ontology/ReferenceRecord",
+      "children": [],
+      "table": "record_provenance",
+      "role": "reference",
+      "instance_count": 0,
+      "total_instance_count": 0,
+      "instances_path": "classes/record_provenance.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:sale_items",
+      "label": "销售明细",
+      "parent_iri": "https://w3id.org/lzo/ontology/FinancialRecord",
+      "children": [],
+      "table": "sale_items",
+      "role": "entity",
+      "instance_count": 16,
+      "total_instance_count": 16,
+      "instances_path": "classes/sale_items.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:sales",
+      "label": "销售单",
+      "parent_iri": "https://w3id.org/lzo/ontology/FinancialRecord",
+      "children": [],
+      "table": "sales",
+      "role": "entity",
+      "instance_count": 8,
+      "total_instance_count": 8,
+      "instances_path": "classes/sales.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:settlement_deductions",
+      "label": "结算扣款",
+      "parent_iri": "https://w3id.org/lzo/ontology/FinancialRecord",
+      "children": [],
+      "table": "settlement_deductions",
+      "role": "entity",
+      "instance_count": 16,
+      "total_instance_count": 16,
+      "instances_path": "classes/settlement_deductions.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:settlements",
+      "label": "结算单",
+      "parent_iri": "https://w3id.org/lzo/ontology/FinancialRecord",
+      "children": [],
+      "table": "settlements",
+      "role": "entity",
+      "instance_count": 8,
+      "total_instance_count": 8,
+      "instances_path": "classes/settlements.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:sources",
+      "label": "数据来源",
+      "parent_iri": "https://w3id.org/lzo/ontology/Document",
+      "children": [],
+      "table": "sources",
+      "role": "entity",
+      "instance_count": 8,
+      "total_instance_count": 8,
+      "instances_path": "classes/sources.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:spatial_layer_registry",
+      "label": "空间图层",
+      "parent_iri": "https://w3id.org/lzo/ontology/SpatialLayer",
+      "children": [],
+      "table": "spatial_layer_registry",
+      "role": "entity",
+      "instance_count": 16,
+      "total_instance_count": 16,
+      "instances_path": "classes/spatial_layer_registry.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:species",
+      "label": "鱼种",
+      "parent_iri": "https://w3id.org/lzo/ontology/Species",
+      "children": [],
+      "table": "species",
+      "role": "entity",
+      "instance_count": 2,
+      "total_instance_count": 2,
+      "instances_path": "classes/species.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:stocking_events",
+      "label": "放养事件",
+      "parent_iri": "https://w3id.org/lzo/ontology/ProductionEvent",
+      "children": [],
+      "table": "stocking_events",
+      "role": "entity",
+      "instance_count": 12,
+      "total_instance_count": 12,
+      "instances_path": "classes/stocking_events.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:transfer_allocations",
+      "label": "转塘分配",
+      "parent_iri": "https://w3id.org/lzo/ontology/ProductionEvent",
+      "children": [],
+      "table": "transfer_allocations",
+      "role": "entity",
+      "instance_count": 2,
+      "total_instance_count": 2,
+      "instances_path": "classes/transfer_allocations.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:transfer_events",
+      "label": "转塘事件",
+      "parent_iri": "https://w3id.org/lzo/ontology/ProductionEvent",
+      "children": [],
+      "table": "transfer_events",
+      "role": "entity",
+      "instance_count": 1,
+      "total_instance_count": 1,
+      "instances_path": "classes/transfer_events.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:treatment_events",
+      "label": "治疗事件",
+      "parent_iri": "https://w3id.org/lzo/ontology/HealthRecord",
+      "children": [],
+      "table": "treatment_events",
+      "role": "entity",
+      "instance_count": 3,
+      "total_instance_count": 3,
+      "instances_path": "classes/treatment_events.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:water_observations",
+      "label": "水质观测",
+      "parent_iri": "https://w3id.org/lzo/ontology/Observation",
+      "children": [],
+      "table": "water_observations",
+      "role": "telemetry",
+      "instance_count": 6644,
+      "total_instance_count": 6644,
+      "instances_path": "classes/water_observations.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:water_operations",
+      "label": "水体操作",
+      "parent_iri": "https://w3id.org/lzo/ontology/ProductionEvent",
+      "children": [],
+      "table": "water_operations",
+      "role": "entity",
+      "instance_count": 11,
+      "total_instance_count": 11,
+      "instances_path": "classes/water_operations.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:water_samples",
+      "label": "水样",
+      "parent_iri": "https://w3id.org/lzo/ontology/Observation",
+      "children": [],
+      "table": "water_samples",
+      "role": "entity",
+      "instance_count": 209,
+      "total_instance_count": 209,
+      "instances_path": "classes/water_samples.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:water_test_results",
+      "label": "水质检测",
+      "parent_iri": "https://w3id.org/lzo/ontology/Observation",
+      "children": [],
+      "table": "water_test_results",
+      "role": "telemetry",
+      "instance_count": 253,
+      "total_instance_count": 253,
+      "instances_path": "classes/water_test_results.json.gz"
+    },
+    {
+      "iri": "urn:lzo:fish-review:sample:v1:class:weather_observations",
+      "label": "天气观测",
+      "parent_iri": "https://w3id.org/lzo/ontology/Observation",
+      "children": [],
+      "table": "weather_observations",
+      "role": "telemetry",
+      "instance_count": 4957,
+      "total_instance_count": 4957,
+      "instances_path": "classes/weather_observations.json.gz"
+    }
+  ],
+  "graph_iri": "urn:lzo:fish-review:sample:v1:graph:04891aab2039607015d41575e292a0add57065af3a2037270893cc0f3cd7c4b7:e291446443a45ec8f50220b1cf3c5121d87ba16cf7f85a8e38266d9a92b4a49c",
+  "rdf_graphs": [
+    "urn:lzo:fish-review:sample:v1:graph:04891aab2039607015d41575e292a0add57065af3a2037270893cc0f3cd7c4b7:e291446443a45ec8f50220b1cf3c5121d87ba16cf7f85a8e38266d9a92b4a49c",
+    "urn:lzo:fish-review:map:v1:graph:a485fe9015e4460ea0ccffc4f7bb467a53aa903139fd188e042649286bff469a",
+    "urn:lzo:fish-review:demo:v1:graph:ac4039ae72b527fed28703d11a4f9c895aa1882e2f4b6d9929385fba77027322",
+    "urn:lzo:fish-review:drawing:v1:graph:de36daf408f9c7f9d0238705366e827053543393d344a8ca74517c1d49e2d5a1"
+  ],
+  "fuseki_readback": true,
+  "source_schema": "fish_review_10pct_v1",
+  "checked_at": "2026-11-04T11:42:25.877036+00:00"
+}

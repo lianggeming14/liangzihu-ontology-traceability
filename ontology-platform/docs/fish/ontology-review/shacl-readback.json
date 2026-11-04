@@ -1,0 +1,396 @@
+{
+  "engine": "pyshacl",
+  "scope": "all canonical instance datatypes/cardinalities and relation target classes; raw source strings excluded",
+  "status": "passed",
+  "classes": [
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:attachment_links",
+      "instances": 15,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:attachments",
+      "instances": 68,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:case_observations",
+      "instances": 3,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:cash_allocations",
+      "instances": 31,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:cash_transactions",
+      "instances": 56,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:cohorts",
+      "instances": 14,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:control_commands",
+      "instances": 561,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:cost_allocations",
+      "instances": 460,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:cost_entries",
+      "instances": 879,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:device_calibrations",
+      "instances": 8,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:device_installations",
+      "instances": 24,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:device_maintenance",
+      "instances": 6,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:device_operations",
+      "instances": 389,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:devices",
+      "instances": 24,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:diagnostic_tests",
+      "instances": 3,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:dictionaries",
+      "instances": 36,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:disposal_events",
+      "instances": 46,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:document_versions",
+      "instances": 24,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:documents",
+      "instances": 20,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:event_registry",
+      "instances": 1167,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:farms",
+      "instances": 1,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:feeding_events",
+      "instances": 1649,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:fish_daily_balance",
+      "instances": 410,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:growth_grade_items",
+      "instances": 14,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:growth_individuals",
+      "instances": 198,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:growth_samples",
+      "instances": 65,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:harvest_grade_items",
+      "instances": 16,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:harvest_sale_allocations",
+      "instances": 12,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:harvests",
+      "instances": 28,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:health_cases",
+      "instances": 3,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:inventory_lot_status",
+      "instances": 25,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:inventory_movements",
+      "instances": 439,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:media_annotations",
+      "instances": 11,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:mortality_events",
+      "instances": 142,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:opening_balances",
+      "instances": 4,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:partners",
+      "instances": 10,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:patrol_events",
+      "instances": 851,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:persons",
+      "instances": 2,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:pond_cohort_occupancy",
+      "instances": 14,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:pond_maintenance",
+      "instances": 6,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:pond_preparations",
+      "instances": 6,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:ponds",
+      "instances": 6,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:price_observations",
+      "instances": 585,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:production_plans",
+      "instances": 1,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:products",
+      "instances": 4,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:purchase_items",
+      "instances": 23,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:purchases",
+      "instances": 23,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:record_provenance",
+      "instances": 0,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:sale_items",
+      "instances": 16,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:sales",
+      "instances": 8,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:settlement_deductions",
+      "instances": 16,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:settlements",
+      "instances": 8,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:sources",
+      "instances": 8,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:spatial_layer_registry",
+      "instances": 16,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:species",
+      "instances": 2,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:stocking_events",
+      "instances": 12,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:transfer_allocations",
+      "instances": 2,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:transfer_events",
+      "instances": 1,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:treatment_events",
+      "instances": 3,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:water_observations",
+      "instances": 6644,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:water_operations",
+      "instances": 11,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:water_samples",
+      "instances": 209,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:water_test_results",
+      "instances": 253,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:fish-review:sample:v1:class:weather_observations",
+      "instances": 4957,
+      "conforms": true,
+      "violations": 0
+    }
+  ],
+  "instances_validated": 20548,
+  "violations": 0,
+  "datatype_constraints": 1354,
+  "relation_class_constraints": 498,
+  "seconds": 31.78
+}

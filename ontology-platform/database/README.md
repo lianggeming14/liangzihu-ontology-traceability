@@ -1,6 +1,8 @@
 # 数据库与语义存储
 
-当前数据结构审查见 [fish_review_10pct_v1 样本库](../docs/fish/review-sample/README.md)及[完整 SQL](../docs/fish/review-sample/schema.sql)。它是独立 PostgreSQL/PostGIS schema，包含 64 张业务表及 6 张来源/模型/关系/空间支撑表。使用[无密码配置模板](../config/fish-review.example.json)建新样本或只读核验；不会替代下面的平台迁移链或写入正式本体事实。
+当前审查使用实际 **[Jena RDF 本体四图](../docs/fish/ontology-review/README.md)**：OWL/RDFS 类层级、类型化实例、正反对象关系和来源证据均经过实库回读；本体导航由已验证 RDF 生成，实时证据通过只读 SPARQL 查询。完整图名、词汇、SHACL、重建命令及数据性质以该入口为准。
+
+[fish_review_10pct_v1](../docs/fish/review-sample/README.md) 是辅助 PostgreSQL/PostGIS 来源审计样本，保留 [SQL](../docs/fish/review-sample/schema.sql) 和[无凭据配置](../config/fish-review.example.json)。其中六个合成边界不作为新的来源地图。该审查样本与原正式采纳流程分别管理。
 
 这里保存可复现的数据库定义和服务配置，不保存运行数据或密码。
 

@@ -1,0 +1,204 @@
+{
+  "contract": "ontology-review-independent-review/1",
+  "status": "passed",
+  "reviewed_at": "2026-11-04T13:34:09.186124+00:00",
+  "baseline_commit": "aba5f0a46976f04a4a7cc3cc6ee505abd87bd80d",
+  "reviewer": "independent final review agent",
+  "scope": [
+    "scripts/serve_ontology_review.py",
+    "scripts/fish_drawing_rdf.py",
+    "scripts/check_ontology_review_live.py",
+    "docs/fish/ontology-review/model.mjs",
+    "docs/fish/ontology-review/assets.js",
+    "docs/fish/ontology-review UI and published data contracts"
+  ],
+  "review_method": {
+    "implementation_changes_by_reviewer": 0,
+    "database_mutations": 0,
+    "workers_started": 0,
+    "local_report_is_only_reviewer_write": true,
+    "live_api": "http://127.0.0.1:11644",
+    "query_engine": "actual local Apache Jena Fuseki",
+    "sql_connections": 0,
+    "reviewed_with": "requesting-code-review/code-reviewer.md; verification-before-completion/SKILL.md"
+  },
+  "findings": [
+    {
+      "id": "UI-GZIP-001",
+      "severity": "important",
+      "original_location": "model.mjs:6; assets.js:20-23",
+      "original_symptom": "All 84 published instance paths ended in .json.gz, while createCatalog accepted only .json. Running createCatalog against the actual manifest failed with an invalid instance fragment path. HTTP served gzip bytes as application/gzip without Content-Encoding, so response.json alone would also fail.",
+      "status": "resolved",
+      "resolution": "The strict relative-path validator accepts .json and .json.gz; the shared decoder checks gzip magic bytes before DecompressionStream and also accepts already decoded JSON.",
+      "independent_evidence": {
+        "actual_http_manifest_concepts": 112,
+        "actual_http_gzip_shards_decoded": 84,
+        "actual_http_instances_read": 27135,
+        "every_shard_class_matches_manifest": true
+      }
+    },
+    {
+      "id": "UI-DEMO-002",
+      "severity": "important",
+      "original_location": "assets.js:98-125",
+      "original_symptom": "The published rows preserved demo_assignments separately, but the UI read only outgoing and incoming. The map pond Qing-15 had 534 demo assignments that could not be opened from the object page.",
+      "status": "resolved",
+      "resolution": "A separate demonstration-business tab presents profile and activity assignments, preserves original_pond_id, labels balanced_demo_only and synthetic meaning, and routes to the supplied source or target instance without changing source relationships.",
+      "independent_evidence": {
+        "demo_edges": 10495,
+        "demo_endpoints_validated": 20990,
+        "endpoint_class_mismatches": 0,
+        "assignment_policy": "balanced_demo_only",
+        "all_assignments_explicitly_synthetic": true,
+        "qing15_assignments": 534,
+        "source_relationship_arrays_remain_separate": true,
+        "demo_kinds": [
+          "activity",
+          "pond_profile"
+        ]
+      }
+    },
+    {
+      "id": "API-PAGING-003",
+      "severity": "important",
+      "reported_by": "root implementation agent; independently verified after fix",
+      "original_location": "serve_ontology_review.py:GraphReader.resource",
+      "original_symptom": "A large predicate group could fill the first 500 results, hiding drawing evidence and scalar properties with no way to page further.",
+      "status": "resolved",
+      "resolution": "Outgoing predicates are ordered by ascending fanout and deterministic terms. Outgoing and incoming statements have independent offsets and next offsets; the UI offers separate continuation controls.",
+      "independent_evidence": {
+        "resource": "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15",
+        "api_pages": 3,
+        "outgoing_rows": 571,
+        "incoming_rows": 1073,
+        "repeated_rows": 0,
+        "direct_four_graph_sparql_outgoing_count": 571,
+        "direct_four_graph_sparql_incoming_count": 1073,
+        "missing_rows": 0,
+        "small_limit_pages_are_distinct": true
+      }
+    },
+    {
+      "id": "DISPLAY-UNITS-004",
+      "severity": "minor",
+      "original_location": "fish_drawing_rdf.py:115-121",
+      "original_symptom": "Many source measurements used unitText and siUnit, while the navigation numericValue.unit field only recognized unit. The unit remained available as a separate property but was absent beside the displayed number.",
+      "status": "resolved_in_presentation",
+      "resolution": "The propertyUnit helper uses only the matching explicit sibling unit: unit or unitText for numericValue, and siUnit for siValue. It does not infer units.",
+      "independent_evidence": {
+        "actual_numeric_values_with_nonempty_source_unit_verified": 2932,
+        "unit_pairing_regression_test": "passed"
+      }
+    }
+  ],
+  "checks": {
+    "live_status": {
+      "status": "passed",
+      "allowed_named_graphs": 4,
+      "triple_count": 2720969,
+      "read_only": true,
+      "sql_used": false
+    },
+    "drawing_bridges": {
+      "status": "passed",
+      "expected_exact_source_uuid_bridges": 163,
+      "actual_jena_bidirectional_bridges": 163,
+      "published_snapshot_bridges": 163,
+      "mismatches": 0,
+      "physical_identity_equivalence_inferred": false
+    },
+    "decimal_precision": {
+      "status": "passed",
+      "source_decimal_values": 5813,
+      "actual_jena_xsd_decimal_values": 5813,
+      "published_snapshot_values": 5813,
+      "exact_decimal_numeric_value_mismatches": 0,
+      "comparison": "Decimal source values compared with live RDF literal values and snapshot decimal strings; numeric equality, not a claim that canonical RDF preserves trailing-zero lexical formatting"
+    },
+    "published_integer_safety": {
+      "status": "passed_for_current_dataset",
+      "integer_properties_checked": 18939,
+      "maximum_absolute_value": 20251031,
+      "unsafe_json_integer_values": 0
+    },
+    "api_safety": {
+      "status": "passed_within_local_review_scope",
+      "server_binding": "127.0.0.1",
+      "sparql_query_scope": "Only exact named graphs declared by the verified manifest",
+      "sparql_update_route_exposed": false,
+      "invalid_injected_iri_http_status": 400,
+      "dot_git_config_http_status": 404,
+      "post_write_rejection": "405, independently read implementation and recorded live checker result",
+      "external_fuseki_endpoint_allowed": false
+    },
+    "fresh_node_suite": {
+      "command": "node --test docs/fish/ontology-review/model.test.mjs",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "includes_actual_manifest_and_all_gzip_shards": true
+    },
+    "independent_http_decoder_check": {
+      "status": "passed",
+      "uses_same_exported_browser_decoder": true,
+      "fetches_actual_http_responses": true,
+      "all_demo_targets_exist_in_correct_class": true
+    },
+    "incremental_status_badges": {
+      "status": "passed",
+      "actual_measurement_rows_checked": 3202,
+      "scenario_only_not_adopted_rows": 524,
+      "computed_paper_geometry_not_ground_survey_rows": 262,
+      "source_rows_mutated": 0,
+      "meaning": "Explicit source reviewStatus refines the displayed instance nature; it does not promote imported evidence to field measurements."
+    },
+    "incremental_map_camera": {
+      "status": "passed",
+      "layers_checked": 6,
+      "feature_counts": [
+        122,
+        38,
+        49,
+        16,
+        9,
+        51
+      ],
+      "all_source_coordinates_inside_finite_positive_camera": true,
+      "source_coordinates_changed": false,
+      "axis_y": "down",
+      "georeferenced": false,
+      "meaning": "Only the SVG viewBox camera uses padded geometry bounds; source geometry and local coordinate meaning are retained."
+    }
+  },
+  "unresolved_critical_findings": 0,
+  "unresolved_important_findings": 0,
+  "declined_to_judge": [
+    "Paused formal full-package ingestion, prior performance work and production approval/authentication changes are outside this review; nothing here marks that work complete.",
+    "Browser visual layout and physical click automation are handled by the separate UI acceptance report; this review verifies source, actual HTTP, Node navigation helpers and data contracts.",
+    "Field measurement validity and geographic registration are not established by RDF correctness. Map geometry remains local-image or paper coordinates, with unknown CRS and unverified external source nature.",
+    "The review agent previously implemented map preparation/RDF helpers. Those modules are not presented as independently code-reviewed here; only their published interfaces and actual cross-graph outputs were checked.",
+    "A read-only loopback review server is not the formal authenticated production API and is not assessed as a public multi-user deployment."
+  ],
+  "assessment": "Ready for the reviewed ontology-review scope. Both independently reproduced UI blockers and the large-group resource paging defect are resolved with fresh actual-data evidence. Formal ingestion completion and browser visual acceptance are separate claims.",
+  "initial_reviewed_at": "2026-11-04T11:59:58Z",
+  "final_ui_sha256": {
+    "docs/fish/ontology-review/index.html": "f234ba4b9e9b98e35ede7bc396f52bd26fe7b33f15319a9eadbfae75418c66a1",
+    "docs/fish/ontology-review/assets.css": "729c993a48ee0626e035bb2891413c29dafd35a80ba56a342a55dbca3bce21a4",
+    "docs/fish/ontology-review/assets.js": "7540753f27dc4c6cb612c76f8e0b4c74c8d39c5c29adea19eefab85cdc93fa95",
+    "docs/fish/ontology-review/model.mjs": "c00ffc7efb6585a89066d941ace3f408e59e791bf7b704f81f86d3f8b2cd4da9",
+    "docs/fish/ontology-review/model.test.mjs": "3b11377c8b92730008b4c46bdf309478f959a84e167168fd3dcc80e28b80be2f"
+  },
+  "reviewed_data_sha256": {
+    "docs/fish/ontology-review/data/manifest.json": "d4cafec97c4185b793397287a8e08a7bdc35aab1a83d94d539f89157e2303901",
+    "docs/fish/ontology-review/data/map-features.json": "b36837fde1bd2dfc03d09bc37e07f0eb2edffafec6be6fe624eaf95d8e115a94"
+  },
+  "separate_browser_acceptance_observed": {
+    "report": "docs/fish/ontology-review/browser-report.json",
+    "status": "passed",
+    "checked_at": "2026-11-04T13:33:16.467Z",
+    "javascript_errors": 0,
+    "screenshots": 7,
+    "independently_executed_by_this_reviewer": false,
+    "note": "The UI agent executed actual Chrome acceptance; this reviewer inspected its report, while independently running Node, actual HTTP decoding and the listed data checks."
+  }
+}

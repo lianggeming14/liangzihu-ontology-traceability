@@ -1,0 +1,835 @@
+{
+  "contract": "fish-rdf-readback/1",
+  "status": "passed",
+  "formal_adoption": false,
+  "package_sha256": "04891aab2039607015d41575e292a0add57065af3a2037270893cc0f3cd7c4b7",
+  "source_read_only": true,
+  "graph_iri": "urn:lzo:fish-review:sample:v1:graph:04891aab2039607015d41575e292a0add57065af3a2037270893cc0f3cd7c4b7:e291446443a45ec8f50220b1cf3c5121d87ba16cf7f85a8e38266d9a92b4a49c",
+  "rdf_graphs": [
+    "urn:lzo:fish-review:sample:v1:graph:04891aab2039607015d41575e292a0add57065af3a2037270893cc0f3cd7c4b7:e291446443a45ec8f50220b1cf3c5121d87ba16cf7f85a8e38266d9a92b4a49c",
+    "urn:lzo:fish-review:map:v1:graph:a485fe9015e4460ea0ccffc4f7bb467a53aa903139fd188e042649286bff469a",
+    "urn:lzo:fish-review:demo:v1:graph:ac4039ae72b527fed28703d11a4f9c895aa1882e2f4b6d9929385fba77027322",
+    "urn:lzo:fish-review:drawing:v1:graph:de36daf408f9c7f9d0238705366e827053543393d344a8ca74517c1d49e2d5a1"
+  ],
+  "rdf_sha256": "aeab273af26102e82ad8d5aa845006dffe69c24dd773679cbb13efdaa8680bb1",
+  "rdf_termset_sha256": "e291446443a45ec8f50220b1cf3c5121d87ba16cf7f85a8e38266d9a92b4a49c",
+  "rdf_bytes": 355524519,
+  "triple_count": 2183946,
+  "all_triples_readback": "passed",
+  "unexpected_or_missing_triples": 0,
+  "sparql": {
+    "instances": 20548,
+    "source_records": 20606,
+    "relation_records": 68343,
+    "resolved_relations": 68276,
+    "missing_inverse": 0,
+    "orphan_targets": 0
+  },
+  "preexisting_graphs_unchanged": true,
+  "preexisting_graph_count": 971,
+  "existing_graph_reused": false,
+  "map_and_demo": {
+    "map": {
+      "graph_iri": "urn:lzo:fish-review:map:v1:graph:a485fe9015e4460ea0ccffc4f7bb467a53aa903139fd188e042649286bff469a",
+      "triple_count": 18546,
+      "all_triples_readback": "passed",
+      "unexpected_or_missing_triples": 0,
+      "sparql": {
+        "instances": 290,
+        "source_records": 0,
+        "relation_records": 284,
+        "resolved_relations": 284,
+        "missing_inverse": 0,
+        "orphan_targets": 0
+      },
+      "preexisting_graphs_unchanged": true,
+      "preexisting_graph_count": 971,
+      "existing_graph_reused": false
+    },
+    "demo": {
+      "graph_iri": "urn:lzo:fish-review:demo:v1:graph:ac4039ae72b527fed28703d11a4f9c895aa1882e2f4b6d9929385fba77027322",
+      "triple_count": 125954,
+      "all_triples_readback": "passed",
+      "unexpected_or_missing_triples": 0,
+      "sparql": {
+        "demo_assignments": 10495,
+        "missing_inverse": 0
+      },
+      "preexisting_graphs_unchanged": true,
+      "preexisting_graph_count": 971,
+      "existing_graph_reused": false,
+      "counts": {
+        "activity": 10475,
+        "pond_profile": 20
+      },
+      "assignment_policy": "balanced_demo_only",
+      "per_source_table_pond_allocations": {
+        "device_operations": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 19,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 19,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 19,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 19,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 19,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 19,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 19,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 19,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 19,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 19,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 19
+        },
+        "disposal_events": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 2
+        },
+        "feeding_events": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 83,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 83,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 83,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 83,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 83,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 83,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 83,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 83,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 83,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 82,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 82,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 82,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 82,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 82,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 82,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 82,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 82,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 82,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 82,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 82
+        },
+        "fish_daily_balance": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 21,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 21,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 21,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 21,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 21,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 21,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 21,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 21,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 21,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 21,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 20,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 20
+        },
+        "growth_samples": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 4,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 4,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 4,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 4,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 4,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 3,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 3
+        },
+        "harvest_grade_items": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 0
+        },
+        "harvests": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 2,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 1
+        },
+        "mortality_events": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 8,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 8,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 7,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 7
+        },
+        "patrol_events": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 43,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 43,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 42,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 42
+        },
+        "pond_maintenance": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 0
+        },
+        "pond_preparations": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 0
+        },
+        "stocking_events": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 0
+        },
+        "transfer_allocations": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 0
+        },
+        "transfer_events": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 0
+        },
+        "water_observations": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 333,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 332,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 332
+        },
+        "water_operations": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 1,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 0,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 0
+        },
+        "water_samples": {
+          "urn:lzo:fish-review:map:v1:object:DETAIL-QING17": 11,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15": 11,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING16": 11,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING10": 11,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING11": 11,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING12": 11,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING13": 11,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING14": 11,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING5": 11,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING6": 10,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING7": 10,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING8": 10,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-02-QING9": 10,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-POND-WEST2": 10,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-INNER": 10,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING1-WEST": 10,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING2": 10,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING3": 10,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING4": 10,
+          "urn:lzo:fish-review:map:v1:object:DRAW-pdf-05-QING5": 10
+        }
+      }
+    }
+  },
+  "shacl": {
+    "status": "passed",
+    "instances_validated": 20548,
+    "datatype_constraints": 1354,
+    "violations": 0
+  },
+  "public_shards": {
+    "files": 84,
+    "maximum_compressed_bytes": 1780301,
+    "total_compressed_bytes": 10055720,
+    "by_table": {
+      "farms": {
+        "uncompressed": 2032725,
+        "compressed": 178866
+      },
+      "ponds": {
+        "uncompressed": 6277245,
+        "compressed": 568536
+      },
+      "species": {
+        "uncompressed": 1232819,
+        "compressed": 106390
+      },
+      "cohorts": {
+        "uncompressed": 2304065,
+        "compressed": 222757
+      },
+      "pond_cohort_occupancy": {
+        "uncompressed": 137323,
+        "compressed": 4836
+      },
+      "stocking_events": {
+        "uncompressed": 214352,
+        "compressed": 9573
+      },
+      "transfer_events": {
+        "uncompressed": 15643,
+        "compressed": 2727
+      },
+      "transfer_allocations": {
+        "uncompressed": 26588,
+        "compressed": 2787
+      },
+      "mortality_events": {
+        "uncompressed": 1741004,
+        "compressed": 57728
+      },
+      "disposal_events": {
+        "uncompressed": 598883,
+        "compressed": 20731
+      },
+      "fish_daily_balance": {
+        "uncompressed": 6549338,
+        "compressed": 159309
+      },
+      "feeding_events": {
+        "uncompressed": 34876734,
+        "compressed": 998464
+      },
+      "products": {
+        "uncompressed": 1029275,
+        "compressed": 88012
+      },
+      "partners": {
+        "uncompressed": 525291,
+        "compressed": 45552
+      },
+      "purchases": {
+        "uncompressed": 257763,
+        "compressed": 7300
+      },
+      "purchase_items": {
+        "uncompressed": 278913,
+        "compressed": 8861
+      },
+      "inventory_movements": {
+        "uncompressed": 6252065,
+        "compressed": 162422
+      },
+      "opening_balances": {
+        "uncompressed": 38974,
+        "compressed": 2588
+      },
+      "harvests": {
+        "uncompressed": 393573,
+        "compressed": 13281
+      },
+      "harvest_grade_items": {
+        "uncompressed": 196322,
+        "compressed": 8674
+      },
+      "sales": {
+        "uncompressed": 124265,
+        "compressed": 6368
+      },
+      "sale_items": {
+        "uncompressed": 181826,
+        "compressed": 6262
+      },
+      "harvest_sale_allocations": {
+        "uncompressed": 157677,
+        "compressed": 6555
+      },
+      "settlements": {
+        "uncompressed": 100582,
+        "compressed": 5095
+      },
+      "settlement_deductions": {
+        "uncompressed": 166307,
+        "compressed": 5230
+      },
+      "cash_transactions": {
+        "uncompressed": 536845,
+        "compressed": 13546
+      },
+      "cash_allocations": {
+        "uncompressed": 294523,
+        "compressed": 9519
+      },
+      "cost_entries": {
+        "uncompressed": 11848330,
+        "compressed": 302641
+      },
+      "cost_allocations": {
+        "uncompressed": 5258225,
+        "compressed": 130258
+      },
+      "inventory_lot_status": {
+        "uncompressed": 313235,
+        "compressed": 8298
+      },
+      "weather_observations": {
+        "uncompressed": 35339799,
+        "compressed": 991817
+      },
+      "devices": {
+        "uncompressed": 4414449,
+        "compressed": 389564
+      },
+      "device_installations": {
+        "uncompressed": 86866,
+        "compressed": 4089
+      },
+      "device_calibrations": {
+        "uncompressed": 32718,
+        "compressed": 2056
+      },
+      "pond_preparations": {
+        "uncompressed": 46709,
+        "compressed": 3187
+      },
+      "water_observations": {
+        "uncompressed": 55411787,
+        "compressed": 1780301
+      },
+      "patrol_events": {
+        "uncompressed": 7806420,
+        "compressed": 237506
+      },
+      "device_operations": {
+        "uncompressed": 2169786,
+        "compressed": 89841
+      },
+      "control_commands": {
+        "uncompressed": 2041281,
+        "compressed": 64284
+      },
+      "water_samples": {
+        "uncompressed": 1076637,
+        "compressed": 46795
+      },
+      "water_test_results": {
+        "uncompressed": 1619573,
+        "compressed": 43520
+      },
+      "water_operations": {
+        "uncompressed": 63914,
+        "compressed": 3680
+      },
+      "device_maintenance": {
+        "uncompressed": 28000,
+        "compressed": 2158
+      },
+      "growth_individuals": {
+        "uncompressed": 596036,
+        "compressed": 19566
+      },
+      "growth_samples": {
+        "uncompressed": 644077,
+        "compressed": 26684
+      },
+      "growth_grade_items": {
+        "uncompressed": 35177,
+        "compressed": 2432
+      },
+      "health_cases": {
+        "uncompressed": 24093,
+        "compressed": 2771
+      },
+      "case_observations": {
+        "uncompressed": 10412,
+        "compressed": 1384
+      },
+      "diagnostic_tests": {
+        "uncompressed": 11983,
+        "compressed": 1498
+      },
+      "treatment_events": {
+        "uncompressed": 34148,
+        "compressed": 2822
+      },
+      "price_observations": {
+        "uncompressed": 5259915,
+        "compressed": 98632
+      },
+      "dictionaries": {
+        "uncompressed": 72366,
+        "compressed": 3609
+      },
+      "pond_maintenance": {
+        "uncompressed": 26476,
+        "compressed": 2473
+      },
+      "persons": {
+        "uncompressed": 4720763,
+        "compressed": 401846
+      },
+      "sources": {
+        "uncompressed": 2833216,
+        "compressed": 223425
+      },
+      "production_plans": {
+        "uncompressed": 10992,
+        "compressed": 1956
+      },
+      "event_registry": {
+        "uncompressed": 4045924,
+        "compressed": 157834
+      },
+      "attachments": {
+        "uncompressed": 827055,
+        "compressed": 23286
+      },
+      "attachment_links": {
+        "uncompressed": 50522,
+        "compressed": 3433
+      },
+      "media_annotations": {
+        "uncompressed": 54181,
+        "compressed": 2880
+      },
+      "documents": {
+        "uncompressed": 165482,
+        "compressed": 7503
+      },
+      "document_versions": {
+        "uncompressed": 164674,
+        "compressed": 7659
+      },
+      "spatial_layer_registry": {
+        "uncompressed": 116848,
+        "compressed": 5328
+      },
+      "record_provenance": {
+        "uncompressed": 316,
+        "compressed": 228
+      },
+      "map_bare": {
+        "uncompressed": 26262,
+        "compressed": 2808
+      },
+      "map_channel": {
+        "uncompressed": 91728,
+        "compressed": 6300
+      },
+      "map_facility": {
+        "uncompressed": 191158,
+        "compressed": 6705
+      },
+      "map_field": {
+        "uncompressed": 1354616,
+        "compressed": 67132
+      },
+      "map_lake": {
+        "uncompressed": 43448,
+        "compressed": 18816
+      },
+      "map_layer": {
+        "uncompressed": 134398,
+        "compressed": 6941
+      },
+      "map_pond": {
+        "uncompressed": 6918003,
+        "compressed": 975994
+      },
+      "map_road": {
+        "uncompressed": 337311,
+        "compressed": 14334
+      },
+      "map_settlement": {
+        "uncompressed": 88883,
+        "compressed": 7654
+      },
+      "map_unresolved_label": {
+        "uncompressed": 9560,
+        "compressed": 2371
+      },
+      "map_woodland": {
+        "uncompressed": 77495,
+        "compressed": 4098
+      },
+      "drawing_documentstatement": {
+        "uncompressed": 6122624,
+        "compressed": 334047
+      },
+      "drawing_engineeringasset": {
+        "uncompressed": 257533,
+        "compressed": 17139
+      },
+      "drawing_measurement": {
+        "uncompressed": 11685562,
+        "compressed": 449450
+      },
+      "drawing_sourcedrawing": {
+        "uncompressed": 1477456,
+        "compressed": 142380
+      },
+      "drawing_pond": {
+        "uncompressed": 131035,
+        "compressed": 9388
+      },
+      "drawing_field": {
+        "uncompressed": 719611,
+        "compressed": 48732
+      },
+      "drawing_project": {
+        "uncompressed": 284734,
+        "compressed": 28122
+      },
+      "drawing_region": {
+        "uncompressed": 100313,
+        "compressed": 9861
+      },
+      "drawing_engineeringitem": {
+        "uncompressed": 1565404,
+        "compressed": 84235
+      }
+    }
+  },
+  "navigation": {
+    "instances": 27135,
+    "relations": 79069,
+    "resolved_relations": 79002,
+    "classes": 112,
+    "source_classes": 84,
+    "triples": 2720969,
+    "map_objects": 284,
+    "map_layers": 6,
+    "demo_assignments": 10495,
+    "demo_activity_links": 10475,
+    "demo_profile_links": 20,
+    "drawing_instances": 6297,
+    "drawing_measurements": 3202,
+    "drawing_relations": 10279,
+    "drawing_map_bridges": 163
+  },
+  "data_nature": "synthetic; weather imported_unverified",
+  "raw_payload_public": false,
+  "raw_retained_in_local_rdf": true,
+  "seconds": 152.42,
+  "checked_at": "2026-11-04T11:38:14.110481+00:00",
+  "drawing": {
+    "graph_iri": "urn:lzo:fish-review:drawing:v1:graph:de36daf408f9c7f9d0238705366e827053543393d344a8ca74517c1d49e2d5a1",
+    "bundle_sha256": "0b9186834e81677a9b147634888df96e30a7a12a88625ecf4b9ea4e5abb63661",
+    "triple_count": 392523,
+    "all_triples_readback": "passed",
+    "unexpected_or_missing_triples": 0,
+    "sparql": {
+      "instances": 6297,
+      "drawing_relations": 10279,
+      "measurements": 3202,
+      "evidence_bridges": 163,
+      "missing_inverse": 0,
+      "orphan_targets": 0
+    },
+    "preexisting_graphs_unchanged": true,
+    "preexisting_graph_count": 971,
+    "existing_graph_reused": false,
+    "navigation_relations_with_bridges": 10442
+  },
+  "drawing_verified_at": "2026-11-04T11:42:25.877036+00:00"
+}

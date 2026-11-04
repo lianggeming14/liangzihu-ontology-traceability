@@ -1,4 +1,4 @@
-name: Check ontology database repository
+name: Check ontology review repository
 
 on:
   push:
@@ -12,8 +12,38 @@ permissions:
 jobs:
   review-entry:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: ontology-platform
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-      - name: Check sample entries, field coverage and repository layout
-        run: python3 ontology-platform/scripts/check_repository_layout.py
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: ontology-platform/scripts/requirements-ontology-review.txt
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+      - name: Install only the ontology review dependencies
+        run: python -m pip install -r scripts/requirements-ontology-review.txt
+      - name: Check SQL audit, RDF snapshots, navigation and published entries
+        run: python scripts/check_repository_layout.py
+      - name: Test RDF projection, provenance and explicit demo relationships
+        run: |
+          python scripts/check_fish_rdf_sample.py
+          python scripts/check_fish_map_rdf.py
+          python scripts/check_fish_demo_rdf.py
+          python scripts/check_fish_drawing_rdf.py
+      - name: Test read-only ontology HTTP routes without external services
+        run: python scripts/check_ontology_review_server.py
+      - name: Test source map preparation and identity boundaries
+        run: python -m unittest discover -s tests/scripts -p 'test_prepare_farm_map.py' -v
+      - name: Test ontology navigation model on Node 24
+        run: node --test docs/fish/ontology-review/model.test.mjs
+      # PostgreSQL/Jena imports, live-SPARQL checks and browser acceptance are
+      # separately recorded local evidence. CI starts none of those services.

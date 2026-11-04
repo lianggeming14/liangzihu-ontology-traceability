@@ -1,0 +1,61 @@
+{
+  "contract": "fish-ontology-browser-readback/1",
+  "checked_at": "2026-11-04T13:33:16.467Z",
+  "source": "actual 4-graph manifest and 84 published gzip shards",
+  "database_writes": false,
+  "checks": {
+    "boot": true,
+    "hierarchy_to_instances": true,
+    "relation_and_back": true,
+    "map_layers": [
+      {
+        "id": "full",
+        "features": 122
+      },
+      {
+        "id": "detail-miaoxia",
+        "features": 38
+      },
+      {
+        "id": "detail-xinwumao",
+        "features": 49
+      },
+      {
+        "id": "detail-zhangjia",
+        "features": 16
+      },
+      {
+        "id": "detail-tanshen",
+        "features": 9
+      },
+      {
+        "id": "detail-abcdef",
+        "features": 51
+      }
+    ],
+    "map_to_real_pond": "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15",
+    "demo_to_source": true,
+    "demo_pagination": true,
+    "map_to_drawing_to_measurement": {
+      "map": "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15",
+      "profile": "urn:lzo:fish-review:drawing:v1:instance:42bddc65-71a1-4d2d-8781-271436aeacf7",
+      "measurement": "urn:lzo:fish-review:drawing:v1:instance:5fa25cbd-cb12-525e-9301-e4a7a3b80b42"
+    },
+    "measurement_units": true,
+    "live_offset_pagination": true,
+    "live_rdf": true,
+    "mobile_no_overflow": true,
+    "offline_verified_snapshot": true
+  },
+  "screenshots": [
+    "screenshots/desktop-overview.png",
+    "screenshots/desktop-map.png",
+    "screenshots/desktop-demo.png",
+    "screenshots/desktop-measurement.png",
+    "screenshots/mobile-overview.png",
+    "screenshots/mobile-object.png",
+    "screenshots/mobile-map.png"
+  ],
+  "javascript_errors": [],
+  "status": "passed"
+}

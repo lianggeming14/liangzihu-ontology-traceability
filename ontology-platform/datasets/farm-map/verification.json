@@ -1,0 +1,176 @@
+{
+  "schema_version": "farm-map-verification/1",
+  "checked_at": "2026-11-04T11:27:26.412234+00:00",
+  "source_commit": "e08e80ce4c80ce65051ef93f1247e8797d8781f1",
+  "source_input_hashes": {
+    "status": "passed",
+    "files": [
+      "README.md",
+      "THIRD_PARTY_NOTICES.md",
+      "data/audit/entity-mapping.json",
+      "data/spatial/drawing-entities.json",
+      "data/spatial/full-region-enrichment.json",
+      "docs/data-gaps.md",
+      "docs/model-methodology.md",
+      "public/models/manifest.json"
+    ],
+    "count": 8
+  },
+  "derived_output_hashes": {
+    "status": "passed",
+    "count": 10
+  },
+  "geometry_validity": {
+    "status": "passed",
+    "engine": "Shapely 2.1.2",
+    "features": 285,
+    "invalid": []
+  },
+  "svg_xml": {
+    "status": "passed",
+    "layers": 6,
+    "feature_elements": 285
+  },
+  "existing_drawings_equivalence": {
+    "source_ids": 163,
+    "geometry_exact_matches": 163,
+    "upstream_uuid_matches": 163
+  },
+  "review_identity_count": 284,
+  "layer_counts": [
+    {
+      "layer": "full",
+      "features": 122,
+      "coordinate_space": "LOCAL_IMAGE_APPROX",
+      "units": "reference_image_pixel"
+    },
+    {
+      "layer": "detail-miaoxia",
+      "features": 38,
+      "coordinate_space": "PDF_LANDSCAPE_LOCAL",
+      "units": "pt"
+    },
+    {
+      "layer": "detail-xinwumao",
+      "features": 49,
+      "coordinate_space": "PDF_LANDSCAPE_LOCAL",
+      "units": "pt"
+    },
+    {
+      "layer": "detail-zhangjia",
+      "features": 16,
+      "coordinate_space": "PDF_LANDSCAPE_LOCAL",
+      "units": "pt"
+    },
+    {
+      "layer": "detail-tanshen",
+      "features": 9,
+      "coordinate_space": "PDF_LANDSCAPE_LOCAL",
+      "units": "pt"
+    },
+    {
+      "layer": "detail-abcdef",
+      "features": 51,
+      "coordinate_space": "PDF_LANDSCAPE_LOCAL",
+      "units": "pt"
+    }
+  ],
+  "unit_tests": {
+    "command": "python -B -m unittest discover -s tests/scripts -p test_prepare_farm_map.py -v",
+    "passed": 6,
+    "failed": 0,
+    "database_connections": 0
+  },
+  "data_nature": "imported_unverified",
+  "georeferenced": false,
+  "rfc7946": false,
+  "surveyed_depth_or_volume_added": false,
+  "upstream_modified": false,
+  "database_writes": 0,
+  "ui_visual_acceptance": "pending_separate_UI_review",
+  "rdf_projection_local": {
+    "status": "passed",
+    "engine": "rdflib in-memory Graph",
+    "unique_triples": 18546,
+    "duplicate_yielded_triples": 0,
+    "spatial_object_iris_and_classes_matched": 284,
+    "layer_instances": 6,
+    "source_classes": 11,
+    "concepts": 22,
+    "forward_and_inverse_layer_navigation": 284,
+    "jena_readback": "passed_separate_cross_check"
+  },
+  "rdf_unit_tests": {
+    "command": "python -B scripts/check_fish_map_rdf.py -v",
+    "passed": 6,
+    "failed": 0
+  },
+  "related_sample_rdf_regression": {
+    "command": "python -B scripts/check_fish_rdf_sample.py -q",
+    "passed": 12,
+    "failed": 0
+  },
+  "original_source_byte_equivalence": {
+    "status": "passed",
+    "fixed_commit": "e08e80ce4c80ce65051ef93f1247e8797d8781f1",
+    "method": "Local bytes matched GitHub pinned-commit file metadata and source-declared SHA-256. No originals copied.",
+    "count": 6,
+    "files": [
+      {
+        "path": "参考图/卫星图.png",
+        "bytes": 6463123,
+        "git_blob_sha1": "8d6ee9f86246dd9c245f0c3118c3443c6f08e033",
+        "sha256": "99217e959c5e448d376ff448c4ce00c6abd4065a1243ccbb0af9e2403b22189a",
+        "republished": false
+      },
+      {
+        "path": "现场竣工图pdf版本/2026.4.16竣工图（庙下流）.pdf",
+        "bytes": 2659595,
+        "git_blob_sha1": "3c9edb2605287658466b3acccd3a122f3095e023",
+        "sha256": "9258ee26b29860579c900aeb1dbf3a4ca6d2cef6c02ec2d317e3349f4157c91a",
+        "republished": false
+      },
+      {
+        "path": "现场竣工图pdf版本/2026.4.16竣工图（新屋湾、毛家湾）.pdf",
+        "bytes": 2352795,
+        "git_blob_sha1": "96485100cf14ec2dab785330390bea8f3d274da3",
+        "sha256": "56847eb506216516e30e0ad5a33d3550d905ed9a9dd923456bbbd899c376c5ef",
+        "republished": false
+      },
+      {
+        "path": "现场竣工图pdf版本/2026.8.10竣工图（张家湾）.pdf",
+        "bytes": 2258009,
+        "git_blob_sha1": "4db42280d197833a6df3833ef82929a3d6a5c0e1",
+        "sha256": "2c1f84927f1d4ff3678aed2804569e43b9272f95744c5364696a857d640edd6d",
+        "republished": false
+      },
+      {
+        "path": "现场竣工图pdf版本/2026.8.10竣工图（谭湾沈湾）.pdf",
+        "bytes": 3458409,
+        "git_blob_sha1": "5fd2387b26dca880eb497c47da9eafeced3d230e",
+        "sha256": "0805f1a484b099ed69c6fc0056420a645d6fa2fb09bae03cdca486fe0976a0d0",
+        "republished": false
+      },
+      {
+        "path": "现场竣工图pdf版本/ABCDEFD区竣工图.pdf",
+        "bytes": 2424209,
+        "git_blob_sha1": "7e057302defbd2de3a8edd4c3b7d5a0c56a9e0d4",
+        "sha256": "5345f24a15514dd14dd64ee58d62abdfb3f8874126c6a82a7f2860397da1e55d",
+        "republished": false
+      }
+    ]
+  },
+  "jena_cross_check": {
+    "status": "passed",
+    "checked_at": "2026-11-04T11:39:56.938189+00:00",
+    "graph_iri": "urn:lzo:fish-review:map:v1:graph:a485fe9015e4460ea0ccffc4f7bb467a53aa903139fd188e042649286bff469a",
+    "method": "Direct read-only SPARQL against the exact verified map graph; every source object IRI/class/nature/coordinate_space/parent matched. Public gzip navigation additionally matched every geometry and upstream source identity.",
+    "map_object_iris_matched": 284,
+    "layer_instances": 6,
+    "instances_returned": 290,
+    "paired_forward_inverse_layer_relationships": 284,
+    "public_snapshot_geometry_and_source_identity_matches": 284,
+    "source_class_shards": 11,
+    "database_writes": 0
+  }
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153e35">
+  <title>梁子湖 · 本体浏览器</title>
+  <link rel="stylesheet" href="assets.css">
+</head>
+<body>
+  <header class="app-header">
+    <a class="brand" href="#view=home" aria-label="梁子湖本体浏览器首页"><span class="brand-symbol" aria-hidden="true">◈</span><span>梁子湖<small>本体浏览器</small></span></a>
+    <nav class="view-switch" aria-label="浏览视图"><a href="#view=home" data-view="ontology">本体目录</a><a href="#view=map" data-view="map">空间地图</a></nav>
+    <span class="review-status"><span></span>审阅快照</span>
+  </header>
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebar" aria-label="本体层级">
+      <div class="sidebar-heading"><span>本体目录</span><button id="close-tree" class="icon-button mobile-only" aria-label="关闭目录">×</button></div>
+      <a class="tree-home" href="#view=home"><span aria-hidden="true">▦</span> 总览</a>
+      <nav id="concept-tree" aria-label="概念树"><p class="loading-label">正在读取本体图谱…</p></nav>
+      <div class="sidebar-foot"><span class="small-dot"></span><span id="graph-status">读取 RDF 快照</span><p>从本体类型进入对象，<br>沿关系追溯对应信息。</p></div>
+    </aside>
+    <main id="main" tabindex="-1">
+      <div class="content-toolbar"><button id="open-tree" class="text-button mobile-only">☰ 本体目录</button><nav id="breadcrumbs" aria-label="当前位置"></nav><button id="go-back" class="text-button" hidden>← 返回</button></div>
+      <div id="content" aria-live="polite"><section class="empty-state"><span class="loader"></span><h1>正在打开本体图谱</h1><p>读取已验证的分类与实例快照。</p></section></div>
+    </main>
+  </div>
+  <div id="tree-shade" class="tree-shade" hidden></div>
+  <script type="module" src="assets.js"></script>
+</body>
+</html>
