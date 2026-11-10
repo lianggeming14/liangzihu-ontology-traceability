@@ -1,0 +1,87 @@
+{
+  "contract": "fish-csv-browser-readback/1",
+  "checked_at": "2026-11-09T16:37:00.880Z",
+  "source": "published full CSV snapshots and preserved legacy shards",
+  "data_nature": {
+    "record_nature": "synthetic",
+    "source_origin_kind": "revised_rule_simulation",
+    "field_acceptance": false
+  },
+  "database_writes": false,
+  "checks": {
+    "home_source_note": true,
+    "hierarchy_click_path": [
+      {
+        "iri": "https://w3id.org/lzo/ontology/BusinessEntity",
+        "label": "业务对象"
+      },
+      {
+        "iri": "https://w3id.org/lzo/ontology/Aquaculture",
+        "label": "养殖本体"
+      },
+      {
+        "iri": "https://w3id.org/lzo/ontology/Pond",
+        "label": "鱼塘"
+      },
+      {
+        "iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:ponds",
+        "label": "CSV · 塘口"
+      }
+    ],
+    "hierarchy_and_summary_only": true,
+    "exact_detail_and_properties": {
+      "iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:instance:cd37e07e-d5ce-55a8-9c9c-4aaedbdbfb3f",
+      "properties": 23,
+      "detail": "details/csv_ponds/00001.json.gz"
+    },
+    "source_provenance": true,
+    "relation_navigation_back_and_cache": true,
+    "chunk_boundary_400_to_401": true,
+    "final_page": {
+      "page": 2012,
+      "total": 24135
+    },
+    "csv_rdf_snapshot_pagination": true,
+    "legacy_map_layers": [
+      {
+        "id": "full",
+        "features": 122
+      },
+      {
+        "id": "detail-miaoxia",
+        "features": 38
+      },
+      {
+        "id": "detail-xinwumao",
+        "features": 49
+      },
+      {
+        "id": "detail-zhangjia",
+        "features": 16
+      },
+      {
+        "id": "detail-tanshen",
+        "features": 9
+      },
+      {
+        "id": "detail-abcdef",
+        "features": 51
+      }
+    ],
+    "legacy_map_object_and_relations": {
+      "navigation": "visible map object list",
+      "iri": "urn:lzo:fish-review:map:v1:object:SAT-FIELD-001"
+    },
+    "mobile_csv_no_overflow": true,
+    "home_without_csv_preserves_note": true
+  },
+  "screenshots": [
+    "screenshots/desktop-csv-overview.png",
+    "screenshots/desktop-csv-relations.png",
+    "screenshots/desktop-legacy-map.png",
+    "screenshots/desktop-legacy-map-object.png",
+    "screenshots/mobile-csv-relations.png"
+  ],
+  "javascript_errors": [],
+  "status": "passed"
+}

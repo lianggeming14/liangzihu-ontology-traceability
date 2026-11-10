@@ -1,0 +1,484 @@
+{
+  "contract": "csv-batch-model/1",
+  "raw_rows": 153862,
+  "instances": 153862,
+  "relations": 810934,
+  "resolved_relations": 810891,
+  "duplicate_rows": 0,
+  "conflicting_rows": 0,
+  "quarantined_rows": 0,
+  "invalid_typed_cells": 0,
+  "source_tables": 66,
+  "schema_fields": 1397,
+  "tables": {
+    "attachment_links": {
+      "rows": 144,
+      "fields": 6,
+      "statuses": {
+        "accepted": 144
+      }
+    },
+    "attachments": {
+      "rows": 144,
+      "fields": 37,
+      "statuses": {
+        "accepted": 144
+      }
+    },
+    "case_observations": {
+      "rows": 3,
+      "fields": 8,
+      "statuses": {
+        "accepted": 3
+      }
+    },
+    "cash_allocations": {
+      "rows": 310,
+      "fields": 23,
+      "statuses": {
+        "accepted": 310
+      }
+    },
+    "cash_transactions": {
+      "rows": 295,
+      "fields": 24,
+      "statuses": {
+        "accepted": 295
+      }
+    },
+    "cohorts": {
+      "rows": 14,
+      "fields": 23,
+      "statuses": {
+        "accepted": 14
+      }
+    },
+    "control_commands": {
+      "rows": 2190,
+      "fields": 8,
+      "statuses": {
+        "accepted": 2190
+      }
+    },
+    "cost_allocations": {
+      "rows": 4592,
+      "fields": 29,
+      "statuses": {
+        "accepted": 4592
+      }
+    },
+    "cost_entries": {
+      "rows": 4402,
+      "fields": 34,
+      "statuses": {
+        "accepted": 4402
+      }
+    },
+    "device_calibrations": {
+      "rows": 72,
+      "fields": 9,
+      "statuses": {
+        "accepted": 72
+      }
+    },
+    "device_installations": {
+      "rows": 24,
+      "fields": 7,
+      "statuses": {
+        "accepted": 24
+      }
+    },
+    "device_maintenance": {
+      "rows": 6,
+      "fields": 11,
+      "statuses": {
+        "accepted": 6
+      }
+    },
+    "device_operations": {
+      "rows": 2190,
+      "fields": 10,
+      "statuses": {
+        "accepted": 2190
+      }
+    },
+    "devices": {
+      "rows": 24,
+      "fields": 8,
+      "statuses": {
+        "accepted": 24
+      }
+    },
+    "diagnostic_tests": {
+      "rows": 3,
+      "fields": 10,
+      "statuses": {
+        "accepted": 3
+      }
+    },
+    "dictionaries": {
+      "rows": 36,
+      "fields": 5,
+      "statuses": {
+        "accepted": 36
+      }
+    },
+    "disposal_events": {
+      "rows": 235,
+      "fields": 30,
+      "statuses": {
+        "accepted": 235
+      }
+    },
+    "document_versions": {
+      "rows": 24,
+      "fields": 16,
+      "statuses": {
+        "accepted": 24
+      }
+    },
+    "documents": {
+      "rows": 20,
+      "fields": 21,
+      "statuses": {
+        "accepted": 20
+      }
+    },
+    "event_registry": {
+      "rows": 11677,
+      "fields": 6,
+      "statuses": {
+        "accepted": 11677
+      }
+    },
+    "farms": {
+      "rows": 1,
+      "fields": 12,
+      "statuses": {
+        "accepted": 1
+      }
+    },
+    "feeding_events": {
+      "rows": 4111,
+      "fields": 54,
+      "statuses": {
+        "accepted": 4111
+      }
+    },
+    "fish_daily_balance": {
+      "rows": 4098,
+      "fields": 45,
+      "statuses": {
+        "accepted": 4098
+      }
+    },
+    "grade_definitions": {
+      "rows": 4,
+      "fields": 11,
+      "statuses": {
+        "accepted": 4
+      }
+    },
+    "growth_grade_items": {
+      "rows": 156,
+      "fields": 10,
+      "statuses": {
+        "accepted": 156
+      }
+    },
+    "growth_individuals": {
+      "rows": 2340,
+      "fields": 10,
+      "statuses": {
+        "accepted": 2340
+      }
+    },
+    "growth_samples": {
+      "rows": 78,
+      "fields": 32,
+      "statuses": {
+        "accepted": 78
+      }
+    },
+    "harvest_grade_individuals": {
+      "rows": 38691,
+      "fields": 28,
+      "statuses": {
+        "accepted": 38691
+      }
+    },
+    "harvest_grade_items": {
+      "rows": 50,
+      "fields": 31,
+      "statuses": {
+        "accepted": 50
+      }
+    },
+    "harvest_sale_allocations": {
+      "rows": 100,
+      "fields": 28,
+      "statuses": {
+        "accepted": 100
+      }
+    },
+    "harvests": {
+      "rows": 28,
+      "fields": 37,
+      "statuses": {
+        "accepted": 28
+      }
+    },
+    "health_cases": {
+      "rows": 3,
+      "fields": 17,
+      "statuses": {
+        "accepted": 3
+      }
+    },
+    "inventory_lot_status": {
+      "rows": 25,
+      "fields": 33,
+      "statuses": {
+        "accepted": 25
+      }
+    },
+    "inventory_movements": {
+      "rows": 4159,
+      "fields": 37,
+      "statuses": {
+        "accepted": 4159
+      }
+    },
+    "media_annotations": {
+      "rows": 104,
+      "fields": 13,
+      "statuses": {
+        "accepted": 104
+      }
+    },
+    "mortality_events": {
+      "rows": 234,
+      "fields": 28,
+      "statuses": {
+        "accepted": 234
+      }
+    },
+    "opening_balances": {
+      "rows": 4,
+      "fields": 32,
+      "statuses": {
+        "accepted": 4
+      }
+    },
+    "partners": {
+      "rows": 11,
+      "fields": 10,
+      "statuses": {
+        "accepted": 11
+      }
+    },
+    "patrol_events": {
+      "rows": 4380,
+      "fields": 24,
+      "statuses": {
+        "accepted": 4380
+      }
+    },
+    "persons": {
+      "rows": 2,
+      "fields": 4,
+      "statuses": {
+        "accepted": 2
+      }
+    },
+    "pond_cohort_occupancy": {
+      "rows": 14,
+      "fields": 24,
+      "statuses": {
+        "accepted": 14
+      }
+    },
+    "pond_maintenance": {
+      "rows": 6,
+      "fields": 8,
+      "statuses": {
+        "accepted": 6
+      }
+    },
+    "pond_preparations": {
+      "rows": 6,
+      "fields": 18,
+      "statuses": {
+        "accepted": 6
+      }
+    },
+    "ponds": {
+      "rows": 6,
+      "fields": 23,
+      "statuses": {
+        "accepted": 6
+      }
+    },
+    "price_observations": {
+      "rows": 4380,
+      "fields": 28,
+      "statuses": {
+        "accepted": 4380
+      }
+    },
+    "production_plans": {
+      "rows": 1,
+      "fields": 9,
+      "statuses": {
+        "accepted": 1
+      }
+    },
+    "products": {
+      "rows": 4,
+      "fields": 16,
+      "statuses": {
+        "accepted": 4
+      }
+    },
+    "purchase_items": {
+      "rows": 23,
+      "fields": 30,
+      "statuses": {
+        "accepted": 23
+      }
+    },
+    "purchases": {
+      "rows": 23,
+      "fields": 30,
+      "statuses": {
+        "accepted": 23
+      }
+    },
+    "sale_items": {
+      "rows": 14,
+      "fields": 32,
+      "statuses": {
+        "accepted": 14
+      }
+    },
+    "sales": {
+      "rows": 8,
+      "fields": 37,
+      "statuses": {
+        "accepted": 8
+      }
+    },
+    "settlement_deductions": {
+      "rows": 16,
+      "fields": 26,
+      "statuses": {
+        "accepted": 16
+      }
+    },
+    "settlements": {
+      "rows": 8,
+      "fields": 31,
+      "statuses": {
+        "accepted": 8
+      }
+    },
+    "source_registry": {
+      "rows": 65,
+      "fields": 7,
+      "statuses": {
+        "accepted": 65
+      }
+    },
+    "sources": {
+      "rows": 8,
+      "fields": 10,
+      "statuses": {
+        "accepted": 8
+      }
+    },
+    "spatial_layer_registry": {
+      "rows": 16,
+      "fields": 21,
+      "statuses": {
+        "accepted": 16
+      }
+    },
+    "species": {
+      "rows": 2,
+      "fields": 17,
+      "statuses": {
+        "accepted": 2
+      }
+    },
+    "stocking_events": {
+      "rows": 12,
+      "fields": 44,
+      "statuses": {
+        "accepted": 12
+      }
+    },
+    "transfer_allocations": {
+      "rows": 2,
+      "fields": 26,
+      "statuses": {
+        "accepted": 2
+      }
+    },
+    "transfer_events": {
+      "rows": 1,
+      "fields": 33,
+      "statuses": {
+        "accepted": 1
+      }
+    },
+    "treatment_events": {
+      "rows": 3,
+      "fields": 30,
+      "statuses": {
+        "accepted": 3
+      }
+    },
+    "water_observations": {
+      "rows": 52560,
+      "fields": 19,
+      "statuses": {
+        "accepted": 52560
+      }
+    },
+    "water_operations": {
+      "rows": 78,
+      "fields": 15,
+      "statuses": {
+        "accepted": 78
+      }
+    },
+    "water_samples": {
+      "rows": 318,
+      "fields": 9,
+      "statuses": {
+        "accepted": 318
+      }
+    },
+    "water_test_results": {
+      "rows": 2544,
+      "fields": 15,
+      "statuses": {
+        "accepted": 2544
+      }
+    },
+    "weather_observations": {
+      "rows": 8760,
+      "fields": 18,
+      "statuses": {
+        "accepted": 8760
+      }
+    }
+  },
+  "data_nature_counts": {
+    "imported_unverified": 9073,
+    "synthetic": 144789
+  },
+  "original_cells_preserved": true,
+  "formal_adoption": false,
+  "raw_payload_public": false
+}

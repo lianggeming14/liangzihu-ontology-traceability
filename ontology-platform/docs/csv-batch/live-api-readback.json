@@ -1,0 +1,40 @@
+{
+  "contract": "ontology-live-api-readback/1",
+  "status": "passed",
+  "checked_at": "2026-11-09T16:37:14.297728+00:00",
+  "mode": "actual_fuseki_sparql",
+  "database_mutations": 0,
+  "sql_connections": 0,
+  "graphs": [
+    "urn:lzo:fish-review:sample:v1:graph:04891aab2039607015d41575e292a0add57065af3a2037270893cc0f3cd7c4b7:e291446443a45ec8f50220b1cf3c5121d87ba16cf7f85a8e38266d9a92b4a49c",
+    "urn:lzo:fish-review:map:v1:graph:a485fe9015e4460ea0ccffc4f7bb467a53aa903139fd188e042649286bff469a",
+    "urn:lzo:fish-review:demo:v1:graph:ac4039ae72b527fed28703d11a4f9c895aa1882e2f4b6d9929385fba77027322",
+    "urn:lzo:fish-review:drawing:v1:graph:de36daf408f9c7f9d0238705366e827053543393d344a8ca74517c1d49e2d5a1",
+    "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:graph:b1fd6a293a08c41990a328c7dc92489396cad7dc9f9388f03885a316b54d1008"
+  ],
+  "triple_count": 24054860,
+  "checks": {
+    "root_children": 4,
+    "class_scoped_pagination": "passed",
+    "typed_source_pond_depth": "passed",
+    "source_pond_farm_relation": "passed",
+    "actual_map_to_drawing_evidence": "passed",
+    "drawing_to_typed_measurement": "passed",
+    "measurement_inverse": "passed",
+    "demo_profile_separated": "passed",
+    "post_write_rejected": "passed",
+    "csv_leaf_under_shared_pond_ontology": "passed",
+    "csv_class_scoped_pagination": "passed",
+    "csv_depth_matches_exact_verified_snapshot": "passed",
+    "csv_farm_target_stays_in_its_batch": "passed",
+    "csv_high_degree_incoming_pagination": "passed"
+  },
+  "examples": {
+    "source_pond": "urn:lzo:fish-review:sample:v1:instance:04138b9b-f86d-54bc-ade3-4c872e3c0d92",
+    "map_pond": "urn:lzo:fish-review:map:v1:object:DRAW-pdf-01-QING15",
+    "drawing_evidence": "urn:lzo:fish-review:drawing:v1:instance:42bddc65-71a1-4d2d-8781-271436aeacf7",
+    "measurement": "urn:lzo:fish-review:drawing:v1:instance:16a5184c-06ef-5534-87a1-c59f3e03b072",
+    "csv_pond": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:instance:78d37cd0-8ed1-55e3-8ba0-e38b9597a623",
+    "csv_farm": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:instance:d0e8386f-2d75-5b0d-8943-8eb0a0e7709d"
+  }
+}

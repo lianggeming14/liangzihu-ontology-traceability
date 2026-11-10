@@ -70,6 +70,14 @@ def uri(kind, *parts):
     return URIRef(NS + kind + ':' + ':'.join(quote(str(p), safe='') for p in parts))
 
 
+def uri_factory(namespace=NS):
+    """Bind source/instance identifiers to one projection without global state."""
+    namespace = str(namespace)
+    def resource(kind, *parts):
+        return URIRef(namespace + kind + ':' + ':'.join(quote(str(p), safe='') for p in parts))
+    return resource
+
+
 def role(table):
     if table == 'record_provenance': return 'reference'
     if table == 'event_registry': return 'index'
@@ -114,17 +122,26 @@ def triples(subject, **values):
             yield subject, V[key], value if isinstance(value, (URIRef, Literal)) else Literal(value)
 
 
-def project(snapshot):
+def project(snapshot, *, namespace=NS, state=STATE, labels=None, table_domains=None):
     """Yield complete RDF; SQL rows are inputs, never masquerading as RDF nodes."""
+    namespace = str(namespace)
+    V, uri = Namespace(namespace), uri_factory(namespace)
+    source_labels = {**LABELS, **(labels or {})}
+    source_domains = {**TABLE_DOMAINS, **(table_domains or {})}
+    def triples(subject, **values):
+        for key, value in values.items():
+            if value is not None:
+                yield subject, V[key], value if isinstance(value, (URIRef, Literal)) else Literal(value)
     schema, nodes = expanded_schema(snapshot)['tables'], {r['node_id']: r for r in snapshot['nodes']}
     raw = {(r['table_name'], r['row_number']): r for r in snapshot['raw']}
     if len(raw) != len(snapshot['raw']) or len(nodes) != len(snapshot['nodes']):
         raise ValueError('Duplicate physical source or instance identity')
-    dataset = URIRef(NS + 'dataset:' + snapshot['package_sha256'])
+    dataset = URIRef(namespace + 'dataset:' + snapshot['package_sha256'])
     yield dataset, RDF.type, OWL.Ontology
-    yield dataset, RDFS.label, Literal('武昌鱼审查样本本体', lang='zh')
-    yield from triples(dataset, packageSHA256=snapshot['package_sha256'], adoptionStatus=STATE,
-                       sourceSchema='fish_review_10pct_v1', formalAdoption=Literal(False))
+    yield dataset, RDFS.label, Literal(snapshot.get('dataset_label', '武昌鱼审查样本本体'), lang='zh')
+    yield from triples(dataset, packageSHA256=snapshot['package_sha256'], adoptionStatus=state,
+                       sourceSchema=snapshot.get('source_schema', 'fish_review_10pct_v1'),
+                       dataNature=snapshot.get('dataset_nature'), formalAdoption=Literal(False))
     for name, (label, parent) in DOMAINS.items():
         subject = C[name]
         yield subject, RDF.type, OWL.Class
@@ -138,8 +155,8 @@ def project(snapshot):
     for table, spec in schema.items():
         cls = uri('class', table)
         yield cls, RDF.type, OWL.Class
-        yield cls, RDFS.subClassOf, C[TABLE_DOMAINS.get(table, 'ProductionEvent')]
-        yield cls, RDFS.label, Literal(LABELS.get(table, table), lang='zh')
+        yield cls, RDFS.subClassOf, C[source_domains.get(table, 'ProductionEvent')]
+        yield cls, RDFS.label, Literal(source_labels.get(table, table), lang='zh')
         yield from triples(cls, sourceTable=table, conceptRole=role(table))
         for field, desc in spec['columns'].items():
             prop = uri('property', table, field)
@@ -178,7 +195,7 @@ def project(snapshot):
         yield subject, RDFS.label, Literal(str(name))
         yield subject, PROV.wasDerivedFrom, uri('source', table, row['source_row'])
         yield from triples(subject, sourceTable=table, sourcePK=row['source_pk'], sampleUUID=row['node_id'],
-            dataNature=row['nature'], adoptionStatus=STATE, recordRole=row['role'])
+            dataNature=row['nature'], adoptionStatus=state, recordRole=row['role'])
         for field, desc in schema[table]['columns'].items():
             prop, value = uri('property', table, field), row['properties'].get(field)
             if value is None: yield subject, V.missingField, prop
@@ -196,7 +213,7 @@ def project(snapshot):
             yield predicate, RDF.type, OWL.ObjectProperty
             yield predicate, RDFS.domain, uri('class', table)
             if target in schema: yield predicate, RDFS.range, uri('class', target)
-            yield predicate, RDFS.label, Literal(edge['field_name'] + ' → ' + LABELS.get(target, str(target)))
+            yield predicate, RDFS.label, Literal(edge['field_name'] + ' → ' + source_labels.get(target, str(target)))
             yield predicate, OWL.inverseOf, inverse
             yield inverse, RDF.type, OWL.ObjectProperty
             yield inverse, RDFS.range, uri('class', table)
@@ -239,18 +256,21 @@ def triple_digest(s, p, o):
 
 class Navigation:
     """Collect only review-visible RDF from the real Jena readback stream."""
-    def __init__(self):
+    def __init__(self, namespace=NS, state=STATE):
+        self.namespace, self.state = str(namespace), state
+        self.vocabulary = Namespace(self.namespace)
         self.records = defaultdict(lambda: defaultdict(list))
 
     def add(self, subject, predicate, value):
         s, p = str(subject), str(predicate)
-        if not (s.startswith(NS) or s.startswith(str(C))): return
-        if p.startswith(NS + 'raw:'): return  # Raw strings remain in local RDF only.
-        if s.startswith(NS + 'raw:'): return
+        if not (s.startswith(self.namespace) or s.startswith(str(C))): return
+        if p.startswith(self.namespace + 'raw:'): return  # Raw strings remain in local RDF only.
+        if s.startswith(self.namespace + 'raw:'): return
         self.records[s][p].append(value)
 
     def finish(self):
         records = self.records
+        namespace, V = self.namespace, self.vocabulary
         def one(subject, predicate, default=None):
             values = records.get(subject, {}).get(str(predicate), [])
             return str(values[0]) if values else default
@@ -260,7 +280,7 @@ class Navigation:
         concepts, instance_by_iri, tables = {}, {}, {}
         package = None
         for subject, values in records.items():
-            if subject.startswith(NS + 'dataset:'): package = one(subject, V.packageSHA256)
+            if subject.startswith(namespace + 'dataset:'): package = one(subject, V.packageSHA256)
             if OWL.Class in values.get(str(RDF.type), []) and one(subject, V.conceptRole) is not None:
                 table = one(subject, V.sourceTable)
                 concepts[subject] = {'iri': subject, 'label': one(subject, RDFS.label, subject),
@@ -269,13 +289,13 @@ class Navigation:
                     'instances_path': 'classes/' + table + '.json' if table else None}
                 if table: tables[table] = {'contract': 'fish-rdf-review/1', 'class_iri': subject, 'instances': []}
         for subject, values in records.items():
-            if not subject.startswith(NS + 'instance:'): continue
+            if not subject.startswith(namespace + 'instance:'): continue
             cls, table = one(subject, RDF.type), one(subject, V.sourceTable)
             if cls not in concepts or table not in tables: raise ValueError('RDF instance has no declared source class')
             source = one(subject, PROV.wasDerivedFrom)
             props = []
             missing = {str(item) for item in values.get(str(V.missingField), [])}
-            for prop in sorted(set(p for p in values if p.startswith(NS + 'property:')) | missing):
+            for prop in sorted(set(p for p in values if p.startswith(namespace + 'property:')) | missing):
                 field = one(prop, V.sourceField)
                 dtype = one(prop, RDFS.range)
                 actual = values.get(prop, [])
@@ -291,13 +311,13 @@ class Navigation:
                 'provenance': {'source_record_iri': source, 'table': table, 'row_number': integer(source, V.rowNumber),
                     'package_sha256': one(source, V.packageSHA256), 'status': one(source, V.inputStatus),
                     'sample_reason': one(source, V.sampleReason), 'issues': json.loads(one(source, V.issues, '[]'))}}
-            if item['adoption_status'] != STATE: raise ValueError('Unexpected adoption status')
+            if item['adoption_status'] != self.state: raise ValueError('Unexpected adoption status')
             instance_by_iri[subject] = item
             tables[table]['instances'].append(item)
             concepts[cls]['instance_count'] += 1
         relation_count = resolved_count = 0
         for subject in records:
-            if not subject.startswith(NS + 'edge:'): continue
+            if not subject.startswith(namespace + 'edge:'): continue
             relation_count += 1
             source, target = one(subject, RDF.subject), one(subject, RDF.object)
             if source not in instance_by_iri: raise ValueError('Unknown RDF relationship source')
@@ -332,7 +352,7 @@ class Navigation:
             for item in table['instances']:
                 for name in ('outgoing', 'incoming', 'unresolved_relations'):
                     item[name].sort(key=lambda edge: (edge['field'], edge['edge_iri']))
-        manifest = {'contract': 'fish-rdf-review/1', 'namespace': NS, 'root_iri': ROOT_CLASS,
+        manifest = {'contract': 'fish-rdf-review/1', 'namespace': namespace, 'root_iri': ROOT_CLASS,
             'package_sha256': package, 'formal_adoption': False, 'jena_verified': False,
             'counts': {'instances': len(instance_by_iri), 'relations': relation_count,
                 'resolved_relations': resolved_count, 'classes': len(concepts), 'source_classes': len(tables)},

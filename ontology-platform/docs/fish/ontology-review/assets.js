@@ -1,4 +1,4 @@
-import {createCatalog,pageInstances,routeHash,readRoute,relationTarget,demoTarget,propertyUnit,decodeSnapshot,formatValue,natureLabel,instanceNature} from './model.mjs';
+import {createCatalog,pageInstances,routeHash,readRoute,relationTarget,demoTarget,propertyUnit,decodeSnapshot,createSnapshotLoader,relationCount,formatValue,natureLabel,instanceNature,instanceAdoption} from './model.mjs';
 
 const $=id=>document.getElementById(id);
 const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -16,6 +16,7 @@ const badge=(text,tone='')=>`<span class="badge ${tone}">${esc(text)}</span>`;
 let manifest,catalog,renderId=0,currentRoute={view:'home'},currentRows=[],currentClass=null,mapData=null;
 let live={mode:'snapshot',available:false},liveChecked=false;
 const fragments=new Map(),expanded=new Set(),routeHistory=[location.hash||'#view=home'];
+const snapshots=createSnapshotLoader(path=>json('data/'+path));
 
 async function json(path){
   const response=await fetch(path,{credentials:'same-origin'});
@@ -64,8 +65,10 @@ function conceptCard(item,index,child=false){
 function home(){
   breadcrumbs();
   const counts=manifest.counts||{};
+  const hasCsvBatches=Array.isArray(manifest.csv_batches)?manifest.csv_batches.length>0:!!manifest.csv_batches;
+  const sourceIntro=hasCsvBatches?'已接入完整CSV批次；历史审阅样本保留追溯。模拟数据/天气再分析各自标明，不能当实测。':'养殖数据是审阅样本，场景值不等于实测值。';
   const total=counts.instances??catalog.roots.reduce((sum,item)=>sum+(item.total_instance_count||0),0);
-  $('content').innerHTML=`<section class="hero"><div><div class="eyebrow">LIANGZIHU · ONTOLOGY EXPLORER</div><h1>从一个本体，找到它的全部联系。</h1><p>先选择本体分类，再逐层进入子本体与实例。每个对象的属性、关联和证据，都在它自己的信息页中。</p><div class="summary-strip"><span class="summary-stat"><strong>${number(counts.classes??manifest.concepts.length)}</strong> 本体类型</span><span class="summary-stat"><strong>${number(total)}</strong> 对象实例</span><span class="summary-stat"><strong>${number(counts.resolved_relations)}</strong> 已解析关联</span></div></div><div class="hero-illustration" aria-hidden="true"><svg viewBox="0 0 180 140" fill="none"><path d="M90 26v33M90 60H35v32m55-32h55v32M35 92v20m55-52v52m55-20v20" stroke="currentColor" stroke-width="1.5"/><rect x="71" y="6" width="38" height="30" rx="8" fill="#e1ead8" stroke="#bccdaf"/><rect x="19" y="92" width="32" height="31" rx="7" fill="#edf1e7" stroke="#cbd6c0"/><rect x="74" y="92" width="32" height="31" rx="7" fill="#e5eddd" stroke="#c0d0b3"/><rect x="129" y="92" width="32" height="31" rx="7" fill="#edf1e7" stroke="#cbd6c0"/><circle cx="90" cy="21" r="4" fill="#9ab386"/><circle cx="35" cy="107" r="3" fill="#aabb97"/><circle cx="90" cy="107" r="3" fill="#aabb97"/><circle cx="145" cy="107" r="3" fill="#aabb97"/></svg></div></section><div class="section-heading"><h2>选择本体分类</h2><small>分类 → 子本体 → 实例 → 对应信息</small></div><div class="concept-grid">${catalog.top.map((item,index)=>conceptCard(item,index)).join('')}</div><div class="source-note"><span class="note-icon">ⓘ</span><div><strong>数据来源分别保留</strong><br>养殖数据是审阅样本，场景值不等于实测值。总方案与图纸空间对象保留独立来源、坐标说明和证据；缺失测量显示“未提供”。</div></div>`;
+  $('content').innerHTML=`<section class="hero"><div><div class="eyebrow">LIANGZIHU · ONTOLOGY EXPLORER</div><h1>从一个本体，找到它的全部联系。</h1><p>先选择本体分类，再逐层进入子本体与实例。每个对象的属性、关联和证据，都在它自己的信息页中。</p><div class="summary-strip"><span class="summary-stat"><strong>${number(counts.classes??manifest.concepts.length)}</strong> 本体类型</span><span class="summary-stat"><strong>${number(total)}</strong> 对象实例</span><span class="summary-stat"><strong>${number(counts.resolved_relations)}</strong> 已解析关联</span></div></div><div class="hero-illustration" aria-hidden="true"><svg viewBox="0 0 180 140" fill="none"><path d="M90 26v33M90 60H35v32m55-32h55v32M35 92v20m55-52v52m55-20v20" stroke="currentColor" stroke-width="1.5"/><rect x="71" y="6" width="38" height="30" rx="8" fill="#e1ead8" stroke="#bccdaf"/><rect x="19" y="92" width="32" height="31" rx="7" fill="#edf1e7" stroke="#cbd6c0"/><rect x="74" y="92" width="32" height="31" rx="7" fill="#e5eddd" stroke="#c0d0b3"/><rect x="129" y="92" width="32" height="31" rx="7" fill="#edf1e7" stroke="#cbd6c0"/><circle cx="90" cy="21" r="4" fill="#9ab386"/><circle cx="35" cy="107" r="3" fill="#aabb97"/><circle cx="90" cy="107" r="3" fill="#aabb97"/><circle cx="145" cy="107" r="3" fill="#aabb97"/></svg></div></section><div class="section-heading"><h2>选择本体分类</h2><small>分类 → 子本体 → 实例 → 对应信息</small></div><div class="concept-grid">${catalog.top.map((item,index)=>conceptCard(item,index)).join('')}</div><div class="source-note"><span class="note-icon">ⓘ</span><div><strong>数据来源分别保留</strong><br>${sourceIntro}总方案与图纸空间对象保留独立来源、坐标说明和证据；缺失测量显示“未提供”。</div></div>`;
 }
 async function classView(concept,token){
   breadcrumbs(concept);
@@ -81,13 +84,14 @@ async function classView(concept,token){
 function paintInstances(query,page,replace=false){
   const result=pageInstances(currentRows,query,page,12);
   if(replace){currentRoute={...currentRoute,q:query,page:result.page};history.replaceState(null,'',routeHash(currentRoute));routeHistory[routeHistory.length-1]=location.hash;}
-  $('instances-list').innerHTML=result.items.length?`<div class="instance-grid">${result.items.map(row=>`<a class="instance-card" data-instance="${esc(row.iri)}" href="${href({view:'instance',iri:row.iri,class:currentClass.iri})}"><div class="instance-top"><span class="instance-dot"></span><h3>${esc(row.label||row.id)}</h3></div><div class="instance-id">${esc(row.id)}</div>${badge(instanceNature(row),row.nature==='synthetic'?'amber':'blue')}<div class="instance-card-foot"><span>${(row.properties||[]).length} 项属性 · ${(row.outgoing||[]).length+(row.incoming||[]).length} 条关联</span><span>↗</span></div></a>`).join('')}</div>`:'<p class="data-empty">当前本体中没有匹配的实例。</p>';
+  $('instances-list').innerHTML=result.items.length?`<div class="instance-grid">${result.items.map(row=>`<a class="instance-card" data-instance="${esc(row.iri)}" href="${href({view:'instance',iri:row.iri,class:currentClass.iri})}"><div class="instance-top"><span class="instance-dot"></span><h3>${esc(row.label||row.id)}</h3></div><div class="instance-id">${esc(row.id)}</div>${badge(instanceNature(row),row.nature==='synthetic'?'amber':'blue')}<div class="instance-card-foot"><span>${row.detail_path?'属性与关系按需读取':`${(row.properties||[]).length} 项属性 · ${relationCount(row,'outgoing')+relationCount(row,'incoming')} 条关联`}</span><span>↗</span></div></a>`).join('')}</div>`:'<p class="data-empty">当前本体中没有匹配的实例。</p>';
   $('pagination').innerHTML=`<div class="pagination"><button data-action="page" data-page="${result.page-1}" ${result.page<=1?'disabled':''}>← 上一页</button><span>${result.page} / ${result.pages} · 共 ${number(result.total)} 个实例</span><button data-action="page" data-page="${result.page+1}" ${result.page>=result.pages?'disabled':''}>下一页 →</button></div>`;
 }
 function provenanceRows(provenance){
-  const labels={table:'来源记录类型',row_number:'原始行号',package_sha256:'来源包 SHA256',status:'源记录状态',sample_reason:'纳入方式',source_record_iri:'来源记录 IRI',source_repository:'来源仓库',source_commit:'来源提交',source_file:'来源文件'};
-  const reasons={small_table_coverage:'主数据完整保留',status_coverage:'状态分层覆盖',stratified_seed:'10% 分层样本',seed_fill:'确定性抽样',gis_owner:'GIS 要素所属对象',foreign_key_dependency:'关联完整性补入'};
-  return Object.entries(labels).filter(([key])=>provenance?.[key]!==undefined&&provenance[key]!==null).map(([key,label])=>`<dt>${label}</dt><dd class="${key.includes('sha256')||key.includes('iri')?'mono':''}">${esc(key==='sample_reason'?reasons[provenance[key]]||provenance[key]:formatValue(provenance[key]))}</dd>`).join('');
+  const labels={table:'来源记录类型',row_number:'原始行号',csv_line_end:'CSV 记录结束行',batch_id:'导入批次',package_sha256:'来源包 SHA256',source_sha256:'来源文件 SHA256',source_file_sha256:'来源文件 SHA256',source_origin_kind:'来源生成方式',status:'源记录状态',sample_reason:'纳入方式',source_record_iri:'来源记录 IRI',source_repository:'来源仓库',source_commit:'来源提交',source_file:'来源文件'};
+  const reasons={small_table_coverage:'主数据完整保留',status_coverage:'状态分层覆盖',stratified_seed:'10% 分层样本',seed_fill:'确定性抽样',gis_owner:'GIS 要素所属对象',foreign_key_dependency:'关联完整性补入',full_csv_import:'完整 CSV 导入',full_source_table:'来源表完整保留',full_csv_batch:'完整 CSV 批次'};
+  const origins={revised_rule_simulation:'规则模拟',weather_reanalysis:'天气再分析',reused_format_asset_catalog:'复用格式资产目录',batch_source_registry:'批次来源注册'};
+  return Object.entries(labels).filter(([key])=>provenance?.[key]!==undefined&&provenance[key]!==null).map(([key,label])=>`<dt>${label}</dt><dd class="${key.includes('sha256')||key.includes('iri')?'mono':''}">${esc(key==='sample_reason'?reasons[provenance[key]]||provenance[key]:key==='source_origin_kind'?origins[provenance[key]]||provenance[key]:formatValue(provenance[key]))}</dd>`).join('');
 }
 function propertyPanel(row){
   const fields=[...(row.properties||[])];
@@ -96,11 +100,13 @@ function propertyPanel(row){
   fields.sort((a,b)=>priority(a)-priority(b));
   return `${scenario?'<div class="map-warning">此记录为场景估算，未正式采用，不是现场实测值。</div>':''}<div class="property-filter"><span>${fields.length} 项来源属性 · 保留原始精度</span></div><dl class="property-list">${fields.map(property=>`<div class="property-row"><dt>${esc(property.label||property.field)}</dt><dd><span class="property-value">${esc(formatValue(property.value))}</span>${propertyUnit(property,fields)?`<span class="property-unit">${esc(propertyUnit(property,fields))}</span>`:''}<div class="property-meta">${badge(natureLabel(property.value===null?'missing':property.nature||row.nature),property.value===null?'gray':row.nature==='synthetic'?'amber':'')}<span>${esc(property.field||'')}</span></div></dd></div>`).join('')}</dl>${fields.length?'':'<p class="data-empty">当前对象没有已提供的属性值。</p>'}<p class="panel-note">数值性质由来源记录给出。未提供的长度、水深等信息保持为空，不使用其他对象的数据补全。</p>`;
 }
-function relationsPanel(row){
+async function relationsPanel(row){
+  const directions=['outgoing','incoming'];
+  const pages=await Promise.all(directions.map(direction=>snapshots.relations(row,direction,Number(currentRoute[direction+'Page'])||1,12)));
   let sections='';
-  for(const direction of ['outgoing','incoming']){
-    const all=row[direction]||[],page=pageInstances(all,'',Number(currentRoute[direction+'Page'])||1,12);
-    sections+=`<section class="relation-section"><h3 class="relation-heading"><span>${direction==='outgoing'?'这个对象关联到':'关联到这个对象'}</span><span>${number(all.length)} 条</span></h3>${page.items.map(edge=>{
+  for(const [index,direction] of directions.entries()){
+    const page=pages[index];
+    sections+=`<section class="relation-section"><h3 class="relation-heading"><span>${direction==='outgoing'?'这个对象关联到':'关联到这个对象'}</span><span>${number(page.total)} 条</span></h3>${page.items.map(edge=>{
       const target=relationTarget(edge,direction),prefix=direction==='outgoing'?'target':'source';
       const contents=`<span class="relation-card-icon">${direction==='outgoing'?'↗':'↙'}</span><div class="relation-card-text"><div class="relation-predicate">${esc(edge.label||edge.field||edge.iri)}</div><strong>${esc(edge[prefix+'_label']||edge[prefix+'_id']||'来源未标注名称')}</strong><small>${esc(edge[prefix+'_id']||'')}</small></div>${badge(catalog.byId.get(edge[prefix+'_class_iri'])?.label||'关联对象')}<span class="card-arrow">›</span>`;
       return target?`<a class="relation-card" data-relation="${esc(target.iri)}" href="${href({view:'instance',...target})}">${contents}</a>`:`<div class="relation-card">${contents}</div>`;
@@ -112,7 +118,7 @@ function relationsPanel(row){
 }
 function evidencePanel(row){
   const provenance=row.provenance||{},issues=provenance.issues||[];
-  return `<article class="evidence-card"><h3>来源记录</h3><dl>${provenanceRows(provenance)}</dl></article><article class="evidence-card"><h3>RDF 身份</h3><dl><dt>对象 IRI</dt><dd class="mono">${esc(row.iri)}</dd><dt>类型 IRI</dt><dd class="mono">${esc(row.class_iri)}</dd><dt>数据性质</dt><dd>${esc(natureLabel(row.nature))}</dd><dt>采用状态</dt><dd>审阅样本，未正式采用</dd></dl></article>${provenance.source_evidence?`<article class="evidence-card"><h3>原图证据</h3><pre class="mono">${esc(JSON.stringify(provenance.source_evidence,null,2))}</pre></article>`:''}${issues.length?`<h3>来源问题保留</h3><ul class="issue-list">${issues.map(issue=>`<li>${esc(JSON.stringify(issue))}</li>`).join('')}</ul>`:'<p class="panel-note">来源位置随对象保留，审阅快照不改写原始证据。</p>'}`;
+  return `<article class="evidence-card"><h3>来源记录</h3><dl>${provenanceRows(provenance)}</dl></article><article class="evidence-card"><h3>RDF 身份</h3><dl><dt>对象 IRI</dt><dd class="mono">${esc(row.iri)}</dd><dt>类型 IRI</dt><dd class="mono">${esc(row.class_iri)}</dd><dt>数据性质</dt><dd>${esc(natureLabel(row.nature))}</dd><dt>采用状态</dt><dd>${esc(instanceAdoption(row).replace(' · ','，'))}</dd></dl></article>${provenance.source_evidence?`<article class="evidence-card"><h3>原图证据</h3><pre class="mono">${esc(JSON.stringify(provenance.source_evidence,null,2))}</pre></article>`:''}${issues.length?`<h3>来源问题保留</h3><ul class="issue-list">${issues.map(issue=>`<li>${esc(JSON.stringify(issue))}</li>`).join('')}</ul>`:'<p class="panel-note">来源位置随对象保留，审阅快照不改写原始证据。</p>'}`;
 }
 function demoPanel(row){
   const all=(row.demo_assignments||[]).filter(edge=>demoTarget(edge));
@@ -127,13 +133,17 @@ function demoPanel(row){
 async function instanceView(concept,token){
   const rows=await instances(concept);
   if(token!==renderId)return;
-  const row=rows.find(item=>item.iri===currentRoute.iri);
-  if(!row){$('content').innerHTML=empty('当前快照没有这个实例','对象未找到，未使用其他记录替代。请返回对应本体查看。');return;}
+  const summary=rows.find(item=>item.iri===currentRoute.iri);
+  if(!summary){$('content').innerHTML=empty('当前快照没有这个实例','对象未找到，未使用其他记录替代。请返回对应本体查看。');return;}
+  const row=await snapshots.detail(summary,concept.iri);
+  if(token!==renderId)return;
   breadcrumbs(concept,row);
   const tab=['properties','relations','evidence','rdf','demo'].includes(currentRoute.tab)?currentRoute.tab:'properties';
   const isMap=row.class_iri.startsWith('urn:lzo:fish-review:map:');
-  const relationCount=(row.outgoing||[]).length+(row.incoming||[]).length;
-  $('content').innerHTML=`<section class="object-header"><div class="eyebrow">${esc(concept.label)} / INSTANCE</div><h1>${esc(row.label||row.id)}</h1><div class="object-meta">${badge(instanceNature(row),row.nature==='synthetic'?'amber':'blue')}${badge('审阅样本 · 未正式采用','gray')}${badge(live.available?'RDF 在线查询':'RDF 回读快照')}<span class="instance-id">${esc(row.id)}</span></div><div class="object-iri">${esc(row.iri)}</div></section><div class="object-panels"><section class="panel"><nav class="tabs" aria-label="对象详情">${[['properties',isMap?'来源资料':'属性',(row.properties||[]).length],['relations','关系',relationCount],['evidence','来源',null],...((row.demo_assignments||[]).length||isMap?[['demo','演示业务',(row.demo_assignments||[]).length]]:[]),['rdf','RDF 证据',null]].map(([key,label,count])=>`<a href="${href({...currentRoute,tab:key})}" class="${tab===key?'active':''}" data-tab="${key}">${label}${count!==null?`<small>${number(count)}</small>`:''}</a>`).join('')}</nav><div class="panel-body" id="object-panel">${tab==='properties'?propertyPanel(row):tab==='relations'?relationsPanel(row):tab==='evidence'?evidencePanel(row):tab==='demo'?demoPanel(row):'<p class="loading-label">正在读取 RDF 证据…</p>'}</div></section><aside class="detail-side"><section class="panel"><div class="panel-heading"><h2>对象归属</h2></div><div class="panel-body"><dl class="source-list"><dt>所属本体</dt><dd><a class="link-text" href="${href({view:'class',iri:concept.iri})}">${esc(concept.label)}</a></dd><dt>来源标识</dt><dd>${esc(row.id)}</dd><dt>已解析关联</dt><dd>${number(relationCount)} 条</dd><dt>来源性质</dt><dd>${esc(natureLabel(row.nature))}</dd></dl><a class="side-action" href="${href({...currentRoute,tab:'relations'})}">沿关系继续查看 →</a></div></section><section class="panel"><div class="panel-heading"><h2>来源定位</h2></div><div class="panel-body"><dl class="source-list">${provenanceRows(row.provenance)}</dl><a class="side-action" href="${href({...currentRoute,tab:'evidence'})}">查看完整证据 →</a></div></section></aside></div>`;
+  const relationTotal=relationCount(row,'outgoing')+relationCount(row,'incoming');
+  const panel=tab==='properties'?propertyPanel(row):tab==='relations'?await relationsPanel(row):tab==='evidence'?evidencePanel(row):tab==='demo'?demoPanel(row):'<p class="loading-label">正在读取 RDF 证据…</p>';
+  if(token!==renderId)return;
+  $('content').innerHTML=`<section class="object-header"><div class="eyebrow">${esc(concept.label)} / INSTANCE</div><h1>${esc(row.label||row.id)}</h1><div class="object-meta">${badge(instanceNature(row),row.nature==='synthetic'?'amber':'blue')}${badge(instanceAdoption(row),'gray')}${badge(live.available?'RDF 在线查询':'RDF 回读快照')}<span class="instance-id">${esc(row.id)}</span></div><div class="object-iri">${esc(row.iri)}</div></section><div class="object-panels"><section class="panel"><nav class="tabs" aria-label="对象详情">${[['properties',isMap?'来源资料':'属性',(row.properties||[]).length],['relations','关系',relationTotal],['evidence','来源',null],...((row.demo_assignments||[]).length||isMap?[['demo','演示业务',(row.demo_assignments||[]).length]]:[]),['rdf','RDF 证据',null]].map(([key,label,count])=>`<a href="${href({...currentRoute,tab:key})}" class="${tab===key?'active':''}" data-tab="${key}">${label}${count!==null?`<small>${number(count)}</small>`:''}</a>`).join('')}</nav><div class="panel-body" id="object-panel">${panel}</div></section><aside class="detail-side"><section class="panel"><div class="panel-heading"><h2>对象归属</h2></div><div class="panel-body"><dl class="source-list"><dt>所属本体</dt><dd><a class="link-text" href="${href({view:'class',iri:concept.iri})}">${esc(concept.label)}</a></dd><dt>来源标识</dt><dd>${esc(row.id)}</dd><dt>已解析关联</dt><dd>${number(relationTotal)} 条</dd><dt>来源性质</dt><dd>${esc(natureLabel(row.nature))}</dd></dl><a class="side-action" href="${href({...currentRoute,tab:'relations'})}">沿关系继续查看 →</a></div></section><section class="panel"><div class="panel-heading"><h2>来源定位</h2></div><div class="panel-body"><dl class="source-list">${provenanceRows(row.provenance)}</dl><a class="side-action" href="${href({...currentRoute,tab:'evidence'})}">查看完整证据 →</a></div></section></aside></div>`;
   if(tab==='rdf') await rdfPanel(row,token);
 }
 async function rdfPanel(row,token){
@@ -147,7 +157,9 @@ async function rdfPanel(row,token){
     $('object-panel').innerHTML=`<div class="source-note" style="margin-top:0">当前内容直接读取本机 Fuseki / SPARQL。${result.truncated?'结果已限量，完整属性与关联可在其他页签查看。':''}</div><h3 class="relation-heading" style="margin-top:22px">当前对象的 RDF 陈述 · ${outgoing.length}</h3><dl class="property-list">${outgoing.map(triple=>`<div class="property-row"><dt>${esc(triple.label||triple.predicate)}<div class="mono">${esc(triple.predicate)}</div></dt><dd>${esc(formatValue(triple.object?.value))}<div class="property-meta">${esc(triple.object?.datatype||triple.object?.type||'')}${triple.object?.lang?' · '+esc(triple.object.lang):''}</div></dd></div>`).join('')}</dl><h3 class="relation-heading" style="margin-top:22px">指向当前对象的 RDF 陈述 · ${incoming.length}</h3>${incoming.map(triple=>`<div class="relation-card"><div class="relation-card-text"><div class="relation-predicate">${esc(triple.label||triple.predicate)}</div><small class="mono">${esc(triple.subject)}</small></div></div>`).join('')||'<p class="data-empty">当前查询没有入向陈述。</p>'}`;
     $('object-panel').insertAdjacentHTML('beforeend',`<div class="pagination"><button data-action="rdf-page" data-direction="rdfOut" data-offset="${result.next_outgoing_offset??0}" ${result.next_outgoing_offset==null?'disabled':''}>更多出向陈述</button><button data-action="rdf-page" data-direction="rdfIn" data-offset="${result.next_incoming_offset??0}" ${result.next_incoming_offset==null?'disabled':''}>更多入向陈述</button></div><p class="panel-note">当前出向起点 ${Number(currentRoute.rdfOut)||0}，入向起点 ${Number(currentRoute.rdfIn)||0}。${result.truncated?'还有未显示的陈述，可分别继续分页。':'当前查询已无未显示陈述。'}</p>`);
   }else{
-    $('object-panel').innerHTML=`<div class="source-note" style="margin-top:0">当前是 RDF 回读快照，未连接实时 SPARQL 服务。以下 IRI 和已解析关系来自发布的本体图谱。</div><article class="evidence-card" style="margin-top:20px"><h3>对象与类型</h3><dl><dt>subject</dt><dd class="mono">${esc(row.iri)}</dd><dt>rdf:type</dt><dd class="mono">${esc(row.class_iri)}</dd></dl></article><h3 class="relation-heading">已解析对象关系</h3>${relationsPanel(row)}`;
+    const relations=await relationsPanel(row);
+    if(token!==renderId)return;
+    $('object-panel').innerHTML=`<div class="source-note" style="margin-top:0">当前是 RDF 回读快照，未连接实时 SPARQL 服务。以下 IRI 和已解析关系来自发布的本体图谱。</div><article class="evidence-card" style="margin-top:20px"><h3>对象与类型</h3><dl><dt>subject</dt><dd class="mono">${esc(row.iri)}</dd><dt>rdf:type</dt><dd class="mono">${esc(row.class_iri)}</dd></dl></article><h3 class="relation-heading">已解析对象关系</h3>${relations}`;
   }
 }
 

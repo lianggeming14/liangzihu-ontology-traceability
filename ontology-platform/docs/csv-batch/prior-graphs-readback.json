@@ -1,0 +1,110 @@
+{
+  "contract": "csv-prior-graphs-readback/1",
+  "status": "passed",
+  "mode": "read_only",
+  "started_at": "2026-11-09T16:08:38.141534+00:00",
+  "jena_endpoint": "http://127.0.0.1:23049/fish_l1",
+  "csv_source_archive_sha256": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+  "rdf_literal_normalization": false,
+  "digest_algorithm": "sha256(concat(sort(unique(sha256(json_rdf_term_triple)))))",
+  "coverage": {
+    "old_manifest_graphs": "complete RDF termset and counts",
+    "all_other_old_graphs": "inventory counts only"
+  },
+  "graphs": [
+    {
+      "graph_iri": "urn:lzo:fish-review:sample:v1:graph:04891aab2039607015d41575e292a0add57065af3a2037270893cc0f3cd7c4b7:e291446443a45ec8f50220b1cf3c5121d87ba16cf7f85a8e38266d9a92b4a49c",
+      "status": "passed",
+      "expected_triples": 2183946,
+      "expected_rdf_termset_sha256": "e291446443a45ec8f50220b1cf3c5121d87ba16cf7f85a8e38266d9a92b4a49c",
+      "baseline_download_sha256": "08f37e1ebba6993ec030b36e3c614bc1f7b829a9b487ef9c76e83e0ee1943d0f",
+      "baseline_download_bytes": 345230835,
+      "sparql_count": 2183946,
+      "download_bytes": 345230835,
+      "download_sha256": "08f37e1ebba6993ec030b36e3c614bc1f7b829a9b487ef9c76e83e0ee1943d0f",
+      "parsed_triples": 2183946,
+      "unique_triples": 2183946,
+      "rdf_termset_sha256": "e291446443a45ec8f50220b1cf3c5121d87ba16cf7f85a8e38266d9a92b4a49c"
+    },
+    {
+      "graph_iri": "urn:lzo:fish-review:map:v1:graph:a485fe9015e4460ea0ccffc4f7bb467a53aa903139fd188e042649286bff469a",
+      "status": "passed",
+      "expected_triples": 18546,
+      "expected_rdf_termset_sha256": "82c01f101995be69e546590279fac9473374825914133050826f0d97bdceb662",
+      "baseline_download_sha256": "a83ae9a4dea830fe311b93c17301884d0d35edaa268b75784665fc190059587b",
+      "baseline_download_bytes": 3909323,
+      "sparql_count": 18546,
+      "download_bytes": 3909323,
+      "download_sha256": "a83ae9a4dea830fe311b93c17301884d0d35edaa268b75784665fc190059587b",
+      "parsed_triples": 18546,
+      "unique_triples": 18546,
+      "rdf_termset_sha256": "82c01f101995be69e546590279fac9473374825914133050826f0d97bdceb662"
+    },
+    {
+      "graph_iri": "urn:lzo:fish-review:demo:v1:graph:ac4039ae72b527fed28703d11a4f9c895aa1882e2f4b6d9929385fba77027322",
+      "status": "passed",
+      "expected_triples": 125954,
+      "expected_rdf_termset_sha256": "64de82d74cbb9e010a68569213657107de50b21e46b5db74f1f895b5718aa281",
+      "baseline_download_sha256": "edfeb5b2123035363f82b4bae7fba0c09c74e9cec8751efb229f22cf416c2735",
+      "baseline_download_bytes": 24725996,
+      "sparql_count": 125954,
+      "download_bytes": 24725996,
+      "download_sha256": "edfeb5b2123035363f82b4bae7fba0c09c74e9cec8751efb229f22cf416c2735",
+      "parsed_triples": 125954,
+      "unique_triples": 125954,
+      "rdf_termset_sha256": "64de82d74cbb9e010a68569213657107de50b21e46b5db74f1f895b5718aa281"
+    },
+    {
+      "graph_iri": "urn:lzo:fish-review:drawing:v1:graph:de36daf408f9c7f9d0238705366e827053543393d344a8ca74517c1d49e2d5a1",
+      "status": "passed",
+      "expected_triples": 392523,
+      "expected_rdf_termset_sha256": "410840247d55e49e5d6ca67ccf8f9a1e365090c28b96f8bcdfdc911880bf36db",
+      "baseline_download_sha256": "0e3eaf4598870b374b2b2080fbc3089a75dadf42b97267661843ecd05b56be7a",
+      "baseline_download_bytes": 75567755,
+      "sparql_count": 392523,
+      "download_bytes": 75567755,
+      "download_sha256": "0e3eaf4598870b374b2b2080fbc3089a75dadf42b97267661843ecd05b56be7a",
+      "parsed_triples": 392523,
+      "unique_triples": 392523,
+      "rdf_termset_sha256": "410840247d55e49e5d6ca67ccf8f9a1e365090c28b96f8bcdfdc911880bf36db"
+    }
+  ],
+  "errors": [],
+  "baseline": {
+    "source_archive_sha256": "04891aab2039607015d41575e292a0add57065af3a2037270893cc0f3cd7c4b7",
+    "reference_report_sha256": "82a9c51ac11571ba5a993042a61264772460b2d7b69d104f0d678abd3063e7d3",
+    "graph_inventory_sha256": "e262358c5954a46c78e1e5d2b194ca2b00b9c8e350a0804ac3b483e6b387c4e6",
+    "old_graph_count": 977,
+    "old_non_review_graph_count": 971,
+    "postgres": {
+      "database": "lzo_gis",
+      "server_port": 25449,
+      "transaction_read_only": "on",
+      "review_raw_records": 20606
+    }
+  },
+  "inventory_before": {
+    "old_graph_count": 977,
+    "old_graph_counts_unchanged": true,
+    "additional_graph_count": 1,
+    "additional_graphs": [
+      {
+        "graph_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:graph:b1fd6a293a08c41990a328c7dc92489396cad7dc9f9388f03885a316b54d1008",
+        "triple_count": 21333891
+      }
+    ]
+  },
+  "inventory_after": {
+    "old_graph_count": 977,
+    "old_graph_counts_unchanged": true,
+    "additional_graph_count": 1,
+    "additional_graphs": [
+      {
+        "graph_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:graph:b1fd6a293a08c41990a328c7dc92489396cad7dc9f9388f03885a316b54d1008",
+        "triple_count": 21333891
+      }
+    ]
+  },
+  "inventory_stable_during_readback": true,
+  "finished_at": "2026-11-09T16:09:36.401577+00:00"
+}

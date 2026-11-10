@@ -1,6 +1,10 @@
 # 本体农场 · 当前源码快照
 
-2026-11-04：当前入口为 **[本体、实例与来源地图](docs/fish/ontology-review/README.md)**。实际 Jena 四图包含 112 个概念、27,135 个可导航实例、2,720,969 条三元组；通过本体层级、对象关系、图纸证据逐级查看。全域及五图保留 284 个来源空间表示，局部坐标尚未地理配准。均分演示关系单列，不覆盖来源归属。原 SQL 样本保留为字段审计；全量正式导入继续等待结构审查。
+2026-11-10：当前入口为 **[66 CSV 完整批次](docs/csv-batch/README.md)** 和 **[本体、实例与来源地图](docs/fish/ontology-review/README.md)**。新批次 153,862 条记录已录入隔离 PostgreSQL schema，72 张表（66 张业务表）及 1,397 个来源字段通过实库全量回读；3,539,134 个原文单元格和对应类型化单元格、810,934 条关系账本均已核对。新 Jena 图 21,333,891 条三元组通过完整术语回读，SHACL 检查 153,862 个实例、1,397 个字段约束且零违规。新导航已激活，合计 5 图、24,054,860 条三元组、178 个概念、150 个叶类、180,997 个实例，完整双向导航零悬空／错类。旧四图 2,720,969 条三元组及 10,495 条独立演示关系继续保留；新批次采用独立身份。实际 Chrome 与独立实时 HTTP → SPARQL 验收均已通过。
+
+新批次主体为规则模拟、天气为再分析、资产为复用目录，数据性质来自 `source_registry`。缺值、未知字段及未解析外键按来源保留，完整录入不构成正式采纳或现场验收。结构和证据见 [schema.sql](docs/csv-batch/schema.sql)、[字段字典](docs/csv-batch/field-dictionary.json)、[质量核验](docs/csv-batch/quality-audit.json)、[PostgreSQL 回读](docs/csv-batch/pg-readback.json)、[旧图保护回读](docs/csv-batch/prior-graphs-readback.json)、[RDF 回读](docs/csv-batch/rdf-readback.json)、[SHACL](docs/csv-batch/shacl-readback.json)、[激活报告](docs/csv-batch/activation-readback.json)、[全导航核验](docs/fish/ontology-review/navigation-readback.json)、[五图实时 API](docs/csv-batch/live-api-readback.json)和[Chrome 报告](docs/fish/ontology-review/csv-browser-report.json)。[CSV 首页截图](docs/fish/ontology-review/screenshots/desktop-csv-overview.png)及报告内其余四张截图来自实际浏览器，零 JavaScript 错误。
+
+仅浏览公开分片时，从本目录运行 `python scripts/serve_ontology_review.py --offline --port 0`，打开终端给出的地址，无需安装依赖或连接数据库。GitHub 的 HTML 文件页显示源码。摘要按类加载，详情每块 500 条，高关联关系每块 4,800 条，界面每页 12 条；新 CSV 分片在完整 RDF 术语集合与 Jena 精确等值核验、SHACL 均通过后，由同一投影模型序列化，旧 84 类直接回读路径保留。CSV 592 个压缩分片共 70,148,120 字节，最大 1,865,203 字节，见[分片摘要](docs/csv-batch/navigation-files.json)。完整库复现需要固定来源、私有连接、本地 PostgreSQL/Fuseki 和旧四图，见[批次复现步骤](docs/csv-batch/README.md#复现与保护旧图)。
 
 2026-10-29 更新：已增加[五份竣工图 GIS 数据与地图接口](docs/gis/drawings.md)，保存田块、塘面、路渠、标注及工程表证据，提供版本化读取API和核对预览。当前仍有OCR逐条校验、背景矢量化和地理配准缺口，不构成无遗漏提取或现场验收。
 

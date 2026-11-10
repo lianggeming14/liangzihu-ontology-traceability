@@ -65,6 +65,60 @@ export async function decodeSnapshot(response){
   if(bytes[0]===31&&bytes[1]===139)return new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).json();
   return JSON.parse(new TextDecoder().decode(bytes));
 }
+function snapshotPath(path,kind){
+  const pattern=kind==='details'?/^details\/[a-z0-9_-]+\/[a-z0-9_-]+\.json\.gz$/i:/^relations\/[a-z0-9_-]+\/[a-z0-9_-]+\/(?:incoming|outgoing)-[0-9]+\.json\.gz$/i;
+  if(typeof path!=='string'||!pattern.test(path))throw Error('实例或关系分片路径无效');
+  return path;
+}
+export function relationCount(row,direction){
+  const count=row[direction+'_count'];
+  return Number.isSafeInteger(count)&&count>=0?count:(row[direction]||[]).length;
+}
+export function createSnapshotLoader(read){
+  const cache=new Map();
+  const chunk=path=>{
+    if(!cache.has(path)){
+      const promise=Promise.resolve().then(()=>read(path));
+      cache.set(path,promise);
+      promise.catch(()=>{if(cache.get(path)===promise)cache.delete(path);});
+    }
+    return cache.get(path);
+  };
+  const checked=async(path,validate)=>{
+    try{const value=await chunk(path);return validate(value);}
+    catch(error){cache.delete(path);throw error;}
+  };
+  return {
+    async detail(summary,classIri){
+      if(!summary.detail_path)return summary;
+      const path=snapshotPath(summary.detail_path,'details');
+      return checked(path,value=>{
+        if(value?.contract!=='fish-rdf-review/1'||value.class_iri!==classIri||summary.class_iri!==classIri||!Array.isArray(value.instances)||value.instances.length>500)throw Error('实例明细分片与本体类型或格式不一致');
+        const matches=value.instances.filter(row=>row.iri===summary.iri);
+        if(matches.length!==1||matches[0].class_iri!==classIri)throw Error('实例明细没有唯一匹配的对象或类型');
+        return matches[0];
+      });
+    },
+    async relations(row,direction,page=1,pageSize=12){
+      if(!['incoming','outgoing'].includes(direction))throw Error('关系方向无效');
+      const paths=row[direction+'_pages'];
+      if(paths===undefined)return pageInstances(row[direction]||[],'',page,pageSize);
+      const total=row[direction+'_count'],chunkSize=row[direction+'_page_size'];
+      if(!Array.isArray(paths)||!Number.isSafeInteger(total)||total<0||!Number.isSafeInteger(chunkSize)||chunkSize<1||!Number.isSafeInteger(pageSize)||pageSize<1||paths.length!==Math.ceil(total/chunkSize))throw Error('关系分页元数据无效');
+      paths.forEach(path=>snapshotPath(path,'relations'));
+      const pages=Math.max(1,Math.ceil(total/pageSize));
+      page=Math.max(1,Math.min(pages,Math.floor(Number(page)||1)));
+      const start=(page-1)*pageSize,end=Math.min(start+pageSize,total),requests=[];
+      for(let index=Math.floor(start/chunkSize);index*chunkSize<end;index++){
+        requests.push(checked(paths[index],value=>{
+          if(value?.contract!=='fish-rdf-relations/1'||value.instance_iri!==row.iri||value.direction!==direction||!Array.isArray(value.edges)||value.edges.length!==Math.min(chunkSize,total-index*chunkSize))throw Error('关系分片与当前对象、方向或数量不一致');
+          return value.edges.slice(Math.max(0,start-index*chunkSize),Math.min(chunkSize,end-index*chunkSize));
+        }));
+      }
+      return {items:(await Promise.all(requests)).flat(),page,pages,total};
+    },
+  };
+}
 export function formatValue(value){
   if(value===null||value===undefined||value==='') return '未提供';
   if(typeof value==='boolean') return value?'是':'否';
@@ -80,4 +134,7 @@ export function instanceNature(row){
   if((row.properties||[]).some(p=>p.field==='reviewStatus'&&p.value==='scenario_only_not_adopted'))return '场景估算 · 未采用';
   if((row.properties||[]).some(p=>p.field==='reviewStatus'&&p.value==='computed_paper_geometry_not_ground_survey'))return '纸面几何计算 · 非实测';
   return natureLabel(row.nature);
+}
+export function instanceAdoption(row){
+  return row.adoption_status==='csv_batch_not_formally_adopted'||row.provenance?.sample_reason==='full_csv_batch'?'完整 CSV 批次 · 未正式采用':'审阅样本 · 未正式采用';
 }

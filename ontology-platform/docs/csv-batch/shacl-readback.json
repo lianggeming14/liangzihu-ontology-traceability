@@ -1,0 +1,409 @@
+{
+  "engine": "pyshacl",
+  "scope": "all canonical instance datatypes/cardinalities and relation target classes; raw source strings excluded",
+  "status": "passed",
+  "classes": [
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:attachment_links",
+      "instances": 144,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:attachments",
+      "instances": 144,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:case_observations",
+      "instances": 3,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:cash_allocations",
+      "instances": 310,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:cash_transactions",
+      "instances": 295,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:cohorts",
+      "instances": 14,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:control_commands",
+      "instances": 2190,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:cost_allocations",
+      "instances": 4592,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:cost_entries",
+      "instances": 4402,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:device_calibrations",
+      "instances": 72,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:device_installations",
+      "instances": 24,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:device_maintenance",
+      "instances": 6,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:device_operations",
+      "instances": 2190,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:devices",
+      "instances": 24,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:diagnostic_tests",
+      "instances": 3,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:dictionaries",
+      "instances": 36,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:disposal_events",
+      "instances": 235,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:document_versions",
+      "instances": 24,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:documents",
+      "instances": 20,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:event_registry",
+      "instances": 11677,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:farms",
+      "instances": 1,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:feeding_events",
+      "instances": 4111,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:fish_daily_balance",
+      "instances": 4098,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:grade_definitions",
+      "instances": 4,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:growth_grade_items",
+      "instances": 156,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:growth_individuals",
+      "instances": 2340,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:growth_samples",
+      "instances": 78,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:harvest_grade_individuals",
+      "instances": 38691,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:harvest_grade_items",
+      "instances": 50,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:harvest_sale_allocations",
+      "instances": 100,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:harvests",
+      "instances": 28,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:health_cases",
+      "instances": 3,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:inventory_lot_status",
+      "instances": 25,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:inventory_movements",
+      "instances": 4159,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:media_annotations",
+      "instances": 104,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:mortality_events",
+      "instances": 234,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:opening_balances",
+      "instances": 4,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:partners",
+      "instances": 11,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:patrol_events",
+      "instances": 4380,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:persons",
+      "instances": 2,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:pond_cohort_occupancy",
+      "instances": 14,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:pond_maintenance",
+      "instances": 6,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:pond_preparations",
+      "instances": 6,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:ponds",
+      "instances": 6,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:price_observations",
+      "instances": 4380,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:production_plans",
+      "instances": 1,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:products",
+      "instances": 4,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:purchase_items",
+      "instances": 23,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:purchases",
+      "instances": 23,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:sale_items",
+      "instances": 14,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:sales",
+      "instances": 8,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:settlement_deductions",
+      "instances": 16,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:settlements",
+      "instances": 8,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:source_registry",
+      "instances": 65,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:sources",
+      "instances": 8,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:spatial_layer_registry",
+      "instances": 16,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:species",
+      "instances": 2,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:stocking_events",
+      "instances": 12,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:transfer_allocations",
+      "instances": 2,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:transfer_events",
+      "instances": 1,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:treatment_events",
+      "instances": 3,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:water_observations",
+      "instances": 52560,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:water_operations",
+      "instances": 78,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:water_samples",
+      "instances": 318,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:water_test_results",
+      "instances": 2544,
+      "conforms": true,
+      "violations": 0
+    },
+    {
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:weather_observations",
+      "instances": 8760,
+      "conforms": true,
+      "violations": 0
+    }
+  ],
+  "instances_validated": 153862,
+  "violations": 0,
+  "datatype_constraints": 1397,
+  "relation_class_constraints": 626,
+  "seconds": 358.75,
+  "input_equality": "Exact canonical RDF view of the projection whose complete termset was verified equal to Jena readback"
+}

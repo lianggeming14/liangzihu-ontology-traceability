@@ -1,0 +1,365 @@
+{
+  "contract": "csv-batch-independent-review/1",
+  "status": "passed",
+  "reviewed_at": "2026-11-09T16:47:44.948557+00:00",
+  "reviewer": "independent delegated read-only implementation reviewer",
+  "baseline_git_commit": "f5337f471d1af64956191a2304c9a6643782144f",
+  "package_sha256": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+  "graph_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:graph:b1fd6a293a08c41990a328c7dc92489396cad7dc9f9388f03885a316b54d1008",
+  "scope": [
+    "Pinned archive and all member identities; CSV-to-canonical typing, stable identities and source provenance",
+    "Create-only PostgreSQL schema isolation and complete row/hash readback implementation and receipts",
+    "New named-graph write restrictions, additive retry ownership and complete RDF termset readback",
+    "SHACL canonical-view equivalence, nonzero instance/field coverage and constraint outcomes",
+    "Public DTO values, summary/detail binding, relation-page ownership and both-direction relation identity",
+    "Preserved old public shards and protected old graph evidence; Chrome, live API and report consistency"
+  ],
+  "review_mutations": {
+    "project_files_created": [
+      "docs/csv-batch/independent-review.json"
+    ],
+    "other_project_files_modified": 0,
+    "database_connections": 0,
+    "database_writes": 0,
+    "rdf_writes": 0,
+    "importers_workers_or_provisioners_run": 0
+  },
+  "direct_independent_checks": [
+    {
+      "check": "source_archive_and_members",
+      "status": "passed",
+      "method": "Standard-library ZIP read, member sizes and SHA-256 checked directly against the published inventory.",
+      "archive_bytes": 2578429,
+      "csv_tables": 66,
+      "source_rows": 153862,
+      "fields": 1397,
+      "member_payloads_published": false
+    },
+    {
+      "check": "published_chunk_bytes",
+      "status": "passed",
+      "files": 592,
+      "compressed_bytes": 70148120,
+      "method": "Independently read every published CSV chunk and compared size/SHA-256 with navigation-files.json; cross-checked hashes with the complete navigation report."
+    },
+    {
+      "check": "source_to_public_dto",
+      "status": "passed",
+      "rows_checked": 153862,
+      "typed_cells_checked": 3539134,
+      "detail_files_checked": 362,
+      "relation_page_envelopes_checked": 164,
+      "method": "Read the original ZIP CSVs directly and independently implemented declared XSD lexical normalization; compared every public property value/type, UUID/IRI, batch/state, source member hash, source row, CSV line end, nature and summary/detail binding. Relation page owner/direction, size and aggregate counts checked. No project mapper or delivery function was invoked.",
+      "data_nature_counts": {
+        "synthetic": 144789,
+        "imported_unverified": 9073
+      },
+      "raw_payload_public": false
+    },
+    {
+      "check": "source_relation_to_public_dto",
+      "status": "passed",
+      "source_relation_records": 810934,
+      "resolved_outgoing_checked": 810891,
+      "inverse_incoming_checked": 810891,
+      "unresolved_preserved": 43,
+      "method": "Reconstructed relations directly from CSV cells plus the explicit relation map in deterministic source order. Checked edge IRI, predicate, source row/list index, resolution and target/source identity and metadata in every outgoing and incoming public relation."
+    },
+    {
+      "check": "old_public_shards",
+      "status": "passed",
+      "old_class_shards_unchanged": 84,
+      "method": "Independently decoded the baseline loose Git commit/tree objects and matched every current old class file to its baseline Git blob SHA-1. The private prior-manifest is semantically equal to the baseline Git manifest; harmless file-ending bytes differ."
+    },
+    {
+      "check": "evidence_binding",
+      "status": "passed",
+      "postgres_table_hash_pairs": 72,
+      "method": "All reported PostgreSQL expected/actual row counts and hashes match with zero mismatches; current schema and relation-map canonical hashes match the stored PG identity. Current RDF generation and verified graph-job metadata match rdf-readback.json. Checked private NT size without rereading/rebuilding it. Activation counts, graphs, prior-manifest hash and current public manifest agree.",
+      "private_nt_size_bytes": 5947183110,
+      "full_nt_rehashed": false
+    },
+    {
+      "check": "browser_artifact_visual_inspection",
+      "status": "passed",
+      "images": [
+        "docs/fish/ontology-review/screenshots/desktop-csv-relations.png",
+        "docs/fish/ontology-review/screenshots/mobile-csv-relations.png"
+      ],
+      "method": "Viewed actual images. Desktop last page shows the expected 24135 incoming relations and page 2012/2012; synthetic/not-formally-adopted status and source location are visible. Mobile layout is readable without visible horizontal overflow."
+    }
+  ],
+  "audited_existing_service_receipts": {
+    "postgres": {
+      "status": "passed",
+      "mode": "actual PostgreSQL complete read-only verify receipt, implementation inspected; no independent fresh connection in this review",
+      "schema": "csv_batch_a4d78be79a83",
+      "tables_checked": 72,
+      "raw_rows": 153862,
+      "original_cells": 3539134,
+      "typed_business_cells": 3539134,
+      "nodes": 153862,
+      "relations": 810934,
+      "resolved_relations": 810891,
+      "unresolved_relations": 43,
+      "schema_structure_matches": true,
+      "source_read_only": true
+    },
+    "rdf": {
+      "status": "passed",
+      "mode": "actual Jena complete termset receipt, exact-term sink and isolated write implementation inspected; full NT not reparsed in this review",
+      "triples": 21333891,
+      "full_terms_equal": true,
+      "unexpected_or_missing_terms": 0,
+      "termset_sha256": "b1fd6a293a08c41990a328c7dc92489396cad7dc9f9388f03885a316b54d1008",
+      "nt_sha256": "c9b250487029affcf0cc464ab37c00d1250c1d473798cfb9eeba4dd22787394f",
+      "missing_inverse": 0,
+      "orphan_targets": 0
+    },
+    "shacl": {
+      "status": "passed",
+      "engine": "pyshacl",
+      "classes": 66,
+      "instances": 153862,
+      "datatype_constraints": 1397,
+      "relation_class_constraints": 626,
+      "violations": 0,
+      "input": "Canonical RDF projection view whose complete termset was proved equal to Jena readback; not a direct second parse of all Jena triples. CanonicalRecords subset equivalence and instance/field completeness guards inspected."
+    },
+    "old_graphs": {
+      "status": "passed",
+      "full_termset_graphs": 4,
+      "full_termset_triples": 2720969,
+      "old_inventory_graphs": 977,
+      "other_non_review_graphs": 971,
+      "coverage": "Four active legacy graph termsets match pre-import baselines. All 977 old nonempty graph counts remain equal. The other old graphs have count-only evidence, not a full termset proof."
+    },
+    "full_navigation": {
+      "status": "passed",
+      "instances": 180997,
+      "concepts": 178,
+      "leaf_classes": 150,
+      "resolved_relations_checked_both_directions": 889893,
+      "unresolved_records": 110,
+      "demo_links_checked_both_directions": 10495,
+      "dangling_links": 0,
+      "type_mismatches": 0,
+      "scope": "Public normalized files; this check is not a fresh Jena query."
+    },
+    "chrome": {
+      "status": "passed",
+      "mode": "Actual Chrome report and screenshots inspected; browser not restarted by this reviewer",
+      "boundary_400_to_401": true,
+      "final_incoming_page": {
+        "page": 2012,
+        "total": 24135
+      },
+      "legacy_map_layers": 6,
+      "javascript_errors": []
+    },
+    "live_api": {
+      "status": "passed",
+      "mode": "actual_fuseki_sparql",
+      "graphs": 5,
+      "triples": 24054860,
+      "sql_connections": 0,
+      "database_mutations": 0,
+      "csv_checks": [
+        "shared ontology leaf",
+        "class-scoped pagination",
+        "typed depth equals verified snapshot",
+        "farm target remains in same batch",
+        "incoming pagination"
+      ],
+      "scope": "Actual local HTTP-to-Fuseki receipt and query implementation inspected; endpoint not requeried in this review."
+    }
+  },
+  "previous_findings_closed": [
+    {
+      "severity": "minor",
+      "issue": "Same-length digest cache corruption detected too late",
+      "resolution": "read_inventory now validates SHA-256 before graph I/O; corruption regression added.",
+      "files": [
+        "scripts/build_csv_rdf.py",
+        "scripts/check_csv_rdf_import.py"
+      ]
+    },
+    {
+      "severity": "minor",
+      "issue": "SHACL comment implied all inputs were direct readback triples",
+      "resolution": "Comment now explicitly describes direct readback or a projection with a complete equal termset.",
+      "files": [
+        "scripts/fish_rdf_validation.py"
+      ]
+    }
+  ],
+  "findings": [],
+  "critical_findings": 0,
+  "important_findings": 0,
+  "conclusion": "Local CSV reception, isolated SQL/RDF storage, validation and public navigation are accepted within the stated review scope. No blocking defect found. Complete final documentation alignment and the separately authorized GitHub synchronization/remote verification before claiming delivery.",
+  "limitations": [
+    "This review did not repeat the PostgreSQL/Jena/SHACL service jobs or rebuild/reparse the 5.95 GB NT file; those facts rely on the bound actual-service receipts and inspected implementations.",
+    "The source is rule simulation, weather reanalysis and reused assets. Imported/unverified is not a field-measurement claim; formal adoption and field acceptance remain false.",
+    "GitHub push, remote-file verification, production/container recovery and on-site acceptance were not independently performed by this reviewer."
+  ],
+  "formal_adoption": false,
+  "field_acceptance": false,
+  "raw_source_payload_in_review": false,
+  "evidence_sha256": {
+    "docs/csv-batch/source-manifest.json": "1828f53df58b476ff27a672e5a72139f77b67e105af6c523cd86f2b5cc2075b9",
+    "docs/csv-batch/model-readback.json": "1e1358030a79030a1c1be9967df80c40ea06d733e89e4c355b6f137419850d08",
+    "docs/csv-batch/pg-readback.json": "3fb1f1f24a57a90d21550fc9f79a2d0919d407aa8b66538b60d5214d8a5dc4fc",
+    "docs/csv-batch/rdf-readback.json": "1c5c15c8dbc6e126ab809c4057519b21774138e7d0332af0e8e3babed606492a",
+    "docs/csv-batch/shacl-readback.json": "52637139bb34fa8a1a1cb1c1e7ccb998331d018c30ef00be30e7abce08ad503b",
+    "docs/csv-batch/prior-graphs-readback.json": "a75e82537531721ab553d660b9815183e1610bfbed04324540c7f8862a7dada4",
+    "docs/csv-batch/activation-readback.json": "8d5968b0b84c0af301d859a455e7b916be180c902d845af3135de099ceedc2fa",
+    "docs/csv-batch/navigation-files.json": "50c91d5f87523d83a431f4421a17660e6249bc07d244909c5703d9100b135fe1",
+    "docs/csv-batch/live-api-readback.json": "d478308ee5a69a0570ae456d675ecba71bf2bd2c159aa439c4383dc02bd6b635",
+    "docs/fish/ontology-review/navigation-readback.json": "63919f53f1a03ac6a94d99eb2bb511ce410b7268d897bc6a34bae6851ba16f21",
+    "docs/fish/ontology-review/csv-browser-report.json": "c87d188e9763074d3412fcf71a9ad14f7360155ab8435d9befb894c8c1c1f493",
+    "docs/fish/ontology-review/data/manifest.json": "ebff98d1fd94ccf02a3c0ba0c8dca0514053ed25ae3f907f2a4495d4da7dd310"
+  },
+  "reviewed_code_sha256": {
+    "scripts/prepare_csv_batch.py": "c37135aa38738cc2fab61f6214512733029325346e1345668c8f099673be3f71",
+    "scripts/csv_batch_model.py": "8d326636ab0adc0fce91338a7e6d5814ed0f7f0fa86bde5b1aa20a8ff789240d",
+    "scripts/csv_batch_store.py": "41847185cf457dc81913bea2632ff4bf34d34fa729e06bf8b876374d6b8f6e9d",
+    "scripts/build_csv_database.py": "55b0b783bd440d11ad88b588622114ed2e4d1c3bc73b9aba5d73993054174649",
+    "scripts/fish_rdf_sample.py": "ec51b2ea50ea616778bd4958464751367c08ce1f95c4d5f06bc8872fcece90b8",
+    "scripts/fish_rdf_validation.py": "b03fa27fb8314d3a2692f93761eff002521d804654af33f78676cb083c804443",
+    "scripts/csv_batch_delivery.py": "a65365b7e7f27ae2b4c4bd8ee02c3fd1096570ff67fd4b6e2c9ab9055d430c4e",
+    "scripts/build_csv_rdf.py": "350c0252c804696e565db990d1f84de2cfcd597e1265238ba1328bdf6e920fcb",
+    "scripts/activate_csv_batch.py": "57232040c44dc996d686450e8246bd1960a80ec25fbcfbdfbcb6dba4e424033a",
+    "scripts/serve_ontology_review.py": "4211cbae30f5acc995be751a0e213de12665502733571e2cc838e9973baaa8cf",
+    "scripts/check_ontology_review_live.py": "adc4a4ccf16879afb75540dadc1a1a9051dd577da0f97b8eb2df2518c48eb086",
+    "scripts/check_csv_browser.mjs": "4ae8ad8619d232fbda4c0ac5a8cdf405e1551ec3f474a58422673d04f5215939",
+    "scripts/check_csv_rdf_import.py": "9d15a91a7e5653cd730868b088b97d77bceadebff01b3cd6910779043b5ed3be",
+    "scripts/check_csv_delivery.py": "bc9e0cb571e0ee7c687361da939a6a1bfee27ccb04282a283044ad678924ad14",
+    "scripts/check_csv_navigation.py": "c8657763b78fe7bbbde1bbd4a9dc6852974ba0604d9546e9ee50a93a8e505809"
+  },
+  "publication_line_endings": {
+    "status": "passed_with_explicit_evidence_limits",
+    "checked_at": "2026-11-10T03:42:05.368579+00:00",
+    "repository_rule": "ontology-platform/.gitattributes: * text=auto eol=lf",
+    "repository_rule_sha256": "1cf9154974c29c57c7ad4e4d6efc2b0e07b9b4317427a81a07973cc15d929ad7",
+    "normalization": "CRLF bytes replaced by LF bytes only; no semantic edits",
+    "operation_owner": "release coordinator",
+    "normalizer": "prepare-csv-release.py --normalize-only",
+    "normalizer_sha256": "19de78e1dcc37242ccecc96b750da17afdb498092765df9c68d7dbc41c7ac632",
+    "normalizer_operation": "data.replace(b'\\r\\n', b'\\n')",
+    "reviewer_reran_normalizer": false,
+    "files_in_coordinator_operation_list": 9,
+    "files_with_independent_reversible_prior_digest_proof": 4,
+    "files_without_retained_prior_digest": 5,
+    "evidence_sha256_entries_refreshed": [
+      "docs/fish/ontology-review/navigation-readback.json",
+      "docs/csv-batch/live-api-readback.json",
+      "docs/csv-batch/pg-readback.json",
+      "docs/csv-batch/prior-graphs-readback.json"
+    ],
+    "reviewed_code_hashes_changed": 0,
+    "prior_independent_review_sha256": "10ced6040c18f8bdeb7d6e73b646e10ed2ac9aef2d254a6affb4c2029136a9df",
+    "files": [
+      {
+        "path": "docs/fish/ontology-review/assets.js",
+        "published_bytes": 36079,
+        "published_sha256": "bbd1d840a28f935567ad8d5bf5bc8e6a4b11edc6e3ceabb200d68a399b146df2",
+        "line_ending": "LF",
+        "carriage_return_count": 0,
+        "prior_sha256": null,
+        "verification": "Release coordinator operation list plus inspection of the byte-only normalizer and current LF bytes. No pre-normalization hash/snapshot was retained; no independent reversible-digest proof is claimed.",
+        "reversible_prior_digest_proof": false
+      },
+      {
+        "path": "docs/fish/ontology-review/navigation-readback.json",
+        "published_bytes": 84926,
+        "published_sha256": "63919f53f1a03ac6a94d99eb2bb511ce410b7268d897bc6a34bae6851ba16f21",
+        "line_ending": "LF",
+        "carriage_return_count": 0,
+        "prior_sha256": "8237a8afac9d1d4a9186e06eca48527b3fe18dd93e576b1a7318f1863bf91070",
+        "prior_bytes": 85638,
+        "verification": "Independent byte-level proof: restore every LF to CRLF and recover the exact previously bound SHA-256; no other byte change.",
+        "reversible_prior_digest_proof": true
+      },
+      {
+        "path": "docs/csv-batch/live-api-readback.json",
+        "published_bytes": 2243,
+        "published_sha256": "d478308ee5a69a0570ae456d675ecba71bf2bd2c159aa439c4383dc02bd6b635",
+        "line_ending": "LF",
+        "carriage_return_count": 0,
+        "prior_sha256": "4024a2828459731980d58c19583dd7257a368d52a74524c37698937f2716500b",
+        "prior_bytes": 2283,
+        "verification": "Independent byte-level proof: restore every LF to CRLF and recover the exact previously bound SHA-256; no other byte change.",
+        "reversible_prior_digest_proof": true
+      },
+      {
+        "path": "docs/csv-batch/pg-readback.json",
+        "published_bytes": 30209,
+        "published_sha256": "3fb1f1f24a57a90d21550fc9f79a2d0919d407aa8b66538b60d5214d8a5dc4fc",
+        "line_ending": "LF",
+        "carriage_return_count": 0,
+        "prior_sha256": "3f44fa08ece68ac98f1131e3f9bbe6bbf59ac6b5a837fc465fd3aeb8d56cdbd2",
+        "prior_bytes": 31044,
+        "verification": "Independent byte-level proof: restore every LF to CRLF and recover the exact previously bound SHA-256; no other byte change.",
+        "reversible_prior_digest_proof": true
+      },
+      {
+        "path": "docs/csv-batch/prior-graphs-readback.json",
+        "published_bytes": 5113,
+        "published_sha256": "a75e82537531721ab553d660b9815183e1610bfbed04324540c7f8862a7dada4",
+        "line_ending": "LF",
+        "carriage_return_count": 0,
+        "prior_sha256": "d3a018dc73c78da212f1833b98bcd7fd62833a37fbc5d849e0501f524b7d4c83",
+        "prior_bytes": 5223,
+        "verification": "Independent byte-level proof: restore every LF to CRLF and recover the exact previously bound SHA-256; no other byte change.",
+        "reversible_prior_digest_proof": true
+      },
+      {
+        "path": "docs/csv-batch/quality-audit.json",
+        "published_bytes": 317307,
+        "published_sha256": "43ea299fb1d33c2c0c6a2aa6faa91f63e113157f4f32c03337b433bf3c4818cc",
+        "line_ending": "LF",
+        "carriage_return_count": 0,
+        "prior_sha256": null,
+        "verification": "Release coordinator operation list plus inspection of the byte-only normalizer and current LF bytes. No pre-normalization hash/snapshot was retained; no independent reversible-digest proof is claimed.",
+        "reversible_prior_digest_proof": false
+      },
+      {
+        "path": "docs/csv-batch/relation-map.json",
+        "published_bytes": 136097,
+        "published_sha256": "cf4ed4a24e7478e8b1460ae50ac5f7acf897a4b365c09b4dfc217f25291d677b",
+        "line_ending": "LF",
+        "carriage_return_count": 0,
+        "prior_sha256": null,
+        "verification": "Release coordinator operation list plus inspection of the byte-only normalizer and current LF bytes. No pre-normalization hash/snapshot was retained; no independent reversible-digest proof is claimed.",
+        "reversible_prior_digest_proof": false
+      },
+      {
+        "path": "docs/csv-batch/schema-structure.json",
+        "published_bytes": 346027,
+        "published_sha256": "dd500ab88f9743599ed95d1a3ae04712365af806552e873f00fd2d0e69773698",
+        "line_ending": "LF",
+        "carriage_return_count": 0,
+        "prior_sha256": null,
+        "verification": "Release coordinator operation list plus inspection of the byte-only normalizer and current LF bytes. No pre-normalization hash/snapshot was retained; no independent reversible-digest proof is claimed.",
+        "reversible_prior_digest_proof": false
+      },
+      {
+        "path": "docs/csv-batch/schema.sql",
+        "published_bytes": 130833,
+        "published_sha256": "70e38dcfdfb52743db38d6e5a983e1ed492ce09978acea43e3e92601ad59a4a7",
+        "line_ending": "LF",
+        "carriage_return_count": 0,
+        "prior_sha256": null,
+        "verification": "Release coordinator operation list plus inspection of the byte-only normalizer and current LF bytes. No pre-normalization hash/snapshot was retained; no independent reversible-digest proof is claimed.",
+        "reversible_prior_digest_proof": false
+      }
+    ],
+    "reviewer_files_modified": [
+      "docs/csv-batch/independent-review.json"
+    ],
+    "independent_audit_scripts": {
+      "storage": "Executed directly through Python stdin in review tool calls; no temporary runtime script was created.",
+      "recovery": "The full source-to-DTO and source-relation audit programs are retained in this reviewer conversation tool-call history. No extra test or project file was added."
+    }
+  }
+}

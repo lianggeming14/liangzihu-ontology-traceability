@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { gzipSync } from 'node:zlib';
+import * as lazyModel from './model.mjs';
 import { createCatalog, pageInstances, routeHash, readRoute, relationTarget, demoTarget, propertyUnit, decodeSnapshot, formatValue, natureLabel, instanceNature } from './model.mjs';
 
 const manifest = { contract:'fish-rdf-review/1', concepts:[
@@ -65,6 +67,107 @@ test('original and SI numeric values use only their own explicit sibling units',
 test('explicit unadopted scenario evidence is distinguished from surveyed values',()=>{
   assert.equal(instanceNature({nature:'imported_unverified',properties:[{field:'reviewStatus',value:'scenario_only_not_adopted'}]}),'场景估算 · 未采用');
   assert.equal(instanceNature({nature:'imported_unverified',properties:[{field:'reviewStatus',value:'computed_paper_geometry_not_ground_survey'}]}),'纸面几何计算 · 非实测');
+});
+
+test('complete CSV adoption status remains distinct from preserved legacy review samples',()=>{
+  assert.equal(lazyModel.instanceAdoption({adoption_status:'csv_batch_not_formally_adopted'}),'完整 CSV 批次 · 未正式采用');
+  assert.equal(lazyModel.instanceAdoption({provenance:{sample_reason:'full_csv_batch'}}),'完整 CSV 批次 · 未正式采用');
+  assert.equal(lazyModel.instanceAdoption({nature:'synthetic',provenance:{sample_reason:'stratified_seed'}}),'审阅样本 · 未正式采用');
+});
+
+const csvSummary={iri:'urn:csv:pond:two',id:'two',label:'CSV 塘口二',class_iri:'urn:csv:Pond',table:'ponds',nature:'synthetic',detail_path:'details/csv_ponds/00001.json.gz'};
+const csvDetail={...csvSummary,properties:[{field:'area',value:'12.3456789'}],incoming:[],outgoing:[],provenance:{source_file:'ponds.csv',source_sha256:'abc'}};
+const compressedResponse=value=>new Response(gzipSync(JSON.stringify(value)));
+
+test('detail loading decodes only the requested gzip chunk and selects the exact IRI',async()=>{
+  const paths=[];
+  const loader=lazyModel.createSnapshotLoader(async path=>{
+    paths.push(path);
+    return decodeSnapshot(compressedResponse({contract:'fish-rdf-review/1',class_iri:csvSummary.class_iri,instances:[{...csvDetail,iri:'urn:csv:pond:one'},csvDetail]}));
+  });
+  const legacy={iri:'legacy',properties:[]};
+  assert.equal(await loader.detail(legacy,'legacy-class'),legacy);
+  assert.deepEqual(paths,[]);
+  assert.equal((await loader.detail(csvSummary,csvSummary.class_iri)).iri,'urn:csv:pond:two');
+  assert.equal((await loader.detail(csvSummary,csvSummary.class_iri)).properties[0].value,'12.3456789');
+  assert.deepEqual(paths,['details/csv_ponds/00001.json.gz']);
+});
+
+test('detail and relation paths reject traversal, protocols, encoding and non-gzip assets before reading',async()=>{
+  const loader=lazyModel.createSnapshotLoader(async()=>{assert.fail('unsafe path was read');});
+  for(const detail_path of ['../private.json.gz','/details/csv_ponds/00001.json.gz','https://example.com/x.json.gz','details/csv_ponds/../x.json.gz','details\\csv_ponds\\00001.json.gz','details/csv_ponds/%2e%2e.json.gz','details/csv_ponds/a.json.gz?q=1','details/csv_ponds/a.json.gz#x','details/csv_ponds/a.json.gz\n','details/csv_ponds/a.json','relations/csv_ponds/x/incoming-00001.json.gz']){
+    await assert.rejects(()=>loader.detail({...csvSummary,detail_path},csvSummary.class_iri),/路径/);
+  }
+  for(const path of ['../relations/a.json.gz','relations/csv_ponds/../../incoming-00001.json.gz','relations/csv_ponds/x/incoming-00001.json.gz?secret=1','details/csv_ponds/00001.json.gz']){
+    await assert.rejects(()=>loader.relations({iri:csvSummary.iri,incoming:[],incoming_count:1,incoming_page_size:4800,incoming_pages:[path]},'incoming',1),/路径/);
+  }
+});
+
+test('detail chunks reject a different contract, class, missing IRI or mismatched instance class',async()=>{
+  for(const chunk of [
+    {contract:'wrong',class_iri:csvSummary.class_iri,instances:[csvDetail]},
+    {contract:'fish-rdf-review/1',class_iri:'wrong-class',instances:[csvDetail]},
+    {contract:'fish-rdf-review/1',class_iri:csvSummary.class_iri,instances:[{...csvDetail,iri:'another-object'}]},
+    {contract:'fish-rdf-review/1',class_iri:csvSummary.class_iri,instances:[{...csvDetail,class_iri:'wrong-class'}]},
+  ]){
+    const loader=lazyModel.createSnapshotLoader(async()=>chunk);
+    await assert.rejects(()=>loader.detail(csvSummary,csvSummary.class_iri),/实例|类型|格式/);
+  }
+});
+
+test('legacy inline relations keep their pages and declared external counts are retained',async()=>{
+  const loader=lazyModel.createSnapshotLoader(async()=>assert.fail('legacy relations fetched a chunk'));
+  const row={outgoing:Array.from({length:13},(_,i)=>({target_id:String(i)})),incoming:[]};
+  assert.deepEqual(await loader.relations(row,'outgoing',2),{items:[{target_id:'12'}],page:2,pages:2,total:13});
+  assert.equal(lazyModel.relationCount(row,'outgoing'),13);
+  assert.equal(lazyModel.relationCount({incoming:[],incoming_count:9601},'incoming'),9601);
+});
+
+test('global relation pages cross 4800-edge gzip chunks without loading adjacent chunks',async()=>{
+  const paths=[];
+  const row={iri:csvSummary.iri,incoming:[],incoming_count:9601,incoming_page_size:4800,incoming_pages:[1,2,3].map(n=>`relations/csv_ponds/abc/incoming-${String(n).padStart(5,'0')}.json.gz`)};
+  const loader=lazyModel.createSnapshotLoader(async path=>{
+    paths.push(path);
+    const index=Number(path.match(/(\d+)\.json/)[1])-1;
+    const edges=Array.from({length:index===2?1:4800},(_,i)=>({source_id:String(index*4800+i)}));
+    return decodeSnapshot(compressedResponse({contract:'fish-rdf-relations/1',instance_iri:row.iri,direction:'incoming',edges}));
+  });
+  let page=await loader.relations(row,'incoming',400);
+  assert.deepEqual([page.items[0].source_id,page.items.at(-1).source_id,page.page,page.pages,page.total],['4788','4799',400,801,9601]);
+  assert.equal(paths.length,1);
+  page=await loader.relations(row,'incoming',401);
+  assert.deepEqual([page.items[0].source_id,page.items.at(-1).source_id],['4800','4811']);
+  assert.equal(paths.length,2);
+  assert.equal((await loader.relations(row,'incoming',402)).items[0].source_id,'4812');
+  assert.equal(paths.length,2);
+  page=await loader.relations(row,'incoming',9999);
+  assert.deepEqual([page.items.map(edge=>edge.source_id),page.page,page.pages],[['9600'],801,801]);
+  assert.deepEqual(paths,row.incoming_pages);
+});
+
+test('relation chunks reject a wrong identity, direction, contract or truncated edge array',async()=>{
+  const row={iri:csvSummary.iri,outgoing:[],outgoing_count:1,outgoing_page_size:4800,outgoing_pages:['relations/csv_ponds/abc/outgoing-00001.json.gz']};
+  const good={contract:'fish-rdf-relations/1',instance_iri:row.iri,direction:'outgoing',edges:[{target_id:'one'}]};
+  for(const chunk of [{...good,contract:'wrong'},{...good,instance_iri:'another'},{...good,direction:'incoming'},{...good,edges:[]}]){
+    const loader=lazyModel.createSnapshotLoader(async()=>chunk);
+    await assert.rejects(()=>loader.relations(row,'outgoing',1),/关系/);
+  }
+});
+
+test('failed snapshot reads can retry and external relation metadata fails closed',async()=>{
+  let attempts=0;
+  const loader=lazyModel.createSnapshotLoader(async()=>{
+    if(++attempts===1)throw Error('temporary failure');
+    return {contract:'fish-rdf-review/1',class_iri:csvSummary.class_iri,instances:[csvDetail]};
+  });
+  await assert.rejects(()=>loader.detail(csvSummary,csvSummary.class_iri),/temporary/);
+  assert.equal((await loader.detail(csvSummary,csvSummary.class_iri)).iri,csvSummary.iri);
+  assert.equal(attempts,2);
+  for(const extra of [
+    {incoming_count:-1,incoming_page_size:4800,incoming_pages:[]},
+    {incoming_count:1,incoming_page_size:0,incoming_pages:['relations/csv_ponds/x/incoming-00001.json.gz']},
+    {incoming_count:4801,incoming_page_size:4800,incoming_pages:['relations/csv_ponds/x/incoming-00001.json.gz']},
+  ])await assert.rejects(()=>loader.relations({iri:csvSummary.iri,incoming:[],...extra},'incoming',1),/关系/);
 });
 test('published manifest and every real gzip shard load with the browser decoder',async()=>{
   const real=await decodeSnapshot(new Response(await readFile(new URL('./data/manifest.json',import.meta.url))));

@@ -6,12 +6,14 @@ import rdflib
 from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.namespace import RDF, RDFS, OWL
 
-from fish_rdf_sample import NS, V, PROV, datatype, uri
+from fish_rdf_sample import NS, PROV, datatype, uri_factory
 
 SH = Namespace('http://www.w3.org/ns/shacl#')
 
 
-def shapes(schema, vocabulary):
+def shapes(schema, vocabulary, *, namespace=NS):
+    namespace = str(namespace)
+    V, uri = Namespace(namespace), uri_factory(namespace)
     graph = Graph()
     graph.bind('sh', SH)
     graph.bind('review', V)
@@ -29,8 +31,8 @@ def shapes(schema, vocabulary):
     for predicate in vocabulary.subjects(RDF.type, OWL.ObjectProperty):
         owner = vocabulary.value(predicate, RDFS.domain)
         target = vocabulary.value(predicate, RDFS.range)
-        if owner is None or target is None or not str(owner).startswith(NS + 'class:'): continue
-        table = str(owner).removeprefix(NS + 'class:')
+        if owner is None or target is None or not str(owner).startswith(namespace + 'class:'): continue
+        table = str(owner).removeprefix(namespace + 'class:')
         if table not in schema['tables']: continue
         shape = uri('shape', table)
         prop = URIRef(str(predicate) + ':shape')
@@ -41,17 +43,20 @@ def shapes(schema, vocabulary):
     return graph
 
 
-def validate_canonical(navigation, shape_graph, *, progress=None):
+def validate_canonical(navigation, shape_graph, *, progress=None, namespace=NS):
     """Partition by owner class, retaining all target types for SHACL class checks.
 
     The union of checked partitions is the complete canonical instance scope.
     Original source strings/issue records are deliberately not datatype targets.
     """
     from pyshacl import validate
+    namespace = str(namespace)
+    if navigation.namespace != namespace:
+        raise ValueError('SHACL namespace does not match navigation namespace')
     started = time.monotonic()
     by_class, types = defaultdict(list), []
     for subject, predicates in navigation.records.items():
-        if not subject.startswith(NS + 'instance:'): continue
+        if not subject.startswith(namespace + 'instance:'): continue
         for cls in predicates.get(str(RDF.type), []):
             types.append((URIRef(subject), RDF.type, cls))
             by_class[str(cls)].append(subject)
@@ -68,8 +73,9 @@ def validate_canonical(navigation, shape_graph, *, progress=None):
             for triple in types: data.add(triple)
             for subject in subjects:
                 for predicate, values in navigation.records[subject].items():
-                    # Exact triples read back from Jena, not values reprojected from SQL.
-                    if predicate.startswith(NS + 'property:') or predicate.startswith(NS + 'relation:') or predicate == str(PROV.wasDerivedFrom):
+                    # Exact canonical RDF terms: either direct Jena readback or
+                    # a projection whose full termset equals the Jena readback.
+                    if predicate.startswith(namespace + 'property:') or predicate.startswith(namespace + 'relation:') or predicate == str(PROV.wasDerivedFrom):
                         for value in values: data.add((URIRef(subject), URIRef(predicate), value))
             for triple in shape_graph.triples((shape, None, None)): selected.add(triple)
             for prop in shape_graph.objects(shape, SH.property):

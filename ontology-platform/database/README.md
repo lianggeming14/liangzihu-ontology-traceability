@@ -1,6 +1,10 @@
 # 数据库与语义存储
 
-当前审查使用实际 **[Jena RDF 本体四图](../docs/fish/ontology-review/README.md)**：OWL/RDFS 类层级、类型化实例、正反对象关系和来源证据均经过实库回读；本体导航由已验证 RDF 生成，实时证据通过只读 SPARQL 查询。完整图名、词汇、SHACL、重建命令及数据性质以该入口为准。
+当前完整批次入口为 **[66 CSV 数据库与 RDF 验收](../docs/csv-batch/README.md)**。153,862 条记录已经写入 `lzo_gis.csv_batch_a4d78be79a83`：共 72 张表，其中 66 张类型化业务表；1,397 个来源字段、153,862 条原始记录及规范实例、3,539,134 个原文单元格及对应类型化单元格、810,934 条关系账本通过 PostgreSQL 全量回读。结构见 [schema.sql](../docs/csv-batch/schema.sql) 和[机器可读清单](../docs/csv-batch/schema-structure.json)，实际结果见 [pg-readback.json](../docs/csv-batch/pg-readback.json)。810,891 条关系解析到批次内实例；43 条外部／未解析引用保留原目标标识和空目标，不编造对象。
+
+新 CSV 采用独立 Jena 命名空间和内容寻址图，21,333,891 条三元组通过[完整 RDF 术语回读](../docs/csv-batch/rdf-readback.json)，[SHACL](../docs/csv-batch/shacl-readback.json)检查 66 类、153,862 个实例及 1,397 个字段约束，零违规；[新导航已激活](../docs/csv-batch/activation-readback.json)，合计 5 图、24,054,860 条三元组和 180,997 个实例。旧 **[Jena 四图及地图证据](../docs/fish/ontology-review/README.md)**保留原身份，保护核验见 [prior-graphs-readback.json](../docs/csv-batch/prior-graphs-readback.json)：四图完整术语摘要不变，977 个原有非空图的清单计数受保护，其余图的保护范围为计数。OWL/RDFS 领域层级共享，来源表叶类、实例、属性、关系及 provenance 随批次隔离。新分片使用完整术语集合等值证明后的投影模型序列化；旧分片仍沿用直接 Jena 回读路径。完整规范化导航通过[全关系核验](../docs/fish/ontology-review/navigation-readback.json)，[独立实时 API](../docs/csv-batch/live-api-readback.json)和[实际 Chrome 浏览器](../docs/fish/ontology-review/csv-browser-report.json)验收均通过；API 使用实际 Fuseki SPARQL，SQL 连接和数据库变更均为 0。
+
+复现工具为 `scripts/prepare_csv_batch.py`、`scripts/build_csv_database.py --apply`／`--verify`、`scripts/capture_csv_prior_graphs.py`、`scripts/build_csv_rdf.py --apply`、`scripts/verify_csv_prior_graphs.py` 和 `scripts/activate_csv_batch.py`，顺序和前提见[批次说明](../docs/csv-batch/README.md#复现与保护旧图)。只沿用 [config/fish-review.example.json](../config/fish-review.example.json) 指向的私有环境文件来读取连接 URL，不复用该配置的旧来源包或旧 schema。首次完整复现需要已准备的本地 PostgreSQL、Fuseki 和旧四图，在写入 CSV 图前捕获基线；原正式 importer／worker 不需重启。仅离线浏览规范化分片可运行 `python scripts/serve_ontology_review.py --offline --port 0`，不需要数据库或额外依赖。
 
 [fish_review_10pct_v1](../docs/fish/review-sample/README.md) 是辅助 PostgreSQL/PostGIS 来源审计样本，保留 [SQL](../docs/fish/review-sample/schema.sql) 和[无凭据配置](../config/fish-review.example.json)。其中六个合成边界不作为新的来源地图。该审查样本与原正式采纳流程分别管理。
 
