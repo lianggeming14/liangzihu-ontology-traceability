@@ -71,4 +71,11 @@ Consumes: Tasks1-3 的 Config、Store、worker 与 backup。Produces: `python sc
 
 - [x] 新服务全部测试、旧发布范围测试、实库数据保护/备份恢复/输入输出证据及指南步骤核验。
 - [x] 独立审查并修复阻断问题；扫描精确交付文件（包括压缩文件解包扫描）和凭据。
-- [ ] 同步目标 main，不 force push；核对全部远端文件及 Actions；交付实际运行地址与指南。
+- [x] 同步目标 main，不 force push；核对全部远端文件及 Actions；交付实际运行地址与指南。
+
+## Acceptance and publication evidence
+
+- 本机完整恢复：495 张表、978 个 RDF 图、28,474,209 条四元组、722 个资产全部核验；换目录冷数据摘要一致、678 个导航文件与发布版本保持一致。
+- 新服务离线回归 156 passed / 28 skipped；真实浏览器 13/13、中文输入输出 9/9、跨管理员 PostGIS 恢复及新原生环境初始化通过。未把 SQLite、容器配置或同机换目录等同于第二台物理机器/跨系统/现场验收。
+- [代码提交 013425f](https://github.com/lianggeming14/liangzihu-ontology-traceability/commit/013425f4124f1d896932dd8d8c968acfe00bb040) 的 82 个远端文件逐一匹配；[GitHub Actions](https://github.com/lianggeming14/liangzihu-ontology-traceability/actions/runs/43221007540) 成功。
+- [实际服务验收](../../local-server/server-readback.json)、[浏览器记录](../../local-server/browser-readback.json)、[中文往返](../../local-server/unicode-input-readback.json)、[精确发布扫描](../../local-server/publication-audit.json)。网页快照全库检查受未修改的原有 31,573,804 字节语义文件限制；本轮精确增量扫描通过，未削弱限制或移除原件。

@@ -206,7 +206,11 @@
     "repository": "lianggeming14/liangzihu-ontology-traceability",
     "branch": "main",
     "visibility": "public",
-    "secrets_active_databases_original_assets": "excluded"
+    "secrets_active_databases_original_assets": "excluded",
+    "verified_code_commit": "013425f4124f1d896932dd8d8c968acfe00bb040",
+    "remote_file_blobs_verified": 82,
+    "code_actions_run": "https://github.com/lianggeming14/liangzihu-ontology-traceability/actions/runs/43221007540",
+    "code_actions_conclusion": "success"
   },
   "source_protection": {
     "status": "passed",
@@ -261,5 +265,6 @@
   "unicode_input": {
     "status": "passed",
     "report": "unicode-input-readback.json"
-  }
+  },
+  "synthetic_acceptance_services": "gracefully stopped after browser and Unicode probes; main service remains running"
 }
