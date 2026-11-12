@@ -1,0 +1,36 @@
+{
+  "contract": "local-ontology-browser-readback/1",
+  "checked_at": "2026-11-12T11:39:59.833Z",
+  "status": "failed",
+  "scope": "fixture",
+  "browser": "real Chromium",
+  "field_acceptance": false,
+  "main": null,
+  "fixture": {
+    "url": "http://127.0.0.1:8812/",
+    "data_nature": "synthetic browser acceptance fixture; API labels imported_unverified",
+    "source": "UTF-8 farms/ponds ZIP made for UI acceptance",
+    "field_acceptance": false,
+    "old_release_id": "954005d7-3fc0-4d47-934a-1dd5560762ad",
+    "old_counts": {
+      "classes": 22,
+      "instances": 2,
+      "relations": 1,
+      "source_classes": 2,
+      "resolved_relations": 1
+    }
+  },
+  "screenshots": [],
+  "javascript_errors": [],
+  "checks": [
+    {
+      "name": "fixture UTF-8 ZIP upload, visible job progress, publication and cleared credential",
+      "scope": "fixture",
+      "status": "failed",
+      "error": "response.json: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation."
+    }
+  ],
+  "failed_phase": "fixture UTF-8 ZIP upload, visible job progress, publication and cleared credential",
+  "error": "response.json: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.\n    at upload (C:\\Users\\robot\\Desktop\\ontology\\.github-upload\\server-current\\ontology-platform\\scripts\\check_local_server_browser.mjs:71:395)\n    at async file:///C:/Users/robot/Desktop/ontology/.github-upload/server-current/ontology-platform/scripts/check_local_server_browser.mjs:74:118\n    at async check (C:\\Users\\robot\\Desktop\\ontology\\.github-upload\\server-current\\ontology-platform\\scripts\\check_local_server_browser.mjs:46:69)\n    at async fixtureAcceptance (C:\\Users\\robot\\Desktop\\ontology\\.github-upload\\server-current\\ontology-platform\\scripts\\check_local_server_browser.mjs:74:1)\n    at async file:///C:/Users/robot/Desktop/ontology/.github-upload/server-current/ontology-platform/scripts/check_local_server_browser.mjs:82:234",
+  "completed_at": "2026-11-12T11:40:02.360Z"
+}

@@ -1,0 +1,76 @@
+{
+  "contract": "local-ontology-browser-readback/1",
+  "checked_at": "2026-11-12T11:53:59.096Z",
+  "status": "failed",
+  "scope": "main-and-fixture",
+  "browser": "real Chromium",
+  "field_acceptance": false,
+  "main": {
+    "url": "http://127.0.0.1:8792/",
+    "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+    "data_nature": "mixed_review_data",
+    "source": "restored published source data; field provenance unverified",
+    "field_acceptance": false,
+    "counts": {
+      "instances": 180997,
+      "relations": 890003,
+      "resolved_relations": 889893,
+      "classes": 178,
+      "source_classes": 150,
+      "triples": 24054860,
+      "map_objects": 284,
+      "map_layers": 6,
+      "demo_assignments": 10495,
+      "demo_activity_links": 10475,
+      "demo_profile_links": 20,
+      "drawing_instances": 6297,
+      "drawing_measurements": 3202,
+      "drawing_relations": 10279,
+      "drawing_map_bridges": 163,
+      "csv_instances": 153862,
+      "csv_rows": 153862,
+      "csv_tables": 66,
+      "csv_fields": 1397
+    }
+  },
+  "fixture": null,
+  "screenshots": [
+    "screenshots/desktop-console.png",
+    "screenshots/desktop-resource.png"
+  ],
+  "javascript_errors": [],
+  "checks": [
+    {
+      "name": "main console counters and source note",
+      "scope": "main",
+      "status": "passed",
+      "result": {
+        "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+        "instances": 180997,
+        "concepts": 178
+      }
+    },
+    {
+      "name": "main class selection, real instance pagination, attributes and relationship navigation",
+      "scope": "main",
+      "status": "passed",
+      "result": {
+        "class_iri": "urn:lzo:fish-review:sample:v1:class:cash_allocations",
+        "first_instance": "urn:lzo:fish-review:sample:v1:instance:0e0f7b96-f88a-5566-9eac-e51549dc2c0e",
+        "page2_first": "urn:lzo:fish-review:sample:v1:instance:fcfe0e24-dc88-5681-9e1c-8c12b074627f",
+        "properties": 36,
+        "incoming": 5,
+        "relationship_clicked": "urn:lzo:fish-review:sample:v1:instance:f26014eb-b125-5761-846e-9c4ff0c99f13"
+      }
+    },
+    {
+      "name": "main JSON CSV and RDF browser download parsing",
+      "scope": "main",
+      "status": "failed",
+      "error": "page.waitForEvent: Timeout 30000ms exceeded while waiting for event \"download\"\n=========================== logs ===========================\nwaiting for event \"download\"\n============================================================"
+    }
+  ],
+  "failed_phase": "main JSON CSV and RDF browser download parsing",
+  "error": "page.waitForEvent: Timeout 30000ms exceeded while waiting for event \"download\"\n=========================== logs ===========================\nwaiting for event \"download\"\n============================================================\n    at exportDownloads (C:\\Users\\robot\\Desktop\\ontology\\.github-upload\\server-current\\ontology-platform\\scripts\\check_local_server_browser.mjs:62:832)\n    at async file:///C:/Users/robot/Desktop/ontology/.github-upload/server-current/ontology-platform/scripts/check_local_server_browser.mjs:67:94\n    at async check (C:\\Users\\robot\\Desktop\\ontology\\.github-upload\\server-current\\ontology-platform\\scripts\\check_local_server_browser.mjs:46:69)\n    at async mainAcceptance (C:\\Users\\robot\\Desktop\\ontology\\.github-upload\\server-current\\ontology-platform\\scripts\\check_local_server_browser.mjs:67:1)\n    at async file:///C:/Users/robot/Desktop/ontology/.github-upload/server-current/ontology-platform/scripts/check_local_server_browser.mjs:94:192",
+  "completed_at": "2026-11-12T11:55:19.607Z"
+}

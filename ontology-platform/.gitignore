@@ -2,6 +2,7 @@
 .superpowers/
 .tools/
 .venv/
+.venv-local-server/
 __pycache__/
 .pytest_cache/
 .ruff_cache/

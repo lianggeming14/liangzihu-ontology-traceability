@@ -1,0 +1,19 @@
+{
+  "root": "/app",
+  "data_dir": "/var/lib/lzo-local",
+  "review_dir": "docs/fish/ontology-review",
+  "mapping_file": "config/local-server-mapping.json",
+  "host": "0.0.0.0", "allow_remote_bind": true, "port": 8792,
+  "allowed_hosts": ["127.0.0.1:8792", "localhost:8792"],
+  "sql": {
+    "admin_dsn_env": "LZO_LOCAL_ADMIN_DATABASE_URL",
+    "api_dsn_env": "LZO_LOCAL_API_DATABASE_URL",
+    "worker_dsn_env": "LZO_LOCAL_WORKER_DATABASE_URL",
+    "allowed_targets": [{"host": "postgres", "port": 5432, "database": "lzo_local"}]
+  },
+  "fuseki_url": "http://fuseki:3030/fish_l1",
+  "fuseki_allowed_targets": ["http://fuseki:3030/fish_l1"],
+  "auth": {"write_token_env": "LZO_LOCAL_WRITE_TOKEN"},
+  "runtime": {"managed_postgres": false, "managed_fuseki": false},
+  "limits": {"upload_bytes": 67108864, "page_size": 100, "max_page_size": 1000, "query_timeout_seconds": 15, "min_free_disk_bytes": 1073741824, "lease_seconds": 120, "worker_poll_seconds": 1}
+}

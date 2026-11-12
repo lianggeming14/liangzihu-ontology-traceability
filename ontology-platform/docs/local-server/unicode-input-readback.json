@@ -1,0 +1,248 @@
+{
+  "contract": "local-server-unicode-input-readback/1",
+  "status": "passed",
+  "started_at": "2026-11-12T12:28:36Z",
+  "data_nature": "synthetic acceptance data; not field acceptance",
+  "field_acceptance": false,
+  "fixture_url": "http://127.0.0.1:8812",
+  "main_writes": false,
+  "preserved_browser_report": "browser-readback.json",
+  "checks": [
+    {
+      "name": "real UTF-8 non-ASCII input with explicit synthetic flags",
+      "status": "passed",
+      "result": true
+    },
+    {
+      "name": "authenticated real POST and fenced worker publish a new two-node release",
+      "status": "passed",
+      "result": true
+    },
+    {
+      "name": "farms exact Unicode label, normalized name codepoints, and synthetic data nature",
+      "status": "passed",
+      "result": {
+        "iri": "urn:lzo:local-server:v1:579ffae8ed019753b9d110cb70f3e2602b9762f65656f352483df1bc972b26e0:instance:9a1849ee-b004-5398-8349-f0d60c560709",
+        "name": "梁子湖中文农场",
+        "codepoints": [
+          "U+6881",
+          "U+5B50",
+          "U+6E56",
+          "U+4E2D",
+          "U+6587",
+          "U+519C",
+          "U+573A"
+        ]
+      }
+    },
+    {
+      "name": "ponds exact Unicode label, normalized name codepoints, and synthetic data nature",
+      "status": "passed",
+      "result": {
+        "iri": "urn:lzo:local-server:v1:579ffae8ed019753b9d110cb70f3e2602b9762f65656f352483df1bc972b26e0:instance:4ea17358-0eb0-5687-8fc8-2d824e481261",
+        "name": "一号鱼塘·甲",
+        "codepoints": [
+          "U+4E00",
+          "U+53F7",
+          "U+9C7C",
+          "U+5858",
+          "U+00B7",
+          "U+7532"
+        ]
+      }
+    },
+    {
+      "name": "published Chinese pond-to-farm relationship resolves correctly",
+      "status": "passed",
+      "result": {
+        "pond": "urn:lzo:local-server:v1:579ffae8ed019753b9d110cb70f3e2602b9762f65656f352483df1bc972b26e0:instance:4ea17358-0eb0-5687-8fc8-2d824e481261",
+        "predicate": "urn:lzo:local-server:v1:579ffae8ed019753b9d110cb70f3e2602b9762f65656f352483df1bc972b26e0:relation:ponds:farm_id:farms",
+        "farm": "urn:lzo:local-server:v1:579ffae8ed019753b9d110cb70f3e2602b9762f65656f352483df1bc972b26e0:instance:9a1849ee-b004-5398-8349-f0d60c560709"
+      }
+    },
+    {
+      "name": "farms complete JSON/CSV/RDF preserve Unicode and all public terms",
+      "status": "passed",
+      "result": true
+    },
+    {
+      "name": "ponds complete JSON/CSV/RDF preserve Unicode and all public terms",
+      "status": "passed",
+      "result": true
+    },
+    {
+      "name": "original 111-node browser release remains published and readable by release_id",
+      "status": "passed",
+      "result": {
+        "release_id": "fa53c476-e121-4cd4-8d7d-1971dd02a697",
+        "instances": 111,
+        "resource_readback": true
+      }
+    },
+    {
+      "name": "main release and original 13-check report remain unchanged",
+      "status": "passed",
+      "result": {
+        "main_release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+        "main_instances": 180997,
+        "browser_report_sha256": "4b8eff595bb560ea0b8874706480a32e28d4e91981f5a9b9241eff58ca55d5d4"
+      }
+    }
+  ],
+  "exports": [
+    {
+      "table": "farms",
+      "format": "json",
+      "status": "passed",
+      "triples": 12,
+      "pages": 1,
+      "bytes": 4420,
+      "sha256": "faaa21939a85911e3ec4a1ac505d632c2f60ca83998ba2aa85ff779f1aa313d2",
+      "utf8_name_bytes_present": true,
+      "all_public_terms_equal": true
+    },
+    {
+      "table": "farms",
+      "format": "csv",
+      "status": "passed",
+      "triples": 12,
+      "pages": 1,
+      "bytes": 3381,
+      "sha256": "625c09e6903caacaadd8819fedaf16c239026923ff682a19c2e88284d4c556eb",
+      "utf8_name_bytes_present": true,
+      "all_public_terms_equal": true
+    },
+    {
+      "table": "farms",
+      "format": "rdf",
+      "status": "passed",
+      "triples": 12,
+      "pages": 1,
+      "bytes": 3309,
+      "sha256": "be0ee6629af5963bc0ae8e6c8f7a23eb65477315ed173ff0e9dccfd6551dfc95",
+      "utf8_name_bytes_present": true,
+      "all_public_terms_equal": true
+    },
+    {
+      "table": "ponds",
+      "format": "json",
+      "status": "passed",
+      "triples": 13,
+      "pages": 1,
+      "bytes": 4736,
+      "sha256": "a87f1372fd50c6867dfad548101981a2f29369f62d447db71cd62d175f2d0eed",
+      "utf8_name_bytes_present": true,
+      "all_public_terms_equal": true
+    },
+    {
+      "table": "ponds",
+      "format": "csv",
+      "status": "passed",
+      "triples": 13,
+      "pages": 1,
+      "bytes": 3633,
+      "sha256": "14fd2865daa85ffa697b738e90eea3ef1a2522253f5f3242b8bd0e7d966061c5",
+      "utf8_name_bytes_present": true,
+      "all_public_terms_equal": true
+    },
+    {
+      "table": "ponds",
+      "format": "rdf",
+      "status": "passed",
+      "triples": 13,
+      "pages": 1,
+      "bytes": 3558,
+      "sha256": "3ff244a2d44221636e5740e044cce189edd3bf05b6439d35f603b7939fe9714c",
+      "utf8_name_bytes_present": true,
+      "all_public_terms_equal": true
+    }
+  ],
+  "preserved_browser_report_sha256": "4b8eff595bb560ea0b8874706480a32e28d4e91981f5a9b9241eff58ca55d5d4",
+  "previous_fixture_release_id": "fa53c476-e121-4cd4-8d7d-1971dd02a697",
+  "main_release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+  "input": {
+    "sha256": "7a666976ce31bbe7dc21263913d473c83bddb1de109e4b6790626cdf7eb91ea5",
+    "encoding": "UTF-8",
+    "non_ascii_verified": true,
+    "literal_question_marks": 0,
+    "members": [
+      {
+        "name": "farms.csv",
+        "bytes": 58,
+        "non_ascii_characters": 7
+      },
+      {
+        "name": "ponds.csv",
+        "bytes": 72,
+        "non_ascii_characters": 6
+      }
+    ],
+    "expected_names": [
+      "梁子湖中文农场",
+      "一号鱼塘·甲"
+    ],
+    "expected_codepoints": [
+      [
+        "U+6881",
+        "U+5B50",
+        "U+6E56",
+        "U+4E2D",
+        "U+6587",
+        "U+519C",
+        "U+573A"
+      ],
+      [
+        "U+4E00",
+        "U+53F7",
+        "U+9C7C",
+        "U+5858",
+        "U+00B7",
+        "U+7532"
+      ]
+    ]
+  },
+  "job_id": "4438453d-8587-4d02-b630-a9cf658a3ab4",
+  "fixture_active_release_id": "747bd071-75f4-44b0-aa76-02d10e7af7d8",
+  "counts": {
+    "classes": 22,
+    "instances": 2,
+    "relations": 1,
+    "source_classes": 2,
+    "resolved_relations": 1
+  },
+  "job_stages": [
+    {
+      "status": "queued",
+      "stage": "queued"
+    },
+    {
+      "status": "running",
+      "stage": "sql_staging"
+    },
+    {
+      "status": "running",
+      "stage": "rdf_generation"
+    },
+    {
+      "status": "running",
+      "stage": "rdf_upload"
+    },
+    {
+      "status": "running",
+      "stage": "verify_files"
+    },
+    {
+      "status": "succeeded",
+      "stage": "complete"
+    }
+  ],
+  "completed_at": "2026-11-12T12:31:52Z",
+  "readback_retry": {
+    "prior_status": "failed",
+    "prior_errors": [
+      "StopIteration: ",
+      "AttributeError: 'NoneType' object has no attribute 'startswith'"
+    ],
+    "reason": "Probe assumed csv_-prefixed local table names. Readback now locates the published classes by their explicit instance shard paths. No further import or product change."
+  }
+}

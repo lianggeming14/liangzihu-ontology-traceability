@@ -1,5 +1,7 @@
 # 梁子湖农业本体数据库
 
+本地服务器入口见[快速上手](ontology-platform/docs/local-server/快速上手.md)、[使用指南](ontology-platform/docs/local-server/使用指南.md)和[部署与换机](ontology-platform/docs/local-server/部署与换机.md)。服务使用 PostgreSQL/PostGIS、Jena RDF、统一导入/查询 API 与本体浏览器，默认地址 `http://127.0.0.1:8792/`；运行数据、备份和凭据留在本机私有目录。
+
 主仓库：[lianggeming14/liangzihu-ontology-traceability](https://github.com/lianggeming14/liangzihu-ontology-traceability)，保持 Public、默认分支 `main`。当前入口为 **[66 CSV 完整批次与数据库验收](ontology-platform/docs/csv-batch/README.md)** 和 **[本体、实例与来源地图](ontology-platform/docs/fish/ontology-review/README.md)**。
 
 2026-11-10：新批次的 **66 个业务 CSV、153,862 条记录、1,397 个来源字段**已全部录入隔离 PostgreSQL schema；原始记录、规范实例、3,539,134 个原文单元格及对应类型化单元格、810,934 条关系账本均已完成实库逐项回读。新 Jena 图的 **21,333,891 条三元组**通过完整术语集合等值核验；实际 SHACL 检查 153,862 个实例、1,397 个字段约束，零违规。新导航已经激活：**5 图、24,054,860 条三元组、178 个概念、150 个叶类、180,997 个实例**。全导航检查零悬空、零错类，实际 Chrome 与独立实时 HTTP → SPARQL 验收均通过，详见[批次验收说明](ontology-platform/docs/csv-batch/README.md)。
@@ -28,7 +30,7 @@ cd ontology-platform
 python scripts/serve_ontology_review.py --offline --port 0
 ```
 
-按终端输出的本机地址打开页面；本轮已运行的实时审查服务为 [http://127.0.0.1:11644/](http://127.0.0.1:11644/)，重新启动后以终端实际地址为准。离线浏览已发布的规范化分片仅需 Python 标准库；GitHub 文件页显示 HTML 源码，不能直接运行交互页面。实时证据模式需要已启动的本地 Jena，去掉 `--offline` 后使用 manifest 中的图白名单查询。完整数据库重建另外需要固定来源 ZIP、私有连接、PostgreSQL/Fuseki 和旧四图基线，详见[复现步骤](ontology-platform/docs/csv-batch/README.md#复现与保护旧图)。
+当前本地服务器的本体浏览入口为 [http://127.0.0.1:8792/ontology/](http://127.0.0.1:8792/ontology/)；运行上述独立审查命令时，按其终端输出的地址打开。离线浏览已发布的规范化分片仅需 Python 标准库；GitHub 文件页显示 HTML 源码，不能直接运行交互页面。实时证据模式需要已启动的本地 Jena，去掉 `--offline` 后使用 manifest 中的图白名单查询。完整数据库重建另外需要固定来源 ZIP、私有连接、PostgreSQL/Fuseki 和旧四图基线，详见[复现步骤](ontology-platform/docs/csv-batch/README.md#复现与保护旧图)。
 
 浏览器按所选类加载摘要，实例详情每块 500 条，高关联对象使用每块 4,800 条的独立关系文件，界面每页显示 12 条关系。新 CSV 分片在完整 RDF 术语集合证明与 Jena 相等并通过 SHACL 后，由同一投影模型分片序列化；旧 84 个叶类保留原先直接来自 Jena 回读值的路径。CSV 共发布 592 个压缩数据文件（66 个类摘要、362 个详情块、164 个关系块），共 70,148,120 字节，最大文件 1,865,203 字节。当前图清单及合计见 [manifest.json](ontology-platform/docs/fish/ontology-review/data/manifest.json)。
 

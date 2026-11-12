@@ -1,0 +1,526 @@
+{
+  "contract": "local-ontology-browser-readback/1",
+  "checked_at": "2026-11-12T12:16:19.754Z",
+  "status": "passed",
+  "scope": "main-and-fixture",
+  "browser": "real Chromium",
+  "field_acceptance": false,
+  "main": {
+    "url": "http://127.0.0.1:8792/",
+    "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+    "data_nature": "mixed_review_data",
+    "source": "restored published source data; field provenance unverified",
+    "field_acceptance": false,
+    "counts": {
+      "instances": 180997,
+      "relations": 890003,
+      "resolved_relations": 889893,
+      "classes": 178,
+      "source_classes": 150,
+      "triples": 24054860,
+      "map_objects": 284,
+      "map_layers": 6,
+      "demo_assignments": 10495,
+      "demo_activity_links": 10475,
+      "demo_profile_links": 20,
+      "drawing_instances": 6297,
+      "drawing_measurements": 3202,
+      "drawing_relations": 10279,
+      "drawing_map_bridges": 163,
+      "csv_instances": 153862,
+      "csv_rows": 153862,
+      "csv_tables": 66,
+      "csv_fields": 1397
+    },
+    "export_class": {
+      "iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:production_plans",
+      "label": "CSV · 生产计划",
+      "scope": "Complete small public class; at most 1000 triples. Multipage downloads are checked in the separate synthetic fixture."
+    },
+    "downloads": [
+      {
+        "format": "json",
+        "filename": "ontology-d96f7ebf.json",
+        "bytes": 15387,
+        "triples": 33,
+        "pages": 1,
+        "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+        "parsed": true
+      },
+      {
+        "format": "csv",
+        "filename": "ontology-d96f7ebf.csv",
+        "bytes": 11389,
+        "triples": 33,
+        "pages": 1,
+        "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+        "parsed": true
+      },
+      {
+        "format": "rdf",
+        "filename": "ontology-d96f7ebf.ttl",
+        "bytes": 11322,
+        "triples": 33,
+        "pages": 1,
+        "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+        "parsed": true
+      }
+    ],
+    "legacy": {
+      "hierarchy_clicks": [
+        "https://w3id.org/lzo/ontology/BusinessEntity",
+        "https://w3id.org/lzo/ontology/Aquaculture",
+        "https://w3id.org/lzo/ontology/Pond",
+        "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:ponds"
+      ],
+      "map_layers": [
+        {
+          "id": "full",
+          "features": 122,
+          "coordinate_space": "LOCAL_IMAGE_APPROX",
+          "units": "reference_image_pixel"
+        },
+        {
+          "id": "detail-miaoxia",
+          "features": 38,
+          "coordinate_space": "PDF_LANDSCAPE_LOCAL",
+          "units": "pt"
+        },
+        {
+          "id": "detail-xinwumao",
+          "features": 49,
+          "coordinate_space": "PDF_LANDSCAPE_LOCAL",
+          "units": "pt"
+        },
+        {
+          "id": "detail-zhangjia",
+          "features": 16,
+          "coordinate_space": "PDF_LANDSCAPE_LOCAL",
+          "units": "pt"
+        },
+        {
+          "id": "detail-tanshen",
+          "features": 9,
+          "coordinate_space": "PDF_LANDSCAPE_LOCAL",
+          "units": "pt"
+        },
+        {
+          "id": "detail-abcdef",
+          "features": 51,
+          "coordinate_space": "PDF_LANDSCAPE_LOCAL",
+          "units": "pt"
+        }
+      ],
+      "map_object": "urn:lzo:fish-review:map:v1:object:SAT-FIELD-001",
+      "pinned_requests": 7
+    }
+  },
+  "fixture": {
+    "url": "http://127.0.0.1:8812/",
+    "data_nature": "synthetic browser acceptance fixture; API labels imported_unverified",
+    "source": "UTF-8 farms/ponds ZIP made for UI acceptance",
+    "field_acceptance": false,
+    "old_release_id": "061dc2f3-a1ac-4768-addf-960ec3709f39",
+    "old_counts": {
+      "classes": 22,
+      "instances": 2,
+      "relations": 1,
+      "source_classes": 2,
+      "resolved_relations": 1
+    },
+    "registration": {
+      "status": "queued",
+      "stage": "queued",
+      "visible_job_row": "77a5e9bd\t等待导入\tqueued\t—"
+    },
+    "job_id": "77a5e9bd-a48e-453c-8d5e-cfbb9d98cc79",
+    "release_id": "fa53c476-e121-4cd4-8d7d-1971dd02a697",
+    "job_stages": [
+      {
+        "status": "queued",
+        "stage": "queued"
+      },
+      {
+        "status": "running",
+        "stage": "rdf_generation"
+      },
+      {
+        "status": "running",
+        "stage": "rdf_download"
+      },
+      {
+        "status": "succeeded",
+        "stage": "complete"
+      }
+    ],
+    "counts": {
+      "classes": 22,
+      "instances": 111,
+      "relations": 110,
+      "source_classes": 2,
+      "resolved_relations": 110
+    },
+    "downloads": [
+      {
+        "format": "json",
+        "filename": "ontology-fa53c476.json",
+        "bytes": 610536,
+        "triples": 1540,
+        "pages": 2,
+        "release_id": "fa53c476-e121-4cd4-8d7d-1971dd02a697",
+        "parsed": true
+      },
+      {
+        "format": "csv",
+        "filename": "ontology-fa53c476.csv",
+        "bytes": 426518,
+        "triples": 1540,
+        "pages": 2,
+        "release_id": "fa53c476-e121-4cd4-8d7d-1971dd02a697",
+        "parsed": true
+      },
+      {
+        "format": "rdf",
+        "filename": "ontology-fa53c476.ttl",
+        "bytes": 423610,
+        "triples": 1540,
+        "pages": 2,
+        "release_id": "fa53c476-e121-4cd4-8d7d-1971dd02a697",
+        "parsed": true
+      }
+    ],
+    "input_encoding_review": {
+      "archive_sha256": "9be2df79b33aa54dda67f7337bde913d18ff4e9e19b65ee51b84adffaa860363",
+      "csv_files": [
+        {
+          "member": "csv/farms.csv",
+          "utf8_valid": true,
+          "non_ascii_characters": 0,
+          "literal_question_marks": 12
+        },
+        {
+          "member": "csv/ponds.csv",
+          "utf8_valid": true,
+          "non_ascii_characters": 0,
+          "literal_question_marks": 1210
+        }
+      ],
+      "coverage": "Strict UTF-8 decoding passed. These source CSVs contain only the ASCII subset, so non-ASCII CSV ingestion was not exercised. Literal question marks are already present in the input archive."
+    }
+  },
+  "screenshots": [
+    "screenshots/desktop-console.png",
+    "screenshots/desktop-resource.png",
+    "screenshots/desktop-ontology.png",
+    "screenshots/desktop-map.png",
+    "screenshots/desktop-map-object.png",
+    "screenshots/mobile-console.png",
+    "screenshots/mobile-map.png",
+    "screenshots/fixture-published.png",
+    "screenshots/fixture-relations.png",
+    "screenshots/fixture-rejected-input.png"
+  ],
+  "javascript_errors": [],
+  "checks": [
+    {
+      "name": "main console counters and source note",
+      "scope": "main",
+      "status": "passed",
+      "result": {
+        "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+        "instances": 180997,
+        "concepts": 178
+      }
+    },
+    {
+      "name": "main class selection, real instance pagination, attributes and relationship navigation",
+      "scope": "main",
+      "status": "passed",
+      "result": {
+        "class_iri": "urn:lzo:fish-review:sample:v1:class:cash_allocations",
+        "first_instance": "urn:lzo:fish-review:sample:v1:instance:0e0f7b96-f88a-5566-9eac-e51549dc2c0e",
+        "page2_first": "urn:lzo:fish-review:sample:v1:instance:fcfe0e24-dc88-5681-9e1c-8c12b074627f",
+        "properties": 36,
+        "incoming": 5,
+        "relationship_clicked": "urn:lzo:fish-review:sample:v1:instance:f26014eb-b125-5761-846e-9c4ff0c99f13"
+      }
+    },
+    {
+      "name": "main JSON CSV and RDF browser download parsing",
+      "scope": "main",
+      "status": "passed",
+      "result": [
+        {
+          "format": "json",
+          "filename": "ontology-d96f7ebf.json",
+          "bytes": 15387,
+          "triples": 33,
+          "pages": 1,
+          "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+          "parsed": true
+        },
+        {
+          "format": "csv",
+          "filename": "ontology-d96f7ebf.csv",
+          "bytes": 11389,
+          "triples": 33,
+          "pages": 1,
+          "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+          "parsed": true
+        },
+        {
+          "format": "rdf",
+          "filename": "ontology-d96f7ebf.ttl",
+          "bytes": 11322,
+          "triples": 33,
+          "pages": 1,
+          "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+          "parsed": true
+        }
+      ]
+    },
+    {
+      "name": "legacy ontology hierarchy, six source map layers and object navigation",
+      "scope": "main",
+      "status": "passed",
+      "result": {
+        "hierarchy_clicks": [
+          "https://w3id.org/lzo/ontology/BusinessEntity",
+          "https://w3id.org/lzo/ontology/Aquaculture",
+          "https://w3id.org/lzo/ontology/Pond",
+          "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:ponds"
+        ],
+        "map_layers": [
+          {
+            "id": "full",
+            "features": 122,
+            "coordinate_space": "LOCAL_IMAGE_APPROX",
+            "units": "reference_image_pixel"
+          },
+          {
+            "id": "detail-miaoxia",
+            "features": 38,
+            "coordinate_space": "PDF_LANDSCAPE_LOCAL",
+            "units": "pt"
+          },
+          {
+            "id": "detail-xinwumao",
+            "features": 49,
+            "coordinate_space": "PDF_LANDSCAPE_LOCAL",
+            "units": "pt"
+          },
+          {
+            "id": "detail-zhangjia",
+            "features": 16,
+            "coordinate_space": "PDF_LANDSCAPE_LOCAL",
+            "units": "pt"
+          },
+          {
+            "id": "detail-tanshen",
+            "features": 9,
+            "coordinate_space": "PDF_LANDSCAPE_LOCAL",
+            "units": "pt"
+          },
+          {
+            "id": "detail-abcdef",
+            "features": 51,
+            "coordinate_space": "PDF_LANDSCAPE_LOCAL",
+            "units": "pt"
+          }
+        ],
+        "map_object": "urn:lzo:fish-review:map:v1:object:SAT-FIELD-001",
+        "pinned_requests": 7
+      }
+    },
+    {
+      "name": "mobile console and ontology have no horizontal overflow",
+      "scope": "main",
+      "status": "passed",
+      "result": {
+        "console": {
+          "viewport": 393,
+          "scroll": 393
+        },
+        "map": {
+          "viewport": 390,
+          "scroll": 390
+        }
+      }
+    },
+    {
+      "name": "fixture UTF-8 ZIP upload, visible job progress, publication and cleared credential",
+      "scope": "fixture",
+      "status": "passed",
+      "result": {
+        "job_id": "77a5e9bd-a48e-453c-8d5e-cfbb9d98cc79",
+        "release_id": "fa53c476-e121-4cd4-8d7d-1971dd02a697",
+        "stages": [
+          {
+            "status": "queued",
+            "stage": "queued"
+          },
+          {
+            "status": "running",
+            "stage": "rdf_generation"
+          },
+          {
+            "status": "running",
+            "stage": "rdf_download"
+          },
+          {
+            "status": "succeeded",
+            "stage": "complete"
+          }
+        ],
+        "token_field_empty": true,
+        "no_secret_in_source_dom_storage": true
+      }
+    },
+    {
+      "name": "fixture duplicate upload returns the same successful job",
+      "scope": "fixture",
+      "status": "passed",
+      "result": {
+        "same_job_id": true
+      }
+    },
+    {
+      "name": "fixture version dropdown prevents old panel and delayed response mixing",
+      "scope": "fixture",
+      "status": "passed",
+      "result": {
+        "old_release": "061dc2f3-a1ac-4768-addf-960ec3709f39",
+        "new_release": "fa53c476-e121-4cd4-8d7d-1971dd02a697",
+        "late_response_ignored": true,
+        "historical_version_readable": true
+      }
+    },
+    {
+      "name": "fixture historical console bookmark opens the requested old version",
+      "scope": "fixture",
+      "status": "passed",
+      "result": {
+        "requested_release": "061dc2f3-a1ac-4768-addf-960ec3709f39",
+        "current_active_release": "fa53c476-e121-4cd4-8d7d-1971dd02a697",
+        "returned_release": "061dc2f3-a1ac-4768-addf-960ec3709f39"
+      }
+    },
+    {
+      "name": "fixture historical ontology links keep their initial release after publication",
+      "scope": "fixture",
+      "status": "passed",
+      "result": {
+        "release_id": "061dc2f3-a1ac-4768-addf-960ec3709f39",
+        "old_link_clicked": "urn:lzo:local-server:v1:68b7e2efcc1d55a3e242735f16fa300ae6dce5d8dd95f206a77968715ea224ff:instance:4756b40d-2dbc-5d87-b684-8faf470815b3",
+        "pinned_requests": 5,
+        "map_check": {
+          "status": "skipped",
+          "reason": "Independent synthetic input fixture has no source map assets; all six real source layers are checked in main scope"
+        }
+      }
+    },
+    {
+      "name": "fixture actual relation pagination and relation link click",
+      "scope": "fixture",
+      "status": "passed",
+      "result": {
+        "farm": "urn:lzo:local-server:v1:33476623e90fd3ebf127bd122b0647884c1577bae04391dc4a2cbb911879f796:instance:0b7f2dca-95f3-5039-9cdb-4936fc841cdd",
+        "incoming_page1": 100,
+        "page2_offset": 100,
+        "page2_count": 10,
+        "clicked_pond": "urn:lzo:local-server:v1:33476623e90fd3ebf127bd122b0647884c1577bae04391dc4a2cbb911879f796:instance:e6340228-b419-5390-8779-d67d75d4eac7"
+      }
+    },
+    {
+      "name": "fixture complete multipage JSON CSV RDF browser downloads",
+      "scope": "fixture",
+      "status": "passed",
+      "result": [
+        {
+          "format": "json",
+          "filename": "ontology-fa53c476.json",
+          "bytes": 610536,
+          "triples": 1540,
+          "pages": 2,
+          "release_id": "fa53c476-e121-4cd4-8d7d-1971dd02a697",
+          "parsed": true
+        },
+        {
+          "format": "csv",
+          "filename": "ontology-fa53c476.csv",
+          "bytes": 426518,
+          "triples": 1540,
+          "pages": 2,
+          "release_id": "fa53c476-e121-4cd4-8d7d-1971dd02a697",
+          "parsed": true
+        },
+        {
+          "format": "rdf",
+          "filename": "ontology-fa53c476.ttl",
+          "bytes": 423610,
+          "triples": 1540,
+          "pages": 2,
+          "release_id": "fa53c476-e121-4cd4-8d7d-1971dd02a697",
+          "parsed": true
+        }
+      ]
+    },
+    {
+      "name": "fixture rejected bad input preserves the active successful release",
+      "scope": "fixture",
+      "status": "passed",
+      "result": {
+        "job_id": "af4a5de0-af0f-458d-ae5b-508fe89528db",
+        "status": "failed",
+        "stages": [
+          {
+            "status": "queued",
+            "stage": "queued"
+          },
+          {
+            "status": "running",
+            "stage": "validate_input"
+          },
+          {
+            "status": "failed",
+            "stage": "validate_input"
+          }
+        ],
+        "preserved_release_id": "fa53c476-e121-4cd4-8d7d-1971dd02a697"
+      }
+    }
+  ],
+  "completed_at": "2026-11-12T12:16:55.298Z",
+  "limitations": [
+    {
+      "scope": "fixture",
+      "code": "non_ascii_csv_not_exercised",
+      "message": "Synthetic acceptance ZIP names contain literal question marks in the source. This run verifies UTF-8-compatible input, not a Chinese CSV round trip. Main source ontology labels display Chinese correctly."
+    }
+  ],
+  "prior_attempts": [
+    {
+      "report": "browser-first-attempt.json",
+      "status": "failed",
+      "checked_at": "2026-11-12T11:39:59.833Z",
+      "failed_phase": "fixture UTF-8 ZIP upload, visible job progress, publication and cleared credential",
+      "failed_checks": [
+        "response.json: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation."
+      ]
+    },
+    {
+      "report": "browser-second-attempt.json",
+      "status": "failed",
+      "checked_at": "2026-11-12T11:53:59.096Z",
+      "failed_phase": "main JSON CSV and RDF browser download parsing",
+      "failed_checks": [
+        "page.waitForEvent: Timeout 30000ms exceeded while waiting for event \"download\"\n=========================== logs ===========================\nwaiting for event \"download\"\n============================================================"
+      ]
+    }
+  ],
+  "artifact_review": {
+    "screenshots_visually_reviewed": 10,
+    "credential_values_visible": false,
+    "mobile_horizontal_overflow_observed": false
+  }
+}

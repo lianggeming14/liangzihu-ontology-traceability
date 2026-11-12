@@ -1,0 +1,21 @@
+{
+  "contract": "lzo-local-server-independent-review/1",
+  "status": "passed",
+  "unresolved_critical_or_important": 0,
+  "scope": "Code review, independent offline regressions, and inspection of separately executed native fixture evidence; actual deployment acceptance is recorded in server-readback.json.",
+  "resolved_findings": [
+    {"id": "precision", "result": "Reject nonrepresentable datetime fractions and excessive expanded numeric exponents before model inference; preserve exact supported decimal/time values."},
+    {"id": "rdf-lexical-export", "result": "Export Literal normalization disabled; original typed lexical strings retained."},
+    {"id": "restore-assets", "result": "Verified staging, explicit complete asset placement, relative business references, native-directory protections and pending-start gate."},
+    {"id": "version-isolation", "result": "Explicit historical version selection, cleared panels/cursors, pinned links and late-response generation guards."},
+    {"id": "sql-resume", "result": "Only complete inventory-equal targets may resume; narrow equivalent CHECK cast canonicalization does not ignore changed literals or types."},
+    {"id": "role-binding", "result": "Explicit safe API/worker same-name bindings retain new passwords; unrelated privileged or LOGIN collisions refuse."},
+    {"id": "extension-ownership", "result": "Cross-admin restore locally aligns only matching target extension members to recorded source ownership; companion arrays and sequences follow dependencies; full owner/ACL/data comparison remains required."},
+    {"id": "docker-context", "result": "Per-Dockerfile public allowlists retain required lock file; root ignores preserve existing builds."},
+    {"id": "fresh-native-deployment", "result": "Fresh directory/port/tool checks, new private credentials and deployment identity, JDK compiler requirement and explicit IPv4 behavior."}
+  ],
+  "independent_final_backup_regression": {"passed": 29, "native_cases_not_run_by_reviewer": 8},
+  "cross_admin_native_evidence_inspected": "postgres -> lzo_local_admin; complete PostGIS inventory, geometry, owner/ACL, safe identities and fixture cleanup passed",
+  "publication_audit_before_final_artifacts": {"files_scanned": 66, "blocking_secrets_or_paths": 0},
+  "not_claimed": ["Docker build/run", "second physical machine", "cross-operating-system restore", "field acceptance"]
+}

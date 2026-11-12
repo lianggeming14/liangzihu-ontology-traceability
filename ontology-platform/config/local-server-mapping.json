@@ -1,0 +1,17 @@
+{
+  "version": "local-server-mapping/1",
+  "schema_version": "1",
+  "dataset_label": "本地 CSV 完整快照（导入来源未核验）",
+  "encoding": "utf-8-sig",
+  "definitions": {
+    "tables": {
+      "farms": {"columns": {"id": {"type": "string"}, "name": {"type": "string"}}},
+      "ponds": {"columns": {"id": {"type": "string"}, "farm_id": {"type": "string"}, "name": {"type": "string"}, "area": {"type": "number", "unit": null}, "area_m2": {"type": "number", "unit": "m2"}}}
+    }
+  },
+  "relations": [
+    {"kind": "scalar", "source_table": "ponds", "field": "farm_id", "target_table": "farms", "evidence": "Explicit configured field mapping; absent targets remain unresolved"}
+  ],
+  "labels": {"farms": "养殖场", "ponds": "池塘"},
+  "table_domains": {"farms": "Farm", "ponds": "Pond"}
+}

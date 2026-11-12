@@ -1,0 +1,73 @@
+name: liangzihu-local-server
+x-app: &app
+  image: liangzihu-local-server:2026-11-12
+  build:
+    context: ../..
+    dockerfile: infra/local-server/Dockerfile
+  restart: unless-stopped
+  environment:
+    LZO_LOCAL_ADMIN_DATABASE_URL: postgresql://lzo_local_admin:${LZO_LOCAL_ADMIN_PASSWORD:?set private admin password}@postgres:5432/lzo_local
+    LZO_LOCAL_API_DATABASE_URL: postgresql://lzo_local_api:${LZO_LOCAL_API_PASSWORD:?set private API password}@postgres:5432/lzo_local
+    LZO_LOCAL_WORKER_DATABASE_URL: postgresql://lzo_local_worker:${LZO_LOCAL_WORKER_PASSWORD:?set private worker password}@postgres:5432/lzo_local
+    LZO_LOCAL_WRITE_TOKEN: ${LZO_LOCAL_WRITE_TOKEN:?set private write token}
+  volumes:
+    - app-data:/var/lib/lzo-local
+  depends_on:
+    postgres:
+      condition: service_healthy
+    fuseki:
+      condition: service_started
+  logging:
+    driver: json-file
+    options:
+      max-size: 2m
+      max-file: '3'
+services:
+  postgres:
+    image: postgis/postgis:17-3.6@sha256:d7053f57b0d62c427ffbf412208b6625317124d62eebf40672e990fea81e9d53
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: lzo_local_admin
+      POSTGRES_DB: lzo_local
+      POSTGRES_PASSWORD: ${LZO_LOCAL_ADMIN_PASSWORD:?set private admin password}
+      LZO_LOCAL_API_PASSWORD: ${LZO_LOCAL_API_PASSWORD:?set private API password}
+      LZO_LOCAL_WORKER_PASSWORD: ${LZO_LOCAL_WORKER_PASSWORD:?set private worker password}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init-roles.sh:/docker-entrypoint-initdb.d/20-local-roles.sh:ro
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U lzo_local_admin -d lzo_local']
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    logging:
+      driver: json-file
+      options: {max-size: 2m, max-file: '3'}
+  fuseki:
+    image: liangzihu-local-fuseki:6.2.0
+    build:
+      context: ../..
+      dockerfile: infra/local-server/Fuseki.Dockerfile
+    restart: unless-stopped
+    stop_grace_period: 60s
+    volumes:
+      - fuseki-data:/fuseki/databases
+    logging:
+      driver: json-file
+      options: {max-size: 2m, max-file: '3'}
+  api:
+    <<: *app
+    command: [serve]
+    ports: ['127.0.0.1:8792:8792']
+    healthcheck:
+      test: [CMD, python, -c, 'import urllib.request; urllib.request.urlopen("http://127.0.0.1:8792/health",timeout=3)']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  worker:
+    <<: *app
+    command: [worker]
+volumes:
+  postgres-data:
+  fuseki-data:
+  app-data:

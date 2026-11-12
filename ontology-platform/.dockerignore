@@ -45,3 +45,8 @@ infra/compose/certs
 infra/compose/source-certs
 infra/compose/wrong-source-ca
 infra/compose/workbench-fixtures
+
+# Local-server additions; legacy backend/database contexts retain HEAD rules.
+.venv-local-server
+**/.venv-local-server/**
+**/asset-placement-work-*/**

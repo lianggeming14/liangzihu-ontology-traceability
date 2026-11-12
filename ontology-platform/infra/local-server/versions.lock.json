@@ -1,0 +1,10 @@
+{
+  "runtime": {"python": "3.12.7", "postgresql": "17.11", "postgis": "3.6.2", "apache_jena_fuseki": "6.2.0", "java": "21"},
+  "source": "Existing project infra/versions.lock.json; no version downgrade",
+  "compose": {
+    "python": "python:3.12.7-slim-bookworm@sha256:60d9996b6a8a3689d36db740b49f4327be3be09a21122bd02fb8895abb38b50d",
+    "postgres": "postgis/postgis:17-3.6@sha256:d7053f57b0d62c427ffbf412208b6625317124d62eebf40672e990fea81e9d53",
+    "java": "eclipse-temurin:21-jre-jammy@sha256:affcab5356e1270ac35d2361ee83135af2f03e8d580eca78a6d5d6fdbf048db0"
+  },
+  "validation": {"docker_engine_execution": "not_executed", "cross_os_execution": "not_executed", "physical_second_machine": "not_executed"}
+}

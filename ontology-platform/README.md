@@ -1,5 +1,7 @@
 # 本体农场 · 当前源码快照
 
+本地服务器：[快速上手](docs/local-server/快速上手.md) · [使用指南](docs/local-server/使用指南.md) · [部署与换机](docs/local-server/部署与换机.md)。在本目录使用 `infra/local-server/local-server.cmd` 管理启动、停止与状态；默认访问 `http://127.0.0.1:8792/`。首次准备环境、恢复数据与配置要求以指南为准。
+
 2026-11-10：当前入口为 **[66 CSV 完整批次](docs/csv-batch/README.md)** 和 **[本体、实例与来源地图](docs/fish/ontology-review/README.md)**。新批次 153,862 条记录已录入隔离 PostgreSQL schema，72 张表（66 张业务表）及 1,397 个来源字段通过实库全量回读；3,539,134 个原文单元格和对应类型化单元格、810,934 条关系账本均已核对。新 Jena 图 21,333,891 条三元组通过完整术语回读，SHACL 检查 153,862 个实例、1,397 个字段约束且零违规。新导航已激活，合计 5 图、24,054,860 条三元组、178 个概念、150 个叶类、180,997 个实例，完整双向导航零悬空／错类。旧四图 2,720,969 条三元组及 10,495 条独立演示关系继续保留；新批次采用独立身份。实际 Chrome 与独立实时 HTTP → SPARQL 验收均已通过。
 
 新批次主体为规则模拟、天气为再分析、资产为复用目录，数据性质来自 `source_registry`。缺值、未知字段及未解析外键按来源保留，完整录入不构成正式采纳或现场验收。结构和证据见 [schema.sql](docs/csv-batch/schema.sql)、[字段字典](docs/csv-batch/field-dictionary.json)、[质量核验](docs/csv-batch/quality-audit.json)、[PostgreSQL 回读](docs/csv-batch/pg-readback.json)、[旧图保护回读](docs/csv-batch/prior-graphs-readback.json)、[RDF 回读](docs/csv-batch/rdf-readback.json)、[SHACL](docs/csv-batch/shacl-readback.json)、[激活报告](docs/csv-batch/activation-readback.json)、[全导航核验](docs/fish/ontology-review/navigation-readback.json)、[五图实时 API](docs/csv-batch/live-api-readback.json)和[Chrome 报告](docs/fish/ontology-review/csv-browser-report.json)。[CSV 首页截图](docs/fish/ontology-review/screenshots/desktop-csv-overview.png)及报告内其余四张截图来自实际浏览器，零 JavaScript 错误。

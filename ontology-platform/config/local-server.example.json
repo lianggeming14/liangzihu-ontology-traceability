@@ -1,0 +1,29 @@
+{
+  "root": "..",
+  "data_dir": "../.runtime/local-server",
+  "review_dir": "docs/fish/ontology-review",
+  "mapping_file": "config/local-server-mapping.json",
+  "host": "127.0.0.1",
+  "port": 8792,
+  "sql": {
+    "admin_dsn_env": "LZO_LOCAL_ADMIN_DATABASE_URL",
+    "api_dsn_env": "LZO_LOCAL_API_DATABASE_URL",
+    "worker_dsn_env": "LZO_LOCAL_WORKER_DATABASE_URL",
+    "allowed_targets": [{"host": "127.0.0.1", "port": 25459, "database": "lzo_gis"}]
+  },
+  "fuseki_url": "http://127.0.0.1:23059/fish_l1",
+  "fuseki_allowed_targets": ["http://127.0.0.1:23059/fish_l1"],
+  "auth": {"write_token_env": "LZO_LOCAL_WRITE_TOKEN"},
+  "limits": {
+    "upload_bytes": 67108864,
+    "page_size": 100,
+    "max_page_size": 1000,
+    "query_timeout_seconds": 15,
+    "min_free_disk_bytes": 1073741824,
+    "lease_seconds": 120,
+    "worker_poll_seconds": 1
+  },
+  "backup": {},
+  "runtime": {"directory": "runtime"},
+  "schema_version": "1"
+}

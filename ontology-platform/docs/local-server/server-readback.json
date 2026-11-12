@@ -1,0 +1,265 @@
+{
+  "contract": "lzo-local-server-acceptance/1",
+  "checked_at": "2026-11-12T12:32:37.147143+00:00",
+  "status": "passed",
+  "url": "http://127.0.0.1:8792/",
+  "binding": "IPv4 loopback",
+  "automatic_boot": "not-installed",
+  "data_nature": {
+    "active_release": "mixed_review_data",
+    "formal_adoption": false,
+    "field_acceptance": false,
+    "note": "Existing imported/simulated/reanalysis/reviewed-source distinctions retained; browser input fixture is independent synthetic data."
+  },
+  "complete_backup_and_restore": {
+    "status": "restored_verified",
+    "databases": {
+      "catalog": {
+        "status": "full_readback_verified",
+        "table_count": 5,
+        "schemas": [
+          "public"
+        ],
+        "restore_action": "resumed_verified"
+      },
+      "core": {
+        "status": "full_readback_verified",
+        "table_count": 307,
+        "schemas": [
+          "f03_9e3ce044f4874cfa9af5783253ef95d3",
+          "f03_abb7146a898f49fe9d7d79b667195729",
+          "public"
+        ],
+        "restore_action": "resumed_verified"
+      },
+      "gis": {
+        "status": "full_readback_verified",
+        "table_count": 160,
+        "schemas": [
+          "csv_batch_a4d78be79a83",
+          "fish_review_10pct_v1",
+          "public"
+        ],
+        "restore_action": "pg_restore"
+      },
+      "timeseries": {
+        "status": "full_readback_verified",
+        "table_count": 23,
+        "schemas": [
+          "public"
+        ],
+        "restore_action": "pg_restore"
+      }
+    },
+    "table_count_before_server_metadata": 495,
+    "schema_count_by_database": 8,
+    "rdf": {
+      "algorithm": "nq-lexical-sorted-sha256-v1",
+      "dataset_sha256": "9d3c04e9dd0fcadf5256b5b75cf15e9b02e3d8d5810dee25d832da947d4c7fc9",
+      "quad_count": 28474209,
+      "blank_node_count": 0,
+      "default_graph_quad_count": 0,
+      "named_graph_count": 978
+    },
+    "asset_count": 722,
+    "backup_bytes": 371870582,
+    "raw_assets_published": false,
+    "credentials_published": false
+  },
+  "stable_native_deployment": {
+    "status": "passed",
+    "scope": "same-host-cold-path-relocation-and-native-restart",
+    "physical_second_machine": false,
+    "old_source_environment": "retained unchanged",
+    "native_data_tree_before": {
+      "postgres": {
+        "files": 5229,
+        "bytes": 1671746151,
+        "tree_sha256": "e692be3af7b9c1ec1e7610ac96aa05647ce15eb7d7bb5a0dac700b8152bae3b1"
+      },
+      "rdf": {
+        "files": 86,
+        "bytes": 11015094923,
+        "tree_sha256": "2d4227a92f6c8af030a5a09b304af7fcc38e3aecb255ed3897c3faa9574a33d7"
+      }
+    },
+    "native_data_tree_after_move_before_restart": {
+      "postgres": {
+        "files": 5229,
+        "bytes": 1671746151,
+        "tree_sha256": "e692be3af7b9c1ec1e7610ac96aa05647ce15eb7d7bb5a0dac700b8152bae3b1"
+      },
+      "rdf": {
+        "files": 86,
+        "bytes": 11015094923,
+        "tree_sha256": "2d4227a92f6c8af030a5a09b304af7fcc38e3aecb255ed3897c3faa9574a33d7"
+      }
+    },
+    "cold_tree_bytes_equal": true,
+    "old_deployment_identity_adopted": false,
+    "active_release_unchanged": true,
+    "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+    "counts": {
+      "classes": 178,
+      "triples": 24054860,
+      "csv_rows": 153862,
+      "instances": 180997,
+      "relations": 890003,
+      "csv_fields": 1397,
+      "csv_tables": 66,
+      "map_layers": 6,
+      "map_objects": 284,
+      "csv_instances": 153862,
+      "source_classes": 150,
+      "demo_assignments": 10495,
+      "drawing_instances": 6297,
+      "drawing_relations": 10279,
+      "demo_profile_links": 20,
+      "resolved_relations": 889893,
+      "demo_activity_links": 10475,
+      "drawing_map_bridges": 163,
+      "drawing_measurements": 3202
+    },
+    "runtime": {
+      "status": "running",
+      "processes": {
+        "supervisor": true,
+        "http": true,
+        "worker": true
+      },
+      "url": "http://127.0.0.1:8792/",
+      "databases": {
+        "postgres": "running",
+        "fuseki": "running"
+      },
+      "automatic_boot": "not-installed"
+    },
+    "ready_http_status": 200,
+    "navigation_files_verified": 678,
+    "field_acceptance": false
+  },
+  "tests": {
+    "local_server": {
+      "passed": 156,
+      "skipped": 28,
+      "failed_or_errors": 0,
+      "scope": "offline Python suite and actual Node console regression; native opt-in fixtures reported separately"
+    },
+    "legacy_python": {
+      "passed": 129,
+      "details": "88 CSV +12 RDF +6 map +4 demo +4 drawing +9 HTTP +6 map preparation"
+    },
+    "legacy_node": {
+      "passed": 19
+    },
+    "repository_layout": {
+      "status": "passed",
+      "scope": "published artifacts/offline; live imports are separate"
+    },
+    "native_fixtures": {
+      "control_store_passed": 22,
+      "worker_full_input_and_failure_retry_passed": 1,
+      "backup_postgis_cases_passed": 7,
+      "provision_fresh_cluster_passed": 1,
+      "java_graceful_lifecycle_passed": 5,
+      "scope": "actual isolated PostgreSQL/Fuseki fixtures, not SQLite substitutes",
+      "cross_admin_postgis": {
+        "status": "passed",
+        "data_nature": "synthetic fixture records in isolated native PostgreSQL/PostGIS databases",
+        "source_admin": "postgres",
+        "target_admin": "lzo_local_admin",
+        "different_admins_verified": true,
+        "source_port": 25459,
+        "target_port": 25479,
+        "postgis_version": "3.6.2",
+        "complete_inventory_verified": true,
+        "table_count": 2,
+        "geometry_verified": true,
+        "spatial_ref_sys_owner_acl_verified": true,
+        "provider_function_owner_acl_verified": true,
+        "safe_nologin_nosuperuser_source_identity_verified": true,
+        "shared_database_or_cluster_reassignment": false,
+        "primary_business_databases_modified": false,
+        "fixture_cleanup_verified": true,
+        "remaining_fixture_databases": 0,
+        "remaining_created_fixture_roles": 0
+      }
+    },
+    "full_formal_platform": {
+      "status": "not_retested",
+      "scope": "outside this lightweight server delivery",
+      "earlier_unconfigured_bare_pytest": "legacy backend collection failed because lzo was not on PYTHONPATH; this is not reported as a full-platform pass"
+    }
+  },
+  "browser": {
+    "status": "passed",
+    "report": "browser-readback.json"
+  },
+  "unexecuted": [
+    "Docker image build/container run",
+    "second physical machine deployment",
+    "cross-operating-system restore",
+    "SSH tunnel/remote-network acceptance",
+    "field acceptance"
+  ],
+  "publication": {
+    "repository": "lianggeming14/liangzihu-ontology-traceability",
+    "branch": "main",
+    "visibility": "public",
+    "secrets_active_databases_original_assets": "excluded"
+  },
+  "source_protection": {
+    "status": "passed",
+    "original_source_ports": [
+      25449,
+      23049
+    ],
+    "sql": {
+      "core": {
+        "status": "full_SQL_inventory_equal_to_original_backup",
+        "tables": 307,
+        "schemas": [
+          "f03_9e3ce044f4874cfa9af5783253ef95d3",
+          "f03_abb7146a898f49fe9d7d79b667195729",
+          "public"
+        ],
+        "application_role_connections": 1
+      },
+      "gis": {
+        "status": "full_SQL_inventory_equal_to_original_backup",
+        "tables": 160,
+        "schemas": [
+          "csv_batch_a4d78be79a83",
+          "fish_review_10pct_v1",
+          "public"
+        ],
+        "application_role_connections": 0
+      },
+      "timeseries": {
+        "status": "full_SQL_inventory_equal_to_original_backup",
+        "tables": 23,
+        "schemas": [
+          "public"
+        ],
+        "application_role_connections": 0
+      },
+      "catalog": {
+        "status": "full_SQL_inventory_equal_to_original_backup",
+        "tables": 5,
+        "schemas": [
+          "public"
+        ],
+        "application_role_connections": 0
+      }
+    },
+    "rdf_graph_inventory_equal": true,
+    "rdf_graph_count": 978,
+    "rdf_quad_count": 28474209,
+    "rdf_scope": "graph identities/counts compared before/after; original dataset not re-exported here",
+    "source_write_operations_performed": false
+  },
+  "unicode_input": {
+    "status": "passed",
+    "report": "unicode-input-readback.json"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "contract": "lzo-local-server-live-api/1",
+  "checked_at": "2026-11-12T12:07:38.796134+00:00",
+  "status": "passed",
+  "url": "http://127.0.0.1:8792/",
+  "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+  "checks": [
+    {
+      "check": "health",
+      "status": "passed",
+      "http_status": 200
+    },
+    {
+      "check": "ready",
+      "status": "passed",
+      "http_status": 200
+    },
+    {
+      "check": "host_rejected",
+      "status": "passed",
+      "http_status": 403
+    },
+    {
+      "check": "origin_rejected",
+      "status": "passed",
+      "http_status": 403
+    },
+    {
+      "check": "anonymous_write_rejected",
+      "status": "passed",
+      "http_status": 401
+    },
+    {
+      "check": "private_file_not_served",
+      "status": "passed",
+      "http_status": 404
+    },
+    {
+      "check": "unsafe_iri_rejected",
+      "status": "passed",
+      "http_status": 400
+    },
+    {
+      "check": "release_history",
+      "status": "passed",
+      "http_status": 200
+    }
+  ],
+  "unauthorized_write_created_job": false,
+  "active_release_unchanged": true,
+  "data_nature": "mixed_review_data",
+  "field_acceptance": false
+}

@@ -1,0 +1,3 @@
+// Pin every legacy-browser data/API request to the page's immutable release.
+// The original browser files remain unchanged.
+(()=>{const release=document.querySelector('meta[name="local-release-id"]')?.content;if(!release)return;const originalFetch=window.fetch.bind(window);window.fetch=(input,init)=>{const url=new URL(input instanceof Request?input.url:input,location.href);if(url.origin===location.origin&&(url.pathname.startsWith('/api/ontology/')||url.pathname.startsWith('/ontology/data/'))){url.searchParams.set('release_id',release);input=input instanceof Request?new Request(url,input):url;}return originalFetch(input,init);};})();
