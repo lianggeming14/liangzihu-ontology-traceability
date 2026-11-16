@@ -1,0 +1,160 @@
+{
+  "contract": "lzo-gis-source-audit/1",
+  "status": "source_identified_design_pending",
+  "checked_on": "2026-11-16",
+  "repository": "litt1eloser/liangzihu-farm-platform",
+  "source_branches_checked": 13,
+  "main_commit": "59c17c3defd23c18bfa849b8af8bb0c478cd5a08",
+  "registration_commit": "7c667d6035f14164fbe35350f04c8259b17281b5",
+  "geoverification_commit": "e7744c50c95bf7337cc907e96ef0091524c5e4eb",
+  "registration": {
+    "objects": 107,
+    "fields": 67,
+    "ponds": 5,
+    "facilities": 35,
+    "polygon_geometries": 72
+  },
+  "reference": {
+    "features": 174,
+    "land": 67,
+    "road": 37,
+    "canal": 70
+  },
+  "independently_checked_exact_duplicates": {
+    "count": 67,
+    "key": "drawing without .dxf + __ + handle",
+    "comparison": "complete parsed coordinate structure equality",
+    "duplicate_sources_retained": true,
+    "product_deduplication_implemented": false
+  },
+  "facility_label_anchors": {
+    "positions": 28,
+    "all_codes_resolve": true,
+    "unpositioned": 7,
+    "actual_facility_insertion_positions": false
+  },
+  "cameras": {
+    "cad_symbols": 39,
+    "device_ids_available": false,
+    "serial_numbers_available": false,
+    "field_verified": false
+  },
+  "existing_csv_devices": {
+    "current_records": 24,
+    "historical_sample_records": 24,
+    "synthetic": true,
+    "authoritative_device_coordinates": 0,
+    "cad_id_links_found": 0,
+    "historical_samples_not_added_as_extra_physical_devices": true
+  },
+  "coordinate_accuracy": {
+    "reported_tie_points": 19,
+    "reported_rmse_m": 4.15,
+    "reported_maximum_error_m": 7.06,
+    "independently_recomputed": false,
+    "source_cad_crs_uncertainty_retained": true
+  },
+  "actual_full_farm_3d_model_in_current_branch_trees": false,
+  "geo_packages_identified": 4,
+  "raw_survey_csv_identified": true,
+  "full_geopackage_rows_parsed_this_design_stage": false,
+  "current_runtime_probe": {
+    "scope": "restricted-session network probes only; host-level service/process state not independently verified",
+    "http_8792": "unreachable",
+    "postgres_25459": "unreachable",
+    "fuseki_23059": "unreachable",
+    "databases_started_or_modified": false
+  },
+  "product_code_changed": false,
+  "database_import_performed": false,
+  "notes": [
+    "Default main contains the loading implementation; actual flat CAD data was found on non-main branches.",
+    "Source geometry and display deduplication are separate: preserve both source records while drawing canonical fields once.",
+    "The 39 camera symbols and facility text anchors are candidate diagram locations, not verified installed devices.",
+    "Current runtime status differs from the historical 2026-11-12 passed deployment evidence."
+  ],
+  "builder_check": {
+    "status": "passed",
+    "remaining_important_questions": 0,
+    "crs_policy": "Source-declared transformed longitude/latitude may be shown as candidate_approximate; original CAD CRS remains UNKNOWN and raw unknown-CRS points are not reprojected by assumption."
+  },
+  "source_files": [
+    {
+      "commit": "7c667d6035f14164fbe35350f04c8259b17281b5",
+      "path": "data/cad-reference/completion-reference.json",
+      "git_blob_sha": "ef489b815feb7ffef8a01d218427121b7179f603",
+      "size_bytes": 280562,
+      "url": "https://github.com/litt1eloser/liangzihu-farm-platform/blob/7c667d6035f14164fbe35350f04c8259b17281b5/data/cad-reference/completion-reference.json"
+    },
+    {
+      "commit": "7c667d6035f14164fbe35350f04c8259b17281b5",
+      "path": "data/cad-reference/facility-label-positions.json",
+      "git_blob_sha": "d46051d5df461ab8637c02848cf79f41736ded95",
+      "size_bytes": 10758,
+      "url": "https://github.com/litt1eloser/liangzihu-farm-platform/blob/7c667d6035f14164fbe35350f04c8259b17281b5/data/cad-reference/facility-label-positions.json"
+    },
+    {
+      "commit": "7c667d6035f14164fbe35350f04c8259b17281b5",
+      "path": "data/cad-reference/registration-dataset.json",
+      "git_blob_sha": "e8eb6fda119732b138756adfd48830e2995f8926",
+      "size_bytes": 231356,
+      "url": "https://github.com/litt1eloser/liangzihu-farm-platform/blob/7c667d6035f14164fbe35350f04c8259b17281b5/data/cad-reference/registration-dataset.json"
+    },
+    {
+      "commit": "e7744c50c95bf7337cc907e96ef0091524c5e4eb",
+      "path": "定位验证成果/01-定位验证报告.md",
+      "git_blob_sha": "0c1eb8f05451bfce53fd681ecc4f24b37516bc3d",
+      "size_bytes": 10075,
+      "url": "https://github.com/litt1eloser/liangzihu-farm-platform/blob/e7744c50c95bf7337cc907e96ef0091524c5e4eb/定位验证成果/01-定位验证报告.md"
+    },
+    {
+      "commit": "e7744c50c95bf7337cc907e96ef0091524c5e4eb",
+      "path": "定位验证成果/GIS测试数据/梁子湖竣工图候选几何_EPSG4547_测试.gpkg",
+      "git_blob_sha": "239aaf008d2fb74e57dffd38f79fe96e0982c9e2",
+      "size_bytes": 573440,
+      "url": "https://github.com/litt1eloser/liangzihu-farm-platform/blob/e7744c50c95bf7337cc907e96ef0091524c5e4eb/定位验证成果/GIS测试数据/梁子湖竣工图候选几何_EPSG4547_测试.gpkg"
+    },
+    {
+      "commit": "e7744c50c95bf7337cc907e96ef0091524c5e4eb",
+      "path": "定位验证成果/既有成果复核/梁子湖竣工图提取成果/09-提取的空间数据/CAD候选几何_坐标参考未知.gpkg",
+      "git_blob_sha": "f0503ffe82c1fb5d4215fae8a4d25be9d8be1dfe",
+      "size_bytes": 471040,
+      "url": "https://github.com/litt1eloser/liangzihu-farm-platform/blob/e7744c50c95bf7337cc907e96ef0091524c5e4eb/定位验证成果/既有成果复核/梁子湖竣工图提取成果/09-提取的空间数据/CAD候选几何_坐标参考未知.gpkg"
+    },
+    {
+      "commit": "e7744c50c95bf7337cc907e96ef0091524c5e4eb",
+      "path": "定位验证成果/既有成果复核/梁子湖竣工图提取成果/09-提取的空间数据/CAD原始测绘点_坐标与高程未确认.gpkg",
+      "git_blob_sha": "b2a76a969c6763fa6d87db5e96d724ce4c3af8f4",
+      "size_bytes": 1351680,
+      "url": "https://github.com/litt1eloser/liangzihu-farm-platform/blob/e7744c50c95bf7337cc907e96ef0091524c5e4eb/定位验证成果/既有成果复核/梁子湖竣工图提取成果/09-提取的空间数据/CAD原始测绘点_坐标与高程未确认.gpkg"
+    },
+    {
+      "commit": "e7744c50c95bf7337cc907e96ef0091524c5e4eb",
+      "path": "定位验证成果/既有成果复核/梁子湖竣工图提取成果/09-提取的空间数据/CAD原始测绘点与高程候选.csv",
+      "git_blob_sha": "dbe559087236ece554edf06bc97471651dcca5a6",
+      "size_bytes": 960094,
+      "url": "https://github.com/litt1eloser/liangzihu-farm-platform/blob/e7744c50c95bf7337cc907e96ef0091524c5e4eb/定位验证成果/既有成果复核/梁子湖竣工图提取成果/09-提取的空间数据/CAD原始测绘点与高程候选.csv"
+    },
+    {
+      "commit": "e7744c50c95bf7337cc907e96ef0091524c5e4eb",
+      "path": "定位验证成果/既有成果复核/梁子湖竣工图提取成果/09-提取的空间数据/设施图块位置候选_未核实.gpkg",
+      "git_blob_sha": "903f8fc5f0cb681e9ffba02bf5a6bb3a4a6ad548",
+      "size_bytes": 159744,
+      "url": "https://github.com/litt1eloser/liangzihu-farm-platform/blob/e7744c50c95bf7337cc907e96ef0091524c5e4eb/定位验证成果/既有成果复核/梁子湖竣工图提取成果/09-提取的空间数据/设施图块位置候选_未核实.gpkg"
+    },
+    {
+      "commit": "e7744c50c95bf7337cc907e96ef0091524c5e4eb",
+      "path": "定位验证成果/监控摄像头39处.json",
+      "git_blob_sha": "1f98f3535c0da71d1aa52a33ab06be9ecde1f853",
+      "size_bytes": 6689,
+      "url": "https://github.com/litt1eloser/liangzihu-farm-platform/blob/e7744c50c95bf7337cc907e96ef0091524c5e4eb/定位验证成果/监控摄像头39处.json"
+    },
+    {
+      "commit": "e7744c50c95bf7337cc907e96ef0091524c5e4eb",
+      "path": "定位验证成果/监控摄像头39处_坐标表.csv",
+      "git_blob_sha": "78c5a8607f13b3f4f143463303646ef1c608b1be",
+      "size_bytes": 4923,
+      "url": "https://github.com/litt1eloser/liangzihu-farm-platform/blob/e7744c50c95bf7337cc907e96ef0091524c5e4eb/定位验证成果/监控摄像头39处_坐标表.csv"
+    }
+  ]
+}
