@@ -1,0 +1,12 @@
+{
+  "contract": "lzo-public-network-export/1",
+  "release_id": "16c6ce16-e28c-5e9c-a766-874fca309c5f",
+  "source_endpoint": "/api/v1/network",
+  "sha256": "43d1f3e5d550edff31225bd3c7d5bae996b28c6924edc3ca782864ce37cb3e4b",
+  "size_bytes": 924623,
+  "nodes": 186,
+  "edges": 1941,
+  "schema_edges": 1311,
+  "observed_edges": 630,
+  "private_relation_index_included": false
+}

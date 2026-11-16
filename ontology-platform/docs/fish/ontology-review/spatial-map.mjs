@@ -42,15 +42,32 @@ export function prepareSpatialMap(data){
   const bounds=geometryBounds(fit.map(f=>f.geometry))||geometryBounds(display.filter(f=>!f.attributes?.exclude_from_initial_fit).map(f=>f.geometry));
   return {objects,display,unlocated,bounds};
 }
-const attributeNames={area_m2:'计算面积（m²）',perimeter_m:'计算周长（m）',length_m:'计算长度（m）',depth:'水深',depth_m:'水深（m）',volume_m3:'体积（m³）',method:'计算方法',units:'单位',assumptions:'计算前提',source_values:'原来源数值',position_status:'位置依据',device_iri:'绑定设备 IRI',area_memberships:'空间范围命中'};
+const attributeNames={area_m2:'计算面积（m²）',perimeter_m:'计算周长（m）',length_m:'计算长度（m）',depth:'水深',depth_m:'水深（m）',volume_m3:'体积（m³）',method:'计算方法',units:'单位',assumptions:'计算前提',source_values:'原来源数值',position_status:'位置依据',device_iri:'绑定设备 IRI',area_memberships:'空间范围命中',original_cad_crs_status:'原始 CAD 坐标参考',registration_status:'配准状态',position_basis:'位置依据',source_candidate_number:'来源候选序号'};
+const positionLabels={candidate_approximate:'候选近似配准 · 待核实',candidate_text_anchor:'图纸文字锚点 · 非实物位置',candidate_cad_symbol:'CAD 图标候选位置',unlocated:'待定位 · 未提供坐标',invalid_geometry_quarantined:'几何无效 · 已隔离，未修复',derived_candidate_spatial_evidence:'候选坐标推导的空间证据',UNKNOWN:'未知 · 尚未确认'};
+const methodLabels={'pyproj.Geod WGS84 ellipsoidal geodesic':'WGS 84 椭球测地线计算（pyproj.Geod）'};
+const assumptionLabels={'Source-declared candidate longitude/latitude; original CAD CRS UNKNOWN; not field verified.':'采用来源提供的候选经纬度；原始 CAD 坐标参考未知，尚未经现场核实。'};
+const unitNames={area:'面积',length:'长度',perimeter:'周长',depth:'深度',volume:'体积'},unitSymbols={m2:'m²',m3:'m³',m:'m'};
+const measurementFields=new Set(['area_m2','perimeter_m','length_m','depth','depth_m','volume_m3']);
+const knownText=(labels,value)=>typeof value==='string'&&Object.hasOwn(labels,value)?labels[value]:formatValue(value);
+function detailValue(key,value){
+  if(measurementFields.has(key)&&typeof value==='number'&&Number.isFinite(value))return value.toLocaleString('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2});
+  if(['position_status','registration_status','original_cad_crs_status'].includes(key))return knownText(positionLabels,value);
+  if(key==='method')return knownText(methodLabels,value);
+  if(key==='assumptions')return knownText(assumptionLabels,value);
+  if(key==='units'&&value&&typeof value==='object'&&!Array.isArray(value))return Object.entries(value).map(([name,unit])=>`${knownText(unitNames,name)} ${knownText(unitSymbols,unit)}`).join(' · ')||formatValue(value);
+  if(key==='position_basis'&&value==='No verified device location supplied')return '未提供经过核实的设备位置';
+  return formatValue(value);
+}
+function detailValueMarkup(key,value){const raw=formatValue(value),display=detailValue(key,value);return `<dd${display!==raw?` title="原始值：${esc(raw)}"`:''}>${esc(display)}</dd>`;}
 export function featureDetailMarkup(feature,quality={}){
   const attributes=feature.attributes||{},measurements=attributes.computed_measurements||{},hasDepth=Object.keys({...attributes,...measurements}).some(k=>/depth|水深|深度/.test(k));
+  const originalNature=feature.nature||'imported_unverified',labelledNature=originalNature==='cad_candidate_unverified'?'CAD 候选资料 · 未核验':originalNature==='source_declared_unverified'?'来源声明 · 未核验':natureLabel(originalNature),nature=typeof labelledNature==='string'?labelledNature:formatValue(originalNature);
   const anomalies=(Array.isArray(quality?.anomalous_lengths)?quality.anomalous_lengths:[]).filter(row=>row?.iri===feature.iri);
   const excluded=attributes.exclude_from_initial_fit===true||(Array.isArray(quality?.initial_fit_exclusions)&&quality.initial_fit_exclusions.includes(feature.iri))||anomalies.some(row=>row.action==='retained_excluded_from_initial_fit');
   const metres=value=>value===null||value===undefined?'未提供':esc(formatValue(value))+' m';
   const warning=anomalies.length||excluded?`<div class="map-warning spatial-quality-warning" role="note"><strong>${anomalies.length?'来源标记：异常长度':'来源质量标记'}</strong>${anomalies.map(row=>`<p>来源记录长度：${metres(row.length_m)}；来源判定阈值：${metres(row.threshold_m)}。</p>${row.reason?`<p>来源原因：${esc(formatValue(row.reason))}</p>`:''}${row.action&&row.action!=='retained_excluded_from_initial_fit'?`<p>来源处置：${esc(row.action)}</p>`:''}`).join('')}${!anomalies.length?'<p>来源判定原因与阈值未提供。</p>':''}<p>${excluded?'已排除初始视野拟合，避免异常跨度缩小主图；':''}原几何保留，可通过对应图层查看并核对来源。</p></div>`:'';
   const rows=Object.entries({...measurements,...attributes}).filter(([key])=>!['computed_measurements','area_memberships','memberships','spatial_memberships','exclude_from_initial_fit'].includes(key));
-  return `<div class="eyebrow">${esc(names[feature.kind]||'空间对象')}</div><h3>${esc(feature.label||feature.id)}</h3><div class="object-meta"><span class="badge blue">${esc(natureLabel(feature.nature||'imported_unverified'))}</span><span class="badge amber">${feature.geometry?'候选位置 · 待核实':'待定位 · 无坐标'}</span></div>${warning}<dl class="source-list"><dt>位置依据</dt><dd>${esc(feature.position_status||'来源未提供')}</dd>${feature.kind==='camera'?'<dt>设备身份</dt><dd>CAD 图标位置候选；未绑定正式设备，未提供在线状态或视频入口。</dd>':''}${feature.kind==='facility'?'<dt>锚点含义</dt><dd>图纸文字锚点，不代表设施实物插入点。</dd>':''}${rows.slice(0,18).map(([key,value])=>`<dt>${esc(attributeNames[key]||key)}</dt><dd>${esc(formatValue(value))}</dd>`).join('')}${!hasDepth?'<dt>水深 / 深度</dt><dd>未提供</dd>':''}</dl><p class="panel-note">几何测量为候选坐标上的派生计算，不能作为现场实测或正式业务归属。</p><details class="spatial-evidence"><summary>查看公开来源证据</summary><pre class="mono">${esc(JSON.stringify(feature.source_refs||[],null,2))}</pre></details>`;
+  return `<div class="eyebrow">${esc(names[feature.kind]||'空间对象')}</div><h3>${esc(feature.label||feature.id)}</h3><div class="object-meta"><span class="badge blue" title="原始值：${esc(originalNature)}">${esc(nature)}</span><span class="badge amber">${feature.geometry?'候选位置 · 待核实':'待定位 · 无坐标'}</span></div>${warning}<dl class="source-list"><dt>位置依据</dt>${detailValueMarkup('position_status',feature.position_status||'来源未提供')}${feature.kind==='camera'?'<dt>设备身份</dt><dd>CAD 图标位置候选；未绑定正式设备，未提供在线状态或视频入口。</dd>':''}${feature.kind==='facility'?'<dt>锚点含义</dt><dd>图纸文字锚点，不代表设施实物插入点。</dd>':''}${rows.slice(0,18).map(([key,value])=>`<dt>${esc(attributeNames[key]||key)}</dt>${detailValueMarkup(key,value)}`).join('')}${!hasDepth?'<dt>水深 / 深度</dt><dd>未提供</dd>':''}</dl><p class="panel-note">几何测量为候选坐标上的派生计算，不能作为现场实测或正式业务归属。测量数值按两位小数显示，原始精度可在下方展开查看。</p><details class="spatial-evidence"><summary>查看原始属性与完整精度</summary><pre class="mono">${esc(JSON.stringify({nature:feature.nature,position_status:feature.position_status,attributes},null,2))}</pre></details><details class="spatial-evidence"><summary>查看公开来源证据</summary><pre class="mono">${esc(JSON.stringify(feature.source_refs||[],null,2))}</pre></details>`;
 }
 
 export function mountSpatialMap(container,data,{onSelect=()=>{},onLegacy=()=>{},releaseId='',selectedIri:initialIri=null}={}){

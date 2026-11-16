@@ -1,0 +1,276 @@
+{
+  "contract": "lzo-cad-native-acceptance/1",
+  "status": "passed",
+  "checked_at": "2026-11-16T09:38:45.173471+00:00",
+  "release_id": "16c6ce16-e28c-5e9c-a766-874fca309c5f",
+  "parent_release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+  "preservation": {
+    "old_sql_tables": 498,
+    "old_table_row_counts_unchanged_except": [
+      {
+        "database": "lzo_gis",
+        "schema": "lzo_local",
+        "table": "releases",
+        "before": 1,
+        "after": 2
+      }
+    ],
+    "old_rdf_graphs_with_unchanged_counts": 978,
+    "old_navigation_files_unchanged": 678,
+    "historical_files_changed_in_new_composite": [
+      "data/manifest.json",
+      "data/map-features.json"
+    ],
+    "old_instances": 180997
+  },
+  "addition": {
+    "sql_tables": 7,
+    "rdf_graphs": 1,
+    "rdf_triples": 69740,
+    "source_files": 11,
+    "source_tables": 86,
+    "source_records": 32464,
+    "objects": 258,
+    "relations": 232
+  },
+  "published_counts": {
+    "instances": 181255,
+    "relations": 890235,
+    "resolved_relations": 890125,
+    "classes": 186,
+    "source_classes": 157,
+    "triples": 24124600,
+    "map_objects": 282,
+    "map_layers": 8,
+    "demo_assignments": 10495,
+    "demo_activity_links": 10475,
+    "demo_profile_links": 20,
+    "drawing_instances": 6297,
+    "drawing_measurements": 3202,
+    "drawing_relations": 10279,
+    "drawing_map_bridges": 163,
+    "csv_instances": 153862,
+    "csv_rows": 153862,
+    "csv_tables": 66,
+    "csv_fields": 1397,
+    "cad_objects": 258,
+    "cad_relations": 232,
+    "legacy_map_objects": 284,
+    "legacy_map_layers": 6,
+    "map_unlocated": 36,
+    "map_display_features": 81
+  },
+  "source_bundle_sha256": "8cedb56825682ac037b30e610aa326c2784f6cc2bf9ddd829a582c0fd5e431dc",
+  "backup_configuration": [
+    {
+      "file": "backup-options.json",
+      "cad_imports_included": true
+    },
+    {
+      "file": "restore-options.example.json",
+      "cad_imports_included": true
+    }
+  ],
+  "native_sql_readback": {
+    "status": "passed",
+    "schema": "cad_057c6984aaead37371a8c6ce",
+    "identity": {
+      "batch_id": "057c6984aaead37371a8c6cedfa949762cbfd4fe8aaffc3b4f0355addfd07530",
+      "contract": "lzo-cad-sql/1",
+      "display_srid": 4326,
+      "source_files": [
+        {
+          "id": "09920a22d203797201a054d4403e3a7eb19408979923be78e3b786967a7825e3",
+          "sha256": "6f295bef688b9c6f48571b0078c88eb1946b0710af5b6e758da4ddd8aebc8722",
+          "size_bytes": 280562
+        },
+        {
+          "id": "54877edd5319e5bd52ba4b7b8f4edffc80906708c9f77c74148ef4c630c59fc9",
+          "sha256": "8879570ff5e8c8b8ff785755b64eb94ca848f79429396ab60659ced49548a5e4",
+          "size_bytes": 10758
+        },
+        {
+          "id": "73d0fd8cbd0188165b7854a113b0ff8d89e68083ef42f816e8c6a7b1f51813df",
+          "sha256": "b9c773d6f13d1e778f17cd5089a4f4de740141ec63c0013c86b223993548feb5",
+          "size_bytes": 231356
+        },
+        {
+          "id": "ca08b94c9bf6e04a4cb7c8819f694fdd255cb2809f493128801d1f4e72a9b092",
+          "sha256": "f280b6ab1afb4dedd7f4a49d8779d2f1d5bcf6680769622aff447bd3f964da5e",
+          "size_bytes": 10075
+        },
+        {
+          "id": "6b8c779e2b2436187359a7c63103652c9e9d954cc183a2ccd55ca04064a87035",
+          "sha256": "b1e505fdab1453f8a29bebb7ef4f87f8a899cc1ce9a5bda35a3e473d650d676a",
+          "size_bytes": 573440
+        },
+        {
+          "id": "68224b5fe61be5f73e1bae408e904b7255e6df6f8caf68de784b706b5d606f70",
+          "sha256": "b53bb178effeb42466fc0e73ab47f20f79e9fe9811ba918c377c03444b149099",
+          "size_bytes": 471040
+        },
+        {
+          "id": "9ca24ab2116d2c891f7166a7fae609a40fa1c4ecb0d90f0cc5170208c0ddaa22",
+          "sha256": "4802a610400575c2982197a96ac69497095664d4e13755dc498e0307c2f655e6",
+          "size_bytes": 1351680
+        },
+        {
+          "id": "4289f11710f49e0296bba0f2230e006be4c55c7150900a53ab7239672c51a3c8",
+          "sha256": "1503c7a89bd28517bc0099c36a69eaa3a77d84455feec4f2bc89c32c58e83ce0",
+          "size_bytes": 960094
+        },
+        {
+          "id": "b0b1f55375501aa12d111274df6c1b83a4918e42ff0461a9cb670811b9f4b3a3",
+          "sha256": "e9024625beae16d06aea9868e77b053ae1311ee5b375bbfa7b09a87e70e5de66",
+          "size_bytes": 159744
+        },
+        {
+          "id": "85f235e4a63f651facdf44384255604bf7225485822c20e037e13c3d34859d2f",
+          "sha256": "14d23d52c1931f15351856f183e0fc37ca2a24aa45c14fb645422084cd3bbef3",
+          "size_bytes": 6689
+        },
+        {
+          "id": "230c6c3559f1e32993822cd1f39eda7fc6f6814e0a78a8dd8840eed4344dbbff",
+          "sha256": "eb27bc856ca84181c7afdb4cfcbbc5368dd8e71b5597c10a09091568e93dd523",
+          "size_bytes": 4923
+        }
+      ],
+      "bundle_sha256": "4c5459630ee4094f108c429c9ef533702df0fa61080b50d41b765e0a8018ed81",
+      "physical_sha256": "baf7ebbdf321e0028f5cdedcbc08c8906e6773552c37fb579b0bfb996efceb52",
+      "original_srid_policy": "preserved; unknown PostGIS SRID 0"
+    },
+    "all_rows_verified": true,
+    "checks": [
+      {
+        "table": "source_files",
+        "status": "passed",
+        "expected_rows": 11,
+        "actual_rows": 11,
+        "mismatch_rows": 0,
+        "expected_sha256": "2e3ff5e22bdbb86a74988b50973d3140a9f7ef8fb314562e88edd77578f3e5ab",
+        "actual_sha256": "2e3ff5e22bdbb86a74988b50973d3140a9f7ef8fb314562e88edd77578f3e5ab"
+      },
+      {
+        "table": "source_tables",
+        "status": "passed",
+        "expected_rows": 86,
+        "actual_rows": 86,
+        "mismatch_rows": 0,
+        "expected_sha256": "4d40be47e74a96ddf1092601af96b3ab8c389a9d5150a4be7a2c08a4d87f60e9",
+        "actual_sha256": "4d40be47e74a96ddf1092601af96b3ab8c389a9d5150a4be7a2c08a4d87f60e9"
+      },
+      {
+        "table": "source_records",
+        "status": "passed",
+        "expected_rows": 32464,
+        "actual_rows": 32464,
+        "mismatch_rows": 0,
+        "expected_sha256": "784ec4053416f45be5225933ddd0e55d9d8b47eb8a924f3ac641678b8021216a",
+        "actual_sha256": "784ec4053416f45be5225933ddd0e55d9d8b47eb8a924f3ac641678b8021216a"
+      },
+      {
+        "table": "objects",
+        "status": "passed",
+        "expected_rows": 258,
+        "actual_rows": 258,
+        "mismatch_rows": 0,
+        "expected_sha256": "e6163b28552bb88d9fb62d7ba3adbb8a80dffb1933a0935fb7a89912f4de5c97",
+        "actual_sha256": "e6163b28552bb88d9fb62d7ba3adbb8a80dffb1933a0935fb7a89912f4de5c97"
+      },
+      {
+        "table": "relations",
+        "status": "passed",
+        "expected_rows": 232,
+        "actual_rows": 232,
+        "mismatch_rows": 0,
+        "expected_sha256": "e9d5ab50e028e6cc0aa5fb506d075c127c159b6054b43b1dec2ca3d7c6d2b3f5",
+        "actual_sha256": "e9d5ab50e028e6cc0aa5fb506d075c127c159b6054b43b1dec2ca3d7c6d2b3f5"
+      },
+      {
+        "table": "geometries",
+        "status": "passed",
+        "expected_rows": 8453,
+        "actual_rows": 8453,
+        "mismatch_rows": 0,
+        "expected_sha256": "4bb3747567c878e1f84b5f4b65f172bd8a36b1ffe70c54686deaff52283281cf",
+        "actual_sha256": "4bb3747567c878e1f84b5f4b65f172bd8a36b1ffe70c54686deaff52283281cf"
+      },
+      {
+        "table": "postgis_geometry",
+        "status": "passed",
+        "expected_rows": 8453,
+        "actual_rows": 8453,
+        "mismatch_rows": 0,
+        "expected_sha256": "0ea169560b7602c261fc24fad4411ee5b71ebf4131056ec76fc461671aae3fa9",
+        "actual_sha256": "0ea169560b7602c261fc24fad4411ee5b71ebf4131056ec76fc461671aae3fa9"
+      }
+    ]
+  },
+  "native_rdf_readback": {
+    "contract": "local-server-rdf-readback/1",
+    "status": "passed",
+    "full_terms_equal": true,
+    "triple_count": 69740,
+    "graph_iri": "urn:lzo:cad-gis:v1:graph:057c6984aaead37371a8c6cedfa949762cbfd4fe8aaffc3b4f0355addfd07530",
+    "namespace": "urn:lzo:cad-gis:v1:",
+    "termset_sha256": "71243da3399a1b4dd833b3a970014f26115acebd80b336081fac6b0cd2d7a1d0",
+    "nt_sha256": "3cc05ff6912fbcd89e53144515aefdf80c51a9edb328453a0ee4abb93b71f3e6",
+    "package_sha256": "4c5459630ee4094f108c429c9ef533702df0fa61080b50d41b765e0a8018ed81",
+    "unexpected_or_missing_terms": 0,
+    "existing_graph_verified": false
+  },
+  "shacl": {
+    "status": "passed",
+    "instances_validated": 258,
+    "engine": "pyshacl",
+    "data_nature": "cad_candidate_unverified",
+    "raw_payload_public": false
+  },
+  "not_executed": [
+    "physical_second_machine_restore",
+    "cross_os_restore",
+    "docker",
+    "field_survey_accuracy"
+  ],
+  "raw_payload_public": false,
+  "idempotent_retry": {
+    "release_id": "16c6ce16-e28c-5e9c-a766-874fca309c5f",
+    "status": "published",
+    "idempotent": true
+  },
+  "geometry_verification": {
+    "gpkg_rows_compared": 25179,
+    "gpkg_cells_compared": 128267,
+    "display_faces": 81,
+    "conflict_faces": 7,
+    "max_display_face_overlap_m2": 0.0,
+    "invalid_map_geometries": 0,
+    "anomalous_map_lengths": 0,
+    "point_area_memberships": 18
+  },
+  "unit_tests": {
+    "local_server": {
+      "passed": 233,
+      "skipped": 15,
+      "scope": "tests/local_server excluding native Store; includes exporter and backup path regressions"
+    },
+    "native_store": {
+      "passed": 24,
+      "skipped": 0,
+      "database": "isolated lzo_local_test"
+    },
+    "javascript": {
+      "passed": 46,
+      "skipped": 0,
+      "scope": "map, sphere, catalog, route, projection and interaction model"
+    }
+  },
+  "final_owned_restart": {
+    "status": "running",
+    "http": true,
+    "worker": true,
+    "postgres": "running",
+    "fuseki": "running",
+    "automatic_boot": "not-installed"
+  }
+}

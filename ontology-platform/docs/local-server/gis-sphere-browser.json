@@ -1,0 +1,74 @@
+{
+  "contract": "lzo-gis-sphere-browser-acceptance/1",
+  "checked_at": "2026-11-16T11:10:53.024Z",
+  "status": "passed",
+  "browser": "real Chromium",
+  "field_acceptance": false,
+  "checks": [
+    {
+      "name": "published map and network contracts",
+      "status": "passed",
+      "result": {
+        "positioned": {
+          "field": 67,
+          "pond": 5,
+          "facility": 28,
+          "camera": 39
+        },
+        "map_objects": 246,
+        "display_faces": 81,
+        "unlocated": 36,
+        "network_nodes": 186,
+        "network_edges": 1941
+      }
+    },
+    {
+      "name": "flat map main entry and object navigation",
+      "status": "passed",
+      "result": {
+        "one_flat_view": true,
+        "polygon_faces": 81,
+        "camera_iri": "urn:lzo:cad-gis:v1:instance:camera-cbebb2ce8356dad3a665d29ffe0f2a4e07397532ed3868aad0916296741bc800",
+        "instance_map_round_trip": true,
+        "parcel_measurements_visible": true
+      }
+    },
+    {
+      "name": "unlocated objects and historical map remain accessible",
+      "status": "passed",
+      "result": {
+        "unlocated": 36,
+        "old_layers": 6
+      }
+    },
+    {
+      "name": "sphere actual drag zoom and bounded relationship drilldown",
+      "status": "passed",
+      "result": {
+        "mouse_rotation": true,
+        "wheel_zoom": true,
+        "drag_did_not_navigate": true,
+        "relationship_to_instance": true
+      }
+    },
+    {
+      "name": "mobile layouts and release pinning",
+      "status": "passed",
+      "result": {
+        "mobile_width": 390,
+        "current_release": "16c6ce16-e28c-5e9c-a766-874fca309c5f",
+        "old_release": "d96f7ebf-c709-4ec0-a598-13927ef2b54e"
+      }
+    }
+  ],
+  "screenshots": [
+    "screenshots/gis-flat-map.png",
+    "screenshots/gis-parcel-detail.png",
+    "screenshots/ontology-sphere.png",
+    "screenshots/gis-sphere-mobile-map.png",
+    "screenshots/gis-sphere-mobile-network.png"
+  ],
+  "javascript_errors": [],
+  "release_id": "16c6ce16-e28c-5e9c-a766-874fca309c5f",
+  "completed_at": "2026-11-16T11:10:58.828Z"
+}

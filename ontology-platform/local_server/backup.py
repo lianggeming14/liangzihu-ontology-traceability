@@ -891,7 +891,7 @@ def place_restored_assets(config, manifest, *, target_options=None):
             if not isinstance(spec,dict) or set(spec)!={'base','path'} or spec['base'] not in bases:
                 raise BackupError('ASSET_PLACEMENT_TARGET_INVALID')
             relative=_placement_business_path(spec['path'])
-            if label in ('uploads','imports','releases') and (spec['base']!='data' or relative!=label):
+            if label in ('uploads','imports','releases','cad-imports') and (spec['base']!='data' or relative!=label):
                 raise BackupError('BUSINESS_REFERENCE_ROOT_MUST_RETAIN_ITS_LABEL')
             target=_safe_path(Path(bases[spec['base']]),relative)
             _placement_no_links(target)

@@ -25,6 +25,8 @@ def restored(tmp_path):
     contents={"uploads/u/ponds.csv":b"id,name\n1,pond\n",
               "imports/job/public/manifest.json":json.dumps(manifest).encode(),
               "releases/r/vocabulary.ttl":b"<urn:s> <urn:p> <urn:o> .\n",
+              "cad-imports/batch/input/bundle.json":b'{"contract":"lzo-cad-batch/1","synthetic":true}',
+              "cad-imports/batch/input/source-files/original.bin":b'\x00retained-source\xff',
               "mapping/mapping.json":b'{"version":"1"}'}
     assets=[]
     for name,payload in contents.items():
@@ -49,7 +51,8 @@ def restored(tmp_path):
     config.data_path=lambda *parts:contained_path(data,*parts)
     options={"asset_destination":str(stage),"asset_placement":{
         "uploads":{"base":"data","path":"uploads"},"imports":{"base":"data","path":"imports"},
-        "releases":{"base":"data","path":"releases"},"mapping":{"base":"data","path":"restored-mapping"}}}
+        "releases":{"base":"data","path":"releases"},"cad-imports":{"base":"data","path":"cad-imports"},
+        "mapping":{"base":"data","path":"restored-mapping"}}}
     return config,path,options,saved
 
 
@@ -141,3 +144,51 @@ def test_roots_without_manifest_assets_are_not_implicitly_added(restored):
     with pytest.raises(BackupError,match="EXPLICIT_COMPLETE_ASSET_PLACEMENT_REQUIRED"):
         place_restored_assets(config,path,target_options=options)
     assert not (config.data_dir/"releases").exists()
+
+
+@pytest.mark.parametrize("mapping",[
+    {"base":"root","path":"cad-imports"},
+    {"base":"review","path":"cad-imports"},
+    {"base":"data","path":"moved-cad"},
+    {"base":"data","path":"archive/cad-imports"},
+])
+def test_cad_source_reference_rejects_changed_base_or_path_before_any_placement(restored,mapping):
+    config,path,options,_=restored
+    options["asset_placement"]["cad-imports"]=mapping
+    with pytest.raises(BackupError,match="BUSINESS_REFERENCE_ROOT_MUST_RETAIN_ITS_LABEL"):
+        place_restored_assets(config,path,target_options=options)
+    for label in ("uploads","imports","releases","cad-imports"):
+        assert not (config.data_dir/label).exists()
+    assert not (config.root/"cad-imports").exists()
+    assert not (config.review_dir/"cad-imports").exists()
+    assert not (config.data_dir/"moved-cad").exists()
+    assert not (config.data_dir/"archive").exists()
+
+
+def test_cad_sources_restore_at_persisted_relative_path_with_verified_hashes(restored):
+    config,path,options,saved=restored
+    result=place_restored_assets(config,path,target_options=options)
+    assert result["status"]=="assets_placed_verified"
+    assert result["labels"]["cad-imports"]=={"base":"data","path":"cad-imports"}
+    release={"cad_source_path":"cad-imports/batch/input/bundle.json"}
+    bundle=config.data_path(release["cad_source_path"])
+    assert bundle.read_bytes()==b'{"contract":"lzo-cad-batch/1","synthetic":true}'
+    assert (bundle.parent/"source-files/original.bin").read_bytes()==b'\x00retained-source\xff'
+    for record in saved["assets"]:
+        if record["label"]=="cad-imports":
+            raw=config.data_path("cad-imports",record["relative_path"]).read_bytes()
+            assert hashlib.sha256(raw).hexdigest()==record["raw_sha256"]
+            assert len(raw)==record["raw_size_bytes"]
+    assert result["services_started"] is False and result["release_published"] is False
+
+
+def test_changed_cad_source_hash_is_rejected_before_placement(restored):
+    config,path,options,_=restored
+    source=Path(options["asset_destination"])/"cad-imports/batch/input/source-files/original.bin"
+    original=source.read_bytes()
+    source.write_bytes(original[:-1]+b'\x00')
+    assert source.stat().st_size==len(original)
+    with pytest.raises(BackupError,match="RESTORED_ASSET_HASH_OR_SIZE_MISMATCH"):
+        place_restored_assets(config,path,target_options=options)
+    assert not (config.data_dir/"cad-imports").exists()
+    assert not (config.data_dir/"uploads").exists()

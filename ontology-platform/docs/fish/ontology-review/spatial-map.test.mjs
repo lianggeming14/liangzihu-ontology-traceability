@@ -65,3 +65,27 @@ test('an exclusion flag without a quality record is explained without inventing 
   const unmarked=map.featureDetailMarkup({...feature,kind:'road',attributes:{computed_measurements:{length_m:999999}}},{anomalous_lengths:[{iri:'another-object',length_m:20000,threshold_m:10000}]});
   assert.ok(!unmarked.includes('异常长度'));assert.ok(!unmarked.includes('已排除初始视野拟合'));
 });
+test('CAD detail uses readable Chinese evidence labels and rounded measurements while retaining exact source values',()=>{
+  const row={...feature,nature:'cad_candidate_unverified',position_status:'candidate_approximate',attributes:{
+    computed_measurements:{area_m2:5902.310936814407,perimeter_m:381.73544545469997,length_m:null,
+      method:'pyproj.Geod WGS84 ellipsoidal geodesic',units:{area:'m2',length:'m',perimeter:'m'},
+      assumptions:'Source-declared candidate longitude/latitude; original CAD CRS UNKNOWN; not field verified.'},
+    depth_m:null,original_cad_crs_status:'UNKNOWN',registration_status:'candidate_approximate'}};
+  const before=structuredClone(row),html=map.featureDetailMarkup(row);
+  assert.match(html,/>CAD 候选资料 · 未核验</);assert.match(html,/>候选近似配准 · 待核实</);
+  assert.match(html,/>5,902\.31</);assert.match(html,/>381\.74</);assert.match(html,/>未提供</);
+  assert.match(html,/>WGS 84 椭球测地线计算（pyproj.Geod）</);
+  assert.ok(html.includes('面积 m² · 长度 m · 周长 m'));assert.ok(html.includes('原始 CAD 坐标参考未知，尚未经现场核实'));
+  assert.ok(html.includes('查看原始属性与完整精度'));assert.ok(html.includes('原始值：5902.310936814407'));
+  assert.ok(html.includes('Source-declared candidate longitude/latitude; original CAD CRS UNKNOWN; not field verified.'));
+  assert.deepEqual(row,before);
+});
+test('unrecognized evidence stays truthful and escaped, and numeric text is never coerced or rounded',()=>{
+  const html=map.featureDetailMarkup({...feature,nature:'new_<nature>',position_status:'new_<status>',attributes:{
+    computed_measurements:{area_m2:'999999999999.123456789',perimeter_m:0,length_m:Infinity,method:'<img src=x>',
+      assumptions:'Unknown <script> premise',units:{area:'custom<unit>',future:'<unit>'}}}});
+  assert.ok(html.includes('new_&lt;nature&gt;'));assert.ok(html.includes('new_&lt;status&gt;'));
+  assert.match(html,/>999999999999\.123456789</);assert.match(html,/>0\.00</);assert.match(html,/>Infinity</);
+  assert.ok(!html.includes('<img'));assert.ok(!html.includes('<script>'));assert.ok(html.includes('&lt;img src=x&gt;'));
+  assert.ok(html.includes('custom&lt;unit&gt;'));assert.ok(html.includes('future'));
+});
