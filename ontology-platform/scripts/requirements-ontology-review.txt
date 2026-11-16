@@ -7,3 +7,5 @@ pyshacl==0.30.1
 rdflib==7.6.0
 # Independent validity checks for the source-derived local map polygons.
 shapely==2.1.2
+# Ellipsoidal lengths/areas for source-declared candidate longitude/latitude.
+pyproj==3.7.2
