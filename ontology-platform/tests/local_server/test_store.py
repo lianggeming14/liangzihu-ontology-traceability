@@ -269,3 +269,24 @@ def test_api_lists_all_release_snapshots_in_stable_creation_order(stores):
 def test_release_listing_rejects_invalid_paging_before_connecting(limit, offset):
     with pytest.raises(ValueError):
         Store(SimpleNamespace(sql={}), "api").list_releases(limit=limit, offset=offset)
+
+
+def test_publication_expected_parent_is_checked_atomically(stores):
+    old = stores['admin'].register_release({'rdf_graph': 'urn:synthetic:parent'})
+    stores['admin'].publish_release(old['release_id'], expected_active_release_id=None)
+    candidate = stores['admin'].register_release({'rdf_graph': 'urn:synthetic:candidate'})
+    other = stores['admin'].register_release({'rdf_graph': 'urn:synthetic:concurrent'})
+    stores['admin'].publish_release(other['release_id'], expected_active_release_id=old['release_id'])
+    with pytest.raises(ValueError, match='active release changed'):
+        stores['admin'].publish_release(candidate['release_id'], expected_active_release_id=old['release_id'])
+    assert stores['api'].active_release()['release_id'] == other['release_id']
+    assert stores['api'].get_release(candidate['release_id'])['status'] == 'ready'
+
+
+def test_publication_expected_empty_parent_does_not_mean_no_check(stores):
+    old = stores['admin'].register_release({'rdf_graph': 'urn:synthetic:existing'})
+    stores['admin'].publish_release(old['release_id'])
+    new = stores['admin'].register_release({'rdf_graph': 'urn:synthetic:new'})
+    with pytest.raises(ValueError, match='active release changed'):
+        stores['admin'].publish_release(new['release_id'], expected_active_release_id=None)
+    assert stores['api'].active_release()['release_id'] == old['release_id']

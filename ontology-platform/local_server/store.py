@@ -31,6 +31,9 @@ class StoreUnavailable(RuntimeError):
     """Sanitized connection failure, without libpq connection parameters."""
 
 
+_ANY_ACTIVE_RELEASE = object()
+
+
 def _json_value(value: Any) -> Any:
     if isinstance(value, (datetime, date)):
         return value.isoformat()
@@ -359,14 +362,21 @@ class Store:
         with self.connect() as conn:
             return _release(conn.execute("SELECT r.* FROM lzo_local.state s JOIN lzo_local.releases r ON r.id=s.active_release_id WHERE s.singleton").fetchone())
 
-    def publish_release(self, release_id, *, job_id=None, worker_id=None, lease_token=None) -> dict:
+    def publish_release(self, release_id, *, job_id=None, worker_id=None, lease_token=None,
+                        expected_active_release_id=_ANY_ACTIVE_RELEASE) -> dict:
         self._writer()
         release_id = _uuid(release_id)
+        if expected_active_release_id is not _ANY_ACTIVE_RELEASE and expected_active_release_id is not None:
+            expected_active_release_id = _uuid(expected_active_release_id)
         if job_id is None and (self.role != "admin" or worker_id is not None or lease_token is not None):
             raise PermissionError("worker publication requires a job lease")
         with self.connect() as conn:
             # Serialize publications so readers observe exactly one whole release.
-            conn.execute("SELECT singleton FROM lzo_local.state WHERE singleton FOR UPDATE").fetchone()
+            state = conn.execute("SELECT singleton,active_release_id FROM lzo_local.state WHERE singleton FOR UPDATE").fetchone()
+            if expected_active_release_id is not _ANY_ACTIVE_RELEASE:
+                active = None if not state or state["active_release_id"] is None else str(state["active_release_id"])
+                if active != expected_active_release_id:
+                    raise ValueError("active release changed from expected parent")
             if job_id is not None:
                 self._locked_lease(conn, job_id, worker_id, lease_token)
             row = conn.execute("SELECT * FROM lzo_local.releases WHERE id=%s FOR UPDATE", (release_id,)).fetchone()
