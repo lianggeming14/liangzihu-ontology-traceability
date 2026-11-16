@@ -82,3 +82,90 @@ def test_relative_release_paths_resolve_only_beneath_declared_data_root(release)
     assert QueryService(config, value).manifest["namespace"] == "urn:test:"
     with pytest.raises((QueryError, ValueError)):
         QueryService(config, {**value, "manifest_path": "../private.env"})
+
+
+def network_service(release):
+    from local_server.network import write_network
+    root = Path(release["navigation_dir"])
+    concept = "urn:test:class:ponds"
+    (root / "data/classes").mkdir(parents=True)
+    manifest = json.loads(Path(release["manifest_path"]).read_text(encoding="utf8"))
+    manifest["concepts"][0].update(instances_path="classes/ponds.json", instance_count=3, total_instance_count=3)
+    items = [{"iri": "urn:test:instance:"+name, "class_iri": concept, "label": name, "outgoing": []} for name in ("one", "two", "three")]
+    items[0]["outgoing"] = [{"iri": "urn:test:relation:feeds", "edge_iri": "edge:"+name,
+                             "target_iri": "urn:test:instance:"+name, "resolution": "resolved"} for name in ("two", "three")]
+    (root / "data/classes/ponds.json").write_text(json.dumps({"instances": items}), encoding="utf8")
+    Path(release["manifest_path"]).write_text(json.dumps(manifest), encoding="utf8")
+    write_network(root, manifest)
+    return service(release)
+
+
+def test_historical_release_without_network_is_explicitly_unavailable(release):
+    reader = service(release)
+    assert hasattr(reader, "network"), "Versioned network query is required"
+    result = reader.network()
+    assert result["release_id"] == "r1"
+    assert result["available"] is False
+    assert result["nodes"] == result["edges"] == []
+
+
+def test_network_pages_are_bounded_release_bound_and_not_forgeable(release):
+    reader = network_service(release)
+    source = target = "urn:test:class:ponds"
+    predicate = "urn:test:relation:feeds"
+    result = reader.network_relations(source, predicate, target, limit=1)
+    assert result["release_id"] == "r1"
+    assert result["total"] == 2
+    assert len(result["items"]) == 1
+    following = reader.network_relations(source, predicate, target, limit=1, cursor=result["next_cursor"])
+    assert len(following["items"]) == 1
+    assert following["items"][0] != result["items"][0]
+    assert following["next_cursor"] is None
+    for cursor in (result["next_cursor"][:-2]+"ab", encode_cursor("r1", "network:"+predicate, 1)):
+        with pytest.raises(QueryError):
+            reader.network_relations(source, predicate, target, cursor=cursor)
+    other = service({**release, "release_id": "r2"})
+    with pytest.raises(QueryError):
+        other.network_relations(source, predicate, target, cursor=result["next_cursor"])
+    for limit in (0, 6, "bad"):
+        with pytest.raises(QueryError):
+            reader.network_relations(source, predicate, target, limit=limit)
+
+
+def test_network_rejects_private_identifiers_and_tampered_public_shards(release):
+    reader = network_service(release)
+    concept, predicate = "urn:test:class:ponds", "urn:test:relation:feeds"
+    for source, relation, target in (("urn:test:source:private", predicate, concept), (concept, "urn:test:raw:secret", concept), (concept, predicate, "urn:outside:class:A")):
+        with pytest.raises(QueryError):
+            reader.network_relations(source, relation, target)
+    root = Path(release["navigation_dir"])
+    network = json.loads((root / "data/ontology-network.json").read_text(encoding="utf8"))
+    page = next(iter(network["relation_index"].values()))["pages"][0]
+    path = root / page["path"]
+    value = json.loads(path.read_text(encoding="utf8"))
+    value["items"][0]["source_record_iri"] = "PRIVATE"
+    path.write_text(json.dumps(value), encoding="utf8")
+    with pytest.raises(QueryError):
+        reader.network_relations(concept, predicate, concept)
+
+
+def test_network_pagination_reads_across_real_500_relation_shard_boundary(release):
+    from local_server.network import write_network
+    root = Path(release["navigation_dir"])
+    (root / "data/classes").mkdir(parents=True)
+    concept, predicate = "urn:test:class:ponds", "urn:test:relation:feeds"
+    manifest = json.loads(Path(release["manifest_path"]).read_text(encoding="utf8"))
+    manifest["concepts"][0].update(instances_path="classes/ponds.json", instance_count=504, total_instance_count=504)
+    rows = [{"iri": f"urn:test:instance:{i:04d}", "class_iri": concept, "label": str(i), "outgoing": []} for i in range(504)]
+    rows[0]["outgoing"] = [{"iri": predicate, "edge_iri": str(i), "target_iri": row["iri"]} for i, row in enumerate(rows[1:])]
+    (root / "data/classes/ponds.json").write_text(json.dumps({"instances": rows}), encoding="utf8")
+    Path(release["manifest_path"]).write_text(json.dumps(manifest), encoding="utf8")
+    write_network(root, manifest)
+    reader = service(release)
+    reader.config.limits["max_page_size"] = 500
+    first = reader.network_relations(concept, predicate, concept, limit=499)
+    last = reader.network_relations(concept, predicate, concept, limit=5, cursor=first["next_cursor"])
+    assert first["total"] == last["total"] == 503
+    assert len(first["items"]) == 499
+    assert [row["target_iri"] for row in last["items"]] == ["urn:test:instance:0500", "urn:test:instance:0501", "urn:test:instance:0502", "urn:test:instance:0503"]
+    assert last["next_cursor"] is None

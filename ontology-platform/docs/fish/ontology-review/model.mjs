@@ -40,9 +40,14 @@ export function routeHash(route){
 }
 export function readRoute(hash){
   const route=Object.fromEntries(new URLSearchParams(hash.replace(/^#/,'')));
-  if(!['home','class','instance','map','feature'].includes(route.view)) return {view:'home'};
+  if(!['home','class','instance','map','feature','network'].includes(route.view)) return {view:'home'};
   if(route.page) route.page=Math.max(1,Number.parseInt(route.page,10)||1);
   return route;
+}
+export function spatialObjectRoute(row,data){
+  if(data?.contract!=='lzo-spatial-map/2'||!row?.iri?.startsWith('urn:lzo:cad-gis:v1:instance:')||!['field','pond','facility','camera','road','canal','region'].includes(row.kind))return null;
+  const match=[...(data.features||[]),...(data.unlocated||[])].find(feature=>feature.iri===row.iri&&feature.class_iri===row.class_iri);
+  return match?{view:'map',object:row.iri}:null;
 }
 export function relationTarget(edge,direction){
   if(edge.resolution!=='resolved') return null;

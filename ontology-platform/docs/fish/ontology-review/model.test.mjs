@@ -35,6 +35,23 @@ test('IRI routes survive hash encoding and relation back/forward state',()=>{
   assert.deepEqual(readRoute(routeHash(route)),route);
   assert.equal(readRoute('#view=unsupported').view,'home');
 });
+test('CAD instance map routes require the exact published IRI and class, including unlocated objects',()=>{
+  assert.equal(typeof lazyModel.spatialObjectRoute,'function');
+  const row={iri:'urn:lzo:cad-gis:v1:instance:设施/甲&乙',class_iri:'urn:lzo:cad-gis:v1:class:facility',kind:'facility'};
+  const data={contract:'lzo-spatial-map/2',features:[],unlocated:[{...row,geometry:null}]};
+  const route=lazyModel.spatialObjectRoute(row,data);
+  assert.deepEqual(route,{view:'map',object:row.iri});assert.deepEqual(readRoute(routeHash(route)),route);
+  assert.deepEqual(lazyModel.spatialObjectRoute(row,{...data,features:[{...row,geometry:{type:'Point',coordinates:[114,30]}}],unlocated:[]}),route);
+  assert.equal(lazyModel.spatialObjectRoute({...row,iri:'urn:lzo:cad-gis:v1:instance:same-label'},data),null);
+  assert.equal(lazyModel.spatialObjectRoute({...row,class_iri:'urn:lzo:cad-gis:v1:class:camera'},data),null);
+});
+test('CAD map links do not rewrite legacy feature or historical-map routes',()=>{
+  assert.equal(typeof lazyModel.spatialObjectRoute,'function');
+  const row={iri:'urn:lzo:fish-review:map:one',class_iri:'urn:lzo:fish-review:map:pond',kind:'pond'};
+  assert.equal(lazyModel.spatialObjectRoute(row,{contract:'lzo-spatial-map/2',features:[row]}),null);
+  assert.equal(lazyModel.spatialObjectRoute({...row,iri:'urn:lzo:cad-gis:v1:instance:a'},{schema_version:'farm-local-map/1',layers:[]}),null);
+  const route={view:'feature',historical:'1',layer:'drawing',iri:'original-feature'};assert.deepEqual(readRoute(routeHash(route)),route);
+});
 test('only resolved relations can navigate to a real supplied endpoint',()=>{
   assert.equal(relationTarget({resolution:'unresolved',target_iri:'fake'},'outgoing'),null);
   assert.deepEqual(relationTarget({resolution:'resolved',target_iri:'target',target_class_iri:'class'},'outgoing'),

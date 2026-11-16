@@ -185,3 +185,75 @@ def test_rdf_export_preserves_literal_lexical_forms_datatypes_and_language(setup
         assert '"2024-06-01T12:34:56.123456789Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>' in response.text
         assert '"0001.2300"^^<http://www.w3.org/2001/XMLSchema#decimal>' in response.text
         assert '"Bonjour"@fr' in response.text
+
+
+def test_network_api_and_static_are_release_pinned_with_narrow_ui_allowlist(setup):
+    from local_server.network import write_network
+    config, store = setup
+    manifest_path = config.review_dir / "data/manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf8"))
+    write_network(config.review_dir, manifest)
+    for filename in ("spatial-map.mjs", "ontology-sphere.mjs", "sphere-math.mjs"):
+        (config.review_dir / filename).write_text("export const synthetic = true", encoding="utf8")
+    with serving(config, store) as client:
+        for route in ("/api/v1/network", "/api/ontology/network", "/ontology/data/ontology-network.json"):
+            response = client.get(route, params={"release_id": "r1"})
+            assert response.status_code == 200
+            assert response.json()["release_id"] == "r1"
+            assert response.json()["contract"] == "lzo-ontology-network/1"
+            assert client.get(route, params={"release_id": "unknown"}).status_code == 404
+        for filename in ("spatial-map.mjs", "ontology-sphere.mjs", "sphere-math.mjs"):
+            assert client.get("/ontology/"+filename).status_code == 200
+        assert client.get("/api/v1/network-relations").status_code == 400
+        assert client.get("/ontology/unknown.mjs").status_code == 404
+        assert client.get("/ontology/data/network-relations/private.json").status_code == 404
+
+
+def test_historical_network_stays_empty_and_network_hash_changes_are_rejected(setup):
+    from local_server.network import write_network
+    config, store = setup
+    manifest = json.loads((config.review_dir / "data/manifest.json").read_text(encoding="utf8"))
+    write_network(config.review_dir, manifest)
+    path = config.review_dir / "data/ontology-network.json"
+    store.release["navigation"] = {"files": {"data/ontology-network.json": {"sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "bytes": path.stat().st_size}}}
+    historical = config.data_dir / "old"
+    historical.mkdir()
+    (historical / "manifest.json").write_text(json.dumps(manifest), encoding="utf8")
+    store.releases.append({**store.release, "release_id": "r0", "path_base": "data", "legacy_snapshot": False,
+                           "manifest_path": "old/manifest.json", "navigation_dir": "old", "navigation": {"files": {"manifest.json": {"sha256": "old", "bytes": 1}}}})
+    with serving(config, store) as client:
+        response = client.get("/api/v1/network", params={"release_id": "r0"})
+        assert response.status_code == 200
+        assert response.json()["available"] is False
+        assert response.json()["nodes"] == []
+        path.write_text('{"contract":"tampered"}', encoding="utf8")
+        for route in ("/api/v1/network", "/ontology/data/ontology-network.json"):
+            assert client.get(route, params={"release_id": "r1"}).status_code == 400
+
+
+@pytest.mark.parametrize("inventory_location", ["release", "manifest"])
+def test_missing_declared_network_fails_api_static_and_relation_reads(setup, inventory_location):
+    from local_server.network import write_network
+    config, store = setup
+    manifest_path = config.review_dir / "data/manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf8"))
+    concept = "urn:test:class:ponds"
+    manifest["concepts"] = [{"iri": concept, "instance_count": 0, "total_instance_count": 0}]
+    write_network(config.review_dir, manifest)
+    path = config.review_dir / "data/ontology-network.json"
+    files = {"data/ontology-network.json": {"sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "bytes": path.stat().st_size}}
+    if inventory_location == "release":
+        store.release["navigation"] = {"files": files}
+    else:
+        manifest["files"] = files
+    manifest_path.write_text(json.dumps(manifest), encoding="utf8")
+    path.unlink()
+    with serving(config, store) as client:
+        for route in ("/api/v1/network", "/api/ontology/network", "/ontology/data/ontology-network.json"):
+            response = client.get(route, params={"release_id": "r1"})
+            assert response.status_code == 400
+            assert response.json()["error"]["code"] == "INVALID_REQUEST"
+        response = client.get("/api/v1/network-relations", params={"release_id": "r1", "source": concept,
+                              "predicate": "urn:test:relation:feeds", "target": concept})
+        assert response.status_code == 400
+        assert response.json()["error"]["code"] == "INVALID_REQUEST"

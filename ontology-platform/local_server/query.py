@@ -6,9 +6,12 @@ outside this API; complete datasets are available only through private backups.
 from __future__ import annotations
 
 import base64
+import hashlib
+import hmac
 import json
 from pathlib import Path
 import re
+import secrets
 
 import httpx
 from .config import contained_path
@@ -16,6 +19,7 @@ from .config import contained_path
 RDFS = "http://www.w3.org/2000/01/rdf-schema#"
 RDF = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 PROV = "http://www.w3.org/ns/prov#"
+_NETWORK_CURSOR_KEY = secrets.token_bytes(32)
 
 
 class QueryError(ValueError):
@@ -197,6 +201,121 @@ class QueryService:
         # or on readiness. Full inventory belongs to backup/validation commands.
         available = all(self.query(f"SELECT (1 AS ?present) WHERE {{ GRAPH <{graph}> {{ ?s ?p ?o }} }} LIMIT 1") for graph in self.graphs)
         return self._result({"available": bool(available), "graph_iris": self.graphs, "read_only": True, "sql_used": False})
+
+    def _network_asset(self, relative, *, metadata=None):
+        if not re.fullmatch(r"data/(?:ontology-network\.json|network-relations/[0-9a-f]{64}/[0-9]{5}\.json)", relative):
+            raise QueryError("Invalid network asset")
+        directory = (release_path(self.config, self.release, self.release["navigation_dir"])
+                     if hasattr(self.config, "data_dir") else Path(self.release["navigation_dir"]).resolve())
+        path = contained_path(directory, relative)
+        files = self.release.get("navigation", {}).get("files") or self.manifest.get("files", {})
+        if not path.is_file():
+            declared = relative in files or relative in self.manifest.get("files", {})
+            if relative == "data/ontology-network.json" and not metadata and not declared:
+                return None
+            raise QueryError("Network page is unavailable")
+        if files and relative not in files:
+            raise QueryError("Network asset is not part of this release")
+        if path.stat().st_size > 64 * 1024 * 1024:
+            raise QueryError("Network asset exceeds public read limits")
+        payload = path.read_bytes()
+        for expected in (files.get(relative), metadata):
+            if expected and (expected.get("sha256") != hashlib.sha256(payload).hexdigest() or expected.get("bytes") != len(payload)):
+                raise QueryError("Network asset hash differs from this release")
+        return json.loads(payload)
+
+    def network(self):
+        from .network import CONTRACT, public_iri
+        value = self._network_asset("data/ontology-network.json")
+        if value is None:
+            return {"release_id": self.release_id, "mode": "navigation", "contract": CONTRACT, "available": False,
+                    "nodes": [], "edges": [], "counts": {}, "message": "此历史版本尚未生成关系网络"}
+        if value.get("contract") != CONTRACT:
+            raise QueryError("Unsupported network contract")
+        nodes = []
+        for row in value.get("nodes", []):
+            if row.get("iri") not in self.concepts or not public_iri(row["iri"]):
+                raise QueryError("Network contains an unpublished class")
+            nodes.append({key: row.get(key) for key in ("iri", "label", "parent_iri", "instance_count", "total_instance_count", "role")})
+        identifiers = {row["iri"] for row in nodes}
+        edges = []
+        for row in value.get("edges", []):
+            if row.get("source") not in identifiers or row.get("target") not in identifiers or not public_iri(row.get("predicate")):
+                raise QueryError("Network edge is outside published classes")
+            if row.get("kind") not in ("schema", "observed") or not re.fullmatch("[0-9a-f]{64}", row.get("id", "")):
+                raise QueryError("Invalid network edge")
+            edges.append({key: row[key] for key in ("id", "source", "target", "predicate", "label", "kind", "count", "direction", "unique_record_count") if key in row})
+        counts = {key: value.get("counts", {}).get(key, 0) for key in ("classes", "instances", "unique_record_count", "unique_triple_count", "unresolved_count", "excluded_private_count", "schema_edge_count", "observed_edge_count", "canonical_record_count", "demo_assignment_record_count", "excluded_private_class_count", "excluded_private_instance_count")}
+        return {"release_id": self.release_id, "mode": "navigation", "contract": CONTRACT, "available": True,
+                "nodes": nodes, "edges": edges, "counts": counts, "schema_available": bool(value.get("schema_available")), "raw_payload_public": False,
+                "demo_assignments_nature": "synthetic"}
+
+    def network_relations(self, source, predicate, target, *, limit=None, cursor=None):
+        from .network import public_iri
+        for iri in (source, predicate, target):
+            checked_iri(iri)
+            if not public_iri(iri):
+                raise QueryError("Only public network identifiers are allowed")
+        if source not in self.concepts or target not in self.concepts:
+            raise QueryError("Choose published source and target classes")
+        scope = "network:" + hashlib.sha256(json.dumps([source, predicate, target], separators=(",", ":")).encode()).hexdigest()
+        offset = 0
+        if cursor:
+            try:
+                payload, signature = cursor.split(".")
+                expected = hmac.new(_NETWORK_CURSOR_KEY, payload.encode(), hashlib.sha256).hexdigest()
+                if not hmac.compare_digest(signature, expected):
+                    raise QueryError("Invalid network cursor signature")
+                offset = decode_cursor(payload, self.release_id, scope)
+            except (ValueError, AttributeError, TypeError):
+                raise QueryError("Invalid network cursor") from None
+        limit, offset = self._page(scope, limit, offset=offset)
+        value = self._network_asset("data/ontology-network.json")
+        result = {"release_id": self.release_id, "mode": "navigation", "source": source, "predicate": predicate,
+                  "target": target, "items": [], "limit": limit, "offset": offset, "next_cursor": None,
+                  "total": 0, "available": value is not None, "raw_payload_public": False}
+        if value is None:
+            return result
+        if value.get("contract") != "lzo-ontology-network/1":
+            raise QueryError("Unsupported network contract")
+        link = next((row for row in value.get("edges", []) if row.get("kind") == "observed"
+                     and (row.get("source"), row.get("predicate"), row.get("target")) == (source, predicate, target)), None)
+        if not link:
+            if cursor:
+                raise QueryError("Cursor relation no longer exists")
+            return result
+        index = value.get("relation_index", {}).get(link["id"])
+        if not index:
+            result["available"] = False
+            return result
+        total = index["count"]
+        if offset > total or total != link["count"]:
+            raise QueryError("Relation pagination is outside this release")
+        result["total"] = total
+        start, items = 0, []
+        for page in index["pages"]:
+            end = start + page["count"]
+            if end > offset and start < offset + limit:
+                value = self._network_asset(page["path"], metadata=page)
+                if value.get("edge_id") != link["id"] or len(value.get("items", [])) != page["count"]:
+                    raise QueryError("Relation page identity or count mismatch")
+                for row in value["items"][max(0, offset-start):min(page["count"], offset+limit-start)]:
+                    if (row.get("source_class_iri"), row.get("predicate"), row.get("target_class_iri")) != (source, predicate, target):
+                        raise QueryError("Relation page belongs to a different edge")
+                    for key in ("source_iri", "target_iri"):
+                        if not public_iri(row.get(key)) or not self._is_business(row[key]):
+                            raise QueryError("Relation endpoint is not public")
+                    items.append({key: row[key] for key in ("source_iri", "source_label", "source_class_iri", "predicate", "target_iri", "target_label", "target_class_iri", "record_count", "direction")})
+            start = end
+            if start >= offset + limit:
+                break
+        if len(items) != min(limit, total-offset):
+            raise QueryError("Relation index is incomplete")
+        result["items"] = items
+        if offset + len(items) < total:
+            payload = encode_cursor(self.release_id, scope, offset + len(items))
+            result["next_cursor"] = payload + "." + hmac.new(_NETWORK_CURSOR_KEY, payload.encode(), hashlib.sha256).hexdigest()
+        return result
 
     def maps(self):
         directory = release_path(self.config, self.release, self.release["navigation_dir"])

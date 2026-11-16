@@ -176,6 +176,10 @@ def make_handler(config, store=None):
                         return self.response(reader.resource(params["iri"], limit=params.get("limit"), cursor=params.get("cursor"), incoming_cursor=params.get("incoming_cursor"), outgoing_offset=params.get("outgoing_offset", 0), incoming_offset=params.get("incoming_offset", 0)))
                     if action in ("maps", "map"):
                         return self.response(reader.maps())
+                    if action == "network":
+                        return self.response(reader.network())
+                    if action == "network-relations":
+                        return self.response(reader.network_relations(params["source"], params["predicate"], params["target"], limit=params.get("limit"), cursor=params.get("cursor")))
                     if action == "export":
                         value = reader.export(params["class"], limit=params.get("limit"), cursor=params.get("cursor"))
                         fmt = params.get("format", "json")
@@ -222,8 +226,8 @@ def make_handler(config, store=None):
                 relative = unquote(route[len("/ontology/"):]) or "index.html"
                 if "\\" in relative or any(part in ("", ".", "..") or part.startswith(".") for part in relative.split("/")):
                     return self.error("NOT_FOUND", 404, "未找到文件")
-                ui = {"index.html", "assets.js", "assets.css", "model.mjs"}
-                data = bool(re.fullmatch(r"data/(?:manifest\.json|map-features\.json|(?:classes|details|relations)/[A-Za-z0-9_./-]+\.json(?:\.gz)?)", relative))
+                ui = {"index.html", "assets.js", "assets.css", "model.mjs", "spatial-map.mjs", "ontology-sphere.mjs", "sphere-math.mjs"}
+                data = bool(re.fullmatch(r"data/(?:manifest\.json|map-features\.json|legacy-map-features\.json|ontology-network\.json|(?:classes|details|relations)/[A-Za-z0-9_./-]+\.json(?:\.gz)?)", relative))
                 if relative in ui:
                     path = contained_path(config.review_dir, relative)
                     if relative == "index.html":
@@ -234,6 +238,10 @@ def make_handler(config, store=None):
                         return self.response(markup,content_type="text/html; charset=utf-8")
                 elif data:
                     release = self.active(params)
+                    if relative == "data/ontology-network.json":
+                        # The static view shares the API's whitelist, integrity
+                        # checks and explicit historical-unavailable response.
+                        return self.response(QueryService(config, release).network())
                     nav = release_path(config, release, release["navigation_dir"])
                     # The legacy page is kept as an explicit historical view.
                     # New batches have their own manifest/shards and use the

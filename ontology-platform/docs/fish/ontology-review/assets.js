@@ -1,4 +1,6 @@
-import {createCatalog,pageInstances,routeHash,readRoute,relationTarget,demoTarget,propertyUnit,decodeSnapshot,createSnapshotLoader,relationCount,formatValue,natureLabel,instanceNature,instanceAdoption} from './model.mjs';
+import {createCatalog,pageInstances,routeHash,readRoute,spatialObjectRoute,relationTarget,demoTarget,propertyUnit,decodeSnapshot,createSnapshotLoader,relationCount,formatValue,natureLabel,instanceNature,instanceAdoption} from './model.mjs';
+import {mountSpatialMap} from './spatial-map.mjs';
+import {mountOntologySphere,createViewSession} from './ontology-sphere.mjs';
 
 const $=id=>document.getElementById(id);
 const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -14,14 +16,19 @@ const icons=[
 const icon=index=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[index%icons.length]}</svg>`;
 const badge=(text,tone='')=>`<span class="badge ${tone}">${esc(text)}</span>`;
 let manifest,catalog,renderId=0,currentRoute={view:'home'},currentRows=[],currentClass=null,mapData=null;
+let legacyMapData=null,networkData=null,mountedView=null;
+const releaseId=document.querySelector('meta[name="local-release-id"]')?.content||'';
 let live={mode:'snapshot',available:false},liveChecked=false;
 const fragments=new Map(),expanded=new Set(),routeHistory=[location.hash||'#view=home'];
 const snapshots=createSnapshotLoader(path=>json('data/'+path));
 
 async function json(path){
+  if(releaseId&&path.startsWith('/api/v1/')){const pinned=new URL(path,location.origin);pinned.searchParams.set('release_id',releaseId);path=pinned.pathname+pinned.search;}
   const response=await fetch(path,{credentials:'same-origin'});
   if(!response.ok) throw new Error(`快照文件未就绪（${response.status}）`);
-  return decodeSnapshot(response);
+  const data=await decodeSnapshot(response);
+  if(releaseId&&data.release_id&&data.release_id!==releaseId)throw Error('响应发布版本与当前页面不一致，请重新打开页面');
+  return data;
 }
 async function instances(concept){
   if(!concept?.instances_path) return [];
@@ -44,6 +51,7 @@ function breadcrumbs(concept,instance){
   const path=concept?catalog.path(concept.iri):[];
   $('breadcrumbs').innerHTML=`<a href="#view=home">本体总览</a>`+path.map(item=>`<span class="breadcrumb-separator">/</span><a href="${href({view:'class',iri:item.iri})}">${esc(item.label)}</a>`).join('')+(instance?`<span class="breadcrumb-separator">/</span><strong>${esc(instance.label)}</strong>`:'');
   if(currentRoute.view==='map'||currentRoute.view==='feature') $('breadcrumbs').innerHTML='<a href="#view=home">本体总览</a><span class="breadcrumb-separator">/</span><strong>空间地图</strong>';
+  if(currentRoute.view==='network') $('breadcrumbs').innerHTML='<a href="#view=home">本体总览</a><span class="breadcrumb-separator">/</span><strong>本体关系球</strong>';
   $('go-back').hidden=currentRoute.view==='home';
 }
 function tree(){
@@ -55,7 +63,7 @@ function tree(){
   };
   $('concept-tree').innerHTML=catalog.top.map(branch).join('');
   document.querySelector('.tree-home').classList.toggle('active',currentRoute.view==='home');
-  document.querySelectorAll('[data-view]').forEach(link=>link.classList.toggle('active',link.dataset.view===(['map','feature'].includes(currentRoute.view)?'map':'ontology')));
+  document.querySelectorAll('[data-view]').forEach(link=>link.classList.toggle('active',link.dataset.view===(['map','feature'].includes(currentRoute.view)?'map':currentRoute.view==='network'?'network':'ontology')));
 }
 function conceptCard(item,index,child=false){
   const children=catalog.children(item.iri),count=item.total_instance_count??item.instance_count;
@@ -137,6 +145,9 @@ async function instanceView(concept,token){
   if(!summary){$('content').innerHTML=empty('当前快照没有这个实例','对象未找到，未使用其他记录替代。请返回对应本体查看。');return;}
   const row=await snapshots.detail(summary,concept.iri);
   if(token!==renderId)return;
+  let spatialRoute=null;
+  if(row.iri?.startsWith('urn:lzo:cad-gis:v1:instance:')){try{spatialRoute=spatialObjectRoute(row,await getMap());}catch{}}
+  if(token!==renderId)return;
   breadcrumbs(concept,row);
   const tab=['properties','relations','evidence','rdf','demo'].includes(currentRoute.tab)?currentRoute.tab:'properties';
   const isMap=row.class_iri.startsWith('urn:lzo:fish-review:map:');
@@ -144,6 +155,7 @@ async function instanceView(concept,token){
   const panel=tab==='properties'?propertyPanel(row):tab==='relations'?await relationsPanel(row):tab==='evidence'?evidencePanel(row):tab==='demo'?demoPanel(row):'<p class="loading-label">正在读取 RDF 证据…</p>';
   if(token!==renderId)return;
   $('content').innerHTML=`<section class="object-header"><div class="eyebrow">${esc(concept.label)} / INSTANCE</div><h1>${esc(row.label||row.id)}</h1><div class="object-meta">${badge(instanceNature(row),row.nature==='synthetic'?'amber':'blue')}${badge(instanceAdoption(row),'gray')}${badge(live.available?'RDF 在线查询':'RDF 回读快照')}<span class="instance-id">${esc(row.id)}</span></div><div class="object-iri">${esc(row.iri)}</div></section><div class="object-panels"><section class="panel"><nav class="tabs" aria-label="对象详情">${[['properties',isMap?'来源资料':'属性',(row.properties||[]).length],['relations','关系',relationTotal],['evidence','来源',null],...((row.demo_assignments||[]).length||isMap?[['demo','演示业务',(row.demo_assignments||[]).length]]:[]),['rdf','RDF 证据',null]].map(([key,label,count])=>`<a href="${href({...currentRoute,tab:key})}" class="${tab===key?'active':''}" data-tab="${key}">${label}${count!==null?`<small>${number(count)}</small>`:''}</a>`).join('')}</nav><div class="panel-body" id="object-panel">${panel}</div></section><aside class="detail-side"><section class="panel"><div class="panel-heading"><h2>对象归属</h2></div><div class="panel-body"><dl class="source-list"><dt>所属本体</dt><dd><a class="link-text" href="${href({view:'class',iri:concept.iri})}">${esc(concept.label)}</a></dd><dt>来源标识</dt><dd>${esc(row.id)}</dd><dt>已解析关联</dt><dd>${number(relationTotal)} 条</dd><dt>来源性质</dt><dd>${esc(natureLabel(row.nature))}</dd></dl><a class="side-action" href="${href({...currentRoute,tab:'relations'})}">沿关系继续查看 →</a></div></section><section class="panel"><div class="panel-heading"><h2>来源定位</h2></div><div class="panel-body"><dl class="source-list">${provenanceRows(row.provenance)}</dl><a class="side-action" href="${href({...currentRoute,tab:'evidence'})}">查看完整证据 →</a></div></section></aside></div>`;
+  if(spatialRoute)$('content').querySelector('.object-header').insertAdjacentHTML('beforeend',`<a class="side-action" href="${href(spatialRoute)}">在地图中查看 →</a>`);
   if(tab==='rdf') await rdfPanel(row,token);
 }
 async function rdfPanel(row,token){
@@ -163,9 +175,11 @@ async function rdfPanel(row,token){
   }
 }
 
-async function getMap(){
-  if(!mapData){mapData=await json('data/map-features.json');if(mapData.schema_version!=='farm-local-map/1'||!Array.isArray(mapData.layers))throw Error('地图来源格式不匹配');}
-  return mapData;
+async function getMap(historical=false){
+  if(!mapData){const value=await json('data/map-features.json');if(!['farm-local-map/1','lzo-spatial-map/2'].includes(value.contract||value.schema_version)||!Array.isArray(value.layers))throw Error('地图来源格式不匹配');mapData=value;}
+  if(!historical||mapData.schema_version==='farm-local-map/1')return mapData;
+  if(!legacyMapData){const path=mapData.legacy_map_path||'data/legacy-map-features.json';if(!/^data\/[a-z0-9_-]+\.json$/i.test(path))throw Error('历史地图路径无效');const value=await json(path);if(value.schema_version!=='farm-local-map/1'||!Array.isArray(value.layers))throw Error('历史地图格式不匹配');legacyMapData=value;}
+  return legacyMapData;
 }
 function coordinates(geometry){
   const result=[];
@@ -187,7 +201,12 @@ function geometryMarkup(feature,index){
 }
 async function mapView(token){
   breadcrumbs();
-  const data=await getMap();if(token!==renderId)return;
+  const data=await getMap(currentRoute.historical==='1');if(token!==renderId)return;
+  if(data.contract==='lzo-spatial-map/2'){
+    $('content').innerHTML='<section class="class-header"><div class="eyebrow">SPATIAL OBJECTS / CANDIDATE PLAN</div><h1>在地图中找到对象</h1><p class="section-intro">一张平面图，连接图纸范围、设施文字锚点与摄像头候选。选择对象，继续查看本体属性与关系。</p></section><div id="spatial-mount"></div>';
+    mountedView=mountSpatialMap($('spatial-mount'),data,{releaseId,selectedIri:currentRoute.object,onSelect:target=>{if(token===renderId)go({view:'instance',...target});},onLegacy:()=>{if(token===renderId)go({view:'map',historical:1});}});
+    return;
+  }
   const layer=data.layers.find(item=>item.id===currentRoute.layer)||data.layers[0];
   if(!layer){$('content').innerHTML=empty('地图资料尚未就绪','没有收到已标注来源的地图图层。');return;}
   if(layer.axis?.y!=='down'||layer.georeferenced!==false)throw Error('此页面只显示明确标注的未配准局部坐标图层');
@@ -198,18 +217,20 @@ async function mapView(token){
   const camera=points.length?[extent[0]-padding,extent[1]-padding,extent[2]-extent[0]+padding*2,extent[3]-extent[1]+padding*2]:bounds;
   if(!Array.isArray(bounds)||bounds.length!==4||!bounds.every(Number.isFinite))throw Error('地图范围无效');
   $('content').innerHTML=`<section class="class-header"><div class="eyebrow">SPATIAL OBJECTS / SOURCE PLAN</div><div class="title-row"><h1>在地图中找到对象</h1><span class="count-pill">${features.length} 个图形</span></div><p class="section-intro">选择图层，点击田块或塘口，进入对应的真实来源空间对象。不同图纸分别显示。</p></section><div class="map-toolbar"><select id="map-layer" aria-label="选择来源地图图层">${data.layers.map(item=>`<option value="${esc(item.id)}" ${item.id===layer.id?'selected':''}>${esc(item.label)}</option>`).join('')}</select><label><input id="map-labels" type="checkbox"> 显示图形名称</label></div><div class="map-warning">总方案与纸面图均按原始局部坐标显示，尚未地理配准，不能用于经纬度定位。此处未以合成塘口示意图替代真实来源地图。</div><div class="map-layout"><section class="map-stage"><svg id="source-map" viewBox="${camera.join(' ')}" preserveAspectRatio="xMidYMid meet" aria-label="${esc(layer.label)}">${features.map(geometryMarkup).join('')}<g id="map-name-labels" hidden>${features.map(feature=>{const points=coordinates(feature.geometry);if(!points.length)return '';const x=points.reduce((sum,p)=>sum+p[0],0)/points.length,y=points.reduce((sum,p)=>sum+p[1],0)/points.length;return `<text class="map-label" x="${x}" y="${y}">${esc(feature.properties?.label||feature.id)}</text>`;}).join('')}</g></svg><div class="map-caption"><span>${esc(layer.label)} · 原始图形轮廓</span><span>${esc(layer.coordinate_space)} / ${esc(layer.units)} · 未配准</span></div></section><aside class="map-sidebar"><section class="panel"><div class="panel-heading"><h2>图层来源</h2></div><div class="panel-body"><p>此图层保留来源几何，不与养殖合成样本中的塘口自动合并。</p><dl class="source-list"><dt>来源仓库</dt><dd>${esc(data.source?.repository||'未提供')}</dd><dt>来源提交</dt><dd class="mono">${esc(data.source?.commit||'未提供')}</dd><dt>空间参考</dt><dd>局部图面坐标 · CRS 未确定</dd><dt>对象跳转</dt><dd>仅按已给出的本体 IRI 关联</dd></dl><div class="map-legend"><span><i class="legend-swatch"></i>田块 / 空间对象</span><span><i class="legend-swatch pond"></i>塘口 / 水体</span></div></div></section><section class="panel"><div class="panel-heading"><h2>图中对象</h2></div><div class="panel-body"><p>也可以从以下名称进入对象。</p><div class="map-feature-list">${features.map((feature,index)=>`<button class="map-feature-button" data-action="feature" data-feature="${index}"><span>${esc(feature.properties?.label||feature.id)}</span><span>↗</span></button>`).join('')}</div></div></section></aside></div>`;
-  $('map-layer').addEventListener('change',event=>go({view:'map',layer:event.target.value}));
+  if(mapData?.contract==='lzo-spatial-map/2')$('content').insertAdjacentHTML('afterbegin','<a class="side-action historical-return" href="#view=map">← 返回当前 CAD 平面地图</a>');
+  $('map-layer').addEventListener('change',event=>go({view:'map',historical:currentRoute.historical,layer:event.target.value}));
   $('map-labels').addEventListener('change',event=>{$('map-name-labels').style.display=event.target.checked?'':'none';$('map-name-labels').removeAttribute('hidden');});
   $('map-name-labels').style.display='none';
   $('source-map').dataset.layer=layer.id;
 }
 async function openFeature(index){
-  const data=await getMap(),layer=data.layers.find(item=>item.id===$('source-map')?.dataset.layer)||data.layers[0],feature=layer.features[index],props=feature.properties||{};
+  const token=renderId,data=await getMap(currentRoute.historical==='1');if(token!==renderId)return;
+  const layer=data.layers.find(item=>item.id===$('source-map')?.dataset.layer)||data.layers[0],feature=layer.features[index],props=feature.properties||{};
   if(props.object_iri&&props.object_class_iri&&catalog.byId.has(props.object_class_iri))go({view:'instance',iri:props.object_iri,class:props.object_class_iri});
-  else go({view:'feature',layer:layer.id,iri:feature.id});
+  else go({view:'feature',historical:currentRoute.historical,layer:layer.id,iri:feature.id});
 }
 async function featureView(token){
-  const data=await getMap();if(token!==renderId)return;
+  const data=await getMap(currentRoute.historical==='1');if(token!==renderId)return;
   const layer=data.layers.find(item=>item.id===currentRoute.layer),feature=layer?.features.find(item=>item.id===currentRoute.iri);
   breadcrumbs();
   if(!feature){$('content').innerHTML=empty('没有找到来源图形','请返回地图选择一个对象。');return;}
@@ -217,8 +238,35 @@ async function featureView(token){
   $('content').innerHTML=`<section class="object-header"><div class="eyebrow">SOURCE SPATIAL OBJECT</div><h1>${esc(props.label||feature.id)}</h1><div class="object-meta">${badge(natureLabel(props.data_nature),'blue')}${badge(props.object_iri?'本体分片尚未就绪':'尚无本体对象绑定','amber')}</div></section><section class="panel"><div class="panel-heading"><h2>真实来源空间信息</h2></div><div class="panel-body"><dl class="property-list">${[['来源空间标识',props.source_spatial_id],['图层',layer.label],['对象类型',props.kind],['边界状态',props.boundary_status],['本体 IRI',props.object_iri],['来源证据',props.source_evidence],['来源尺寸',props.metrics]].map(([label,value])=>`<div class="property-row"><dt>${label}</dt><dd>${esc(formatValue(value))}</dd></div>`).join('')}</dl><p class="panel-note">此图形没有可用的完整本体跳转，不以合成样本对象替代。未提供的测量值保持为空。</p><a class="primary-action" href="${href({view:'map',layer:layer.id})}">返回来源地图</a></div></section>`;
 }
 
+async function networkView(token){
+  breadcrumbs();
+  if(!networkData){try{networkData=await json('/api/v1/network');}catch{try{networkData=await json('data/ontology-network.json');}catch{if(token===renderId)$('content').innerHTML=empty('当前版本尚未发布本体关系网','可继续从本体目录逐级查看类型与实例。关系网需要与当前页面同一发布的网络快照。');return;}}}
+  if(token!==renderId)return;
+  if(networkData.contract!=='lzo-ontology-network/1'||!networkData.nodes?.length){$('content').innerHTML=empty('当前版本尚未发布本体关系网','可以继续从本体目录查看类型与实例。关系网就绪后，将从同一发布读取真实关系。');return;}
+  $('content').innerHTML='<section class="class-header"><div class="eyebrow">ONTOLOGY / CONNECTED KNOWLEDGE</div><h1>本体关系球</h1><p class="section-intro">旋转球面，发现类型之间的联系。由本体定义与已发布实例关系构成，选择节点后逐级探索。</p></section><div id="network-mount"></div>';
+  const viewSession=createViewSession(releaseId,()=>token===renderId?releaseId:null);
+  const sphere=mountOntologySphere($('network-mount'),networkData,{releaseId,onSelectClass:iri=>{if(token===renderId)go({view:'class',iri});},onSelectEdge:edge=>{const target=$('network-mount')?.querySelector('.network-edge-results');if(target&&token===renderId)networkRelations(edge,target,null,token,[],viewSession);}});
+  mountedView={destroy(){sphere.destroy();viewSession.destroy();}};
+}
+async function networkRelations(edge,target,cursor,token,trail,viewSession){
+  const current=()=>token===renderId&&target.isConnected&&viewSession.current();
+  if(edge.kind==='schema'){
+    target.innerHTML=`<p class="panel-note">此边为本体定义。进入端点类型查看下级与实例。</p>${[edge.source,edge.target].map(iri=>`<a class="side-action" href="${href({view:'class',iri})}">${esc(catalog.byId.get(iri)?.label||iri)} →</a>`).join('')}`;return;
+  }
+  target.innerHTML='<p class="loading-label">正在读取 12 条以内的实例关系…</p>';
+  try{
+    const params=new URLSearchParams({source:edge.source,target:edge.target,predicate:edge.predicate,limit:'12'});if(cursor)params.set('cursor',cursor);
+    let result;const loaded=await viewSession.load(()=>json('/api/v1/network-relations?'+params),value=>result=value);if(!loaded||!current())return;
+    const items=Array.isArray(result.items)?result.items.slice(0,12):[],offset=Number(result.offset)||0;
+    target.innerHTML=`<h4 class="sphere-neighbor-title">实例关系 <span>${number(result.total??edge.count)}</span></h4>${items.map(row=>`<div class="network-instance-pair"><a href="${href({view:'instance',iri:row.source_iri,class:row.source_class_iri})}">${esc(row.source_label||row.source_iri)}</a><small>↓ ${esc(edge.label||row.predicate)}</small><a href="${href({view:'instance',iri:row.target_iri,class:row.target_class_iri})}">${esc(row.target_label||row.target_iri)}</a></div>`).join('')||'<p class="panel-note">当前没有可公开展开的实例关系。</p>'}<div class="pagination"><button data-network-page="previous" ${trail.length?'':'disabled'}>←</button><span>显示 ${items.length?offset+1:0}–${offset+items.length}</span><button data-network-page="next" ${result.next_cursor?'':'disabled'}>→</button></div><p class="panel-note">每次最多读取 12 条；仅显示当前发布的公开对象关联。</p>`;
+    target.querySelector('[data-network-page="previous"]').onclick=()=>{if(current()&&trail.length)networkRelations(edge,target,trail.at(-1),token,trail.slice(0,-1),viewSession);};
+    target.querySelector('[data-network-page="next"]').onclick=()=>{if(current()&&result.next_cursor)networkRelations(edge,target,result.next_cursor,token,[...trail,cursor],viewSession);};
+  }catch(error){if(current())target.innerHTML=`<p class="panel-note">实例关系暂不可用：${esc(error.message)}。可先进入端点本体查看已发布对象。</p>`;}
+}
+
 async function render(){
   if(!catalog)return;
+  mountedView?.destroy();mountedView=null;
   const token=++renderId;currentRoute=readRoute(location.hash);closeTree();tree();
   try{
     if(currentRoute.view==='home')home();
@@ -231,6 +279,7 @@ async function render(){
         const concept=catalog.byId.get(currentRoute.class);if(!concept)throw Error('没有找到该对象所属本体');
         await instanceView(concept,token);
       }else if(currentRoute.view==='map')await mapView(token);
+      else if(currentRoute.view==='network')await networkView(token);
       else if(currentRoute.view==='feature')await featureView(token);
     }
     if(token===renderId)window.scrollTo({top:0,behavior:'instant'});
