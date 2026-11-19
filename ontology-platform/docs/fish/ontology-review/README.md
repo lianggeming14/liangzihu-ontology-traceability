@@ -1,5 +1,7 @@
 # 本体、实例与来源地图审查
 
+> **当前服务入口与本目录快照不同。** 2026-11-16 已发布的 CAD 平面地图和本体关系球请从本地服务器 `http://127.0.0.1:8792/ontology/` 打开，见[快速上手](../../local-server/快速上手.md)和[新版验收报告](../../local-server/gis-sphere-acceptance.md)。下文及本目录 `data/manifest.json` 保留 2026-11-10 的五图 CSV 审查快照；其 178 类型、180,997 实例与独立启动命令属于该历史快照，不代表当前六图服务版本。修改主服务配置与端口请按[当前部署指南](../../local-server/部署与换机.md)。
+
 当前完整来源批次见 **[66 CSV 数据库与 RDF 验收](../../csv-batch/README.md)**：153,862 条记录通过 PostgreSQL 全量回读，新第五图的 21,333,891 条三元组通过完整 RDF 术语回读，SHACL 检查 153,862 个实例、1,397 个字段约束且零违规，[导航已激活](../../csv-batch/activation-readback.json)。当前合计 5 图、24,054,860 条三元组、178 个概念、150 个叶类、180,997 个实例，全导航零悬空／错类；[独立实时 API](../../csv-batch/live-api-readback.json)与[实际 Chrome 验收](csv-browser-report.json)均通过，零 JavaScript 错误，见 [CSV 首页截图](screenshots/desktop-csv-overview.png)。下文保留旧四图的数量、来源和审查记录，当前图清单以 [manifest.json](data/manifest.json) 为准。旧 84 个叶类分片直接由 Jena 回读值生成；新 CSV 在完整 RDF 术语集合证明与 Jena 相等并通过 SHACL 后，由同一投影模型分片序列化，不宣称缓存了全部 Jena DTO。大数据浏览按所选类加载摘要，实例详情每块 500 条，高关联对象按每块 4,800 条的独立关系文件懒加载，界面每页显示 12 条关系。概念层级、实例类型、类型化属性、正反关系和来源仍有对应 RDF 表达；本地打开方式见下文。
 
 ## 打开页面
