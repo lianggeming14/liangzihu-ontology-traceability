@@ -1,0 +1,51 @@
+{
+  "contract": "lzo-regression-delivery-state/1",
+  "checked_utc": "2026-11-24T03:20:53.767230+00:00",
+  "status": "passed",
+  "business_writes": false,
+  "formal_http_checks": [
+    {
+      "path": "/api/v1/status",
+      "http_status": 200,
+      "release_id": "16c6ce16-e28c-5e9c-a766-874fca309c5f"
+    },
+    {
+      "path": "/ready",
+      "http_status": 200,
+      "release_id": "16c6ce16-e28c-5e9c-a766-874fca309c5f"
+    }
+  ],
+  "formal_release_unchanged": true,
+  "formal_listeners": [
+    {
+      "port": 25459,
+      "host": "127.0.0.1"
+    },
+    {
+      "port": 23059,
+      "host": "127.0.0.1"
+    },
+    {
+      "port": 8792,
+      "host": "127.0.0.1"
+    }
+  ],
+  "test_ports_checked": [
+    8802,
+    8892,
+    8893,
+    8894,
+    23069,
+    24059,
+    24079,
+    24159,
+    25469,
+    26459,
+    26479,
+    26559
+  ],
+  "active_test_ports": [],
+  "formal_service_restarted": false,
+  "lifecycle_fix_activation": "Source fix is used on the next normal lifecycle invocation; existing business processes were not restarted.",
+  "public_network_deployment_executed": false
+}

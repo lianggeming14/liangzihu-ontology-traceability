@@ -1,0 +1,228 @@
+{
+  "contract": "lzo-regression-evidence/1",
+  "date": "2026-11-24",
+  "data_nature": "synthetic fixtures; real isolated PostgreSQL/PostGIS and Fuseki where explicitly opted in",
+  "counts_are_unique_testcases_with_pg_supplement_replacing_prior_skips": true,
+  "totals": {
+    "passed": 1546,
+    "failure": 0,
+    "error": 0,
+    "skipped": 4
+  },
+  "groups": [
+    {
+      "scope": "local_server_native",
+      "counts": {
+        "passed": 365,
+        "failure": 0,
+        "error": 0,
+        "skipped": 3
+      },
+      "tests": 368,
+      "junit_sources": [
+        {
+          "artifact": "native-suite-final/junit.xml",
+          "sha256": "8144b58e8cf4038c3e4b2d1e284c46fa7b9eab0f9242fc8ded22b9dc69c5a37f"
+        },
+        {
+          "artifact": "connection-review-20261123/benchmark-unit-final.xml",
+          "sha256": "a0916a213973d3911d870cba6f3d280a312a0537372dec8dcde5084f17e2e245"
+        }
+      ],
+      "exceptions": [
+        {
+          "test": "tests.local_server.test_asset_placement::test_symlink_in_a_declared_asset_subtree_is_rejected",
+          "status": "skipped",
+          "reason": "OS denied creating a synthetic symlink"
+        },
+        {
+          "test": "tests.local_server.test_config::test_data_paths_cannot_escape_through_traversal_or_symlink",
+          "status": "skipped",
+          "reason": "OS denied creating a synthetic directory symlink"
+        },
+        {
+          "test": "tests.local_server.test_provision::test_provision_rejects_symlinked_data_parent",
+          "status": "skipped",
+          "reason": "OS does not permit this user to create a directory symlink"
+        }
+      ]
+    },
+    {
+      "scope": "implementation_sqlite_and_postgresql",
+      "counts": {
+        "passed": 472,
+        "failure": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "tests": 472,
+      "junit_sources": [
+        {
+          "artifact": "implementation-run01/junit.xml",
+          "sha256": "82709b239a0a413e8325ab04dfa27a3bfdd8539b8dc5fe7f8db9d0ebb646fff7"
+        },
+        {
+          "artifact": "implementation-pg-pinned-run01/junit.xml",
+          "sha256": "25e1959f7639e87a7185fb0c79a2da1064990b654068dfe3e4dadd32b7bcf179"
+        },
+        {
+          "artifact": "run-20261124T033553Z-45008f00/junit.xml",
+          "sha256": "efa26b5987dfabe9556370a368dd9840757da99b0a66c1900c64c60605125aa9"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "scope": "backend_unit_and_three_root_modules",
+      "counts": {
+        "passed": 480,
+        "failure": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "tests": 480,
+      "junit_sources": [
+        {
+          "artifact": "backend-run02/junit.xml",
+          "sha256": "3f8b23595358beffb7546369593c776275ab2ce3593531349f91d035cad062e3"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "scope": "repository_tools",
+      "counts": {
+        "passed": 85,
+        "failure": 0,
+        "error": 0,
+        "skipped": 1
+      },
+      "tests": 86,
+      "junit_sources": [
+        {
+          "artifact": "tools-run01/junit.xml",
+          "sha256": "648678daf944e027df8408093c1f8e6d7a4c80f9a9ecc206bc3cdd741224861e"
+        }
+      ],
+      "exceptions": [
+        {
+          "test": "tools.test_snapshot.SnapshotTests::test_destination_symlink_is_refused_when_supported",
+          "status": "skipped",
+          "reason": "OS does not grant symlink creation to this test process"
+        }
+      ]
+    },
+    {
+      "scope": "csv_scripts",
+      "tests": 88,
+      "counts": {
+        "passed": 88,
+        "failure": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "log_sha256": "03ff6d8ee67ac3cd8863af461dcf21cb3c06dee39c431b9d4056560d283f28fa",
+      "exceptions": []
+    },
+    {
+      "scope": "rdf_and_review_scripts",
+      "tests": 46,
+      "counts": {
+        "passed": 46,
+        "failure": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "exceptions": []
+    },
+    {
+      "scope": "map_and_repository_references",
+      "tests": 10,
+      "counts": {
+        "passed": 10,
+        "failure": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "exceptions": []
+    }
+  ],
+  "postgresql_implementation_driver": {
+    "probe_exit_code": 0,
+    "pinned_driver_versions": {
+      "psycopg": "3.3.6",
+      "psycopg-binary": "3.3.6"
+    },
+    "selected_driver": "3.3.6",
+    "matches_implementation_lock": true,
+    "service_lifecycle_owned_by_root": true
+  },
+  "implementation_test_runtime": {
+    "python": "3.12.7",
+    "pytest": "7.4.4",
+    "psycopg": "3.3.6",
+    "postgresql_matches_lock": true
+  },
+  "native_environment": {
+    "checked_utc": "2026-11-24T02:50:39.276670+00:00",
+    "os": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+    "physical_cores": 14,
+    "logical_cpus": 20,
+    "memory_gib": 31.85,
+    "python": "3.12.7",
+    "packages": {
+      "psycopg": "3.2.12",
+      "pytest": "8.4.2",
+      "httpx": "0.28.1",
+      "rdflib": "7.6.0",
+      "pyshacl": "0.30.1"
+    },
+    "postgresql": "postgres (PostgreSQL) 17.11",
+    "java": "openjdk version \"21.0.7\" 2025-04-15",
+    "formal_before": {
+      "http_status": 200,
+      "release_id": "16c6ce16-e28c-5e9c-a766-874fca309c5f"
+    }
+  },
+  "backend_dependency_lock": {
+    "checked_packages": 95,
+    "all_matched": true
+  },
+  "video_decode_supplement": {
+    "status": "passed",
+    "package": "imageio-ffmpeg==0.6.0",
+    "ffmpeg": "7.1",
+    "synthetic_video": true,
+    "global_installation": false
+  },
+  "not_executed": {
+    "backend_integration_test_files": 76,
+    "reason": "This checkout lacks an owned full-platform migration/multistore/OIDC/S3 test environment; local-server fixtures do not provide those prerequisites. Not counted as passing or pytest skips."
+  },
+  "initial_failures_resolved": [
+    {
+      "scope": "csv_scripts",
+      "count": 1,
+      "cause": "Harness temporary output was inside allowed .runtime; restored the test precondition with temp outside the checkout runtime."
+    },
+    {
+      "scope": "backend_unit",
+      "count": 3,
+      "cause": "First interpreter missed boto3/botocore; reran all 480 tests in an existing environment matching all 95 locked dependencies."
+    },
+    {
+      "scope": "native_backup",
+      "count": 2,
+      "cause": "Hardcoded postgres grantor and missing explicit cross-cluster membership provisioning in fixtures; preserved exact role/grantor/options readback."
+    },
+    {
+      "scope": "lifecycle",
+      "cause": "Recycled PID in stale stopped Fuseki record blocked restart; added red/green process identity and port-ownership regressions."
+    },
+    {
+      "scope": "repository_layout",
+      "cause": "Runtime network snapshot fallback was treated as mandatory legacy static content; report now explicitly records its absence and retains required artifact verification."
+    }
+  ]
+}

@@ -11,6 +11,22 @@ import tempfile
 
 ROOT=Path(__file__).resolve().parents[1]
 
+
+def ui_reference(directory, link):
+    """Check required assets without inventing a static network publication.
+
+    assets.js first requests /api/v1/network, then optionally tries this
+    snapshot, and renders an explicit unavailable state when neither exists.
+    The legacy static review has no published network snapshot. All other
+    local references remain mandatory, including the complete map/manifests.
+    """
+    path=(directory/link.split('#')[0]).resolve()
+    assert path.is_relative_to(directory.resolve()),f'Escaped ontology UI reference: {link}'
+    if link=='data/ontology-network.json' and not path.exists():
+        return False
+    assert path.is_file(),f'Broken ontology UI reference: {link}'
+    return True
+
 CSV_PACKAGE='a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524'
 CSV_GRAPH_PREFIX='urn:lzo:csv-batch:v1:'+CSV_PACKAGE+':graph:'
 LEGACY_MANIFEST_SHA256='d4cafec97c4185b793397287a8e08a7bdc35aab1a83d94d539f89157e2303901'
@@ -400,12 +416,12 @@ def ontology_check(root=ROOT,*,pending_browser=False):
         targets+=re.findall(r'''(?:json|fetch)\(["'](data/[^"']+\.(?:json|svg))["']\)''',content)
         for link in targets:
             if link.startswith(('#','https:','http:')):continue
-            path=(directory/link.split('#')[0]).resolve()
-            assert path.is_relative_to(directory.resolve()) and path.is_file(),f'Broken ontology UI reference: {link}'
+            ui_reference(directory,link)
     for document in (root.parent/'README.md',root/'README.md'):
         assert 'docs/fish/ontology-review/' in document.read_text(encoding='utf-8'),f'Missing current RDF entry: {document.name}'
     assert 'serve_ontology_review.py' in (directory/'README.md').read_text(encoding='utf-8')
     return {'named_graphs':5,'concepts':178,'instances':180997,'gzip_shards':150,
+        'optional_static_network_snapshot':(directory/'data/ontology-network.json').is_file(),
         'source_links_verified':889893,'demo_links_verified':10495,'csv_rows':153862,'live_services_contacted':False}
 
 

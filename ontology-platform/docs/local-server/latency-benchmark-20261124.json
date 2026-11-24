@@ -1,0 +1,4758 @@
+{
+  "contract": "local-server-latency/1",
+  "started_utc": "2026-11-24T03:01:38.745266+00:00",
+  "status": "passed",
+  "data_nature": "synthetic CSV/ZIP; real PostgreSQL and Fuseki; not CAD import performance",
+  "environment": {
+    "python": "3.12.7",
+    "system": "Windows",
+    "machine": "AMD64",
+    "background_load": "Existing formal services may remain active; no concurrent native regression permitted",
+    "workers": 1
+  },
+  "method": {
+    "clock": "time.perf_counter",
+    "first_pass": "first import at each size; OS caches were not cleared",
+    "warm": "new content and distinct release for every repeat; no import deduplication",
+    "query_export_release": "last successful release per size, fixed for all requests",
+    "queue": "submit_job return to claim_job return, includes claim SQL; negative overlap clamped to zero",
+    "import_processing": "claim return through verified SQL and RDF readback; publication excluded",
+    "publication": "build_navigation start through publish_release return, including file verification and registration",
+    "atomic_activation": "complete publish_release SQL transaction including connect, locks, release status, state update and commit",
+    "export": "complete public ponds class only, all pages; wall time includes HTTP, parsing, validation; http_seconds also supplied",
+    "p95": "nearest rank; successful samples only, all failures counted; small N cannot establish capacity"
+  },
+  "settings": {
+    "sizes": [
+      100,
+      1000,
+      5000
+    ],
+    "warm_repeats": 3,
+    "query_repeats": 20,
+    "json_export_repeats": 20,
+    "csv_rdf_repeats": 1,
+    "page_size": 1000
+  },
+  "scenarios": [
+    {
+      "relation_rows": 100,
+      "imports": [
+        {
+          "relation_rows": 100,
+          "phase": "first_pass",
+          "index": 0,
+          "status": "passed",
+          "source_rows": 101,
+          "nodes": 101,
+          "input_bytes": 987,
+          "source_sha256": "615d16379509f8f9363a60ea15cbf1ff37d985fb7ae2fc729f230f46909170f3",
+          "is_synthetic": true,
+          "http_202_seconds": 0.14380840002559125,
+          "http_status": 202,
+          "job_id": "afb7a008-617a-49cf-9d6a-802333c35ba6",
+          "release_id": "32ee46ab-6bd9-4ce9-a98d-eb2e98441fdb",
+          "counts": {
+            "classes": 22,
+            "instances": 101,
+            "relations": 100,
+            "source_classes": 2,
+            "resolved_relations": 100
+          },
+          "generated_triples": 4722,
+          "generated_rdf_bytes": 1240158,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.12373290001414716,
+          "claim_job_seconds": 0.1245751999085769,
+          "build_batch_seconds": 0.007286999956704676,
+          "store_batch_seconds": 0.6327374000102282,
+          "generate_rdf_seconds": 0.143322299933061,
+          "load_and_verify_seconds": 0.7800835000816733,
+          "build_navigation_seconds": 0.31457150005735457,
+          "verify_files_seconds": 0.0021852999925613403,
+          "register_release_seconds": 0.025463700061663985,
+          "publish_release_seconds": 0.025860900059342384,
+          "finish_job_seconds": 0.02233950002118945,
+          "queue_seconds": 0.856789099983871,
+          "import_processing_seconds": 2.2978790000779554,
+          "publication_seconds": 0.4586982000619173,
+          "atomic_activation_seconds": 0.025860900059342384,
+          "upload_to_complete_seconds": 3.8223514000419527,
+          "elapsed_seconds": 3.8223514000419527,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.12373290001414716,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.1245751999085769,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.007286999956704676,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 0.6327374000102282,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 0.143322299933061,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 0.7800835000816733,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 0.31457150005735457,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.0021852999925613403,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.025463700061663985,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.025860900059342384,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.02233950002118945,
+                "status": "passed"
+              }
+            ]
+          }
+        },
+        {
+          "relation_rows": 100,
+          "phase": "warm_new_content",
+          "index": 1,
+          "status": "passed",
+          "source_rows": 101,
+          "nodes": 101,
+          "input_bytes": 988,
+          "source_sha256": "1f8492a722d8df28c25fb19501fb4e1201a9b80d99c23264aa84c9cc0547eede",
+          "is_synthetic": true,
+          "http_202_seconds": 0.024665100034326315,
+          "http_status": 202,
+          "job_id": "0ee5c350-9f15-4b77-81ca-3145d05fae63",
+          "release_id": "b9e5c9d4-5aec-4286-9a92-86449bd9d220",
+          "counts": {
+            "classes": 22,
+            "instances": 101,
+            "relations": 100,
+            "source_classes": 2,
+            "resolved_relations": 100
+          },
+          "generated_triples": 4722,
+          "generated_rdf_bytes": 1240158,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.021392300026491284,
+          "claim_job_seconds": 0.1239531000610441,
+          "build_batch_seconds": 0.007405199925415218,
+          "store_batch_seconds": 0.5514859999530017,
+          "generate_rdf_seconds": 0.13954170001670718,
+          "load_and_verify_seconds": 0.4373987999279052,
+          "build_navigation_seconds": 0.1815995000069961,
+          "verify_files_seconds": 0.0022585999686270952,
+          "register_release_seconds": 0.029358800034970045,
+          "publish_release_seconds": 0.025790999992750585,
+          "finish_job_seconds": 0.1345177999464795,
+          "queue_seconds": 0.9701321000466123,
+          "import_processing_seconds": 1.577732399920933,
+          "publication_seconds": 0.4425115999765694,
+          "atomic_activation_seconds": 0.025790999992750585,
+          "upload_to_complete_seconds": 3.296256999950856,
+          "elapsed_seconds": 3.296256999950856,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.021392300026491284,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.1239531000610441,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.007405199925415218,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 0.5514859999530017,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 0.13954170001670718,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 0.4373987999279052,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 0.1815995000069961,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.0022585999686270952,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.029358800034970045,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.025790999992750585,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.1345177999464795,
+                "status": "passed"
+              }
+            ]
+          }
+        },
+        {
+          "relation_rows": 100,
+          "phase": "warm_new_content",
+          "index": 2,
+          "status": "passed",
+          "source_rows": 101,
+          "nodes": 101,
+          "input_bytes": 988,
+          "source_sha256": "f4e0e5cc2fdd3f43e826ee4ae368e22fd2e2e4f311d19cf44e08f0e5f8a8af2c",
+          "is_synthetic": true,
+          "http_202_seconds": 0.02454150002449751,
+          "http_status": 202,
+          "job_id": "a4d8e586-ff99-453b-8062-ddd0509688d6",
+          "release_id": "cd978cd9-d78a-41ab-9876-7aef1ee5486e",
+          "counts": {
+            "classes": 22,
+            "instances": 101,
+            "relations": 100,
+            "source_classes": 2,
+            "resolved_relations": 100
+          },
+          "generated_triples": 4722,
+          "generated_rdf_bytes": 1240158,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.020732400007545948,
+          "claim_job_seconds": 0.1400728999869898,
+          "build_batch_seconds": 0.006247999961487949,
+          "store_batch_seconds": 0.542669799993746,
+          "generate_rdf_seconds": 0.2421990999719128,
+          "load_and_verify_seconds": 0.6456927999388427,
+          "build_navigation_seconds": 0.17291810002643615,
+          "verify_files_seconds": 0.002251800033263862,
+          "register_release_seconds": 0.028018300072290003,
+          "publish_release_seconds": 0.022868999978527427,
+          "finish_job_seconds": 0.12672409997321665,
+          "queue_seconds": 0.9970106000546366,
+          "import_processing_seconds": 1.8515227999305353,
+          "publication_seconds": 0.3223001000005752,
+          "atomic_activation_seconds": 0.022868999978527427,
+          "upload_to_complete_seconds": 3.3656012000283226,
+          "elapsed_seconds": 3.3656012000283226,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.020732400007545948,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.1400728999869898,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.006247999961487949,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 0.542669799993746,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 0.2421990999719128,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 0.6456927999388427,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 0.17291810002643615,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.002251800033263862,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.028018300072290003,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.022868999978527427,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.12672409997321665,
+                "status": "passed"
+              }
+            ]
+          }
+        },
+        {
+          "relation_rows": 100,
+          "phase": "warm_new_content",
+          "index": 3,
+          "status": "passed",
+          "source_rows": 101,
+          "nodes": 101,
+          "input_bytes": 988,
+          "source_sha256": "51f402f4feaaf20a9622cafe0c8c6a2229b764f4dc4a546aafbe61cd5f1bde98",
+          "is_synthetic": true,
+          "http_202_seconds": 0.02535769995301962,
+          "http_status": 202,
+          "job_id": "65c06740-c409-4d2b-b23a-6f895fea1d19",
+          "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+          "counts": {
+            "classes": 22,
+            "instances": 101,
+            "relations": 100,
+            "source_classes": 2,
+            "resolved_relations": 100
+          },
+          "generated_triples": 4722,
+          "generated_rdf_bytes": 1240158,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.02140620001591742,
+          "claim_job_seconds": 0.14223959995433688,
+          "build_batch_seconds": 0.009121300070546567,
+          "store_batch_seconds": 0.7426938998978585,
+          "generate_rdf_seconds": 0.36565309995785356,
+          "load_and_verify_seconds": 0.42666409991215914,
+          "build_navigation_seconds": 0.302052199956961,
+          "verify_files_seconds": 0.002376300049945712,
+          "register_release_seconds": 0.025386400055140257,
+          "publish_release_seconds": 0.024627599981613457,
+          "finish_job_seconds": 0.021247199969366193,
+          "queue_seconds": 0.8900354999350384,
+          "import_processing_seconds": 2.102338599972427,
+          "publication_seconds": 0.5653368999483064,
+          "atomic_activation_seconds": 0.024627599981613457,
+          "upload_to_complete_seconds": 3.649180999957025,
+          "elapsed_seconds": 3.649180999957025,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.02140620001591742,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.14223959995433688,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.009121300070546567,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 0.7426938998978585,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 0.36565309995785356,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 0.42666409991215914,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 0.302052199956961,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.002376300049945712,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.025386400055140257,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.024627599981613457,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.021247199969366193,
+                "status": "passed"
+              }
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "first_pass": {
+          "complete": {
+            "attempts": 1,
+            "successes": 1,
+            "failures": 0,
+            "N": 1,
+            "small_sample": true,
+            "p50_seconds": 3.8223514000419527,
+            "p95_seconds": 3.8223514000419527,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "metrics": {
+            "atomic_activation_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.025860900059342384,
+              "p95_seconds": 0.025860900059342384,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_batch_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.007286999956704676,
+              "p95_seconds": 0.007286999956704676,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_navigation_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.31457150005735457,
+              "p95_seconds": 0.31457150005735457,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "claim_job_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.1245751999085769,
+              "p95_seconds": 0.1245751999085769,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "elapsed_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 3.8223514000419527,
+              "p95_seconds": 3.8223514000419527,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "finish_job_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.02233950002118945,
+              "p95_seconds": 0.02233950002118945,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "generate_rdf_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.143322299933061,
+              "p95_seconds": 0.143322299933061,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "http_202_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.14380840002559125,
+              "p95_seconds": 0.14380840002559125,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "import_processing_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 2.2978790000779554,
+              "p95_seconds": 2.2978790000779554,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "load_and_verify_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.7800835000816733,
+              "p95_seconds": 0.7800835000816733,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publication_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.4586982000619173,
+              "p95_seconds": 0.4586982000619173,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publish_release_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.025860900059342384,
+              "p95_seconds": 0.025860900059342384,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "queue_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.856789099983871,
+              "p95_seconds": 0.856789099983871,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "register_release_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.025463700061663985,
+              "p95_seconds": 0.025463700061663985,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "store_batch_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.6327374000102282,
+              "p95_seconds": 0.6327374000102282,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "submit_job_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.12373290001414716,
+              "p95_seconds": 0.12373290001414716,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "upload_to_complete_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 3.8223514000419527,
+              "p95_seconds": 3.8223514000419527,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "verify_files_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.0021852999925613403,
+              "p95_seconds": 0.0021852999925613403,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            }
+          }
+        },
+        "warm_new_content": {
+          "complete": {
+            "attempts": 3,
+            "successes": 3,
+            "failures": 0,
+            "N": 3,
+            "small_sample": true,
+            "p50_seconds": 3.3656012000283226,
+            "p95_seconds": 3.649180999957025,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "metrics": {
+            "atomic_activation_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.024627599981613457,
+              "p95_seconds": 0.025790999992750585,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_batch_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.007405199925415218,
+              "p95_seconds": 0.009121300070546567,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_navigation_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.1815995000069961,
+              "p95_seconds": 0.302052199956961,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "claim_job_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.1400728999869898,
+              "p95_seconds": 0.14223959995433688,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "elapsed_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 3.3656012000283226,
+              "p95_seconds": 3.649180999957025,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "finish_job_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.12672409997321665,
+              "p95_seconds": 0.1345177999464795,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "generate_rdf_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.2421990999719128,
+              "p95_seconds": 0.36565309995785356,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "http_202_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.024665100034326315,
+              "p95_seconds": 0.02535769995301962,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "import_processing_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 1.8515227999305353,
+              "p95_seconds": 2.102338599972427,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "load_and_verify_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.4373987999279052,
+              "p95_seconds": 0.6456927999388427,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publication_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.4425115999765694,
+              "p95_seconds": 0.5653368999483064,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publish_release_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.024627599981613457,
+              "p95_seconds": 0.025790999992750585,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "queue_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.9701321000466123,
+              "p95_seconds": 0.9970106000546366,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "register_release_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.028018300072290003,
+              "p95_seconds": 0.029358800034970045,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "store_batch_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.5514859999530017,
+              "p95_seconds": 0.7426938998978585,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "submit_job_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.021392300026491284,
+              "p95_seconds": 0.02140620001591742,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "upload_to_complete_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 3.3656012000283226,
+              "p95_seconds": 3.649180999957025,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "verify_files_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.0022585999686270952,
+              "p95_seconds": 0.002376300049945712,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            }
+          }
+        }
+      },
+      "reads": {
+        "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+        "class_iri": "urn:lzo:local-server:v1:a0ad8ec8130f2c5a96b8c3fb69d489f63d3b304c1b05c12345a42d222f914070:class:ponds",
+        "expected_export": {
+          "triples": 1400,
+          "subjects": 100,
+          "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83"
+        },
+        "samples": [
+          {
+            "action": "instances",
+            "index": 0,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.1929849999723956,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 1,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.19068300002254546,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 2,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.2205989999929443,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 3,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.29675270000007004,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 4,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.31954950001090765,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 5,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.23907909996341914,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 6,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.35587770002894104,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 7,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.2009432000340894,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 8,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.20185700000729412,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 9,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.20195259992033243,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 10,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.19883979996666312,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 11,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.29121019993908703,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 12,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.18904279998969287,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 13,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.1890237000770867,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 14,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.18870269996114075,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 15,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.29854970006272197,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 16,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.30375640001147985,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 17,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.18734109995421022,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 18,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.3909500000299886,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 19,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.29434579994995147,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 0,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.5788374999538064,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 1,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.5124381000641733,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 2,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.6164217999903485,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 3,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.6295043000718579,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 4,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.5131726000690833,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 5,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.5680882000597194,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 6,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.5559729000087827,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 7,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.514564499957487,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 8,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.5898846999043599,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 9,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.5263827999588102,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 10,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.5086177000775933,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 11,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.5139938000356779,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 12,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.5637541000032797,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 13,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.6260732000228018,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 14,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.5997475000331178,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 15,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.5068215999053791,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 16,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.5320797999156639,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 17,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.5104193000588566,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 18,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.6034206000622362,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 19,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "elapsed_seconds": 0.5750951999798417,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "export_json",
+            "index": 0,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.4322415000060573,
+            "elapsed_seconds": 0.4509055999806151,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 1,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.4787697000429034,
+            "elapsed_seconds": 0.4935164999915287,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 2,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.5648834999883547,
+            "elapsed_seconds": 0.5782589999726042,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 3,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.42741579993162304,
+            "elapsed_seconds": 0.4424352999776602,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 4,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.42355169996153563,
+            "elapsed_seconds": 0.4368896000087261,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 5,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.5078555998625234,
+            "elapsed_seconds": 0.5213579999981448,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 6,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.5062345000915229,
+            "elapsed_seconds": 0.5196272999746725,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 7,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.47961030004080385,
+            "elapsed_seconds": 0.49684300005901605,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 8,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.4806981000583619,
+            "elapsed_seconds": 0.49401749996468425,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 9,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.3969396000029519,
+            "elapsed_seconds": 0.410613099928014,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 10,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.6084208000684157,
+            "elapsed_seconds": 0.6234560000011697,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 11,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.5264841000316665,
+            "elapsed_seconds": 0.5400099999969825,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 12,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.5157419999595731,
+            "elapsed_seconds": 0.5305051000323147,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 13,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.39681240008212626,
+            "elapsed_seconds": 0.4099362000124529,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 14,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.4274046999635175,
+            "elapsed_seconds": 0.4415437000570819,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 15,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.5582579000620171,
+            "elapsed_seconds": 0.5737790999701247,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 16,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.4960030000656843,
+            "elapsed_seconds": 0.5098870999645442,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 17,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.3991548999911174,
+            "elapsed_seconds": 0.41273720003664494,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 18,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.5056845999788493,
+            "elapsed_seconds": 0.5188761000754312,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 19,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.45562620006967336,
+            "elapsed_seconds": 0.47088389995042235,
+            "format": "json"
+          },
+          {
+            "action": "export_csv",
+            "index": 0,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 396668,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.40184649999719113,
+            "elapsed_seconds": 0.4169892000500113,
+            "format": "csv"
+          },
+          {
+            "action": "export_rdf",
+            "index": 0,
+            "status": "passed",
+            "release_id": "f1e9b6a9-5984-4810-b264-fd1726a12733",
+            "pages": 2,
+            "bytes": 393972,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "cf7c3af2c569cb0e23360119302a39e0d85cf5e161f9f07210a5df2f4858eb83",
+            "http_seconds": 0.6243084999732673,
+            "elapsed_seconds": 0.6692549000727013,
+            "format": "rdf"
+          }
+        ],
+        "summary": {
+          "instances": {
+            "attempts": 20,
+            "successes": 20,
+            "failures": 0,
+            "N": 20,
+            "small_sample": false,
+            "p50_seconds": 0.21127579995663837,
+            "p95_seconds": 0.35587770002894104,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "resource": {
+            "attempts": 20,
+            "successes": 20,
+            "failures": 0,
+            "N": 20,
+            "small_sample": false,
+            "p50_seconds": 0.5598635000060312,
+            "p95_seconds": 0.6260732000228018,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "export_json": {
+            "attempts": 20,
+            "successes": 20,
+            "failures": 0,
+            "N": 20,
+            "small_sample": false,
+            "p50_seconds": 0.49543025001185015,
+            "p95_seconds": 0.5782589999726042,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "export_csv": {
+            "attempts": 1,
+            "successes": 1,
+            "failures": 0,
+            "N": 1,
+            "small_sample": true,
+            "p50_seconds": 0.4169892000500113,
+            "p95_seconds": 0.4169892000500113,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "export_rdf": {
+            "attempts": 1,
+            "successes": 1,
+            "failures": 0,
+            "N": 1,
+            "small_sample": true,
+            "p50_seconds": 0.6692549000727013,
+            "p95_seconds": 0.6692549000727013,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          }
+        }
+      }
+    },
+    {
+      "relation_rows": 1000,
+      "imports": [
+        {
+          "relation_rows": 1000,
+          "phase": "first_pass",
+          "index": 0,
+          "status": "passed",
+          "source_rows": 1001,
+          "nodes": 1001,
+          "input_bytes": 7095,
+          "source_sha256": "1a390f93d7516c747a9915bace9329eece836cdb364efa5fb63a05959857038f",
+          "is_synthetic": true,
+          "http_202_seconds": 0.025831500068306923,
+          "http_status": 202,
+          "job_id": "f6ffd99e-9b01-4f31-a138-319fff226c55",
+          "release_id": "bdb3a86a-72fe-4918-9290-c3dec58d7ba5",
+          "counts": {
+            "classes": 22,
+            "instances": 1001,
+            "relations": 1000,
+            "source_classes": 2,
+            "resolved_relations": 1000
+          },
+          "generated_triples": 45222,
+          "generated_rdf_bytes": 12041995,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.022207199945114553,
+          "claim_job_seconds": 0.1389624000294134,
+          "build_batch_seconds": 0.022075099986977875,
+          "store_batch_seconds": 0.7248071000212803,
+          "generate_rdf_seconds": 0.8820096000563353,
+          "load_and_verify_seconds": 2.0939604999730363,
+          "build_navigation_seconds": 0.7751233000308275,
+          "verify_files_seconds": 0.0033676999155431986,
+          "register_release_seconds": 0.02754150005057454,
+          "publish_release_seconds": 0.0274898000061512,
+          "finish_job_seconds": 0.13277820008806884,
+          "queue_seconds": 0.8249947000294924,
+          "import_processing_seconds": 4.1467686999822035,
+          "publication_seconds": 0.9479897000128403,
+          "atomic_activation_seconds": 0.0274898000061512,
+          "upload_to_complete_seconds": 6.127352700103074,
+          "elapsed_seconds": 6.127352700103074,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.022207199945114553,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.1389624000294134,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.022075099986977875,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 0.7248071000212803,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 0.8820096000563353,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 2.0939604999730363,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 0.7751233000308275,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.0033676999155431986,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.02754150005057454,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.0274898000061512,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.13277820008806884,
+                "status": "passed"
+              }
+            ]
+          }
+        },
+        {
+          "relation_rows": 1000,
+          "phase": "warm_new_content",
+          "index": 1,
+          "status": "passed",
+          "source_rows": 1001,
+          "nodes": 1001,
+          "input_bytes": 7089,
+          "source_sha256": "98501558f747fe746ddcc97904d3013df7cbc50b428ad05a76564a652c79432c",
+          "is_synthetic": true,
+          "http_202_seconds": 0.026031199959106743,
+          "http_status": 202,
+          "job_id": "10a678e4-30c3-4d8e-8289-fe77e7b73c05",
+          "release_id": "90aa7e1e-3c5e-430d-a9b9-a3d3a13e533c",
+          "counts": {
+            "classes": 22,
+            "instances": 1001,
+            "relations": 1000,
+            "source_classes": 2,
+            "resolved_relations": 1000
+          },
+          "generated_triples": 45222,
+          "generated_rdf_bytes": 12041995,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.022045599995180964,
+          "claim_job_seconds": 0.02439759997650981,
+          "build_batch_seconds": 0.021163000026717782,
+          "store_batch_seconds": 0.7807875000871718,
+          "generate_rdf_seconds": 1.0498642000602558,
+          "load_and_verify_seconds": 1.5375110000604764,
+          "build_navigation_seconds": 0.6642575999721885,
+          "verify_files_seconds": 0.003092499915510416,
+          "register_release_seconds": 0.1372597999870777,
+          "publish_release_seconds": 0.026247199974022806,
+          "finish_job_seconds": 0.022668199962936342,
+          "queue_seconds": 0.8783386000432074,
+          "import_processing_seconds": 3.68114510003943,
+          "publication_seconds": 0.9397257999517024,
+          "atomic_activation_seconds": 0.026247199974022806,
+          "upload_to_complete_seconds": 5.700107399956323,
+          "elapsed_seconds": 5.700107399956323,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.022045599995180964,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.02439759997650981,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.021163000026717782,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 0.7807875000871718,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 1.0498642000602558,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 1.5375110000604764,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 0.6642575999721885,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.003092499915510416,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.1372597999870777,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.026247199974022806,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.022668199962936342,
+                "status": "passed"
+              }
+            ]
+          }
+        },
+        {
+          "relation_rows": 1000,
+          "phase": "warm_new_content",
+          "index": 2,
+          "status": "passed",
+          "source_rows": 1001,
+          "nodes": 1001,
+          "input_bytes": 7091,
+          "source_sha256": "c90cc8a2ac12b580d25a9cd977892ba4ba324dcb9e0000a45312cf0c23851de2",
+          "is_synthetic": true,
+          "http_202_seconds": 0.024829700007103384,
+          "http_status": 202,
+          "job_id": "05982f67-2c85-432b-8bf5-fff342b4edc2",
+          "release_id": "9f7d7ffd-8de9-42c7-b460-610f6685bb1e",
+          "counts": {
+            "classes": 22,
+            "instances": 1001,
+            "relations": 1000,
+            "source_classes": 2,
+            "resolved_relations": 1000
+          },
+          "generated_triples": 45222,
+          "generated_rdf_bytes": 12041995,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.02142699994146824,
+          "claim_job_seconds": 0.13595560006797314,
+          "build_batch_seconds": 0.0207558999536559,
+          "store_batch_seconds": 0.746302800020203,
+          "generate_rdf_seconds": 0.8478604999836534,
+          "load_and_verify_seconds": 1.515405699959956,
+          "build_navigation_seconds": 0.8014660000335425,
+          "verify_files_seconds": 0.003275799914263189,
+          "register_release_seconds": 0.02593990007881075,
+          "publish_release_seconds": 0.13329210004303604,
+          "finish_job_seconds": 0.022426400100812316,
+          "queue_seconds": 0.05652920005377382,
+          "import_processing_seconds": 3.5335844999644905,
+          "publication_seconds": 1.1873335000127554,
+          "atomic_activation_seconds": 0.13329210004303604,
+          "upload_to_complete_seconds": 4.975648000021465,
+          "elapsed_seconds": 4.975648000021465,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.02142699994146824,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.13595560006797314,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.0207558999536559,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 0.746302800020203,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 0.8478604999836534,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 1.515405699959956,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 0.8014660000335425,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.003275799914263189,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.02593990007881075,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.13329210004303604,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.022426400100812316,
+                "status": "passed"
+              }
+            ]
+          }
+        },
+        {
+          "relation_rows": 1000,
+          "phase": "warm_new_content",
+          "index": 3,
+          "status": "passed",
+          "source_rows": 1001,
+          "nodes": 1001,
+          "input_bytes": 7090,
+          "source_sha256": "c2c03d2dc2796e72d99b164750f8ecff06ea1b55aee6cee1bee06621798c83d2",
+          "is_synthetic": true,
+          "http_202_seconds": 0.027687699999660254,
+          "http_status": 202,
+          "job_id": "6768a2c2-702f-4dd4-b2a3-d5787df74d5d",
+          "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+          "counts": {
+            "classes": 22,
+            "instances": 1001,
+            "relations": 1000,
+            "source_classes": 2,
+            "resolved_relations": 1000
+          },
+          "generated_triples": 45222,
+          "generated_rdf_bytes": 12041995,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.02402989997062832,
+          "claim_job_seconds": 0.024450000026263297,
+          "build_batch_seconds": 0.023833000101149082,
+          "store_batch_seconds": 0.8053076000651345,
+          "generate_rdf_seconds": 0.8730773000279441,
+          "load_and_verify_seconds": 1.9357145999092609,
+          "build_navigation_seconds": 0.6741544000105932,
+          "verify_files_seconds": 0.003381200018338859,
+          "register_release_seconds": 0.02543289994355291,
+          "publish_release_seconds": 0.13506809994578362,
+          "finish_job_seconds": 0.022554599912837148,
+          "queue_seconds": 0.9574234000174329,
+          "import_processing_seconds": 3.8354255999438465,
+          "publication_seconds": 0.9394924000371248,
+          "atomic_activation_seconds": 0.13506809994578362,
+          "upload_to_complete_seconds": 5.832723599974997,
+          "elapsed_seconds": 5.832723599974997,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.02402989997062832,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.024450000026263297,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.023833000101149082,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 0.8053076000651345,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 0.8730773000279441,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 1.9357145999092609,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 0.6741544000105932,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.003381200018338859,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.02543289994355291,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.13506809994578362,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.022554599912837148,
+                "status": "passed"
+              }
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "first_pass": {
+          "complete": {
+            "attempts": 1,
+            "successes": 1,
+            "failures": 0,
+            "N": 1,
+            "small_sample": true,
+            "p50_seconds": 6.127352700103074,
+            "p95_seconds": 6.127352700103074,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "metrics": {
+            "atomic_activation_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.0274898000061512,
+              "p95_seconds": 0.0274898000061512,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_batch_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.022075099986977875,
+              "p95_seconds": 0.022075099986977875,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_navigation_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.7751233000308275,
+              "p95_seconds": 0.7751233000308275,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "claim_job_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.1389624000294134,
+              "p95_seconds": 0.1389624000294134,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "elapsed_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 6.127352700103074,
+              "p95_seconds": 6.127352700103074,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "finish_job_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.13277820008806884,
+              "p95_seconds": 0.13277820008806884,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "generate_rdf_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.8820096000563353,
+              "p95_seconds": 0.8820096000563353,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "http_202_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.025831500068306923,
+              "p95_seconds": 0.025831500068306923,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "import_processing_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 4.1467686999822035,
+              "p95_seconds": 4.1467686999822035,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "load_and_verify_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 2.0939604999730363,
+              "p95_seconds": 2.0939604999730363,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publication_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.9479897000128403,
+              "p95_seconds": 0.9479897000128403,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publish_release_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.0274898000061512,
+              "p95_seconds": 0.0274898000061512,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "queue_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.8249947000294924,
+              "p95_seconds": 0.8249947000294924,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "register_release_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.02754150005057454,
+              "p95_seconds": 0.02754150005057454,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "store_batch_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.7248071000212803,
+              "p95_seconds": 0.7248071000212803,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "submit_job_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.022207199945114553,
+              "p95_seconds": 0.022207199945114553,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "upload_to_complete_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 6.127352700103074,
+              "p95_seconds": 6.127352700103074,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "verify_files_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.0033676999155431986,
+              "p95_seconds": 0.0033676999155431986,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            }
+          }
+        },
+        "warm_new_content": {
+          "complete": {
+            "attempts": 3,
+            "successes": 3,
+            "failures": 0,
+            "N": 3,
+            "small_sample": true,
+            "p50_seconds": 5.700107399956323,
+            "p95_seconds": 5.832723599974997,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "metrics": {
+            "atomic_activation_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.13329210004303604,
+              "p95_seconds": 0.13506809994578362,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_batch_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.021163000026717782,
+              "p95_seconds": 0.023833000101149082,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_navigation_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.6741544000105932,
+              "p95_seconds": 0.8014660000335425,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "claim_job_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.024450000026263297,
+              "p95_seconds": 0.13595560006797314,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "elapsed_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 5.700107399956323,
+              "p95_seconds": 5.832723599974997,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "finish_job_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.022554599912837148,
+              "p95_seconds": 0.022668199962936342,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "generate_rdf_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.8730773000279441,
+              "p95_seconds": 1.0498642000602558,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "http_202_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.026031199959106743,
+              "p95_seconds": 0.027687699999660254,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "import_processing_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 3.68114510003943,
+              "p95_seconds": 3.8354255999438465,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "load_and_verify_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 1.5375110000604764,
+              "p95_seconds": 1.9357145999092609,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publication_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.9397257999517024,
+              "p95_seconds": 1.1873335000127554,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publish_release_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.13329210004303604,
+              "p95_seconds": 0.13506809994578362,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "queue_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.8783386000432074,
+              "p95_seconds": 0.9574234000174329,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "register_release_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.02593990007881075,
+              "p95_seconds": 0.1372597999870777,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "store_batch_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.7807875000871718,
+              "p95_seconds": 0.8053076000651345,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "submit_job_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.022045599995180964,
+              "p95_seconds": 0.02402989997062832,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "upload_to_complete_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 5.700107399956323,
+              "p95_seconds": 5.832723599974997,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "verify_files_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.003275799914263189,
+              "p95_seconds": 0.003381200018338859,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            }
+          }
+        }
+      },
+      "reads": {
+        "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+        "class_iri": "urn:lzo:local-server:v1:4b5ae9256a23ffaa403d706734c60474ba9ee49e2a47b7626788cf1fe70b1473:class:ponds",
+        "expected_export": {
+          "triples": 14000,
+          "subjects": 1000,
+          "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427"
+        },
+        "samples": [
+          {
+            "action": "instances",
+            "index": 0,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.2116684999782592,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 1,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.33543710003141314,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 2,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.23067590000573546,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 3,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.31353719998151064,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 4,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.30604289995972067,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 5,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.2308152000186965,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 6,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.21283450000919402,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 7,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.22416440001688898,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 8,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.20890620001591742,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 9,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.20764100004453212,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 10,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.30817069998010993,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 11,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.3323027000296861,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 12,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.308657499961555,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 13,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.3113797000842169,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 14,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.20190590003039688,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 15,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.2011013999581337,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 16,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.1994641999481246,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 17,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.20189039991237223,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 18,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.20356470008846372,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 19,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.2101128000067547,
+            "bytes": 178160,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 0,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.5030257999897003,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 1,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.5838447000132874,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 2,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.5528708000201732,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 3,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.5553675000555813,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 4,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.5184784999582916,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 5,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.5453231999417767,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 6,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.5323877999326214,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 7,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.5019056000746787,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 8,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.5304992999881506,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 9,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.5085880999686196,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 10,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.5049774000653997,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 11,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.589953500078991,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 12,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.6485203999327496,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 13,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.5580851999111474,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 14,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.6059932999778539,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 15,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.5400055000791326,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 16,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.6146620999788865,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 17,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.6208316999254748,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 18,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.5090166999725625,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 19,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "elapsed_seconds": 0.5181401000590995,
+            "bytes": 3905,
+            "pages": 1
+          },
+          {
+            "action": "export_json",
+            "index": 0,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 3.7415049999253824,
+            "elapsed_seconds": 3.8833045000210404,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 1,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.079802100080997,
+            "elapsed_seconds": 4.224309199955314,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 2,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.189135699882172,
+            "elapsed_seconds": 4.32482939993497,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 3,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 3.940259799710475,
+            "elapsed_seconds": 4.078071999945678,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 4,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.106065900065005,
+            "elapsed_seconds": 4.242077799979597,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 5,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.030973499873653,
+            "elapsed_seconds": 4.166556200012565,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 6,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.007865500287153,
+            "elapsed_seconds": 4.157645500032231,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 7,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.024836199707352,
+            "elapsed_seconds": 4.172731400001794,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 8,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 3.550991599680856,
+            "elapsed_seconds": 3.7018981999717653,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 9,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.198217199882492,
+            "elapsed_seconds": 4.3437237000325695,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 10,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 3.841575900092721,
+            "elapsed_seconds": 3.9917053999379277,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 11,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.120797400013544,
+            "elapsed_seconds": 4.260585100040771,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 12,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.179098899941891,
+            "elapsed_seconds": 4.331302499980666,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 13,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.047059599775821,
+            "elapsed_seconds": 4.19069610000588,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 14,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 3.800959099782631,
+            "elapsed_seconds": 3.9398280000314116,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 15,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.020099800312892,
+            "elapsed_seconds": 4.172540899948217,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 16,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.0049949997337535,
+            "elapsed_seconds": 4.148367299931124,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 17,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.017796899774112,
+            "elapsed_seconds": 4.162974499980919,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 18,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.258742200094275,
+            "elapsed_seconds": 4.430702400044538,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 19,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 4903584,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 3.847668600268662,
+            "elapsed_seconds": 3.9961260000709444,
+            "format": "json"
+          },
+          {
+            "action": "export_csv",
+            "index": 0,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 3969345,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.014588400023058,
+            "elapsed_seconds": 4.190796299953945,
+            "format": "csv"
+          },
+          {
+            "action": "export_rdf",
+            "index": 0,
+            "status": "passed",
+            "release_id": "55e4f351-2d5e-459c-b8a8-16e652ce04f3",
+            "pages": 14,
+            "bytes": 3942673,
+            "triples": 14000,
+            "subjects": 1000,
+            "termset_sha256": "ed4310eb6493b7b29952edb9e315b266746bf30311e3151751c757296914b427",
+            "http_seconds": 4.167377999983728,
+            "elapsed_seconds": 4.6540590999647975,
+            "format": "rdf"
+          }
+        ],
+        "summary": {
+          "instances": {
+            "attempts": 20,
+            "successes": 20,
+            "failures": 0,
+            "N": 20,
+            "small_sample": false,
+            "p50_seconds": 0.2184994500130415,
+            "p95_seconds": 0.3323027000296861,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "resource": {
+            "attempts": 20,
+            "successes": 20,
+            "failures": 0,
+            "N": 20,
+            "small_sample": false,
+            "p50_seconds": 0.5426643500104547,
+            "p95_seconds": 0.6208316999254748,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "export_json": {
+            "attempts": 20,
+            "successes": 20,
+            "failures": 0,
+            "N": 20,
+            "small_sample": false,
+            "p50_seconds": 4.169548549980391,
+            "p95_seconds": 4.3437237000325695,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "export_csv": {
+            "attempts": 1,
+            "successes": 1,
+            "failures": 0,
+            "N": 1,
+            "small_sample": true,
+            "p50_seconds": 4.190796299953945,
+            "p95_seconds": 4.190796299953945,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "export_rdf": {
+            "attempts": 1,
+            "successes": 1,
+            "failures": 0,
+            "N": 1,
+            "small_sample": true,
+            "p50_seconds": 4.6540590999647975,
+            "p95_seconds": 4.6540590999647975,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          }
+        }
+      }
+    },
+    {
+      "relation_rows": 5000,
+      "imports": [
+        {
+          "relation_rows": 5000,
+          "phase": "first_pass",
+          "index": 0,
+          "status": "passed",
+          "source_rows": 5001,
+          "nodes": 5001,
+          "input_bytes": 33222,
+          "source_sha256": "ec72f0fefa7f63ab02a78f48da94d7bff1fdce223452f42389fcffc7ae0e84e6",
+          "is_synthetic": true,
+          "http_202_seconds": 0.02623499999754131,
+          "http_status": 202,
+          "job_id": "3dd9e414-7b55-42e5-b43b-ada10b2a21f1",
+          "release_id": "71948b75-0ed8-4aaa-8898-12c20f0355db",
+          "counts": {
+            "classes": 22,
+            "instances": 5001,
+            "relations": 5000,
+            "source_classes": 2,
+            "resolved_relations": 5000
+          },
+          "generated_triples": 225222,
+          "generated_rdf_bytes": 60205995,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.022785100038163364,
+          "claim_job_seconds": 0.021888200077228248,
+          "build_batch_seconds": 0.10915479995310307,
+          "store_batch_seconds": 1.0737947999732569,
+          "generate_rdf_seconds": 3.8360923000145704,
+          "load_and_verify_seconds": 7.196363699971698,
+          "build_navigation_seconds": 2.9164559999480844,
+          "verify_files_seconds": 0.006557899992913008,
+          "register_release_seconds": 0.1329779999796301,
+          "publish_release_seconds": 0.024219100014306605,
+          "finish_job_seconds": 0.022152199991978705,
+          "queue_seconds": 0.7129923000466079,
+          "import_processing_seconds": 12.610069899936207,
+          "publication_seconds": 3.5450690999859944,
+          "atomic_activation_seconds": 0.024219100014306605,
+          "upload_to_complete_seconds": 17.068172300001606,
+          "elapsed_seconds": 17.068172300001606,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.022785100038163364,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.021888200077228248,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.10915479995310307,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 1.0737947999732569,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 3.8360923000145704,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 7.196363699971698,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 2.9164559999480844,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.006557899992913008,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.1329779999796301,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.024219100014306605,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.022152199991978705,
+                "status": "passed"
+              }
+            ]
+          }
+        },
+        {
+          "relation_rows": 5000,
+          "phase": "warm_new_content",
+          "index": 1,
+          "status": "passed",
+          "source_rows": 5001,
+          "nodes": 5001,
+          "input_bytes": 33208,
+          "source_sha256": "e32da97f3b3b1e1d09d9fd1616b8eed60fe45d6f219a00c710589aa3be89ccf4",
+          "is_synthetic": true,
+          "http_202_seconds": 0.026756700011901557,
+          "http_status": 202,
+          "job_id": "c1d7a1b4-329a-4e1d-8ed5-d4603d0544d8",
+          "release_id": "538716ed-a65e-4bdd-b998-f4ad6bb8359d",
+          "counts": {
+            "classes": 22,
+            "instances": 5001,
+            "relations": 5000,
+            "source_classes": 2,
+            "resolved_relations": 5000
+          },
+          "generated_triples": 225222,
+          "generated_rdf_bytes": 60205995,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.0232702000066638,
+          "claim_job_seconds": 0.02249680005479604,
+          "build_batch_seconds": 0.10471529990900308,
+          "store_batch_seconds": 0.9718741999240592,
+          "generate_rdf_seconds": 3.76866699999664,
+          "load_and_verify_seconds": 7.106958199990913,
+          "build_navigation_seconds": 2.9827148999320343,
+          "verify_files_seconds": 0.005381299997679889,
+          "register_release_seconds": 0.030960800009779632,
+          "publish_release_seconds": 0.13249300001189113,
+          "finish_job_seconds": 0.022135999985039234,
+          "queue_seconds": 0.9708490000339225,
+          "import_processing_seconds": 12.27117459999863,
+          "publication_seconds": 3.306743299937807,
+          "atomic_activation_seconds": 0.13249300001189113,
+          "upload_to_complete_seconds": 16.640320800011978,
+          "elapsed_seconds": 16.640320800011978,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.0232702000066638,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.02249680005479604,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.10471529990900308,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 0.9718741999240592,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 3.76866699999664,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 7.106958199990913,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 2.9827148999320343,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.005381299997679889,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.030960800009779632,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.13249300001189113,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.022135999985039234,
+                "status": "passed"
+              }
+            ]
+          }
+        },
+        {
+          "relation_rows": 5000,
+          "phase": "warm_new_content",
+          "index": 2,
+          "status": "passed",
+          "source_rows": 5001,
+          "nodes": 5001,
+          "input_bytes": 33210,
+          "source_sha256": "4b6720b27471a2b15333f0697c14d2a857ca098e74fa547554d97d70d84b03e8",
+          "is_synthetic": true,
+          "http_202_seconds": 0.12891299999319017,
+          "http_status": 202,
+          "job_id": "c6bb4fad-e37a-44d0-9dc2-c09a4000a6a6",
+          "release_id": "1801fb67-6830-4318-a21d-fe4ad30e4d11",
+          "counts": {
+            "classes": 22,
+            "instances": 5001,
+            "relations": 5000,
+            "source_classes": 2,
+            "resolved_relations": 5000
+          },
+          "generated_triples": 225222,
+          "generated_rdf_bytes": 60205995,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.12530069996137172,
+          "claim_job_seconds": 0.03249899996444583,
+          "build_batch_seconds": 0.10151700000278652,
+          "store_batch_seconds": 1.0758563000708818,
+          "generate_rdf_seconds": 3.8543301000026986,
+          "load_and_verify_seconds": 7.53759349999018,
+          "build_navigation_seconds": 3.1020451999502257,
+          "verify_files_seconds": 0.005320299998857081,
+          "register_release_seconds": 0.13180869992356747,
+          "publish_release_seconds": 0.025491199921816587,
+          "finish_job_seconds": 0.023854499915614724,
+          "queue_seconds": 0.8749785999534652,
+          "import_processing_seconds": 13.005904100020416,
+          "publication_seconds": 3.6277266999240965,
+          "atomic_activation_seconds": 0.025491199921816587,
+          "upload_to_complete_seconds": 17.705086199915968,
+          "elapsed_seconds": 17.705086199915968,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.12530069996137172,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.03249899996444583,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.10151700000278652,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 1.0758563000708818,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 3.8543301000026986,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 7.53759349999018,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 3.1020451999502257,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.005320299998857081,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.13180869992356747,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.025491199921816587,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.023854499915614724,
+                "status": "passed"
+              }
+            ]
+          }
+        },
+        {
+          "relation_rows": 5000,
+          "phase": "warm_new_content",
+          "index": 3,
+          "status": "passed",
+          "source_rows": 5001,
+          "nodes": 5001,
+          "input_bytes": 33211,
+          "source_sha256": "c3f7f6526661e6edca88a9532de4ebddc1381e1c9001cd8e6c597594a6cab321",
+          "is_synthetic": true,
+          "http_202_seconds": 0.02584059990476817,
+          "http_status": 202,
+          "job_id": "87f4ed35-7814-438a-abc7-381e51ab2b15",
+          "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+          "counts": {
+            "classes": 22,
+            "instances": 5001,
+            "relations": 5000,
+            "source_classes": 2,
+            "resolved_relations": 5000
+          },
+          "generated_triples": 225222,
+          "generated_rdf_bytes": 60205995,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.021822499926202,
+          "claim_job_seconds": 0.12446139997337013,
+          "build_batch_seconds": 0.10521400009747595,
+          "store_batch_seconds": 1.1119104999816045,
+          "generate_rdf_seconds": 3.8231699999887496,
+          "load_and_verify_seconds": 7.69048190000467,
+          "build_navigation_seconds": 2.9164414000697434,
+          "verify_files_seconds": 0.004932899959385395,
+          "register_release_seconds": 0.024774700053967535,
+          "publish_release_seconds": 0.025530499988235533,
+          "finish_job_seconds": 0.027199999894946814,
+          "queue_seconds": 1.0715141000691801,
+          "import_processing_seconds": 13.372646300005727,
+          "publication_seconds": 3.118566600023769,
+          "atomic_activation_seconds": 0.025530499988235533,
+          "upload_to_complete_seconds": 17.660564299905673,
+          "elapsed_seconds": 17.660564299905673,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.021822499926202,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.12446139997337013,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.10521400009747595,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 1.1119104999816045,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 3.8231699999887496,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 7.69048190000467,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 2.9164414000697434,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.004932899959385395,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.024774700053967535,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.025530499988235533,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.027199999894946814,
+                "status": "passed"
+              }
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "first_pass": {
+          "complete": {
+            "attempts": 1,
+            "successes": 1,
+            "failures": 0,
+            "N": 1,
+            "small_sample": true,
+            "p50_seconds": 17.068172300001606,
+            "p95_seconds": 17.068172300001606,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "metrics": {
+            "atomic_activation_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.024219100014306605,
+              "p95_seconds": 0.024219100014306605,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_batch_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.10915479995310307,
+              "p95_seconds": 0.10915479995310307,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_navigation_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 2.9164559999480844,
+              "p95_seconds": 2.9164559999480844,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "claim_job_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.021888200077228248,
+              "p95_seconds": 0.021888200077228248,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "elapsed_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 17.068172300001606,
+              "p95_seconds": 17.068172300001606,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "finish_job_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.022152199991978705,
+              "p95_seconds": 0.022152199991978705,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "generate_rdf_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 3.8360923000145704,
+              "p95_seconds": 3.8360923000145704,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "http_202_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.02623499999754131,
+              "p95_seconds": 0.02623499999754131,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "import_processing_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 12.610069899936207,
+              "p95_seconds": 12.610069899936207,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "load_and_verify_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 7.196363699971698,
+              "p95_seconds": 7.196363699971698,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publication_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 3.5450690999859944,
+              "p95_seconds": 3.5450690999859944,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publish_release_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.024219100014306605,
+              "p95_seconds": 0.024219100014306605,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "queue_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.7129923000466079,
+              "p95_seconds": 0.7129923000466079,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "register_release_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.1329779999796301,
+              "p95_seconds": 0.1329779999796301,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "store_batch_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 1.0737947999732569,
+              "p95_seconds": 1.0737947999732569,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "submit_job_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.022785100038163364,
+              "p95_seconds": 0.022785100038163364,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "upload_to_complete_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 17.068172300001606,
+              "p95_seconds": 17.068172300001606,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "verify_files_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.006557899992913008,
+              "p95_seconds": 0.006557899992913008,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            }
+          }
+        },
+        "warm_new_content": {
+          "complete": {
+            "attempts": 3,
+            "successes": 3,
+            "failures": 0,
+            "N": 3,
+            "small_sample": true,
+            "p50_seconds": 17.660564299905673,
+            "p95_seconds": 17.705086199915968,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "metrics": {
+            "atomic_activation_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.025530499988235533,
+              "p95_seconds": 0.13249300001189113,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_batch_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.10471529990900308,
+              "p95_seconds": 0.10521400009747595,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_navigation_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 2.9827148999320343,
+              "p95_seconds": 3.1020451999502257,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "claim_job_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.03249899996444583,
+              "p95_seconds": 0.12446139997337013,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "elapsed_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 17.660564299905673,
+              "p95_seconds": 17.705086199915968,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "finish_job_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.023854499915614724,
+              "p95_seconds": 0.027199999894946814,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "generate_rdf_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 3.8231699999887496,
+              "p95_seconds": 3.8543301000026986,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "http_202_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.026756700011901557,
+              "p95_seconds": 0.12891299999319017,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "import_processing_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 13.005904100020416,
+              "p95_seconds": 13.372646300005727,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "load_and_verify_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 7.53759349999018,
+              "p95_seconds": 7.69048190000467,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publication_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 3.306743299937807,
+              "p95_seconds": 3.6277266999240965,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publish_release_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.025530499988235533,
+              "p95_seconds": 0.13249300001189113,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "queue_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.9708490000339225,
+              "p95_seconds": 1.0715141000691801,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "register_release_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.030960800009779632,
+              "p95_seconds": 0.13180869992356747,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "store_batch_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 1.0758563000708818,
+              "p95_seconds": 1.1119104999816045,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "submit_job_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.0232702000066638,
+              "p95_seconds": 0.12530069996137172,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "upload_to_complete_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 17.660564299905673,
+              "p95_seconds": 17.705086199915968,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "verify_files_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.005320299998857081,
+              "p95_seconds": 0.005381299997679889,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            }
+          }
+        }
+      },
+      "reads": {
+        "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+        "class_iri": "urn:lzo:local-server:v1:3b6302e59d2365dc0eca4a287784367cced768f718763d8a4850d8fbf885745a:class:ponds",
+        "expected_export": {
+          "triples": 70000,
+          "subjects": 5000,
+          "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665"
+        },
+        "samples": [
+          {
+            "action": "instances",
+            "index": 0,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.26317459996789694,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 1,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.24777339992579073,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 2,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.3607699000276625,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 3,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.2724296000087634,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 4,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.2503228000132367,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 5,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.25199060002341866,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 6,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.24708519992418587,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 7,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.24727139994502068,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 8,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.2775014000944793,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 9,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.2587698999559507,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 10,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.25239590008277446,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 11,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.24875429994426668,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 12,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.24653990007936954,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 13,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.2546092999400571,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 14,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.27586609998252243,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 15,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.24462769995443523,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 16,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.24345030006952584,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 17,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.2701901000691578,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 18,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.24268080003093928,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 19,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.24658269993960857,
+            "bytes": 179235,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 0,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.6061502000084147,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 1,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.6402821000665426,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 2,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.5213833999587223,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 3,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.5284644999774173,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 4,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.6775595999788493,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 5,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.5221428999211639,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 6,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.5264404999325052,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 7,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.5251911000814289,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 8,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.5231944000115618,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 9,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.6444246999453753,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 10,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.517859400017187,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 11,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.552058000001125,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 12,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.5344454000005499,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 13,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.6091016000136733,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 14,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.5236300999531522,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 15,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.6223220999818295,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 16,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.6144473000895232,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 17,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.5134934999514371,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 18,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.5373450999613851,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 19,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "elapsed_seconds": 0.6133409000467509,
+            "bytes": 3908,
+            "pages": 1
+          },
+          {
+            "action": "export_json",
+            "index": 0,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 35.56508329999633,
+            "elapsed_seconds": 36.302838400006294,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 1,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 36.46648760011885,
+            "elapsed_seconds": 37.22099739999976,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 2,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 35.25604369910434,
+            "elapsed_seconds": 35.98975569999311,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 3,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 35.915277400636114,
+            "elapsed_seconds": 36.652456199983135,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 4,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 36.2596222005086,
+            "elapsed_seconds": 36.99227330007125,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 5,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 34.71904140058905,
+            "elapsed_seconds": 35.431017700000666,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 6,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 35.51724949956406,
+            "elapsed_seconds": 36.258343799971044,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 7,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 35.92414339934476,
+            "elapsed_seconds": 36.647273499984294,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 8,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 35.742476999759674,
+            "elapsed_seconds": 36.51694989996031,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 9,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 37.70071970007848,
+            "elapsed_seconds": 38.437353900051676,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 10,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 36.00176569935866,
+            "elapsed_seconds": 36.76555599994026,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 11,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 35.906214300659485,
+            "elapsed_seconds": 36.642910399939865,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 12,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 35.154425800428726,
+            "elapsed_seconds": 35.879989900044166,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 13,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 35.02614839957096,
+            "elapsed_seconds": 35.76017550006509,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 14,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 35.306527200038545,
+            "elapsed_seconds": 36.026710300007835,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 15,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 34.51289660006296,
+            "elapsed_seconds": 35.25444160006009,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 16,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 35.88161989930086,
+            "elapsed_seconds": 36.59030949999578,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 17,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 35.7612405999098,
+            "elapsed_seconds": 36.51187009993009,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 18,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 34.71851800067816,
+            "elapsed_seconds": 35.42173369997181,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 19,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 24532088,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 34.65339339990169,
+            "elapsed_seconds": 35.40007859992329,
+            "format": "json"
+          },
+          {
+            "action": "export_csv",
+            "index": 0,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 19860033,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 35.48927759961225,
+            "elapsed_seconds": 36.30578460008837,
+            "format": "csv"
+          },
+          {
+            "action": "export_rdf",
+            "index": 0,
+            "status": "passed",
+            "release_id": "204dacab-81c7-476f-80c8-98c2ec4e96f2",
+            "pages": 70,
+            "bytes": 19726673,
+            "triples": 70000,
+            "subjects": 5000,
+            "termset_sha256": "b52e58a36220728357c8446607c156b429b9d4552b9d45d2138f567013b0e665",
+            "http_seconds": 35.10988960030954,
+            "elapsed_seconds": 37.62513649999164,
+            "format": "rdf"
+          }
+        ],
+        "summary": {
+          "instances": {
+            "attempts": 20,
+            "successes": 20,
+            "failures": 0,
+            "N": 20,
+            "small_sample": false,
+            "p50_seconds": 0.2511567000183277,
+            "p95_seconds": 0.2775014000944793,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "resource": {
+            "attempts": 20,
+            "successes": 20,
+            "failures": 0,
+            "N": 20,
+            "small_sample": false,
+            "p50_seconds": 0.5358952499809675,
+            "p95_seconds": 0.6444246999453753,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "export_json": {
+            "attempts": 20,
+            "successes": 20,
+            "failures": 0,
+            "N": 20,
+            "small_sample": false,
+            "p50_seconds": 36.40735424996819,
+            "p95_seconds": 37.22099739999976,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "export_csv": {
+            "attempts": 1,
+            "successes": 1,
+            "failures": 0,
+            "N": 1,
+            "small_sample": true,
+            "p50_seconds": 36.30578460008837,
+            "p95_seconds": 36.30578460008837,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "export_rdf": {
+            "attempts": 1,
+            "successes": 1,
+            "failures": 0,
+            "N": 1,
+            "small_sample": true,
+            "p50_seconds": 37.62513649999164,
+            "p95_seconds": 37.62513649999164,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          }
+        }
+      }
+    }
+  ],
+  "cleanup": {
+    "native_services": {
+      "postgres": "stopped",
+      "fuseki": "stopped"
+    },
+    "worker_stopped": true
+  },
+  "unattempted_sizes": [],
+  "finished_utc": "2026-11-24T03:19:30.079502+00:00"
+}

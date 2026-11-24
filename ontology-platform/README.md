@@ -154,6 +154,8 @@ node --test docs/fish/ontology-review/model.test.mjs docs/fish/ontology-review/s
 
 Store 等原生用例需要显式配置的隔离测试库；缺少条件时可能跳过，应查看测试结果，不能把跳过算作实库通过。测试不得指向实际业务数据库。Node 版本沿用项目锁定的 24.22.0。
 
+2026-11-24 已补跑真实 SQL/RDF 回归和视频解码，汇总为 1546 通过、0 失败、4 跳过；跳过项需要 Windows 符号链接创建权限，完整平台 integration 尚需专用 OIDC/S3/多库环境。原生夹具现在要求 `LZO_NATIVE_TEST_MANIFEST` 和显式测试 DSN，拒绝正式端口及不一致目标，不再回退读取业务配置。各范围、跳过原因、修复和四阶段实测见[回归与性能报告](docs/local-server/python-regression-performance-20261124.md)，重测方法见[性能测试指南](docs/local-server/性能测试指南.md)。
+
 真实浏览器检查由 `scripts/check_gis_sphere_browser.mjs` 执行，需要已发布的本地服务、Playwright 模块及可用 Chromium；它会验证交互并生成报告/截图。仓库布局与公开分片验证入口为 `scripts/check_repository_layout.py`，其既有统计针对历史 CSV 快照，不能代替新 GIS 实库验收。
 
 ### 完整平台开发模块
@@ -190,4 +192,4 @@ npm run web:build
 - [历史本体审查入口](docs/fish/ontology-review/README.md)：仓库内五图快照与来源证据。
 - [多存储验收与性能边界](docs/database/acceptance.md)：完整平台原生验证及尚未通过的性能范围。
 
-最新功能验收日期为 2026-11-16，README 更新日期为 2026-11-19。已有测试记录不代表今日重新执行，也不代表已完成正式生产采纳、现场测绘、真实设备接入或完整产品验收。项目成果按[GitHub 同步约定](../GITHUB_SYNC.txt)同步；私有配置、原件、活动库、日志、备份和依赖不进入仓库。
+最新地图功能验收日期为 2026-11-16，Python 补测和 README 更新日期为 2026-11-24。各报告仅证明其明确执行的范围，不代表已完成正式生产采纳、现场测绘、真实设备接入或完整产品验收。项目成果按[GitHub 同步约定](../GITHUB_SYNC.txt)同步；私有配置、原件、活动库、日志、备份和依赖不进入仓库。

@@ -83,6 +83,111 @@ def test_owned_fuseki_config_cannot_open_tdb_outside_its_data_directory(tmp_path
         NativeServices(config).validate()
 
 
+@pytest.fixture
+def synthetic_fuseki_identity(tmp_path, monkeypatch):
+    """Real manifest/config validation; only external process inspection is fake."""
+    from local_server import lifecycle
+    root, data = tmp_path / 'project', tmp_path / 'data'
+    rdf, java_home, fuseki_home = data / 'fuseki', root / 'java', root / 'tools'
+    rdf.mkdir(parents=True)
+    (java_home / 'bin').mkdir(parents=True)
+    fuseki_home.mkdir()
+    (java_home / 'bin' / ('java.exe' if os.name == 'nt' else 'java')).touch()
+    (fuseki_home / 'fuseki-server.jar').touch()
+    runner = root / 'infra/local-server/LocalFusekiRunner.java'
+    runner.parent.mkdir(parents=True)
+    runner.touch()
+    (rdf / 'config.ttl').write_text('@prefix tdb2: <http://jena.apache.org/2016/tdb#> . <#d> a tdb2:DatasetTDB2; tdb2:location "databases/test" .', encoding='utf-8')
+    atomic_json(data / 'deployment.json', {'deployment_id': 'test-pid-reuse', 'root': str(root),
+        'data_dir': str(data), 'fuseki_port': 24198, 'http_port': 8898})
+    config = SimpleNamespace(root=root, data_dir=data, port=8898, fuseki_url='http://127.0.0.1:24198/test',
+        runtime={'managed_fuseki': True, 'fuseki_port': 24198, 'fuseki_state_dir': str(rdf),
+                 'java_home': str(java_home), 'fuseki_home': str(fuseki_home)})
+    native = NativeServices(config)
+    native.validate()
+    saved = {'pid': 12345, 'created': 100.0, 'exe': str(native.java), 'cwd': str(rdf),
+             'command': [str(native.java), '--class-path', str(native.jar), str(runner),
+                         str(native.rdf_config), '24198'], 'deployment_id': 'test-pid-reuse'}
+    atomic_json(rdf / 'process.json', saved)
+    actual = {key: value for key, value in saved.items() if key != 'deployment_id'}
+    monkeypatch.setattr(lifecycle.psutil, 'pid_exists', lambda pid: pid == saved['pid'])
+    monkeypatch.setattr(lifecycle, 'process_identity', lambda pid: dict(actual))
+    return native, saved, actual
+
+
+def test_recycled_fuseki_pid_is_stale_without_adopting_or_stopping_the_new_process(synthetic_fuseki_identity, monkeypatch):
+    from local_server import lifecycle
+    native, saved, actual = synthetic_fuseki_identity
+    actual.update(created=200.0, exe='unrelated.exe', cwd='unrelated', command=['unrelated'])
+    monkeypatch.setattr(lifecycle, 'owns_process', lambda identity: pytest.fail('a recycled PID must not be stopped'))
+    assert native._rdf_identity() is None
+    native.stop()
+    assert not (native.rdf_dir / 'graceful-stop.request').exists()
+    assert not (native.rdf_dir / 'process.json').exists()
+
+
+@pytest.mark.parametrize('occupied', [False, True])
+def test_recycled_fuseki_pid_still_requires_a_free_port_before_new_launch(synthetic_fuseki_identity, monkeypatch, occupied):
+    from local_server import lifecycle
+    native, _, actual = synthetic_fuseki_identity
+    actual.update(created=200.0, exe='unrelated.exe', cwd='unrelated', command=['unrelated'])
+    monkeypatch.setattr(lifecycle, '_port_open', lambda port: occupied)
+
+    class NewLaunchRequested(Exception):
+        pass
+
+    def launch(*args, **kwargs):
+        if occupied:
+            pytest.fail('an occupied port must be refused before launching a process')
+        raise NewLaunchRequested()
+
+    monkeypatch.setattr(lifecycle.subprocess, 'Popen', launch)
+    if occupied:
+        with pytest.raises(LifecycleError) as error:
+            native.start()
+        assert error.value.code == 'FUSEKI_PORT_IN_USE'
+    else:
+        with pytest.raises(NewLaunchRequested):
+            native.start()
+
+
+@pytest.mark.parametrize('field,value', [('exe', 'unrelated.exe'), ('cwd', 'unrelated'),
+                                        ('command', ['unrelated']), ('deployment_id', 'other-deployment')])
+def test_same_lifetime_fuseki_identity_mismatch_remains_rejected(synthetic_fuseki_identity, monkeypatch, field, value):
+    from local_server import lifecycle
+    native, saved, actual = synthetic_fuseki_identity
+    if field == 'deployment_id':
+        atomic_json(native.rdf_dir / 'process.json', {**saved, field: value})
+    else:
+        actual[field] = value
+    monkeypatch.setattr(lifecycle, 'owns_process', lambda identity: pytest.fail('foreign process must not be stopped'))
+    with pytest.raises(LifecycleError) as error:
+        native.stop()
+    assert error.value.code == 'FUSEKI_FOREIGN_PROCESS'
+    assert (native.rdf_dir / 'process.json').is_file()
+    assert not (native.rdf_dir / 'graceful-stop.request').exists()
+
+
+@pytest.mark.parametrize('replace_record', [False, True])
+def test_graceful_fuseki_stop_removes_only_the_unchanged_process_record(synthetic_fuseki_identity, monkeypatch, replace_record):
+    from local_server import lifecycle
+    native, saved, _ = synthetic_fuseki_identity
+    replacement = {**saved, 'pid': 54321, 'created': 200.0}
+
+    def exited(identity):
+        if replace_record:
+            atomic_json(native.rdf_dir / 'process.json', replacement)
+        return False
+
+    monkeypatch.setattr(lifecycle, 'owns_process', exited)
+    native.stop()
+    assert (native.rdf_dir / 'graceful-stop.request').read_text(encoding='utf-8') == 'test-pid-reuse'
+    if replace_record:
+        assert load_state(native.rdf_dir / 'process.json') == replacement
+    else:
+        assert not (native.rdf_dir / 'process.json').exists()
+
+
 @pytest.mark.skipif(not os.environ.get("LOCAL_SERVER_NATIVE_TEST_JAVA_HOME"), reason="requires explicitly supplied local Java21/Fuseki6.2.0 fixture tools")
 def test_native_fuseki_graceful_stop_and_reopen_persists_triples(tmp_path):
     with socket.socket() as port_probe:

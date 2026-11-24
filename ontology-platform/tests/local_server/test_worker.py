@@ -155,14 +155,68 @@ def test_relative_job_paths_and_release_artifacts_survive_data_directory_move(tm
     assert contained_path(moved_again, release["source_path"]).read_bytes() == (moved_again / "ponds.csv").read_bytes()
 
 
+@pytest.fixture
+def native_import_fixture(monkeypatch):
+    """Own a unique SQL database and only the RDF graphs this test creates."""
+    import httpx
+    from local_server import worker
+    from native_targets import NativeTargetError, NativeTargets
+
+    targets = NativeTargets.from_environment()
+    targets.verify_cluster('source')
+    targets.verify_fuseki()
+    build_dir = ROOT / '.runtime' / 'native-import-tests' / targets.fixture_id / uuid4().hex
+    build_dir.mkdir(parents=True, exist_ok=False)
+    graphs = set()
+    actual_load = worker.load_and_verify
+
+    def owned_load(config, generated, **kwargs):
+        targets.verify_fuseki()
+        graph = generated['graph_iri']
+        if graph not in graphs:
+            with httpx.Client(trust_env=False, timeout=30) as client:
+                response = client.post(targets.fuseki_url + '/query', data={'query': 'ASK { GRAPH <' + graph + '> { ?s ?p ?o } }'})
+                response.raise_for_status()
+                if response.json()['boolean']:
+                    pytest.fail('native import graph already exists; refusing to reuse it')
+            # Track before upload so a partial failed upload is still owned.
+            graphs.add(graph)
+        return actual_load(config, generated, **kwargs)
+
+    monkeypatch.setattr(worker, 'load_and_verify', owned_load)
+    evidence = {'fixture_id': targets.fixture_id, 'data_nature': 'synthetic_fixture',
+                'database_cleanup_verified': False, 'rdf_cleanup_verified': False}
+    try:
+        with targets.database('worker') as (database, dsns):
+            yield targets, database, dsns, build_dir
+        evidence['database_cleanup_verified'] = True
+    finally:
+        try:
+            if graphs:
+                targets.verify_fuseki()
+                with httpx.Client(trust_env=False, timeout=30) as client:
+                    for graph in sorted(graphs):
+                        response = client.delete(targets.fuseki_url + '/data', params={'graph': graph})
+                        if response.status_code != 404:
+                            response.raise_for_status()
+                        absence = client.post(targets.fuseki_url + '/query', data={
+                            'query': 'ASK { GRAPH <' + graph + '> { ?s ?p ?o } }'})
+                        absence.raise_for_status()
+                        if absence.json().get('boolean') is not False:
+                            raise NativeTargetError('native graph cleanup failed readback')
+            evidence.update(rdf_cleanup_verified=True, owned_graphs_removed=len(graphs))
+        finally:
+            # Files survive success/failure for diagnosis; no credentials stored.
+            (build_dir / 'fixture-cleanup.json').write_text(json.dumps(evidence, indent=2), encoding='utf-8')
+
+
 @pytest.mark.skipif(os.environ.get("LZO_IMPORT_FIXTURE") != "1", reason="explicit isolated native import fixture not requested")
-def test_real_new_postgres_fuseki_fixture_success_duplicate_failure_and_retry(monkeypatch):
-    """Native evidence uses only 25459/lzo_import_fixture_db and /import_fixture."""
+def test_real_new_postgres_fuseki_fixture_success_duplicate_failure_and_retry(monkeypatch, native_import_fixture):
+    """Native evidence uses explicit isolated services and a unique test DB."""
     import httpx
     import psycopg
     from psycopg import sql
-    from psycopg.conninfo import conninfo_to_dict, make_conninfo
-    from dotenv import dotenv_values
+    from psycopg.conninfo import conninfo_to_dict
     from local_server.config import Config
     from local_server.importer import build_batch, file_hash, input_mapping_hash, load_mapping
     from local_server.store import Store
@@ -170,42 +224,19 @@ def test_real_new_postgres_fuseki_fixture_success_duplicate_failure_and_retry(mo
     from local_server.rdf import save_json, verify_files
     from fish_rdf_sample import uri_factory
 
-    private = dotenv_values(ROOT / ".runtime/local-server/private.env")
-    admin_dsn = private["LZO_LOCAL_ADMIN_DATABASE_URL"]
-    target = conninfo_to_dict(admin_dsn)
-    assert target["port"] == "25459", "refusing original/non-fixture PostgreSQL"
-
-    def connect(dsn, **kwargs):
-        try:
-            return psycopg.connect(dsn, connect_timeout=5, **kwargs)
-        except psycopg.Error:
-            raise RuntimeError("Isolated native PostgreSQL fixture unavailable") from None
-
-    database = "lzo_import_fixture_db"
-    with connect(make_conninfo(admin_dsn, dbname="postgres"), autocommit=True) as connection:
-        if not connection.execute("SELECT 1 FROM pg_database WHERE datname=%s", (database,)).fetchone():
-            connection.execute(sql.SQL("CREATE DATABASE {}").format(sql.Identifier(database)))
-    endpoint = "http://127.0.0.1:23059/import_fixture"
-    with httpx.Client(trust_env=False, timeout=30) as client:
-        response = client.get("http://127.0.0.1:23059/$/datasets")
-        response.raise_for_status()
-        existing = {entry.get("ds.name", "").lstrip("/") for entry in response.json()["datasets"]}
-        if "import_fixture" not in existing:
-            response = client.post("http://127.0.0.1:23059/$/datasets", data={"dbName": "import_fixture", "dbType": "tdb2"})
-            response.raise_for_status()
-    build_dir = ROOT / ".runtime/local-server-build/import-fixture"
-    build_dir.mkdir(parents=True, exist_ok=True)
-    main = json.loads((ROOT / ".runtime/local-server/config.json").read_text(encoding="utf-8-sig"))
+    targets, database, dsns, build_dir = native_import_fixture
+    endpoint = targets.fuseki_url
+    main = json.loads((ROOT / "config/local-server.example.json").read_text(encoding="utf-8-sig"))
     main.update(root=str(ROOT), data_dir=str(build_dir / "data"), review_dir=str(ROOT / "docs"),
                 fuseki_url=endpoint, fuseki_allowed_targets=[endpoint], backup={}, runtime={},
                 mapping_file=str(build_dir / "mapping.json"))
     main.pop("env_file", None)
     for role in ("admin", "api", "worker"):
         name = "LZO_IMPORT_FIXTURE_" + role.upper() + "_DSN"
-        monkeypatch.setenv(name, make_conninfo(private["LZO_LOCAL_" + role.upper() + "_DATABASE_URL"], dbname=database))
+        monkeypatch.setenv(name, dsns[role])
         main["sql"][role + "_dsn_env"] = name
         main["sql"].pop(role + "_dsn", None)
-    main["sql"]["allowed_targets"] = [{"host": "127.0.0.1", "port": 25459, "database": database}]
+    main["sql"]["allowed_targets"] = [{"host": conninfo_to_dict(dsns['admin'])['host'], "port": targets.source_port, "database": database}]
     main["limits"].update(min_free_disk_bytes=1024 * 1024, lease_seconds=120)
     mapping_document = json.loads((ROOT / "config/local-server-mapping.json").read_text(encoding="utf-8"))
     mapping_document["version"] = "synthetic-native-import-fixture/1"
@@ -311,8 +342,8 @@ def test_real_new_postgres_fuseki_fixture_success_duplicate_failure_and_retry(mo
         assert api.active_release()["release_id"] == second["release_id"]
     assert schema_inventory() == schemas_before_invalid
     assert graph_inventory() == graphs_before_invalid
-    report = {"status": "passed", "data_nature": "synthetic_fixture", "postgres_port": 25459,
-              "database": database, "fuseki_dataset": "import_fixture", "instances": first["counts"]["instances"],
+    report = {"status": "passed", "data_nature": "synthetic_fixture", "postgres_port": targets.source_port,
+              "database": database, "fuseki_dataset": targets.fuseki_dataset, "instances": first["counts"]["instances"],
               "resolved_relations": 1, "unresolved_relations": 1,
               "exact_decimal": "1.234567890123456789", "sql_full_readback": True,
               "exact_timestamptz_utc": "2026-11-12T04:00:00.123456+00:00",

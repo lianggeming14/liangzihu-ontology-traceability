@@ -127,8 +127,14 @@ class NativeServices:
             return None
         try:
             actual = process_identity(saved["pid"])
+            # An exited runner's PID can be reused by an unrelated process.
+            # A different creation time proves this is only a stale record;
+            # do not adopt or signal the new process. start() still checks the
+            # service port before launching a replacement runner.
+            if abs(actual["created"]-float(saved["created"])) >= .01:
+                return None
             command = actual["command"]
-            if (saved.get("deployment_id") != self.deployment["deployment_id"] or abs(actual["created"]-float(saved["created"])) >= .01
+            if (saved.get("deployment_id") != self.deployment["deployment_id"]
                     or not _same_path(actual["exe"], self.java) or not _same_path(actual["cwd"], self.rdf_dir)):
                 raise ValueError()
             # A legacy direct -jar launch may be inspected, but stop will not
@@ -200,6 +206,8 @@ class NativeServices:
             return
         self.validate()
         if self.managed_rdf:
+            state_path = self.rdf_dir / "process.json"
+            saved = load_state(state_path)
             identity = self._rdf_identity()
             if identity:
                 if identity["launch"] != "runner":
@@ -210,6 +218,10 @@ class NativeServices:
                     time.sleep(.2)
                 if owns_process(identity):
                     raise LifecycleError("FUSEKI_STOP_TIMEOUT", "Fuseki 正常关闭超时；保留进程与数据，请检查本机日志")
+            # Preserve a replacement runner's record if another controller
+            # changed it while we waited for this runner to exit.
+            if saved is not None and load_state(state_path) == saved:
+                state_path.unlink(missing_ok=True)
         if self.managed_pg and self._pg_identity():
             result = subprocess.run([str(self.pg_ctl), "-D", str(self.pg_data), "-w", "-t", "60", "-m", "fast", "stop"], stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=75, creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0)
             if result.returncode or self._pg_identity():

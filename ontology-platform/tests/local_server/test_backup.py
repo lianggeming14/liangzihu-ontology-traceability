@@ -294,52 +294,48 @@ def native_fixture():
         pytest.skip('isolated native PostgreSQL fixture is opt-in')
     import psycopg
     from psycopg import sql
-    from psycopg.conninfo import conninfo_to_dict, make_conninfo
-    from dotenv import dotenv_values
-    root = Path(__file__).resolve().parents[2]
-    values = dotenv_values(root / '.runtime/local-server/private.env')
-    admin = values['LZO_LOCAL_ADMIN_DATABASE_URL']
-    fields = conninfo_to_dict(admin)
-    if fields.get('host') != '127.0.0.1' or fields.get('port') != '25459':
-        pytest.fail('native fixture requires the isolated 25459 cluster')
-    names = ('lzo_backup_fixture_source', 'lzo_backup_fixture_target')
-    created = []
-    created_roles = []
+    from contextlib import ExitStack
+    from native_targets import NativeTargets
+    targets = NativeTargets.from_environment()
+    targets.verify_cluster('source')
+    targets.verify_cluster('restore')
+    created_roles = {'source': [], 'restore': []}
     class Fixture:
         def __repr__(self):
             return '<isolated-native-backup-fixture>'
     fixture = Fixture()
-    fixture.source = make_conninfo(admin, dbname=names[0])
-    fixture.target = make_conninfo(admin, dbname=names[1])
-    fixture.pg_bin = json.loads((root / '.runtime/local-server-build/host-inventory.json').read_text())['pg_bin']
+    fixture.pg_bin = targets.pg_bin
     fixture.owner = 'lzo_backup_fixture_owner'
     fixture.reader = 'lzo_backup_fixture_reader'
-    fixture.created_roles = created_roles
+    fixture.created_roles = created_roles['restore']
+    fixture.created_source_roles = created_roles['source']
     try:
-        with psycopg.connect(make_conninfo(admin, dbname='postgres'), autocommit=True) as connection:
-            for role in (fixture.owner, fixture.reader):
-                if connection.execute('SELECT 1 FROM pg_roles WHERE rolname=%s', (role,)).fetchone():
-                    pytest.fail('fixture role already exists; refusing to replace it')
-                connection.execute(sql.SQL('CREATE ROLE {} NOLOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS').format(sql.Identifier(role)))
-                created_roles.append(role)
-            for name in names:
-                if connection.execute('SELECT 1 FROM pg_database WHERE datname=%s', (name,)).fetchone():
-                    pytest.fail('fixture database already exists; refusing to replace it')
-                connection.execute(sql.SQL('CREATE DATABASE {}').format(sql.Identifier(name)))
-                created.append(name)
-        yield fixture
+        for cluster in ('source', 'restore'):
+            with targets.connect_admin(cluster, autocommit=True) as connection:
+                roles = (fixture.owner, fixture.reader) + (('postgres',) if cluster == 'restore' else ())
+                for role in roles:
+                    if connection.execute('SELECT 1 FROM pg_roles WHERE rolname=%s', (role,)).fetchone():
+                        pytest.fail('fixture role already exists; refusing to replace it')
+                    connection.execute(sql.SQL('CREATE ROLE {} NOLOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS').format(sql.Identifier(role)))
+                    created_roles[cluster].append(role)
+        with ExitStack() as databases:
+            fixture.source_name, source = databases.enter_context(targets.database('backup_source'))
+            _, target = databases.enter_context(targets.database('backup_target', cluster='restore'))
+            fixture.source, fixture.target = source['admin'], target['admin']
+            yield fixture
     finally:
-        # Only databases created by this invocation, with fixed fixture names,
-        # are removed; no service/cluster/source database is ever stopped.
-        with psycopg.connect(make_conninfo(admin, dbname='postgres'), autocommit=True) as connection:
-            for name in reversed(created):
-                connection.execute(sql.SQL('DROP DATABASE {}').format(sql.Identifier(name)))
-            for role in reversed(created_roles):
-                connection.execute(sql.SQL('DROP ROLE {}').format(sql.Identifier(role)))
+        # Databases are unique per invocation; only successfully created roles
+        # are removed. Failure output and files remain in pytest's evidence dir.
+        for cluster in ('restore', 'source'):
+            if created_roles[cluster]:
+                with targets.connect_admin(cluster, autocommit=True) as connection:
+                    for role in reversed(created_roles[cluster]):
+                        connection.execute(sql.SQL('DROP ROLE {}').format(sql.Identifier(role)))
 
 
 def test_native_snapshot_archive_and_complete_restore(tmp_path, dataset, native_fixture):
     import psycopg
+    from psycopg import sql
     from local_server.backup import PostgresArchive
     base, state = dataset
     fixture = native_fixture
@@ -361,9 +357,17 @@ def test_native_snapshot_archive_and_complete_restore(tmp_path, dataset, native_
         connection.execute('REVOKE ALL ON FUNCTION public.fixture_function() FROM PUBLIC')
         connection.execute('GRANT EXECUTE ON FUNCTION public.fixture_function() TO lzo_backup_fixture_reader')
         connection.execute('GRANT lzo_backup_fixture_reader TO lzo_backup_fixture_owner')
-        connection.execute('ALTER DATABASE lzo_backup_fixture_source OWNER TO lzo_backup_fixture_owner')
-        connection.execute('REVOKE CONNECT ON DATABASE lzo_backup_fixture_source FROM PUBLIC')
-        connection.execute('GRANT CONNECT ON DATABASE lzo_backup_fixture_source TO lzo_backup_fixture_reader')
+        # Superuser GRANT may be attributed to the cluster's bootstrap role,
+        # whose name is independent of the login used by this test. Read the
+        # original catalog directly, rather than assuming that name is postgres.
+        source_memberships = connection.execute("SELECT pg_get_userbyid(roleid),pg_get_userbyid(member),pg_get_userbyid(grantor),admin_option,inherit_option,set_option FROM pg_auth_members WHERE roleid='lzo_backup_fixture_reader'::regrole AND member='lzo_backup_fixture_owner'::regrole ORDER BY grantor").fetchall()
+        assert len(source_memberships) == 1
+        source_role, source_member, source_grantor, *source_options = source_memberships[0]
+        assert (source_role, source_member, source_options) == (fixture.reader, fixture.owner, [False, True, True])
+        assert source_grantor and source_grantor not in (fixture.reader, fixture.owner)
+        connection.execute(sql.SQL('ALTER DATABASE {} OWNER TO lzo_backup_fixture_owner').format(sql.Identifier(fixture.source_name)))
+        connection.execute(sql.SQL('REVOKE CONNECT ON DATABASE {} FROM PUBLIC').format(sql.Identifier(fixture.source_name)))
+        connection.execute(sql.SQL('GRANT CONNECT ON DATABASE {} TO lzo_backup_fixture_reader').format(sql.Identifier(fixture.source_name)))
     backend = PostgresArchive(fixture.pg_bin)
     with backend.hold_sources({'fixture': fixture.source}):
         assert backend.connections['fixture'].execute('SHOW transaction_isolation').fetchone()[0] == 'repeatable read'
@@ -377,12 +381,16 @@ def test_native_snapshot_archive_and_complete_restore(tmp_path, dataset, native_
     assert function['owner'] == 'lzo_backup_fixture_owner'
     assert function['security_definer'] is True
     assert function['acl'] == ['lzo_backup_fixture_owner=X/lzo_backup_fixture_owner', 'lzo_backup_fixture_reader=X/lzo_backup_fixture_owner']
-    assert saved['role_memberships'] == [{'role': 'lzo_backup_fixture_reader', 'member': 'lzo_backup_fixture_owner', 'grantor': 'postgres', 'admin_option': False, 'inherit_option': True, 'set_option': True}]
-    result = restore_backup(SimpleNamespace(), manifest, target_options={'databases': {'fixture': fixture.target}, 'pg_bin': fixture.pg_bin, 'target_dataset': base + '/target', 'asset_destination': tmp_path / 'assets', 'minimum_free_bytes': 0})
+    assert saved['role_memberships'] == [{'role': fixture.reader, 'member': fixture.owner, 'grantor': source_grantor, 'admin_option': False, 'inherit_option': True, 'set_option': True}]
+    # The restore cluster is independent, so its precreated fixture identities
+    # do not already share the source cluster's membership. Provision that
+    # membership explicitly, then compare the real grantor and all options.
+    result = restore_backup(SimpleNamespace(), manifest, target_options={'databases': {'fixture': fixture.target}, 'pg_bin': fixture.pg_bin, 'target_dataset': base + '/target', 'asset_destination': tmp_path / 'assets', 'minimum_free_bytes': 0, 'provision_roles': True})
     assert result['status'] == 'restored_verified'
     assert result['databases']['fixture']['table_count'] == 2
     assert state['target'] == SOURCE_RDF
     with psycopg.connect(fixture.target) as connection:
+        assert connection.execute("SELECT pg_get_userbyid(roleid),pg_get_userbyid(member),pg_get_userbyid(grantor),admin_option,inherit_option,set_option FROM pg_auth_members WHERE roleid='lzo_backup_fixture_reader'::regrole AND member='lzo_backup_fixture_owner'::regrole ORDER BY grantor").fetchall() == source_memberships
         assert connection.execute('SELECT public.fixture_function()').fetchone()[0] == 7
         assert connection.execute("SELECT pg_get_userbyid(proowner),prosecdef,has_function_privilege('lzo_backup_fixture_reader',oid,'EXECUTE'),has_function_privilege('public',oid,'EXECUTE') FROM pg_proc WHERE proname='fixture_function'").fetchone() == ('lzo_backup_fixture_owner', True, True, False)
         assert connection.execute("SELECT pg_get_userbyid(relowner),has_table_privilege('lzo_backup_fixture_reader',oid,'SELECT') FROM pg_class WHERE relname='parent'").fetchone() == ('lzo_backup_fixture_owner', True)
@@ -405,10 +413,13 @@ def test_native_missing_source_roles_require_explicit_safe_provisioning(native_f
     from local_server.backup import PostgresArchive
     backend = PostgresArchive(native_fixture.pg_bin)
     name = 'lzo_backup_fixture_provisioned'
-    inventory = {'required_roles': [name, native_fixture.owner, 'postgres'], 'roles': [{'name': name, 'login': True, 'superuser': True, 'createdb': True, 'createrole': True, 'inherit': True}], 'role_memberships': [{'role': name, 'member': native_fixture.owner, 'grantor': 'postgres', 'admin_option': False, 'inherit_option': True, 'set_option': True}]}
     with psycopg.connect(native_fixture.target) as connection:
+        grantor = connection.execute('SELECT current_user').fetchone()[0]
         if connection.execute('SELECT 1 FROM pg_roles WHERE rolname=%s', (name,)).fetchone():
             pytest.fail('provision fixture role already exists; refusing to replace it')
+    # This tests safe role creation, not an invalid GRANT by the unrelated
+    # NOLOGIN source identity precreated on the target. Use its actual admin.
+    inventory = {'required_roles': [name, native_fixture.owner, grantor], 'roles': [{'name': name, 'login': True, 'superuser': True, 'createdb': True, 'createrole': True, 'inherit': True}], 'role_memberships': [{'role': name, 'member': native_fixture.owner, 'grantor': grantor, 'admin_option': False, 'inherit_option': True, 'set_option': True}]}
     created = False
     try:
         with pytest.raises(BackupError, match='ROLE'):
@@ -419,6 +430,7 @@ def test_native_missing_source_roles_require_explicit_safe_provisioning(native_f
         with psycopg.connect(native_fixture.target) as connection:
             assert connection.execute('SELECT rolcanlogin,rolsuper,rolcreatedb,rolcreaterole,rolreplication,rolbypassrls FROM pg_roles WHERE rolname=%s', (name,)).fetchone() == (False,False,False,False,False,False)
             assert connection.execute('SELECT pg_has_role(%s,%s,\'MEMBER\')', (native_fixture.owner,name)).fetchone()[0] is True
+            assert connection.execute('SELECT pg_get_userbyid(m.grantor),m.admin_option,m.inherit_option,m.set_option FROM pg_auth_members m WHERE pg_get_userbyid(m.roleid)=%s AND pg_get_userbyid(m.member)=%s ORDER BY m.grantor', (name, native_fixture.owner)).fetchall() == [(grantor, False, True, True)]
     finally:
         if created:
             with psycopg.connect(native_fixture.target, autocommit=True) as connection:
@@ -497,12 +509,13 @@ def test_native_opt_in_reuses_only_safe_configured_deployment_login_roles(tmp_pa
     base, _ = dataset
     names = ('lzo_backup_fixture_api', 'lzo_backup_fixture_worker')
     passwords = {name: secrets.token_urlsafe(32) for name in names}
-    with psycopg.connect(fixture.target) as connection:
-        for name in names:
-            if connection.execute('SELECT 1 FROM pg_roles WHERE rolname=%s', (name,)).fetchone():
-                pytest.fail('deployment fixture role already exists; refusing to replace it')
-            connection.execute(sql.SQL('CREATE ROLE {} LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS PASSWORD {}').format(sql.Identifier(name), sql.Literal(passwords[name])))
-            fixture.created_roles.append(name)
+    for dsn, created_roles in ((fixture.source, fixture.created_source_roles), (fixture.target, fixture.created_roles)):
+        with psycopg.connect(dsn, autocommit=True) as connection:
+            for name in names:
+                if connection.execute('SELECT 1 FROM pg_roles WHERE rolname=%s', (name,)).fetchone():
+                    pytest.fail('deployment fixture role already exists; refusing to replace it')
+                connection.execute(sql.SQL('CREATE ROLE {} LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS PASSWORD {}').format(sql.Identifier(name), sql.Literal(passwords[name])))
+                created_roles.append(name)
     with psycopg.connect(fixture.source) as connection:
         connection.execute('CREATE SCHEMA lzo_local AUTHORIZATION lzo_backup_fixture_api')
         connection.execute('CREATE TABLE lzo_local.fixture_control(id integer PRIMARY KEY, value text)')
@@ -510,6 +523,7 @@ def test_native_opt_in_reuses_only_safe_configured_deployment_login_roles(tmp_pa
         connection.execute('ALTER TABLE lzo_local.fixture_control OWNER TO lzo_backup_fixture_api')
         connection.execute('GRANT USAGE ON SCHEMA lzo_local TO lzo_backup_fixture_worker')
         connection.execute('GRANT SELECT ON lzo_local.fixture_control TO lzo_backup_fixture_worker')
+    with psycopg.connect(fixture.target) as connection:
         before = {name: hashlib.sha256(value.encode()).hexdigest() for name, value in connection.execute('SELECT rolname,rolpassword FROM pg_authid WHERE rolname=ANY(%s)', (list(names),))}
     api_dsn = make_conninfo(fixture.target, user=names[0], password=passwords[names[0]])
     worker_dsn = make_conninfo(fixture.target, user=names[1], password=passwords[names[1]])
@@ -547,27 +561,23 @@ def test_native_opt_in_reuses_only_safe_configured_deployment_login_roles(tmp_pa
 
 
 @pytest.fixture
-def xadmin_fixture():
+def xadmin_fixture(tmp_path):
     if os.environ.get('LZO_LOCAL_BACKUP_XADMIN_TESTS') != '1':
         pytest.skip('cross-admin isolated-cluster fixture is opt-in')
     import psycopg
     from psycopg import sql
     from psycopg.conninfo import conninfo_to_dict, make_conninfo
-    from dotenv import dotenv_values
     from uuid import uuid4
-    root = Path(__file__).resolve().parents[2]
-    source_env = root.parents[2] / 'ontology-platform/.runtime/local-server/private.env'
-    target_env = root / '.runtime/local-server-acceptance-v2/private.env'
-    source_admin = dotenv_values(source_env)['LZO_LOCAL_ADMIN_DATABASE_URL']
-    target_admin = dotenv_values(target_env)['LZO_LOCAL_ADMIN_DATABASE_URL']
-    expected = ((source_admin, '25459', 'postgres'), (target_admin, '25479', 'lzo_local_admin'))
-    for dsn, port, user in expected:
-        fields = conninfo_to_dict(dsn)
-        if fields.get('host') != '127.0.0.1' or fields.get('port') != port or fields.get('user') != user:
-            pytest.fail('cross-admin fixture requires the two explicit isolated clusters')
+    from native_targets import NativeTargets
+    targets = NativeTargets.from_environment()
+    source_admin, target_admin = targets.admin_dsn(), targets.admin_dsn('restore')
+    if conninfo_to_dict(source_admin)['user'] != 'postgres' or conninfo_to_dict(target_admin)['user'] != 'lzo_local_admin':
+        pytest.fail('cross-admin fixture requires explicit postgres and lzo_local_admin identities')
+    targets.verify_cluster('source')
+    targets.verify_cluster('restore')
     suffix = uuid4().hex[:10]
-    source_name = 'lzo_backup_xadmin_source_' + suffix
-    target_name = 'lzo_backup_xadmin_target_' + suffix
+    source_name = 'test_backup_xadmin_source_' + suffix
+    target_name = 'test_backup_xadmin_target_' + suffix
     reader = 'lzo_backup_xadmin_reader_' + suffix
     class Fixture:
         def __repr__(self):
@@ -577,48 +587,50 @@ def xadmin_fixture():
     fixture.target = make_conninfo(target_admin, dbname=target_name)
     fixture.reader = reader
     fixture.evidence = {}
-    fixture.pg_bin = json.loads((root / '.runtime/local-server-build/host-inventory.json').read_text())['pg_bin']
+    fixture.pg_bin = targets.pg_bin
+    fixture.source_port, fixture.target_port = targets.source_port, targets.restore_port
     created_source = created_target = created_reader = False
     missing_target_roles = set()
     try:
-        with psycopg.connect(make_conninfo(source_admin, dbname='postgres'), autocommit=True) as connection:
+        with targets.connect_admin('source', autocommit=True) as connection:
             connection.execute(sql.SQL('CREATE ROLE {} NOLOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS').format(sql.Identifier(reader)))
             created_reader = True
             connection.execute(sql.SQL('CREATE DATABASE {}').format(sql.Identifier(source_name)))
             created_source = True
-        with psycopg.connect(make_conninfo(target_admin, dbname='postgres'), autocommit=True) as connection:
+        with targets.connect_admin('restore', autocommit=True) as connection:
             for role in ('postgres', reader):
-                if not connection.execute('SELECT 1 FROM pg_roles WHERE rolname=%s', (role,)).fetchone():
-                    missing_target_roles.add(role)
+                if connection.execute('SELECT 1 FROM pg_roles WHERE rolname=%s', (role,)).fetchone():
+                    pytest.fail('cross-admin target role already exists; refusing to reuse it')
+                missing_target_roles.add(role)
             connection.execute(sql.SQL('CREATE DATABASE {}').format(sql.Identifier(target_name)))
             created_target = True
         yield fixture
     finally:
         # Unique names created by this invocation only. Never stop a cluster,
         # reassign shared ownership, or alter either cluster's business database.
-        with psycopg.connect(make_conninfo(target_admin, dbname='postgres'), autocommit=True) as connection:
+        with targets.connect_admin('restore', autocommit=True) as connection:
             if created_target:
                 connection.execute(sql.SQL('DROP DATABASE {}').format(sql.Identifier(target_name)))
             for role in sorted(missing_target_roles):
                 if connection.execute('SELECT 1 FROM pg_roles WHERE rolname=%s', (role,)).fetchone():
                     connection.execute(sql.SQL('DROP ROLE {}').format(sql.Identifier(role)))
-        with psycopg.connect(make_conninfo(source_admin, dbname='postgres'), autocommit=True) as connection:
+        with targets.connect_admin('source', autocommit=True) as connection:
             if created_source:
                 connection.execute(sql.SQL('DROP DATABASE {}').format(sql.Identifier(source_name)))
             if created_reader:
                 connection.execute(sql.SQL('DROP ROLE {}').format(sql.Identifier(reader)))
         if fixture.evidence:
-            with psycopg.connect(make_conninfo(source_admin, dbname='postgres')) as connection:
+            with targets.connect_admin('source') as connection:
                 source_remaining = connection.execute('SELECT count(*) FROM pg_database WHERE datname=%s', (source_name,)).fetchone()[0]
                 source_roles = connection.execute('SELECT count(*) FROM pg_roles WHERE rolname=%s', (reader,)).fetchone()[0]
-            with psycopg.connect(make_conninfo(target_admin, dbname='postgres')) as connection:
+            with targets.connect_admin('restore') as connection:
                 target_remaining = connection.execute('SELECT count(*) FROM pg_database WHERE datname=%s', (target_name,)).fetchone()[0]
                 target_roles = connection.execute('SELECT count(*) FROM pg_roles WHERE rolname=ANY(%s)', (sorted(missing_target_roles),)).fetchone()[0]
             fixture.evidence['fixture_cleanup_verified'] = not any((source_remaining, target_remaining, source_roles, target_roles))
             fixture.evidence['remaining_fixture_databases'] = source_remaining + target_remaining
             fixture.evidence['remaining_created_fixture_roles'] = source_roles + target_roles
             assert fixture.evidence['fixture_cleanup_verified'] is True
-            (root / '.runtime/local-server-build/backup-xadmin-readback.json').write_text(json.dumps(fixture.evidence, indent=2), encoding='utf-8')
+            (tmp_path / 'backup-xadmin-readback.json').write_text(json.dumps(fixture.evidence, indent=2), encoding='utf-8')
 
 
 def test_native_cross_admin_postgis_owners_geometry_and_acl(tmp_path, dataset, xadmin_fixture):
@@ -658,4 +670,4 @@ def test_native_cross_admin_postgis_owners_geometry_and_acl(tmp_path, dataset, x
         assert connection.execute("SELECT pg_get_userbyid(proowner),has_function_privilege(%s,oid,'EXECUTE'),has_function_privilege('public',oid,'EXECUTE') FROM pg_proc WHERE oid='public.st_astext(public.geometry)'::regprocedure", (fixture.reader,)).fetchone() == ('postgres', True, False)
         assert connection.execute("SELECT rolcanlogin,rolsuper,rolcreatedb,rolcreaterole,rolreplication,rolbypassrls FROM pg_roles WHERE rolname='postgres'").fetchone() == (False,False,False,False,False,False)
     assert _comparable_inventory(PostgresArchive(fixture.pg_bin).inventory('fixture', fixture.target)) == _comparable_inventory(expected)
-    fixture.evidence.update(status='passed', data_nature='synthetic fixture records in isolated native PostgreSQL/PostGIS databases', source_admin='postgres', target_admin='lzo_local_admin', different_admins_verified=True, source_port=25459, target_port=25479, postgis_version=next(item['version'] for item in expected['extensions'] if item['name'] == 'postgis'), complete_inventory_verified=True, table_count=len(expected['tables']), geometry_verified=True, spatial_ref_sys_owner_acl_verified=True, provider_function_owner_acl_verified=True, safe_nologin_nosuperuser_source_identity_verified=True, shared_database_or_cluster_reassignment=False, primary_business_databases_modified=False)
+    fixture.evidence.update(status='passed', data_nature='synthetic fixture records in isolated native PostgreSQL/PostGIS databases', source_admin='postgres', target_admin='lzo_local_admin', different_admins_verified=True, source_port=fixture.source_port, target_port=fixture.target_port, postgis_version=next(item['version'] for item in expected['extensions'] if item['name'] == 'postgis'), complete_inventory_verified=True, table_count=len(expected['tables']), geometry_verified=True, spatial_ref_sys_owner_acl_verified=True, provider_function_owner_acl_verified=True, safe_nologin_nosuperuser_source_identity_verified=True, shared_database_or_cluster_reassignment=False, primary_business_databases_modified=False)

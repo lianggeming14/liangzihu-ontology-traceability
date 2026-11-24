@@ -130,6 +130,8 @@ Access 保护的是“谁可以进入网页和 API”；本体写 token 继续�
 
 ## 5. 两种入口如何选择
 
+域名取得、DNS 接入、OTP/IdP、Access、Tunnel token、team/AUD、证书及 Windows 服务权限的完整操作顺序，见[固定 HTTPS 域名手册](https-domain-setup.md)。最新认证检查与尚未完成的权限项见[连接复核](connection-auth-audit-20261124.md)。
+
 | 事项 | SSH + Tailscale 网络 | HTTPS + Tunnel + Access |
 |---|---|---|
 | 访问端 | Tailscale 客户端、SSH 连接和浏览器 | 浏览器和登录身份 |

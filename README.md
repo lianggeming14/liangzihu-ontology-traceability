@@ -2,7 +2,7 @@
 
 将田块、塘口、设备候选、养殖记录和图纸证据放进同一套可追溯的本体关系中，通过平面 GIS、逐级本体目录和可旋转的关系球查看数据。
 
-**当前可用入口：本地本体服务器。** 项目使用 PostgreSQL/PostGIS、Jena Fuseki/RDF 和轻量浏览器界面，支持批次导入、关系查询、地图浏览、版本回看及 JSON/CSV/RDF 导出。最近一次功能验收为 **2026-11-16**；本首页于 **2026-11-19** 整理，数据规模引用该已验收版本。
+**当前可用入口：本地本体服务器。** 项目使用 PostgreSQL/PostGIS、Jena Fuseki/RDF 和轻量浏览器界面，支持批次导入、关系查询、地图浏览、版本回看及 JSON/CSV/RDF 导出。最近一次地图功能验收为 **2026-11-16**；本首页于 **2026-11-24** 更新，新增 Python 回归补测与时延报告，数据规模仍引用已验收发布。
 
 [快速上手](ontology-platform/docs/local-server/快速上手.md) · [使用指南](ontology-platform/docs/local-server/使用指南.md) · [部署与换机](ontology-platform/docs/local-server/部署与换机.md) · [当前进度](ontology-platform/docs/status/2026-11-18-project-progress.md) · [开发指南](ontology-platform/README.md)
 
@@ -203,7 +203,9 @@ implementation/                 历史 v0.4 工程
 | 修改工程或接口 | [开发指南](ontology-platform/README.md)、[数据库结构与存储](ontology-platform/database/README.md) |
 | 同步项目成果 | [GitHub 同步约定](GITHUB_SYNC.txt) |
 
-最近一轮记录为：Python 回归 **233 通过、15 跳过**，原生 PostgreSQL Store **24 通过**，前端模块 **46 通过**，真实 Chrome 交互验收通过。上述测试属于不同范围，详情及日期以报告为准；本次 README 整理没有重跑数据库与现场验收。
+2026-11-24 Python 回归补测：**1546 通过、0 失败、4 跳过**，包含此前缺条件的 178 项 PostgreSQL 用例和真实视频解码；剩余符号链接权限条件及旧完整平台集成范围单列。真实 SQL/RDF 上的导入、查询、发布和完整分页导出时延见[本轮报告](ontology-platform/docs/local-server/python-regression-performance-20261124.md)与[性能复现指南](ontology-platform/docs/local-server/性能测试指南.md)。合成时延测试不替代生产全量或高并发验收。
+
+前端模块 46 项及 Chrome 交互是 2026-11-16 的历史验收，此轮没有重跑现场浏览器。公网方案的检查边界见[密码与权限复核](ontology-platform/docs/local-server/connection-auth-audit-20261124.md)，域名、登录和 Tunnel 全流程见[固定 HTTPS 域名手册](ontology-platform/docs/local-server/https-domain-setup.md)。
 
 ## 当前边界与后续工作
 

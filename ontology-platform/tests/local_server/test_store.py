@@ -8,11 +8,12 @@ from types import SimpleNamespace
 
 import psycopg
 from psycopg import sql
-import pytest
 from psycopg.conninfo import conninfo_to_dict
+import pytest
 
 from local_server.store import LeaseLost, Store, StoreUnavailable
 from local_server.config import contained_path
+from native_targets import NativeTargets
 
 
 def test_connection_failures_do_not_expose_libpq_credentials():
@@ -27,21 +28,15 @@ def test_connection_failures_do_not_expose_libpq_credentials():
 
 @pytest.fixture
 def stores(tmp_path):
-    names = {role: os.environ.get("LZO_LOCAL_TEST_" + role.upper() + "_DATABASE_URL") for role in ("admin", "api", "worker")}
-    if not all(names.values()):
-        pytest.skip("explicit isolated PostgreSQL fixture DSNs were not supplied")
-    assert conninfo_to_dict(names["admin"])["dbname"] == "lzo_local_test", "refusing non-fixture database"
-    assert conninfo_to_dict(names["admin"])["port"] == "25459", "refusing source/non-fixture port"
+    if not os.environ.get("LZO_NATIVE_TEST_MANIFEST") and not any(os.environ.get("LZO_LOCAL_TEST_" + role + "_DATABASE_URL") for role in ("ADMIN", "API", "WORKER")):
+        pytest.skip("explicit isolated PostgreSQL test manifest and DSNs were not supplied")
+    targets = NativeTargets.from_environment()
     data = tmp_path / "data"
     data.mkdir()
-    config = SimpleNamespace(sql={role + "_dsn": dsn for role, dsn in names.items()}, data_dir=data, schema_version="1", limits={"lease_seconds": 120})
-    admin = Store(config, "admin")
-    with admin.connect() as conn:
-        conn.execute("DROP SCHEMA IF EXISTS lzo_local CASCADE")
-    admin.ensure_schema()
-    yield {role: Store(config, role) for role in names}
-    with admin.connect() as conn:
-        conn.execute("DROP SCHEMA IF EXISTS lzo_local CASCADE")
+    with targets.database("store") as (_, names):
+        config = SimpleNamespace(sql={role + "_dsn": dsn for role, dsn in names.items()}, data_dir=data, schema_version="1", limits={"lease_seconds": 120})
+        Store(config, "admin").ensure_schema()
+        yield {role: Store(config, role) for role in names}
 
 
 def submit(stores, filename="batch.csv", mapping="b" * 64):

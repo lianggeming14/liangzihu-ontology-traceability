@@ -48,7 +48,7 @@ jobs:
       - name: Test read-only ontology HTTP routes without external services
         run: python scripts/check_ontology_review_server.py
       - name: Test source map preparation and identity boundaries
-        run: python -m unittest discover -s tests/scripts -p 'test_prepare_farm_map.py' -v
+        run: python -m unittest discover -s tests/scripts -p 'test_*.py' -v
       - name: Test ontology navigation model on Node 24
         run: node --test docs/fish/ontology-review/model.test.mjs
       # PostgreSQL/Jena imports, live-SPARQL checks and browser acceptance are
