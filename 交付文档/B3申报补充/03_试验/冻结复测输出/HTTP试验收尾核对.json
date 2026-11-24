@@ -1,0 +1,27 @@
+{
+  "checked_utc": "2026-11-24T13:46:58.500837+00:00",
+  "reason": "post-run independent status for native.stop() API which returns None",
+  "deployments": [
+    {
+      "number": 1,
+      "status": {
+        "postgres": "stopped",
+        "fuseki": "stopped"
+      }
+    },
+    {
+      "number": 2,
+      "status": {
+        "postgres": "stopped",
+        "fuseki": "stopped"
+      }
+    },
+    {
+      "number": 3,
+      "status": {
+        "postgres": "stopped",
+        "fuseki": "stopped"
+      }
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+﻿id,farm_id,standard_name,scientific_name,original_name,species_code,common_commercial_name,mapping_status,mapping_basis,strain,strain_status,origin,brand,brand_status,geographical_indication_qualified,geographical_indication_status,default_role
+SP01,F01,团头鲂,Megalobrama amblycephala,武昌鱼,SP01,武昌鱼,scenario_identity_explicit,scenario species declared; no generic bream mapping,,not_collected,fictional_Hubei_hatchery,,not_applicable,false,not_claimed,main
+SP02,F01,鲢,Hypophthalmichthys molitrix,鲢鱼,SP02,鲢鱼,scenario_identity_explicit,scenario species declared; no generic bream mapping,,not_collected,fictional_Hubei_hatchery,,not_applicable,false,not_claimed,companion

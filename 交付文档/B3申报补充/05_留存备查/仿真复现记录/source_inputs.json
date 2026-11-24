@@ -1,0 +1,50 @@
+[
+  {
+    "path": "output/public_sources/era5_2025.json",
+    "sha256": "a039f30304100e5d41c37445f71022f0e866552e5ca648c90ac9af37da9c389b"
+  },
+  {
+    "path": "output/public_sources/attachment/sample_manifest.json",
+    "sha256": "b12e9d5e5ab2f735d770390059bd38e41f016c95b89f472e19ac85e71e444dd5"
+  },
+  {
+    "path": "output/public_sources/weather_download.json",
+    "sha256": "c25585c8a995067c77a8c8f9dca43f64ca3d744d919865bcfc4fd35fa3db4438"
+  },
+  {
+    "path": "output/scenario/assumptions.json",
+    "sha256": "bef0d4653b778dc6f928e2e39ad46d23f7245372c9c00f0b87052fb1bee2e1e6"
+  },
+  {
+    "path": "output/schemas/schema.json",
+    "sha256": "75c5040dbe30f87030e4f54d3da67274423187144ddf592afec344581b1c6519"
+  },
+  {
+    "path": "数据审阅意见.md",
+    "sha256": "221c4b88ce3703abae5341d9c8c8926d19c7566a791b38d572b844401a84ee7b"
+  },
+  {
+    "path": "output/l2_cleaned/normalized/attachments.csv",
+    "sha256": "5f7bc711dd99e5a5b661bd947b173a54372310e372a6ca4253457b31ff4cc12a"
+  },
+  {
+    "path": "output/l2_cleaned/normalized/attachment_links.csv",
+    "sha256": "596c530818d2f1b1f276eb6d580fd386f91a2a39355014f79292119467b25a72"
+  },
+  {
+    "path": "output/l2_cleaned/normalized/media_annotations.csv",
+    "sha256": "f13fa95ff3b78e37a7328de50f5670fef33d40f01b7cec091fc8e2874c910c4f"
+  },
+  {
+    "path": "output/l2_cleaned/normalized/documents.csv",
+    "sha256": "34b7d157d935d414bafbc1b3620737cde1711b1b74a73e3bf47c58183046fbc9"
+  },
+  {
+    "path": "output/l2_cleaned/normalized/document_versions.csv",
+    "sha256": "012c749b5c318cfce65b6fac045c219fd91aba5de9a6e22ece7442852c2f7f1c"
+  },
+  {
+    "path": "output/l2_cleaned/normalized/spatial_layer_registry.csv",
+    "sha256": "427e175220073c2f5697ae5bc8a2955f62303818213beaea7f7e5caf0d06b75a"
+  }
+]

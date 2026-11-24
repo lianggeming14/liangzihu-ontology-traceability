@@ -1,0 +1,33 @@
+{
+  "csv_file_count": 66,
+  "record_count": 153862,
+  "header_positions": 1397,
+  "unique_header_names": 604,
+  "cells": 3539134,
+  "source_zip_sha256": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+  "all_files_match_source": true,
+  "review_date": "2026-11-24",
+  "seed": 20251031,
+  "data_version": "DB-READY-1.0.0",
+  "python": "3.12.7",
+  "sqlite": "3.45.3",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "generator_exit": 0,
+  "verify_ready_exit": 0,
+  "rebuild_equals_archived_files": 66,
+  "generator_sha256": {
+    "build_ready.py": "2a79d980c31a98d79dcbe64cc2e93aedc1c33eedaf2a505901500d43f9473b53",
+    "business_checks.py": "312429e6beb545f6e9fd9af2b39d4e78c74913805b3e405c4e571f24d9d40f91",
+    "business_source.py": "6491eeb2ac8912fb8ffe6e5889f01e7adceaa7083144c26e4d2f5d1520fc1cc5",
+    "database_io.py": "5ecc191b6c903a89f4ea2e8359fadbc41c73647da4f49e143bc9c9aa8f99f10c",
+    "environment_source.py": "20b02c1685c0b18e2f2693cc5c5d09d1d33a6eb2fd0efb86aa5ef08bba4c4c8a",
+    "integration_source.py": "8fac79552bc5d5210ed049417162cde870d6ec2096c44fec007d21974cb4c8cc",
+    "normalization.py": "89b790c9edee7a8941e2d952f98b85de6e887ad26fffc5aebf4eab206a69426d",
+    "quality_checks.py": "574934631da08f60463211ccae007929e4fa2640da4f89d4b7cc2144fa611316",
+    "test_business_source.py": "ec0c720c00e90f23c2df49b9ecdfa1de6dfac73ba59b84a476352d6fadd3f1b6",
+    "test_database_io.py": "ad6954c6c9f392e509c0179e3933d0b1303182addd45d227d0b8459471d278ba",
+    "test_environment_source.py": "5c842285f59cb8d4b2d7fdeaeab6d2a7b9acc3a1f46932cb4891fe6ab35d2c49",
+    "verify_ready.py": "9975b212a5f3362ef43decc65c4fbcd1902bed5998d56be0eca1be6de5b55b5e"
+  },
+  "recheck": 119
+}

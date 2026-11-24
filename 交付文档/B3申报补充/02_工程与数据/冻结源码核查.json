@@ -1,0 +1,115 @@
+{
+  "commit": "9ded95c99bad3a37a5d82d932db07454e2923c1f",
+  "tree": "2b85a473bb64a5733f11349c0f4ab838d8215d65",
+  "method": "read_only_git_blobs_and_python_AST",
+  "modules": [
+    {
+      "path": "ontology-platform/local_server/importer.py",
+      "sha256": "7445f331143effc3ec4ae9cbdd5ea1badba319e9281ec494df8829e729c923bc",
+      "definitions_start_end": {
+        "_read_csv": [
+          154,
+          181
+        ],
+        "prepare_input": [
+          184,
+          260
+        ],
+        "build_batch": [
+          263,
+          285
+        ]
+      }
+    },
+    {
+      "path": "ontology-platform/local_server/worker.py",
+      "sha256": "4c9dc5f7ddd8e97b8bacbcedad416b754eae13eb46495b7c732c69b6afd48b86",
+      "definitions_start_end": {
+        "store_batch": [
+          78,
+          156
+        ],
+        "process_job": [
+          159,
+          226
+        ]
+      }
+    },
+    {
+      "path": "ontology-platform/local_server/rdf.py",
+      "sha256": "9d92fa18948796002a8e495f3d05c2cc6f51caa7ef992edd2f41726aa842ed6f",
+      "definitions_start_end": {
+        "generate_rdf": [
+          43,
+          80
+        ],
+        "load_and_verify": [
+          133,
+          159
+        ],
+        "build_navigation": [
+          162,
+          216
+        ],
+        "verify_files": [
+          219,
+          226
+        ]
+      }
+    },
+    {
+      "path": "ontology-platform/local_server/http.py",
+      "sha256": "46541ffe33bcac0c7a823714964b871b6b1df913df3c7feeb9594d0cc7d16857",
+      "definitions_start_end": {
+        "make_handler": [
+          32,
+          341
+        ]
+      }
+    },
+    {
+      "path": "ontology-platform/local_server/query.py",
+      "sha256": "d7e939b04b3a91dd6a8492dde862ba4a9d5fe0847a3e8e16beb4715bb70c3f78",
+      "definitions_start_end": {
+        "decode_cursor": [
+          47,
+          56
+        ],
+        "QueryService.instances": [
+          147,
+          159
+        ],
+        "QueryService.resource": [
+          161,
+          183
+        ],
+        "QueryService.export": [
+          185,
+          197
+        ]
+      }
+    },
+    {
+      "path": "ontology-platform/local_server/store.py",
+      "sha256": "7575c7269c8c32773ef85ca58831bff2a35a98f5aaed6505372a7d5d115a8fba",
+      "definitions_start_end": {
+        "Store.submit_job": [
+          207,
+          226
+        ],
+        "Store.register_release": [
+          330,
+          349
+        ],
+        "Store.get_release": [
+          351,
+          353
+        ],
+        "Store.publish_release": [
+          365,
+          405
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "started_utc": "2026-11-24T13:42:01.809383+00:00",
+  "source_commit": "9ded95c99bad3a37a5d82d932db07454e2923c1f",
+  "samples": [
+    {
+      "run": 1,
+      "variant": "original_pinned_zip",
+      "bytes": 2578429,
+      "sha256": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+      "free_before_bytes": 30681124864,
+      "http_status": 202,
+      "http_response_seconds": 0.14812540000002627,
+      "worker_reason": "Full snapshot archive may contain only CSV files",
+      "job_id": "9b24ed21-33f3-4b49-979e-d90a2c79f4db",
+      "terminal_status": "failed",
+      "public_error": {
+        "code": "import_failed",
+        "message": "Import failed at validate_input",
+        "retryable": false,
+        "exception_type": "ValueError"
+      },
+      "active_release_count": 0,
+      "submit_to_terminal_seconds": 0.4030410999994274
+    },
+    {
+      "run": 1,
+      "variant": "business_csv_only",
+      "bytes": 2555674,
+      "sha256": "b5758e1ff2bca2acbae51d14ab27d7f4d9f6e47ad20c1814f80faa31400abc08",
+      "free_before_bytes": 30675865600,
+      "http_status": 202,
+      "http_response_seconds": 0.029870699999264616,
+      "worker_reason": "Source date-time requires YYYY-MM-DDTHH:MM:SS with an XSD timezone",
+      "job_id": "d2cb864f-9841-41ec-8231-afec19a5f51e",
+      "terminal_status": "failed",
+      "public_error": {
+        "code": "import_failed",
+        "message": "Import failed at validate_input",
+        "retryable": false,
+        "exception_type": "ValueError"
+      },
+      "active_release_count": 0,
+      "submit_to_terminal_seconds": 1.595687299999554
+    },
+    {
+      "run": 2,
+      "variant": "original_pinned_zip",
+      "bytes": 2578429,
+      "sha256": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+      "free_before_bytes": 30295941120,
+      "http_status": 202,
+      "http_response_seconds": 0.038996100000076694,
+      "worker_reason": "Full snapshot archive may contain only CSV files",
+      "job_id": "3364ee4c-09cd-431d-8633-975c214b81de",
+      "terminal_status": "failed",
+      "public_error": {
+        "code": "import_failed",
+        "message": "Import failed at validate_input",
+        "retryable": false,
+        "exception_type": "ValueError"
+      },
+      "active_release_count": 0,
+      "submit_to_terminal_seconds": 0.3055125999999291
+    },
+    {
+      "run": 2,
+      "variant": "business_csv_only",
+      "bytes": 2555674,
+      "sha256": "b5758e1ff2bca2acbae51d14ab27d7f4d9f6e47ad20c1814f80faa31400abc08",
+      "free_before_bytes": 30290468864,
+      "http_status": 202,
+      "http_response_seconds": 0.033808700000008685,
+      "worker_reason": "Source date-time requires YYYY-MM-DDTHH:MM:SS with an XSD timezone",
+      "job_id": "4595122c-e699-4e0a-b7de-16099f8197c7",
+      "terminal_status": "failed",
+      "public_error": {
+        "code": "import_failed",
+        "message": "Import failed at validate_input",
+        "retryable": false,
+        "exception_type": "ValueError"
+      },
+      "active_release_count": 0,
+      "submit_to_terminal_seconds": 1.7594633999997313
+    },
+    {
+      "run": 3,
+      "variant": "original_pinned_zip",
+      "bytes": 2578429,
+      "sha256": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+      "free_before_bytes": 30012727296,
+      "http_status": 202,
+      "http_response_seconds": 0.03815550000035728,
+      "worker_reason": "Full snapshot archive may contain only CSV files",
+      "job_id": "ab4732d4-398c-4870-990b-615087bf54a4",
+      "terminal_status": "failed",
+      "public_error": {
+        "code": "import_failed",
+        "message": "Import failed at validate_input",
+        "retryable": false,
+        "exception_type": "ValueError"
+      },
+      "active_release_count": 0,
+      "submit_to_terminal_seconds": 0.3090351999999257
+    },
+    {
+      "run": 3,
+      "variant": "business_csv_only",
+      "bytes": 2555674,
+      "sha256": "b5758e1ff2bca2acbae51d14ab27d7f4d9f6e47ad20c1814f80faa31400abc08",
+      "free_before_bytes": 30007533568,
+      "http_status": 202,
+      "http_response_seconds": 0.03085659999942436,
+      "worker_reason": "Source date-time requires YYYY-MM-DDTHH:MM:SS with an XSD timezone",
+      "job_id": "cc667791-fca7-4ed1-b00e-22a168c69556",
+      "terminal_status": "failed",
+      "public_error": {
+        "code": "import_failed",
+        "message": "Import failed at validate_input",
+        "retryable": false,
+        "exception_type": "ValueError"
+      },
+      "active_release_count": 0,
+      "submit_to_terminal_seconds": 1.64647210000021
+    }
+  ],
+  "cleanup": [
+    null,
+    null,
+    null
+  ]
+}

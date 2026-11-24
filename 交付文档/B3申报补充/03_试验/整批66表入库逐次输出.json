@@ -1,0 +1,54 @@
+{
+  "started_utc": "2026-11-24T13:40:11.695468+00:00",
+  "runs": [
+    {
+      "run": 1,
+      "status": "passed",
+      "archive_sha256": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+      "csvs": 66,
+      "headers": 1397,
+      "source_records_compared": 153862,
+      "source_cells_compared": 3539134,
+      "bad_rows": 0,
+      "preparation_seconds": 0.5603073000002041,
+      "sql_insert_commit_seconds": 1.1387458999997762,
+      "committed_readback_seconds": 1.0553210999996736,
+      "start_to_verified_seconds": 2.754374299999654
+    },
+    {
+      "run": 2,
+      "status": "passed",
+      "archive_sha256": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+      "csvs": 66,
+      "headers": 1397,
+      "source_records_compared": 153862,
+      "source_cells_compared": 3539134,
+      "bad_rows": 0,
+      "preparation_seconds": 0.5777314999995724,
+      "sql_insert_commit_seconds": 1.2671157000004314,
+      "committed_readback_seconds": 1.099333099999967,
+      "start_to_verified_seconds": 2.944180299999971
+    },
+    {
+      "run": 3,
+      "status": "passed",
+      "archive_sha256": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+      "csvs": 66,
+      "headers": 1397,
+      "source_records_compared": 153862,
+      "source_cells_compared": 3539134,
+      "bad_rows": 0,
+      "preparation_seconds": 0.5783684999996694,
+      "sql_insert_commit_seconds": 1.2151922000002742,
+      "committed_readback_seconds": 1.1166708999999173,
+      "start_to_verified_seconds": 2.910231599999861
+    }
+  ],
+  "basis": "9ded95c99bad3a37a5d82d932db07454e2923c1f",
+  "engine": "source verification from frozen prepare_csv_batch.prepare; PostgreSQL COPY of source strings; all cells read back",
+  "rdf_or_navigation_published": false,
+  "postgres_version": "PostgreSQL 17.11 on x86_64-windows, compiled by msvc-19.44.35229, 64-bit",
+  "store_pytest_exit": 0,
+  "cluster_stopped": true,
+  "finished_utc": "2026-11-24T13:40:34.621191+00:00"
+}

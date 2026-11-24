@@ -1,0 +1,119 @@
+{
+  "basis": "本版本修正模拟源并完整重建，不是已冻结L2盲清洗结果，不使用旧基准或答案回填",
+  "business": {
+    "assumptions": {
+      "PR02_opening_lot": "Fictional material scenario, not a real product label: manufactured December 1 before cfg.year; assumed shelf life 365 days. For 2025 this is 2024-12-01 through 2025-12-01. Remaining book stock is expired pending disposal at year end, available_quantity=0; no writeoff invented.",
+      "feeding_time": "Keep the daily total and session count; move a session after entry with a 30 minute margin, and before exit. Initial entry day uses 11:00. The feed, inventory issue and expense share one occurrence time.",
+      "grade_definition": "Per-species version V1: A weight_g >= 500; B 1 <= weight_g < 500. Quality grade is independent. Only nonempty grade and sales lines are emitted.",
+      "grade_price": "Synthetic CNY/kg: SP01 A buyer1 15.2, buyer2 15.8; B minus 1.4. SP02 A buyer1 7.8, buyer2 8.4; B minus 1.4. Each price line names its grade definition.",
+      "harvest_individuals": "Each harvest receives synthetic positive integer gram individual weights. Balanced random pair offsets around its exact mean conserve original harvest count and mass. These are simulated individuals, not field measurements or a validated growth distribution.",
+      "harvest_randomness": "Independent per-harvest Random seed made from cfg.seed and harvest id; does not consume growth or feeding randomness.",
+      "payroll_partner": "PAY01 is a fictional payroll collection/payment group representing the simulated staff payroll; it is not an actual supplier or legal entity. Monthly labor cost remains CNY 4500.",
+      "service_cost_time": "Source-linked cost and cost allocations cannot predate the originating physical event. Disposal expense follows disposal. Service payment and cash allocation use the cost occurrence timestamp; annual rent remains a prepayment."
+    },
+    "interface": "generate(cfg) -> dict[str, list[dict]]",
+    "new_fields": {
+      "feeding_events": [
+        "feeding_time_basis"
+      ],
+      "harvest_grade_items": [
+        "grade_definition_id",
+        "min_weight_g",
+        "max_weight_g",
+        "grading_basis"
+      ],
+      "harvest_sale_allocations": [
+        "grade_definition_id"
+      ],
+      "opening_balances": [
+        "manufacture_on",
+        "expires_on",
+        "shelf_life_days",
+        "expiry_status",
+        "expiry_parameter_basis"
+      ],
+      "partners": [
+        "partner_scope"
+      ],
+      "sale_items": [
+        "grade_definition_id",
+        "price_basis"
+      ]
+    },
+    "new_tables": {
+      "harvest_grade_individuals": {
+        "additive_policy": "Aggregate weight_g/count here OR harvest summaries; never add both.",
+        "fields": [
+          "harvest_id",
+          "harvest_grade_item_id",
+          "pond_id",
+          "cohort_id",
+          "species_id",
+          "individual_number",
+          "grade",
+          "grade_definition_id",
+          "weight_g",
+          "weight_unit",
+          "weight_basis"
+        ],
+        "grain": "one simulated individual within one harvest"
+      }
+    },
+    "required_grade_definitions": [
+      {
+        "definition_basis": "fictional_simulation_rule_not_market_standard",
+        "grade": "A",
+        "id": "GRADE-SP01-A-V1",
+        "lower_bound": 500,
+        "lower_inclusive": true,
+        "species_id": "SP01",
+        "unit": "g",
+        "upper_bound": null,
+        "upper_inclusive": false,
+        "version": "V1"
+      },
+      {
+        "definition_basis": "fictional_simulation_rule_not_market_standard",
+        "grade": "B",
+        "id": "GRADE-SP01-B-V1",
+        "lower_bound": 1,
+        "lower_inclusive": true,
+        "species_id": "SP01",
+        "unit": "g",
+        "upper_bound": 500,
+        "upper_inclusive": false,
+        "version": "V1"
+      },
+      {
+        "definition_basis": "fictional_simulation_rule_not_market_standard",
+        "grade": "A",
+        "id": "GRADE-SP02-A-V1",
+        "lower_bound": 500,
+        "lower_inclusive": true,
+        "species_id": "SP02",
+        "unit": "g",
+        "upper_bound": null,
+        "upper_inclusive": false,
+        "version": "V1"
+      },
+      {
+        "definition_basis": "fictional_simulation_rule_not_market_standard",
+        "grade": "B",
+        "id": "GRADE-SP02-B-V1",
+        "lower_bound": 1,
+        "lower_inclusive": true,
+        "species_id": "SP02",
+        "unit": "g",
+        "upper_bound": 500,
+        "upper_inclusive": false,
+        "version": "V1"
+      }
+    ],
+    "source": "Revised simulation code; no reference/baseline or anomaly answers used.",
+    "version": "db-ready-business-v1"
+  },
+  "environment": {},
+  "legitimate_nulls": "未施药、未确诊、低于检出限、无水、无死鱼等允许明确状态下的空值",
+  "seed": 20251031,
+  "version": "DB-READY-1.0.0"
+}

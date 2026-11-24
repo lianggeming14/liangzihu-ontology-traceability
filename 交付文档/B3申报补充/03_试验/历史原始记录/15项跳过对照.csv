@@ -1,0 +1,16 @@
+﻿11月16日序号,当时运行标记,用例文件,用例标识,按同版本源码重建的跳过条件,11月24日同项状态,11月24日pytest记录或历史源码条件
+9,s,test_asset_placement.py,test_symlink_in_a_declared_asset_subtree_is_rejected,Windows未许可创建符号链接,skipped,OS denied creating a synthetic symlink
+38,s,test_backup.py,test_native_snapshot_archive_and_complete_restore,未启用独立原生PostgreSQL备份测试夹具,skipped,isolated native PostgreSQL fixture is opt-in
+39,s,test_backup.py,test_native_nonempty_function_or_type_target_is_refused[CREATE FUNCTION public.user_function() RETURNS integer LANGUAGE sql AS 'SELECT 1'],未启用独立原生PostgreSQL备份测试夹具,skipped,isolated native PostgreSQL fixture is opt-in
+40,s,test_backup.py,test_native_nonempty_function_or_type_target_is_refused[CREATE TYPE public.user_enum AS ENUM ('keep')],未启用独立原生PostgreSQL备份测试夹具,skipped,isolated native PostgreSQL fixture is opt-in
+41,s,test_backup.py,test_native_missing_source_roles_require_explicit_safe_provisioning,未启用独立原生PostgreSQL备份测试夹具,skipped,isolated native PostgreSQL fixture is opt-in
+42,s,test_backup.py,test_native_postgis_extension_only_target_is_empty_and_restores_exactly,未启用独立原生PostgreSQL备份测试夹具,skipped,isolated native PostgreSQL fixture is opt-in
+43,s,test_backup.py,test_native_check_roundtrip_and_verified_resume_refuse_literal_or_type_changes,未启用独立原生PostgreSQL备份测试夹具,skipped,isolated native PostgreSQL fixture is opt-in
+44,s,test_backup.py,test_native_opt_in_reuses_only_safe_configured_deployment_login_roles,未启用独立原生PostgreSQL备份测试夹具,skipped,isolated native PostgreSQL fixture is opt-in
+45,s,test_backup.py,test_native_cross_admin_postgis_owners_geometry_and_acl,未启用跨管理员独立双集群备份恢复夹具,skipped,cross-admin isolated-cluster fixture is opt-in
+73,s,test_config.py,test_data_paths_cannot_escape_through_traversal_or_symlink,Windows未许可创建目录符号链接,skipped,OS denied creating a synthetic directory symlink
+80,s,test_console.py,test_selected_release_and_async_response_boundaries,该Python包装用例未找到Node运行时,passed,Node.js runtime is required for the actual console regression
+146,s,test_lifecycle.py,test_native_fuseki_graceful_stop_and_reopen_persists_triples,未显式提供Java与Fuseki测试工具,skipped,requires explicitly supplied local Java21/Fuseki6.2.0 fixture tools
+174,s,test_provision.py,test_provision_rejects_symlinked_data_parent,Windows未许可创建目录符号链接,skipped,OS does not permit this user to create a directory symlink
+176,s,test_provision.py,test_native_provision_empty_four_databases_then_explicit_init_and_graceful_lifecycle,未启用独立PostgreSQL/Java/Fuseki部署夹具,skipped,requires explicit isolated native PostgreSQL17/Java21/Fuseki6.2 fixture
+248,s,test_worker.py,test_real_new_postgres_fuseki_fixture_success_duplicate_failure_and_retry,未显式启用独立原生导入夹具,skipped,explicit isolated native import fixture not requested

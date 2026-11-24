@@ -1,0 +1,20 @@
+........s............................ssssssss........................... [ 29%]
+s....................................................................... [ 58%]
+.s...........................s.s........................................ [ 87%]
+...............................s                                         [100%]
+[JUnit 文件位置已省略]
+=========================== short test summary info ===========================
+SKIPPED [1] tests\local_server\test_asset_placement.py:113: OS denied creating a synthetic symlink
+SKIPPED [1] tests\local_server\test_backup.py:341: isolated native PostgreSQL fixture is opt-in
+SKIPPED [2] tests\local_server\test_backup.py:393: isolated native PostgreSQL fixture is opt-in
+SKIPPED [1] tests\local_server\test_backup.py:403: isolated native PostgreSQL fixture is opt-in
+SKIPPED [1] tests\local_server\test_backup.py:428: isolated native PostgreSQL fixture is opt-in
+SKIPPED [1] tests\local_server\test_backup.py:449: isolated native PostgreSQL fixture is opt-in
+SKIPPED [1] tests\local_server\test_backup.py:489: isolated native PostgreSQL fixture is opt-in
+SKIPPED [1] tests\local_server\test_backup.py:624: cross-admin isolated-cluster fixture is opt-in
+SKIPPED [1] tests\local_server\test_config.py:106: OS denied creating a synthetic directory symlink
+SKIPPED [1] tests\local_server\test_lifecycle.py:86: requires explicitly supplied local Java21/Fuseki6.2.0 fixture tools
+SKIPPED [1] tests\local_server\test_provision.py:76: OS does not permit this user to create a directory symlink
+SKIPPED [1] tests\local_server\test_provision.py:92: requires explicit isolated native PostgreSQL17/Java21/Fuseki6.2 fixture
+SKIPPED [1] tests\local_server\test_worker.py:158: explicit isolated native import fixture not requested
+234 passed, 14 skipped in 32.07s

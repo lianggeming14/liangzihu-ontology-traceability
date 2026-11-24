@@ -1,0 +1,5 @@
+﻿id,species_id,grade,lower_bound_g,upper_bound_g,lower_inclusive,upper_inclusive,unit,version,basis,upper_bound_status
+GRADE-SP01-A-V1,SP01,A,500,,true,false,g,1,explicit_synthetic_weight_interval,unbounded
+GRADE-SP01-B-V1,SP01,B,1,500,true,false,g,1,explicit_synthetic_weight_interval,finite
+GRADE-SP02-A-V1,SP02,A,500,,true,false,g,1,explicit_synthetic_weight_interval,unbounded
+GRADE-SP02-B-V1,SP02,B,1,500,true,false,g,1,explicit_synthetic_weight_interval,finite

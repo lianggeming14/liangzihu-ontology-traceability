@@ -1,0 +1,9 @@
+{
+  "anomaly_ratio": 0,
+  "edition": "database_ready_synthetic_revision",
+  "generation_run_id": "DB-READY-1.0.0-20251031",
+  "mode": "full",
+  "rule_version": "DB-READY-1.0.0",
+  "seed": 20251031,
+  "year": 2025
+}

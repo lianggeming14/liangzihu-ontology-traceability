@@ -1,0 +1,526 @@
+{
+  "attachment_links": {
+    "additive": false,
+    "canonical_source": "attachments",
+    "description_zh": "附件与业务对象关系",
+    "measurement_policy_zh": "仅作关系、分配和可追溯核对，不另计业务总量。",
+    "notes_zh": "一份附件可关联多个对象；关系条数不是附件数。",
+    "role": "index"
+  },
+  "attachments": {
+    "additive": false,
+    "canonical_source": "attachments",
+    "description_zh": "附件文件元数据",
+    "measurement_policy_zh": "描述来源、文件或内容；不计入生产、库存、现金流和成本总量。",
+    "notes_zh": "保留模拟、外部观测和资料取得状态，不将来源质量标记视为L2检验通过。",
+    "role": "metadata"
+  },
+  "case_observations": {
+    "additive": false,
+    "canonical_source": "case_observations",
+    "description_zh": "病例临床观察",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "cash_allocations": {
+    "additive": false,
+    "canonical_source": "cash_transactions",
+    "description_zh": "收付款对单据的核销分配关系",
+    "measurement_policy_zh": "仅作关系、分配和可追溯核对，不另计业务总量。",
+    "notes_zh": "cash_transactions是现金流事实；分配金额仅用于核销和守恒，不与现金流重复相加。",
+    "role": "index"
+  },
+  "cash_transactions": {
+    "additive": true,
+    "canonical_source": "cash_transactions",
+    "description_zh": "逐笔收付款事实",
+    "measurement_policy_zh": "仅对同口径、同单位、去重且通过质量校验的流量字段按本表事件/明细粒度加总；单价、比例、均值及余额不得相加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "cohorts": {
+    "additive": false,
+    "canonical_source": "cohorts",
+    "description_zh": "鱼群主数据",
+    "measurement_policy_zh": "主实体或分类定义；不作为业务流量累计。",
+    "notes_zh": "主键用于识别与关联，不能以行号替代。",
+    "role": "master"
+  },
+  "control_commands": {
+    "additive": false,
+    "canonical_source": "control_commands",
+    "description_zh": "设备控制命令记录",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "cost_allocations": {
+    "additive": false,
+    "canonical_source": "cost_entries",
+    "description_zh": "成本归属分配关系",
+    "measurement_policy_zh": "仅作关系、分配和可追溯核对，不另计业务总量。",
+    "notes_zh": "cost_entries是成本事实；分配金额仅用于归集和守恒，不二次计量。",
+    "role": "index"
+  },
+  "cost_entries": {
+    "additive": true,
+    "canonical_source": "cost_entries",
+    "description_zh": "逐笔成本事实",
+    "measurement_policy_zh": "仅对同口径、同单位、去重且通过质量校验的流量字段按本表事件/明细粒度加总；单价、比例、均值及余额不得相加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "device_calibrations": {
+    "additive": false,
+    "canonical_source": "device_calibrations",
+    "description_zh": "设备校准活动",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "device_installations": {
+    "additive": false,
+    "canonical_source": "device_installations",
+    "description_zh": "设备安装与有效区间",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "device_maintenance": {
+    "additive": false,
+    "canonical_source": "device_maintenance",
+    "description_zh": "设备维护活动",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "device_operations": {
+    "additive": false,
+    "canonical_source": "device_operations",
+    "description_zh": "设备运行活动",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "devices": {
+    "additive": false,
+    "canonical_source": "devices",
+    "description_zh": "设备主数据",
+    "measurement_policy_zh": "主实体或分类定义；不作为业务流量累计。",
+    "notes_zh": "主键用于识别与关联，不能以行号替代。",
+    "role": "master"
+  },
+  "diagnostic_tests": {
+    "additive": false,
+    "canonical_source": "diagnostic_tests",
+    "description_zh": "诊断检验记录",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "dictionaries": {
+    "additive": false,
+    "canonical_source": "dictionaries",
+    "description_zh": "分类值字典",
+    "measurement_policy_zh": "主实体或分类定义；不作为业务流量累计。",
+    "notes_zh": "主键用于识别与关联，不能以行号替代。",
+    "role": "master"
+  },
+  "disposal_events": {
+    "additive": false,
+    "canonical_source": "disposal_events",
+    "description_zh": "病死鱼处置记录",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "处置数量与mortality_events属于同一死亡链条，不能作为额外死亡数量累计。",
+    "role": "business"
+  },
+  "document_versions": {
+    "additive": false,
+    "canonical_source": "document_versions",
+    "description_zh": "文档版本元数据",
+    "measurement_policy_zh": "描述来源、文件或内容；不计入生产、库存、现金流和成本总量。",
+    "notes_zh": "保留模拟、外部观测和资料取得状态，不将来源质量标记视为L2检验通过。",
+    "role": "metadata"
+  },
+  "documents": {
+    "additive": false,
+    "canonical_source": "documents",
+    "description_zh": "文档元数据",
+    "measurement_policy_zh": "描述来源、文件或内容；不计入生产、库存、现金流和成本总量。",
+    "notes_zh": "保留模拟、外部观测和资料取得状态，不将来源质量标记视为L2检验通过。",
+    "role": "metadata"
+  },
+  "event_registry": {
+    "additive": false,
+    "canonical_source": "各事件业务表",
+    "description_zh": "跨业务事件索引",
+    "measurement_policy_zh": "仅作关系、分配和可追溯核对，不另计业务总量。",
+    "notes_zh": "event_id仅用于跨表定位；索引记录数不是新增业务发生数。",
+    "role": "index"
+  },
+  "farms": {
+    "additive": false,
+    "canonical_source": "farms",
+    "description_zh": "养殖场主数据",
+    "measurement_policy_zh": "主实体或分类定义；不作为业务流量累计。",
+    "notes_zh": "主键用于识别与关联，不能以行号替代。",
+    "role": "master"
+  },
+  "feeding_events": {
+    "additive": true,
+    "canonical_source": "feeding_events",
+    "description_zh": "逐投喂场次事实",
+    "measurement_policy_zh": "仅对同口径、同单位、去重且通过质量校验的流量字段按本表事件/明细粒度加总；单价、比例、均值及余额不得相加。",
+    "notes_zh": "quantity_kg是场次投喂量；daily_total_kg为当日汇总口径，可能在多场次中重复，禁止逐行加总daily_total_kg。未知source_unit_x2须隔离或待核。",
+    "role": "business"
+  },
+  "fish_daily_balance": {
+    "additive": false,
+    "canonical_source": "stocking_events / transfer_events / mortality_events / harvests / feeding_events",
+    "description_zh": "鱼群每日派生鱼尾数与生物量余额",
+    "measurement_policy_zh": "派生统计或状态快照；不与原始业务记录相加，不据此回填缺失业务值。",
+    "notes_zh": "用于滚动守恒与日末状态；不能将日末余额跨日期相加或与业务流量重复相加；不用于倒填原始缺值。",
+    "role": "derived"
+  },
+  "grade_definitions": {
+    "additive": false,
+    "description_zh": "物种体重规格定义",
+    "measurement_policy_zh": "定义维表，不累计",
+    "role": "master"
+  },
+  "growth_grade_items": {
+    "additive": false,
+    "canonical_source": "growth_individuals / growth_samples",
+    "description_zh": "采样个体的规格分组派生统计",
+    "measurement_policy_zh": "派生统计或状态快照；不与原始业务记录相加，不据此回填缺失业务值。",
+    "notes_zh": "仅用于样本内部比例与分组校验，不当作实际出塘或全塘鱼数。",
+    "role": "derived"
+  },
+  "growth_individuals": {
+    "additive": false,
+    "canonical_source": "growth_individuals",
+    "description_zh": "生长采样个体测量",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "growth_samples": {
+    "additive": false,
+    "canonical_source": "growth_samples",
+    "description_zh": "采样事件、派生组统计及全塘估算混合记录",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "采样事件与sample_size保留；mean/min/max/std/uniformity/grade_pass_rate是组统计；estimated_*为估算。不能把组统计或估计量当作新增个体或出塘事实。",
+    "role": "business"
+  },
+  "harvest_grade_individuals": {
+    "additive": false,
+    "description_zh": "模拟采收分级个体明细",
+    "measurement_policy_zh": "与出塘总表及规格汇总择一计量，不重复累计",
+    "role": "business"
+  },
+  "harvest_grade_items": {
+    "additive": false,
+    "canonical_source": "harvest_grade_items",
+    "description_zh": "单次出塘分级明细",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "按单个harvest_id核对规格分配；与harvests不得重复加总。现有A/B未定义可验证体重区间，应登记源端待修。",
+    "role": "business"
+  },
+  "harvest_sale_allocations": {
+    "additive": false,
+    "canonical_source": "harvests / sale_items",
+    "description_zh": "出塘与销售明细的分配关系",
+    "measurement_policy_zh": "仅作关系、分配和可追溯核对，不另计业务总量。",
+    "notes_zh": "出塘量以harvests、销售量以sale_items各自口径计量；本表只连接来源去向。",
+    "role": "index"
+  },
+  "harvests": {
+    "additive": true,
+    "canonical_source": "harvests",
+    "description_zh": "逐次出塘事实",
+    "measurement_policy_zh": "仅对同口径、同单位、去重且通过质量校验的流量字段按本表事件/明细粒度加总；单价、比例、均值及余额不得相加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "health_cases": {
+    "additive": false,
+    "canonical_source": "health_cases",
+    "description_zh": "健康病例事实",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "inventory_lot_status": {
+    "additive": false,
+    "canonical_source": "inventory_movements / opening_balances",
+    "description_zh": "物料批次可用状态及数量快照",
+    "measurement_policy_zh": "派生统计或状态快照；不与原始业务记录相加，不据此回填缺失业务值。",
+    "notes_zh": "按产品、批次、快照时点使用；不可与库存流水叠加，也不跨日期相加。",
+    "role": "derived"
+  },
+  "inventory_movements": {
+    "additive": true,
+    "canonical_source": "inventory_movements",
+    "description_zh": "逐笔库存数量与金额流水",
+    "measurement_policy_zh": "仅对同口径、同单位、去重且通过质量校验的流量字段按本表事件/明细粒度加总；单价、比例、均值及余额不得相加。",
+    "notes_zh": "流水仅用于库存增减；库存出库金额与cost_entries可能对应同一业务成本，不得跨口径重复计算。",
+    "role": "business"
+  },
+  "media_annotations": {
+    "additive": false,
+    "canonical_source": "media_annotations",
+    "description_zh": "媒体注释元数据",
+    "measurement_policy_zh": "描述来源、文件或内容；不计入生产、库存、现金流和成本总量。",
+    "notes_zh": "保留模拟、外部观测和资料取得状态，不将来源质量标记视为L2检验通过。",
+    "role": "metadata"
+  },
+  "mortality_events": {
+    "additive": true,
+    "canonical_source": "mortality_events",
+    "description_zh": "逐次死亡事实",
+    "measurement_policy_zh": "仅对同口径、同单位、去重且通过质量校验的流量字段按本表事件/明细粒度加总；单价、比例、均值及余额不得相加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "opening_balances": {
+    "additive": false,
+    "canonical_source": "opening_balances",
+    "description_zh": "期初库存余额",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "partners": {
+    "additive": false,
+    "canonical_source": "partners",
+    "description_zh": "往来单位主数据",
+    "measurement_policy_zh": "主实体或分类定义；不作为业务流量累计。",
+    "notes_zh": "主键用于识别与关联，不能以行号替代。",
+    "role": "master"
+  },
+  "patrol_events": {
+    "additive": false,
+    "canonical_source": "patrol_events",
+    "description_zh": "逐次巡塘观察",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "persons": {
+    "additive": false,
+    "canonical_source": "persons",
+    "description_zh": "人员主数据",
+    "measurement_policy_zh": "主实体或分类定义；不作为业务流量累计。",
+    "notes_zh": "主键用于识别与关联，不能以行号替代。",
+    "role": "master"
+  },
+  "pond_cohort_occupancy": {
+    "additive": false,
+    "canonical_source": "pond_cohort_occupancy",
+    "description_zh": "鱼群在塘有效区间",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "pond_maintenance": {
+    "additive": false,
+    "canonical_source": "pond_maintenance",
+    "description_zh": "塘口维护活动",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "pond_preparations": {
+    "additive": false,
+    "canonical_source": "pond_preparations",
+    "description_zh": "塘口准备活动",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "ponds": {
+    "additive": false,
+    "canonical_source": "ponds",
+    "description_zh": "塘口主数据",
+    "measurement_policy_zh": "主实体或分类定义；不作为业务流量累计。",
+    "notes_zh": "主键用于识别与关联，不能以行号替代。",
+    "role": "master"
+  },
+  "price_observations": {
+    "additive": false,
+    "canonical_source": "price_observations",
+    "description_zh": "市场报价观察",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "报价不等于成交额；transaction_volume_kg未报告可为空。普通市场名映射未解决时species_id为空须保留；未知单位不换算。",
+    "role": "business"
+  },
+  "production_plans": {
+    "additive": false,
+    "canonical_source": "production_plans",
+    "description_zh": "生产计划主数据",
+    "measurement_policy_zh": "主实体或分类定义；不作为业务流量累计。",
+    "notes_zh": "主键用于识别与关联，不能以行号替代。",
+    "role": "master"
+  },
+  "products": {
+    "additive": false,
+    "canonical_source": "products",
+    "description_zh": "物料及产品主数据",
+    "measurement_policy_zh": "主实体或分类定义；不作为业务流量累计。",
+    "notes_zh": "主键用于识别与关联，不能以行号替代。",
+    "role": "master"
+  },
+  "purchase_items": {
+    "additive": true,
+    "canonical_source": "purchase_items",
+    "description_zh": "采购单据明细",
+    "measurement_policy_zh": "仅对同口径、同单位、去重且通过质量校验的流量字段按本表事件/明细粒度加总；单价、比例、均值及余额不得相加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "purchases": {
+    "additive": false,
+    "canonical_source": "purchases",
+    "description_zh": "采购单据表头",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "sale_items": {
+    "additive": true,
+    "canonical_source": "sale_items",
+    "description_zh": "销售单据明细",
+    "measurement_policy_zh": "仅对同口径、同单位、去重且通过质量校验的流量字段按本表事件/明细粒度加总；单价、比例、均值及余额不得相加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "sales": {
+    "additive": false,
+    "canonical_source": "sales",
+    "description_zh": "销售单据表头",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "settlement_deductions": {
+    "additive": true,
+    "canonical_source": "settlement_deductions",
+    "description_zh": "结算扣款明细",
+    "measurement_policy_zh": "仅对同口径、同单位、去重且通过质量校验的流量字段按本表事件/明细粒度加总；单价、比例、均值及余额不得相加。",
+    "notes_zh": "仅用于销售结算扣款；不得同时作为settlements总扣款与本表明细重复相加。",
+    "role": "business"
+  },
+  "settlements": {
+    "additive": false,
+    "canonical_source": "settlements",
+    "description_zh": "销售结算记录",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "source_registry": {
+    "additive": false,
+    "canonical_source": "source_registry",
+    "description_zh": "按表登记的源批次元数据",
+    "measurement_policy_zh": "描述来源、文件或内容；不计入生产、库存、现金流和成本总量。",
+    "notes_zh": "保留模拟、外部观测和资料取得状态，不将来源质量标记视为L2检验通过。",
+    "role": "metadata"
+  },
+  "sources": {
+    "additive": false,
+    "canonical_source": "sources",
+    "description_zh": "来源说明",
+    "measurement_policy_zh": "描述来源、文件或内容；不计入生产、库存、现金流和成本总量。",
+    "notes_zh": "保留模拟、外部观测和资料取得状态，不将来源质量标记视为L2检验通过。",
+    "role": "metadata"
+  },
+  "spatial_layer_registry": {
+    "additive": false,
+    "canonical_source": "spatial_layer_registry",
+    "description_zh": "空间图层元数据",
+    "measurement_policy_zh": "描述来源、文件或内容；不计入生产、库存、现金流和成本总量。",
+    "notes_zh": "保留模拟、外部观测和资料取得状态，不将来源质量标记视为L2检验通过。",
+    "role": "metadata"
+  },
+  "species": {
+    "additive": false,
+    "canonical_source": "species",
+    "description_zh": "物种主数据",
+    "measurement_policy_zh": "主实体或分类定义；不作为业务流量累计。",
+    "notes_zh": "主键用于识别与关联，不能以行号替代。",
+    "role": "master"
+  },
+  "stocking_events": {
+    "additive": true,
+    "canonical_source": "stocking_events",
+    "description_zh": "逐次放养事实",
+    "measurement_policy_zh": "仅对同口径、同单位、去重且通过质量校验的流量字段按本表事件/明细粒度加总；单价、比例、均值及余额不得相加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "transfer_allocations": {
+    "additive": false,
+    "canonical_source": "transfer_events",
+    "description_zh": "转塘源鱼群与目标鱼群分配关系",
+    "measurement_policy_zh": "仅作关系、分配和可追溯核对，不另计业务总量。",
+    "notes_zh": "转塘数量以transfer_events为准；分配关系仅核对去向，不重复计量。",
+    "role": "index"
+  },
+  "transfer_events": {
+    "additive": true,
+    "canonical_source": "transfer_events",
+    "description_zh": "逐次转塘事实",
+    "measurement_policy_zh": "仅对同口径、同单位、去重且通过质量校验的流量字段按本表事件/明细粒度加总；单价、比例、均值及余额不得相加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "treatment_events": {
+    "additive": false,
+    "canonical_source": "treatment_events",
+    "description_zh": "护理及处置活动",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "water_observations": {
+    "additive": false,
+    "canonical_source": "water_observations",
+    "description_zh": "逐时水质观测及计划无观测槽位",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "measurement_context=calibration及pond_dry_preparation须与塘口观测分开；缺水计划槽位不插值。显式degF可转换；raw_ph保持原值。",
+    "role": "business"
+  },
+  "water_operations": {
+    "additive": false,
+    "canonical_source": "water_operations",
+    "description_zh": "换水等水体作业",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "water_samples": {
+    "additive": false,
+    "canonical_source": "water_samples",
+    "description_zh": "人工水质采样事件",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  },
+  "water_test_results": {
+    "additive": false,
+    "canonical_source": "water_test_results",
+    "description_zh": "人工水质检测结果",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "below_detection_limit不是0；detection_failed不是正常值。按analyte_code+unit+expression_basis比较；value_unit=source_unit_x2时不得推断换算。",
+    "role": "business"
+  },
+  "weather_observations": {
+    "additive": false,
+    "canonical_source": "weather_observations",
+    "description_zh": "逐时天气观测",
+    "measurement_policy_zh": "保留本表观测、活动、快照或明细粒度；不得无条件加总数值字段或与关联业务表叠加。",
+    "notes_zh": "原始业务或观测事实；异常留痕、缺失不补零。",
+    "role": "business"
+  }
+}

@@ -1,0 +1,1072 @@
+{
+  "contract": "local-server-latency/1",
+  "started_utc": "2026-11-24T13:33:42.310396+00:00",
+  "status": "passed",
+  "data_nature": "synthetic CSV/ZIP; real PostgreSQL and Fuseki; not CAD import performance",
+  "environment": {
+    "python": "3.12.7",
+    "system": "Windows",
+    "machine": "AMD64",
+    "background_load": "Windows desktop; no simultaneous native regression; other desktop activity uncontrolled",
+    "workers": 1
+  },
+  "method": {
+    "clock": "time.perf_counter",
+    "first_pass": "first import at each size; OS caches were not cleared",
+    "warm": "new content and distinct release for every repeat; no import deduplication",
+    "query_export_release": "last successful release per size, fixed for all requests",
+    "queue": "submit_job return to claim_job return, includes claim SQL; negative overlap clamped to zero",
+    "import_processing": "claim return through verified SQL and RDF readback; publication excluded",
+    "publication": "build_navigation start through publish_release return, including file verification and registration",
+    "atomic_activation": "complete publish_release SQL transaction including connect, locks, release status, state update and commit",
+    "export": "complete public ponds class only, all pages; wall time includes HTTP, parsing, validation; http_seconds also supplied",
+    "p95": "nearest rank; successful samples only, all failures counted; small N cannot establish capacity"
+  },
+  "settings": {
+    "sizes": [
+      100
+    ],
+    "warm_repeats": 3,
+    "query_repeats": 3,
+    "json_export_repeats": 3,
+    "csv_rdf_repeats": 1,
+    "page_size": 1000
+  },
+  "scenarios": [
+    {
+      "relation_rows": 100,
+      "imports": [
+        {
+          "relation_rows": 100,
+          "phase": "first_pass",
+          "index": 0,
+          "status": "passed",
+          "source_rows": 101,
+          "nodes": 101,
+          "input_bytes": 986,
+          "source_sha256": "560a96a675d22ed782e3322fd9532d07290f585de9fd0d0a11f3da8d46e121af",
+          "is_synthetic": true,
+          "http_202_seconds": 0.03665679999994609,
+          "http_status": 202,
+          "job_id": "3ae92d83-77d8-4cd5-9824-726682733e3d",
+          "release_id": "5112e5fc-5ff4-4161-9058-b4114b59c80d",
+          "counts": {
+            "classes": 22,
+            "instances": 101,
+            "relations": 100,
+            "source_classes": 2,
+            "resolved_relations": 100
+          },
+          "generated_triples": 4722,
+          "generated_rdf_bytes": 1240158,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.025441499999942607,
+          "claim_job_seconds": 0.12744449999991048,
+          "build_batch_seconds": 0.007566000000224449,
+          "store_batch_seconds": 0.49008069999990767,
+          "generate_rdf_seconds": 0.14750669999966703,
+          "load_and_verify_seconds": 0.6569149000001744,
+          "build_navigation_seconds": 0.23763240000016594,
+          "verify_files_seconds": 0.0027012999998987652,
+          "register_release_seconds": 0.026503699999921082,
+          "publish_release_seconds": 0.026729100000011385,
+          "finish_job_seconds": 0.022161100000175793,
+          "queue_seconds": 0.9598587999998927,
+          "import_processing_seconds": 1.8379617000000508,
+          "publication_seconds": 0.5030728000001545,
+          "atomic_activation_seconds": 0.026729100000011385,
+          "upload_to_complete_seconds": 3.4050615999999536,
+          "elapsed_seconds": 3.4050615999999536,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.025441499999942607,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.12744449999991048,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.007566000000224449,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 0.49008069999990767,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 0.14750669999966703,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 0.6569149000001744,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 0.23763240000016594,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.0027012999998987652,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.026503699999921082,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.026729100000011385,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.022161100000175793,
+                "status": "passed"
+              }
+            ]
+          }
+        },
+        {
+          "relation_rows": 100,
+          "phase": "warm_new_content",
+          "index": 1,
+          "status": "passed",
+          "source_rows": 101,
+          "nodes": 101,
+          "input_bytes": 988,
+          "source_sha256": "543e0ac86f4fd314c3562e7a60ad7c8bbe679a15b57fac4093f89800638f8803",
+          "is_synthetic": true,
+          "http_202_seconds": 0.025127099999735947,
+          "http_status": 202,
+          "job_id": "cbee7aca-e414-43d9-be60-57a1a8b9e0cf",
+          "release_id": "126b6555-b1e1-4dfa-b099-c8f1217e45a9",
+          "counts": {
+            "classes": 22,
+            "instances": 101,
+            "relations": 100,
+            "source_classes": 2,
+            "resolved_relations": 100
+          },
+          "generated_triples": 4722,
+          "generated_rdf_bytes": 1240158,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.021692299999813258,
+          "claim_job_seconds": 0.023172500000328,
+          "build_batch_seconds": 0.006342700000004697,
+          "store_batch_seconds": 0.48238660000015443,
+          "generate_rdf_seconds": 0.13333479999982956,
+          "load_and_verify_seconds": 0.46980170000006183,
+          "build_navigation_seconds": 0.18144119999988106,
+          "verify_files_seconds": 0.0024376999999731197,
+          "register_release_seconds": 0.02587969999967754,
+          "publish_release_seconds": 0.025280500000008033,
+          "finish_job_seconds": 0.022928899999897112,
+          "queue_seconds": 0.978428900000381,
+          "import_processing_seconds": 1.3815264999998362,
+          "publication_seconds": 0.33796769999980825,
+          "atomic_activation_seconds": 0.025280500000008033,
+          "upload_to_complete_seconds": 2.789650999999594,
+          "elapsed_seconds": 2.789650999999594,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.021692299999813258,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.023172500000328,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.006342700000004697,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 0.48238660000015443,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 0.13333479999982956,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 0.46980170000006183,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 0.18144119999988106,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.0024376999999731197,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.02587969999967754,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.025280500000008033,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.022928899999897112,
+                "status": "passed"
+              }
+            ]
+          }
+        },
+        {
+          "relation_rows": 100,
+          "phase": "warm_new_content",
+          "index": 2,
+          "status": "passed",
+          "source_rows": 101,
+          "nodes": 101,
+          "input_bytes": 988,
+          "source_sha256": "b9254073f1f212e84aed3b121d917fe9cce8264b28874e523710a7d23b72b831",
+          "is_synthetic": true,
+          "http_202_seconds": 0.025539699999626464,
+          "http_status": 202,
+          "job_id": "e2d981bc-ad50-49e3-b50c-3add03aae3bd",
+          "release_id": "da697e65-b690-491a-81ca-d79f71880c2f",
+          "counts": {
+            "classes": 22,
+            "instances": 101,
+            "relations": 100,
+            "source_classes": 2,
+            "resolved_relations": 100
+          },
+          "generated_triples": 4722,
+          "generated_rdf_bytes": 1240158,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.021933800000169867,
+          "claim_job_seconds": 0.12545430000000124,
+          "build_batch_seconds": 0.008117399999719055,
+          "store_batch_seconds": 0.3844048000000839,
+          "generate_rdf_seconds": 0.24735009999994872,
+          "load_and_verify_seconds": 0.4679728000000978,
+          "build_navigation_seconds": 0.1790144000001419,
+          "verify_files_seconds": 0.0024123000002873596,
+          "register_release_seconds": 0.02822489999971367,
+          "publish_release_seconds": 0.026355099999818776,
+          "finish_job_seconds": 0.024235400000179652,
+          "queue_seconds": 1.086580099999992,
+          "import_processing_seconds": 1.6494487999998455,
+          "publication_seconds": 0.4296740999998292,
+          "atomic_activation_seconds": 0.026355099999818776,
+          "upload_to_complete_seconds": 3.2616330999999263,
+          "elapsed_seconds": 3.2616330999999263,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.021933800000169867,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.12545430000000124,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.008117399999719055,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 0.3844048000000839,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 0.24735009999994872,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 0.4679728000000978,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 0.1790144000001419,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.0024123000002873596,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.02822489999971367,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.026355099999818776,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.024235400000179652,
+                "status": "passed"
+              }
+            ]
+          }
+        },
+        {
+          "relation_rows": 100,
+          "phase": "warm_new_content",
+          "index": 3,
+          "status": "passed",
+          "source_rows": 101,
+          "nodes": 101,
+          "input_bytes": 990,
+          "source_sha256": "281073b1cef361cc18d60b9834c9a0b906bfb97a6923bfd4f675c5e16099b688",
+          "is_synthetic": true,
+          "http_202_seconds": 0.02492660000007163,
+          "http_status": 202,
+          "job_id": "4d125f81-8ab0-4559-bef4-5784b928aab1",
+          "release_id": "449a1a17-db71-4489-bca1-c5a1a43afa26",
+          "counts": {
+            "classes": 22,
+            "instances": 101,
+            "relations": 100,
+            "source_classes": 2,
+            "resolved_relations": 100
+          },
+          "generated_triples": 4722,
+          "generated_rdf_bytes": 1240158,
+          "release_data_nature": "imported_unverified",
+          "node_data_nature": "synthetic",
+          "submit_job_seconds": 0.02154049999990093,
+          "claim_job_seconds": 0.023404899999604822,
+          "build_batch_seconds": 0.006113099999765836,
+          "store_batch_seconds": 0.6403597999997146,
+          "generate_rdf_seconds": 0.15076259999977992,
+          "load_and_verify_seconds": 1.1718363999998473,
+          "build_navigation_seconds": 0.20562670000026628,
+          "verify_files_seconds": 0.002578600000106235,
+          "register_release_seconds": 0.04194360000019515,
+          "publish_release_seconds": 0.0277777999999671,
+          "finish_job_seconds": 0.02482110000028115,
+          "queue_seconds": 0.9821646999998848,
+          "import_processing_seconds": 2.282546800000091,
+          "publication_seconds": 0.37687000000005355,
+          "atomic_activation_seconds": 0.0277777999999671,
+          "upload_to_complete_seconds": 3.849103400000331,
+          "elapsed_seconds": 3.849103400000331,
+          "stages": {
+            "submit_job": [
+              {
+                "elapsed_seconds": 0.02154049999990093,
+                "status": "passed"
+              }
+            ],
+            "claim_job": [
+              {
+                "elapsed_seconds": 0.023404899999604822,
+                "status": "passed"
+              }
+            ],
+            "build_batch": [
+              {
+                "elapsed_seconds": 0.006113099999765836,
+                "status": "passed"
+              }
+            ],
+            "store_batch": [
+              {
+                "elapsed_seconds": 0.6403597999997146,
+                "status": "passed"
+              }
+            ],
+            "generate_rdf": [
+              {
+                "elapsed_seconds": 0.15076259999977992,
+                "status": "passed"
+              }
+            ],
+            "load_and_verify": [
+              {
+                "elapsed_seconds": 1.1718363999998473,
+                "status": "passed"
+              }
+            ],
+            "build_navigation": [
+              {
+                "elapsed_seconds": 0.20562670000026628,
+                "status": "passed"
+              }
+            ],
+            "verify_files": [
+              {
+                "elapsed_seconds": 0.002578600000106235,
+                "status": "passed"
+              }
+            ],
+            "register_release": [
+              {
+                "elapsed_seconds": 0.04194360000019515,
+                "status": "passed"
+              }
+            ],
+            "publish_release": [
+              {
+                "elapsed_seconds": 0.0277777999999671,
+                "status": "passed"
+              }
+            ],
+            "finish_job": [
+              {
+                "elapsed_seconds": 0.02482110000028115,
+                "status": "passed"
+              }
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "first_pass": {
+          "complete": {
+            "attempts": 1,
+            "successes": 1,
+            "failures": 0,
+            "N": 1,
+            "small_sample": true,
+            "p50_seconds": 3.4050615999999536,
+            "p95_seconds": 3.4050615999999536,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "metrics": {
+            "atomic_activation_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.026729100000011385,
+              "p95_seconds": 0.026729100000011385,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_batch_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.007566000000224449,
+              "p95_seconds": 0.007566000000224449,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_navigation_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.23763240000016594,
+              "p95_seconds": 0.23763240000016594,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "claim_job_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.12744449999991048,
+              "p95_seconds": 0.12744449999991048,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "elapsed_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 3.4050615999999536,
+              "p95_seconds": 3.4050615999999536,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "finish_job_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.022161100000175793,
+              "p95_seconds": 0.022161100000175793,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "generate_rdf_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.14750669999966703,
+              "p95_seconds": 0.14750669999966703,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "http_202_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.03665679999994609,
+              "p95_seconds": 0.03665679999994609,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "import_processing_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 1.8379617000000508,
+              "p95_seconds": 1.8379617000000508,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "load_and_verify_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.6569149000001744,
+              "p95_seconds": 0.6569149000001744,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publication_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.5030728000001545,
+              "p95_seconds": 0.5030728000001545,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publish_release_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.026729100000011385,
+              "p95_seconds": 0.026729100000011385,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "queue_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.9598587999998927,
+              "p95_seconds": 0.9598587999998927,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "register_release_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.026503699999921082,
+              "p95_seconds": 0.026503699999921082,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "store_batch_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.49008069999990767,
+              "p95_seconds": 0.49008069999990767,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "submit_job_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.025441499999942607,
+              "p95_seconds": 0.025441499999942607,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "upload_to_complete_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 3.4050615999999536,
+              "p95_seconds": 3.4050615999999536,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "verify_files_seconds": {
+              "attempts": 1,
+              "successes": 1,
+              "failures": 0,
+              "N": 1,
+              "small_sample": true,
+              "p50_seconds": 0.0027012999998987652,
+              "p95_seconds": 0.0027012999998987652,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            }
+          }
+        },
+        "warm_new_content": {
+          "complete": {
+            "attempts": 3,
+            "successes": 3,
+            "failures": 0,
+            "N": 3,
+            "small_sample": true,
+            "p50_seconds": 3.2616330999999263,
+            "p95_seconds": 3.849103400000331,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "metrics": {
+            "atomic_activation_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.026355099999818776,
+              "p95_seconds": 0.0277777999999671,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_batch_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.006342700000004697,
+              "p95_seconds": 0.008117399999719055,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "build_navigation_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.18144119999988106,
+              "p95_seconds": 0.20562670000026628,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "claim_job_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.023404899999604822,
+              "p95_seconds": 0.12545430000000124,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "elapsed_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 3.2616330999999263,
+              "p95_seconds": 3.849103400000331,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "finish_job_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.024235400000179652,
+              "p95_seconds": 0.02482110000028115,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "generate_rdf_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.15076259999977992,
+              "p95_seconds": 0.24735009999994872,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "http_202_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.025127099999735947,
+              "p95_seconds": 0.025539699999626464,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "import_processing_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 1.6494487999998455,
+              "p95_seconds": 2.282546800000091,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "load_and_verify_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.46980170000006183,
+              "p95_seconds": 1.1718363999998473,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publication_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.37687000000005355,
+              "p95_seconds": 0.4296740999998292,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "publish_release_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.026355099999818776,
+              "p95_seconds": 0.0277777999999671,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "queue_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.9821646999998848,
+              "p95_seconds": 1.086580099999992,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "register_release_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.02822489999971367,
+              "p95_seconds": 0.04194360000019515,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "store_batch_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.48238660000015443,
+              "p95_seconds": 0.6403597999997146,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "submit_job_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.021692299999813258,
+              "p95_seconds": 0.021933800000169867,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "upload_to_complete_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 3.2616330999999263,
+              "p95_seconds": 3.849103400000331,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            },
+            "verify_files_seconds": {
+              "attempts": 3,
+              "successes": 3,
+              "failures": 0,
+              "N": 3,
+              "small_sample": true,
+              "p50_seconds": 0.0024376999999731197,
+              "p95_seconds": 0.002578600000106235,
+              "p95_method": "nearest-rank over successful samples; failures retained separately"
+            }
+          }
+        }
+      },
+      "reads": {
+        "release_id": "449a1a17-db71-4489-bca1-c5a1a43afa26",
+        "class_iri": "urn:lzo:local-server:v1:7977e7859149b229179c40d8d68069033383f03e356ddc9da4f77fbd95e9369b:class:ponds",
+        "expected_export": {
+          "triples": 1400,
+          "subjects": 100,
+          "termset_sha256": "83053db0fba8fa8731fb1765217dda37b0d46641e47ac2bde451aa0d7779cb62"
+        },
+        "samples": [
+          {
+            "action": "instances",
+            "index": 0,
+            "status": "passed",
+            "release_id": "449a1a17-db71-4489-bca1-c5a1a43afa26",
+            "elapsed_seconds": 0.22668179999982385,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 1,
+            "status": "passed",
+            "release_id": "449a1a17-db71-4489-bca1-c5a1a43afa26",
+            "elapsed_seconds": 0.2114768000001277,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "instances",
+            "index": 2,
+            "status": "passed",
+            "release_id": "449a1a17-db71-4489-bca1-c5a1a43afa26",
+            "elapsed_seconds": 0.203114199999618,
+            "bytes": 17960,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 0,
+            "status": "passed",
+            "release_id": "449a1a17-db71-4489-bca1-c5a1a43afa26",
+            "elapsed_seconds": 0.588981099999728,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 1,
+            "status": "passed",
+            "release_id": "449a1a17-db71-4489-bca1-c5a1a43afa26",
+            "elapsed_seconds": 0.5838275000000976,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "resource",
+            "index": 2,
+            "status": "passed",
+            "release_id": "449a1a17-db71-4489-bca1-c5a1a43afa26",
+            "elapsed_seconds": 0.5274917000001551,
+            "bytes": 3902,
+            "pages": 1
+          },
+          {
+            "action": "export_json",
+            "index": 0,
+            "status": "passed",
+            "release_id": "449a1a17-db71-4489-bca1-c5a1a43afa26",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "83053db0fba8fa8731fb1765217dda37b0d46641e47ac2bde451aa0d7779cb62",
+            "http_seconds": 0.5833499999998821,
+            "elapsed_seconds": 0.6026597999998557,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 1,
+            "status": "passed",
+            "release_id": "449a1a17-db71-4489-bca1-c5a1a43afa26",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "83053db0fba8fa8731fb1765217dda37b0d46641e47ac2bde451aa0d7779cb62",
+            "http_seconds": 0.46127500000011423,
+            "elapsed_seconds": 0.47763639999993757,
+            "format": "json"
+          },
+          {
+            "action": "export_json",
+            "index": 2,
+            "status": "passed",
+            "release_id": "449a1a17-db71-4489-bca1-c5a1a43afa26",
+            "pages": 2,
+            "bytes": 490183,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "83053db0fba8fa8731fb1765217dda37b0d46641e47ac2bde451aa0d7779cb62",
+            "http_seconds": 0.4535628000003271,
+            "elapsed_seconds": 0.46763640000017404,
+            "format": "json"
+          },
+          {
+            "action": "export_csv",
+            "index": 0,
+            "status": "passed",
+            "release_id": "449a1a17-db71-4489-bca1-c5a1a43afa26",
+            "pages": 2,
+            "bytes": 396668,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "83053db0fba8fa8731fb1765217dda37b0d46641e47ac2bde451aa0d7779cb62",
+            "http_seconds": 0.5347806999998284,
+            "elapsed_seconds": 0.5726282999999057,
+            "format": "csv"
+          },
+          {
+            "action": "export_rdf",
+            "index": 0,
+            "status": "passed",
+            "release_id": "449a1a17-db71-4489-bca1-c5a1a43afa26",
+            "pages": 2,
+            "bytes": 393972,
+            "triples": 1400,
+            "subjects": 100,
+            "termset_sha256": "83053db0fba8fa8731fb1765217dda37b0d46641e47ac2bde451aa0d7779cb62",
+            "http_seconds": 0.6030225999998038,
+            "elapsed_seconds": 0.6515423999999257,
+            "format": "rdf"
+          }
+        ],
+        "summary": {
+          "instances": {
+            "attempts": 3,
+            "successes": 3,
+            "failures": 0,
+            "N": 3,
+            "small_sample": true,
+            "p50_seconds": 0.2114768000001277,
+            "p95_seconds": 0.22668179999982385,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "resource": {
+            "attempts": 3,
+            "successes": 3,
+            "failures": 0,
+            "N": 3,
+            "small_sample": true,
+            "p50_seconds": 0.5838275000000976,
+            "p95_seconds": 0.588981099999728,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "export_json": {
+            "attempts": 3,
+            "successes": 3,
+            "failures": 0,
+            "N": 3,
+            "small_sample": true,
+            "p50_seconds": 0.47763639999993757,
+            "p95_seconds": 0.6026597999998557,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "export_csv": {
+            "attempts": 1,
+            "successes": 1,
+            "failures": 0,
+            "N": 1,
+            "small_sample": true,
+            "p50_seconds": 0.5726282999999057,
+            "p95_seconds": 0.5726282999999057,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          },
+          "export_rdf": {
+            "attempts": 1,
+            "successes": 1,
+            "failures": 0,
+            "N": 1,
+            "small_sample": true,
+            "p50_seconds": 0.6515423999999257,
+            "p95_seconds": 0.6515423999999257,
+            "p95_method": "nearest-rank over successful samples; failures retained separately"
+          }
+        }
+      }
+    }
+  ],
+  "cleanup": {
+    "native_services": {
+      "postgres": "stopped",
+      "fuseki": "stopped"
+    },
+    "worker_stopped": true
+  },
+  "unattempted_sizes": [],
+  "finished_utc": "2026-11-24T13:34:06.355376+00:00"
+}

@@ -1,0 +1,39 @@
+{
+  "checked_utc": "2026-11-24T13:48:34.308723+00:00",
+  "release_id": "449a1a17-db71-4489-bca1-c5a1a43afa26",
+  "class_iri": "urn:lzo:local-server:v1:7977e7859149b229179c40d8d68069033383f03e356ddc9da4f77fbd95e9369b:class:ponds",
+  "status": "passed",
+  "http_status": 200,
+  "resource_iri": "urn:lzo:local-server:v1:7977e7859149b229179c40d8d68069033383f03e356ddc9da4f77fbd95e9369b:instance:0133f7e1-dd10-5f74-b204-314efbc7c127",
+  "http_bytes": 3902,
+  "outgoing": 14,
+  "incoming": 1,
+  "outgoing_object_links": [
+    {
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "object": {
+        "type": "uri",
+        "value": "urn:lzo:local-server:v1:7977e7859149b229179c40d8d68069033383f03e356ddc9da4f77fbd95e9369b:class:ponds"
+      }
+    },
+    {
+      "predicate": "urn:lzo:local-server:v1:7977e7859149b229179c40d8d68069033383f03e356ddc9da4f77fbd95e9369b:relation:ponds:farm_id:farms",
+      "object": {
+        "type": "uri",
+        "value": "urn:lzo:local-server:v1:7977e7859149b229179c40d8d68069033383f03e356ddc9da4f77fbd95e9369b:instance:941ef43f-f210-568f-97b0-4528cfd8117c"
+      }
+    }
+  ],
+  "incoming_relations": [
+    {
+      "subject": "urn:lzo:local-server:v1:7977e7859149b229179c40d8d68069033383f03e356ddc9da4f77fbd95e9369b:instance:941ef43f-f210-568f-97b0-4528cfd8117c",
+      "predicate": "urn:lzo:local-server:v1:7977e7859149b229179c40d8d68069033383f03e356ddc9da4f77fbd95e9369b:relation:ponds:farm_id:farms:inverse"
+    }
+  ],
+  "truncated": false,
+  "scope": "same release/subject/response size as timed samples; independent post-run read",
+  "cleanup": {
+    "postgres": "stopped",
+    "fuseki": "stopped"
+  }
+}
