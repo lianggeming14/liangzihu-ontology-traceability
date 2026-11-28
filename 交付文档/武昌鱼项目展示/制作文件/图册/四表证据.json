@@ -1,0 +1,67 @@
+{
+    "source_repository":  "lianggeming14/upload-files",
+    "source_commit":  "cb9353499b6ede33fa60b3c67e18a983e362ab16",
+    "archive_sha256":  "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+    "release_id":  "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+    "samples":  [
+                    {
+                        "kind":  "fish",
+                        "path":  "csv/cohorts.csv",
+                        "sha256":  "f7e4fa5fda375654541d918ee830e52c138a48cc9f6c7d6a98199e9aaf032097",
+                        "record_number":  1,
+                        "csv_line":  2,
+                        "values":  {
+                                       "id":  "C01",
+                                       "original_commercial_name":  "武昌鱼",
+                                       "start_date":  "2025-01-10",
+                                       "initial_count":  "6000",
+                                       "pond_id":  "P01"
+                                   }
+                    },
+                    {
+                        "kind":  "occupancy",
+                        "path":  "csv/pond_cohort_occupancy.csv",
+                        "sha256":  "3f066799f2b348d82877b97b898223ba49216fb4c0c5f4a35706c3356bea1851",
+                        "record_number":  1,
+                        "csv_line":  2,
+                        "values":  {
+                                       "id":  "OCC000001",
+                                       "cohort_id":  "C01",
+                                       "pond_id":  "P01",
+                                       "entered_at":  "2025-01-10T10:00:00+08:00",
+                                       "left_at":  "2025-11-20T14:00:00+08:00"
+                                   }
+                    },
+                    {
+                        "kind":  "pond",
+                        "path":  "csv/ponds.csv",
+                        "sha256":  "2981d847642d81f8bc3a8d7c178981f72c477ab6674006daf2d3ed7352085e1b",
+                        "record_number":  1,
+                        "csv_line":  2,
+                        "values":  {
+                                       "id":  "P01",
+                                       "name":  "1号模拟塘",
+                                       "farm_id":  "F01",
+                                       "area_mu":  "9.3",
+                                       "mean_depth_m":  "1.8"
+                                   }
+                    },
+                    {
+                        "kind":  "water",
+                        "path":  "csv/water_observations.csv",
+                        "sha256":  "63523b8d4df5f9c6d571fecff662c1a4eaa29c49152ee645cc181507c2ea58a1",
+                        "record_number":  247,
+                        "csv_line":  248,
+                        "values":  {
+                                       "id":  "O1_010_06",
+                                       "pond_id":  "P01",
+                                       "observed_at":  "2025-01-11T06:00:00+08:00",
+                                       "temperature_c":  "11.13",
+                                       "do_mg_l":  "6.72",
+                                       "ph":  "7.21",
+                                       "raw_ph":  "7.26",
+                                       "ph_correction":  "-0.05"
+                                   }
+                    }
+                ]
+}

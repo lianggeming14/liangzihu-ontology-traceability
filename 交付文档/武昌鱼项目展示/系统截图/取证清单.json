@@ -1,0 +1,321 @@
+{
+  "capture_utc": "2026-11-28T05:55:47.580506+00:00",
+  "mode": "read-only published RDF snapshot rendered by original ontology browser in Chrome",
+  "field_acceptance": false,
+  "source_zip_sha256": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+  "snapshot_published_release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+  "manifest_sha256": "ebff98d1fd94ccf02a3c0ba0c8dca0514053ed25ae3f907f2a4495d4da7dd310",
+  "details_also_identical_in_release": "16c6ce16-e28c-5e9c-a766-874fca309c5f",
+  "objects": {
+    "C01": {
+      "iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:instance:dbf71dd0-222f-523b-97e5-f355f9b5ea78",
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:cohorts",
+      "detail_path": "details/csv_cohorts/00001.json.gz",
+      "detail_sha256": "6767c0057780946e666e1fbf0a86ccb80c954a0e51342e18ae8d3fd336c46a34",
+      "source": {
+        "source_record_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:source:cohorts:1",
+        "table": "cohorts",
+        "row_number": 1,
+        "package_sha256": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+        "status": "accepted",
+        "sample_reason": "full_csv_batch",
+        "issues": [],
+        "batch_id": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+        "source_file": "csv/cohorts.csv",
+        "source_sha256": "f7e4fa5fda375654541d918ee830e52c138a48cc9f6c7d6a98199e9aaf032097",
+        "source_origin_kind": "revised_rule_simulation",
+        "csv_line_end": 2
+      }
+    },
+    "OCC000001": {
+      "iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:instance:21b046ca-837e-562e-881b-ce198f02275f",
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:pond_cohort_occupancy",
+      "detail_path": "details/csv_pond_cohort_occupancy/00001.json.gz",
+      "detail_sha256": "40fa418c1ff2a6497b32eab4789d6d0078db6749834316685090aaf36cedb472",
+      "source": {
+        "source_record_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:source:pond_cohort_occupancy:1",
+        "table": "pond_cohort_occupancy",
+        "row_number": 1,
+        "package_sha256": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+        "status": "accepted",
+        "sample_reason": "full_csv_batch",
+        "issues": [],
+        "batch_id": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+        "source_file": "csv/pond_cohort_occupancy.csv",
+        "source_sha256": "3f066799f2b348d82877b97b898223ba49216fb4c0c5f4a35706c3356bea1851",
+        "source_origin_kind": "revised_rule_simulation",
+        "csv_line_end": 2
+      }
+    },
+    "P01": {
+      "iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:instance:ee6e5f9d-6db5-5bcb-927b-c21679eb8308",
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:ponds",
+      "detail_path": "details/csv_ponds/00001.json.gz",
+      "detail_sha256": "66e81fef441b27fa20097ba152bf7feffe3332740014f5b4d5a33c6780f6b53c",
+      "source": {
+        "source_record_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:source:ponds:1",
+        "table": "ponds",
+        "row_number": 1,
+        "package_sha256": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+        "status": "accepted",
+        "sample_reason": "full_csv_batch",
+        "issues": [],
+        "batch_id": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+        "source_file": "csv/ponds.csv",
+        "source_sha256": "2981d847642d81f8bc3a8d7c178981f72c477ab6674006daf2d3ed7352085e1b",
+        "source_origin_kind": "revised_rule_simulation",
+        "csv_line_end": 2
+      }
+    },
+    "O1_010_06": {
+      "iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:instance:35533f63-d210-5f06-b305-773511adc74e",
+      "class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:water_observations",
+      "detail_path": "details/csv_water_observations/00001.json.gz",
+      "detail_sha256": "b7d4cffd6b043a08cd4bf699865237aab0db1d2458591a5d806e191e01d2106e",
+      "source": {
+        "source_record_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:source:water_observations:247",
+        "table": "water_observations",
+        "row_number": 247,
+        "package_sha256": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+        "status": "accepted",
+        "sample_reason": "full_csv_batch",
+        "issues": [],
+        "batch_id": "a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524",
+        "source_file": "csv/water_observations.csv",
+        "source_sha256": "63523b8d4df5f9c6d571fecff662c1a4eaa29c49152ee645cc181507c2ea58a1",
+        "source_origin_kind": "revised_rule_simulation",
+        "csv_line_end": 248
+      }
+    }
+  },
+  "frames": [
+    {
+      "file": "01_鱼群C01.png",
+      "object": "C01",
+      "purpose": "鱼群详情，规则模拟，源主键和塘口字段",
+      "route": "#view=instance&iri=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Ainstance%3Adbf71dd0-222f-523b-97e5-f355f9b5ea78&class=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Aclass%3Acohorts",
+      "scroll_y": 0,
+      "sha256": "c74fe0ea48a03334f0452d888eec337db8a0a1e72718576c0455d5def3109b1e"
+    },
+    {
+      "file": "02_C01关联在塘记录.png",
+      "object": "C01",
+      "purpose": "鱼群的入向关系第623页进入在塘记录",
+      "route": "#view=instance&iri=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Ainstance%3Adbf71dd0-222f-523b-97e5-f355f9b5ea78&class=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Aclass%3Acohorts&tab=relations&incomingPage=623",
+      "scroll_y": 1431,
+      "sha256": "d453d141f162354421101ed466a91df12df856b267d0ea385167aa3d9bfe009c"
+    },
+    {
+      "file": "03_在塘记录OCC000001.png",
+      "object": "OCC000001",
+      "purpose": "在塘记录的身份与所属塘口、鱼群",
+      "route": "#view=instance&iri=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Ainstance%3A21b046ca-837e-562e-881b-ce198f02275f&class=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Aclass%3Apond_cohort_occupancy",
+      "scroll_y": 0,
+      "sha256": "8e540b19a28abd3dc7dcc0e05c9f36438c2be1a0f08ee75a04127d7529bbd913"
+    },
+    {
+      "file": "04_在塘起止时间.png",
+      "object": "OCC000001",
+      "purpose": "同一记录的鱼群号、进塘时间和离塘时间",
+      "route": "#view=instance&iri=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Ainstance%3A21b046ca-837e-562e-881b-ce198f02275f&class=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Aclass%3Apond_cohort_occupancy",
+      "scroll_y": 517,
+      "sha256": "fde76409d1abdcc71246969bd68a9de2ea8ad1f62441a279c8cc0e47574e937e"
+    },
+    {
+      "file": "05_塘口P01.png",
+      "object": "P01",
+      "purpose": "1号模拟塘面积与属性",
+      "route": "#view=instance&iri=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Ainstance%3Aee6e5f9d-6db5-5bcb-927b-c21679eb8308&class=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Aclass%3Aponds",
+      "scroll_y": 0,
+      "sha256": "245dc5e56c431ace380a805c44f69ba461e269bb872609e58b56896f4049fa8d"
+    },
+    {
+      "file": "06_P01关联水质观测.png",
+      "object": "P01",
+      "purpose": "入向关系第925页，观测记录指向同一P01",
+      "route": "#view=instance&iri=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Ainstance%3Aee6e5f9d-6db5-5bcb-927b-c21679eb8308&class=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Aclass%3Aponds&tab=relations&incomingPage=925",
+      "scroll_y": 348,
+      "sha256": "c03f1903b83cf9697876d0d40b368fdb2003b40255a874f1c5f9143f086a9b2a"
+    },
+    {
+      "file": "07_水质记录O1_010_06.png",
+      "object": "O1_010_06",
+      "purpose": "水质观测身份与塘口、设备和时间",
+      "route": "#view=instance&iri=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Ainstance%3A35533f63-d210-5f06-b305-773511adc74e&class=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Aclass%3Awater_observations",
+      "scroll_y": 0,
+      "sha256": "d826af7712265c712aca06d9d82e68bf26fe7d73fd26666119854e5878f91ecf"
+    },
+    {
+      "file": "08_水质读数.png",
+      "object": "O1_010_06",
+      "purpose": "同一观测的温度、溶氧与pH；规则模拟",
+      "route": "#view=instance&iri=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Ainstance%3A35533f63-d210-5f06-b305-773511adc74e&class=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Aclass%3Awater_observations",
+      "scroll_y": 680,
+      "sha256": "a0982b2ca8e4b66396f1e62fbfaf5a99aa2a2ae8d69822a41c79c396509908a9"
+    },
+    {
+      "file": "09_来源行与批次.png",
+      "object": "O1_010_06",
+      "purpose": "247是数据记录序号，248是CSV物理结束行，源文件SHA256和导入批次均来自页面",
+      "route": "#view=instance&iri=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Ainstance%3A35533f63-d210-5f06-b305-773511adc74e&class=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Aclass%3Awater_observations&tab=evidence",
+      "scroll_y": 300,
+      "sha256": "eb5400bb6fa54f32fdf48722be17580b27f4c0222fe7b85731b86aa37a84dfa4"
+    },
+    {
+      "file": "10_来源文件.png",
+      "object": "O1_010_06",
+      "purpose": "来源文件名、来源记录IRI与数据性质",
+      "route": "#view=instance&iri=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Ainstance%3A35533f63-d210-5f06-b305-773511adc74e&class=urn%3Alzo%3Acsv-batch%3Av1%3Aa4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524%3Aclass%3Awater_observations&tab=evidence",
+      "scroll_y": 654,
+      "sha256": "3c3256b99f158e432810439ad3a52c391cd55ed5212f41234a9fc38796bd4a6e"
+    }
+  ],
+  "recordings": [
+    {
+      "file": "动作A_由在塘记录进入塘口.mp4",
+      "sampled_frames": 20,
+      "recording_seconds": 3.25,
+      "sha256": "9b787d1fc5f17fe64cd776cb0d5a07b33c673520e94fb4ee5e09648604a35635"
+    },
+    {
+      "file": "动作B_由塘口追溯水质与来源.mp4",
+      "sampled_frames": 37,
+      "recording_seconds": 6.156,
+      "sha256": "0d2164a123bec79522bd00f0f4629c0bd1f8c926fff75fe0dbcbdef736fb7f9d"
+    }
+  ],
+  "browser": "Chrome/158.0.8127.37",
+  "viewport": {
+    "css_pixels": [
+      1440,
+      810
+    ],
+    "screenshot_pixels": [
+      2160,
+      1215
+    ]
+  },
+  "archived_console_pictures": [
+    {
+      "file": "11_历史运行的版本标识.png",
+      "source_path": "ontology-platform/docs/local-server/screenshots/desktop-console.png",
+      "capture_evidence": "ontology-platform/docs/local-server/browser-readback.json",
+      "historical_checked_at": "2026-11-12T12:16:19.754Z",
+      "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+      "nature": "archived original desktop screenshot; same release, different objects from fish demonstration",
+      "sha256": "446a066a5b0b4a4d54b0511e82f7a8a38df95fbdb0ed86aefe2bfc9a49fb2fbf"
+    },
+    {
+      "file": "12_历史固定版本导出入口.png",
+      "source_path": "ontology-platform/docs/local-server/screenshots/desktop-resource.png",
+      "capture_evidence": "ontology-platform/docs/local-server/browser-readback.json",
+      "historical_checked_at": "2026-11-12T12:16:19.754Z",
+      "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+      "nature": "archived original desktop screenshot; same release, different objects from fish demonstration",
+      "sha256": "701f2708816994ebdb21ec440cceafd09399d3e953bfc568ff005ce0e10d36cb"
+    }
+  ],
+  "archived_export_evidence": {
+    "source": "ontology-platform/docs/local-server/browser-readback.json",
+    "checked_at": "2026-11-12T12:16:19.754Z",
+    "export_class": {
+      "iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:production_plans",
+      "label": "CSV · 生产计划",
+      "scope": "Complete small public class; at most 1000 triples. Multipage downloads are checked in the separate synthetic fixture."
+    },
+    "actual_downloads": [
+      {
+        "format": "json",
+        "filename": "ontology-d96f7ebf.json",
+        "bytes": 15387,
+        "triples": 33,
+        "pages": 1,
+        "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+        "parsed": true
+      },
+      {
+        "format": "csv",
+        "filename": "ontology-d96f7ebf.csv",
+        "bytes": 11389,
+        "triples": 33,
+        "pages": 1,
+        "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+        "parsed": true
+      },
+      {
+        "format": "rdf",
+        "filename": "ontology-d96f7ebf.ttl",
+        "bytes": 11322,
+        "triples": 33,
+        "pages": 1,
+        "release_id": "d96f7ebf-c709-4ec0-a598-13927ef2b54e",
+        "parsed": true
+      }
+    ]
+  },
+  "six_graph_sphere": {
+    "release_id": "16c6ce16-e28c-5e9c-a766-874fca309c5f",
+    "browser_action": "read-only replay of unmodified ontology browser against released network files using the original QueryService.network and QueryService.network_relations methods",
+    "field_acceptance": false,
+    "counts": {
+      "canonical_record_count": 890235,
+      "classes": 186,
+      "demo_assignment_record_count": 10495,
+      "excluded_private_class_count": 0,
+      "excluded_private_count": 0,
+      "excluded_private_instance_count": 0,
+      "instances": 181255,
+      "observed_edge_count": 630,
+      "schema_edge_count": 1311,
+      "unique_record_count": 900730,
+      "unique_triple_count": 900620,
+      "unresolved_count": 110
+    },
+    "navigation_network_sha256": "5ee278ee95567bb630076bcf38aa11c19ca078ed1fada56b4bb7f62dfa722ca6",
+    "edge": {
+      "count": 14,
+      "direction": "outgoing",
+      "id": "03a4e1430ce89913f33fe22d864ab56198fb0e9eebb186b049c270d928e5dd1a",
+      "kind": "observed",
+      "label": "pond_id → CSV · 塘口",
+      "predicate": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:relation:cohorts:pond_id:ponds",
+      "source": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:cohorts",
+      "target": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:ponds",
+      "unique_record_count": 14
+    },
+    "relation_page": {
+      "bytes": 10751,
+      "count": 14,
+      "path": "data/network-relations/03a4e1430ce89913f33fe22d864ab56198fb0e9eebb186b049c270d928e5dd1a/00001.json",
+      "sha256": "9832458f521cbf7b68fdcabd108853b90557602e64a6bd4a2dc29dddf312e006"
+    },
+    "images": [
+      {
+        "file": "13_关系球与养殖批次类型.png",
+        "scope": "类级球网；选中CSV养殖批次，仅显示已发布实例关系聚合边",
+        "sha256": "fb37e43976bbb6eb39e0593a4c6c1dcddbf950fb4664bef5c278bd99df8d8cab"
+      },
+      {
+        "file": "14_聚合边养殖批次至塘口.png",
+        "scope": "养殖批次类型至塘口类型的pond_id聚合边，14个唯一实例三元组",
+        "sha256": "c85b7beed84a124b98fb9f927911ad6bfda9c706cebc9a576b6a74ff1af319a9"
+      },
+      {
+        "file": "15_球网展开C01至P01实例.png",
+        "scope": "球面为类级布局；右侧为该聚合边的真实实例对，包括C01至1号模拟塘",
+        "sha256": "2d32ea19f3627dd67a306f0c4df093e163aaa831147bb88a92b96b919b85f3ec"
+      }
+    ],
+    "first_page_tenth_pair": {
+      "source_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:instance:dbf71dd0-222f-523b-97e5-f355f9b5ea78",
+      "source_label": "C01",
+      "source_class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:cohorts",
+      "predicate": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:relation:cohorts:pond_id:ponds",
+      "target_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:instance:ee6e5f9d-6db5-5bcb-927b-c21679eb8308",
+      "target_label": "1号模拟塘",
+      "target_class_iri": "urn:lzo:csv-batch:v1:a4d78be79a83ac2516ac2742a17222589940c85e3dd9190134c3e0ff799b4524:class:ponds",
+      "record_count": 1,
+      "direction": "outgoing"
+    }
+  }
+}
